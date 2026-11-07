@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Undo and Redo · LemmaLoom User Guide</title>
+<link rel="stylesheet" href="../assets/guide.css">
+<link rel="icon" type="image/png" href="../assets/logo.png">
+<script>var r=document.documentElement;r.setAttribute('data-theme','light');try{if(localStorage.getItem('guide-theme')==='dark'){r.setAttribute('data-theme','dark')}}catch(e){}</script>
+</head>
+<body>
+<header class="topbar">
+<button class="menu-toggle" aria-label="Contents" aria-expanded="false">☰</button>
+<a class="brand" href="index.html"><span class="wordmark"><span class="lemma">Lemma</span>Loom</span><span class="guide-name">User Guide</span></a>
+<div class="search"><input type="search" id="search" placeholder="Search" aria-label="Search" autocomplete="off" data-empty="No results"><div class="results" id="results" hidden></div></div>
+<nav class="languages" aria-label="Language"><a href="../en/undo.html" lang="en" aria-current="true">English</a><a href="../de/undo.html" lang="de">Deutsch</a><a href="../zh-Hans/undo.html" lang="zh-Hans">简体中文</a></nav>
+<button class="theme-toggle" data-light="Light" data-dark="Dark" aria-label="Theme"></button>
+<a class="pdf-link" href="https://github.com/LemmaLoom/public/raw/main/pdf/lemmaloom-guide-en.pdf">PDF</a>
+</header>
+<div class="layout">
+<nav class="sidebar" aria-label="Contents"><ol>
+<li class="unnumbered"><a href="quick-start.html">Quick Start</a></li>
+<li><a href="introduction.html">Introduction</a></li>
+<li><a href="getting-started.html">Getting Started</a></li>
+<li><a href="projects-and-documents.html">Projects and Documents</a></li>
+<li><a href="importing.html">Importing Material</a></li>
+<li><a href="reading-and-editing.html">Reading and Editing</a></li>
+<li><a href="lenses.html">Lenses</a></li>
+<li><a href="coding.html">Coding</a></li>
+<li><a href="sets-tags-attributes.html">Sets, Groups, Tags, and Attributes</a></li>
+<li><a href="translations.html">Translations and Split View</a></li>
+<li><a href="text-inspector.html">The Text Inspector</a></li>
+<li><a href="grammar-inspector.html">The Grammar Inspector</a></li>
+<li><a href="word-sketch.html">Word Sketch</a></li>
+<li><a href="coding-analysis.html">Analyzing Codes</a></li>
+<li><a href="sketch-space.html">Sketch Space</a></li>
+<li><a href="queries-building.html">Building a Query</a></li>
+<li><a href="queries-results.html">Query Results and Statistics</a></li>
+<li><a href="queries-patterns.html">Query Patterns and Discovery</a></li>
+<li><a href="queries-using-results.html">Using Query Results</a></li>
+<li><a href="dictionaries.html">Dictionaries</a></li>
+<li><a href="custom-analyzers.html">Custom Analyzers</a></li>
+<li><a href="analysis-and-indexing.html">Analysis and Indexing</a></li>
+<li><a href="exchange-and-export.html">Exchanging and Exporting</a></li>
+<li class="current"><a href="undo.html">Undo and Redo</a></li>
+<li><a href="settings.html">Settings and Appearance</a></li>
+<li><a href="keyboard-shortcuts.html">Keyboard Shortcuts</a></li>
+<li><a href="help-and-support.html">Help and Support</a></li>
+<li><a href="statistics-reference.html">Statistics at a Glance</a></li>
+<li class="unnumbered"><a href="glossary.html">Glossary</a></li>
+<li class="unnumbered"><a href="thanks.html">Thank You</a></li>
+</ol></nav>
+<main class="content">
+<article>
+<h1 id="undo">Undo and Redo</h1>
+<p>Changes made via LemmaLoom are immediately saved upon making the modification, and the history of said modifications is tracked accordingly. Undoing these changes can be done via <strong class="ui">Edit ▸ Undo</strong>, one at a time, working backwards through the history in reverse chronological order until the desired point has been reached. Pretty much everything within a project may be undone, including the deletion of documents and auto-coding a whole set of documents.</p>
+<p>In cases involving the deletion of a project, document, or code, or the merging of two codes, LemmaLoom asks for confirmation. Most other things (such as groups, sets, tags, attributes, dictionaries, and analyzers) are deleted instantly without prompting. Accidental deletions can be reverted using <strong class="ui">Edit ▸ Undo</strong>.</p>
+<p>Projects are deleted permanently, while importing and/or translating documents erases portions of the history. <a href="#what-you-cannot-undo">What cannot be undone</a> outlines these instances further down in this chapter.</p>
+<p>This guide’s examples use “Climate Debate”, which is explained fully in <a href="introduction.html#example-project">The example project</a> in <a href="introduction.html">Chapter 1, Introduction</a>. For practice purposes, the project may be imported with <strong class="ui">File ▸ Import ▸ Example Project</strong>.</p>
+<h2 id="key-terms">Key terms<a class="anchor" href="#key-terms" aria-hidden="true">#</a></h2>
+<ul>
+<li>A <em>step</em> is one instance of an action captured by LemmaLoom. Its name, which the <strong class="ui">Edit</strong> menu shows, identifies which command caused the change; examples include <strong class="ui">Apply Code</strong> and <strong class="ui">Delete Document</strong>. A single coding constitutes one step, while running <strong class="ui">Auto Code</strong> (see <a href="coding.html#auto-coding">Coding passages automatically</a> in <a href="coding.html">Chapter 7, Coding</a>) to create two hundred codings and four new codes also counts as one step.</li>
+<li><em>Undo history</em> refers to all steps available for undoing changes. Every individual window maintains its own separate undo history (see <a href="#windows">Which window a step belongs to</a> later on in this chapter).</li>
+</ul>
+<h2 id="undoing-a-change">Undoing a change<a class="anchor" href="#undoing-a-change" aria-hidden="true">#</a></h2>
+<ol>
+<li>Click the window where you made the change, so that it is the active window. For most changes, this is the main window.</li>
+<li>If the cursor is in a text field, click outside it.</li>
+<li>Open the <strong class="ui">Edit</strong> menu. The first item names the step that will be undone, for example <strong class="ui">Undo Apply Code</strong>.</li>
+<li>Choose the item, or press ⌘Z.</li>
+</ol>
+<figure class="shot" id="undo-edit-menu"><img class="shot-light" src="../figures/en/light/undo-edit-menu.webp" alt="The Edit menu after a passage in “Hope Takes Work” has been coded with “Fear”." loading="lazy"><img class="shot-dark" src="../figures/en/dark/undo-edit-menu.webp" alt="The Edit menu after a passage in “Hope Takes Work” has been coded with “Fear”." loading="lazy"><figcaption>The Edit menu after a passage in “Hope Takes Work” has been coded with “Fear”.</figcaption></figure>
+<p>If you wish to take multiple steps back in history, select <strong class="ui">Undo</strong> from the menu again. Every successive selection will reveal what the name of the next step is in history. Pressing ⌘Z quickly several times will reverse those actions sequentially. Once nothing remains to undo, the command changes its name to <strong class="ui">Undo</strong>, and the interface disables it.</p>
+<p>An Undo reverts all elements affected by the particular action. This means that, when performing <strong class="ui">Undo Delete Document</strong>, the document returns, including all the text, codings, memos, links, bookmarks, attribute values, and place in every set.</p>
+<p>When undoing results in the restoration of text content, LemmaLoom will index the text content again in the background (see <a href="analysis-and-indexing.html#reanalysis">Indexing a document again</a> in <a href="analysis-and-indexing.html">Chapter 21, Analysis and Indexing</a>). See <strong class="ui">Window ▸ Activity</strong> (⌥⌘0) to track the indexing progress.</p>
+<h3 id="redoing-a-change">Redoing a change<a class="anchor" href="#redoing-a-change" aria-hidden="true">#</a></h3>
+<p>When you undo something, there will always be an option in the <strong class="ui">Edit</strong> menu to redo what was done, like <strong class="ui">Redo Apply Code</strong>. Click this menu option, or hit ⇧⌘Z on your keyboard. You can redo as many actions as you undid, starting from the last undone action.</p>
+<p>Your redo options persist only until you make another change in the same window. If, for instance, you code another passage, you lose the steps you undid for good, and <strong class="ui">Redo</strong> is disabled.</p>
+<figure class="shot" id="undo-redo-menu"><img class="shot-light" src="../figures/en/light/undo-redo-menu.webp" alt="The Edit menu after the deletion of “Carbon Tax Debate” has been undone. Undo names the step before it, and Redo names the deletion." loading="lazy"><img class="shot-dark" src="../figures/en/dark/undo-redo-menu.webp" alt="The Edit menu after the deletion of “Carbon Tax Debate” has been undone. Undo names the step before it, and Redo names the deletion." loading="lazy"><figcaption>The Edit menu after the deletion of “Carbon Tax Debate” has been undone. Undo names the step before it, and Redo names the deletion.</figcaption></figure>
+<h3 id="worked-example">An example<a class="anchor" href="#worked-example" aria-hidden="true">#</a></h3>
+<p>Say you’re working on “Hope Takes Work” in the main window. You’ve coded a passage with “Fear”. In the <strong class="ui">Details</strong> facet of the inspector’s <strong class="ui">Text</strong> tab, you’ve changed the “Outlet” attribute of the essay from “The Weekly Ledger” to <code>The Northern Herald</code>. Finally, you deleted “Carbon Tax Debate”. This table outlines what options appear in the <strong class="ui">Edit</strong> menu after each action, and after the undos and redos that follow.</p>
+<figure class="shot" id="undo-outlet-edit"><img class="shot-light" src="../figures/en/light/undo-outlet-edit.webp" alt="The Details facet of “Hope Takes Work” while the “Outlet” attribute is being changed to The Northern Herald." loading="lazy"><img class="shot-dark" src="../figures/en/dark/undo-outlet-edit.webp" alt="The Details facet of “Hope Takes Work” while the “Outlet” attribute is being changed to The Northern Herald." loading="lazy"><figcaption>The Details facet of “Hope Takes Work” while the “Outlet” attribute is being changed to The Northern Herald.</figcaption></figure>
+<div class="table-wrap"><table>
+<thead><tr><th>No.</th><th>What you do</th><th>Undo item</th><th>Redo item</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>Code a passage with “Fear”</td><td><strong class="ui">Undo Apply Code</strong></td><td><strong class="ui">Redo</strong> (disabled)</td></tr>
+<tr><td>2</td><td>Select “The Weekly Ledger” in the “Outlet” field, type <code>The Northern Herald</code>, then click in the reader</td><td><strong class="ui">Undo Set Value</strong></td><td><strong class="ui">Redo</strong> (disabled)</td></tr>
+<tr><td>3</td><td>Delete “Carbon Tax Debate”</td><td><strong class="ui">Undo Delete Document</strong></td><td><strong class="ui">Redo</strong> (disabled)</td></tr>
+<tr><td>4</td><td>Press ⌘Z</td><td><strong class="ui">Undo Set Value</strong></td><td><strong class="ui">Redo Delete Document</strong></td></tr>
+<tr><td>5</td><td>Press ⌘Z</td><td><strong class="ui">Undo Apply Code</strong></td><td><strong class="ui">Redo Set Value</strong></td></tr>
+<tr><td>6</td><td>Press ⇧⌘Z</td><td><strong class="ui">Undo Set Value</strong></td><td><strong class="ui">Redo Delete Document</strong></td></tr>
+<tr><td>7</td><td>Code another passage with “Hope”</td><td><strong class="ui">Undo Apply Code</strong></td><td><strong class="ui">Redo</strong> (disabled)</td></tr>
+</tbody></table></div>
+<p>“Carbon Tax Debate” makes a return to the project following row 4. Following row 5, “Outlet” becomes “The Weekly Ledger”, while <code>The Northern Herald</code> returns via row 6. Since row 7’s coding is new, <strong class="ui">Redo</strong> is disabled, and “Carbon Tax Debate” remains within the project.</p>
+<p>Row 2 consists of just one step despite your entering 19 characters. The reason is covered below in <a href="#typing-attribute-values">Values typed into attribute fields</a>.</p>
+<h2 id="how-steps-are-recorded">How changes become steps<a class="anchor" href="#how-steps-are-recorded" aria-hidden="true">#</a></h2>
+<p>Each command counts as one step, however much it changes. For example:</p>
+<ul>
+<li><strong class="ui">Delete Documents</strong> with six documents selected counts as one step. Likewise, deleting “Running Out of Time” will delete “Running Out of Time (German)” in the same step, since the latter is a translation of the former.</li>
+<li>Similarly, <strong class="ui">Save</strong> within <strong class="ui">Document Properties</strong> counts as one step, regardless of how many of the document’s properties (such as name, tags, attribute values, or language) you changed.</li>
+<li>An <strong class="ui">Auto Code</strong> run counts as one step; Undo will reverse any codings added during the execution of that command and also delete any codes created by the command. If you click <strong class="ui">Stop</strong> before the command completes execution, Undo will reverse everything performed until that point.</li>
+<li>Similarly, <strong class="ui">Bookmark Hits…</strong> and <strong class="ui">Add to Dictionary</strong> found in a query’s <strong class="ui">Actions</strong> menu, and <strong class="ui">Import</strong> in the Attributes window, each count as one step each time they are invoked, applying to all items they generate.</li>
+</ul>
+<p>Undoing a command also reverses changes it made elsewhere. When coding a passage in “Running Out of Time”, LemmaLoom performs the equivalent coding on “Running Out of Time (German)”. Undoing <strong class="ui">Apply Code</strong> reverses the changes in both documents.</p>
+<h3 id="typing-attribute-values">Values typed into attribute fields<a class="anchor" href="#typing-attribute-values" aria-hidden="true">#</a></h3>
+<p>Text attribute field contents in the <strong class="ui">Details</strong> facet of the inspector’s <strong class="ui">Text</strong> tab and in the Attributes window are autosaved as you type into them, while non-text contents are autosaved as soon as they are entered. LemmaLoom organizes all changes made to the same field within a given document as part of a single <strong class="ui">Set Value</strong> step, provided no other step comes between them.</p>
+<p>Typing <code>The Northern Herald</code> into “Outlet” creates a single step that <strong class="ui">Edit ▸ Undo Set Value</strong> will reverse to restore its initial state prior to entering your text. Changing “Stance” creates another step. Finishing where you started (for example, typing something and deleting it) removes the entire step from the history. This applies also to attribute field values of codings and memos, found within the <strong class="ui">Codings</strong> facet of the inspector’s <strong class="ui">Coding</strong> tab.</p>
+<p>To undo the whole value at once, click elsewhere first, then choose <strong class="ui">Edit ▸ Undo Set Value</strong>.</p>
+<h3 id="long-changes">Changes that take a while<a class="anchor" href="#long-changes" aria-hidden="true">#</a></h3>
+<p>Deleting multiple documents, auto-coding a set, and importing a codebook take some time. Your current step is only displayed in the <strong class="ui">Edit</strong> menu after it has completed. Until it finishes, ⌘Z will undo the previous step. Before performing an undo action, make sure that the last deleted document has left the navigation sidebar, that the Auto Code dialog displays <strong class="ui">Done</strong>, or that the <strong class="ui">Importing REFI-QDA Codebook</strong> dialog is closed.</p>
+<h2 id="windows">Which window a step belongs to<a class="anchor" href="#windows" aria-hidden="true">#</a></h2>
+<p>Each window in LemmaLoom maintains a history. This applies to your main window, your Codebook window, your Document window (from <strong class="ui">Open in New Window</strong>), and any Queries, Query Results, Analyzers, Tags, and Attributes window you might be working on. When creating a new instance of the main window via <strong class="ui">File ▸ New Window</strong>, you’ll end up with yet another separate history to track changes. Commands such as <strong class="ui">Edit ▸ Undo</strong> and <strong class="ui">Edit ▸ Redo</strong> are confined to the currently active window.</p>
+<ul>
+<li>A step belongs to the window that was active when the change began. After renaming the tag “viral” in the Tags window, click the Tags window before choosing <strong class="ui">Edit ▸ Undo Rename Tag</strong>.</li>
+<li>Changes that occur in response to actions initiated from a dialog belong to the window the dialog opened from. Your <strong class="ui">Document Properties</strong> dialog keeps its changes in history within the main window; reverse those changes with <strong class="ui">Edit ▸ Undo</strong> inside the main window once the dialog has closed. The code palette, similarly, keeps its changes in history in whatever window you opened it from. Any dialogs opened from the Attributes window keep their changes in history in that window.</li>
+<li>Background operations belong to the window they originated from regardless of which window is active upon completion. Initiating an <strong class="ui">Auto Code</strong> run in the main window means that it would be placed in the history of the main window.</li>
+<li>The history in your main window covers all of your projects. Once you’ve coded a passage within “Climate Debate”, then switched projects, and pressed ⌘Z, the coding is undone in your initial project while the second project stays active. If you wish to observe your undone changes, switch back first.</li>
+</ul>
+<figure class="shot" id="undo-codebook-window"><img class="shot-light" src="../figures/en/light/undo-codebook-window.webp" alt="The Codebook window of “Climate Debate” as the active window. Its Edit menu offers to undo the change just made to the code “Costs”." loading="lazy"><img class="shot-dark" src="../figures/en/dark/undo-codebook-window.webp" alt="The Codebook window of “Climate Debate” as the active window. Its Edit menu offers to undo the change just made to the code “Costs”." loading="lazy"><figcaption>The Codebook window of “Climate Debate” as the active window. Its Edit menu offers to undo the change just made to the code “Costs”.</figcaption></figure>
+<aside class="callout note"><p class="callout-title">Note</p><p>In a situation where you edit a particular element twice in two windows, such as editing the code “Costs” first in the Codebook window and then in the <strong class="ui">Codes</strong> facet in the main window, you would need to undo the second edit before the first, in the window where you made it. Otherwise, an edit undone in one window could reappear upon undoing in the other window.</p>
+</aside>
+<h2 id="what-you-can-undo">What can be undone<a class="anchor" href="#what-you-can-undo" aria-hidden="true">#</a></h2>
+<p>For every table, the rightmost column will contain the name after <strong class="ui">Undo</strong> or <strong class="ui">Redo</strong> in the <strong class="ui">Edit</strong> menu.</p>
+<h3 id="steps-coding">Codes and coding<a class="anchor" href="#steps-coding" aria-hidden="true">#</a></h3>
+<div class="table-wrap"><table>
+<thead><tr><th>What you do</th><th>Step</th></tr></thead>
+<tbody>
+<tr><td>Code a passage, including the values asked for by a code with attributes</td><td><strong class="ui">Apply Code</strong></td></tr>
+<tr><td>Create a code and code the passage with it in one go, with <strong class="ui">Add Code “…”</strong> or <strong class="ui">In Vivo “…”</strong> in the code palette, or with <strong class="ui">Document ▸ In Vivo Code</strong></td><td><strong class="ui">Apply Code</strong></td></tr>
+<tr><td>Remove a coding in the code palette, or with <strong class="ui">Delete Coding</strong> in the <strong class="ui">Codings</strong> facet or the <strong class="ui">Codings</strong> view</td><td><strong class="ui">Delete Coding</strong></td></tr>
+<tr><td>Give a coding another code with <strong class="ui">Change Code</strong></td><td><strong class="ui">Change Code</strong></td></tr>
+<tr><td>Create a code, including <strong class="ui">Add Subcode</strong> in the Codebook window and in the <strong class="ui">Codes</strong> facet</td><td><strong class="ui">New Code</strong></td></tr>
+<tr><td>Change a code’s <strong class="ui">Name</strong>, <strong class="ui">Color</strong>, <strong class="ui">Format</strong>, <strong class="ui">Scope</strong>, <strong class="ui">Tags</strong>, <strong class="ui">Attributes</strong>, or <strong class="ui">About</strong></td><td><strong class="ui">Edit Code</strong></td></tr>
+<tr><td>Move a code under another code or to the top level, by dragging it or with <strong class="ui">Move To</strong></td><td><strong class="ui">Move Code</strong></td></tr>
+<tr><td><strong class="ui">Merge Into</strong> another code</td><td><strong class="ui">Merge</strong></td></tr>
+<tr><td>Delete a code</td><td><strong class="ui">Delete Code</strong></td></tr>
+<tr><td><strong class="ui">Add to Code Set ▸ New Set from Code</strong></td><td><strong class="ui">New Code Set</strong></td></tr>
+<tr><td><strong class="ui">Add to Code Set</strong></td><td><strong class="ui">Add to Code Set</strong></td></tr>
+<tr><td><strong class="ui">Remove from Code Set</strong></td><td><strong class="ui">Remove from Code Set</strong></td></tr>
+<tr><td>Rename a code set</td><td><strong class="ui">Rename</strong></td></tr>
+<tr><td>Delete a code set, with <strong class="ui">Delete</strong> in its shortcut menu or its trash button in the <strong class="ui">Codes</strong> facet</td><td><strong class="ui">Delete Code Set</strong></td></tr>
+<tr><td><strong class="ui">Auto Code…</strong> from a <a href="lenses.html">lens</a> or a query</td><td><strong class="ui">Auto Code</strong></td></tr>
+<tr><td><strong class="ui">File ▸ Import ▸ REFI-QDA Codebook</strong></td><td><strong class="ui">REFI-QDA Codebook</strong></td></tr>
+</tbody></table></div>
+<p>Undoing <strong class="ui">Delete Code</strong> restores the code itself, including all of its subcodes, their codings, and associated attribute values. <strong class="ui">Undo Merge</strong> splits the merge, restoring the merged code with all of its codings, subcodes, memos, code sets, and saved queries related to it.</p>
+<p><strong class="ui">Undo REFI-QDA Codebook</strong> removes everything the import added to the codebook (see <a href="exchange-and-export.html#refi-codebook">REFI-QDA codebooks</a> in <a href="exchange-and-export.html">Chapter 22, Exchanging and Exporting</a>).</p>
+<h3 id="steps-annotations">Memos, links, and bookmarks<a class="anchor" href="#steps-annotations" aria-hidden="true">#</a></h3>
+<div class="table-wrap"><table>
+<thead><tr><th>What you do</th><th>Step</th></tr></thead>
+<tbody>
+<tr><td>Write a memo</td><td><strong class="ui">New Memo</strong></td></tr>
+<tr><td>Change a memo’s text, code, tags, or attribute values</td><td><strong class="ui">Edit Memo</strong></td></tr>
+<tr><td>Delete a memo</td><td><strong class="ui">Delete Memo</strong></td></tr>
+<tr><td>Link two passages</td><td><strong class="ui">New Link</strong></td></tr>
+<tr><td>Change a link’s relation, comment, color, or tags</td><td><strong class="ui">Edit Link</strong></td></tr>
+<tr><td>Delete a link</td><td><strong class="ui">Delete Link</strong></td></tr>
+<tr><td>Bookmark a passage</td><td><strong class="ui">Bookmark</strong></td></tr>
+<tr><td>Change a bookmark’s comment or color</td><td><strong class="ui">Edit Bookmark</strong></td></tr>
+<tr><td>Remove a bookmark</td><td><strong class="ui">Remove Bookmark</strong></td></tr>
+<tr><td><strong class="ui">Bookmark Hits…</strong> in a query’s <strong class="ui">Actions</strong> menu</td><td><strong class="ui">Bookmark Hits</strong></td></tr>
+</tbody></table></div>
+<p>LemmaLoom replicates your memos, links, and bookmarks in the translations of your documents. Since the copies occur in the same step as the originals, the undo function works on both simultaneously.</p>
+<h3 id="steps-documents">Projects and documents<a class="anchor" href="#steps-documents" aria-hidden="true">#</a></h3>
+<div class="table-wrap"><table>
+<thead><tr><th>What you do</th><th>Step</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">File ▸ New Project</strong></td><td><strong class="ui">New Project</strong></td></tr>
+<tr><td>Rename a project, document, group, or set</td><td><strong class="ui">Rename</strong></td></tr>
+<tr><td><strong class="ui">Save</strong> in <strong class="ui">Project Properties</strong>, including attributes added or removed there</td><td><strong class="ui">Project Properties</strong></td></tr>
+<tr><td><strong class="ui">Save</strong> in <strong class="ui">Document Properties</strong></td><td><strong class="ui">Document Properties</strong></td></tr>
+<tr><td>Change a document’s tags in the <strong class="ui">Details</strong> facet of the inspector’s <strong class="ui">Text</strong> tab</td><td><strong class="ui">Edit Tags</strong></td></tr>
+<tr><td><strong class="ui">Save</strong> after editing a document’s text</td><td><strong class="ui">Edit Text</strong></td></tr>
+<tr><td><strong class="ui">Delete Document</strong></td><td><strong class="ui">Delete Document</strong></td></tr>
+<tr><td><strong class="ui">Delete Documents</strong> with several documents selected</td><td><strong class="ui">Delete Documents</strong></td></tr>
+<tr><td><strong class="ui">File ▸ New Group</strong>, or <strong class="ui">Move to Group ▸ New Group</strong></td><td><strong class="ui">New Group</strong></td></tr>
+<tr><td><strong class="ui">Move to Group</strong></td><td><strong class="ui">Move to Group</strong></td></tr>
+<tr><td><strong class="ui">Delete Group</strong></td><td><strong class="ui">Delete Group</strong></td></tr>
+<tr><td>The trash button (<strong class="ui">Remove Output</strong>) beside an analyzer in <strong class="ui">Document Properties</strong></td><td><strong class="ui">Remove Output</strong></td></tr>
+<tr><td><strong class="ui">Run</strong> for an analyzer whose output you removed</td><td><strong class="ui">Run</strong></td></tr>
+<tr><td><strong class="ui">Index Now</strong>, in <strong class="ui">Document Properties</strong> or the reader’s status bar, for a document imported without indexing</td><td><strong class="ui">Index Now</strong></td></tr>
+</tbody></table></div>
+<p><strong class="ui">File ▸ New Group</strong> makes two steps, <strong class="ui">New Group</strong>, followed by <strong class="ui">Rename</strong> when you enter the name and hit Return. To remove the group, use Undo twice, or Undo once if you used the default name because there would then only be one step to undo. <strong class="ui">Move to Group ▸ New Group</strong> and <strong class="ui">New Set</strong> in the sidebar follow the same procedure.</p>
+<p>Deletion of the group leaves the documents inside the project, without any grouping. After <strong class="ui">Undo Delete Group</strong>, the documents become part of the re-instated group, with smart set conditions that referred to the group’s name restored.</p>
+<p>After undoing <strong class="ui">Delete Document</strong> or <strong class="ui">Delete Documents</strong>, each document gets restored along with its translations and media file (see <a href="projects-and-documents.html#deleting-documents">Deleting documents</a> in <a href="projects-and-documents.html">Chapter 3, Projects and Documents</a>). All codes whose scope was the document are re-added, and queries saved inside the document, having been moved during deletion to the project level, go back to the document. If there were pending translations scheduled for a document, deleting that document stops that process; after undoing the deletion, start the translation again.</p>
+<p><strong class="ui">Undo Edit Text</strong> restores the prior text, along with every coding, memo, bookmark, and link in the location they were found before. For recordings, timing of transcripts gets restored, as well as alignments for documents containing translations.</p>
+<p>For more detail on this topic, refer to <a href="reading-and-editing.html#undoing-edits">Undoing an edit</a> in <a href="reading-and-editing.html">Chapter 5, Reading and Editing</a>.</p>
+<p>Undone changes made in <strong class="ui">Document Properties</strong> affecting the language and/or <strong class="ui">Exclude from indexing</strong> patterns cause indexing to take place. <strong class="ui">Undo Remove Output</strong> does the same, allowing the analyzer to run on the document again. <strong class="ui">Undo Run</strong> causes deletion of the analyzer’s output, while <strong class="ui">Undo Index Now</strong> turns indexing off again for the document (see <a href="analysis-and-indexing.html#document-analyzers">Choosing analyzers for a document</a> in <a href="analysis-and-indexing.html">Chapter 21, Analysis and Indexing</a>).</p>
+<h3 id="steps-organizing">Sets, tags, and attributes<a class="anchor" href="#steps-organizing" aria-hidden="true">#</a></h3>
+<div class="table-wrap"><table>
+<thead><tr><th>What you do</th><th>Step</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">New Set</strong> in the sidebar, or <strong class="ui">Create Set from Hits</strong> in a query</td><td><strong class="ui">New Set</strong></td></tr>
+<tr><td><strong class="ui">Add to Set</strong></td><td><strong class="ui">Add to Set</strong></td></tr>
+<tr><td><strong class="ui">Remove from Set</strong></td><td><strong class="ui">Remove from Set</strong></td></tr>
+<tr><td><strong class="ui">Delete Set</strong></td><td><strong class="ui">Delete Set</strong></td></tr>
+<tr><td><strong class="ui">New Smart Set</strong>, or <strong class="ui">Save as Smart Set</strong> in a query</td><td><strong class="ui">New Smart Set</strong></td></tr>
+<tr><td>Change a smart set’s conditions with <strong class="ui">Edit</strong> or <strong class="ui">Project ▸ Edit Smart Set</strong></td><td><strong class="ui">Edit Smart Set</strong></td></tr>
+<tr><td>Rename a tag in the Tags window or the sidebar</td><td><strong class="ui">Rename Tag</strong></td></tr>
+<tr><td>Delete a tag in the Tags window or the sidebar</td><td><strong class="ui">Delete Tag</strong></td></tr>
+<tr><td><strong class="ui">Add Attribute</strong> in the Attributes window, or a new attribute name in the <strong class="ui">Details</strong> facet of the inspector’s <strong class="ui">Text</strong> tab</td><td><strong class="ui">Add Attribute</strong></td></tr>
+<tr><td>Change an attribute’s name, type, choices, or description with <strong class="ui">Edit</strong>, in the <strong class="ui">Manage</strong> menu of the Attributes window or beside a code’s attribute in the code editor</td><td><strong class="ui">Edit Attribute</strong></td></tr>
+<tr><td><strong class="ui">Move Left</strong> or <strong class="ui">Move Right</strong> in the <strong class="ui">Manage</strong> menu</td><td><strong class="ui">Move Attribute</strong></td></tr>
+<tr><td><strong class="ui">Delete</strong> in the <strong class="ui">Manage</strong> menu</td><td><strong class="ui">Delete Attribute</strong></td></tr>
+<tr><td>Enter, change, or clear a value, for one document or with <strong class="ui">Set Value</strong> for several</td><td><strong class="ui">Set Value</strong></td></tr>
+<tr><td><strong class="ui">Import</strong> in the Attributes window</td><td><strong class="ui">Import Attributes</strong></td></tr>
+</tbody></table></div>
+<p><strong class="ui">Undo Delete Set</strong> returns not only the set itself, including any condition in case of a smart set, but also every query associated with it as well.</p>
+<p>A tag is shared by every project that you’ve got, which means that the actions <strong class="ui">Rename Tag</strong> and <strong class="ui">Delete Tag</strong> affect every project, document, code, memo, link, and condition for a smart set that uses the tag. When undoing <strong class="ui">Rename Tag</strong>, the tag gets its previous name back everywhere it appeared, and a tab open on the tag follows the name back. <strong class="ui">Undo Delete Tag</strong> puts the tag back on everything that carried it, but a tab that closed when you deleted the tag stays closed.</p>
+<p>Should an <strong class="ui">Edit Attribute</strong> step involve changes of the attribute type, then undoing it will restore all values converted by LemmaLoom too. An attribute you delete from either <strong class="ui">Project Properties</strong> or the Attributes window returns along with its value everywhere it belonged before deletion. <strong class="ui">Undo Import Attributes</strong> will take back every value the import wrote and every attribute it created.</p>
+<h3 id="steps-queries">Queries, dictionaries, and analyzers<a class="anchor" href="#steps-queries" aria-hidden="true">#</a></h3>
+<div class="table-wrap"><table>
+<thead><tr><th>What you do</th><th>Step</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">Save</strong> or <strong class="ui">Save As…</strong> a query, or save a new query as a lens</td><td><strong class="ui">Save Query</strong></td></tr>
+<tr><td><strong class="ui">Rename…</strong> a saved query</td><td><strong class="ui">Rename</strong></td></tr>
+<tr><td><strong class="ui">Save as Lens…</strong> for a saved query</td><td><strong class="ui">Save as Lens</strong></td></tr>
+<tr><td><strong class="ui">Remove Lens</strong></td><td><strong class="ui">Remove Lens</strong></td></tr>
+<tr><td><strong class="ui">Delete Query</strong></td><td><strong class="ui">Delete Query</strong></td></tr>
+<tr><td><strong class="ui">New Dictionary</strong></td><td><strong class="ui">New Dictionary</strong></td></tr>
+<tr><td>Rename a dictionary or a category</td><td><strong class="ui">Rename</strong></td></tr>
+<tr><td><strong class="ui">Delete Dictionary</strong></td><td><strong class="ui">Delete Dictionary</strong></td></tr>
+<tr><td><strong class="ui">Add Category</strong></td><td><strong class="ui">Add Category</strong></td></tr>
+<tr><td>Change a category’s color</td><td><strong class="ui">Edit Category</strong></td></tr>
+<tr><td><strong class="ui">Delete Category</strong></td><td><strong class="ui">Delete Category</strong></td></tr>
+<tr><td>Add terms in the <strong class="ui">Add term</strong> field, or with <strong class="ui">Add to Dictionary</strong> in the reader’s selection bar or a query’s <strong class="ui">Actions</strong> menu</td><td><strong class="ui">Add to Dictionary</strong></td></tr>
+<tr><td>Remove terms</td><td><strong class="ui">Remove Term</strong> or <strong class="ui">Remove Terms</strong></td></tr>
+<tr><td>Move terms to another category, by dragging them or with <strong class="ui">Move to Category</strong></td><td><strong class="ui">Move Terms</strong></td></tr>
+<tr><td><strong class="ui">Save</strong> for a new analyzer in <strong class="ui">Window ▸ Analyzers</strong>, or <strong class="ui">Save as Analyzer…</strong> in a query</td><td><strong class="ui">Add Analyzer</strong></td></tr>
+<tr><td><strong class="ui">Save</strong> for an existing analyzer, or <strong class="ui">Save as Analyzer…</strong> for a query that already has one</td><td><strong class="ui">Edit Analyzer</strong></td></tr>
+<tr><td>Delete an analyzer</td><td><strong class="ui">Delete Analyzer</strong></td></tr>
+<tr><td><strong class="ui">Update Analyzer</strong></td><td><strong class="ui">Update Analyzer</strong></td></tr>
+</tbody></table></div>
+<p>Any changes you have made to a query via the builder are reflected upon saving the query (refer to <a href="queries-building.html#saving-queries">Saving queries</a> in <a href="queries-building.html">Chapter 15, Building a Query</a>). Opening either a saved query or a recipe, or choosing <strong class="ui">New Query</strong>, replaces the current state of your query. Should there have been any changes since your last save, you can retrieve these via <strong class="ui">Edit ▸ Undo</strong>; the Undo item names the query or recipe you opened, or reads <strong class="ui">Undo New Query</strong>. Additionally, selecting <strong class="ui">Freeze Values</strong> on the query’s <strong class="ui">Actions</strong> menu replaces your current query as well. This is undone with <strong class="ui">Undo Freeze Values</strong> regardless of whether the query had any unsaved changes made prior.</p>
+<p>Choosing <strong class="ui">Save as Lens…</strong> on a saved query which had unsaved changes will save them first as a separate <strong class="ui">Save Query</strong> step before moving on to saving as a lens; thus undoing twice takes back both.</p>
+<p>When changes made to an analyzer’s script or languages, or even its deletion, are undone, the analyzer is rerun against the documents in its languages.</p>
+<p>For additional information about analyzers, refer to <a href="custom-analyzers.html">Chapter 20, Custom Analyzers</a>.</p>
+<h2 id="what-you-cannot-undo">What cannot be undone<a class="anchor" href="#what-you-cannot-undo" aria-hidden="true">#</a></h2>
+<h3 id="deleting-a-project">Deleting a project<a class="anchor" href="#deleting-a-project" aria-hidden="true">#</a></h3>
+<p>Deleting a project is a final action, and it also removes the steps regarding the project, its documents, or attributes from every window’s history. If you need a backup copy you could restore, export the project first with <strong class="ui">File ▸ Export ▸ LemmaLoom Project</strong> (see <a href="exchange-and-export.html">Chapter 22, Exchanging and Exporting</a>).</p>
+<h3 id="importing">Importing documents<a class="anchor" href="#importing" aria-hidden="true">#</a></h3>
+<p>Importing a text file, PDF document, web page, or recording clears most earlier steps for that project from every window once the new document arrives. Steps in other projects stay, and so do changes to custom analyzers.</p>
+<p>Suppose you have previously deleted “Carbon Tax Debate” and merged “Deadlines” into “Urgency”, but now you are importing another PDF file into the same project. The deletion of “Carbon Tax Debate” and the merging of “Deadlines” into “Urgency” are irreversible after this import. Reverse whatever steps you wish before importing.</p>
+<p>Should you decide to remove the imported document from your project, delete it, and that deletion itself can be undone. For additional details on importing documents, refer to <a href="importing.html#importing-documents">Importing documents</a> in <a href="importing.html">Chapter 4, Importing Material</a>.</p>
+<p>To remove what a REFI-QDA project, a LemmaLoom archive, or the example project brought in, delete either the whole project or the documents it added. Two imports are steps you can undo, <strong class="ui">REFI-QDA Codebook</strong> and <strong class="ui">Import Attributes</strong> (see the tables above).</p>
+<h3 id="translating">Translating a document<a class="anchor" href="#translating" aria-hidden="true">#</a></h3>
+<p>As soon as your translation (see <a href="translations.html">Chapter 9, Translations and Split View</a>) finishes and appears below its source document, LemmaLoom will prune all earlier steps related to your source document from every window’s history. This includes the steps for any codings, links, bookmarks, and attribute values in your original document, as well as any edits and changes made to it.</p>
+<p>If you decide that you don’t need a particular translation anymore, delete the translation document like you would any other, and the deletion can be undone.</p>
+<h3 id="outside-the-project">Changes outside the project<a class="anchor" href="#outside-the-project" aria-hidden="true">#</a></h3>
+<p>The history stores all modifications done to the content of your projects. The changes listed below take effect immediately upon being made, and you revert these modifications by changing them back:</p>
+<ul>
+<li>the modifications done via <strong class="ui">LemmaLoom ▸ Settings…</strong>, including the theme choice, appearance settings for the reader, and color customization of lenses;</li>
+<li>adding or removing projects in <strong class="ui">Favorites</strong>;</li>
+<li>which tabs are open, which lenses are enabled, which codes are hidden in the reader, the inspector tab, and panes’ dimensions.</li>
+</ul>
+<h2 id="typing">Typing in text fields<a class="anchor" href="#typing" aria-hidden="true">#</a></h2>
+<p>⌘Z and ⇧⌘Z undo and redo your typing just like in any other macOS program when your cursor is inside a text field, such as the code editor’s <strong class="ui">Name</strong> field, memo text, a name you’re typing in the sidebar, or search bars. Inside the text field, the <strong class="ui">Edit</strong> menu reads <strong class="ui">Undo Typing</strong>. After leaving the field, ⌘Z operates again in LemmaLoom’s history.</p>
+<p>Steps occur only upon confirming whatever text you enter. Confirming means clicking <strong class="ui">Save</strong> in a dialog (or hitting Return or clicking elsewhere while naming). Escape while naming, or <strong class="ui">Cancel</strong> within the dialog, cancels out the typing. Commands such as <strong class="ui">Index Now</strong>, <strong class="ui">Run</strong>, and <strong class="ui">Remove Output</strong> in <strong class="ui">Document Properties</strong> take place immediately. Within the <strong class="ui">Edit Attribute</strong> dialog which appears from the code editor, the <strong class="ui">Save</strong> button does too, making everything that went into editing this attribute into a single <strong class="ui">Edit Attribute</strong> step. All these steps stay even if you click <strong class="ui">Cancel</strong> afterwards.</p>
+<p>This pattern holds for the document text editor. When making edits, ⌘Z undoes your typing. Hitting <strong class="ui">Save</strong> results in the total edit being an <strong class="ui">Edit Text</strong> step, and <strong class="ui">Cancel</strong> discards it. This is discussed in greater detail in <a href="reading-and-editing.html#editing-and-saving">Editing and saving</a> in <a href="reading-and-editing.html">Chapter 5, Reading and Editing</a>.</p>
+<p>The exception to this rule is attribute values, since their fields automatically save whatever value you enter (see <a href="#typing-attribute-values">Values typed into attribute fields</a> earlier in this chapter).</p>
+<h2 id="history-lifetime">How long the history lasts<a class="anchor" href="#history-lifetime" aria-hidden="true">#</a></h2>
+<p>Your history continues until you exit LemmaLoom. If you close your last open window, LemmaLoom will exit. However, closing any window means the end of that window’s history. Upon opening LemmaLoom again, <strong class="ui">Edit ▸ Undo</strong> will remain disabled until something has changed within your current session.</p>
+<p>If a document containing a media recording gets deleted, LemmaLoom stores the audio/video recording for future undo purposes. This recording will be permanently deleted on the subsequent startup of LemmaLoom (refer to <a href="getting-started.html#library">Where work is stored</a> in <a href="getting-started.html">Chapter 2, Getting Started</a>).</p>
+<h2 id="undo-commands">Commands<a class="anchor" href="#undo-commands" aria-hidden="true">#</a></h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Command</th><th>Shortcut</th><th>Where it works</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">Edit ▸ Undo</strong></td><td>⌘Z</td><td>In any window with a step to undo</td></tr>
+<tr><td><strong class="ui">Edit ▸ Redo</strong></td><td>⇧⌘Z</td><td>After an undo, until you make a new change</td></tr>
+</tbody></table></div>
+<p>All the available keyboard shortcuts in LemmaLoom are listed in <a href="keyboard-shortcuts.html">Chapter 25, Keyboard Shortcuts</a>.</p>
+</article>
+<nav class="pager"><a class="previous" href="exchange-and-export.html"><span>Previous</span>Exchanging and Exporting</a><a class="next" href="settings.html"><span>Next</span>Settings and Appearance</a></nav>
+<footer class="site-footer">© 2026 Ryan S. Cooper. All rights reserved.</footer>
+</main>
+<nav class="page-toc" aria-label="On this page"><p>On this page</p><ul>
+<li class="level-2"><a href="#key-terms">Key terms</a></li>
+<li class="level-2"><a href="#undoing-a-change">Undoing a change</a></li>
+<li class="level-3"><a href="#redoing-a-change">Redoing a change</a></li>
+<li class="level-3"><a href="#worked-example">An example</a></li>
+<li class="level-2"><a href="#how-steps-are-recorded">How changes become steps</a></li>
+<li class="level-3"><a href="#typing-attribute-values">Values typed into attribute fields</a></li>
+<li class="level-3"><a href="#long-changes">Changes that take a while</a></li>
+<li class="level-2"><a href="#windows">Which window a step belongs to</a></li>
+<li class="level-2"><a href="#what-you-can-undo">What can be undone</a></li>
+<li class="level-3"><a href="#steps-coding">Codes and coding</a></li>
+<li class="level-3"><a href="#steps-annotations">Memos, links, and bookmarks</a></li>
+<li class="level-3"><a href="#steps-documents">Projects and documents</a></li>
+<li class="level-3"><a href="#steps-organizing">Sets, tags, and attributes</a></li>
+<li class="level-3"><a href="#steps-queries">Queries, dictionaries, and analyzers</a></li>
+<li class="level-2"><a href="#what-you-cannot-undo">What cannot be undone</a></li>
+<li class="level-3"><a href="#deleting-a-project">Deleting a project</a></li>
+<li class="level-3"><a href="#importing">Importing documents</a></li>
+<li class="level-3"><a href="#translating">Translating a document</a></li>
+<li class="level-3"><a href="#outside-the-project">Changes outside the project</a></li>
+<li class="level-2"><a href="#typing">Typing in text fields</a></li>
+<li class="level-2"><a href="#history-lifetime">How long the history lasts</a></li>
+<li class="level-2"><a href="#undo-commands">Commands</a></li>
+</ul></nav>
+</div>
+<script src="../assets/guide.js" defer></script>
+</body>
+</html>

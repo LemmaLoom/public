@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>交换与导出 · LemmaLoom 用户指南</title>
+<link rel="stylesheet" href="../assets/guide.css">
+<link rel="icon" type="image/png" href="../assets/logo.png">
+<script>var r=document.documentElement;r.setAttribute('data-theme','light');try{if(localStorage.getItem('guide-theme')==='dark'){r.setAttribute('data-theme','dark')}}catch(e){}</script>
+</head>
+<body>
+<header class="topbar">
+<button class="menu-toggle" aria-label="目录" aria-expanded="false">☰</button>
+<a class="brand" href="index.html"><span class="wordmark"><span class="lemma">Lemma</span>Loom</span><span class="guide-name">用户指南</span></a>
+<div class="search"><input type="search" id="search" placeholder="搜索" aria-label="搜索" autocomplete="off" data-empty="无结果"><div class="results" id="results" hidden></div></div>
+<nav class="languages" aria-label="Language"><a href="../en/exchange-and-export.html" lang="en">English</a><a href="../de/exchange-and-export.html" lang="de">Deutsch</a><a href="../zh-Hans/exchange-and-export.html" lang="zh-Hans" aria-current="true">简体中文</a></nav>
+<button class="theme-toggle" data-light="浅色" data-dark="深色" aria-label="外观"></button>
+<a class="pdf-link" href="https://github.com/LemmaLoom/public/raw/main/pdf/lemmaloom-guide-zh-Hans.pdf">PDF</a>
+</header>
+<div class="layout">
+<nav class="sidebar" aria-label="目录"><ol>
+<li class="unnumbered"><a href="quick-start.html">快速入门</a></li>
+<li><a href="introduction.html">简介</a></li>
+<li><a href="getting-started.html">开始使用</a></li>
+<li><a href="projects-and-documents.html">项目与文档</a></li>
+<li><a href="importing.html">导入资料</a></li>
+<li><a href="reading-and-editing.html">阅读与编辑</a></li>
+<li><a href="lenses.html">透镜</a></li>
+<li><a href="coding.html">编码</a></li>
+<li><a href="sets-tags-attributes.html">文档集、分组、标签和属性</a></li>
+<li><a href="translations.html">译文与分屏浏览</a></li>
+<li><a href="text-inspector.html">文本检查器</a></li>
+<li><a href="grammar-inspector.html">语法检查器</a></li>
+<li><a href="word-sketch.html">词汇速写</a></li>
+<li><a href="coding-analysis.html">编码分析</a></li>
+<li><a href="sketch-space.html">速写空间</a></li>
+<li><a href="queries-building.html">构建查询</a></li>
+<li><a href="queries-results.html">查询结果与统计</a></li>
+<li><a href="queries-patterns.html">查询模式与发现</a></li>
+<li><a href="queries-using-results.html">使用查询结果</a></li>
+<li><a href="dictionaries.html">词典</a></li>
+<li><a href="custom-analyzers.html">自定义分析器</a></li>
+<li><a href="analysis-and-indexing.html">分析与索引</a></li>
+<li class="current"><a href="exchange-and-export.html">交换与导出</a></li>
+<li><a href="undo.html">撤销与重做</a></li>
+<li><a href="settings.html">设置与外观</a></li>
+<li><a href="keyboard-shortcuts.html">键盘快捷键</a></li>
+<li><a href="help-and-support.html">帮助与支持</a></li>
+<li><a href="statistics-reference.html">统计量一览</a></li>
+<li class="unnumbered"><a href="glossary.html">术语表</a></li>
+<li class="unnumbered"><a href="thanks.html">感谢</a></li>
+</ol></nav>
+<main class="content">
+<article>
+<h1 id="exchange-and-export">交换与导出</h1>
+<p>项目保存在你的 macOS 设备上的 LemmaLoom 资料库中（见<a href="getting-started.html">第 2 章“开始使用”</a>中的<a href="getting-started.html#library">工作保存在哪里</a>）。通过导出和导入，可以把工作带出资料库，或者放进资料库。选用哪种文件类型，取决于下一个打开导出文件的人是谁。</p>
+<p>本章的所有示例都使用名为“气候辩论”的项目。项目中有十一篇虚构的观点文章，作者是气候活动人士和气候怀疑论者，例如“时间不多了”和“模型总是失准”；此外还有 PDF 文档“2024 热浪报告”、网页“碳税之争”和录音“电台辩论”。“时间不多了 (英语)”是“时间不多了”的译文，算上它，项目共有 15 个文档。要跟着示例操作，请选取<strong class="ui">文件 ▸ 导入 ▸ 示例项目</strong>。导入后，LemmaLoom 会自动在你的资料库中新建一个名为“气候辩论”的项目，项目已建立索引，内容采用界面语言。</p>
+<h2 id="exchange-overview">选择格式<a class="anchor" href="#exchange-overview" aria-hidden="true">#</a></h2>
+<div class="table-wrap"><table>
+<thead><tr><th>你想要</th><th>文件</th><th>命令</th></tr></thead>
+<tbody>
+<tr><td>备份项目，或把项目转移到另一台 Mac</td><td>LemmaLoom 归档（<code>.llz</code>）</td><td><strong class="ui">文件 ▸ 导出 ▸ LemmaLoom 项目</strong></td></tr>
+<tr><td>把一个文档集或几个文档连同你所做的编码交给同事</td><td>LemmaLoom 归档（<code>.llz</code>）</td><td><strong class="ui">文件 ▸ 导出 ▸ LemmaLoom 文档集</strong>或 <strong class="ui">LemmaLoom 文档</strong></td></tr>
+<tr><td>读入归档</td><td>LemmaLoom 归档（<code>.llz</code>）</td><td><strong class="ui">文件 ▸ 导入 ▸ LemmaLoom 归档</strong></td></tr>
+<tr><td>把项目交给支持 REFI-QDA 标准的软件</td><td>REFI-QDA 项目（<code>.qdpx</code>）</td><td><strong class="ui">文件 ▸ 导出 ▸ REFI-QDA 项目</strong></td></tr>
+<tr><td>打开在这类软件中创建的项目</td><td>REFI-QDA 项目（<code>.qdpx</code>）</td><td><strong class="ui">文件 ▸ 导入 ▸ REFI-QDA 项目</strong></td></tr>
+<tr><td>共享不含任何文档的编码系统</td><td>REFI-QDA 编码本（<code>.qdc</code>）</td><td><strong class="ui">文件 ▸ 导出 ▸ REFI-QDA 编码本</strong>和<strong class="ui">文件 ▸ 导入 ▸ REFI-QDA 编码本</strong></td></tr>
+<tr><td>在电子表格或统计程序中处理数字</td><td>CSV</td><td>表格的导出按钮</td></tr>
+<tr><td>把图表或图示放进论文或幻灯片</td><td>PNG 或 PDF</td><td>图表的导出按钮</td></tr>
+<tr><td>保存查询结果，同时记下它是怎样得出的</td><td>Markdown</td><td>查询结果的导出按钮</td></tr>
+</tbody></table></div>
+<p>只要材料仍留在 LemmaLoom 之内，一般就选择导出 LemmaLoom 归档，例如你自己做备份、把工作转移到另一台 Mac，或者把 LemmaLoom 文档交给同样使用 LemmaLoom 的同事。归档保留索引、已存储的查询以及译文与原文之间的关联，所以材料导入后马上就能使用。如果工作要进出 LemmaLoom（来自别处，或者要送往别处），就应改用 REFI-QDA 项目。这种格式不保留 LemmaLoom 的索引结构，也不保留以索引为基础的任何功能。</p>
+<p><strong class="ui">文件 ▸ 导入 ▸ REFI-QDA 编码本</strong>以及<strong class="ui">文件 ▸ 导出</strong>下列出的所有命令都作用于当前项目（导航栏中以粗体显示的项目）。选中项目之前，这些命令都不可用。</p>
+<figure class="shot" id="exchange-and-export-export-menu"><img class="shot-light" src="../figures/zh-Hans/light/exchange-and-export-export-menu.webp" alt="“文件”菜单中的“导出”子菜单。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/exchange-and-export-export-menu.webp" alt="“文件”菜单中的“导出”子菜单。" loading="lazy"><figcaption>“文件”菜单中的“导出”子菜单。</figcaption></figure>
+<p>你也可以在访达中连按 <code>.llz</code>、<code>.qdpx</code> 或 <code>.qdc</code> 文件来导入它们。如果 LemmaLoom 尚未启动，这样做会将它打开。项目归档和 REFI-QDA 项目都会各自成为一个新项目。导入编码本、文档集归档或文档归档时，内容会导入当前项目，所以请确认当前项目是正确的那个。如果你的 Mac 上有其他程序会打开 <code>.qdpx</code> 或 <code>.qdc</code> 文件，也可以右键点按文件，然后选取<strong class="ui">打开方式 ▸ LemmaLoom</strong>。</p>
+<h3 id="exchange-terms">关键术语<a class="anchor" href="#exchange-terms" aria-hidden="true">#</a></h3>
+<ul>
+<li><em>LemmaLoom 归档</em>是一种导出文件，其中包含一个完整的项目、一个文档集或一组选定的文档，以及它们在 LemmaLoom 中的全部数据，例如索引和录音。</li>
+<li><em>REFI-QDA</em> 是一种开放的数据交换格式，用于在质性分析软件之间转移项目。这种格式处理项目中的文档、编码、编码实例、备忘录、链接、变量（即 LemmaLoom 中的属性）和集合。</li>
+<li><em>范围</em>是归档的来源（整个项目、一个文档集或你选定的文档），它决定归档包含哪些内容，以及归档如何导入。</li>
+<li>文档集归档或选定文档的归档会按名称与接收项目中已有的分组、编码和属性对应起来。这种<em>匹配</em>在导入时进行。</li>
+</ul>
+<h2 id="exchange-sheet">交换对话框<a class="anchor" href="#exchange-sheet" aria-hidden="true">#</a></h2>
+<p>REFI-QDA 文件和 LemmaLoom 归档的导入与导出都通过一个对话框进行，对话框附着在主窗口顶部。你选好文件或在访达中连按文件后，对话框会立即出现。</p>
+<figure class="shot" id="exchange-and-export-progress-sheet"><img class="shot-light" src="../figures/zh-Hans/light/exchange-and-export-progress-sheet.webp" alt="“气候辩论”导出为归档时的交换对话框。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/exchange-and-export-progress-sheet.webp" alt="“气候辩论”导出为归档时的交换对话框。" loading="lazy"><figcaption>“气候辩论”导出为归档时的交换对话框。</figcaption></figure>
+<p>对话框显示一个标题（例如<strong class="ui">正在导出 LemmaLoom 归档</strong>）、正在导出或导入的文件名，以及一个随导入或导出的进展逐渐填满的进度环。导出 REFI-QDA 项目和编码本以及导入编码本时，进度环换成一个旋转的指示器。导入或导出所需的时间主要取决于项目和录音的大小。</p>
+<p>两项交换操作不能同时进行。在一项交换完成之前，<strong class="ui">文件</strong>菜单和导航栏中所有与导入、导出 REFI-QDA 文件或归档相关的命令都不可用。<strong class="ui">活动</strong>窗口把正在进行的交换列在<strong class="ui">正在导入</strong>或<strong class="ui">正在导出</strong>类别下。详细说明见<a href="importing.html">第 4 章“导入资料”</a>中的<a href="importing.html#activity-window">活动窗口</a>。</p>
+<p>导出完成后，对话框显示新的标题，例如 <strong class="ui">LemmaLoom 归档已导出</strong>。交换完成之前，<strong class="ui">完成</strong>一直不可用，将鼠标指针悬停在它上面会显示<strong class="ui">运行中</strong>。点按<strong class="ui">完成</strong>即可关闭对话框。</p>
+<p>导入完成后，对话框会自动关闭。归档或 REFI-QDA 文件中包含的项目会成为当前项目；新导入的文档和编码会出现在接收它们的项目中。</p>
+<p>如果导入或导出过程中出了问题，对话框会保持打开。标题中显示失败消息（<strong class="ui">导入失败</strong>或<strong class="ui">导出失败</strong>），下面是文件名和原因。可能的原因包括：</p>
+<div class="table-wrap"><table>
+<thead><tr><th>消息</th><th>含义</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">该文件不是 REFI-QDA 项目。</strong></td><td>这个 <code>.qdpx</code> 文件中没有项目描述。它可能已经损坏，或者是由其他类型的文件改名而来。</td></tr>
+<tr><td><strong class="ui">该文件不是 REFI-QDA 编码本。</strong></td><td>这个 <code>.qdc</code> 文件不是编码本。</td></tr>
+<tr><td><strong class="ui">该文件不是 LemmaLoom 归档。</strong></td><td>这个 <code>.llz</code> 文件不是由 LemmaLoom 写出的，或者已经损坏。</td></tr>
+<tr><td><strong class="ui">此归档由更新版本的 LemmaLoom 创建。</strong></td><td>请更新 LemmaLoom，然后再次导入这个归档。</td></tr>
+<tr><td><strong class="ui">请先打开一个项目，再导入。</strong></td><td>这个文件包含的是编码本、文档集或文档，它们要导入现有项目，而当时没有当前项目。请在导航栏中点按一个项目，然后重试。</td></tr>
+<tr><td><strong class="ui">该文件不是有效的归档。</strong>或<strong class="ui">该归档已损坏。</strong></td><td>每个 <code>.qdpx</code> 和 <code>.llz</code> 文件都是 ZIP 文件，而这个文件不完整或已经损坏。请从来源处重新拷贝一份。</td></tr>
+<tr><td><strong class="ui">该归档使用了 LemmaLoom 无法读取的格式。</strong></td><td>这个 ZIP 文件设有密码保护，或者使用了常用的 Deflate 以外的压缩方法。请在另一个程序中重新导出，不要设置密码。</td></tr>
+<tr><td><strong class="ui">资料库不可用。</strong></td><td>LemmaLoom 无法访问它的资料库或该项目。请等导航栏列出你的项目后再试。</td></tr>
+</tbody></table></div>
+<figure class="shot" id="exchange-and-export-import-failed"><img class="shot-light" src="../figures/zh-Hans/light/exchange-and-export-import-failed.webp" alt="标题为导入失败的交换对话框，文件为“Letters to the Editor.llz”，原因是该文件不是有效的归档。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/exchange-and-export-import-failed.webp" alt="标题为导入失败的交换对话框，文件为“Letters to the Editor.llz”，原因是该文件不是有效的归档。" loading="lazy"><figcaption>标题为导入失败的交换对话框，文件为“Letters to the Editor.llz”，原因是该文件不是有效的归档。</figcaption></figure>
+<p>点按<strong class="ui">完成</strong>即可关闭对话框。如果 LemmaLoom 未能成功导出文件，不完整的文件会被删除。如果你当时选择了替换一个已有的文件，被替换的文件也可能丢失。</p>
+<h2 id="archives">LemmaLoom 归档<a class="anchor" href="#archives" aria-hidden="true">#</a></h2>
+<p>归档适用于以下情况：在删除项目之前做备份，把项目转移到另一台电脑，或者把项目的一部分分享给同样使用 LemmaLoom 的同事。只有归档能保留 LemmaLoom 的索引和你已存储的查询。</p>
+<h3 id="archive-contents">归档的内容<a class="anchor" href="#archive-contents" aria-hidden="true">#</a></h3>
+<p>无论范围如何，归档中的每个文档都包含以下内容：</p>
+<ul>
+<li>编辑后的文档文本；对于音频和视频文档，还有带说话人和时间的转写文本，以及一份录音副本；</li>
+<li>文档的元数据，包括文档信息、颜色、标签以及它在项目各个属性上的取值；</li>
+<li>它的索引，包括句子、词、词元、词类和句子树，以及内置分析器和自定义分析器产生的结果（见<a href="analysis-and-indexing.html">第 21 章“分析与索引”</a>）；</li>
+<li>它的编码实例、书签和备忘录；</li>
+<li>它的译文，译文本身也包含文本、索引和编码实例。</li>
+</ul>
+<p>其余内容取决于范围。编码可以限定于单个文档或文档集（见<a href="coding.html">第 7 章“编码”</a>中的<a href="coding.html#code-scope">编码的适用范围</a>），下文把这类编码称为<em>受限</em>编码。</p>
+<div class="table-wrap"><table>
+<thead><tr><th>内容</th><th>项目</th><th>文档集</th><th>选定的文档</th></tr></thead>
+<tbody>
+<tr><td>文档</td><td>项目的所有文档</td><td>文档集中的文档及其译文</td><td>选定的文档及其译文</td></tr>
+<tr><td>编码</td><td>所有编码，连同它们的备忘录</td><td>归档中的编码实例、备忘录和查询用到的编码，限定于其中某个文档或该文档集的编码，以及所有这些编码的上级编码，连同它们的备忘录</td><td>归档中的编码实例、备忘录和查询用到的编码，限定于其中某个文档的编码，以及所有这些编码的上级编码，连同它们的备忘录</td></tr>
+<tr><td>编码集</td><td>全部</td><td>无</td><td>无</td></tr>
+<tr><td>链接</td><td>全部</td><td>两端都位于归档文档中的链接</td><td>与文档集相同</td></tr>
+<tr><td>分组</td><td>全部</td><td>归档文档所属的分组，以及文档集条件中指定的分组</td><td>归档文档所属的分组</td></tr>
+<tr><td>文档集</td><td>所有文档集和智能文档集</td><td>导出的这个文档集；如果是智能文档集，连同它的条件</td><td>无</td></tr>
+<tr><td>属性</td><td>全部</td><td>除定义在归档未收入的编码上的属性之外的全部属性，连同归档中文档、编码实例和备忘录的取值</td><td>与文档集相同</td></tr>
+<tr><td>词典</td><td>全部</td><td>无</td><td>无</td></tr>
+<tr><td>已存储的查询</td><td>为项目、其文档集、其标签或其文档存储的查询</td><td>为项目、该文档集或其中某个文档存储的查询</td><td>为项目或其中某个文档存储的查询</td></tr>
+<tr><td>自定义分析器</td><td>其发现与文档一起保存的分析器、所含查询用到的分析器，以及由所含查询生成的分析器</td><td>与项目相同</td><td>与项目相同</td></tr>
+<tr><td>项目的名称、颜色、标签和项目备忘录</td><td>是</td><td>否</td><td>否</td></tr>
+</tbody></table></div>
+<p><strong class="ui">可用范围</strong>设为<strong class="ui">所有项目</strong>的查询属于你的资料库，只会随整个资料库的副本一起转移（见<a href="queries-building.html">第 15 章“构建查询”</a>中的<a href="queries-building.html#saving-queries">存储查询</a>）。查询和分析器如何随归档转移，<a href="queries-using-results.html">第 18 章“使用查询结果”</a>中的<a href="queries-using-results.html#queries-in-archives">LemmaLoom 归档中的查询</a>有更详细的说明。</p>
+<h3 id="exporting-project">导出项目<a class="anchor" href="#exporting-project" aria-hidden="true">#</a></h3>
+<ol>
+<li>在导航栏中点按项目，例如“气候辩论”。</li>
+<li>选取<strong class="ui">文件 ▸ 导出 ▸ LemmaLoom 项目</strong>。</li>
+<li>存储对话框建议使用项目的名称 <code>气候辩论</code>。可以按需修改，然后选择文件夹并点按<strong class="ui">保存</strong>。</li>
+<li>对话框显示 <strong class="ui">LemmaLoom 归档已导出</strong>后，点按<strong class="ui">完成</strong>。</li>
+</ol>
+<p>归档文件名为 <code>气候辩论.llz</code>。要导入并恢复项目，请按本章后文<a href="#importing-archive">导入归档</a>一节中的步骤操作。</p>
+<h3 id="exporting-set">导出文档集<a class="anchor" href="#exporting-set" aria-hidden="true">#</a></h3>
+<p>文档集归档导出项目的一部分，连同其中用到的编码。例如，“气候辩论”项目中的文档集“行动派”包含六篇行动派文档。</p>
+<ol>
+<li>在导航栏的<strong class="ui">文档集</strong>部分点按文档集，例如“行动派”。</li>
+<li>选取<strong class="ui">文件 ▸ 导出 ▸ LemmaLoom 文档集</strong>，或者右键点按文档集，然后选取<strong class="ui">导出</strong>。</li>
+<li>存储对话框建议使用文档集的名称。选择文件夹并点按<strong class="ui">保存</strong>。</li>
+<li>对话框显示 <strong class="ui">LemmaLoom 归档已导出</strong>后，点按<strong class="ui">完成</strong>。</li>
+</ol>
+<figure class="shot" id="exchange-and-export-set-menu"><img class="shot-light" src="../figures/zh-Hans/light/exchange-and-export-set-menu.webp" alt="文档集“行动派”的快捷菜单，其中有“导出”。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/exchange-and-export-set-menu.webp" alt="文档集“行动派”的快捷菜单，其中有“导出”。" loading="lazy"><figcaption>文档集“行动派”的快捷菜单，其中有“导出”。</figcaption></figure>
+<p><strong class="ui">文件 ▸ 导出 ▸ LemmaLoom 文档集</strong>导出导航栏中当前高亮显示的文档集，或者当前标签页中打开的文档集。</p>
+<p>归档会打包文档集中的所有文档，包括它们的译文。因此，“行动派”的归档中有七个文档，即六篇行动派文本和“时间不多了 (英语)”，后者是该文档集中一个文档的译文。文档集归档不包含编码集、词典，也不包含上表所列之外的任何编码。如果同事需要你完整的编码框架，请另外发送一份以 REFI-QDA 格式导出的编码本（见本章后文的<a href="#refi-codebook">REFI-QDA 编码本</a>）。</p>
+<p>导出智能文档集时，归档会带上导出那一刻满足其条件的文档，以及这些条件本身。导入另一个项目后，智能文档集会把条件重新应用于该项目的所有文档，因此匹配的文档可能比导出时更多。从“气候辩论”导出智能文档集“广泛传播”（它收集“读者数”大于或等于 100,000 的文档）时，归档中有它的六个文档，另外还有“时间不多了 (英语)”，因为它的原文就在这六个文档之中。如果同事的项目中有“读者数”属性，这个智能文档集也会收入她那些取值大于或等于 100,000 的文档。</p>
+<p>要把带有某个标签的所有文档交给别人，先在<strong class="ui">标签</strong>部分点按这个标签，查看哪些文档带有它，然后在<strong class="ui">文档</strong>部分选中这些文档，再按下一节的说明导出。</p>
+<h3 id="exporting-documents">导出文档<a class="anchor" href="#exporting-documents" aria-hidden="true">#</a></h3>
+<p>如果只是为了某个一次性的用途与同事分享几篇文本，例如请对方作为第二位读者审读三篇怀疑派文本，就导出单个文档。如果这些文档应当作为一个有名称的集合交到对方手中，请导出文档集，因为这样归档会把文档集一起带上。</p>
+<ol>
+<li>在导航栏的<strong class="ui">文档</strong>部分点按一个文档。要导出多个文档，按住 ⌘ 键点按其他每个文档，或者按住 ⇧ 键点按，选中连续的一组文档。</li>
+<li>选取<strong class="ui">文件 ▸ 导出 ▸ LemmaLoom 文档</strong>，或者右键点按其中一个选中的文档，然后选取<strong class="ui">导出</strong>。</li>
+<li>存储对话框建议使用文档的标题；如果选中了多个文档，则建议使用项目的名称。选择文件夹并点按<strong class="ui">保存</strong>。</li>
+<li>对话框显示 <strong class="ui">LemmaLoom 归档已导出</strong>后，点按<strong class="ui">完成</strong>。</li>
+</ol>
+<figure class="shot" id="exchange-and-export-documents-menu"><img class="shot-light" src="../figures/zh-Hans/light/exchange-and-export-documents-menu.webp" alt="选中三篇怀疑派文本后的快捷菜单，其中有“导出”。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/exchange-and-export-documents-menu.webp" alt="选中三篇怀疑派文本后的快捷菜单，其中有“导出”。" loading="lazy"><figcaption>选中三篇怀疑派文本后的快捷菜单，其中有“导出”。</figcaption></figure>
+<p>如果导航栏中没有选中任何文档，<strong class="ui">文件 ▸ 导出 ▸ LemmaLoom 文档</strong>会导出当前标签页中的文档。</p>
+<p>导出原文文档时，它的所有译文也会一并导出。因此，导出“时间不多了”时，也会导出“时间不多了 (英语)”。如果单独导出一篇译文，它导入后是一个普通文档，带有自己的内容和编码实例。</p>
+<h3 id="importing-archive">导入归档<a class="anchor" href="#importing-archive" aria-hidden="true">#</a></h3>
+<p>导入归档时会发生什么，取决于归档的范围：</p>
+<ul>
+<li><em>项目归档</em>导入后会成为一个新项目，并沿用原项目的名称、颜色和标签等信息，与当前项目是哪一个无关。</li>
+<li><em>文档集归档或文档归档</em>会导入当前项目。如果没有当前项目，导入会失败，并显示消息<strong class="ui">请先打开一个项目，再导入。</strong>如果你还没有任何项目，请先新建一个空项目（见<a href="getting-started.html">第 2 章“开始使用”</a>中的<a href="getting-started.html#creating-a-project">新建项目</a>）。</li>
+</ul>
+<p>导入归档的步骤如下：</p>
+<ol>
+<li>如果是文档集或文档的归档，先在导航栏中点按要接收它的项目。如果是项目归档，跳过这一步。</li>
+<li>选取<strong class="ui">文件 ▸ 导入 ▸ LemmaLoom 归档</strong>。</li>
+<li>选择 <code>.llz</code> 文件，然后点按<strong class="ui">打开</strong>。</li>
+</ol>
+<p>你也可以在访达中连按 <code>.llz</code> 文件，导入方式与上面相同。把同一个项目归档再导入一次，会得到两个名称完全相同的项目，这时应重命名其中一个（见<a href="projects-and-documents.html">第 3 章“项目与文档”</a>中的<a href="projects-and-documents.html#project-menu">项目的快捷菜单</a>）。</p>
+<p>导入的文档立即带有索引，可以直接用于透镜、语法检查器和查询。随后，LemmaLoom 会在后台检查资料库，只为缺少的部分建立索引（见<a href="analysis-and-indexing.html">第 21 章“分析与索引”</a>）。录音也会复制到资料库中。</p>
+<p>要移除一次归档导入带来的所有内容，删除新建的项目即可。如果是文档集或文档的归档，请删除导入的文档和文档集（见<a href="projects-and-documents.html">第 3 章“项目与文档”</a>中的<a href="projects-and-documents.html#deleting-documents">删除文档</a>），再删除这次导入添加的编码、分组或属性，例如下文示例中的“适应”。</p>
+<h3 id="moving-a-project">把项目转移到另一台 Mac<a class="anchor" href="#moving-a-project" aria-hidden="true">#</a></h3>
+<ol>
+<li>在第一台 Mac 上，在导航栏中点按项目，然后选取<strong class="ui">文件 ▸ 导出 ▸ LemmaLoom 项目</strong>。</li>
+<li>把 <code>.llz</code> 文件拷贝到另一台 Mac，例如通过隔空投送或外置驱动器。</li>
+<li>在另一台 Mac 上，在访达中连按这个文件；或者选取<strong class="ui">文件 ▸ 导入 ▸ LemmaLoom 归档</strong>，选择这个文件，然后点按<strong class="ui">打开</strong>。</li>
+<li>打开几个文档，检查编码实例、备忘录和录音是否都在。</li>
+<li>如果第一台 Mac 上不再需要这个项目，就在那里将它删除。</li>
+</ol>
+<p><strong class="ui">可用范围</strong>设为<strong class="ui">所有项目</strong>的查询保存在资料库中。拷贝整个资料库，会一次拷贝其中所有的项目和查询；具体方法见<a href="getting-started.html">第 2 章“开始使用”</a>中的<a href="getting-started.html#library">工作保存在哪里</a>。</p>
+<h3 id="archive-matching">归档如何并入现有项目<a class="anchor" href="#archive-matching" aria-hidden="true">#</a></h3>
+<p>把文档集归档或文档归档导入现有项目时，其中的文档会添加进来，并按名称与项目中已有的内容对应起来。</p>
+<ul>
+<li>无论接收项目中是否已有标题相同的文档，文档都会添加进来；因此，再次导入同一个归档会产生重复的文档。</li>
+<li>分组按名称匹配，不区分大小写，名称前后的空格也忽略不计。匹配分组中的文档会移入目标项目中的那个分组。</li>
+<li>编码在同一个上级编码之下按名称匹配，不区分大小写，也不计名称前后的空格。引用该编码的编码实例、备忘录和查询会自动改为引用接收项目中的编码。编码的描述和颜色保持目标项目中的原样，而归档中与该编码相关的备忘录会合并到这个编码上。该编码上的属性按名称相互匹配。受限编码总是会添加；如果它所限定的文档或文档集不在归档中，它导入后会成为整个项目的编码。</li>
+<li>属性按名称匹配。类型不同时，以目标项目中的属性类型为准。值会按类型转换，无法转换的值会被舍弃。</li>
+<li>文档集总是会添加，即使项目中已有同名的文档集也是如此，因此会出现重复。导入的智能文档集的条件会随值的转换而相应转换。</li>
+<li>已存储的查询会添加进来；这些查询仍然属于当初为之存储的文档、文档集或标签。</li>
+<li>自定义分析器在各项目之间通用，新的分析器会添加进来，位于<strong class="ui">窗口 ▸ 分析器</strong>中。</li>
+</ul>
+<h4 id="importing-a-colleague-s-set">导入同事的文档集<a class="anchor" href="#importing-a-colleague-s-set" aria-hidden="true">#</a></h4>
+<p>假设一位同事和你研究的是同一场辩论，她发给你 <code>读者来信.llz</code>，其中是她自己项目中的一个文档集，包含四封读者来信。在导航栏中点按“气候辩论”，然后导入这个 <code>.llz</code> 文件。下表概括了归档中的分组、编码、属性和文档集会受到怎样的影响。</p>
+<div class="table-wrap"><table>
+<thead><tr><th>归档中</th><th>“气候辩论”中</th><th>结果</th></tr></thead>
+<tbody>
+<tr><td>分组“纸媒”</td><td>分组“纸媒”</td><td>来自“纸媒”的来信加入现有的分组。</td></tr>
+<tr><td>编码“时间节点”（名称末尾多一个空格），位于“紧迫性”之下</td><td>编码“时间节点”，位于“紧迫性”之下</td><td>匹配，因为匹配时忽略名称前后的空格。她的编码实例现在使用你的“时间节点”。</td></tr>
+<tr><td>编码“恐惧”，位于顶层</td><td>编码“恐惧”，位于“情绪”之下</td><td>分开处理，因为上级编码不同。添加一个新的顶层编码“恐惧”。</td></tr>
+<tr><td>编码“适应”</td><td>没有这个编码</td><td>添加。</td></tr>
+<tr><td>属性“读者数”，类型为<strong class="ui">文本</strong>，取值为 <code>120000</code>、<code>45000</code>、<code>310000</code> 和 <code>80000 左右</code></td><td>“读者数”，类型为<strong class="ui">整数</strong></td><td>值 120000、45000 和 310000 以数字形式导入。<code>80000 左右</code>是文本，因此被略去，这封来信的“读者数”保持为空。</td></tr>
+<tr><td>文档集“读者来信”</td><td>没有这个文档集</td><td>添加，包含那四封来信。</td></tr>
+</tbody></table></div>
+<p>现在，“气候辩论”有 19 个文档，你的编码本中则有两个名为“恐惧”的编码，位于不同的位置。读者数为 120,000 和 310,000 的两封来信也加入了“广泛传播”，使它共有八个文档。如果两个编码含义相同，请按<a href="coding.html">第 7 章“编码”</a>中的<a href="coding.html#merging-codes">合并编码</a>将它们合并。缺少的“读者数”可以在<strong class="ui">文档信息</strong>中补上。</p>
+<h3 id="archive-file">归档文件<a class="anchor" href="#archive-file" aria-hidden="true">#</a></h3>
+<p><code>.llz</code> 文件是一个 ZIP 文件。把它解压缩，就可以手动查看其中的内容。</p>
+<p>归档可以导入创建它的 LemmaLoom 版本或更新的版本（见本章前文的<a href="#exchange-sheet">交换对话框</a>）。如果你打算与同事交换归档，最好大家都使用最新版本的 LemmaLoom。</p>
+<h2 id="refi-qda">REFI-QDA 项目<a class="anchor" href="#refi-qda" aria-hidden="true">#</a></h2>
+<p>REFI-QDA 项目文件（<code>.qdpx</code>）是 ZIP 文件，其中包含名为 <code>project.qde</code> 的项目描述文件（XML 格式），以及存放在 <code>sources</code> 文件夹中的文档。借助项目文件，你可以把项目分享给任何使用支持 REFI-QDA 格式的软件的人，也可以把这样一位同事的项目载入 LemmaLoom。</p>
+<p>LemmaLoom 特有的数据，例如索引、已存储的查询、词典和分析器，只能通过 LemmaLoom 归档转移。</p>
+<p>REFI-QDA 标准对一些常见元素使用不同的术语：</p>
+<div class="table-wrap"><table>
+<thead><tr><th>REFI-QDA</th><th>LemmaLoom</th></tr></thead>
+<tbody>
+<tr><td>来源（Source）</td><td>文档</td></tr>
+<tr><td>选区（Selection）</td><td>一段文字，通常已经编码</td></tr>
+<tr><td>笔记（Note）</td><td>备忘录</td></tr>
+<tr><td>变量（Variable）</td><td>属性</td></tr>
+<tr><td>个案（Case）</td><td>LemmaLoom 为每个文档写出一个未命名的个案，其中保存该文档的属性值；来自其他程序的命名个案会成为一个文档集。</td></tr>
+<tr><td>集合（Set）</td><td>文档集或编码集</td></tr>
+</tbody></table></div>
+<h3 id="refi-export">导出 REFI-QDA 项目<a class="anchor" href="#refi-export" aria-hidden="true">#</a></h3>
+<ol>
+<li>在导航栏中点按项目，例如“气候辩论”。</li>
+<li>选取<strong class="ui">文件 ▸ 导出 ▸ REFI-QDA 项目</strong>。</li>
+<li>存储对话框建议使用项目的名称。选择文件夹并点按<strong class="ui">保存</strong>。</li>
+<li>对话框显示 <strong class="ui">REFI-QDA 项目已导出</strong>后，点按<strong class="ui">完成</strong>。</li>
+</ol>
+<p>文件名为 <code>气候辩论.qdpx</code>。在另一个程序中寻找导入命令时，请查找 REFI-QDA 或 QDPX 字样。</p>
+<p>LemmaLoom 按以下方式保存项目：</p>
+<div class="table-wrap"><table>
+<thead><tr><th>LemmaLoom 中</th><th><code>.qdpx</code> 文件中</th></tr></thead>
+<tbody>
+<tr><td>文本、PDF 和网页文档</td><td>文本来源，内容为文档的当前文本</td></tr>
+<tr><td>音频和视频文档</td><td>音频或视频来源，带有录音和转写文本。转写文本的时间信息写成同步点，因此编码实例仍与它们在录音中的位置相对应。</td></tr>
+<tr><td>译文</td><td>各自独立的来源：译出的文本为文本来源，译出的录音为音频或视频来源，并带有录音的独立副本。</td></tr>
+<tr><td>作者、日期、出版物、出版方、URL 和 DOI</td><td>来源的描述，每个字段一行，字段名使用界面语言，例如 <code>日期: 2024-08-21</code></td></tr>
+<tr><td>编码，连同层级、颜色和描述</td><td>编码本</td></tr>
+<tr><td>编码实例</td><td>已编码的选区，带有每个编码实例的创建日期</td></tr>
+<tr><td>一段文字上的备忘录</td><td>选区上的笔记</td></tr>
+<tr><td>已编码备忘录（见<a href="coding.html">第 7 章“编码”</a>中的<a href="coding.html#coded-memos">已编码备忘录</a>）</td><td>这段文字上同一编码的编码实例所附的笔记；如果这段文字没有这样的编码实例，则为选区上的笔记</td></tr>
+<tr><td>整个文档、编码或项目上的备忘录</td><td>来源、编码或项目上的笔记</td></tr>
+<tr><td>链接</td><td>选区之间的链接，带有颜色。关系成为链接的名称，评论成为一条笔记。</td></tr>
+<tr><td>属性</td><td>变量。<strong class="ui">选择器</strong>成为普通的文本变量。</td></tr>
+<tr><td>属性值</td><td>每个文档一个个案，其中保存该文档的值</td></tr>
+<tr><td>文档集和智能文档集</td><td>来源集合。智能文档集按导出时所含的文档写出。</td></tr>
+<tr><td>分组</td><td>来源集合，以分组的名称命名</td></tr>
+<tr><td>编码集</td><td>编码集合</td></tr>
+</tbody></table></div>
+<p>文件中不包含：</p>
+<ul>
+<li>索引以及以索引为基础的一切，例如文本统计和词汇速写（LemmaLoom 会为导入的文档重新建立索引）；</li>
+<li>已存储的查询、基于查询的透镜、词典、自定义分析器和书签；</li>
+<li>文档、编码、备忘录和链接上的标签；</li>
+<li>文档的颜色和语言、转写文本中的说话人姓名，以及编码实例和备忘录上的属性值；</li>
+<li>译文与原文之间的关联；</li>
+<li>编码对某个文档或文档集的范围限定，也就是说，这类编码导入后都会成为项目编码；</li>
+<li>编码的<strong class="ui">格式</strong>，也就是说，所有编码导入后都会使用<strong class="ui">高亮</strong>；</li>
+<li>大于 2 GB 的录音；这样的文档会保存为只含转写文本的文本来源。</li>
+</ul>
+<p>导出的文件把你记为作者，使用你 macOS 用户账户的全名。文件还会把 LemmaLoom 及其确切版本记为项目的创建程序。</p>
+<h3 id="refi-import">导入 REFI-QDA 项目<a class="anchor" href="#refi-import" aria-hidden="true">#</a></h3>
+<ol>
+<li>选取<strong class="ui">文件 ▸ 导入 ▸ REFI-QDA 项目</strong>。</li>
+<li>选择 <code>.qdpx</code> 文件，然后点按<strong class="ui">打开</strong>。</li>
+<li>导入完成后，打开两三个文档，检查编码实例是否落在当初编码的词语上。</li>
+</ol>
+<p>在访达中连按 <code>.qdpx</code> 文件，会以完全相同的方式导入。每次导入都会新建一个项目。项目使用文件中存储的名称；如果没有，就使用文件名。新建的项目会成为当前项目，其中的文档在后台建立索引。你可以在<strong class="ui">活动</strong>窗口中查看索引进度。如有需要，可以删除这个项目，再重新导入 <code>.qdpx</code> 文件，把整个过程重做一遍。</p>
+<p>LemmaLoom 按以下方式读取文件：</p>
+<div class="table-wrap"><table>
+<thead><tr><th><code>.qdpx</code> 文件中</th><th>LemmaLoom 中</th></tr></thead>
+<tbody>
+<tr><td>文本来源</td><td>带有来源文本的文档。富文本来源中的格式会被舍弃。</td></tr>
+<tr><td>PDF 来源</td><td>带有 PDF 文本的文档，文本取自另一个程序存储的文本版本，没有时则从 PDF 本身读取</td></tr>
+<tr><td>带转写文本的音频和视频来源</td><td>音频或视频文档。转写文本成为文档的文本，其中的同步点成为带有时间的文字片段。如果文件中包含录音，录音会复制到资料库中。</td></tr>
+<tr><td>不带转写文本的音频和视频来源、图片来源，以及没有任何文本的来源，例如没有文本层的扫描 PDF，或者文件中引用了却并未包含的来源</td><td>略去</td></tr>
+<tr><td>来源的描述</td><td>如果描述采用 LemmaLoom 导出时的格式，且字段名为英语或你的界面语言，就成为文档的作者、日期和其他文档信息；否则成为文档上的一条备忘录</td></tr>
+<tr><td>编码</td><td>整个项目的编码，连同层级、颜色和描述</td></tr>
+<tr><td>选区的编码实例</td><td>同一段文字上的编码实例，连同日期</td></tr>
+<tr><td>对整个来源的编码实例</td><td>对文档全部文本的编码实例</td></tr>
+<tr><td>选区的描述</td><td>这段文字上的备忘录</td></tr>
+<tr><td>笔记</td><td>选区上的笔记成为这段文字上的备忘录，编码实例上的笔记成为已编码备忘录。来源或编码上的笔记成为文档或编码上的备忘录。不属于任何对象的笔记成为项目备忘录，链接上的笔记成为链接的评论。</td></tr>
+<tr><td>选区之间的链接</td><td>链接。链接的名称成为关系。</td></tr>
+<tr><td>变量</td><td>属性。Integer 成为<strong class="ui">整数</strong>，Float 成为<strong class="ui">小数</strong>，Boolean 成为<strong class="ui">布尔值</strong>，Date 和 DateTime 成为<strong class="ui">日期</strong>，其他类型都成为<strong class="ui">文本</strong>。</td></tr>
+<tr><td>个案</td><td>个案中的值赋给属于该个案的文档。命名个案还会成为由这些文档组成的文档集。</td></tr>
+<tr><td>集合</td><td>文档集和编码集</td></tr>
+</tbody></table></div>
+<p>没有名称的来源会以<strong class="ui">导入的文档</strong>为标题。如果从另一个应用程序导入后缺少文档，请在那个程序中重新导出项目，并确认导出的文件中包含了这些来源。</p>
+<p>每个文档的语言根据其内容确定。如果判断有误，可以在<strong class="ui">文档信息</strong>中手动更正；LemmaLoom 随后会按所选语言为文档重新建立索引（见<a href="projects-and-documents.html">第 3 章“项目与文档”</a>中的<a href="projects-and-documents.html#properties-indexing">索引</a>）。</p>
+<p>由于 LemmaLoom 只能对文本编码，针对 PDF 页面或图片中某个区域的编码实例都会被舍弃。</p>
+<p>文件中的选区记录了起止位置，两者都以字符数计，通常还附有选区内文本的一段摘录。不同程序计算字符数的方式不同；有的程序把一个换行算作两个字符。LemmaLoom 会逐一尝试常见的计算方式，保留摘录正确对应比例最高的那一种。</p>
+<h2 id="refi-codebook">REFI-QDA 编码本<a class="anchor" href="#refi-codebook" aria-hidden="true">#</a></h2>
+<p>REFI-QDA 编码本文件（<code>.qdc</code>）只包含一组编码（连同它们的层级、颜色和描述）以及编码集。</p>
+<h3 id="codebook-export">导出编码本<a class="anchor" href="#codebook-export" aria-hidden="true">#</a></h3>
+<ol>
+<li>在导航栏中点按项目。</li>
+<li>选取<strong class="ui">文件 ▸ 导出 ▸ REFI-QDA 编码本</strong>。</li>
+<li>存储对话框建议使用项目的名称。选择文件夹并点按<strong class="ui">保存</strong>。</li>
+<li>对话框显示 <strong class="ui">REFI-QDA 编码本已导出</strong>后，点按<strong class="ui">完成</strong>。</li>
+</ol>
+<p>编码本按层级包含你的每一个编码。凡是含有编码的编码集，都会连同其中的编码一起出现。限定于某个文档或文档集的编码会像其他编码一样写出，但不带限定，导回后成为整个项目的编码。</p>
+<h3 id="codebook-import">导入编码本<a class="anchor" href="#codebook-import" aria-hidden="true">#</a></h3>
+<p>导入的编码会进入当前项目。</p>
+<ol>
+<li>在导航栏中点按要接收这些编码的项目。</li>
+<li>选取<strong class="ui">文件 ▸ 导入 ▸ REFI-QDA 编码本</strong>。</li>
+<li>选择 <code>.qdc</code> 文件，然后点按<strong class="ui">打开</strong>。</li>
+</ol>
+<p>在访达中连按 <code>.qdc</code> 文件，也会以同样的方式导入。</p>
+<p>对于导入文件中的每个编码，LemmaLoom 会在同一上级编码下的同级编码中查找名称相同的编码，不区分大小写。如果找到，就使用这个编码，并继续处理它的子编码。如果找不到，就新建一个编码，它的颜色和描述取自导入的文件。编码集也以同样的方式匹配：文件中有、而匹配到的编码集中还没有的编码，会添加到该编码集中。</p>
+<p>整个导入只占一个撤销步骤。选取<strong class="ui">编辑 ▸ 撤销REFI-QDA 编码本</strong>或按下 ⌘Z，所有添加的编码和编码集都会被移除，添加的编码也会从原有的编码集中移出。</p>
+<h4 id="importing-a-research-group-s-codebook">导入研究小组的编码本<a class="anchor" href="#importing-a-research-group-s-codebook" aria-hidden="true">#</a></h4>
+<p>例如，假设一个研究小组发来 <code>气候修辞.qdc</code>，其中有编码“科学”及其子编码“不确定性”和“共识”，一个顶层编码“反讽”，以及一个包含“不确定性”和“共识”的编码集“论点”。把它导入“气候辩论”后，LemmaLoom 会对编码本做如下更改：</p>
+<ul>
+<li>顶层编码“科学”及其子编码“不确定性”在“气候辩论”中已经存在。</li>
+<li>“科学”的子编码“共识”会被导入，与“不确定性”并列。</li>
+<li>顶层编码“反讽”会被导入，与现有的顶层编码并列。</li>
+<li>编码集“论点”原本包含编码“科学”“不确定性”“成本”和“责任”，现在会新增编码“共识”。</li>
+</ul>
+<h2 id="tables-and-charts">导出表格和图表<a class="anchor" href="#tables-and-charts" aria-hidden="true">#</a></h2>
+<p>大多数表格可以导出为 CSV 文件，大多数图表和图示可以导出为 PNG 或 PDF 图片。</p>
+<h3 id="export-button">导出按钮<a class="anchor" href="#export-button" aria-hidden="true">#</a></h3>
+<p>导出按钮的样子是一个带向上箭头的方框。它出现在表格或图表的标题处、项目视图栏中各视图的标题栏中，或者词汇速写的工具栏中。导出按钮有两种工作方式：</p>
+<ul>
+<li>在不附属于任何图表的表格旁，点按按钮会立即打开存储 CSV 文件的对话框。将鼠标指针悬停在按钮上，会显示<strong class="ui">导出为 CSV</strong>。</li>
+<li>在图表或图示旁，点按按钮会打开一个菜单，其中有 <strong class="ui">PNG</strong> 和 <strong class="ui">PDF</strong>；如果图表背后有表格，还有 <strong class="ui">CSV</strong>。将鼠标指针悬停在按钮上，会显示<strong class="ui">导出</strong>。结构图示和<strong class="ui">马赛克</strong>只能导出 <strong class="ui">PNG</strong> 和 <strong class="ui">PDF</strong>。</li>
+</ul>
+<p>有可导出的内容时，这个按钮才会出现。在项目视图栏的<strong class="ui">编码实例</strong>、<strong class="ui">备忘录</strong>和<strong class="ui">链接</strong>视图中，以及<strong class="ui">关系</strong>和词汇速写的工具栏中，按钮始终可见。在这些地方，如果没有可导出的内容，按钮不可用，并显示<strong class="ui">没有可导出的内容</strong>。在<strong class="ui">属性</strong>窗口和<strong class="ui">图示</strong>窗口（见<a href="grammar-inspector.html">第 11 章“语法检查器”</a>中的<a href="grammar-inspector.html#diagram-window">图示窗口</a>）中，按钮上写着<strong class="ui">导出</strong>。</p>
+<figure class="shot" id="exchange-and-export-chart-menu"><img class="shot-light" src="../figures/zh-Hans/light/exchange-and-export-chart-menu.webp" alt="“气候辩论”中“编码矩阵”的导出菜单。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/exchange-and-export-chart-menu.webp" alt="“气候辩论”中“编码矩阵”的导出菜单。" loading="lazy"><figcaption>“气候辩论”中“编码矩阵”的导出菜单。</figcaption></figure>
+<p>导出步骤如下：</p>
+<ol>
+<li>把视图设置成你想要的样子，选好所需的编码、筛选条件、搜索内容和显示方式。</li>
+<li>点按导出按钮；如果打开了菜单，选择一种格式。</li>
+<li>可以按需修改建议的名称，然后选择文件夹并点按<strong class="ui">保存</strong>。</li>
+</ol>
+<p>建议的文件名由文档、文档集或项目的名称加上导出的内容组成，例如 <code>时间不多了-codings</code> 或 <code>气候辩论-code-matrix</code>。不过，某些语法视图的文件名反映的是你搜索的词，例如搜索<em>气候</em>一词时的 <code>collocates-气候</code> 或 <code>word-sketch-气候</code>。</p>
+<p>导出的内容就是视图中可见的全部内容。所有搜索或筛选条件都会带到文件中，包括编码本中的标签筛选和查询结果的<strong class="ui">筛选</strong>字段。速写空间中隐藏的扇区和你选择的显示方式也会保留。</p>
+<h3 id="csv-files">CSV 文件<a class="anchor" href="#csv-files" aria-hidden="true">#</a></h3>
+<p>CSV 文件是以逗号分隔数值的纯文本文件。每行中每列一个值，值与值之间用逗号分隔。第一行是各列的名称，使用界面语言。电子表格和统计分析应用程序都可以读取 CSV 文件。</p>
+<p>LemmaLoom 导出 CSV 文件时遵循以下格式规则：</p>
+<ul>
+<li>文件中的所有文本都采用 UTF-8 编码，并以字节顺序标记开头，以便电子表格应用程序识别这种编码。</li>
+<li>无论你在 Mac 上选择了哪种地区设置，所有数字都写成纯数字加小数点，例如 <code>1234.5</code>。名称以 (%) 结尾的列包含百分比，写成百分之几的数值，例如 12.35% 写作 <code>12.35</code>。</li>
+<li>如果单元格中含有逗号、双引号或换行符，或者以空格开头或结尾，就会按照 CSV 格式的标准用双引号括起来。</li>
+<li>以 <code>=</code>、<code>+</code>、<code>-</code> 或 <code>@</code> 开头且无法解析为数字的单元格，开头会加一个撇号，以免电子表格应用程序错误解读其值，例如把 <code>+ 对照报告核对一下这些数字</code> 这样的备忘录当作公式。</li>
+</ul>
+<p>检查器<strong class="ui">文本</strong>标签页中<strong class="ui">概览</strong>分面的统计数据是个例外，它的 CSV 文件按检查器中显示的样子保存所有值，如有单位，也会带上单位。例如，一个值会写成 <code>13.9 个词</code>。</p>
+<p>如果电子表格应用程序设置为以逗号作小数分隔符的语言（例如德语），它可能默认各列之间用分号分隔，从而把整行放进一个单元格。遇到这种情况，请用该应用程序中导入文本或 CSV 文件的命令打开文件，并选择逗号作为分隔符。</p>
+<h3 id="png-and-pdf">PNG 和 PDF 图片<a class="anchor" href="#png-and-pdf" aria-hidden="true">#</a></h3>
+<p>导出时，图片会重新绘制。它带有边距，背景颜色与当前主题一致，宽度由图表本身决定。悬停高亮和选中状态不会出现在图片中。</p>
+<ul>
+<li><strong class="ui">PNG</strong> 格式按 Retina 品质绘制，与你使用的显示器无关。PNG 适合用于演示文稿、网站以及用文字处理软件制作的文档。</li>
+<li><strong class="ui">PDF</strong> 只有一页，尺寸与图表相同。无论放大到什么程度，PDF 中的所有内容都保持清晰。它适合印刷，以及要求矢量图的学术期刊。</li>
+</ul>
+<p>使用深色主题时导出的图片也是深色的。如果图片要用于论文，请在导出前把主题设置改为较浅的主题，例如<strong class="ui">浅色</strong>（见<a href="settings.html">第 24 章“设置与外观”</a>中的<a href="settings.html#themes">主题</a>）。</p>
+<h3 id="query-exports">查询结果<a class="anchor" href="#query-exports" aria-hidden="true">#</a></h3>
+<p>查询结果的导出按钮位于查询结果栏的最右侧，在结果本身的上方。在文档的<strong class="ui">查询</strong>分面中，导出按钮位于分面最顶部的横栏中。可用的格式有 <strong class="ui">CSV</strong>、<strong class="ui">Markdown</strong>、<strong class="ui">PNG</strong> 和 <strong class="ui">PDF</strong>，其后是<strong class="ui">拷贝</strong>。建议的文件名就是查询的名称。Markdown 文件把结果与查询本身、查询的范围、读取的文档数、查询所用的<strong class="ui">语料</strong>设置、导出日期以及 LemmaLoom 版本保存在一起。</p>
+<figure class="shot" id="exchange-and-export-query-export-menu"><img class="shot-light" src="../figures/zh-Hans/light/exchange-and-export-query-export-menu.webp" alt="“行动派”与“怀疑派”比较的关键词结果的导出菜单，列出 CSV、Markdown、PNG、PDF 和拷贝。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/exchange-and-export-query-export-menu.webp" alt="“行动派”与“怀疑派”比较的关键词结果的导出菜单，列出 CSV、Markdown、PNG、PDF 和拷贝。" loading="lazy"><figcaption>“行动派”与“怀疑派”比较的关键词结果的导出菜单，列出 CSV、Markdown、PNG、PDF 和拷贝。</figcaption></figure>
+<p><strong class="ui">拷贝</strong>会把表格放到剪贴板上，各列的值之间用制表符分隔。导出查询结果所生成的文件，在<a href="queries-results.html">第 16 章“查询结果与统计”</a>中的<a href="queries-results.html#export">导出结果</a>有更详细的说明。</p>
+<h3 id="export-locations">哪些位置提供导出<a class="anchor" href="#export-locations" aria-hidden="true">#</a></h3>
+<p>在检查器中：</p>
+<div class="table-wrap"><table>
+<thead><tr><th>标签页</th><th>位置</th><th>格式</th><th>CSV 文件的列</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">文本</strong></td><td><strong class="ui">概览</strong>中<strong class="ui">概览</strong>部分的标题旁</td><td>CSV</td><td>部分、度量和值，包括五个部分的每项度量，然后是三个图表的各行</td></tr>
+<tr><td><strong class="ui">文本</strong></td><td><strong class="ui">概览</strong>中的<strong class="ui">词类</strong>、<strong class="ui">句法功能</strong>和<strong class="ui">短语</strong>图表</td><td>PNG、PDF、CSV</td><td>类别、数量</td></tr>
+<tr><td><strong class="ui">文本</strong></td><td><strong class="ui">书签</strong></td><td>CSV</td><td>位置、文本、评论</td></tr>
+<tr><td><strong class="ui">语法</strong></td><td><strong class="ui">结构</strong>中的每个图示，以及<strong class="ui">图示</strong>窗口</td><td>PNG、PDF</td><td></td></tr>
+<tr><td><strong class="ui">语法</strong></td><td><strong class="ui">形式 × 功能</strong>中的矩阵</td><td>PNG、PDF、CSV</td><td>形式、合计，然后每种功能一列</td></tr>
+<tr><td><strong class="ui">语法</strong></td><td><strong class="ui">形式 × 功能</strong>中某个单元格的列表</td><td>CSV</td><td>句子、短语、文本</td></tr>
+<tr><td><strong class="ui">语法</strong></td><td><strong class="ui">搭配词</strong></td><td>CSV</td><td>排名、搭配词、词类、频次、期望值、对数似然比、MI、MI3、t 值、z 值、Dice、logDice（包括所有分数，无论列表按哪一个排序）</td></tr>
+<tr><td><strong class="ui">语法</strong></td><td><strong class="ui">词汇速写</strong></td><td><strong class="ui">图谱</strong>和<strong class="ui">网状图</strong>显示方式为 PNG、PDF 和 CSV，<strong class="ui">列表</strong>为 CSV</td><td>关系、搭配词、词元、词类、频次、logDice</td></tr>
+<tr><td><strong class="ui">语法</strong></td><td><strong class="ui">语篇</strong></td><td>CSV</td><td>类别、句子、文本、详情</td></tr>
+<tr><td><strong class="ui">编码</strong></td><td><strong class="ui">编码</strong>中的<strong class="ui">编码系统</strong>旁</td><td>CSV</td><td>与编码本相同，见下文</td></tr>
+<tr><td><strong class="ui">编码</strong></td><td><strong class="ui">编码实例</strong>，选择<strong class="ui">编码实例</strong>时</td><td>CSV</td><td>编码、位置、开始、结束、文本</td></tr>
+<tr><td><strong class="ui">编码</strong></td><td><strong class="ui">编码实例</strong>，选择<strong class="ui">备忘录</strong>时</td><td>CSV</td><td>编码、位置、文本、备忘录、标签</td></tr>
+<tr><td><strong class="ui">编码</strong></td><td><strong class="ui">链接</strong></td><td>CSV</td><td>与链接相同，见下文</td></tr>
+<tr><td><strong class="ui">编码</strong></td><td><strong class="ui">编码统计</strong>中的<strong class="ui">编码频率与覆盖率</strong></td><td>PNG、PDF、CSV</td><td>编码、片段、字符数、覆盖率 (%)</td></tr>
+<tr><td><strong class="ui">编码</strong></td><td><strong class="ui">编码统计</strong>中的<strong class="ui">共现</strong></td><td>CSV</td><td>编码、编码、重叠次数、字符数、φ、p</td></tr>
+<tr><td><strong class="ui">编码</strong></td><td><strong class="ui">编码统计</strong>中<strong class="ui">属性分布</strong>下的每个图表</td><td>PNG、PDF、CSV</td><td>属性、值、数量</td></tr>
+<tr><td><strong class="ui">编码</strong></td><td><strong class="ui">画像</strong>中的<strong class="ui">马赛克</strong></td><td>PNG、PDF</td><td></td></tr>
+<tr><td><strong class="ui">编码</strong></td><td><strong class="ui">画像</strong>中的<strong class="ui">编码行</strong></td><td>CSV</td><td>句子、编码、文本</td></tr>
+<tr><td><strong class="ui">编码</strong></td><td><strong class="ui">编码速写</strong></td><td><strong class="ui">图谱</strong>为 PNG、PDF 和 CSV，<strong class="ui">列表</strong>为 CSV</td><td>与<strong class="ui">词汇速写</strong>相同</td></tr>
+<tr><td><strong class="ui">多重模式</strong></td><td><strong class="ui">速写空间</strong></td><td><strong class="ui">图谱</strong>为 PNG、PDF 和 CSV，<strong class="ui">列表</strong>为 CSV</td><td>编码或属性，其余与<strong class="ui">词汇速写</strong>相同</td></tr>
+<tr><td><strong class="ui">多重模式</strong></td><td><strong class="ui">查询</strong></td><td>CSV、Markdown、PNG、PDF、拷贝</td><td>见<a href="queries-results.html">第 16 章“查询结果与统计”</a>中的<a href="queries-results.html#export">导出结果</a></td></tr>
+</tbody></table></div>
+<p>这些度量都在各自所属的章节中有解释，并汇总在<a href="statistics-reference.html">第 27 章“统计量一览”</a>中。</p>
+<p>在项目视图栏的视图中（范围为项目、文档集或标签）：</p>
+<div class="table-wrap"><table>
+<thead><tr><th>视图</th><th>位置</th><th>格式</th><th>CSV 文件的列</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">编码本</strong></td><td>编码列表下方的栏</td><td>CSV</td><td>编码、路径、层级、数量、描述、颜色</td></tr>
+<tr><td><strong class="ui">编码本</strong></td><td>选中编码的详细信息中的<strong class="ui">此范围内的使用</strong></td><td>PNG、PDF、CSV</td><td>文档、片段</td></tr>
+<tr><td><strong class="ui">编码实例</strong></td><td>标题栏</td><td>CSV</td><td>文档、编码、文本、开始、结束，然后编码实例上的每个属性一列</td></tr>
+<tr><td><strong class="ui">备忘录</strong></td><td>标题栏</td><td>CSV</td><td>文档、编码、备忘录、标签、开始、结束，然后备忘录上的每个属性一列</td></tr>
+<tr><td><strong class="ui">链接</strong></td><td>标题栏</td><td>CSV</td><td>源文档、源文本、关系、目标文档、目标文本、评论、标签</td></tr>
+<tr><td><strong class="ui">编码统计</strong></td><td>标题栏</td><td>PNG、PDF、CSV</td><td>编码、片段、文档、字符数、覆盖率 (%)</td></tr>
+<tr><td><strong class="ui">编码统计</strong></td><td><strong class="ui">属性分布</strong>下的每个图表</td><td>PNG、PDF、CSV</td><td>属性、值、数量</td></tr>
+<tr><td><strong class="ui">编码矩阵</strong></td><td>标题栏</td><td>PNG、PDF、CSV</td><td>编码，然后每个文档或组一列，以及合计</td></tr>
+<tr><td><strong class="ui">关系</strong></td><td>标题栏，选择<strong class="ui">网格</strong>时</td><td>PNG、PDF、CSV</td><td>编码、片段，然后每个编码一列</td></tr>
+<tr><td><strong class="ui">关系</strong></td><td>标题栏，选择<strong class="ui">配对</strong>时</td><td>CSV</td><td>编码、编码、重叠次数、字符数、φ、p</td></tr>
+<tr><td><strong class="ui">词汇速写</strong></td><td>与检查器中相同</td><td>PNG、PDF、CSV</td><td>与检查器中相同</td></tr>
+<tr><td><strong class="ui">词典</strong></td><td><strong class="ui">类别频率</strong>和<strong class="ui">按文档</strong></td><td>PNG、PDF、CSV</td><td>见<a href="dictionaries.html">第 19 章“词典”</a>中的<a href="dictionaries.html#exporting-counts">导出计数</a></td></tr>
+<tr><td><strong class="ui">查询</strong></td><td>结果栏</td><td>CSV、Markdown、PNG、PDF、拷贝</td><td>见<a href="queries-results.html">第 16 章“查询结果与统计”</a>中的<a href="queries-results.html#export">导出结果</a></td></tr>
+</tbody></table></div>
+<p><strong class="ui">编码本</strong>窗口、<strong class="ui">词汇速写</strong>窗口、<strong class="ui">窗口 ▸ 查询</strong>以及在单独窗口中打开的查询结果，也提供同样的导出功能。在<strong class="ui">属性</strong>窗口中，<strong class="ui">导出</strong>会输出属性表（见下文的<a href="#attributes-csv">属性值</a>）。</p>
+<p>导出文件中的<strong class="ui">开始</strong>和<strong class="ui">结束</strong>以从文档文本开头算起的字符数表示一段文字的位置。<strong class="ui">位置</strong>按检查器中的显示方式，给出这段文字所在的段落和句子编号；因此，<code>¶12·3</code> 表示第 12 段的第 3 句。</p>
+<p>导出按属性、分组、语言或格式归组的<strong class="ui">编码矩阵</strong>时，每个组各占一列，然后是合计列和所用检验的各列。第一行给出每个组的基数。<a href="coding-analysis.html">第 13 章“编码分析”</a>中的<a href="coding-analysis.html#exporting">导出表格和图表</a>说明这项功能生成什么样的文件，<a href="coding-analysis.html#matrix-tests">检验组间差异</a>则说明其中数字的含义。</p>
+<h3 id="codebook-csv">编码本的 CSV 文件<a class="anchor" href="#codebook-csv" aria-hidden="true">#</a></h3>
+<p>列表中显示的每个编码都会出现在编码本的 CSV 文件中，每个编码占一行，后面紧跟它的子编码。每一层的编码都按名称顺序排列。下面是“气候辩论”的文件中的几行：</p>
+<div class="table-wrap"><table>
+<thead><tr><th>编码</th><th>路径</th><th>层级</th><th>数量</th><th>描述</th><th>颜色</th></tr></thead>
+<tbody>
+<tr><td>科学</td><td>科学</td><td>1</td><td>15</td><td>对研究、测量、模型和专家的援引，以及关于科学如何运作的论证。</td><td>#0D9488</td></tr>
+<tr><td>不确定性</td><td>科学 / 不确定性</td><td>2</td><td>17</td><td>对预估、区间和误差范围的怀疑，以及被表述为暂定结论的说法。</td><td>#0284C7</td></tr>
+<tr><td>情绪</td><td>情绪</td><td>1</td><td>6</td><td>作者表达的或归于他人的情感，例如悲伤、绝望、愤怒或疲惫。</td><td>#DB2777</td></tr>
+<tr><td>恐惧</td><td>情绪 / 恐惧</td><td>2</td><td>12</td><td>对气候变化的恐惧和焦虑，以及关于恐惧是有益还是有害的争论。</td><td>#E11D48</td></tr>
+<tr><td>希望</td><td>情绪 / 希望</td><td>2</td><td>11</td><td>希望以及对改变能够实现的信心，还有作者如何表述它们。</td><td>#9333EA</td></tr>
+<tr><td>责任</td><td>责任</td><td>1</td><td>19</td><td>谁造成了问题，谁应当行动或付钱，以及对他人（包括子孙后代）负有什么义务。</td><td>#65A30D</td></tr>
+</tbody></table></div>
+<ul>
+<li><strong class="ui">路径</strong>把从顶层往下的各级编码名称连在一起，中间用斜杠分隔，这样就能区分名称相同但位于不同上级编码之下的编码。</li>
+<li><strong class="ui">层级</strong>表示编码位于层级结构的哪一层：1 表示顶层编码，2 表示这些编码的子编码，依此类推。</li>
+<li><strong class="ui">数量</strong>就是编码树中每个编码旁边显示的数字，即在你导出其编码本的项目、文档集或标签范围内，该编码在原文文档中被使用的次数。“情绪”只包括“情绪”本身的 6 次使用，不包括“恐惧”或“希望”，它们各有自己的数量（分别为 12 和 11）。</li>
+</ul>
+<p>检查器<strong class="ui">编码</strong>分面中<strong class="ui">编码系统</strong>旁的导出具有相同的列。不过，这里的<strong class="ui">数量</strong>统计的是当前打开的文档中的使用次数，已编码备忘录也计算在内。</p>
+<h3 id="links-csv">链接的 CSV 文件<a class="anchor" href="#links-csv" aria-hidden="true">#</a></h3>
+<p>链接建立在两段文字之间，这两段文字通常来自不同的文档（见<a href="coding.html">第 7 章“编码”</a>中的<a href="coding.html#links">链接</a>）。导出的 CSV 文件中，每个链接占一行：</p>
+<div class="table-wrap"><table>
+<thead><tr><th>源文档</th><th>源文本</th><th>关系</th><th>目标文档</th><th>目标文本</th><th>评论</th><th>标签</th></tr></thead>
+<tbody>
+<tr><td>模型总是失准</td><td>光是云这一项，大概就藏着比任何新闻稿所承认的更多的不确定性。</td><td>相矛盾</td><td>2024 热浪报告</td><td>这一估计的不确定性范围较大，引用时必须一并注明。</td><td>气象气候局直截了当地说明了自己的不确定性范围；专栏却认定官方来源会把它藏起来。</td><td></td></tr>
+</tbody></table></div>
+<p><strong class="ui">关系</strong>是创建链接时输入的文字。<strong class="ui">标签</strong>列出与链接关联的所有标签，标签之间用分号分隔；本例中<strong class="ui">标签</strong>为空。从项目视图栏的<strong class="ui">链接</strong>视图导出，会得到所选项目、文档集或标签中列出的所有链接。检查器的<strong class="ui">链接</strong>分面导出当前打开的文档的链接。</p>
+<h3 id="segments-csv">编码片段和备忘录<a class="anchor" href="#segments-csv" aria-hidden="true">#</a></h3>
+<p>项目视图栏的<strong class="ui">编码实例</strong>视图为每个编码实例导出一行。如果在编码实例上记录了属性值，这些属性会成为额外的列；某个编码实例没有取值时，对应的单元格为空。</p>
+<p>项目视图栏的<strong class="ui">备忘录</strong>视图与此类似，只是用备忘录的文本和标签代替已编码的文本。对于已编码备忘录，其编码的名称写在该行的<strong class="ui">编码</strong>列中；未编码的备忘录，这一列为空。已编码备忘录继承其编码的标签，所以备忘录行的<strong class="ui">标签</strong>单元格填的是这些标签；要获取备忘录自己的标签，可以使用检查器的<strong class="ui">编码实例</strong>分面，并选择<strong class="ui">备忘录</strong>。在项目的<strong class="ui">备忘录</strong>视图中，不属于任何文档的备忘录也各占一行，<strong class="ui">文档</strong>列为空。</p>
+<h3 id="attributes-csv">属性值<a class="anchor" href="#attributes-csv" aria-hidden="true">#</a></h3>
+<p>要打开<strong class="ui">属性</strong>窗口，请选取<strong class="ui">项目 ▸ 属性</strong>，或者右键点按项目，然后选取<strong class="ui">属性</strong>。<strong class="ui">导出</strong>会按表格当前显示的样子存储其内容，包括一个<strong class="ui">文档</strong>列，每个属性各占一列。搜索后仍然可见的每个文档各占一行，顺序与显示的相同。译文与原文共用一行，也共用原文的属性值。</p>
+<figure class="shot" id="exchange-and-export-attributes-window"><img class="shot-light" src="../figures/zh-Hans/light/exchange-and-export-attributes-window.webp" alt="选中六个文档的“气候辩论”属性窗口，工具栏中有导入和导出。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/exchange-and-export-attributes-window.webp" alt="选中六个文档的“气候辩论”属性窗口，工具栏中有导入和导出。" loading="lazy"><figcaption>选中六个文档的“气候辩论”属性窗口，工具栏中有导入和导出。</figcaption></figure>
+<p>这个文件采用的正是窗口中<strong class="ui">导入</strong>功能所要求的格式。如果需要一次更新大量取值，可以先导出表格内容，在电子表格程序中编辑，再把它导入回来（见<a href="importing.html">第 4 章“导入资料”</a>中的<a href="importing.html#attribute-import">从电子表格导入属性值</a>）。</p>
+</article>
+<nav class="pager"><a class="previous" href="analysis-and-indexing.html"><span>上一章</span>分析与索引</a><a class="next" href="undo.html"><span>下一章</span>撤销与重做</a></nav>
+<footer class="site-footer">© 2026 Ryan S. Cooper. 保留所有权利。<br>本版本借助人工智能根据英文原版翻译而成，译文可能存在错误或不准确之处。如有疑问，请以英文版为准。</footer>
+</main>
+<nav class="page-toc" aria-label="本页内容"><p>本页内容</p><ul>
+<li class="level-2"><a href="#exchange-overview">选择格式</a></li>
+<li class="level-3"><a href="#exchange-terms">关键术语</a></li>
+<li class="level-2"><a href="#exchange-sheet">交换对话框</a></li>
+<li class="level-2"><a href="#archives">LemmaLoom 归档</a></li>
+<li class="level-3"><a href="#archive-contents">归档的内容</a></li>
+<li class="level-3"><a href="#exporting-project">导出项目</a></li>
+<li class="level-3"><a href="#exporting-set">导出文档集</a></li>
+<li class="level-3"><a href="#exporting-documents">导出文档</a></li>
+<li class="level-3"><a href="#importing-archive">导入归档</a></li>
+<li class="level-3"><a href="#moving-a-project">把项目转移到另一台 Mac</a></li>
+<li class="level-3"><a href="#archive-matching">归档如何并入现有项目</a></li>
+<li class="level-3"><a href="#archive-file">归档文件</a></li>
+<li class="level-2"><a href="#refi-qda">REFI-QDA 项目</a></li>
+<li class="level-3"><a href="#refi-export">导出 REFI-QDA 项目</a></li>
+<li class="level-3"><a href="#refi-import">导入 REFI-QDA 项目</a></li>
+<li class="level-2"><a href="#refi-codebook">REFI-QDA 编码本</a></li>
+<li class="level-3"><a href="#codebook-export">导出编码本</a></li>
+<li class="level-3"><a href="#codebook-import">导入编码本</a></li>
+<li class="level-2"><a href="#tables-and-charts">导出表格和图表</a></li>
+<li class="level-3"><a href="#export-button">导出按钮</a></li>
+<li class="level-3"><a href="#csv-files">CSV 文件</a></li>
+<li class="level-3"><a href="#png-and-pdf">PNG 和 PDF 图片</a></li>
+<li class="level-3"><a href="#query-exports">查询结果</a></li>
+<li class="level-3"><a href="#export-locations">哪些位置提供导出</a></li>
+<li class="level-3"><a href="#codebook-csv">编码本的 CSV 文件</a></li>
+<li class="level-3"><a href="#links-csv">链接的 CSV 文件</a></li>
+<li class="level-3"><a href="#segments-csv">编码片段和备忘录</a></li>
+<li class="level-3"><a href="#attributes-csv">属性值</a></li>
+</ul></nav>
+</div>
+<script src="../assets/guide.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>分析与索引 · LemmaLoom 用户指南</title>
+<link rel="stylesheet" href="../assets/guide.css">
+<link rel="icon" type="image/png" href="../assets/logo.png">
+<script>var r=document.documentElement;r.setAttribute('data-theme','light');try{if(localStorage.getItem('guide-theme')==='dark'){r.setAttribute('data-theme','dark')}}catch(e){}</script>
+</head>
+<body>
+<header class="topbar">
+<button class="menu-toggle" aria-label="目录" aria-expanded="false">☰</button>
+<a class="brand" href="index.html"><span class="wordmark"><span class="lemma">Lemma</span>Loom</span><span class="guide-name">用户指南</span></a>
+<div class="search"><input type="search" id="search" placeholder="搜索" aria-label="搜索" autocomplete="off" data-empty="无结果"><div class="results" id="results" hidden></div></div>
+<nav class="languages" aria-label="Language"><a href="../en/analysis-and-indexing.html" lang="en">English</a><a href="../de/analysis-and-indexing.html" lang="de">Deutsch</a><a href="../zh-Hans/analysis-and-indexing.html" lang="zh-Hans" aria-current="true">简体中文</a></nav>
+<button class="theme-toggle" data-light="浅色" data-dark="深色" aria-label="外观"></button>
+<a class="pdf-link" href="https://github.com/LemmaLoom/public/raw/main/pdf/lemmaloom-guide-zh-Hans.pdf">PDF</a>
+</header>
+<div class="layout">
+<nav class="sidebar" aria-label="目录"><ol>
+<li class="unnumbered"><a href="quick-start.html">快速入门</a></li>
+<li><a href="introduction.html">简介</a></li>
+<li><a href="getting-started.html">开始使用</a></li>
+<li><a href="projects-and-documents.html">项目与文档</a></li>
+<li><a href="importing.html">导入资料</a></li>
+<li><a href="reading-and-editing.html">阅读与编辑</a></li>
+<li><a href="lenses.html">透镜</a></li>
+<li><a href="coding.html">编码</a></li>
+<li><a href="sets-tags-attributes.html">文档集、分组、标签和属性</a></li>
+<li><a href="translations.html">译文与分屏浏览</a></li>
+<li><a href="text-inspector.html">文本检查器</a></li>
+<li><a href="grammar-inspector.html">语法检查器</a></li>
+<li><a href="word-sketch.html">词汇速写</a></li>
+<li><a href="coding-analysis.html">编码分析</a></li>
+<li><a href="sketch-space.html">速写空间</a></li>
+<li><a href="queries-building.html">构建查询</a></li>
+<li><a href="queries-results.html">查询结果与统计</a></li>
+<li><a href="queries-patterns.html">查询模式与发现</a></li>
+<li><a href="queries-using-results.html">使用查询结果</a></li>
+<li><a href="dictionaries.html">词典</a></li>
+<li><a href="custom-analyzers.html">自定义分析器</a></li>
+<li class="current"><a href="analysis-and-indexing.html">分析与索引</a></li>
+<li><a href="exchange-and-export.html">交换与导出</a></li>
+<li><a href="undo.html">撤销与重做</a></li>
+<li><a href="settings.html">设置与外观</a></li>
+<li><a href="keyboard-shortcuts.html">键盘快捷键</a></li>
+<li><a href="help-and-support.html">帮助与支持</a></li>
+<li><a href="statistics-reference.html">统计量一览</a></li>
+<li class="unnumbered"><a href="glossary.html">术语表</a></li>
+<li class="unnumbered"><a href="thanks.html">感谢</a></li>
+</ol></nav>
+<main class="content">
+<article>
+<h1 id="analysis-and-indexing">分析与索引</h1>
+<p>文档进入项目时，只要它是英语、德语或中文文档，LemmaLoom 就会自动为它建立索引，除非你在导入时另作选择。建立索引会把文本切分成句子和词，确定每个词的词典形式和词类，并计算出每个句子中所有词之间的句法结构。透镜、检查器中的<strong class="ui">语法</strong>标签页、词汇速写、关键词列表以及大多数基于词的查询，都依赖建立索引的结果。LemmaLoom 处理文档期间，你可以在阅读器中照常阅读文档并为它们编码，无需等待。</p>
+<p>建立索引所需的时间取决于文档的长度和你的 Mac 的硬件。示例项目“气候辩论”导入时已经建立好索引。</p>
+<p>本章其余部分沿用 LemmaLoom 状态信息中的叫法（<strong class="ui">正在建立索引</strong>、<strong class="ui">已建立索引</strong>、<strong class="ui">等待建立索引</strong>），用<em>建立索引</em>指 LemmaLoom 执行的这个过程，并把建立索引得到的结果称为语法分析结果，简称<em>分析结果</em>。</p>
+<h2 id="analysis-terms">关键术语<a class="anchor" href="#analysis-terms" aria-hidden="true">#</a></h2>
+<p>这种分析在多个层次上拆解文本。词符、词元等术语在本指南中会经常出现，<strong class="ui">帮助 ▸ 术语表</strong>给出了其中主要术语的定义。</p>
+<ul>
+<li><em>词符</em>指单个的词或标点符号。分隔句子的每个句号都是一个单独的词符。</li>
+<li><em>词元</em>是词的词典形式。例如，<em>warning</em> 是 <em>warnings</em> 的词元，<em>be</em> 是 <em>was</em> 的词元，<em>gehen</em> 是 <em>ging</em> 的词元。</li>
+<li><em>词类</em>（也称词性）说明一个词符是名词、动词、形容词还是其他类别。三种语言共用同一套通用词类，例如 NOUN、VERB 和 ADJ。</li>
+<li><em>标记</em>是某一种语言专用的、更细的词性分类。英语的 <em>warnings</em> 标为复数名词 NNS，德语的 <em>Klima</em> 标为名词 NN。</li>
+<li><em>形态</em>记录词形的语法特征，包括时态、数和格等信息。</li>
+<li><em>依存关系</em>把一个词符与另一个词符配成一对，后者称为前者的<em>中心词</em>。依存关系还说明两者之间是什么关系。在 <em>the most urgent steps</em> 中，<em>the</em> 和 <em>urgent</em> 这两个词符都通过依存关系连到 <em>steps</em>。每个句子都有一个不依附于其他任何词的词符，这个词称为<em>根</em>，通常是主要动词。</li>
+<li><em>短语结构</em>（也称<em>成分结构</em>）把词符组织成层级，例如名词短语包含在动词短语之中，动词短语又处于小句结构之内。</li>
+<li><em>名词块</em>由一个名词和它前面修饰它的词符组成，例如 <em>the most urgent steps</em>；作动词主语或宾语的代词（如 <em>we</em>）也算名词块。</li>
+<li><em>停用词</em>是本身意义很少的高频词，例如 <em>the</em>、<em>and</em> 或 <em>was</em>。</li>
+<li>最后，<em>分析器</em>在语法分析完成后运行，标注某一类文字，例如句子之间的衔接或修辞手法。分析器标注的文字就是它的<em>发现</em>。</li>
+</ul>
+<h2 id="analysis-steps">建立索引的过程<a class="anchor" href="#analysis-steps" aria-hidden="true">#</a></h2>
+<p>为文档建立索引依次包括以下操作：</p>
+<ol>
+<li>LemmaLoom 确定文档的语言，语言决定它使用哪些模型。</li>
+<li>与文档的<strong class="ui">从索引中排除</strong>模式相匹配的文本被替换为空白，建立索引时会跳过它。</li>
+<li>文本被切分成词符和句子。中文书写时词与词之间没有空格，所以先要切分出词。</li>
+<li>每个词符获得词类、标记和词元；英语和德语的词符还获得形态信息。</li>
+<li>LemmaLoom 找出每个句子中各个词之间的依存关系。</li>
+<li>它分析出每个句子的短语结构。</li>
+<li>它找出名词块和停用词。</li>
+<li>内置分析器<strong class="ui">衔接</strong>、<strong class="ui">元话语</strong>和<strong class="ui">修辞</strong>运行，你自己编写的分析器也会运行。</li>
+<li>所有结果与文档一起保存。</li>
+<li>整个文档建立索引后，LemmaLoom 计算它的统计数据。长文档分成几个部分建立索引（见本章后文的<a href="#after-an-edit">编辑之后</a>）。</li>
+</ol>
+<p>建立索引期间，阅读器的状态栏、<strong class="ui">活动</strong>窗口以及导航栏中状态图标的悬停提示都会显示进度阶段和百分比。开始时显示<strong class="ui">分析中</strong>，直到文档处理了大约 5%；之后显示<strong class="ui">解析结构</strong>，直到大约 97%；最后显示<strong class="ui">正在存储</strong>。百分比表示文档中已建立索引的文本内容所占的比例；建立索引的大部分时间都花在解析短语结构上。</p>
+<h3 id="example-sentence">一个例句<a class="anchor" href="#example-sentence" aria-hidden="true">#</a></h3>
+<p>示例项目中的评论文章“时间不多了”提出了现在需要做什么的问题，随后用“最紧迫的几步并不神秘。”一句自己作答。英语的词有词形变化，更便于说明词元和形态，所以这里采用这篇文章的英文译本“时间不多了 (英语)”中的对应句子 <em>The most urgent steps are not mysterious.</em> 这个句子的分析结果如下：</p>
+<div class="table-wrap"><table>
+<thead><tr><th>词符</th><th>词元</th><th>词类</th><th>标记</th><th>依存关系</th><th>中心词</th></tr></thead>
+<tbody>
+<tr><td>The</td><td>the</td><td>DET</td><td>DT</td><td>det</td><td>steps</td></tr>
+<tr><td>most</td><td>most</td><td>ADV</td><td>RBS</td><td>advmod</td><td>urgent</td></tr>
+<tr><td>urgent</td><td>urgent</td><td>ADJ</td><td>JJ</td><td>amod</td><td>steps</td></tr>
+<tr><td>steps</td><td>step</td><td>NOUN</td><td>NNS</td><td>nsubj</td><td>are</td></tr>
+<tr><td>are</td><td>be</td><td>AUX</td><td>VBP</td><td>ROOT</td><td>无</td></tr>
+<tr><td>not</td><td>not</td><td>PART</td><td>RB</td><td>neg</td><td>are</td></tr>
+<tr><td>mysterious</td><td>mysterious</td><td>ADJ</td><td>JJ</td><td>acomp</td><td>are</td></tr>
+<tr><td>.</td><td>.</td><td>PUNCT</td><td>.</td><td>punct</td><td>are</td></tr>
+</tbody></table></div>
+<p>LemmaLoom 用两套不同的标注体系为文本中的词加标注。例如，在词类体系中，DET 指限定词，ADV 指副词，ADJ 指形容词，AUX 指助动词，PART 指小品词，PUNCT 指标点符号。而在标记体系中，DT 对应限定词，RBS 对应最高级副词，JJ 对应形容词，VBP 对应现在时动词，RB 对应副词。两套体系对词的分类不同，所以 <em>not</em> 在前者中属于小品词，在后者中却属于副词。依存关系则不描述词的属性，而是表示词与词之间的语法关系，例如 det 表示限定词，advmod 表示起修饰作用的副词，amod 表示描述名词的形容词，acomp 表示补足动词的形容词，punct 表示标点符号。<strong class="ui">语法</strong>标签页会给出所有这些缩写的完整形式，例如 NNS 显示为<strong class="ui">名词，复数</strong>；<strong class="ui">帮助 ▸ 术语表</strong>列出了全部语法代码（包括形态特征）。</p>
+<p>关于这些标注，请注意以下几点：</p>
+<ul>
+<li><em>not</em> 是一个单独的词符，<strong class="ui">否定</strong>透镜会标注它。缩写形式会切分成两个词符，所以同一段稍后出现的 <em>cannot</em> 切分为 <em>can</em> 和 <em>not</em>，<em>don't</em> 切分为 <em>do</em> 和 <em>n't</em>。<strong class="ui">否定</strong>透镜标注 <em>n't</em>，与标注 <em>not</em> 一样。</li>
+<li><em>steps</em> 的词元是 <em>step</em>，所以基于词元 <em>step</em> 的查询或词汇速写会同时找到 <em>step</em> 和 <em>steps</em>。同样，<em>are</em> 的词元是 <em>be</em>。</li>
+<li>词类只告诉你 <em>steps</em> 是名词，标记 NNS 则告诉你 <em>steps</em> 是复数。此外，形态标注以<strong class="ui">语法数 复数</strong>的形式给出同一信息，你可以在<strong class="ui">语法</strong>标签页中查看。</li>
+<li>依存关系说明各个词在句中承担什么角色。<em>steps</em> 是 <em>are</em> 的主语（nsubj），<em>mysterious</em> 说明主语的特征（acomp），<em>not</em> 否定 <em>are</em> 所表达的动作（neg）。<em>are</em> 是句子的根，所以没有中心词。尽管 <em>are</em> 的词类是 AUX，它却是这里唯一的动词。</li>
+</ul>
+<p>短语结构用另一种方式给同样的词分类。<em>the most urgent steps</em> 构成一个名词短语（NP），其中包含一个形容词短语（ADJP）<em>most urgent</em>。<em>are not mysterious</em> 是一个动词短语（VP），其中包含一个 ADJP，即 <em>mysterious</em>。最后，NP 和 VP 是小句（S）的两个主要部分。</p>
+<p>这里只有一个名词块，即 <em>the most urgent steps</em>。名词块以它的名词或代词结尾，因此可能比包含它的名词短语短。这篇评论文章的英文译本开头有 <em>the thermometer outside my kitchen window</em>，其中的名词块是 <em>the thermometer</em> 和 <em>my kitchen window</em>，而短语结构把这整串文字看作一个名词短语。</p>
+<p>这里的八个词符中有四个是停用词（<em>The</em>、<em>most</em>、<em>are</em> 和 <em>not</em>）。</p>
+<p>如果想知道某个词在建立索引时是怎样标注的，请在阅读器中点按这个词，然后转到检查器的<strong class="ui">语法</strong>标签页。<strong class="ui">语法</strong>分面显示这个词的词元（与词本身不同时）、<strong class="ui">词类</strong>和<strong class="ui">标记</strong>，还显示<strong class="ui">句法功能</strong>下的依存关系、它的中心词，以及<strong class="ui">形态</strong>下的形态标注。如果你已用<strong class="ui">文件 ▸ 导入 ▸ 示例项目</strong>导入了“气候辩论”（见<a href="introduction.html">第 1 章“简介”</a>中的<a href="introduction.html#example-project">示例项目</a>），可以核对上述信息是否与“时间不多了 (英语)”中 <em>steps</em> 的标注一致。关于这个视图以及依存关系图和短语结构图，详见<a href="grammar-inspector.html">第 11 章“语法检查器”</a>。</p>
+<figure class="shot" id="analysis-and-indexing-word-card"><img class="shot-light" src="../figures/zh-Hans/light/analysis-and-indexing-word-card.webp" alt="语法标签页描述在“时间不多了 (英语)”中选中的 steps 一词。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/analysis-and-indexing-word-card.webp" alt="语法标签页描述在“时间不多了 (英语)”中选中的 steps 一词。" loading="lazy"><figcaption>语法标签页描述在“时间不多了 (英语)”中选中的 steps 一词。</figcaption></figure>
+<h3 id="analysis-models">分析的来源<a class="anchor" href="#analysis-models" aria-hidden="true">#</a></h3>
+<p>分析结果来自统计模型，也就是在海量文本数据上训练出来的机器学习模型，用来为文档中的每个词或每个句子选出可能性最大的分析。三种语言各有单独的模型，全部随 LemmaLoom 一起提供。<strong class="ui">LemmaLoom ▸ 关于 LemmaLoom</strong> 中有 LemmaLoom 的许可证列表，其中的<strong class="ui">许可证</strong>部分列出了所含模型的作者和许可证详情（见<a href="help-and-support.html">第 26 章“帮助与支持”</a>中的<a href="help-and-support.html#licenses">许可证</a>）。</p>
+<p>这些模型有时会出错。它们主要是用书面文本训练的，因此，对于基于转写的文档、方言或因 PDF 提取而受损的文本，分析结果不那么可靠。中文的分析错误比英语和德语多，因为模型需要先找出中文的词，然后才能分析它们。</p>
+<h3 id="built-in-analyzers">内置分析器<a class="anchor" href="#built-in-analyzers" aria-hidden="true">#</a></h3>
+<p>LemmaLoom 自带三个分析器，它们可以处理三种语言的文档：</p>
+<div class="table-wrap"><table>
+<thead><tr><th>分析器</th><th>标注的内容</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">衔接</strong></td><td>每个句子如何与前文相联系，途径包括代词、领属成分、指示词（如 <em>this</em>）、重复的词，在中文中还有省略的主语。一个句子如果不含其中任何一种，就开启了一个新话题。</td></tr>
+<tr><td><strong class="ui">元话语</strong></td><td>说话人或作者用来引导听众或读者的词语，即模糊限制语（<em>perhaps</em>）、增强语（<em>clearly</em>）、态度标记（<em>unfortunately</em>）、连接词（<em>however</em>）和介入标记（<em>you</em>、<em>consider</em>）。德语另有 <em>ja</em>、<em>doch</em> 等情态小品词，中文另有“吗”“吧”等语气助词。</td></tr>
+<tr><td><strong class="ui">修辞</strong></td><td>各种修辞手法，例如被动语态、名词化（把动作变成名词，如由 <em>decide</em> 变成 <em>decision</em>）、排比、前置开头（位于主语之前的短语）、圆周句（主要动词留到句末）、疑问句和祈使句，以及以相同词语开头的句子。</td></tr>
+</tbody></table></div>
+<p>内置分析器为研究一篇文字的写法提供了一个简便的切入点。例如，它们可以显示作者使用模糊限制语的频率，或者说话人从哪里开始转而谈论完全不同的内容。这些分析器生成的结果会出现在同名的透镜中（见<a href="lenses.html">第 6 章“透镜”</a>），也会出现在<strong class="ui">语法</strong>标签页的<strong class="ui">语篇</strong>分面中（见<a href="grammar-inspector.html">第 11 章“语法检查器”</a>）。返回<strong class="ui">发现</strong>的查询（见<a href="queries-building.html">第 15 章“构建查询”</a>）也可以引用这些分析器。你在<strong class="ui">窗口 ▸ 分析器</strong>中开发的自定义分析器与内置分析器一起运行，处理你所指定语言的文档（见<a href="custom-analyzers.html">第 20 章“自定义分析器”</a>）。</p>
+<h3 id="statistics-and-counts">统计数据与计数<a class="anchor" href="#statistics-and-counts" aria-hidden="true">#</a></h3>
+<p>LemmaLoom 为文档建立完索引后，会统计它的句子和词符。文档检查器中的<strong class="ui">文本</strong>标签页列出文档的句子数，并给出词数、可读性和词汇方面的统计数据（见<a href="text-inspector.html">第 10 章“文本检查器”</a>）。文档的第一部分建立索引之前，<strong class="ui">文本</strong>标签页显示<strong class="ui">索引完成后即可查看统计数据</strong>。</p>
+<p>LemmaLoom 中基本上有两种计数：</p>
+<ul>
+<li><em>词符</em>数包括所有标点符号和符号。在智能文档集中创建条件、在查询中创建规则时，选择<strong class="ui">词符</strong>字段得到的是基于词符数的结果。阅读器的状态栏同样显示词符数，标为<strong class="ui">个词</strong>。</li>
+<li><em>词</em>数不计标点和符号，但除普通的词外，所有数字和数词都计算在内。<strong class="ui">文本</strong>标签页使用词数，查询中使用的<strong class="ui">每万词</strong>度量也是如此（见<a href="queries-results.html">第 16 章“查询结果与统计”</a>中的<a href="queries-results.html#measures">度量</a>）。</li>
+</ul>
+<p>“时间不多了 (英语)”中的这个例句有 8 个词符（7 个词加 1 个句号）。<em>don't</em> 这样的缩写形式算作两个词（<em>do</em> 和 <em>n't</em>），而 <em>2050</em> 这样的数字算作一个词。在中文文本中，LemmaLoom 按建立索引时切分出的词逐个计数。</p>
+<p>建立索引之前，文档的<strong class="ui">词符</strong>和<strong class="ui">句子</strong>计数在任何查询和智能文档集中都返回 0。对于其他语言（例如法语）的文档，这两个计数始终为 0。因此，一个由<strong class="ui">词符</strong>少于 1,000 的文档组成的智能文档集，也会包含所有尚未建立索引的文档。编辑现有文档之后，在索引建立完成之前，这两个计数保持最后已知的数值。<strong class="ui">字符数</strong>字段直接来自文档内容，会立即计算出来。要在等待建立索引的文档之间按长度排序或比较长度，请改用<strong class="ui">字符数</strong>。</p>
+<h3 id="excluded-text">排除在分析之外的文本<a class="anchor" href="#excluded-text" aria-hidden="true">#</a></h3>
+<p>导入对话框或<strong class="ui">文档信息</strong>中<strong class="ui">从索引中排除</strong>下的模式，会阻止匹配的文本被分析（见<a href="importing.html">第 4 章“导入资料”</a>中的<a href="importing.html#exclude-from-analysis">从索引中排除文本</a>）。这类文本包括时间戳、说话人名称、页眉、页脚等。LemmaLoom 在为文本建立索引之前，会把每处匹配的文字替换为空白，因此这些内容不会计入词数，也不会进入关键词列表、词汇速写和内置透镜。</p>
+<p>你仍然可以在阅读器中看到被排除的文本，也可以为它编码，搜索栏也会搜索它。如果<strong class="ui">文本匹配</strong>查询中文本行的第一个菜单保持默认设置<strong class="ui">文本</strong>，查询同样会搜索这些文本，因为这时查询读取的是文本本身。如果把这个菜单改为<strong class="ui">词</strong>、<strong class="ui">词形</strong>或<strong class="ui">词元</strong>，查询就改为比较词符，因而会跳过被排除的文本。</p>
+<h2 id="languages">各种语言支持的分析<a class="anchor" href="#languages" aria-hidden="true">#</a></h2>
+<p>三种语言都有分词、断句、词类识别、标记、词元还原、依存句法分析、短语结构分析、名词块切分、停用词识别以及全部三个内置分析器。区别在于细节：</p>
+<div class="table-wrap"><table>
+<thead><tr><th></th><th>英语</th><th>德语</th><th>中文</th></tr></thead>
+<tbody>
+<tr><td>把文本切分成词</td><td>在空格和标点处切分；<em>don't</em> 切分为 <em>do</em> 和 <em>n't</em></td><td>在空格和标点处切分</td><td>由一个专门找词的模型切分，因为词与词之间没有空格</td></tr>
+<tr><td>标记</td><td>Penn Treebank</td><td>STTS（Stuttgart-Tübingen tagset）</td><td>Penn Chinese Treebank</td></tr>
+<tr><td>依存关系标记</td><td>英语标记，如 nsubj 和 dobj</td><td>TIGER 标记，如 sb（主语）和 oa（宾格宾语，即直接宾语）</td><td>英语标记，另有中文专用的标记，例如用于“了”等体标记的 aux:asp</td></tr>
+<tr><td>短语标记</td><td>Penn Treebank，如 NP 和 PP</td><td>TIGER，如 NP 和 PP</td><td>Penn Chinese Treebank</td></tr>
+<tr><td><strong class="ui">形态学</strong>透镜</td><td><strong class="ui">时态</strong>、<strong class="ui">数</strong>、<strong class="ui">级</strong>（比较级、最高级）、<strong class="ui">动词形式</strong></td><td>与英语相同，另有<strong class="ui">格</strong>、<strong class="ui">语气</strong>和<strong class="ui">性</strong></td><td>不提供</td></tr>
+<tr><td><strong class="ui">元话语</strong>类别</td><td>五类</td><td>这五类，另加<strong class="ui">情态小品词</strong></td><td>这五类，另加<strong class="ui">语气助词</strong></td></tr>
+<tr><td><strong class="ui">修辞</strong>手法</td><td>全部十三种</td><td>除<strong class="ui">独立结构</strong>外的全部手法</td><td>除<strong class="ui">圆周句</strong>和<strong class="ui">独立结构</strong>外的全部手法</td></tr>
+<tr><td>本语言专用的透镜</td><td>无</td><td><strong class="ui">句场</strong>（见<a href="lenses.html">第 6 章“透镜”</a>中的<a href="lenses.html#sentence-fields">句场（德语）</a>）</td><td><strong class="ui">句式</strong>和<strong class="ui">助词</strong>（见<a href="lenses.html">第 6 章“透镜”</a>中的<a href="lenses.html#chinese-lenses">句式与助词（中文）</a>）</td></tr>
+</tbody></table></div>
+<p>Penn Treebank（宾州树库）、Penn Chinese Treebank（宾州中文树库）、STTS 和 TIGER 都是标准的标注体系，模型就是在这些体系上训练的。</p>
+<figure class="shot" id="analysis-and-indexing-german-word"><img class="shot-light" src="../figures/zh-Hans/light/analysis-and-indexing-german-word.webp" alt="语法标签页描述“时间不多了 (英语)”中的 climate 一词，形态下列出了它的特征。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/analysis-and-indexing-german-word.webp" alt="语法标签页描述“时间不多了 (英语)”中的 climate 一词，形态下列出了它的特征。" loading="lazy"><figcaption>语法标签页描述“时间不多了 (英语)”中的 climate 一词，形态下列出了它的特征。</figcaption></figure>
+<p>中文的词只有一种形式，所以中文词的词元始终是这个词本身。</p>
+<p>建立索引时找出的停用词用于<strong class="ui">文本</strong>标签页中的<strong class="ui">虚词比例</strong>和查询中词的<strong class="ui">停用词</strong>字段；<strong class="ui">语法</strong>标签页的<strong class="ui">搭配词</strong>分面会忽略停用词。停用词表是 LemmaLoom 提供的内部列表，LemmaLoom 预置了英语停用词 162 个、德语 211 个、中文 153 个。如果一个词符的词形或词元与其中某个表中的条目相同（不区分大小写），它就是停用词。停用词表是固定的，所以如果要略去其他词，可以在查询时自己定义规则。</p>
+<p><strong class="ui">帮助 ▸ 术语表</strong>详细说明了 LemmaLoom 使用的每一个标记、依存关系标记和短语标记。在<strong class="ui">帮助 ▸ 术语表</strong>的边栏中选择一个术语类别（例如<strong class="ui">词性标记</strong>、<strong class="ui">依存关系</strong>、<strong class="ui">短语标记</strong>或<strong class="ui">形态学</strong>），然后用术语列表上方的<strong class="ui">搜索</strong>栏进行搜索。标有 EN、DE 或 ZH 的条目分别专门针对英语、德语和中文定义；没有这类标识的条目，其定义适用于全部三种语言。在透镜中以颜色突出显示的词性标记、依存关系标记或短语标记，在<strong class="ui">帮助 ▸ 术语表</strong>中也以相同的颜色显示。将鼠标指针悬停在其中一个上，可以知道哪个透镜使用这个标记。</p>
+<figure class="shot" id="analysis-and-indexing-glossary-tags"><img class="shot-light" src="../figures/zh-Hans/light/analysis-and-indexing-glossary-tags.webp" alt="搜索“专有名词”后术语表中的词性标记，以及每个标记所属的语言。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/analysis-and-indexing-glossary-tags.webp" alt="搜索“专有名词”后术语表中的词性标记，以及每个标记所属的语言。" loading="lazy"><figcaption>搜索“专有名词”后术语表中的词性标记，以及每个标记所属的语言。</figcaption></figure>
+<h3 id="language-detection">LemmaLoom 如何确定语言<a class="anchor" href="#language-detection" aria-hidden="true">#</a></h3>
+<p>在导入对话框或<strong class="ui">文档信息</strong>中设置的<strong class="ui">语言</strong>，决定了为文档建立索引时使用哪些模型。在导航栏中，<strong class="ui">语言</strong>以简短的代码显示在文档名称之后，例如 EN、DE 或 ZH；将鼠标指针悬停在导航栏中的代码上，可以看到语言的全称。</p>
+<p>把<strong class="ui">语言</strong>设为<strong class="ui">自动</strong>，LemmaLoom 就会根据文档文本的前 4,096 个字符识别语言。对于录音，如果有转写语言，LemmaLoom 就根据转写语言识别；否则读取文档中的文本来识别。LemmaLoom 在导入时识别语言，每当你把<strong class="ui">语言</strong>改回<strong class="ui">自动</strong>并存储时，也会重新识别。以 REFI-QDA 格式导入的项目中，文档的语言也以同样的方式识别。</p>
+<p>LemmaLoom 有时会把三种受支持的语言中的一种误认作另一种，因此在导入文档后可能用错误的模型分析它们。大批导入之后，请检查导航栏中的语言代码。如果文档的开头不能代表整个文档，或者 LemmaLoom 识别错了语言，请自己选择语言。例如，LemmaLoom 可能对一篇英语博客文章显示<strong class="ui">不支持西班牙语的语法分析</strong>；这时请在<strong class="ui">文档信息</strong>中把<strong class="ui">语言</strong>设为<strong class="ui">英语</strong>，然后点按<strong class="ui">存储</strong>。</p>
+<p>每个文档始终整篇按同一种语言建立索引。用其他语言写成的文本片段，例如外语引文，仍按主要语言的模型分析，得出的结果并不可靠。</p>
+<p>译文的语言由翻译的目标语言决定。因此，“时间不多了 (英语)”按英语模型分析。不论原文采用什么设置，译文开始时都会用适用于其语言的全部分析器建立索引，<strong class="ui">从索引中排除</strong>也留空；你可以在<strong class="ui">文档信息</strong>中调整任何设置。</p>
+<h3 id="other-languages">其他语言<a class="anchor" href="#other-languages" aria-hidden="true">#</a></h3>
+<p>LemmaLoom 支持把用其他任何语言（法语、西班牙语等）写成的文档作为纯文本导入。这种文档在导航栏中的状态图标是一个问号，将鼠标指针悬停在上面会显示<strong class="ui">该语言不支持索引</strong>。在阅读器中，底部的状态栏会显示<strong class="ui">不支持法语的语法分析</strong>，其中的“法语”会换成文档实际使用的那种不受支持的语言。即使不支持这种语言，你仍然可以阅读、搜索、编辑这些文档并为它们编码，也可以在所有无需分析结果的视图中使用它们（见本章后文的<a href="#what-needs-analysis">无需分析即可使用的功能</a>）。</p>
+<h2 id="following-the-analysis">跟踪索引进度<a class="anchor" href="#following-the-analysis" aria-hidden="true">#</a></h2>
+<p>不论你当前打开的是哪个项目，LemmaLoom 都会为你的所有项目建立索引。LemmaLoom 最多同时为三个文档建立索引，或者同时处理一个文档的最多三个部分；其余的按顺序建立索引。如果在建立索引的过程中退出 LemmaLoom，下次启动 LemmaLoom 时，剩余的索引工作会接着进行。</p>
+<p>需要分析某种语言的第一个文档时，LemmaLoom 才把这种语言的模型载入内存；最后一个文档处理完大约一分半钟后，再把它们从内存中卸载。</p>
+<h3 id="navigator-status">在导航栏中<a class="anchor" href="#navigator-status" aria-hidden="true">#</a></h3>
+<p>导航栏中文档名称和语言代码后面的小图标显示它的索引状态。将鼠标指针悬停在图标上，可以看到状态的文字说明。这些状态也可以通过<strong class="ui">索引状态</strong>字段在智能文档集和查询中使用。</p>
+<div class="table-wrap"><table>
+<thead><tr><th>图标</th><th><strong class="ui">索引状态</strong></th><th>含义</th></tr></thead>
+<tbody>
+<tr><td>无图标</td><td><strong class="ui">已建立索引</strong></td><td>文档已建立索引。</td></tr>
+<tr><td>进度环，名称显示为灰色</td><td><strong class="ui">正在建立索引</strong></td><td>文档正在建立索引。悬停提示显示阶段和百分比，例如<strong class="ui">解析结构 35%</strong>。</td></tr>
+<tr><td>进度环或旋转指示器</td><td><strong class="ui">正在运行分析器</strong></td><td>你在<strong class="ui">文档信息</strong>中用<strong class="ui">运行</strong>启动的分析器正在处理这个文档。例如，悬停提示显示<strong class="ui">正在运行 衔接</strong>。</td></tr>
+<tr><td>虚线圆圈</td><td><strong class="ui">未索引</strong></td><td>文档在队列中等待（<strong class="ui">等待建立索引</strong>）。</td></tr>
+<tr><td>暂停符号</td><td><strong class="ui">已跳过</strong></td><td>这个文档<strong class="ui">索引已关闭</strong>，因为它导入时没有建立索引（见下文<a href="#turning-indexing-off">导入时不建立索引</a>）。</td></tr>
+<tr><td>问号</td><td><strong class="ui">不支持</strong></td><td>文档使用的是其他语言（<strong class="ui">该语言不支持索引</strong>）。</td></tr>
+<tr><td>红色警告三角形</td><td><strong class="ui">失败</strong></td><td>建立索引失败。悬停提示给出原因（见下文<a href="#indexing-failures">建立索引失败时</a>）。</td></tr>
+</tbody></table></div>
+<figure class="shot" id="analysis-and-indexing-navigator"><img class="shot-light" src="../figures/zh-Hans/light/analysis-and-indexing-navigator.webp" alt="建立索引期间的导航栏。“纸媒”中怀疑派的文章正在建立索引，“网络”中的怀疑派文章正在等待，导入时未建立索引的“2024 热浪报告”显示暂停符号。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/analysis-and-indexing-navigator.webp" alt="建立索引期间的导航栏。“纸媒”中怀疑派的文章正在建立索引，“网络”中的怀疑派文章正在等待，导入时未建立索引的“2024 热浪报告”显示暂停符号。" loading="lazy"><figcaption>建立索引期间的导航栏。“纸媒”中怀疑派的文章正在建立索引，“网络”中的怀疑派文章正在等待，导入时未建立索引的“2024 热浪报告”显示暂停符号。</figcaption></figure>
+<h3 id="reader-status">在阅读器中<a class="anchor" href="#reader-status" aria-hidden="true">#</a></h3>
+<p>文档的计数，包括段落数、句子数和词符数，显示在阅读器状态栏的最右侧。显示哪些计数取决于页边栏中显示的项目（见<a href="reading-and-editing.html">第 5 章“阅读与编辑”</a>中的<a href="reading-and-editing.html#status-bar">状态栏</a>）。例如，“时间不多了”的状态栏显示 <strong class="ui">10 ¶ · 63 S · 1,119 个词</strong>。在索引建立完成之前，以及你用<strong class="ui">运行</strong>运行分析器期间，状态栏会改为显示以下内容之一：</p>
+<ul>
+<li>阶段和已完成的百分比，例如<strong class="ui">解析结构 35%</strong>，并带有进度环；</li>
+<li><strong class="ui">正在建立索引</strong>和旋转指示器，表示文档正在等待轮到它（导航栏中显示为<strong class="ui">等待建立索引</strong>）；</li>
+<li><strong class="ui">正在运行</strong>加上分析器的名称，文档较大时后面还有已完成的百分比，例如<strong class="ui">正在运行 修辞</strong>；</li>
+<li><strong class="ui">索引已关闭</strong>和<strong class="ui">立即建立索引</strong>链接，适用于添加时没有建立索引的文档；</li>
+<li>说明不支持该语言语法分析的提示，例如<strong class="ui">不支持法语的语法分析</strong>；</li>
+<li>失败原因和<strong class="ui">重试索引</strong>链接，适用于建立索引失败的文档。</li>
+</ul>
+<figure class="shot" id="analysis-and-indexing-status-paused"><img class="shot-light" src="../figures/zh-Hans/light/analysis-and-indexing-status-paused.webp" alt="导入时未建立索引的“2024 热浪报告”的状态栏。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/analysis-and-indexing-status-paused.webp" alt="导入时未建立索引的“2024 热浪报告”的状态栏。" loading="lazy"><figcaption>导入时未建立索引的“2024 热浪报告”的状态栏。</figcaption></figure>
+<p>阅读器中的其他部分也要等待索引建立完成（见<a href="reading-and-editing.html">第 5 章“阅读与编辑”</a>中的<a href="reading-and-editing.html#before-analysis">索引建立完成之前</a>）。</p>
+<h3 id="activity-window">在活动窗口中<a class="anchor" href="#activity-window" aria-hidden="true">#</a></h3>
+<p><strong class="ui">窗口 ▸ 活动</strong>（⌥⌘0）显示所有项目中在后台进行的工作（见<a href="importing.html">第 4 章“导入资料”</a>中的<a href="importing.html#activity-window">活动窗口</a>）。<strong class="ui">活动</strong>窗口的以下几个部分说明建立索引的情况：</p>
+<ul>
+<li><strong class="ui">正在建立索引</strong>列出正在建立索引的文档及其阶段和百分比进度，以及当前正由某个分析器分析的文档，例如<strong class="ui">正在运行 元话语 40%</strong>。</li>
+<li><strong class="ui">失败</strong>列出建立索引失败的文档，附有失败原因和用于再次尝试的<strong class="ui">重试索引</strong>链接。</li>
+<li>最后，<strong class="ui">等待中</strong>列出在队列中等待轮到自己的文档，它们都标有<strong class="ui">等待建立索引</strong>状态。</li>
+</ul>
+<p>每一行都注明所属项目的名称，所以要跟踪当前项目以外的项目中的索引进度，可以使用<strong class="ui">活动</strong>窗口。</p>
+<h3 id="index-status-field">按索引状态查找文档<a class="anchor" href="#index-status-field" aria-hidden="true">#</a></h3>
+<p>随着文档完成索引，智能文档集的成员会自动更新。因此，在导入大量文档之后，可以用智能文档集查看哪些文档还没有准备好。按以下步骤创建智能文档集：</p>
+<ol>
+<li>选取<strong class="ui">项目 ▸ 新建智能文档集</strong>，或者点按导航栏中<strong class="ui">文档集</strong>部分末尾的<strong class="ui">新建智能文档集</strong>。</li>
+<li>在打开的对话框中，为文档集命名。</li>
+<li>在条件行显示<strong class="ui">属性</strong>或<strong class="ui">标签</strong>的菜单中选择<strong class="ui">索引状态</strong>。</li>
+<li>在显示<strong class="ui">是以下任一</strong>的菜单中选择<strong class="ui">不是以下任何</strong>。</li>
+<li>打开显示为<strong class="ui">无</strong>的值菜单，选择<strong class="ui">已建立索引</strong>。</li>
+<li>点按<strong class="ui">存储</strong>。</li>
+</ol>
+<p>更改条件时，条件下方的数字会告诉你文档集中有多少个文档。这个文档集还可能包含其他语言的文档，以及正在用<strong class="ui">运行</strong>运行分析器的文档（这种情况只会短暂出现）。如果只想查看需要你处理的文档，请改为选择<strong class="ui">是以下任一</strong>，并选择<strong class="ui">失败</strong>、<strong class="ui">已跳过</strong>和<strong class="ui">不支持</strong>。</p>
+<figure class="shot" id="analysis-and-indexing-smart-set"><img class="shot-light" src="../figures/zh-Hans/light/analysis-and-indexing-smart-set.webp" alt="列出尚未完成索引的文档的智能文档集。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/analysis-and-indexing-smart-set.webp" alt="列出尚未完成索引的文档的智能文档集。" loading="lazy"><figcaption>列出尚未完成索引的文档的智能文档集。</figcaption></figure>
+<p><strong class="ui">索引状态</strong>字段属于查询中的<strong class="ui">文档</strong>单位。智能文档集和查询都还有<strong class="ui">已跳过索引</strong>字段，它表示文档是否在导入时没有建立索引并且仍在等待<strong class="ui">立即建立索引</strong>。智能文档集的详细介绍见<a href="sets-tags-attributes.html">第 8 章“文档集、分组、标签和属性”</a>。</p>
+<h2 id="indexing-failures">建立索引失败时<a class="anchor" href="#indexing-failures" aria-hidden="true">#</a></h2>
+<p>如果为某个文档建立索引失败，导航栏中该文档旁边的状态图标会变成红色三角形警告图标，文档也会移到<strong class="ui">活动</strong>窗口的<strong class="ui">失败</strong>部分。将鼠标指针悬停在这个图标上、在导航栏中打开该文档的快捷菜单，或者查看阅读器的状态栏，都可以看到失败的原因。没有足够具体的原因可以说明时，显示的失败原因是<strong class="ui">此文档的索引失败。</strong></p>
+<p>你随时可以选择<strong class="ui">重试索引</strong>，再次尝试建立索引。这个选项位于以下位置：</p>
+<ul>
+<li>导航栏中该文档的快捷菜单；</li>
+<li>阅读器的状态栏；</li>
+<li><strong class="ui">活动</strong>窗口<strong class="ui">失败</strong>部分中该文档所在的行。</li>
+</ul>
+<p>LemmaLoom 随后会为文档中缺少分析结果的部分建立索引，并重新运行该文档的分析器。LemmaLoom 启动时会自动重试；等待足够长的时间后，它在下一次为任何文档建立索引时也会再次重试。等待时间从一分钟开始，每失败一次加倍，最长为一小时。</p>
+<p>如果同一个文档多次建立索引失败，请检查<strong class="ui">文档信息</strong>中的<strong class="ui">语言</strong>属性。在阅读器中找出并非真正文字的部分（例如受损的 PDF 文件产生的乱码），把它们改正或排除。如果其他办法都不奏效，欢迎通过<strong class="ui">帮助 ▸ 发送反馈</strong>报告问题（见<a href="help-and-support.html">第 26 章“帮助与支持”</a>）。</p>
+<h2 id="turning-indexing-off">导入时不建立索引<a class="anchor" href="#turning-indexing-off" aria-hidden="true">#</a></h2>
+<p>你可以在导入文档时先不建立索引，以后再建立。一次导入大量文档而你现在需要让 Mac 腾出资源时，PDF 提取出的文本需要先改正再建立索引时，或者文档只用于阅读和编码时，都适合这样做。</p>
+<p>导入文档而不为它建立索引的步骤如下：</p>
+<ol>
+<li>照常导入文档（见<a href="importing.html">第 4 章“导入资料”</a>）。</li>
+<li>在<strong class="ui">导入文档</strong>或<strong class="ui">从网页导入</strong>对话框的<strong class="ui">索引</strong>部分，取消勾选<strong class="ui">为语法分析建立索引</strong>。下方的<strong class="ui">分析器</strong>列表随即不可用。</li>
+<li>点按<strong class="ui">导入</strong>。</li>
+</ol>
+<p>每导入一个文件，对话框就会出现一次，而且每个对话框中的复选框起初都是勾选的。要导入多个文件而不建立索引，可以在每个对话框中都取消勾选。</p>
+<p>这样的文档即使以后内容有变，也不会加入队列。它的透镜菜单保持不可用，<strong class="ui">语法</strong>标签页中的状态显示<strong class="ui">索引完成后即可查看语法信息</strong>。</p>
+<p>要为这个文档建立索引，请点按阅读器状态栏中的<strong class="ui">立即建立索引</strong>，或者打开<strong class="ui">文档信息</strong>并点按<strong class="ui">立即建立索引</strong>。要打开<strong class="ui">文档信息</strong>，请在导航栏中选择文档，然后选取<strong class="ui">项目 ▸ 信息</strong>；也可以右键点按文档本身，然后选取<strong class="ui">信息</strong>。在<strong class="ui">文档信息</strong>中，<strong class="ui">立即建立索引</strong>位于<strong class="ui">索引</strong>部分顶部，在<strong class="ui">索引已关闭</strong>旁边。这个按钮会立即生效。</p>
+<figure class="shot" id="analysis-and-indexing-index-now"><img class="shot-light" src="../figures/zh-Hans/light/analysis-and-indexing-index-now.webp" alt="“2024 热浪报告”的“文档信息”中的“索引”部分，该文档导入时未建立索引，“立即建立索引”位于“索引已关闭”旁边。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/analysis-and-indexing-index-now.webp" alt="“2024 热浪报告”的“文档信息”中的“索引”部分，该文档导入时未建立索引，“立即建立索引”位于“索引已关闭”旁边。" loading="lazy"><figcaption>“2024 热浪报告”的“文档信息”中的“索引”部分，该文档导入时未建立索引，“立即建立索引”位于“索引已关闭”旁边。</figcaption></figure>
+<p>之后，文档会进入队列等待处理。如果误点了<strong class="ui">立即建立索引</strong>，可以用<strong class="ui">编辑 ▸ 撤销立即建立索引</strong>（⌘Z）把文档恢复为之前的<strong class="ui">索引已关闭</strong>状态。如果那时索引已经建立完成，文档会保留它的分析结果。</p>
+<aside class="callout note"><p class="callout-title">注意</p><p>只有在导入时，或者在导入文档之后撤销<strong class="ui">立即建立索引</strong>操作，才能阻止建立索引。</p>
+</aside>
+<h2 id="document-analyzers">为文档选择分析器<a class="anchor" href="#document-analyzers" aria-hidden="true">#</a></h2>
+<p>建立索引时，所有能处理某个文档语言的分析器都会在这个文档上运行。你随时可以让某个分析器不处理单个文档，既可以在导入文档时这样做，也可以在之后任何时候，在<strong class="ui">文档信息</strong>中删除这个分析器生成的发现。当某个分析器不适合文档内容时，就可以把它排除在外。例如，<strong class="ui">修辞</strong>识别名词化、圆周句等手法；这些手法是书面文章的特点，所以你可能希望不让它分析录音转写文本“电台辩论”。如果在所有转写文本中都把它排除在外，在整个项目中查找<strong class="ui">发现</strong>的查询就只统计书面文档中的修辞手法。</p>
+<p>让某个分析器不处理一个文档时，会发生以下情况：</p>
+<ul>
+<li>这个分析器在该文档中的所有发现都被移除；</li>
+<li>这个分析器的透镜从该文档的透镜菜单中消失；</li>
+<li>在<strong class="ui">语法</strong>标签页的<strong class="ui">语篇</strong>分面中，该文档会显示类似<strong class="ui">暂无修辞手法</strong>的提示；</li>
+<li>用你自己创建的分析器自动编码文档时，<strong class="ui">自动编码…</strong>会跳过之前排除了这个分析器的所有文档。</li>
+</ul>
+<h3 id="analyzers-at-import">导入时选择分析器<a class="anchor" href="#analyzers-at-import" aria-hidden="true">#</a></h3>
+<p>在导入对话框的<strong class="ui">索引</strong>部分，<strong class="ui">分析器</strong>下列出各个分析器，每个都带有复选框。内置分析器排在前面，后面按字母顺序列出你自己的分析器。<strong class="ui">语言</strong>的值为<strong class="ui">自动</strong>时，列表中显示所有分析器；否则只显示能处理所选语言文档的分析器。起初所有分析器都默认勾选；请取消勾选你不想用于这个文档的分析器。</p>
+<h3 id="analyzer-list">文档信息中的分析器列表<a class="anchor" href="#analyzer-list" aria-hidden="true">#</a></h3>
+<p>要查看或编辑项目中已有文档所关联的分析器，请按以下步骤操作：</p>
+<ol>
+<li>在导航栏中选择文档，然后选取<strong class="ui">项目 ▸ 信息</strong>；也可以右键点按文档，然后选取<strong class="ui">信息</strong>。</li>
+<li>向下滚动到<strong class="ui">索引</strong>部分。<strong class="ui">分析器</strong>列出能处理文档语言的分析器。如果文档使用的是其他语言，这里会列出全部分析器，<strong class="ui">运行</strong>不可用。</li>
+</ol>
+<p>每一行都显示分析器的状态：</p>
+<div class="table-wrap"><table>
+<thead><tr><th>状态</th><th>含义</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">完成</strong></td><td>分析器已用当前版本处理了整个文档。运行后什么也没找到的分析器，状态同样是<strong class="ui">完成</strong>。</td></tr>
+<tr><td><strong class="ui">已过期</strong></td><td>分析器只处理了文档的一部分，或者是用较早的版本处理的。这种状态通常很短暂，因为 LemmaLoom 会自动更新它（见下文<a href="#analyzer-reruns">分析器何时重新运行</a>）。</td></tr>
+<tr><td><strong class="ui">未运行</strong></td><td>分析器没有在这个文档上运行过，原因可能是它被排除在外，可能是文档尚未建立索引，也可能是分析器在建立索引时出错停止。</td></tr>
+<tr><td><strong class="ui">运行中</strong></td><td>分析器正在运行。在长文档中，进度环显示它的进度。</td></tr>
+<tr><td><strong class="ui">失败</strong></td><td>你点按<strong class="ui">运行</strong>后，分析器出错停止。将鼠标指针悬停在<strong class="ui">失败</strong>上，可以看到错误信息。</td></tr>
+</tbody></table></div>
+<figure class="shot" id="analysis-and-indexing-properties-analyzers"><img class="shot-light" src="../figures/zh-Hans/light/analysis-and-indexing-properties-analyzers.webp" alt="“电台辩论”的文档信息中的分析器，“修辞”被排除在外。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/analysis-and-indexing-properties-analyzers.webp" alt="“电台辩论”的文档信息中的分析器，“修辞”被排除在外。" loading="lazy"><figcaption>“电台辩论”的文档信息中的分析器，“修辞”被排除在外。</figcaption></figure>
+<p>点按这个列表中的<strong class="ui">运行</strong>链接或废纸篓按钮会立即生效，即使之后点按<strong class="ui">取消</strong>也是如此。</p>
+<h3 id="removing-analyzer-output">移除分析器的输出<a class="anchor" href="#removing-analyzer-output" aria-hidden="true">#</a></h3>
+<p>移除分析器的输出后，LemmaLoom 会删除它的发现，并且从此以后不再让这个分析器处理该文档。</p>
+<ol>
+<li>打开文档的<strong class="ui">文档信息</strong>，滚动到<strong class="ui">索引</strong>部分。</li>
+<li>在分析器所在的行中，点按废纸篓按钮。将鼠标指针悬停在按钮上会显示<strong class="ui">移除输出</strong>。只有状态为<strong class="ui">完成</strong>或<strong class="ui">已过期</strong>的分析器才有这个按钮。</li>
+</ol>
+<p>这一行随即变为<strong class="ui">未运行</strong>。之后文档重新建立索引时（例如因为编辑），这个分析器仍保持移除状态。你可以用<strong class="ui">编辑 ▸ 撤销移除输出</strong>（⌘Z）撤销移除，恢复并重新运行这个分析器。如果以后想再次运行它，点按同一行中的<strong class="ui">运行</strong>即可。</p>
+<h3 id="running-an-analyzer">运行分析器<a class="anchor" href="#running-an-analyzer" aria-hidden="true">#</a></h3>
+<ol>
+<li>打开文档的<strong class="ui">文档信息</strong>，滚动到<strong class="ui">索引</strong>部分。</li>
+<li>在分析器所在的行中，点按<strong class="ui">运行</strong>。状态不是<strong class="ui">完成</strong>的分析器才有这个链接。</li>
+</ol>
+<p>如果文档原先没有这个分析器，它会被重新加入，并立即在现有的分析结果上运行。分析期间，它所在的行显示<strong class="ui">运行中</strong>，导航栏中的状态图标、阅读器的状态栏以及<strong class="ui">活动</strong>窗口也会显示这一点，例如<strong class="ui">正在运行 修辞</strong>。如果文档原先没有这个分析器，选取<strong class="ui">编辑 ▸ 撤销运行</strong>（⌘Z）会再次把它排除在外，并移除这次运行的结果。</p>
+<p>在索引建立完成之前，以及对于导入时没有建立索引的文档，<strong class="ui">运行</strong>不可用。将鼠标指针悬停在上面，会相应显示<strong class="ui">尚未索引</strong>或<strong class="ui">索引已关闭</strong>。</p>
+<p>如果你自己的某个分析器在已完整建立索引的文档中显示<strong class="ui">未运行</strong>，而你从未把它排除在外，那么它很可能在建立索引时因某个错误而失败。点按<strong class="ui">运行</strong>可以再试一次。如果运行不成功，这个分析器会显示为<strong class="ui">失败</strong>。将鼠标指针悬停在<strong class="ui">失败</strong>上，可以看到与这次失败相关的错误信息。之后可以通过<strong class="ui">窗口 ▸ 分析器</strong>查找错误原因（见<a href="custom-analyzers.html">第 20 章“自定义分析器”</a>）。</p>
+<h3 id="analyzer-reruns">分析器何时重新运行<a class="anchor" href="#analyzer-reruns" aria-hidden="true">#</a></h3>
+<p>通常不需要点按<strong class="ui">运行</strong>，因为 LemmaLoom 会自动重新运行分析器。自动重新运行有两种触发情况，一是文档重新建立索引时（见<a href="#reanalysis">重新为文档建立索引</a>），二是你通过<strong class="ui">窗口 ▸ 分析器</strong>添加或删除自己的分析器、更新它的代码或语言，或者修改它的图例项时。</p>
+<p>在第二种情况下，LemmaLoom 会在所有项目中，对这个分析器所适用语言的每个文档重新运行它，但你删除过其先前结果的文档除外。重新运行的只有分析器，所以比完整建立索引快得多。在此期间，所有受影响的文档都算作<strong class="ui">正在建立索引</strong>，所以它们在导航栏中的名称显示为灰色并带有进度环，而<strong class="ui">文档信息</strong>中这个分析器所在的行在完成之前可能显示<strong class="ui">已过期</strong>。</p>
+<p>如果分析器所在的行在<strong class="ui">窗口 ▸ 分析器</strong>中显示<strong class="ui">已过期</strong>，含义则有所不同。这里的<strong class="ui">已过期</strong>表示这个分析器来自一个之后被修改过的查询。要解决这个问题，请从修改后的查询中再次存储这个分析器（见<a href="queries-using-results.html">第 18 章“使用查询结果”</a>）。</p>
+<h2 id="what-needs-analysis">无需分析即可使用的功能<a class="anchor" href="#what-needs-analysis" aria-hidden="true">#</a></h2>
+<p>LemmaLoom 的许多功能只依赖文本内容和你的标注，所以无论文档是否已建立索引，这些功能都可以使用：</p>
+<div class="table-wrap"><table>
+<thead><tr><th>范围</th><th>无需分析即可使用</th></tr></thead>
+<tbody>
+<tr><td>阅读器</td><td>阅读、搜索栏、选择文字、编辑文本和播放录音</td></tr>
+<tr><td>标注</td><td>编码、备忘录、链接和书签；文本中显示编码片段和书签</td></tr>
+<tr><td>检查器</td><td><strong class="ui">编码</strong>标签页中的<strong class="ui">编码</strong>、<strong class="ui">编码实例</strong>、<strong class="ui">链接</strong>、<strong class="ui">编码统计</strong>和<strong class="ui">画像</strong>的<strong class="ui">马赛克</strong>；<strong class="ui">文本</strong>标签页中的<strong class="ui">详细信息</strong>（属性和标签）和<strong class="ui">书签</strong></td></tr>
+<tr><td>项目和文档集</td><td><strong class="ui">编码本</strong>、<strong class="ui">编码实例</strong>、<strong class="ui">备忘录</strong>、<strong class="ui">链接</strong>、<strong class="ui">编码统计</strong>、<strong class="ui">编码矩阵</strong>和<strong class="ui">关系</strong></td></tr>
+<tr><td>词典</td><td><strong class="ui">词典</strong>部分中的计数；使用词典透镜的<strong class="ui">自动编码…</strong>，它也会为文档集或项目中尚未建立索引的文档编码</td></tr>
+<tr><td>查询</td><td><strong class="ui">段落</strong>、<strong class="ui">文本匹配</strong>、<strong class="ui">编码实例</strong>、<strong class="ui">备忘录</strong>、<strong class="ui">书签</strong>、<strong class="ui">链接</strong>、<strong class="ui">话轮</strong>和<strong class="ui">对齐</strong>单位，以及<strong class="ui">文档</strong>、<strong class="ui">编码</strong>等资料库单位</td></tr>
+<tr><td>其他</td><td>翻译、文档集和智能文档集、属性、标签，以及导出和交换项目</td></tr>
+</tbody></table></div>
+<p>以下功能需要分析结果：</p>
+<div class="table-wrap"><table>
+<thead><tr><th>范围</th><th>需要分析结果</th></tr></thead>
+<tbody>
+<tr><td>阅读器</td><td>点按选择一个词、页边栏中的句子编号、状态栏中的计数，以及在转写文本中点按一个词让播放器跳到那里</td></tr>
+<tr><td>透镜</td><td>透镜菜单，所有透镜都是如此；索引建立完成之前，菜单不可用，悬停提示为<strong class="ui">索引完成后即可使用透镜</strong></td></tr>
+<tr><td>检查器</td><td><strong class="ui">文本</strong>标签页中的统计数据；整个<strong class="ui">语法</strong>标签页；<strong class="ui">编码</strong>标签页中的<strong class="ui">编码速写</strong>和<strong class="ui">画像</strong>的<strong class="ui">编码行</strong>；<strong class="ui">多重模式</strong>标签页中的<strong class="ui">速写空间</strong></td></tr>
+<tr><td>词汇速写</td><td>文档、文档集或项目的词汇速写</td></tr>
+<tr><td>查询</td><td><strong class="ui">词</strong>、<strong class="ui">模式匹配</strong>、<strong class="ui">句子</strong>、<strong class="ui">短语</strong>、<strong class="ui">名词块</strong>和<strong class="ui">发现</strong>单位；<strong class="ui">搭配词</strong>和<strong class="ui">关键词</strong>；<strong class="ui">每万词</strong>度量，它的词数取自分析结果</td></tr>
+<tr><td>自动编码</td><td>使用你自己的分析器透镜的<strong class="ui">自动编码…</strong>，它会跳过尚未建立索引的文档</td></tr>
+<tr><td>智能文档集</td><td><strong class="ui">词符</strong>和<strong class="ui">句子</strong>字段</td></tr>
+</tbody></table></div>
+<p>这类视图涵盖多个文档时，会略去尚未建立索引的文档，并告诉你纳入了多少个文档。查询同样会在结果栏中命中数的旁边显示文档数（见<a href="queries-results.html">第 16 章“查询结果与统计”</a>中的<a href="queries-results.html#coverage-chip">略去的文档</a>）。例如，“行动派”文档集的六个文档中有一个尚未建立索引，结果栏就显示<strong class="ui">5 / 6</strong>，表示搜索了六个文档中的五个。文档集或项目的词汇速写会显示类似<strong class="ui">已索引 13 个文档（共 14 个）</strong>的提示。</p>
+<p>只有使用需要分析结果的单位（见上表）时，才会略去文档。如果使用不需要分析结果的单位，例如<strong class="ui">段落</strong>，查询会包含所有文档。对于尚未建立索引的文档，第一个菜单设为<strong class="ui">词</strong>、<strong class="ui">词形</strong>或<strong class="ui">词元</strong>的文本行在索引建立完成之前会像<strong class="ui">文本</strong>一样搜索文本。<strong class="ui">从所选内容查询</strong>在这些文档中进行普通的文本搜索（见<a href="queries-patterns.html">第 17 章“查询模式与发现”</a>）。</p>
+<h2 id="reanalysis">重新为文档建立索引<a class="anchor" href="#reanalysis" aria-hidden="true">#</a></h2>
+<p>在 LemmaLoom 中，文档的分析结果一直有效，直到它所依赖的内容发生变化。以下更改会让文档重新进入队列：</p>
+<div class="table-wrap"><table>
+<thead><tr><th>更改</th><th>LemmaLoom 的处理</th></tr></thead>
+<tbody>
+<tr><td>你编辑文本并点按<strong class="ui">存储</strong></td><td>重新为文档建立索引；在长文档中，通常只处理你改动的部分</td></tr>
+<tr><td><strong class="ui">编辑 ▸ 撤销编辑文本</strong></td><td>同上，针对恢复的文本</td></tr>
+<tr><td>你在<strong class="ui">文档信息</strong>中更改<strong class="ui">语言</strong>并存储</td><td>用新的语言为整个文档建立索引</td></tr>
+<tr><td>你在<strong class="ui">文档信息</strong>中更改<strong class="ui">从索引中排除</strong>并存储</td><td>重新为整个文档建立索引</td></tr>
+<tr><td><strong class="ui">编辑 ▸ 撤销删除文档</strong></td><td>为恢复的文档建立索引，因为它的分析结果已随文档一起删除</td></tr>
+<tr><td>你添加、更改或删除自己的某个分析器</td><td>只重新运行分析器，范围是该分析器所适用语言的每个文档</td></tr>
+<tr><td><strong class="ui">编辑 ▸ 撤销移除输出</strong></td><td>重新运行该文档的分析器</td></tr>
+<tr><td>LemmaLoom 的新版本改变了建立索引的方式</td><td>第一次打开新版本时，在后台重新为每个文档建立索引</td></tr>
+</tbody></table></div>
+<h3 id="after-an-edit">编辑之后<a class="anchor" href="#after-an-edit" aria-hidden="true">#</a></h3>
+<p>存储编辑后，阅读器中显示的文本会立即更新为你修改后的内容；在新的分析结果完成之前，文本上方会显示<strong class="ui">正在存储</strong>（见<a href="reading-and-editing.html">第 5 章“阅读与编辑”</a>中的<a href="reading-and-editing.html#after-saving">存储做了什么</a>）。在重新建立索引开始之前，你的所有编码实例、备忘录、链接和书签就已随它们所附着的文本一起移动。</p>
+<p>需要重新建立索引的范围取决于文档的大小。以英语为例，不超过大约 80,000 词的文档作为一个整体完整建立索引，更大的文档则在段落分隔处分成多个部分。任何编辑都会让包含这处编辑的部分重新建立索引；也就是说，对大多数文章和演讲稿来说，编辑会让整个文档重新建立索引。不过，如果编辑发生在长篇的书或报告中，未改动的部分通常会保留原有的分析结果，因此新的分析结果就绪得快得多。较大的插入或删除可能把一个段落推到下一个部分，从而让它之后的各个部分也重新建立索引。</p>
+<p>一般来说，最好在建立索引之前改正错误或进行较大的修改；例如，如果你打算大幅修改一篇很长的文档，应先导入 PDF 而暂不建立索引（见本章前文的<a href="#turning-indexing-off">导入时不建立索引</a>）。</p>
+<h3 id="archives-and-exchange">归档与交换文件<a class="anchor" href="#archives-and-exchange" aria-hidden="true">#</a></h3>
+<p>LemmaLoom 归档（<code>.llz</code>）包含其中文档的分析结果。从归档导入文档时，可以立即使用这些分析结果。如果归档是由建立索引方式不同的 LemmaLoom 版本生成的，其中的文档会重新建立索引。</p>
+<p>导入的文档也会保留归档中存储的分析器发现。在任何导入文档的<strong class="ui">文档信息</strong>中，你的分析器只要归档自身的资料库无法识别，就显示为<strong class="ui">未运行</strong>；点按<strong class="ui">运行</strong>即可相应地开始分析这些文档。来自归档、而你的资料库中原本没有的分析器，会加入你的资料库。你的资料库中原有的文档，只有在下次建立索引时，或者你手动点按<strong class="ui">运行</strong>时，才会由这个分析器分析。</p>
+<p>REFI-QDA 项目（<code>.qdpx</code>）存储其中的文本文档，导入后会像新文档一样建立索引。关于这两种文件格式的更多信息，请参阅<a href="exchange-and-export.html">第 22 章“交换与导出”</a>。</p>
+</article>
+<nav class="pager"><a class="previous" href="custom-analyzers.html"><span>上一章</span>自定义分析器</a><a class="next" href="exchange-and-export.html"><span>下一章</span>交换与导出</a></nav>
+<footer class="site-footer">© 2026 Ryan S. Cooper. 保留所有权利。<br>本版本借助人工智能根据英文原版翻译而成，译文可能存在错误或不准确之处。如有疑问，请以英文版为准。</footer>
+</main>
+<nav class="page-toc" aria-label="本页内容"><p>本页内容</p><ul>
+<li class="level-2"><a href="#analysis-terms">关键术语</a></li>
+<li class="level-2"><a href="#analysis-steps">建立索引的过程</a></li>
+<li class="level-3"><a href="#example-sentence">一个例句</a></li>
+<li class="level-3"><a href="#analysis-models">分析的来源</a></li>
+<li class="level-3"><a href="#built-in-analyzers">内置分析器</a></li>
+<li class="level-3"><a href="#statistics-and-counts">统计数据与计数</a></li>
+<li class="level-3"><a href="#excluded-text">排除在分析之外的文本</a></li>
+<li class="level-2"><a href="#languages">各种语言支持的分析</a></li>
+<li class="level-3"><a href="#language-detection">LemmaLoom 如何确定语言</a></li>
+<li class="level-3"><a href="#other-languages">其他语言</a></li>
+<li class="level-2"><a href="#following-the-analysis">跟踪索引进度</a></li>
+<li class="level-3"><a href="#navigator-status">在导航栏中</a></li>
+<li class="level-3"><a href="#reader-status">在阅读器中</a></li>
+<li class="level-3"><a href="#activity-window">在活动窗口中</a></li>
+<li class="level-3"><a href="#index-status-field">按索引状态查找文档</a></li>
+<li class="level-2"><a href="#indexing-failures">建立索引失败时</a></li>
+<li class="level-2"><a href="#turning-indexing-off">导入时不建立索引</a></li>
+<li class="level-2"><a href="#document-analyzers">为文档选择分析器</a></li>
+<li class="level-3"><a href="#analyzers-at-import">导入时选择分析器</a></li>
+<li class="level-3"><a href="#analyzer-list">文档信息中的分析器列表</a></li>
+<li class="level-3"><a href="#removing-analyzer-output">移除分析器的输出</a></li>
+<li class="level-3"><a href="#running-an-analyzer">运行分析器</a></li>
+<li class="level-3"><a href="#analyzer-reruns">分析器何时重新运行</a></li>
+<li class="level-2"><a href="#what-needs-analysis">无需分析即可使用的功能</a></li>
+<li class="level-2"><a href="#reanalysis">重新为文档建立索引</a></li>
+<li class="level-3"><a href="#after-an-edit">编辑之后</a></li>
+<li class="level-3"><a href="#archives-and-exchange">归档与交换文件</a></li>
+</ul></nav>
+</div>
+<script src="../assets/guide.js" defer></script>
+</body>
+</html>

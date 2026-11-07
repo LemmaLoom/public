@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>构建查询 · LemmaLoom 用户指南</title>
+<link rel="stylesheet" href="../assets/guide.css">
+<link rel="icon" type="image/png" href="../assets/logo.png">
+<script>var r=document.documentElement;r.setAttribute('data-theme','light');try{if(localStorage.getItem('guide-theme')==='dark'){r.setAttribute('data-theme','dark')}}catch(e){}</script>
+</head>
+<body>
+<header class="topbar">
+<button class="menu-toggle" aria-label="目录" aria-expanded="false">☰</button>
+<a class="brand" href="index.html"><span class="wordmark"><span class="lemma">Lemma</span>Loom</span><span class="guide-name">用户指南</span></a>
+<div class="search"><input type="search" id="search" placeholder="搜索" aria-label="搜索" autocomplete="off" data-empty="无结果"><div class="results" id="results" hidden></div></div>
+<nav class="languages" aria-label="Language"><a href="../en/queries-building.html" lang="en">English</a><a href="../de/queries-building.html" lang="de">Deutsch</a><a href="../zh-Hans/queries-building.html" lang="zh-Hans" aria-current="true">简体中文</a></nav>
+<button class="theme-toggle" data-light="浅色" data-dark="深色" aria-label="外观"></button>
+<a class="pdf-link" href="https://github.com/LemmaLoom/public/raw/main/pdf/lemmaloom-guide-zh-Hans.pdf">PDF</a>
+</header>
+<div class="layout">
+<nav class="sidebar" aria-label="目录"><ol>
+<li class="unnumbered"><a href="quick-start.html">快速入门</a></li>
+<li><a href="introduction.html">简介</a></li>
+<li><a href="getting-started.html">开始使用</a></li>
+<li><a href="projects-and-documents.html">项目与文档</a></li>
+<li><a href="importing.html">导入资料</a></li>
+<li><a href="reading-and-editing.html">阅读与编辑</a></li>
+<li><a href="lenses.html">透镜</a></li>
+<li><a href="coding.html">编码</a></li>
+<li><a href="sets-tags-attributes.html">文档集、分组、标签和属性</a></li>
+<li><a href="translations.html">译文与分屏浏览</a></li>
+<li><a href="text-inspector.html">文本检查器</a></li>
+<li><a href="grammar-inspector.html">语法检查器</a></li>
+<li><a href="word-sketch.html">词汇速写</a></li>
+<li><a href="coding-analysis.html">编码分析</a></li>
+<li><a href="sketch-space.html">速写空间</a></li>
+<li class="current"><a href="queries-building.html">构建查询</a></li>
+<li><a href="queries-results.html">查询结果与统计</a></li>
+<li><a href="queries-patterns.html">查询模式与发现</a></li>
+<li><a href="queries-using-results.html">使用查询结果</a></li>
+<li><a href="dictionaries.html">词典</a></li>
+<li><a href="custom-analyzers.html">自定义分析器</a></li>
+<li><a href="analysis-and-indexing.html">分析与索引</a></li>
+<li><a href="exchange-and-export.html">交换与导出</a></li>
+<li><a href="undo.html">撤销与重做</a></li>
+<li><a href="settings.html">设置与外观</a></li>
+<li><a href="keyboard-shortcuts.html">键盘快捷键</a></li>
+<li><a href="help-and-support.html">帮助与支持</a></li>
+<li><a href="statistics-reference.html">统计量一览</a></li>
+<li class="unnumbered"><a href="glossary.html">术语表</a></li>
+<li class="unnumbered"><a href="thanks.html">感谢</a></li>
+</ol></nav>
+<main class="content">
+<article>
+<h1 id="queries-building">构建查询</h1>
+<p>查询会在你的文档中查找满足你所给条件的元素，并以列表或数字的形式显示出来。这些元素可以是词、短语、句子、编码片段、备忘录、话轮、文档，也可以是编码本身。查询通常源于你对文档本身提出的问题。例如，在“气候辩论”项目中，你可能想知道，在行动派的文档里，编码为“紧迫性”的片段中有哪些句子含有<em>危机</em>或<em>期限</em>。你也可能想知道哪些文档目前还没有“成本”编码实例，或者哪些词出现在“情绪”编码实例前后五个词以内。构建查询时，你会用到若干个条件，问题的每一部分对应一个，结果显示在条件下方。</p>
+<p>查询用于回答涉及多个条件的问题，例如同时涉及词、编码和属性的问题。如果只想探究单个词的用法，可以考虑改用词汇速写（见<a href="word-sketch.html">第 12 章“词汇速写”</a>）。</p>
+<p>关于如何解读查询的输出以及其中用到的统计方法，详见<a href="queries-results.html">第 16 章“查询结果与统计”</a>。语法查询和<strong class="ui">从所选内容查询</strong>的更多信息见<a href="queries-patterns.html">第 17 章“查询模式与发现”</a>。基于查询创建透镜、分析器或文档集，见<a href="queries-using-results.html">第 18 章“使用查询结果”</a>。</p>
+<h2 id="query-key-terms">关键术语<a class="anchor" href="#query-key-terms" aria-hidden="true">#</a></h2>
+<p>以下术语适用于介绍查询的全部四章。</p>
+<ul>
+<li><em>范围</em>指查询的是资料库的哪一部分。范围可以是一个文档、一个文档集、一个项目或所有项目。</li>
+<li><em>单位</em>指查询要查找的对象，可在<strong class="ui">查找</strong>条件中选择；查询找到的每一项都称为一个<em>命中</em>。</li>
+<li><em>规则</em>指施加在命中的某一属性上的检验，例如<strong class="ui">词元</strong> <strong class="ui">是</strong> <em>气候</em>，或<strong class="ui">立场</strong> <strong class="ui">是以下任一</strong> “行动派”。</li>
+<li><em>字段</em>指规则所作用的属性。词的词元、句子的编号、编码实例的编码以及文档的属性都是字段。</li>
+<li><em>词元</em>指词的词典形式（例如英文 <em>warned</em> 和 <em>warns</em> → <em>warn</em>），它把一个词的各种词形归在一起（见<a href="grammar-inspector.html">第 11 章“语法检查器”</a>）。</li>
+<li><em>条件组</em>指用<strong class="ui">全部</strong>、<strong class="ui">任一</strong>或<strong class="ui">无</strong>连接起来的一组规则。</li>
+<li><em>上下文</em>行与普通规则类似，区别在于它作用于命中之外，检验周围的单位，例如命中是否与编码为“紧迫性”的片段重叠。</li>
+<li><em>“具有”行</em>统计属于命中的某种内容，例如统计某个文档上有多少个编码实例。</li>
+<li><em>类别</em>指分配给某些命中的标签和颜色。类别主要在透镜中发挥作用。</li>
+<li><em>模板</em>指预先设好的查询，载入后再按需要修改。</li>
+<li><em>已存储的查询</em>指以特定名称存储的查询，可在某个文档、文档集或项目中使用，也可在整个 LemmaLoom 中使用。</li>
+</ul>
+<h2 id="query-locations">查询的存放位置<a class="anchor" href="#query-locations" aria-hidden="true">#</a></h2>
+<p>查询可以在三个位置构建，三处使用同一个构建器；用哪一处，主要取决于你想查询哪些文档。阅读文档时，检查器会在文本旁边保留一个查询。要在文档集或整个项目的多个文档中查询，请使用它的<strong class="ui">查询</strong>视图；要同时查询多个项目，可以使用查询窗口。</p>
+<div class="table-wrap"><table>
+<thead><tr><th>位置</th><th>打开方式</th><th>范围</th></tr></thead>
+<tbody>
+<tr><td>检查器中的<strong class="ui">查询</strong>分面</td><td>文档检查器的<strong class="ui">多重模式</strong>标签页，然后点按<strong class="ui">查询</strong></td><td>该文档</td></tr>
+<tr><td><strong class="ui">查询</strong>视图</td><td>导航栏中<strong class="ui">项目</strong>下的<strong class="ui">查询</strong>，或文档集标签页顶部的<strong class="ui">查询</strong></td><td>该项目或该文档集</td></tr>
+<tr><td><strong class="ui">窗口 ▸ 查询</strong></td><td><strong class="ui">窗口</strong>菜单</td><td>所有项目、一个项目或其中的一个文档集</td></tr>
+</tbody></table></div>
+<p>在 LemmaLoom 退出之前，查询会一直保留在创建它的地方。如果你在“行动派”文档集中开始构建一个查询，然后转去阅读“时间不多了”，这个未完成的查询仍留在那个文档集中。“时间不多了”的<strong class="ui">查询</strong>分面也保留着它自己的查询。同样，文档<strong class="ui">查询</strong>分面中未存储的查询，在关闭文档后可能会丢失。因此，凡是想保留的查询，都需要存储起来（见<a href="#saving-queries">存储查询</a>）。</p>
+<h3 id="query-in-a-document">在文档中<a class="anchor" href="#query-in-a-document" aria-hidden="true">#</a></h3>
+<p><strong class="ui">查询</strong>分面针对你正在阅读的文档内容提问，并把答案放在文本旁边。下图展示的是“时间不多了”，其中载入了“气候辩论”的已存储查询之一“紧迫性话题”。</p>
+<figure class="shot" id="queries-building-inspector"><img class="shot-light" src="../figures/zh-Hans/light/queries-building-inspector.webp" alt="“时间不多了”检查器中的“查询”分面，已载入“紧迫性话题”查询，“条件”已展开。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/queries-building-inspector.webp" alt="“时间不多了”检查器中的“查询”分面，已载入“紧迫性话题”查询，“条件”已展开。" loading="lazy"><figcaption>“时间不多了”检查器中的“查询”分面，已载入“紧迫性话题”查询，“条件”已展开。</figcaption></figure>
+<p>打开<strong class="ui">查询</strong>分面：</p>
+<ol>
+<li>打开文档。</li>
+<li>选取<strong class="ui">显示 ▸ 检查器 ▸ 多重模式</strong>（⌥⌘4）。检查器随即出现，并选中<strong class="ui">多重模式</strong>标签页。</li>
+<li>点按标签页顶部的<strong class="ui">查询</strong>。</li>
+</ol>
+<p>检查器的宽度只容许一次展开一个条件。点按一个条件以显示其内容时，原先展开的条件会收起。开始时，<strong class="ui">条件</strong>已经展开。条件下方的区域显示查询结果。构建器与结果区域之间的分隔线可以移动。点按一个命中，阅读器会滚动到该命中所在的片段。</p>
+<p>查询所在文档的文本、索引或编码实例一旦发生变化，该查询就会自动重新运行。</p>
+<h3 id="query-in-a-set-or-project">在文档集或项目中<a class="anchor" href="#query-in-a-set-or-project" aria-hidden="true">#</a></h3>
+<p>打开文档集的<strong class="ui">查询</strong>视图：</p>
+<ol>
+<li>在导航栏的<strong class="ui">文档集</strong>下点按该文档集。文档集会在单独的标签页中打开。</li>
+<li>在标签页顶部的一排按钮中点按<strong class="ui">查询</strong>。窗口较窄时，这排按钮会变成一个菜单，请从中选取<strong class="ui">查询</strong>。</li>
+</ol>
+<p>点按导航栏中<strong class="ui">项目</strong>下的<strong class="ui">查询</strong>，可以打开整个项目的<strong class="ui">查询</strong>视图。与文档集一样，导航栏中的标签也会在自己的标签页中打开，这个标签页同样带有<strong class="ui">查询</strong>视图。</p>
+<p>这个视图给构建器留出了充足的空间。最顶部是一条横栏，其中有已存储查询的菜单、一个查询搜索栏，以及<strong class="ui">运行查询</strong>和<strong class="ui">存储</strong>按钮（见下文的<a href="#query-builder">构建器</a>）。横栏下方，左侧是一个窄栏，先列出你的已存储查询，然后是模板；构建器占据其余全部空间。结果位于所有这些内容的正下方，占满整个宽度；拖动两者之间的分隔线，可以调整各部分所占的空间。<strong class="ui">查找</strong>、<strong class="ui">条件</strong>和<strong class="ui">显示</strong>这几个条件在载入时是展开的；如果<strong class="ui">模式</strong>条件可见，这个条件一开始也是展开的。每个条件都可以单独展开和收起。连按结果中的一个命中，文档会在预览标签页中打开，并直接滚动到该片段。</p>
+<figure class="shot" id="queries-building-set-queries"><img class="shot-light" src="../figures/zh-Hans/light/queries-building-set-queries.webp" alt="“行动派”文档集的“查询”视图，已载入“紧迫性话题”查询，横栏右端是“在窗口中打开”。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/queries-building-set-queries.webp" alt="“行动派”文档集的“查询”视图，已载入“紧迫性话题”查询，横栏右端是“在窗口中打开”。" loading="lazy"><figcaption>“行动派”文档集的“查询”视图，已载入“紧迫性话题”查询，横栏右端是“在窗口中打开”。</figcaption></figure>
+<p>如果查询需要更多空间，或者你想让它在阅读器旁边保持打开，请点按横栏右端带两个斜向箭头的按钮<strong class="ui">在窗口中打开</strong>。也可以右键点按标签页本身，然后点按<strong class="ui">在新窗口中打开</strong>。查询窗口随即出现，其中是当前查询的一份副本，包括你尚未存储的更改。文档集或项目保留它自己的那一份。</p>
+<aside class="callout note"><p class="callout-title">注意</p><p><strong class="ui">在窗口中打开</strong>总是把查询送到第一个查询窗口。你的查询会覆盖该查询窗口先前打开的查询，包括那个查询尚未存储的更改。</p>
+</aside>
+<h3 id="queries-window">查询窗口<a class="anchor" href="#queries-window" aria-hidden="true">#</a></h3>
+<p>查询窗口用于跨越所有项目的查询，也用于让项目或文档集的查询与阅读器同时打开。选取<strong class="ui">窗口 ▸ 查询</strong>可以打开查询窗口；如果它已经打开，则会被移到最前面。查询窗口的界面与<strong class="ui">查询</strong>视图完全相同，只是横栏左端有一个范围菜单。这个菜单提供<strong class="ui">所有项目</strong>、按名称列出的各个项目，以及当前项目中的文档集，显示为“气候辩论 › 行动派”这样的形式。第一次打开窗口时，所选范围是<strong class="ui">所有项目</strong>，构建器中是一个空查询。选择其他范围时，当前查询仍留在构建器中，但改为分析所选范围中的文档。</p>
+<figure class="shot" id="queries-building-scope-menu"><img class="shot-light" src="../figures/zh-Hans/light/queries-building-scope-menu.webp" alt="“查询”窗口的范围菜单，列出“所有项目”、“气候辩论”以及“气候辩论”的各个文档集。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/queries-building-scope-menu.webp" alt="“查询”窗口的范围菜单，列出“所有项目”、“气候辩论”以及“气候辩论”的各个文档集。" loading="lazy"><figcaption>“查询”窗口的范围菜单，列出“所有项目”、“气候辩论”以及“气候辩论”的各个文档集。</figcaption></figure>
+<p>只有当所选范围是<strong class="ui">所有项目</strong>时，才能引用文档的<strong class="ui">项目</strong>字段，或按项目对结果分组。关于跨项目功能的更多信息，见<a href="projects-and-documents.html">第 3 章“项目与文档”</a>中的<a href="projects-and-documents.html#working-across-projects">跨项目工作</a>。</p>
+<figure class="shot" id="queries-building-window"><img class="shot-light" src="../figures/zh-Hans/light/queries-building-window.webp" alt="查询窗口，范围设为“行动派”文档集，已载入“紧迫性话题”查询。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/queries-building-window.webp" alt="查询窗口，范围设为“行动派”文档集，已载入“紧迫性话题”查询。" loading="lazy"><figcaption>查询窗口，范围设为“行动派”文档集，已载入“紧迫性话题”查询。</figcaption></figure>
+<p>要同时处理两个查询，例如一个查询和它的变体，可以在查询窗口的<strong class="ui">操作</strong>菜单中选取<strong class="ui">新建窗口</strong>。<strong class="ui">操作</strong>是每个查询窗口横栏中一个带圆圈的省略号按钮。新窗口以同一范围中的一个新查询开始。这种窗口中当前显示的查询，如果事先没有存储，关闭窗口时就会丢失。</p>
+<h2 id="query-scopes">范围<a class="anchor" href="#query-scopes" aria-hidden="true">#</a></h2>
+<p>范围还决定构建器提供哪些选项。例如，与文档属性有关的规则会在查询读取多个文档时出现。</p>
+<div class="table-wrap"><table>
+<thead><tr><th></th><th>文档</th><th>文档集</th><th>项目</th><th>所有项目</th></tr></thead>
+<tbody>
+<tr><td>读取的文档</td><td>该文档</td><td>文档集中的原文文档</td><td>项目中的原文文档</td><td>每个项目的原文文档</td></tr>
+<tr><td>规则中的文档字段</td><td>否</td><td>是</td><td>是</td><td>是</td></tr>
+<tr><td><strong class="ui">文档集</strong>字段</td><td>否</td><td>是</td><td>是</td><td>否</td></tr>
+<tr><td><strong class="ui">项目</strong>字段</td><td>否</td><td>否</td><td>否</td><td>是</td></tr>
+<tr><td>资料库单位</td><td><strong class="ui">编码</strong>、<strong class="ui">标签</strong>和<strong class="ui">词典词条</strong></td><td>除<strong class="ui">项目</strong>外的全部</td><td>除<strong class="ui">项目</strong>外的全部</td><td>全部</td></tr>
+<tr><td>“显示”条件中的<strong class="ui">比较</strong></td><td>否</td><td>是</td><td>是</td><td>是</td></tr>
+<tr><td>“显示”条件中的<strong class="ui">关键词</strong></td><td>否</td><td>是</td><td>是，与它的某个文档集比较</td><td>否</td></tr>
+<tr><td><strong class="ui">语料</strong>选项</td><td>否</td><td>是</td><td>是</td><td>是</td></tr>
+</tbody></table></div>
+<p>资料库单位查找的是条目，这些条目可以是编码或文档，但绝不会是片段（见<a href="#query-units">选择要查找的内容</a>）。</p>
+<p>查询文档时，不论它是原文还是译文，LemmaLoom 都会读取它。文档集和项目只针对原文进行查询；要查询译文，请更改<strong class="ui">选项</strong>条件中显示<strong class="ui">原文</strong>的菜单（见<a href="#query-options">选项</a>）。“广泛传播”这样的智能文档集可以作为范围，每次运行查询时，都会重新查找这个智能文档集的成员。</p>
+<h2 id="first-query">第一个查询<a class="anchor" href="#first-query" aria-hidden="true">#</a></h2>
+<p>在这个例子中，你将重新构建示例项目自带的查询“紧迫性话题”。这个查询在由行动派文章组成的文档集中，查找含有<em>紧迫</em>、<em>危机</em>、<em>紧急</em>或<em>期限</em>，并且与编码为“紧迫性”的片段重叠的句子。重新构建出你自己的版本后，你会把它单独存储，以便之后进行比较。</p>
+<ol>
+<li>在导航栏的<strong class="ui">文档集</strong>下点按“行动派”，然后点按文档集标签页顶部的<strong class="ui">查询</strong>。</li>
+<li>在<strong class="ui">查找</strong>条件中选取<strong class="ui">文本 · 句子</strong>。</li>
+<li>在<strong class="ui">条件</strong>中点按<strong class="ui">添加</strong>，然后选取<strong class="ui">添加文本</strong>。这时会出现一个文本行，设为<strong class="ui">词</strong>和<strong class="ui">词条</strong>。</li>
+<li>把<strong class="ui">词</strong>改为<strong class="ui">词元</strong>，让同一个词的各种词形都计算在内，例如英文中 <em>deadlines</em> 这样的复数形式。</li>
+<li>点按<strong class="ui">添加词条</strong>，输入 <code>紧迫, 危机, 紧急, 期限</code>，然后按下 Return 键。每个词条都会单独列出。</li>
+<li>再次点按<strong class="ui">添加</strong>，然后选取<strong class="ui">添加上下文</strong>。保持这一行的<strong class="ui">有</strong>、<strong class="ui">重叠</strong>和<strong class="ui">编码实例</strong>不变。</li>
+<li>点按上下文行内的<strong class="ui">添加</strong>按钮，然后选取<strong class="ui">添加规则</strong>。</li>
+<li>点按规则的字段，从菜单的<strong class="ui">编码实例</strong>部分选取<strong class="ui">编码</strong>。比较方式会变为<strong class="ui">是以下任一</strong>。</li>
+<li>点按显示为<strong class="ui">无</strong>的值，勾选“紧迫性”。<strong class="ui">包括子编码</strong>已经勾选，所以带“时间节点”和“临界点”的编码实例也会计算在内。</li>
+</ol>
+<p>在“行动派”这样的小型文档集中操作时，结果列表会随着你的操作自动填入句子，因为在这样的小文档集中，查询每次更改后都会自动运行（见下文的<a href="#running-queries">运行查询</a>）。点按<strong class="ui">查询文本</strong>，可以查看实际的查询文本：</p>
+<pre><code>查找 句子
+条件 词元 包含 &quot;紧迫&quot;, &quot;危机&quot;, &quot;紧急&quot;, &quot;期限&quot; 且 有 重叠 编码实例 (编码 是以下任一 &quot;紧迫性&quot;)
+显示 列表
+</code></pre>
+<p>保留你的查询：</p>
+<ol>
+<li>打开<strong class="ui">存储</strong>菜单（一个方框和一个指向框内的箭头），选取<strong class="ui">存储为透镜…</strong>。</li>
+<li>在<strong class="ui">名称</strong>中输入 <code>紧迫性话题 2</code>。LemmaLoom 接受已被占用的名称，但两个都叫“紧迫性话题”的查询很难区分。</li>
+<li>在<strong class="ui">可用范围</strong>中选取<strong class="ui">项目</strong>，然后点按<strong class="ui">存储</strong>。</li>
+</ol>
+<p>现在，你的查询与“紧迫性话题”并列，出现在项目的每个<strong class="ui">查询</strong>视图中，也出现在你所有文档的<strong class="ui">查询</strong>分面中。你还可以在阅读器的透镜菜单中把它选作透镜（见<a href="queries-using-results.html">第 18 章“使用查询结果”</a>）。要与原来的查询比较，请从横栏左侧的查询名称菜单中选取“紧迫性话题”，或者在左栏中点按它。</p>
+<p>先在<strong class="ui">查找</strong>条件中选择所需的单位，然后在<strong class="ui">条件</strong>中逐步添加规则，同时留意每条新增规则的效果。如果某条规则让命中意外减少，请相应地修改查询。</p>
+<h2 id="query-builder">构建器<a class="anchor" href="#query-builder" aria-hidden="true">#</a></h2>
+<p>横栏从左到右依次包括：</p>
+<ul>
+<li>查询的名称，它同时是一个菜单，用于访问这里可用的已存储查询，<strong class="ui">新建查询</strong>位于菜单底部。名称旁边有一个圆点（例如“紧迫性话题” •），表示你对这个查询做了尚未存储的编辑；</li>
+<li>搜索栏，它把左侧的已存储查询和模板列表限定为名称中含有你所输入文字的那些；</li>
+<li><strong class="ui">运行查询</strong>（三角形图标），查询运行时变为<strong class="ui">停止</strong>；</li>
+<li><strong class="ui">存储</strong>（一个方框和一个指向框内的箭头）；</li>
+<li><strong class="ui">操作</strong>（带圆圈的三个点图标），提供作用于结果的命令，例如<strong class="ui">从命中创建文档集</strong>；</li>
+<li><strong class="ui">在窗口中打开</strong>（两个斜向箭头），位于文档集或项目的<strong class="ui">查询</strong>视图中。</li>
+</ul>
+<figure class="shot" id="queries-building-name-menu"><img class="shot-light" src="../figures/zh-Hans/light/queries-building-name-menu.webp" alt="“行动派”的“查询”视图横栏中的查询名称菜单，列出已存储的查询和“新建查询”。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/queries-building-name-menu.webp" alt="“行动派”的“查询”视图横栏中的查询名称菜单，列出已存储的查询和“新建查询”。" loading="lazy"><figcaption>“行动派”的“查询”视图横栏中的查询名称菜单，列出已存储的查询和“新建查询”。</figcaption></figure>
+<p>在查询窗口中，横栏左端还有一个范围菜单。窗口较窄时，<strong class="ui">运行查询</strong>、<strong class="ui">存储</strong>和<strong class="ui">操作</strong>图标会移到横栏下方的第二行。最后，有结果时，<strong class="ui">导出</strong>（带向上箭头的方框）位于结果上方的栏中（见<a href="queries-results.html">第 16 章“查询结果与统计”</a>中的<a href="queries-results.html#export">导出结果</a>）。</p>
+<p>在检查器的<strong class="ui">查询</strong>分面中，横栏包括查询的名称、<strong class="ui">模板</strong>图标（魔杖）、<strong class="ui">运行查询</strong>、<strong class="ui">存储</strong>、<strong class="ui">操作</strong>和<strong class="ui">导出</strong>。根据检查器的宽度，横栏可能会分成两行。</p>
+<p>横栏之后是以下各个条件：</p>
+<div class="table-wrap"><table>
+<thead><tr><th>条件</th><th>内容</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">查找</strong></td><td>单位；对于<strong class="ui">文本匹配</strong>，还包括要查找的文本</td></tr>
+<tr><td><strong class="ui">模式</strong></td><td>序列、依存或短语模式，只在<strong class="ui">模式匹配</strong>时显示</td></tr>
+<tr><td><strong class="ui">条件</strong></td><td>规则、条件组、文本行、上下文行和“具有”行</td></tr>
+<tr><td><strong class="ui">显示</strong></td><td>结果的呈现方式，例如列表、数量或比较</td></tr>
+<tr><td><strong class="ui">类别</strong></td><td>命中的标签和颜色</td></tr>
+<tr><td><strong class="ui">选项</strong></td><td>译文、已编码备忘录，以及列表保留多少个命中</td></tr>
+<tr><td><strong class="ui">查询文本</strong></td><td>以文字写出的整个查询</td></tr>
+</tbody></table></div>
+<p>条件收起时，右侧会显示摘要，例如单位、结果类型，或者规则、类别的数目（如<strong class="ui">3 条规则</strong>）。</p>
+<p>用<strong class="ui">编辑 ▸ 从所选内容查询</strong>命令开始一个查询时，各个条件上方会出现一排根据所选词语生成的选项。关于这个命令的更多信息，见<a href="queries-patterns.html">第 17 章“查询模式与发现”</a>中的<a href="queries-patterns.html#query-from-selection">从所选内容查询</a>。</p>
+<h2 id="query-units">选择要查找的内容<a class="anchor" href="#query-units" aria-hidden="true">#</a></h2>
+<p>结果中的每一行代表一个分析单位，也就是你想阅读或统计的东西。如果要查找与话题有关的内容，句子往往最合适；如果问题与你自己的编码实例有关，则应使用编码实例。</p>
+<p>在<strong class="ui">查找</strong>下的下拉列表中，单位按种类排列，每一项都写成种类加单位，例如<strong class="ui">文本 · 句子</strong>或<strong class="ui">标注 · 编码实例</strong>。新查询默认查找<strong class="ui">文本 · 词</strong>，并显示为<strong class="ui">列表</strong>。</p>
+<figure class="shot" id="queries-building-find-menu"><img class="shot-light" src="../figures/zh-Hans/light/queries-building-find-menu.webp" alt="“行动派”文档集“查询”视图中的查找菜单，按种类列出各个单位。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/queries-building-find-menu.webp" alt="“行动派”文档集“查询”视图中的查找菜单，按种类列出各个单位。" loading="lazy"><figcaption>“行动派”文档集“查询”视图中的查找菜单，按种类列出各个单位。</figcaption></figure>
+<div class="table-wrap"><table>
+<thead><tr><th>种类</th><th>单位</th><th>一个命中是</th></tr></thead>
+<tbody>
+<tr><td>文本</td><td><strong class="ui">词</strong></td><td>一个词或一个标点符号</td></tr>
+<tr><td>文本</td><td><strong class="ui">模式匹配</strong></td><td>与<strong class="ui">模式</strong>条件相符的一段文本</td></tr>
+<tr><td>文本</td><td><strong class="ui">句子</strong></td><td>一个句子</td></tr>
+<tr><td>文本</td><td><strong class="ui">段落</strong></td><td>一个段落</td></tr>
+<tr><td>文本</td><td><strong class="ui">文本匹配</strong></td><td><strong class="ui">查找</strong>条件中所设文本的一次出现</td></tr>
+<tr><td>语法</td><td><strong class="ui">短语</strong></td><td>句子短语结构中的一个短语，例如名词短语或介词短语</td></tr>
+<tr><td>语法</td><td><strong class="ui">名词块</strong></td><td>一个名词连同从属于它的词，例如<em>气候危机</em></td></tr>
+<tr><td>分析</td><td><strong class="ui">发现</strong></td><td>由衔接、元话语或修辞分析器，或由你自己的某个分析器标注的片段</td></tr>
+<tr><td>标注</td><td><strong class="ui">编码实例</strong></td><td>一个编码片段</td></tr>
+<tr><td>标注</td><td><strong class="ui">备忘录</strong></td><td>一条备忘录。附于整个文档的备忘录覆盖全文</td></tr>
+<tr><td>标注</td><td><strong class="ui">书签</strong></td><td>一个书签</td></tr>
+<tr><td>标注</td><td><strong class="ui">链接</strong></td><td>链接的一端</td></tr>
+<tr><td>媒体</td><td><strong class="ui">话轮</strong></td><td>转写文本中的一个话轮</td></tr>
+<tr><td>译文</td><td><strong class="ui">对齐</strong></td><td>文档中的一个语段，与它在译文中的对应语段配成一对</td></tr>
+<tr><td>资料库</td><td><strong class="ui">文档</strong>、<strong class="ui">编码</strong>、<strong class="ui">编码集</strong>、<strong class="ui">文档集</strong>、<strong class="ui">分组</strong>、<strong class="ui">属性</strong>、<strong class="ui">标签</strong>、<strong class="ui">词典词条</strong>、<strong class="ui">分析器</strong>、<strong class="ui">项目</strong></td><td>该种类的一个条目</td></tr>
+</tbody></table></div>
+<p><strong class="ui">词</strong>、<strong class="ui">模式匹配</strong>、<strong class="ui">句子</strong>、<strong class="ui">短语</strong>、<strong class="ui">名词块</strong>和<strong class="ui">发现</strong>要求文档在分析之前已建立索引。尚未建立索引的文档在处理时会被略过，命中数旁边的数字（例如<strong class="ui">5 / 6</strong>）表示读取了多少个文档。其他单位不需要索引。每种语言的索引具体能提供什么，见<a href="analysis-and-indexing.html">第 21 章“分析与索引”</a>。</p>
+<p>资料库单位查找的是条目而不是片段。因此，它们的结果表中每个找到的条目占一行，而不是每个找到的片段占一行。文档结果显示文档的标题、作者、日期、语言、所属分组、标签和词符数。<strong class="ui">编码实例</strong>和<strong class="ui">已编码文档</strong>等编码列只统计查询范围之内的情况，并且只统计带该编码本身的编码实例。以“行动派”文档集为例，这些编码列只统计行动派文章中的编码实例。</p>
+<p>切换单位时，所有不兼容的规则都会被移除，不兼容的<strong class="ui">分组依据</strong>键也一样。排序恢复为<strong class="ui">文档顺序</strong>；同样，如果<strong class="ui">显示</strong>条件原先设置的结果在切换后不再可用，它会恢复为<strong class="ui">列表</strong>。上下文行、文本行以及“具有”行会保留下来，需要检查它们是否与当前单位兼容。“具有”行只与<a href="#query-has">“具有”</a>下列出的单位兼容。同样，上下文行只适用于片段单位和<strong class="ui">文档</strong>。旧单位遗留下来的行会使结果变空，所以请把它移除。</p>
+<h3 id="pattern-card">“模式”条件<a class="anchor" href="#pattern-card" aria-hidden="true">#</a></h3>
+<p>选择<strong class="ui">模式匹配</strong>单位后，界面中<strong class="ui">查找</strong>条件下方会出现<strong class="ui">模式</strong>条件。模式按语法描述一段文本，因此适用于查询某种结构，例如动词与宾语的搭配，而不论其中具体是哪些词。<strong class="ui">模式</strong>条件支持三种类型，即<strong class="ui">序列</strong>（一串词，词与词之间可以有间隔）、<strong class="ui">依存</strong>（由语法依存关系连接的词）和<strong class="ui">短语</strong>（某一特定类型的短语）。关于模式的更多信息，见<a href="queries-patterns.html">第 17 章“查询模式与发现”</a>。</p>
+<h2 id="query-rules">“条件”中的规则<a class="anchor" href="#query-rules" aria-hidden="true">#</a></h2>
+<p>命中的标准由<strong class="ui">条件</strong>中各行来定义。<strong class="ui">条件</strong>一开始是空的，范围中的所有内容都算作命中；因此，针对<strong class="ui">句子</strong>的空查询会把所有句子都当作命中。</p>
+<p><strong class="ui">条件</strong>的底部是<strong class="ui">添加</strong>菜单，可以添加五种行：</p>
+<ul>
+<li><strong class="ui">添加规则</strong>添加针对一个字段的规则。</li>
+<li><strong class="ui">添加条件组</strong>添加由若干行组成的子组（见下文的<a href="#query-groups">条件组</a>）。</li>
+<li><strong class="ui">添加文本</strong>添加针对文本内容的查找条件（见<a href="#text-matching">匹配文本</a>）。</li>
+<li><strong class="ui">添加上下文</strong>添加基于上下文的条件，即基于命中周围其他单位的条件（见<a href="#query-context">上下文</a>）；只有代表文本片段的单位才提供这一项。</li>
+<li><strong class="ui">添加“具有”条件</strong>添加基于与命中相关联的条目的条件（见<a href="#query-has">“具有”</a>）；只有文档、编码、编码集、文档集、分组、标签和项目才提供这一项。</li>
+</ul>
+<figure class="shot" id="queries-building-add-menu"><img class="shot-light" src="../figures/zh-Hans/light/queries-building-add-menu.webp" alt="针对词的查询中，“条件”的添加菜单。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/queries-building-add-menu.webp" alt="针对词的查询中，“条件”的添加菜单。" loading="lazy"><figcaption>针对词的查询中，“条件”的添加菜单。</figcaption></figure>
+<p>点按某一行旁边的减号按钮，可以把它从条件中删除。</p>
+<h3 id="adding-a-rule">添加规则<a class="anchor" href="#adding-a-rule" aria-hidden="true">#</a></h3>
+<p>在“气候辩论”项目中，“立场”和“读者数”都是每个文档的属性。在项目中构建<strong class="ui">资料库 · 文档</strong>查询，并对这两个属性都设置规则，就可以只提取读者众多的行动派文档。这个查询找到两个文档，即“时间不多了”和“来自气候罢课的信”。查询文本如下：</p>
+<pre><code>查找 文档
+条件 &quot;立场&quot; 是以下任一 &quot;行动派&quot; 且 &quot;读者数&quot; 至少为 100000
+显示 列表
+</code></pre>
+<p>添加规则：</p>
+<ol>
+<li>在<strong class="ui">条件</strong>中点按<strong class="ui">添加</strong>，然后选取<strong class="ui">添加规则</strong>。这时会出现一条已选好字段的规则；由于还没有值，它带有红色轮廓。</li>
+<li>点按字段，选取要检验的属性，例如<strong class="ui">属性 ▸ 立场</strong>。</li>
+<li>选取一种比较方式，例如<strong class="ui">是以下任一</strong>或<strong class="ui">至少为</strong>。</li>
+<li>在<strong class="ui">值</strong>中输入值，或者点按值，勾选应当计入的那些。</li>
+</ol>
+<p>有不止一行时，条件顶部会出现一个控件，提供<strong class="ui">全部</strong>、<strong class="ui">任一</strong>和<strong class="ui">无</strong>三个选项。设为<strong class="ui">全部</strong>时（如上例中的查询），文档必须满足两条规则。值为空的规则（例如<strong class="ui">值</strong>栏为空的<strong class="ui">读者数</strong> <strong class="ui">至少为</strong>）在填入值之前不予考虑。</p>
+<h3 id="query-fields">字段<a class="anchor" href="#query-fields" aria-hidden="true">#</a></h3>
+<p>字段菜单按部分列出与当前单位相关的字段。当前单位的字段排在最前，其后是包含它的各个更高层级单位的字段。如果单位是<strong class="ui">词</strong>，这五个部分依次为<strong class="ui">词</strong>、<strong class="ui">句子</strong>、<strong class="ui">段落</strong>、<strong class="ui">片段</strong>和<strong class="ui">文档</strong>。使用当前单位所在部分以外的字段时，字段名称前会加上所在部分的名称，例如在词中查找时显示为<strong class="ui">句子 · 被动</strong>。</p>
+<p>有三项会打开另一个菜单。<strong class="ui">属性</strong>列出当前项目中的文档属性，例如“立场”和“发表日期”。<strong class="ui">统计量</strong>列出<a href="text-inspector.html">第 10 章“文本检查器”</a>中介绍的文档统计属性，包括<strong class="ui">平均句长</strong>和<strong class="ui">词汇密度</strong>。<strong class="ui">编码实例</strong>部分下的<strong class="ui">编码属性</strong>列出编码的属性，这些属性的值可以按编码实例分别设定。</p>
+<figure class="shot" id="queries-building-field-menu"><img class="shot-light" src="../figures/zh-Hans/light/queries-building-field-menu.webp" alt="“文档”查询中一条规则的字段菜单，“属性”子菜单已打开，列出“立场”“读者数”“发表日期”和“媒体”。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/queries-building-field-menu.webp" alt="“文档”查询中一条规则的字段菜单，“属性”子菜单已打开，列出“立场”“读者数”“发表日期”和“媒体”。" loading="lazy"><figcaption>“文档”查询中一条规则的字段菜单，“属性”子菜单已打开，列出“立场”“读者数”“发表日期”和“媒体”。</figcaption></figure>
+<div class="table-wrap"><table>
+<thead><tr><th>部分</th><th>字段</th><th>查找以下单位时提供</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">词</strong></td><td><strong class="ui">词</strong>、<strong class="ui">词元</strong>、<strong class="ui">词类</strong>、<strong class="ui">标记</strong>、<strong class="ui">依存</strong>、<strong class="ui">形态学</strong>、<strong class="ui">停用词</strong>、<strong class="ui">是词</strong>、<strong class="ui">是标点</strong>、<strong class="ui">句内位置</strong>、<strong class="ui">字母数</strong>、<strong class="ui">中心词词元</strong>、<strong class="ui">中心词词类</strong>、<strong class="ui">功能</strong>、<strong class="ui">词性</strong>、<strong class="ui">短语类别</strong>、<strong class="ui">否定词</strong>、<strong class="ui">在否定范围内</strong>、<strong class="ui">连接语</strong>、<strong class="ui">情态</strong>、<strong class="ui">拓扑场</strong>、<strong class="ui">助词</strong></td><td><strong class="ui">词</strong></td></tr>
+<tr><td><strong class="ui">句子</strong></td><td><strong class="ui">句子文本</strong>、<strong class="ui">句中词数</strong>、<strong class="ui">句子编号</strong>、<strong class="ui">根词元</strong>、<strong class="ui">根词词类</strong>、<strong class="ui">被动</strong></td><td><strong class="ui">词</strong>、<strong class="ui">模式匹配</strong>、<strong class="ui">句子</strong>、<strong class="ui">短语</strong>、<strong class="ui">名词块</strong>、<strong class="ui">发现</strong></td></tr>
+<tr><td><strong class="ui">段落</strong></td><td><strong class="ui">段落文本</strong>、<strong class="ui">段落编号</strong></td><td>除<strong class="ui">备忘录</strong>、<strong class="ui">链接</strong>和<strong class="ui">对齐</strong>外的所有片段单位</td></tr>
+<tr><td><strong class="ui">片段</strong></td><td><strong class="ui">文本</strong>、<strong class="ui">长度</strong>（以字符计）</td><td>所有片段单位</td></tr>
+<tr><td><strong class="ui">短语</strong></td><td><strong class="ui">短语标签</strong>、<strong class="ui">形式</strong>、<strong class="ui">宽度</strong>、<strong class="ui">短语功能</strong>、<strong class="ui">短语中心词</strong></td><td><strong class="ui">短语</strong>、<strong class="ui">名词块</strong></td></tr>
+<tr><td><strong class="ui">发现</strong></td><td><strong class="ui">分析器</strong>、<strong class="ui">发现</strong>、<strong class="ui">注释</strong></td><td><strong class="ui">发现</strong></td></tr>
+<tr><td><strong class="ui">编码实例</strong></td><td><strong class="ui">编码</strong>、<strong class="ui">编码属性</strong>、<strong class="ui">长度</strong>、<strong class="ui">创建时间</strong>、<strong class="ui">摘录</strong>、<strong class="ui">已编码备忘录</strong></td><td><strong class="ui">编码实例</strong></td></tr>
+<tr><td><strong class="ui">备忘录</strong></td><td><strong class="ui">内容</strong>、<strong class="ui">附加到</strong>、<strong class="ui">关联编码</strong>、<strong class="ui">标签</strong>、<strong class="ui">创建时间</strong>、<strong class="ui">修改时间</strong></td><td><strong class="ui">备忘录</strong></td></tr>
+<tr><td><strong class="ui">书签</strong></td><td><strong class="ui">颜色</strong>、<strong class="ui">评论</strong>、<strong class="ui">创建时间</strong>、<strong class="ui">修改时间</strong></td><td><strong class="ui">书签</strong></td></tr>
+<tr><td><strong class="ui">链接</strong></td><td><strong class="ui">关系</strong>、<strong class="ui">评论</strong>、<strong class="ui">颜色</strong>、<strong class="ui">标签</strong>、<strong class="ui">创建时间</strong>、<strong class="ui">另一文档</strong>、<strong class="ui">端点</strong></td><td><strong class="ui">链接</strong></td></tr>
+<tr><td><strong class="ui">话轮</strong></td><td><strong class="ui">说话人</strong>、<strong class="ui">开始</strong>、<strong class="ui">结束</strong>、<strong class="ui">时长</strong></td><td><strong class="ui">话轮</strong></td></tr>
+<tr><td><strong class="ui">对齐</strong></td><td><strong class="ui">译文语言</strong>、<strong class="ui">原文文本</strong>、<strong class="ui">译文文本</strong></td><td><strong class="ui">对齐</strong></td></tr>
+<tr><td><strong class="ui">文档</strong></td><td><strong class="ui">标题</strong>、<strong class="ui">作者</strong>、<strong class="ui">日期</strong>、<strong class="ui">出版方</strong>、<strong class="ui">出版物</strong>、<strong class="ui">URL</strong>、<strong class="ui">DOI</strong>、<strong class="ui">源文件</strong>、<strong class="ui">创建时间</strong>、<strong class="ui">修改时间</strong>、<strong class="ui">颜色</strong>、<strong class="ui">标签</strong>、<strong class="ui">分组</strong>、<strong class="ui">语言</strong>、<strong class="ui">格式</strong>、<strong class="ui">词符</strong>、<strong class="ui">句子</strong>、<strong class="ui">字符数</strong>、<strong class="ui">媒体时长</strong>、<strong class="ui">含媒体</strong>、<strong class="ui">是译文</strong>、<strong class="ui">有译文</strong>、<strong class="ui">已跳过索引</strong>、<strong class="ui">属性</strong>、<strong class="ui">文档集</strong>、<strong class="ui">统计量</strong>、<strong class="ui">索引状态</strong>、<strong class="ui">项目</strong></td><td><strong class="ui">文档</strong>和所有片段单位，在文档集、项目和<strong class="ui">所有项目</strong>中</td></tr>
+<tr><td><strong class="ui">编码</strong></td><td><strong class="ui">名称</strong>、<strong class="ui">路径</strong>、<strong class="ui">深度</strong>、<strong class="ui">上级</strong>、<strong class="ui">颜色</strong>、<strong class="ui">样式</strong>、<strong class="ui">适用范围</strong>、<strong class="ui">可编码</strong>、<strong class="ui">描述</strong>、<strong class="ui">标签</strong>、<strong class="ui">编码集</strong>、<strong class="ui">编码实例</strong>、<strong class="ui">已编码文档</strong></td><td><strong class="ui">编码</strong></td></tr>
+<tr><td><strong class="ui">编码集</strong></td><td><strong class="ui">名称</strong>、<strong class="ui">编码</strong></td><td><strong class="ui">编码集</strong></td></tr>
+<tr><td><strong class="ui">文档集</strong></td><td><strong class="ui">名称</strong>、<strong class="ui">种类</strong>、<strong class="ui">文档</strong>、<strong class="ui">颜色</strong></td><td><strong class="ui">文档集</strong></td></tr>
+<tr><td><strong class="ui">分组</strong></td><td><strong class="ui">名称</strong>、<strong class="ui">文档</strong></td><td><strong class="ui">分组</strong></td></tr>
+<tr><td><strong class="ui">属性</strong></td><td><strong class="ui">名称</strong>、<strong class="ui">类型</strong>、<strong class="ui">所属</strong>、<strong class="ui">描述</strong>、<strong class="ui">选项</strong>、<strong class="ui">已设置值</strong></td><td><strong class="ui">属性</strong></td></tr>
+<tr><td><strong class="ui">标签</strong></td><td><strong class="ui">名称</strong>、<strong class="ui">使用次数</strong>、<strong class="ui">项目</strong>、<strong class="ui">文档</strong>、<strong class="ui">编码</strong></td><td><strong class="ui">标签</strong></td></tr>
+<tr><td><strong class="ui">词典词条</strong></td><td><strong class="ui">词条</strong>、<strong class="ui">类别</strong>、<strong class="ui">词典</strong>、<strong class="ui">命中</strong></td><td><strong class="ui">词典词条</strong></td></tr>
+<tr><td><strong class="ui">分析器</strong></td><td><strong class="ui">名称</strong>、<strong class="ui">语言</strong>、<strong class="ui">图例键</strong></td><td><strong class="ui">分析器</strong></td></tr>
+<tr><td><strong class="ui">项目</strong></td><td><strong class="ui">名称</strong>、<strong class="ui">颜色</strong>、<strong class="ui">标签</strong>、<strong class="ui">文档</strong></td><td><strong class="ui">项目</strong></td></tr>
+</tbody></table></div>
+<p>词的各个字段来自索引。<strong class="ui">词性</strong>把<strong class="ui">词类</strong>中较细的类别归并为较大的类别，专有名词归入名词，助动词归入动词。如果需要进一步了解词性和词类，见<a href="grammar-inspector.html">第 11 章“语法检查器”</a>。文档的<strong class="ui">情态</strong>、<strong class="ui">连接语</strong>、<strong class="ui">拓扑场</strong>（德语）和<strong class="ui">助词</strong>（中文）透镜标注，见<a href="lenses.html">第 6 章“透镜”</a>中的说明。</p>
+<h3 id="comparisons-and-values">比较方式与值<a class="anchor" href="#comparisons-and-values" aria-hidden="true">#</a></h3>
+<p>规则允许的比较方式取决于字段所含值的类型。</p>
+<div class="table-wrap"><table>
+<thead><tr><th>字段种类</th><th>示例</th><th>比较方式</th></tr></thead>
+<tbody>
+<tr><td>文本</td><td><strong class="ui">标题</strong>、<strong class="ui">词元</strong>、<strong class="ui">评论</strong>、媒体</td><td><strong class="ui">是</strong>、<strong class="ui">不是</strong>、<strong class="ui">包含</strong>、<strong class="ui">不包含</strong>、<strong class="ui">匹配</strong>、<strong class="ui">为空</strong>、<strong class="ui">不为空</strong></td></tr>
+<tr><td>数字</td><td><strong class="ui">词符</strong>、<strong class="ui">长度</strong>、读者数</td><td><strong class="ui">是</strong>、<strong class="ui">不是</strong>、<strong class="ui">小于</strong>、<strong class="ui">最多为</strong>、<strong class="ui">大于</strong>、<strong class="ui">至少为</strong>、<strong class="ui">介于</strong>、<strong class="ui">为空</strong>、<strong class="ui">不为空</strong></td></tr>
+<tr><td>时长</td><td><strong class="ui">媒体时长</strong>、<strong class="ui">开始</strong>、<strong class="ui">时长</strong></td><td>与数字相同</td></tr>
+<tr><td>日期</td><td><strong class="ui">日期</strong>、<strong class="ui">创建时间</strong>、发表日期</td><td><strong class="ui">是</strong>、<strong class="ui">早于</strong>、<strong class="ui">晚于</strong>、<strong class="ui">不早于</strong>、<strong class="ui">不晚于</strong>、<strong class="ui">介于</strong>、<strong class="ui">为空</strong>、<strong class="ui">不为空</strong></td></tr>
+<tr><td>是或否</td><td><strong class="ui">被动</strong>、<strong class="ui">停用词</strong>、<strong class="ui">含媒体</strong></td><td><strong class="ui">为真</strong>、<strong class="ui">为假</strong>、<strong class="ui">为空</strong></td></tr>
+<tr><td>列表中的一个值</td><td><strong class="ui">编码</strong>、<strong class="ui">词类</strong>、<strong class="ui">分组</strong>、<strong class="ui">说话人</strong>、<strong class="ui">颜色</strong>、立场</td><td><strong class="ui">是以下任一</strong>、<strong class="ui">不是以下任何</strong>、<strong class="ui">为空</strong>、<strong class="ui">不为空</strong></td></tr>
+<tr><td>多个值</td><td><strong class="ui">标签</strong></td><td><strong class="ui">包含以下任一</strong>、<strong class="ui">包含以下全部</strong>、<strong class="ui">不含以下任何</strong>、<strong class="ui">为空</strong>、<strong class="ui">不为空</strong></td></tr>
+<tr><td>语言和格式</td><td><strong class="ui">语言</strong>、<strong class="ui">格式</strong></td><td><strong class="ui">是以下任一</strong>、<strong class="ui">不是以下任何</strong></td></tr>
+</tbody></table></div>
+<p>值根据各自的类型输入：</p>
+<ul>
+<li>文本和数字值直接填入<strong class="ui">值</strong>栏。<strong class="ui">介于</strong>会显示两个栏。</li>
+<li>日期值可以用日期选择器选择。选择器默认显示当天，但在你修改之前，这条规则不会生效。</li>
+<li>时长值应按分和秒（<code>12:30</code>）或按时、分、秒（<code>1:05:00</code>）输入。单独一个数字表示秒数。</li>
+<li>列表项的值以复选框形式出现在点按值时打开的小面板中；勾选后，值会显示“行动派”或“怀疑派”等；<strong class="ui">无</strong>表示当前没有选中任何项。</li>
+</ul>
+<p>LemmaLoom 比较文本值时不区分大小写。变音符号以及字符的全角与半角之分（Ａ 与 A）同样不影响比较。因此，如果用<strong class="ui">标题</strong> <strong class="ui">包含</strong> <code>２０２４</code>（全角数字）进行搜索，会得到“2024 热浪报告”这样的结果。<strong class="ui">匹配</strong>要求与整个值相匹配，并允许使用通配符（<code>*</code> 代替一串字符，<code>?</code> 代替任意单个字符）。<strong class="ui">标题</strong> <strong class="ui">匹配</strong> <code>?型*</code> 会得到“模型总是失准”和“转型谁来买单”。而<strong class="ui">标题</strong> <strong class="ui">匹配</strong> <code>*不多了</code> 会得到“时间不多了”，但不匹配“时间不多了 (英语)”，因为模式必须与整个标题值相匹配。</p>
+<p><strong class="ui">编码</strong>字段列出各个编码及其路径，例如“紧迫性 › 时间节点”。在文档集或项目中，只属于某个文档的编码会附上该文档的标题。<strong class="ui">编码</strong>规则正下方有一个<strong class="ui">包括子编码</strong>选项，默认是开启的，所以“情绪”包括它的子编码“恐惧”和“希望”。</p>
+<figure class="shot" id="queries-building-code-value"><img class="shot-light" src="../figures/zh-Hans/light/queries-building-code-value.webp" alt="“编码实例”查询中“编码”规则的值面板，已勾选“紧迫性”，值下方勾选了“包括子编码”。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/queries-building-code-value.webp" alt="“编码实例”查询中“编码”规则的值面板，已勾选“紧迫性”，值下方勾选了“包括子编码”。" loading="lazy"><figcaption>“编码实例”查询中“编码”规则的值面板，已勾选“紧迫性”，值下方勾选了“包括子编码”。</figcaption></figure>
+<p><strong class="ui">标记</strong>（词的语法标记，不是你自己添加的标签）列出范围内各语言所用的标记集。同样，<strong class="ui">依存</strong>列出依存关系集，<strong class="ui">短语标签</strong>列出短语标签集。范围中包含不止一种语言时，这三个字段中的条目会带有语言徽标，因为英语、德语和中文使用不同的标记集。</p>
+<h3 id="query-groups">条件组<a class="anchor" href="#query-groups" aria-hidden="true">#</a></h3>
+<p>条件和条件组顶部的控件（<strong class="ui">全部</strong>、<strong class="ui">任一</strong>或<strong class="ui">无</strong>）决定如何处理满足其规则的命中。换句话说，这个控件决定条件或条件组保留的是满足其中所有规则的命中（<strong class="ui">全部</strong>）、满足其中任一规则的命中（<strong class="ui">任一</strong>），还是一条规则也不满足的命中（<strong class="ui">无</strong>）。</p>
+<p>与普通条件相比，条件组的特别之处在于可以在<em>且</em>之中放进一个<em>或</em>。例如，假设你想在“气候辩论”项目中找出读者众多的文章里的“情绪”编码实例，以及怀疑派文章中的“情绪”编码实例，不论后者的读者数多少。可以在“气候辩论”中使用一个查找<strong class="ui">标注 · 编码实例</strong>的查询。这个查询中有一条规则<strong class="ui">编码</strong> <strong class="ui">是以下任一</strong> “情绪”，并勾选了<strong class="ui">包括子编码</strong>。这条规则下面是一个设为<strong class="ui">任一</strong>的条件组。这个条件组包含两项标准，即<strong class="ui">读者数</strong> <strong class="ui">至少为</strong> 100,000，以及<strong class="ui">立场</strong> <strong class="ui">是以下任一</strong> “怀疑派”。条件保持为<strong class="ui">全部</strong>。查询文本用括号表示条件组：</p>
+<pre><code>查找 编码实例
+条件 编码 是以下任一 &quot;情绪&quot; 且 (&quot;读者数&quot; 至少为 100000 或 &quot;立场&quot; 是以下任一 &quot;怀疑派&quot;)
+显示 列表
+</code></pre>
+<figure class="shot" id="queries-building-where-groups"><img class="shot-light" src="../figures/zh-Hans/light/queries-building-where-groups.webp" alt="“条件”中含有一条“编码”规则和一个嵌套的“任一”条件组。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/queries-building-where-groups.webp" alt="“条件”中含有一条“编码”规则和一个嵌套的“任一”条件组。" loading="lazy"><figcaption>“条件”中含有一条“编码”规则和一个嵌套的“任一”条件组。</figcaption></figure>
+<p>添加条件组：</p>
+<ol>
+<li>在<strong class="ui">条件</strong>中点按<strong class="ui">添加</strong>，然后选取<strong class="ui">添加条件组</strong>。新条件组一开始设为<strong class="ui">任一</strong>，含有一条规则。</li>
+<li>像设置其他规则一样设置这条规则。</li>
+<li>要在条件组中添加更多规则，请点按条件组自己的<strong class="ui">添加</strong>按钮，然后选取<strong class="ui">添加规则</strong>。</li>
+</ol>
+<p>规则的嵌套不能超过三层，不过<strong class="ui">添加</strong>菜单允许超出这个限度。条件组里有一个子条件组是可以的，但在这个子条件组里再嵌套一个条件组就算嵌套过深了。上下文行和“具有”行各算作两层。在<strong class="ui">条件</strong>本身中，这些行下面只能放规则。而在条件组中，这些行下面的规则就已经嵌套过深了。嵌套过深的规则会带有红色轮廓（<strong class="ui">嵌套过深</strong>），查询会等到它被删除后才运行。</p>
+<h3 id="frozen-lists">冻结列表<a class="anchor" href="#frozen-lists" aria-hidden="true">#</a></h3>
+<p><em>冻结列表</em>是存储在查询内部的一份词表。你可以通过<strong class="ui">操作</strong>菜单中的<strong class="ui">冻结值</strong>，从<strong class="ui">搭配词</strong>或<strong class="ui">关键词</strong>查询的结果创建冻结列表（见<a href="queries-using-results.html">第 18 章“使用查询结果”</a>）。<strong class="ui">类似某编码的片段</strong>也会创建冻结列表（见<a href="queries-patterns.html">第 17 章“查询模式与发现”</a>中的<a href="queries-patterns.html#passages-like-a-code">类似某编码的片段</a>）。</p>
+<p><strong class="ui">冻结值</strong>会用一个新的、未存储的<strong class="ui">词</strong>查询替换现有查询。新查询只有一条规则，把查询计数所依据的字段（<strong class="ui">词元</strong>、<strong class="ui">词</strong>或<strong class="ui">词类</strong>）与列表中的词进行比较。新查询和冻结列表沿用被冻结查询的名称。最多可以存储 200 个词，每个词都带有它在结果中的得分。查询文本按名称显示冻结列表，例如 <code>词元 是以下任一 &quot;关键词：行动派&quot;</code>。</p>
+<p>即使文档发生变化，这些列表中的词也不会改变。要查看行动派的关键词出现在怀疑派文章的哪些地方，请把冻结后的查询存储到项目中，然后在“怀疑派”文档集中打开它。</p>
+<p>查看带冻结列表的查询的<strong class="ui">条件</strong>时，<strong class="ui">词元</strong>和<strong class="ui">词</strong>规则的值会显示为<strong class="ui">无</strong>。如果是<strong class="ui">词类</strong>规则，冻结列表会与可用的词类进行比对，每个词类会相应地显示为勾选或未勾选。勾选或取消勾选单个词类，会移除冻结列表，改用你的选择。要从查询中移除冻结列表，移除它所在的规则即可。</p>
+<figure class="shot" id="queries-building-frozen-list"><img class="shot-light" src="../figures/zh-Hans/light/queries-building-frozen-list.webp" alt="“行动派”文档集中的关键词查询在“冻结值”之后的“条件”，其中“词元”规则的值显示为“无”。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/queries-building-frozen-list.webp" alt="“行动派”文档集中的关键词查询在“冻结值”之后的“条件”，其中“词元”规则的值显示为“无”。" loading="lazy"><figcaption>“行动派”文档集中的关键词查询在“冻结值”之后的“条件”，其中“词元”规则的值显示为“无”。</figcaption></figure>
+<p>带冻结列表的查询为结果列表额外提供一种排序方式，即<strong class="ui">得分</strong>，它按片段所含的冻结词为片段排序。关于这个得分的更多信息，见<a href="queries-patterns.html">第 17 章“查询模式与发现”</a>。</p>
+<h2 id="text-matching">匹配文本<a class="anchor" href="#text-matching" aria-hidden="true">#</a></h2>
+<p>查找词或字符有两种方法。在<strong class="ui">条件</strong>中使用<strong class="ui">添加文本</strong>时，你是在查询的规则中添加一个文本行，作为命中的要求。这样，命中的句子会包含你的某个词条。而如果在<strong class="ui">查找</strong>中使用<strong class="ui">文本 · 文本匹配</strong>，每一处匹配都会成为一个单独的命中。同样的文本行会出现在<strong class="ui">查找</strong>条件中。</p>
+<p>文本行包含两个菜单。第一个菜单设定词条与什么元素匹配；第二个菜单（初始为<strong class="ui">词条</strong>）设定词条从哪里来。在菜单下方输入词条后，可以使用<strong class="ui">区分大小写</strong>和<strong class="ui">全词匹配</strong>这两个复选框。</p>
+<h3 id="text-targets">比较的对象<a class="anchor" href="#text-targets" aria-hidden="true">#</a></h3>
+<div class="table-wrap"><table>
+<thead><tr><th>第一个菜单</th><th>每个词条比较的对象</th><th>大小写</th><th>重音符号</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">词</strong></td><td>每个词的书写形式</td><td>忽略，除非勾选了<strong class="ui">区分大小写</strong></td><td>忽略，除非勾选了<strong class="ui">区分大小写</strong></td></tr>
+<tr><td><strong class="ui">词形</strong></td><td>每个词的词典形式</td><td>忽略</td><td>区分</td></tr>
+<tr><td><strong class="ui">词元</strong></td><td>每个词的词典形式</td><td>忽略</td><td>忽略</td></tr>
+<tr><td><strong class="ui">文本</strong></td><td>文本中的字符，不论出现在哪里</td><td>忽略，除非勾选了<strong class="ui">区分大小写</strong></td><td>忽略</td></tr>
+</tbody></table></div>
+<p>对于词，<strong class="ui">词元</strong>通常能得到最好的结果，因为搜索时会匹配一个词的所有屈折形式。如果你的分析需要确切知道出现的是哪种词形，<strong class="ui">词</strong>更合适，例如要单独找出 <em>emergency</em> 而不要 <em>emergencies</em>。<strong class="ui">词形</strong>与<strong class="ui">词元</strong>的作用完全相同，只是区分重音符号；因此，德语的 <em>schon</em> 和 <em>schön</em> 在<strong class="ui">词形</strong>中被视为不同的词，在<strong class="ui">词元</strong>中则不然。</p>
+<p>这三个选项（<strong class="ui">词形</strong>、<strong class="ui">词</strong>和<strong class="ui">词元</strong>）都根据索引匹配完整的词。由几个词组成的词条，必须按顺序与相邻的词完全重合，中间不能间断，并且位于同一个句子中。匹配前会去掉连字符，因此搜索 <code>carbon-neutral</code> 既能找到 <em>carbon-neutral</em>，也能找到 <em>carbon neutral</em>。如果文档没有索引，这三者的作用都与选择<strong class="ui">文本</strong>相同。</p>
+<p><strong class="ui">文本</strong>匹配的是字面上的字符，而不像<strong class="ui">词形</strong>、<strong class="ui">词</strong>和<strong class="ui">词元</strong>那样根据索引匹配完整的词。勾选<strong class="ui">全词匹配</strong>后，只有当匹配内容前后紧邻的位置都不是字母或数字时，才算匹配。取消勾选它，就可以查找嵌在较长字符串中的词。<strong class="ui">全词匹配</strong>只对<strong class="ui">文本</strong>起作用。</p>
+<p>使用<strong class="ui">词形</strong>和<strong class="ui">词元</strong>时，词条中的每个词都必须以词典形式输入；也就是说，要输入 <code>it seem</code> 而不是 <em>it seems</em>，因为 <em>seems</em> 的词典形式是 <em>seem</em>。或者改用<strong class="ui">词</strong>。</p>
+<p>对于需要索引的单位（例如<strong class="ui">句子</strong>），<strong class="ui">条件</strong>中新添的文本行默认为<strong class="ui">词</strong>；对于其他单位（例如<strong class="ui">编码实例</strong>），则默认为<strong class="ui">文本</strong>。同样，<strong class="ui">文本匹配</strong>默认为<strong class="ui">文本</strong>。</p>
+<p>查找<strong class="ui">编码</strong>或<strong class="ui">文档集</strong>时，文本行在匹配时不区分大小写和重音符号。它们在名称中查找任一普通词条，所以 <code>临界</code> 能匹配“临界点”。查找<strong class="ui">文档</strong>时，文本行扫描文档的文本。在资料库单位中，文本行只适用于这三种。</p>
+<h3 id="text-terms">词条<a class="anchor" href="#text-terms" aria-hidden="true">#</a></h3>
+<p>在<strong class="ui">词条</strong>模式下，词条由你手动输入。</p>
+<ol>
+<li>点按<strong class="ui">添加词条</strong>。</li>
+<li>输入一个词条，然后按下 Return 键。要一次添加几个，请用逗号隔开，例如 <code>危机, 紧急, 期限</code>。</li>
+<li>要移除一个词条，请点按它旁边的叉号。</li>
+</ol>
+<p>这里的各个词条互为备选，命中只要满足其中至少一个即可。如果文本行中没有词条，LemmaLoom 会忽略这一行。</p>
+<h3 id="text-dictionaries">词典<a class="anchor" href="#text-dictionaries" aria-hidden="true">#</a></h3>
+<p>在<strong class="ui">词典</strong>模式下，词条直接取自项目中的某个词典。例如，“气候辩论”有一个名为“模糊限制语”的词典，其中包含“近似语”和“缓和语”两个类别。下图展示的是在文本行中查询“缓和语”。</p>
+<figure class="shot" id="queries-building-text-dictionary"><img class="shot-light" src="../figures/zh-Hans/light/queries-building-text-dictionary.webp" alt="查找“模糊限制语”词典中“缓和语”类别的文本行。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/queries-building-text-dictionary.webp" alt="查找“模糊限制语”词典中“缓和语”类别的文本行。" loading="lazy"><figcaption>查找“模糊限制语”词典中“缓和语”类别的文本行。</figcaption></figure>
+<p>用词典查找：</p>
+<ol>
+<li>在第二个菜单中选取<strong class="ui">词典</strong>。</li>
+<li>从随之出现的菜单中选取词典。</li>
+<li>如果只想搜索部分类别，请点按词典下方的控件，在打开的面板中勾选这些类别。什么都不勾选时，控件显示<strong class="ui">无</strong>，并使用所有类别。</li>
+</ol>
+<p>每次运行查询时都会读取词典；因此，每当你向“模糊限制语”添加一个词条，下次运行时就能搜索到它。第一个菜单和两个复选框适用于词典中的所有词条。词典“模糊限制语”收录的是说话时实际使用的措辞，例如<em>我觉得</em>或<em>差不多</em>。因此，对于这个词典，<strong class="ui">词</strong>比<strong class="ui">词元</strong>更合适。关于词典透镜中的词典匹配，详见<a href="dictionaries.html">第 19 章“词典”</a>。</p>
+<p>通过词典查找<strong class="ui">文本匹配</strong>时，每个匹配实例还带有所匹配词条的词典类别。在<strong class="ui">显示</strong>条件的键行中，从显示<strong class="ui">字段</strong>的菜单中选择<strong class="ui">类别</strong>后，就会按类别统计匹配；<strong class="ui">按文档统计词典类别</strong>模板就是这样工作的。</p>
+<h3 id="regular-expressions">正则表达式<a class="anchor" href="#regular-expressions" aria-hidden="true">#</a></h3>
+<p><em>正则表达式</em>是由字符组成的字符串模式。如果你要找的内容变化较多，无法用词条列表来界定，例如拼写变体，正则表达式就很有用。例如，模式 <code>排放量?</code> 能找到<em>排放</em>和<em>排放量</em>，因为 <code>?</code> 表示它前面的字符可有可无；它也会匹配<em>排放者</em>中的<em>排放</em>。同样，在英文文本中，<code>\bheat[- ]?waves?\b</code> 会找到 <em>heat wave</em>、<em>heat-wave</em>、<em>heatwave</em> 和 <em>heat waves</em>。在这个例子中，<code>[- ]</code> 匹配一个连字符或一个空格，<code>\b</code> 匹配词的边界。更多基本写法见<a href="importing.html">第 4 章“导入资料”</a>中的<a href="importing.html#exclude-from-analysis">从索引中排除文本</a>。</p>
+<ol>
+<li>在第二个菜单中选取<strong class="ui">正则表达式</strong>。</li>
+<li>在<strong class="ui">模式</strong>中输入模式。</li>
+</ol>
+<p>不论第一个菜单怎样设置，正则表达式都会搜索文本中的所有字符。除非勾选了<strong class="ui">区分大小写</strong>，否则忽略大小写；但重音符号始终区分。词的边界必须通过在模式两端加上 <code>\b</code> 来指定。模式长度不能超过 1,000 个字符。如果 LemmaLoom 无法解读模式，模式会以红色边框标出，查询会等待你改正。结果区域会显示<strong class="ui">无效模式</strong>；将鼠标指针悬停在这一行上时，也会显示同样的内容。</p>
+<h3 id="chinese-text">中文文本<a class="anchor" href="#chinese-text" aria-hidden="true">#</a></h3>
+<p>中文书写时词与词之间不用空格分隔，因此用<strong class="ui">词</strong>、<strong class="ui">词形</strong>或<strong class="ui">词元</strong>搜索中文词条时，词条的开头和结尾必须与建立索引时找出的词的边界相吻合。</p>
+<p>词条可以由多个词组成。不论索引把<em>科学</em>识别为一个词，还是识别为<em>科</em>和<em>学</em>两个单独的词，词条<em>科学</em>都能匹配。<em>科学家</em>这样较长的词，对 LemmaLoom 来说是另一个词。词条中的空格会被忽略。</p>
+<p>如果选择<strong class="ui">文本</strong>，LemmaLoom 会匹配中文词条的每一次出现，而不论这些字符位于其他词中的什么位置。<strong class="ui">全词匹配</strong>在这里不适用。如果不确定索引如何切分某个词，请使用<strong class="ui">文本</strong>。</p>
+<h2 id="query-context">上下文<a class="anchor" href="#query-context" aria-hidden="true">#</a></h2>
+<p>上下文行根据周围的单位决定命中是保留还是去掉。上下文行是把编码与文本片段联系起来的常用手段；例如，它们可以找出你编码为“紧迫性”的片段中的词，或者仍未编码的句子。上下文行从左到右读起来像一个短语。因此，对于<strong class="ui">有</strong> <strong class="ui">重叠</strong> <strong class="ui">编码实例</strong>，LemmaLoom 会保留与任一编码实例重叠的命中。在这一行下面，你可以为其他单位添加规则。例如，第一个查询所用的上下文行带有规则<strong class="ui">编码</strong> <strong class="ui">是以下任一</strong> “紧迫性”。</p>
+<p>每个新的上下文行初始为<strong class="ui">有</strong>、<strong class="ui">重叠</strong>和<strong class="ui">编码实例</strong>。</p>
+<p>在第一个菜单中，你选择需要多少个其他单位：</p>
+<ul>
+<li><strong class="ui">有</strong>表示至少一个。</li>
+<li><strong class="ui">没有</strong>要求其他单位的数目为零。</li>
+<li><strong class="ui">至少</strong>要求数目不少于步进器中的数字，范围为 1 至 99。</li>
+<li><strong class="ui">至多</strong>允许数目不超过步进器中的数字，零也包括在内。</li>
+</ul>
+<p>第二个菜单设定单位之间的关系，第三个菜单设定其他单位是什么，可以是任何片段单位。只有当<strong class="ui">查找</strong>使用<strong class="ui">模式匹配</strong>或<strong class="ui">文本匹配</strong>时，第三个菜单才会提供这一单位。更改单位会移除这一行下面的规则。</p>
+<div class="table-wrap"><table>
+<thead><tr><th>关系</th><th>命中在以下情况下计入</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">重叠</strong></td><td>与另一个单位至少共有一个字符</td></tr>
+<tr><td><strong class="ui">位于其中</strong></td><td>完全位于另一个单位之内</td></tr>
+<tr><td><strong class="ui">包含</strong></td><td>完全包含另一个单位</td></tr>
+<tr><td><strong class="ui">范围相同</strong></td><td>起止位置与另一个单位完全相同</td></tr>
+<tr><td><strong class="ui">与之同句</strong></td><td>起点所在的句子，就是另一个单位起点所在的句子</td></tr>
+<tr><td><strong class="ui">与之同段</strong></td><td>起点所在的段落，就是另一个单位起点所在的段落</td></tr>
+<tr><td><strong class="ui">与之同一话轮</strong></td><td>与另一个单位一起位于同一个话轮之内</td></tr>
+<tr><td><strong class="ui">邻近</strong></td><td>与另一个单位相距不超过所设的词数，前后皆可</td></tr>
+<tr><td><strong class="ui">之前</strong></td><td>在另一个单位开始之前结束，两者之间的词不超过所设的数目</td></tr>
+<tr><td><strong class="ui">之后</strong></td><td>在另一个单位结束之后开始，两者之间的词不超过所设的数目</td></tr>
+<tr><td><strong class="ui">链接到</strong></td><td>与一个链接的一端重叠；这一行下面的规则检验该链接</td></tr>
+<tr><td><strong class="ui">译为</strong></td><td>与一个已和译文配对的语段重叠；规则检验这一配对</td></tr>
+</tbody></table></div>
+<p><strong class="ui">邻近</strong>、<strong class="ui">之前</strong>和<strong class="ui">之后</strong>这三种关系都带有一个距离步进器，用于设定两个单位之间允许相隔的词数，初始为 3，范围为 0 至 50 个词。只有词计入距离。距离为 0 表示两个单位紧挨着，中间没有词。因此，相互重叠的单位之间的距离总是 0。<strong class="ui">邻近</strong>会跨越句子边界进行查找。</p>
+<p>上下文总是来自命中本身以外的单位。</p>
+<p>使用<strong class="ui">与之同句</strong>、<strong class="ui">邻近</strong>、<strong class="ui">之前</strong>和<strong class="ui">之后</strong>关系时，文档必须先建立索引。使用<strong class="ui">与之同一话轮</strong>关系时，文档还必须有转写文本。因此，使用这些关系的查询只会在这样的文档中找到命中。</p>
+<p>查找<strong class="ui">句子</strong>的查询如果带有上下文行<strong class="ui">没有</strong> <strong class="ui">重叠</strong> <strong class="ui">编码实例</strong>，并且这一行下面没有规则，就会返回尚未编码的句子。</p>
+<p>要在项目中找出与情绪相关的编码实例附近的<em>孩子</em>，可以用一个查找<strong class="ui">词</strong>的查询，其中带有规则<strong class="ui">词元</strong> <strong class="ui">是</strong> <code>孩子</code>。这里使用的上下文行是<strong class="ui">有</strong> <strong class="ui">邻近</strong> <strong class="ui">编码实例</strong>，距离设为 5 个词。这一行含有规则<strong class="ui">编码</strong> <strong class="ui">是以下任一</strong> “情绪”。查询文本为 <code>词元 是 &quot;孩子&quot; 且 有 邻近 5 编码实例 (编码 是以下任一 &quot;情绪&quot;)</code>。</p>
+<figure class="shot" id="queries-building-context-near"><img class="shot-light" src="../figures/zh-Hans/light/queries-building-context-near.webp" alt="保留距“情绪”编码实例五个词以内的词的上下文行。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/queries-building-context-near.webp" alt="保留距“情绪”编码实例五个词以内的词的上下文行。" loading="lazy"><figcaption>保留距“情绪”编码实例五个词以内的词的上下文行。</figcaption></figure>
+<p><strong class="ui">链接到</strong>考察的是链接，而不是这一行的单位。选取<strong class="ui">链接</strong>作为这一行的单位后，这一行下面的规则针对的是链接的字段，包括<strong class="ui">关系</strong>和<strong class="ui">评论</strong>。不带规则的<strong class="ui">有</strong> <strong class="ui">链接到</strong> <strong class="ui">链接</strong>会保留与某个链接的一个端点重叠的每个命中。</p>
+<p><strong class="ui">译为</strong>考察的是文档与其译文之间的关系。只有翻译了文档之后才会有这种关系（见<a href="translations.html">第 9 章“译文与分屏浏览”</a>）。要检验<strong class="ui">译文语言</strong>或<strong class="ui">译文文本</strong>，应选取<strong class="ui">对齐</strong>作为这一行的单位。例如，在“时间不多了”的<strong class="ui">查询</strong>分面中，查找<strong class="ui">句子</strong>的查询可以带有上下文行<strong class="ui">有</strong> <strong class="ui">译为</strong> <strong class="ui">对齐</strong>，规则为<strong class="ui">译文文本</strong> <strong class="ui">包含</strong> <code>climate</code>。它会找出英文译文中含有 <em>climate</em> 的那些中文句子。</p>
+<h2 id="query-has">“具有”条件<a class="anchor" href="#query-has" aria-hidden="true">#</a></h2>
+<p>“具有”行统计属于命中的所有条目，例如一个文档的编码实例、一个文档集的文档。“具有”行的读法与上下文行相同，有助于掌握编码进度，包括跟踪哪些文档还没有编码。例如，<strong class="ui">具有</strong> <strong class="ui">没有</strong> <strong class="ui">编码实例</strong>这一行会找出完全没有编码过的文档。</p>
+<p>以下单位提供<strong class="ui">添加“具有”条件</strong>：</p>
+<div class="table-wrap"><table>
+<thead><tr><th>查找的单位</th><th>“具有”条件可以统计</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">文档</strong></td><td><strong class="ui">编码实例</strong>、<strong class="ui">备忘录</strong>、<strong class="ui">书签</strong>、<strong class="ui">链接</strong>、<strong class="ui">话轮</strong>、<strong class="ui">发现</strong>、<strong class="ui">对齐</strong></td></tr>
+<tr><td><strong class="ui">编码</strong></td><td><strong class="ui">编码实例</strong>、<strong class="ui">备忘录</strong></td></tr>
+<tr><td><strong class="ui">编码集</strong></td><td><strong class="ui">编码</strong></td></tr>
+<tr><td><strong class="ui">文档集</strong>、<strong class="ui">分组</strong>、<strong class="ui">标签</strong>、<strong class="ui">项目</strong></td><td><strong class="ui">文档</strong></td></tr>
+</tbody></table></div>
+<p>数量菜单包括<strong class="ui">至少一个</strong>、<strong class="ui">没有</strong>、<strong class="ui">至少</strong>和<strong class="ui">至多</strong>，与上下文行中的大致相同。<strong class="ui">至少</strong>和<strong class="ui">至多</strong>的数值范围为 1 至 999。在这一行下面，规则用于限定统计哪些条目。例如，<strong class="ui">具有</strong> <strong class="ui">没有</strong> <strong class="ui">编码实例</strong>这一行如果带有规则<strong class="ui">编码</strong> <strong class="ui">是以下任一</strong> “成本”，就会返回不含“成本”编码实例的文档，不论它们是否有其他编码实例。</p>
+<figure class="shot" id="queries-building-has-no-codings"><img class="shot-light" src="../figures/zh-Hans/light/queries-building-has-no-codings.webp" alt="针对项目的“文档”查询中，一个设为“没有 编码实例”的“具有”行，规则为编码是以下任一“成本”。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/queries-building-has-no-codings.webp" alt="针对项目的“文档”查询中，一个设为“没有 编码实例”的“具有”行，规则为编码是以下任一“成本”。" loading="lazy"><figcaption>针对项目的“文档”查询中，一个设为“没有 编码实例”的“具有”行，规则为编码是以下任一“成本”。</figcaption></figure>
+<p>查找编码时则不同，只统计范围之内、并且带该编码本身的编码实例。在“怀疑派”文档集中，查找<strong class="ui">编码</strong>并设置<strong class="ui">具有</strong> <strong class="ui">至少</strong> 5 <strong class="ui">编码实例</strong>的查询，会返回在怀疑派文档中使用了五次或更多次的编码。假设每个“紧迫性”片段都已编码为“时间节点”或“临界点”，<strong class="ui">具有</strong> <strong class="ui">没有</strong> <strong class="ui">编码实例</strong>会返回“紧迫性”。<strong class="ui">具有</strong> <strong class="ui">备忘录</strong>统计的是项目各文档中与该编码关联的所有备忘录，包括范围之外的文档中的备忘录。</p>
+<h2 id="query-categories">类别与着色依据<a class="anchor" href="#query-categories" aria-hidden="true">#</a></h2>
+<p>类别把命中分成带标签、带颜色的组。如果查询用作透镜，类别会用不同的颜色和样式标注各自的命中，并列在该透镜的图例中。列表会多出一个<strong class="ui">类别</strong>列，而在<strong class="ui">显示</strong>条件中使用<strong class="ui">分组依据</strong> ▸ <strong class="ui">类别</strong>，可以查看每个类别各有多少命中。</p>
+<p>例如，在“气候辩论”项目的查询“紧迫性话题”中，你可以添加一个名为“危机”的类别，其中的文本行设为<strong class="ui">词元</strong>，查找<em>危机</em>和<em>紧急</em>；再添加一个名为“期限”的类别，其中的文本行设为<strong class="ui">词元</strong>，查找<em>期限</em>。把这个查询用作透镜时，它会用不同的颜色标注这两种紧迫性。</p>
+<figure class="shot" id="queries-building-categories"><img class="shot-light" src="../figures/zh-Hans/light/queries-building-categories.webp" alt="“类别”条件，为“紧迫性话题”查询设了两个类别。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/queries-building-categories.webp" alt="“类别”条件，为“紧迫性话题”查询设了两个类别。" loading="lazy"><figcaption>“类别”条件，为“紧迫性话题”查询设了两个类别。</figcaption></figure>
+<p>类别由规则构成。添加类别：</p>
+<ol>
+<li>打开<strong class="ui">类别</strong>条件，点按<strong class="ui">添加类别</strong>。随即出现一行，名为“类别 1”。</li>
+<li>点按彩色圆点，选取一种颜色。</li>
+<li>把“类别 1”替换为你自己的名称。</li>
+<li>在名称旁边的菜单中选取<strong class="ui">高亮</strong>或<strong class="ui">下划线</strong>。</li>
+<li>在这一行下面添加规则，方法与<strong class="ui">条件</strong>相同。</li>
+</ol>
+<p>至于类别的顺序，每个命中会从上往下取规则得到满足的第一个类别。勾选<strong class="ui">允许多个类别</strong>后，每个命中会得到适用于它的所有类别。这样，如果一个句子既提到<em>危机</em>又提到<em>期限</em>，它就同时属于“危机”和“期限”两个类别。如果创建了没有规则的类别，它不会得到任何命中。不满足任何类别规则的命中，其<strong class="ui">类别</strong>列为空。最后，LemmaLoom 会忽略不完整的规则；因此，如果一个类别唯一的规则还没有值，在填好这条规则之前，它会得到所有命中。</p>
+<p><strong class="ui">类别</strong>条件顶部的<strong class="ui">着色依据</strong>功能根据字段而不是规则来创建类别。在它旁边的菜单中选择一个字段，该字段的每个不同值都会成为一个有自己颜色的独立类别。对于<strong class="ui">编码实例</strong>，<strong class="ui">着色依据</strong> <strong class="ui">编码</strong>的作用与此类似，它为每个不同的编码分配一种颜色。因此，如果想查看“电台辩论”中按类别区分的<strong class="ui">话轮</strong>，可以选择<strong class="ui">着色依据</strong> <strong class="ui">说话人</strong>，把“主持人”“活动人士”和“怀疑论者”区分开。要移除<strong class="ui">着色依据</strong>字段，请点按它旁边的减号按钮。</p>
+<figure class="shot" id="queries-building-color-by"><img class="shot-light" src="../figures/zh-Hans/light/queries-building-color-by.webp" alt="“电台辩论”的“查询”分面中，话轮查询的“类别”条件里的“着色依据”菜单。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/queries-building-color-by.webp" alt="“电台辩论”的“查询”分面中，话轮查询的“类别”条件里的“着色依据”菜单。" loading="lazy"><figcaption>“电台辩论”的“查询”分面中，话轮查询的“类别”条件里的“着色依据”菜单。</figcaption></figure>
+<p>如果一个查询既有基于规则的类别，又有<strong class="ui">着色依据</strong>，命中会先从规则中取第一个适用的类别，只有当没有哪个规则类别适合它时，才从<strong class="ui">着色依据</strong>中取类别。勾选<strong class="ui">允许多个类别</strong>后，命中会得到所有适用的类别，包括<strong class="ui">着色依据</strong>的类别。</p>
+<p>类别会依次自动分配蓝、红、绿、橙、紫、粉、靛蓝和黄色，样式为<strong class="ui">高亮</strong>；从第九个起，样式为<strong class="ui">下划线</strong>。每个查询最多可以有 16 个类别；达到这个数目后，<strong class="ui">添加类别</strong>按钮就会消失。透镜最多显示 16 项，因此最多有 16 个值可以获得<strong class="ui">着色依据</strong>颜色。</p>
+<aside class="callout note"><p class="callout-title">注意</p><p>查询有类别时，透镜只应用于属于某个类别的命中。不过，没有类别的命中仍会出现在结果列表中。</p>
+</aside>
+<h2 id="query-show">“显示”条件<a class="anchor" href="#query-show" aria-hidden="true">#</a></h2>
+<p><strong class="ui">显示</strong>条件返回哪种结果类型，取决于你的单位和范围，每种结果类型都有自己的一组选项。通常的做法是先用列表，检查查询找到的是否是你想要的内容，确认之后再改用数量或比较。</p>
+<div class="table-wrap"><table>
+<thead><tr><th>显示</th><th>得到的结果</th><th>适用于</th><th>控件</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">列表</strong></td><td>每个命中一行</td><td>所有单位和范围</td><td>显示<strong class="ui">文档顺序</strong>的菜单、<strong class="ui">限制</strong></td></tr>
+<tr><td><strong class="ui">数量</strong></td><td>命中的数目，可以是总数，也可以按一两个<strong class="ui">分组依据</strong>键分别统计</td><td>所有单位和范围</td><td><strong class="ui">分组依据</strong>、显示<strong class="ui">命中</strong>的菜单、<strong class="ui">限制</strong></td></tr>
+<tr><td><strong class="ui">比较</strong></td><td>按组统计的数目，附带一项统计检验</td><td>文档集、项目和<strong class="ui">所有项目</strong></td><td><strong class="ui">分组依据</strong>、显示<strong class="ui">命中</strong>的菜单、显示<strong class="ui">自动</strong>的菜单、<strong class="ui">限制</strong></td></tr>
+<tr><td><strong class="ui">随时间变化</strong></td><td>命中在一个文档中、在媒体时间上或在某个日期字段上的分布</td><td>片段单位和<strong class="ui">文档</strong></td><td><strong class="ui">分组依据</strong>、显示<strong class="ui">命中</strong>的菜单</td></tr>
+<tr><td><strong class="ui">搭配词</strong></td><td>出现在命中附近的词</td><td><strong class="ui">词</strong>、<strong class="ui">模式匹配</strong>、<strong class="ui">文本匹配</strong></td><td>显示<strong class="ui">词元</strong>的菜单、<strong class="ui">窗口</strong>、显示 <strong class="ui">logDice</strong> 的菜单、<strong class="ui">最少</strong></td></tr>
+<tr><td><strong class="ui">关键词</strong></td><td>范围中用得比参照语料更多或更少的词</td><td><strong class="ui">词</strong>，在文档集或项目中</td><td>显示<strong class="ui">项目其余部分</strong>的菜单（选择<strong class="ui">文档集</strong>后另有一个列出文档集的菜单）、显示<strong class="ui">词元</strong>的菜单、显示 <strong class="ui">LL ≥ 3.84</strong> 的菜单</td></tr>
+<tr><td><strong class="ui">网络</strong></td><td>哪些值一起出现</td><td>片段单位</td><td><strong class="ui">分组依据</strong>、显示<strong class="ui">重叠</strong>的菜单</td></tr>
+</tbody></table></div>
+<p>列表默认按<strong class="ui">文档顺序</strong>排序。其他选项包括<strong class="ui">匹配</strong>、<strong class="ui">左语境</strong>、<strong class="ui">右语境</strong>、<strong class="ui">文档</strong>和<strong class="ui">频次</strong>，如果查询带有冻结列表，还有<strong class="ui">得分</strong>；资料库单位可以按<strong class="ui">名称</strong>或<strong class="ui">文档顺序</strong>排序。勾选<strong class="ui">限制</strong>复选框，结果只保留前 50 个命中，或者你用旁边步进器选定的其他数目。<strong class="ui">选项</strong>条件上还有一个单独的上限，两者中较小的那个起作用。</p>
+<p>关于每种结果及其度量和检验，详见<a href="queries-results.html">第 16 章“查询结果与统计”</a>。</p>
+<h2 id="query-options">选项<a class="anchor" href="#query-options" aria-hidden="true">#</a></h2>
+<ul>
+<li>条件顶部是显示<strong class="ui">原文</strong>的菜单，它决定文档集或项目层面的查询如何处理其中文档的现有译文。默认选中<strong class="ui">原文</strong>。<strong class="ui">原文</strong>只读取原文文档，<strong class="ui">译文</strong>只读取范围内各文档的译文，<strong class="ui">两者</strong>则同时考虑原文和译文。</li>
+<li><strong class="ui">已编码备忘录计为编码实例</strong>默认是勾选的。勾选时，附于片段并与某个编码关联的备忘录，在查找<strong class="ui">编码实例</strong>时或在关于编码实例的上下文行中，都会算作该编码的一个编码实例。编码实例的<strong class="ui">已编码备忘录</strong>字段会专门标出这些备忘录。不勾选时，只统计真正的编码实例。无论这个复选框如何设置，“具有”行都只统计编码实例。</li>
+<li><strong class="ui">上限 5,000</strong> 设定查询生成的任何列表中最多出现多少个命中。可以用所示的步进器以 1,000 为单位增减，最高为 200,000。<strong class="ui">显示</strong>条件中的<strong class="ui">限制</strong>只能把它调低。结果上方的命中计数器显示获得的所有命中的数目。所有计算、数量和比较都始终使用全部命中。</li>
+</ul>
+<figure class="shot" id="queries-building-options"><img class="shot-light" src="../figures/zh-Hans/light/queries-building-options.webp" alt="“行动派”文档集中“紧迫性话题”查询的“选项”条件，其中“语料”设为“原文”，勾选了“已编码备忘录计为编码实例”，“上限”为 5,000。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/queries-building-options.webp" alt="“行动派”文档集中“紧迫性话题”查询的“选项”条件，其中“语料”设为“原文”，勾选了“已编码备忘录计为编码实例”，“上限”为 5,000。" loading="lazy"><figcaption>“行动派”文档集中“紧迫性话题”查询的“选项”条件，其中“语料”设为“原文”，勾选了“已编码备忘录计为编码实例”，“上限”为 5,000。</figcaption></figure>
+<h2 id="running-queries">运行查询<a class="anchor" href="#running-queries" aria-hidden="true">#</a></h2>
+<p>文档中的查询，或者中等规模的文档集或项目中的查询，会在任何更改之后不久重新运行。LemmaLoom 会留意你编辑时的停顿，然后检查并重新运行查询。查询处理文档集或项目中的文档时，<strong class="ui">停止</strong>旁边的进度环会相应地逐渐填满。结果会陆续出现，不必等到最后一个文档处理完。</p>
+<p>在文档集、项目和<strong class="ui">所有项目</strong>中，如果文档所含的词符（词和标点符号）少于约 300,000 个，查询会自行运行。完全不需要文本的查询也会自行运行，例如<strong class="ui">资料库 · 编码</strong>。<strong class="ui">关键词</strong>查询会把用来比较的文档也计入 300,000 这个阈值。如果查询超过这个阈值，每当发生更改，结果区域都会显示一个标有<strong class="ui">运行查询</strong>的按钮。点按它，或点按查询横栏中的三角形图标，或者选取<strong class="ui">编辑 ▸ 运行查询</strong>（⌘R）。大型查询所需的时间各不相同，取决于文档的大小和你电脑的硬件。</p>
+<p>点按<strong class="ui">停止</strong>可以停止耗时较长的查询，结束其计算。<strong class="ui">编辑 ▸ 新建查询</strong>会清空构建器但保留单位，你可以从空的<strong class="ui">条件</strong>重新构建查询。</p>
+<p>不满足运行查询的条件时，三角形不可用，结果区域会显示下列消息之一。出问题的规则周围会出现红色边框，将鼠标指针悬停在上面可以看到原因。<strong class="ui">不完整</strong>只出现在规则上，因为查询仍会运行。</p>
+<div class="table-wrap"><table>
+<thead><tr><th>消息</th><th>含义</th><th>是否运行</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">不完整</strong></td><td>某条规则还没有值，或某个文本行没有词条。在你补全之前，它会被忽略</td><td>是</td></tr>
+<tr><td><strong class="ui">缺失</strong></td><td>规则引用的编码、属性、词典、全部勾选的类别、分组、文档集、编码集、项目或文档已被删除</td><td>否</td></tr>
+<tr><td><strong class="ui">此处不可用</strong></td><td>该字段不能在此范围中使用，例如文档<strong class="ui">查询</strong>分面中的文档字段</td><td>否</td></tr>
+<tr><td><strong class="ui">无效模式</strong></td><td>正则表达式无法解读</td><td>否</td></tr>
+<tr><td><strong class="ui">模式过长</strong></td><td>正则表达式超过 1,000 个字符</td><td>否</td></tr>
+<tr><td><strong class="ui">嵌套过深</strong></td><td>某条规则的嵌套超过三层，例如位于条件组内某个上下文行之下（见<a href="#query-groups">条件组</a>）</td><td>否</td></tr>
+<tr><td><strong class="ui">节点过多</strong></td><td>依存模式中的词太多</td><td>否</td></tr>
+<tr><td><strong class="ui">需要文档集或项目</strong></td><td>在文档的<strong class="ui">查询</strong>分面中打开了一个显示<strong class="ui">比较</strong>或<strong class="ui">关键词</strong>的已存储查询</td><td>否</td></tr>
+<tr><td><strong class="ui">没有可比较的对象</strong></td><td><strong class="ui">关键词</strong>把范围与它自身进行比较</td><td>否</td></tr>
+<tr><td><strong class="ui">未选择文档集</strong></td><td><strong class="ui">关键词</strong>设为与某个文档集比较，但没有选择文档集</td><td>否</td></tr>
+</tbody></table></div>
+<p><strong class="ui">此处不可用</strong>消息通常出现在你把已存储的查询载入到并非为它构建的地方时。基于属性“立场”的查询可以在项目层面执行，但在文档的<strong class="ui">查询</strong>分面中会产生这条消息。</p>
+<figure class="shot" id="queries-building-not-available"><img class="shot-light" src="../figures/zh-Hans/light/queries-building-not-available.webp" alt="“时间不多了”的“查询”分面，载入了一个基于“立场”属性的已存储查询。该规则带有红色轮廓，结果区域显示“此处不可用”。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/queries-building-not-available.webp" alt="“时间不多了”的“查询”分面，载入了一个基于“立场”属性的已存储查询。该规则带有红色轮廓，结果区域显示“此处不可用”。" loading="lazy"><figcaption>“时间不多了”的“查询”分面，载入了一个基于“立场”属性的已存储查询。该规则带有红色轮廓，结果区域显示“此处不可用”。</figcaption></figure>
+<h2 id="query-text">“查询文本”条件<a class="anchor" href="#query-text" aria-hidden="true">#</a></h2>
+<p><strong class="ui">查询文本</strong>条件以文字形式逐行写出整个查询，如上文<a href="#first-query">第一个查询</a>中“紧迫性话题”的示例所示。</p>
+<figure class="shot" id="queries-building-query-text"><img class="shot-light" src="../figures/zh-Hans/light/queries-building-query-text.webp" alt="“紧迫性话题”查询的“查询文本”条件，文本下方是“拷贝”按钮。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/queries-building-query-text.webp" alt="“紧迫性话题”查询的“查询文本”条件，文本下方是“拷贝”按钮。" loading="lazy"><figcaption>“紧迫性话题”查询的“查询文本”条件，文本下方是“拷贝”按钮。</figcaption></figure>
+<p>阅读查询文本，确认你的问题提得正确，尤其是带条件组的查询。<strong class="ui">全部</strong>、<strong class="ui">任一</strong>和<strong class="ui">无</strong>分别显示为<em>且</em>、<em>或</em>和<em>非</em>，<em>非</em>后面跟着括号。如果查询使用<strong class="ui">数量</strong>或<strong class="ui">比较</strong>，它的<strong class="ui">分组依据</strong>键和度量会加到最后一行，例如 <code>显示 数量 按 词元 · 命中</code>。</p>
+<p>查询文本便于阅读，也可以拷贝粘贴到论文和研究日志等研究记录中；要更改查询，请更改各个条件。点按<strong class="ui">拷贝</strong>可以把查询文本放到剪贴板上，以便粘贴到其他应用程序中。导出的结果会保留查询文本（见<a href="queries-results.html">第 16 章“查询结果与统计”</a>中的<a href="queries-results.html#export">导出结果</a>）。</p>
+<h2 id="saving-queries">存储查询<a class="anchor" href="#saving-queries" aria-hidden="true">#</a></h2>
+<p>已存储的查询会保留它的名称、各个条件以及它的<em>所属位置</em>，所属位置决定它在界面中的哪些地方出现。</p>
+<div class="table-wrap"><table>
+<thead><tr><th>可用范围</th><th>查询在哪里可用</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">文档</strong></td><td>该文档的<strong class="ui">查询</strong>分面</td></tr>
+<tr><td><strong class="ui">文档集</strong></td><td>文档集的<strong class="ui">查询</strong>视图、显示该文档集时的查询窗口，以及文档集中每个文档及其译文的<strong class="ui">查询</strong>分面</td></tr>
+<tr><td><strong class="ui">项目</strong></td><td>项目的<strong class="ui">查询</strong>视图、它的各个文档集的<strong class="ui">查询</strong>视图、它的每个文档的<strong class="ui">查询</strong>分面，以及显示该项目或其某个文档集时的查询窗口</td></tr>
+<tr><td><strong class="ui">所有项目</strong></td><td>任何地方</td></tr>
+</tbody></table></div>
+<p>你打算在哪里重复使用查询，就应该把它存储在哪里。关于行动派文章的查询属于“行动派”文档集，而打算在某项研究的所有文档集和文档中使用的查询属于项目本身。如果你打算在不同研究之间重复使用查询，可以选择<strong class="ui">所有项目</strong>（见<a href="projects-and-documents.html">第 3 章“项目与文档”</a>中的<a href="projects-and-documents.html#working-across-projects">跨项目工作</a>）。在“气候辩论”项目中，“行动派”文档集存储了一个名为“关键词：行动派”的查询，它来自快速入门。</p>
+<figure class="shot" id="queries-building-save-sheet"><img class="shot-light" src="../figures/zh-Hans/light/queries-building-save-sheet.webp" alt="“存储查询”对话框，正在为“行动派”文档集存储一个关键词列表。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/queries-building-save-sheet.webp" alt="“存储查询”对话框，正在为“行动派”文档集存储一个关键词列表。" loading="lazy"><figcaption>“存储查询”对话框，正在为“行动派”文档集存储一个关键词列表。</figcaption></figure>
+<p>第一次存储查询：</p>
+<ol>
+<li>打开<strong class="ui">存储</strong>菜单，选取<strong class="ui">存储为…</strong>。对于从未存储过的查询，<strong class="ui">存储</strong>的作用相同。</li>
+<li>在<strong class="ui">存储查询</strong>对话框的<strong class="ui">名称</strong>中输入名称。</li>
+<li>在<strong class="ui">可用范围</strong>中选择查询所属的位置。菜单先列出你当前所在的位置，然后是<strong class="ui">项目</strong>和<strong class="ui">所有项目</strong>，第一项已经替你选好。</li>
+<li>点按<strong class="ui">存储</strong>。</li>
+</ol>
+<p>此后，<strong class="ui">存储</strong>会把更改写入已存储的版本，名称后面的圆点随之消失。<strong class="ui">存储为…</strong>以另一个名称存储一份副本。要把查询的所属位置改到别处，也是用这个命令。对于已存储的查询，菜单中还有<strong class="ui">重命名…</strong>。</p>
+<figure class="shot" id="queries-building-save-menu"><img class="shot-light" src="../figures/zh-Hans/light/queries-building-save-menu.webp" alt="已存储查询“紧迫性话题”的“存储”菜单，其中有“重命名…”“移除透镜”和“删除查询”。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/queries-building-save-menu.webp" alt="已存储查询“紧迫性话题”的“存储”菜单，其中有“重命名…”“移除透镜”和“删除查询”。" loading="lazy"><figcaption>已存储查询“紧迫性话题”的“存储”菜单，其中有“重命名…”“移除透镜”和“删除查询”。</figcaption></figure>
+<p><strong class="ui">存储</strong>菜单还包括另外三个选项：</p>
+<ul>
+<li><strong class="ui">存储为透镜…</strong>把查询提升为阅读器透镜菜单中的一个透镜。新查询在变成透镜之前需要先存储，这时会通过<strong class="ui">存储为透镜</strong>对话框询问名称和<strong class="ui">可用范围</strong>；已存储的查询则会连同你的更改一起存储，并立即成为透镜。查询变成透镜后，这一选项显示为<strong class="ui">移除透镜</strong>。如果查询不符合成为透镜的条件，这一选项会变为不可用，将鼠标指针悬停在这一选项上可以看到原因。</li>
+<li><strong class="ui">存储为分析器…</strong>把查询转换为自定义分析器。</li>
+<li><strong class="ui">删除查询</strong>删除已存储的查询，留下一个空的构建器。</li>
+</ul>
+<p>关于由查询生成的透镜和分析器如何工作，详见<a href="queries-using-results.html">第 18 章“使用查询结果”</a>。</p>
+<p>要打开已存储的查询，可以从横栏左端的查询名称菜单中选取它，或者在<strong class="ui">查询</strong>视图或查询窗口的左栏中点按它。在左栏中，查询按<strong class="ui">所有项目</strong>、<strong class="ui">项目</strong>、<strong class="ui">文档集</strong>和<strong class="ui">文档</strong>分组。透镜的名称旁边有一个眼镜图标。在横栏的搜索栏中输入查询名称的一部分，就能在很长的查询列表中找到它。打开查询会立即运行它。要在左栏中删除查询，请右键点按该查询，然后选取<strong class="ui">删除查询</strong>。</p>
+<aside class="callout note"><p class="callout-title">注意</p><p>打开已存储的查询或模板，或者选取<strong class="ui">新建查询</strong>，会立即替换构建器中的当前查询。如果先前的查询有尚未存储的更改，可以用<strong class="ui">编辑 ▸ 撤销</strong>恢复先前的查询状态。</p>
+</aside>
+<p>存储、重命名、删除查询，以及把查询变成透镜或把透镜变回查询，这些步骤都会记录在撤销历史中。你可以用<strong class="ui">编辑 ▸ 撤销</strong>（⌘Z）撤销它们；菜单项会写明具体操作，例如<strong class="ui">撤销存储查询</strong>。关于撤销的更多信息，见<a href="undo.html">第 23 章“撤销与重做”</a>。</p>
+<h2 id="query-recipes">模板<a class="anchor" href="#query-recipes" aria-hidden="true">#</a></h2>
+<p>模板提供预先设置好的查询，帮助回答基本的研究问题，包括生成索引行、生成词表，以及按属性查询编码实例。如果你从零开始构建查询时遇到困难，可以从模板入手，看看各个条件是怎样填写的，再相应地调整。</p>
+<p>模板载入构建器时，带着它自己的名称，后面跟一个表示未存储的圆点，并会立即以默认状态运行。之后，你可以像对待其他查询一样修改和存储模板。</p>
+<p>在<strong class="ui">查询</strong>视图或查询窗口中，模板列在左栏中已存储查询的下方，位于<strong class="ui">模板</strong>之下。在检查器的<strong class="ui">查询</strong>分面中，请打开横栏中的<strong class="ui">模板</strong>下拉菜单（魔杖）。列表分为<strong class="ui">词语</strong>、<strong class="ui">语法</strong>、<strong class="ui">编码</strong>、<strong class="ui">说话人与时间</strong>和<strong class="ui">文档与资料库</strong>几类。列表中只显示与当前范围相关的模板。在文档集和项目中，<strong class="ui">类似某编码的片段</strong>显示在<strong class="ui">模板</strong>下的最后，可以从范围中用到的编码里选择一个。</p>
+<figure class="shot" id="queries-building-recipes-menu"><img class="shot-light" src="../figures/zh-Hans/light/queries-building-recipes-menu.webp" alt="“时间不多了”的“查询”分面，从横栏中的魔棒打开的“模板”菜单。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/queries-building-recipes-menu.webp" alt="“时间不多了”的“查询”分面，从横栏中的魔棒打开的“模板”菜单。" loading="lazy"><figcaption>“时间不多了”的“查询”分面，从横栏中的魔棒打开的“模板”菜单。</figcaption></figure>
+<p><a href="queries-patterns.html">第 17 章“查询模式与发现”</a>中的<a href="queries-patterns.html#recipes">模板</a>列出了所有可用的模板，包括每个模板的说明、它生成的查询以及适用的范围。同一章中的<a href="queries-patterns.html#passages-like-a-code">类似某编码的片段</a>详细介绍了这个模板。</p>
+</article>
+<nav class="pager"><a class="previous" href="sketch-space.html"><span>上一章</span>速写空间</a><a class="next" href="queries-results.html"><span>下一章</span>查询结果与统计</a></nav>
+<footer class="site-footer">© 2026 Ryan S. Cooper. 保留所有权利。<br>本版本借助人工智能根据英文原版翻译而成，译文可能存在错误或不准确之处。如有疑问，请以英文版为准。</footer>
+</main>
+<nav class="page-toc" aria-label="本页内容"><p>本页内容</p><ul>
+<li class="level-2"><a href="#query-key-terms">关键术语</a></li>
+<li class="level-2"><a href="#query-locations">查询的存放位置</a></li>
+<li class="level-3"><a href="#query-in-a-document">在文档中</a></li>
+<li class="level-3"><a href="#query-in-a-set-or-project">在文档集或项目中</a></li>
+<li class="level-3"><a href="#queries-window">查询窗口</a></li>
+<li class="level-2"><a href="#query-scopes">范围</a></li>
+<li class="level-2"><a href="#first-query">第一个查询</a></li>
+<li class="level-2"><a href="#query-builder">构建器</a></li>
+<li class="level-2"><a href="#query-units">选择要查找的内容</a></li>
+<li class="level-3"><a href="#pattern-card">“模式”条件</a></li>
+<li class="level-2"><a href="#query-rules">“条件”中的规则</a></li>
+<li class="level-3"><a href="#adding-a-rule">添加规则</a></li>
+<li class="level-3"><a href="#query-fields">字段</a></li>
+<li class="level-3"><a href="#comparisons-and-values">比较方式与值</a></li>
+<li class="level-3"><a href="#query-groups">条件组</a></li>
+<li class="level-3"><a href="#frozen-lists">冻结列表</a></li>
+<li class="level-2"><a href="#text-matching">匹配文本</a></li>
+<li class="level-3"><a href="#text-targets">比较的对象</a></li>
+<li class="level-3"><a href="#text-terms">词条</a></li>
+<li class="level-3"><a href="#text-dictionaries">词典</a></li>
+<li class="level-3"><a href="#regular-expressions">正则表达式</a></li>
+<li class="level-3"><a href="#chinese-text">中文文本</a></li>
+<li class="level-2"><a href="#query-context">上下文</a></li>
+<li class="level-2"><a href="#query-has">“具有”条件</a></li>
+<li class="level-2"><a href="#query-categories">类别与着色依据</a></li>
+<li class="level-2"><a href="#query-show">“显示”条件</a></li>
+<li class="level-2"><a href="#query-options">选项</a></li>
+<li class="level-2"><a href="#running-queries">运行查询</a></li>
+<li class="level-2"><a href="#query-text">“查询文本”条件</a></li>
+<li class="level-2"><a href="#saving-queries">存储查询</a></li>
+<li class="level-2"><a href="#query-recipes">模板</a></li>
+</ul></nav>
+</div>
+<script src="../assets/guide.js" defer></script>
+</body>
+</html>

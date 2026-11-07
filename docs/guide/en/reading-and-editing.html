@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reading and Editing · LemmaLoom User Guide</title>
+<link rel="stylesheet" href="../assets/guide.css">
+<link rel="icon" type="image/png" href="../assets/logo.png">
+<script>var r=document.documentElement;r.setAttribute('data-theme','light');try{if(localStorage.getItem('guide-theme')==='dark'){r.setAttribute('data-theme','dark')}}catch(e){}</script>
+</head>
+<body>
+<header class="topbar">
+<button class="menu-toggle" aria-label="Contents" aria-expanded="false">☰</button>
+<a class="brand" href="index.html"><span class="wordmark"><span class="lemma">Lemma</span>Loom</span><span class="guide-name">User Guide</span></a>
+<div class="search"><input type="search" id="search" placeholder="Search" aria-label="Search" autocomplete="off" data-empty="No results"><div class="results" id="results" hidden></div></div>
+<nav class="languages" aria-label="Language"><a href="../en/reading-and-editing.html" lang="en" aria-current="true">English</a><a href="../de/reading-and-editing.html" lang="de">Deutsch</a><a href="../zh-Hans/reading-and-editing.html" lang="zh-Hans">简体中文</a></nav>
+<button class="theme-toggle" data-light="Light" data-dark="Dark" aria-label="Theme"></button>
+<a class="pdf-link" href="https://github.com/LemmaLoom/public/raw/main/pdf/lemmaloom-guide-en.pdf">PDF</a>
+</header>
+<div class="layout">
+<nav class="sidebar" aria-label="Contents"><ol>
+<li class="unnumbered"><a href="quick-start.html">Quick Start</a></li>
+<li><a href="introduction.html">Introduction</a></li>
+<li><a href="getting-started.html">Getting Started</a></li>
+<li><a href="projects-and-documents.html">Projects and Documents</a></li>
+<li><a href="importing.html">Importing Material</a></li>
+<li class="current"><a href="reading-and-editing.html">Reading and Editing</a></li>
+<li><a href="lenses.html">Lenses</a></li>
+<li><a href="coding.html">Coding</a></li>
+<li><a href="sets-tags-attributes.html">Sets, Groups, Tags, and Attributes</a></li>
+<li><a href="translations.html">Translations and Split View</a></li>
+<li><a href="text-inspector.html">The Text Inspector</a></li>
+<li><a href="grammar-inspector.html">The Grammar Inspector</a></li>
+<li><a href="word-sketch.html">Word Sketch</a></li>
+<li><a href="coding-analysis.html">Analyzing Codes</a></li>
+<li><a href="sketch-space.html">Sketch Space</a></li>
+<li><a href="queries-building.html">Building a Query</a></li>
+<li><a href="queries-results.html">Query Results and Statistics</a></li>
+<li><a href="queries-patterns.html">Query Patterns and Discovery</a></li>
+<li><a href="queries-using-results.html">Using Query Results</a></li>
+<li><a href="dictionaries.html">Dictionaries</a></li>
+<li><a href="custom-analyzers.html">Custom Analyzers</a></li>
+<li><a href="analysis-and-indexing.html">Analysis and Indexing</a></li>
+<li><a href="exchange-and-export.html">Exchanging and Exporting</a></li>
+<li><a href="undo.html">Undo and Redo</a></li>
+<li><a href="settings.html">Settings and Appearance</a></li>
+<li><a href="keyboard-shortcuts.html">Keyboard Shortcuts</a></li>
+<li><a href="help-and-support.html">Help and Support</a></li>
+<li><a href="statistics-reference.html">Statistics at a Glance</a></li>
+<li class="unnumbered"><a href="glossary.html">Glossary</a></li>
+<li class="unnumbered"><a href="thanks.html">Thank You</a></li>
+</ol></nav>
+<main class="content">
+<article>
+<h1 id="reading-and-editing">Reading and Editing</h1>
+<p>The reader in LemmaLoom is the center pane in the main window that contains the text of your document. It is where you read your documents, conduct searches within the texts, select words and passages for coding or annotation, and edit the text itself. If the document was imported as an audio or video file, the reader displays the transcript along with the player bar above it so that you may hear the recording alongside reading the transcript.</p>
+<p>The examples mentioned in this chapter relate to the sample “Climate Debate” project (see <a href="introduction.html#example-project">The example project</a> in <a href="introduction.html">Chapter 1, Introduction</a>); most examples use its op-eds and columns, such as “Running Out of Time” or “Net Zero Will Cost You”, whereas examples related to recordings employ the document “Radio Debate”. You may load the sample project for yourself using <strong class="ui">File ▸ Import ▸ Example Project</strong>; LemmaLoom imports it as a new project in the interface’s language.</p>
+<h2 id="the-reader">The reader<a class="anchor" href="#the-reader" aria-hidden="true">#</a></h2>
+<p>Clicking a document in the navigation sidebar opens it in a tab in the reader, which contains the same components for every document. These components consist of:</p>
+<ul>
+<li>The <em>title band</em> lies above the text column at the height where the window buttons reside. Title bands contain the LemmaLoom title to the far left and the reader’s tools at the far right.</li>
+<li>The text column makes up the bulk of the reader, where all the text resides. Lines stop at a comfortable reading width.</li>
+<li>Located to the left of the text column, the <em>gutter</em> numbers paragraphs and sentences and displays all your annotations. These include any codings (passages you have coded), memos, bookmarks, and links. Each annotated element has its corresponding symbol displayed in the gutter.</li>
+<li>Located at the extreme right side of the reader, the <em>document overview</em> provides you with an overall picture of where everything lies in the document relative to the current view.</li>
+<li>Located beneath the text column, the <em>status bar</em> gives you your position within the document, as well as the total length of the document.</li>
+</ul>
+<p>The search bar, a legend for most enabled lenses, and the player for audio and video can also appear between the title band and the text.</p>
+<p>As seen in the figure below, a skeptical opinion piece from “Climate Debate” titled “Net Zero Will Cost You” includes mostly codings associated with the code “Costs”. A few passages carry other codes, such as “Uncertainty”, “Responsibility”, “Urgency”, or “Deadlines”. One sentence, about a bill that “runs into the hundreds of billions”, carries both “Costs” and “Responsibility”, so a combined annotation with two dots stands beside it in the gutter.</p>
+<figure class="shot" id="reading-and-editing-reader"><img class="shot-light" src="../figures/en/light/reading-and-editing-reader.webp" alt="“Net Zero Will Cost You” in the reader, with paragraph and sentence numbers and coded passages in the gutter, the document overview on the right, and the status bar below." loading="lazy"><img class="shot-dark" src="../figures/en/dark/reading-and-editing-reader.webp" alt="“Net Zero Will Cost You” in the reader, with paragraph and sentence numbers and coded passages in the gutter, the document overview on the right, and the status bar below." loading="lazy"><figcaption>“Net Zero Will Cost You” in the reader, with paragraph and sentence numbers and coded passages in the gutter, the document overview on the right, and the status bar below.</figcaption></figure>
+<h3 id="title-band">The title band<a class="anchor" href="#title-band" aria-hidden="true">#</a></h3>
+<p>The buttons on the right-hand end of the title band apply to the document currently being viewed. When two documents are opened side by side, these buttons apply to the currently active pane, the last one clicked (see <a href="#split-view">Reading two documents side by side</a> further ahead in this chapter). From left to right, here is what these buttons mean:</p>
+<ul>
+<li>The lens menu displays either the currently enabled lens’s name or how many lenses are enabled at once when several are, or <strong class="ui">Lens</strong> when none is. A newly opened document comes equipped with <strong class="ui">Bookmarks</strong> and <strong class="ui">Codes</strong> lenses enabled, resulting in <strong class="ui">2 Lenses</strong> in the menu. This menu is disabled until the document has been indexed.</li>
+<li>Collapse, which displays the tooltip <strong class="ui">Show only the sentences a lens annotates</strong>, collapses the entire document down to the sentences annotated by the currently enabled lenses. Clicking this button again will undo the collapse effect. This button appears only when a lens has something to annotate (see <a href="lenses.html">Chapter 6, Lenses</a>).</li>
+<li><strong class="ui">Find in document</strong>, represented by the magnifying glass icon, displays the search bar.</li>
+<li><strong class="ui">Font, gutter, and text size</strong>, represented by a big A next to a small one, brings up a menu of options related to the appearance of the document.</li>
+<li><strong class="ui">Edit</strong> switches the reader to editing mode.</li>
+</ul>
+<p>During editing mode, the title band buttons are limited to <strong class="ui">Cancel</strong> and <strong class="ui">Save</strong>.</p>
+<h3 id="gutter">The gutter<a class="anchor" href="#gutter" aria-hidden="true">#</a></h3>
+<p>The gutter has two main sections. On the extreme left side are the numbers, where paragraphs are numbered in the left column and sentences in the right column. Sentences are numbered continuously through the whole document. Where multiple sentences start in the same line, their numbers share that line, separated by commas, as many as fit in the column.</p>
+<p>To select a whole paragraph or sentence, click on its corresponding number in the gutter. If both columns are visible at once, clicks in the left column select paragraphs, whereas clicks in the right column select sentences. Once a passage is selected, you may treat it like other selections, including coding it. In fact, clicking a number is the fastest way of coding a whole paragraph or sentence (see <a href="#selecting-text">Selecting text</a> later in this chapter).</p>
+<p>Between the numbers and the text is the margin, in which all additions to the document show. Codings display here when the <strong class="ui">Codes</strong> lens is enabled; bookmarks likewise show when <strong class="ui">Bookmarks</strong> is enabled. All memos and links display regardless of the current lens.</p>
+<ul>
+<li>Coded passages show with a small bar next to them, colored with their respective code colors. Where overlapping codings occur, they line up side by side. Any bars beyond the third share the third slot. Hovering the mouse pointer over a bar highlights the corresponding passage in the text.</li>
+<li>Each coding, memo, bookmark, and link has a small annotation where it begins. Coding annotations contain code names; memo annotations show the beginnings of each memo. Bookmark annotations show comments associated with the bookmark, whereas link annotations indicate link types.</li>
+<li>Where annotations might overlap one another, all overlapping annotations compress into one gray annotation, accompanied by colored circles and a count.</li>
+</ul>
+<p>By clicking the annotation or bar itself, you select the passage the element corresponds to. Instead, clicking a link annotation navigates to the passage linked to on the opposite end of the link, opening the other document if needed. In the “Climate Debate” project, for example, the link on a passage in the op-ed piece “Net Zero Will Cost You” takes one directly to the speech it addresses, “A Mayor’s Promise”. Hovering the mouse pointer over an annotation shows a memo, a link, or a long bookmark comment in full; a link’s popover shows the link information along with <strong class="ui">Go to the other end</strong>. Pointing at or clicking a combined annotation shows all its entries in a list, and clicking an entry selects its passage or, for a link, goes to the other end.</p>
+<figure class="shot" id="reading-and-editing-link-popover"><img class="shot-light" src="../figures/en/light/reading-and-editing-link-popover.webp" alt="A link annotation in “Net Zero Will Cost You” with the mouse pointer over it, showing its popover with the link to “A Mayor's Promise” and Go to the other end." loading="lazy"><img class="shot-dark" src="../figures/en/dark/reading-and-editing-link-popover.webp" alt="A link annotation in “Net Zero Will Cost You” with the mouse pointer over it, showing its popover with the link to “A Mayor's Promise” and Go to the other end." loading="lazy"><figcaption>A link annotation in “Net Zero Will Cost You” with the mouse pointer over it, showing its popover with the link to “A Mayor’s Promise” and Go to the other end.</figcaption></figure>
+<h3 id="minimap">The document overview<a class="anchor" href="#minimap" aria-hidden="true">#</a></h3>
+<p>The document overview, found along the right side of the reader, is a scroll bar that is color-coded according to the enabled lenses. It tells you where in the document you currently are and what portions of your document the enabled lenses annotate, such as codes. Everything contained within your document fits within the confines of the document overview panel. The actual text appears as faint lines running from top to bottom, with breaks where the paragraph divisions lie. Short paragraphs containing entirely capital letters denote heading-like text and appear as darker strokes. Coded sections and the words your lenses color show in their respective colors.</p>
+<p>Here are a few additional features of the document overview:</p>
+<ul>
+<li>your current viewing location in the document is marked by an outlined rectangle;</li>
+<li>your bookmarks appear as little square symbols on the far left side;</li>
+<li>search matches appear as small tick marks on the far right side;</li>
+<li>the selected word appears as a line across the document overview panel.</li>
+</ul>
+<p>When hovering the mouse pointer over sections in the document overview, you get previews of the text in that area, namely the paragraph under the mouse pointer, with its number, and the four paragraphs before and after it. You can either click to jump to that paragraph in the text (which highlights momentarily), or you can drag up and down the document overview to move through your text document.</p>
+<figure class="shot" id="reading-and-editing-document-overview"><img class="shot-light" src="../figures/en/light/reading-and-editing-document-overview.webp" alt="The document overview of “Net Zero Will Cost You” with the mouse pointer over it, showing the preview of the paragraph under the mouse pointer." loading="lazy"><img class="shot-dark" src="../figures/en/dark/reading-and-editing-document-overview.webp" alt="The document overview of “Net Zero Will Cost You” with the mouse pointer over it, showing the preview of the paragraph under the mouse pointer." loading="lazy"><figcaption>The document overview of “Net Zero Will Cost You” with the mouse pointer over it, showing the preview of the paragraph under the mouse pointer.</figcaption></figure>
+<h3 id="status-bar">The status bar<a class="anchor" href="#status-bar" aria-hidden="true">#</a></h3>
+<p>The left end of the status bar tells you the location of the currently selected item. When selecting a word, the status bar displays the paragraph and sentence it belongs to, along with its token order in the sentence (e.g., <strong class="ui">¶ 4 · S 22 · T 6</strong> refers to the fourth paragraph, twenty-second sentence, and sixth token). A <em>token</em> is one word or punctuation mark. Selecting passages results in their starting and ending paragraph and sentence locations being displayed, along with their total number of tokens.</p>
+<p>When indexing has completed, the right end gives you statistical information about your document in a concise format, for example, <strong class="ui">10 ¶ · 65 S · 1,029 words</strong> for “Running Out of Time”. Word counts are based on tokens (that is, punctuation included); which counts appear depends on your gutter numbering. Setting your gutter to <strong class="ui">Paragraphs</strong> will give you counts of paragraphs and words; <strong class="ui">Sentences</strong>, sentences and words; and <strong class="ui">Off</strong> only words.</p>
+<p>Until indexing has finished, or when it cannot run, the document’s current indexing status will appear in place of the stats (see <a href="analysis-and-indexing.html#reader-status">In the reader</a> in <a href="analysis-and-indexing.html">Chapter 21, Analysis and Indexing</a>).</p>
+<p>These statuses include:</p>
+<ul>
+<li>Name of the stage and a percentage indicator during the initial indexing pass;</li>
+<li><strong class="ui">Running</strong> and a name of the active analyzer during the running of an analyzer pass (extra processing of a specific feature, such as ties between sentences);</li>
+<li><strong class="ui">No grammar analysis for</strong>, followed by the language name of a language that does not undergo grammar analysis;</li>
+<li><strong class="ui">Indexing is off</strong> with an <strong class="ui">Index Now</strong> link for indexing turned off during importation by unchecking <strong class="ui">Index for grammar analysis</strong>;</li>
+<li>The reason and a <strong class="ui">Retry Indexing</strong> link when indexing encounters an issue.</li>
+</ul>
+<h3 id="before-analysis">Before indexing has finished<a class="anchor" href="#before-analysis" aria-hidden="true">#</a></h3>
+<p>The document becomes readable immediately upon opening. However, several functions in the reader remain inactive until the indexing of the document is completed:</p>
+<ul>
+<li>Gutters contain paragraph numbers alone, since sentences are found during indexing;</li>
+<li>You select a passage in the document manually by clicking and dragging;</li>
+<li>The lens menu is disabled;</li>
+<li>The status bar displays indexing progress rather than any statistics.</li>
+</ul>
+<p>Indexing duration will depend both on the size of the document and the specifications of your computer. Grammar analysis in LemmaLoom supports English, German, and Chinese languages. Documents in other languages stay as described above but retain the ability to be read, searched, coded, and edited.</p>
+<h3 id="reader-state">What the reader retains<a class="anchor" href="#reader-state" aria-hidden="true">#</a></h3>
+<p>Each document retains memory of where you left off reading, what lenses were on, and the inspector state. Projects retain knowledge of tabs opened, the currently active tab, and which document has been opened side by side with split view. LemmaLoom keeps all this when you quit, so the reader opens where you left it.</p>
+<h2 id="text-appearance">Changing how text is presented<a class="anchor" href="#text-appearance" aria-hidden="true">#</a></h2>
+<p>The settings you can configure include your choice of font family, text size, the content of gutters, and text layout. Your chosen settings will be saved globally across all documents in all projects until you change them.</p>
+<p>There are three places from which you may customize these options:</p>
+<ul>
+<li>The <strong class="ui">Font, gutter, and text size</strong> menu in the title band, which includes submenus <strong class="ui">Font</strong>, <strong class="ui">Gutter</strong>, and <strong class="ui">Layout</strong>, along with <strong class="ui">Larger Text</strong>, <strong class="ui">Smaller Text</strong>, and <strong class="ui">Reset Text Size</strong> options;</li>
+<li>The <strong class="ui">View</strong> menu, which affects the text size setting only;</li>
+<li><strong class="ui">LemmaLoom ▸ Settings…</strong> (⌘,), in its <strong class="ui">Reader</strong> pane, which also configures the display of selections and shows a preview.</li>
+</ul>
+<p>If you need to revert your choices, and the display of selections, back to their default state as when you first launched LemmaLoom, select <strong class="ui">Reset All to Defaults</strong> from atop the <strong class="ui">Reader</strong> pane.</p>
+<h3 id="font">Font<a class="anchor" href="#font" aria-hidden="true">#</a></h3>
+<p>The reader includes eleven font options including <strong class="ui">System Serif</strong>, <strong class="ui">System Sans</strong>, <strong class="ui">System Rounded</strong>, <strong class="ui">System Mono</strong>, <strong class="ui">Georgia</strong>, <strong class="ui">Palatino</strong>, <strong class="ui">Baskerville</strong>, <strong class="ui">Times New Roman</strong>, <strong class="ui">Helvetica Neue</strong>, <strong class="ui">Avenir Next</strong>, and <strong class="ui">Menlo</strong>. Everything displays using <strong class="ui">System Serif</strong> until changed. All Chinese text uses whatever Chinese font Macs use by default, regardless of the font you choose.</p>
+<p>To switch between fonts, click <strong class="ui">Font, gutter, and text size</strong> in the title band, then select one under <strong class="ui">Font</strong>. From Settings, it’s available in the <strong class="ui">Typography</strong> section’s <strong class="ui">Font</strong> row.</p>
+<h3 id="text-size">Text size<a class="anchor" href="#text-size" aria-hidden="true">#</a></h3>
+<p>Text sizes are available in increments of 10% from 70% to 200%. The default size at 100% is 17 points.</p>
+<ul>
+<li>You can incrementally adjust your text sizes one step at a time using <strong class="ui">View ▸ Larger Text</strong> (⌘+) and <strong class="ui">View ▸ Smaller Text</strong> (⌘-).</li>
+<li>If you need to restore your text to its default size, you can use <strong class="ui">View ▸ Reset Text Size</strong> (⌘0).</li>
+<li>Alternatively, in Settings, you can use the <strong class="ui">Text Size</strong> slider under <strong class="ui">Typography</strong>. The percentage appears beside it, and the reset button next to that returns you to 100%.</li>
+</ul>
+<p>The text column’s width adjusts accordingly to keep the average number of words per line consistent, and the text editor (referenced later in this chapter under <a href="#editing-text">Editing a document’s text</a>) maintains the same settings.</p>
+<h3 id="gutter-numbering">Gutter numbering<a class="anchor" href="#gutter-numbering" aria-hidden="true">#</a></h3>
+<p>The <strong class="ui">Gutter</strong> submenu, named <strong class="ui">Gutter Numbering</strong> under Settings, selects the numbering scheme used in the gutters:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>The gutter shows</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">Both</strong></td><td>paragraph and sentence numbers (the setting you start with)</td></tr>
+<tr><td><strong class="ui">Paragraphs</strong></td><td>paragraph numbers only</td></tr>
+<tr><td><strong class="ui">Sentences</strong></td><td>sentence numbers only</td></tr>
+<tr><td><strong class="ui">Off</strong></td><td>no numbers</td></tr>
+</tbody></table></div>
+<p>If you use paragraphs alone as the passage reference, you’ll notice that <strong class="ui">Paragraphs</strong> helps keep the gutter less busy. Even with <strong class="ui">Off</strong>, however, the margin shows annotations such as codings, memos, bookmarks, and links.</p>
+<h3 id="layout">Layout<a class="anchor" href="#layout" aria-hidden="true">#</a></h3>
+<p>The <strong class="ui">Layout</strong> submenu, under <strong class="ui">Page</strong> in Settings, contains two different layouts, <strong class="ui">Single Column</strong> and <strong class="ui">Two-Page Spread</strong>.</p>
+<p>By default, documents are displayed using <strong class="ui">Single Column</strong>. Text is presented in a single column with the gutter adjacent to it.</p>
+<p>Documents in <strong class="ui">Two-Page Spread</strong> have their text laid out across pages, appearing two pages at once like an open book. Each page is as tall as the reader, and you scroll down from one pair of pages to the next. Each page displays paragraph and sentence numbering, similar to the <strong class="ui">Single Column</strong> layout, while the document overview functions similarly as well. Resizing the window dynamically flows the text onto new pages. A <strong class="ui">Two-Page Spread</strong> layout suits larger screens and initial readings of lengthy documents prior to coding.</p>
+<p>Whenever you switch between layouts, your current location within the document remains saved.</p>
+<figure class="shot" id="reading-and-editing-two-page-spread"><img class="shot-light" src="../figures/en/light/reading-and-editing-two-page-spread.webp" alt="“Carbon Tax Debate”, the news article imported from the web, in the Two-Page Spread layout." loading="lazy"><img class="shot-dark" src="../figures/en/dark/reading-and-editing-two-page-spread.webp" alt="“Carbon Tax Debate”, the news article imported from the web, in the Two-Page Spread layout." loading="lazy"><figcaption>“Carbon Tax Debate”, the news article imported from the web, in the Two-Page Spread layout.</figcaption></figure>
+<h3 id="reader-themes">Reader colors<a class="anchor" href="#reader-themes" aria-hidden="true">#</a></h3>
+<p>The appearance of the reader, including text color and background, comes from the theme chosen for the whole application. You may choose a theme with the <strong class="ui">Theme</strong> setting under <strong class="ui">Appearance</strong> in the <strong class="ui">General</strong> pane of Settings. If you need help understanding themes, visit <a href="settings.html">Chapter 24, Settings and Appearance</a>. The effect of choosing a theme for the reader includes the following:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Theme</th><th>Reader</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">System</strong>, <strong class="ui">Protanopia</strong>, <strong class="ui">Deuteranopia</strong>, <strong class="ui">Tritanopia</strong></td><td>follows the light or dark appearance of macOS</td></tr>
+<tr><td><strong class="ui">Light</strong>, <strong class="ui">High Contrast</strong></td><td>dark text on white</td></tr>
+<tr><td><strong class="ui">Dark</strong>, <strong class="ui">High Contrast Dark</strong></td><td>light text on a dark background</td></tr>
+<tr><td><strong class="ui">Cream</strong></td><td>dark brown text on warm off-white paper</td></tr>
+<tr><td><strong class="ui">Solarized Light</strong></td><td>gray-blue text on pale cream</td></tr>
+<tr><td><strong class="ui">Solarized Dark</strong></td><td>pale gray text on deep blue-green</td></tr>
+</tbody></table></div>
+<h3 id="selection-appearance">How selections are displayed<a class="anchor" href="#selection-appearance" aria-hidden="true">#</a></h3>
+<p>The selected word or passage, and a word’s grammatical relations, appear in the text when you select them. Their look is determined by your Settings within the <strong class="ui">Selection</strong> section of the <strong class="ui">Reader</strong> pane. There is a preview at the bottom of the pane where you can check what the end result looks like based on changes to the rows.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Row</th><th>Choices</th><th>What it controls</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">Selected Text</strong></td><td><strong class="ui">Solid block</strong>, <strong class="ui">Highlight</strong></td><td>A rounded block in the text color with the selected words in the background color, or a light tint behind them.</td></tr>
+<tr><td><strong class="ui">Head and Dependents</strong></td><td><strong class="ui">Arcs</strong>, <strong class="ui">Lines</strong>, <strong class="ui">Labels</strong>, <strong class="ui">Highlight</strong>, <strong class="ui">Off</strong></td><td>How the reader shows which word the selected word depends on (its <em>head</em>) and which words depend on it (its <em>dependents</em>).</td></tr>
+<tr><td><strong class="ui">Surrounding Text</strong></td><td><strong class="ui">Fade</strong>, <strong class="ui">Light fade</strong>, <strong class="ui">Highlight sentence</strong>, <strong class="ui">Off</strong></td><td>Whether the rest of the text dims around the selection, or the selected word’s sentence is tinted.</td></tr>
+<tr><td><strong class="ui">Audio Playback</strong></td><td><strong class="ui">Spotlight</strong>, <strong class="ui">Solid block</strong>, <strong class="ui">Highlight</strong></td><td>How the passage being played is rendered when the reader follows the recording (see <a href="#following-transcript">Following the transcript</a> later in this chapter).</td></tr>
+</tbody></table></div>
+<figure class="shot" id="reading-and-editing-reader-settings"><img class="shot-light" src="../figures/en/light/reading-and-editing-reader-settings.webp" alt="The Reader pane of Settings in its default state, with the Typography, Page, and Selection sections and the preview below." loading="lazy"><img class="shot-dark" src="../figures/en/dark/reading-and-editing-reader-settings.webp" alt="The Reader pane of Settings in its default state, with the Typography, Page, and Selection sections and the preview below." loading="lazy"><figcaption>The Reader pane of Settings in its default state, with the Typography, Page, and Selection sections and the preview below.</figcaption></figure>
+<p>For each row, the option selected as default will be the first option.</p>
+<p>In linguistics, the head of a word is what it modifies or depends on. For instance, in the example <em>a national program to insulate homes</em>, <em>national</em> modifies or describes <em>program</em>, making <em>program</em> the head, and <em>national</em> is one of its dependents.</p>
+<p><strong class="ui">Fade</strong> lets you maintain focus on your sentence. When you’d rather be able to keep your context clearly visible during the coding process, you can pick <strong class="ui">Light fade</strong> or <strong class="ui">Highlight sentence</strong>.</p>
+<h2 id="finding-text">Finding text<a class="anchor" href="#finding-text" aria-hidden="true">#</a></h2>
+<p>The search bar lets you search your currently opened document for the characters you are typing, bringing you directly to the matched passages. If you need to match all word forms, e.g., <em>pay</em> and <em>paid</em>, or search multiple documents simultaneously, you should use a query rather than the search bar. Queries incorporate consideration of word forms and grammatical context (see <a href="queries-building.html">Chapter 15, Building a Query</a>).</p>
+<p>The figure shows the column “The Models Keep Missing”, written by a skeptic author who once “built models for a living”. When searching for <em>model</em> with the search bar, LemmaLoom returns twelve matching results, including <em>models</em> and <em>modelers</em>, and the document overview shows how they spread.</p>
+<figure class="shot" id="reading-and-editing-find-bar"><img class="shot-light" src="../figures/en/light/reading-and-editing-find-bar.webp" alt="The search bar in the column “The Models Keep Missing”, searching for “model”, with the current match picked out in the text and every match shown in the document overview." loading="lazy"><img class="shot-dark" src="../figures/en/dark/reading-and-editing-find-bar.webp" alt="The search bar in the column “The Models Keep Missing”, searching for “model”, with the current match picked out in the text and every match shown in the document overview." loading="lazy"><figcaption>The search bar in the column “The Models Keep Missing”, searching for “model”, with the current match picked out in the text and every match shown in the document overview.</figcaption></figure>
+<p>To search for text in a document:</p>
+<ol>
+<li>Choose <strong class="ui">Edit ▸ Find</strong> (⌘F), or click <strong class="ui">Find in document</strong> (the magnifying glass) in the title band. The search bar opens above the text, with the cursor in its search field.</li>
+<li>Type what you are looking for. LemmaLoom searches as you type and scrolls to the first match.</li>
+<li>Press Return or ⌘G, or click the down arrow, to go to the next match. Press ⇧⌘G, or click the up arrow, to go back to the previous one. After the last match the search starts again at the first, and from the first match ⇧⌘G goes to the last.</li>
+<li>To close the search bar, press Esc, click the × at its right end, or choose <strong class="ui">Edit ▸ Find</strong> (⌘F) again.</li>
+</ol>
+<p>In the search field above, the counter shows you which match number you are currently on along with the total number of matches, so <strong class="ui">3/12</strong> indicates that this is the third of twelve total matches. Should there be no matching results, <strong class="ui">Not found</strong> is displayed.</p>
+<p>The reader will highlight the current matching passage in your text automatically, and depending on the settings of <strong class="ui">Surrounding Text</strong> (<strong class="ui">Fade</strong> or <strong class="ui">Light fade</strong>), everything surrounding the match becomes dimmer, whereas <strong class="ui">Highlight sentence</strong> or <strong class="ui">Off</strong> means your matches get tinted. All matches show up as ticks on the right edge of the document overview of the reader.</p>
+<p>Matching works as follows:</p>
+<ul>
+<li>Capitals and accents are ignored, so <code>model</code> will match <em>Model</em> and <code>cafe</code> will match <em>café</em>;</li>
+<li>Spaces before and after your input are ignored;</li>
+<li>Matches can lie inside longer words, so <code>model</code> will match <em>models</em> or <em>modelers</em> as well. To find a phrase as a whole, type it with its spaces, for example, <code>error bars</code>;</li>
+<li>Chinese text is searched the same way, as a run of characters.</li>
+</ul>
+<p>Every document gets a separate search bar in LemmaLoom; closing it resets your search. If your reader is collapsed into the annotated sentences of a document, then opening the search bar expands the reader and gives you access to the whole document body. Collapsing the reader will automatically close the search bar again. When editing documents, <strong class="ui">Find</strong> is disabled.</p>
+<h2 id="selecting-text">Selecting text<a class="anchor" href="#selecting-text" aria-hidden="true">#</a></h2>
+<p>In the LemmaLoom reader, you can code passages in your text, bookmark passages, attach memos to passages, link passages, and/or add passages to a dictionary, once you select them. Passages can consist of a word or a longer stretch of text.</p>
+<h3 id="selecting-a-word">Selecting a word<a class="anchor" href="#selecting-a-word" aria-hidden="true">#</a></h3>
+<p>Choose a word by clicking on it. Clicking the same word again, or pressing Esc, removes the current selection. Selection works on individual words when the document has already been indexed.</p>
+<p>Selecting a word also shows how the word connects to the rest of its sentence. By default, connections in the form of arcs show how the selected word is connected to its head and its dependents. Additionally, everything around the selected word’s sentence is faded out. If the inspector is currently visible, then the <strong class="ui">Grammar</strong> tab within it provides details about the selected word (see <a href="grammar-inspector.html">Chapter 11, The Grammar Inspector</a>). How the selection looks and how its connections are shown can be configured from Settings (refer to <a href="#selection-appearance">How selections are displayed</a> above).</p>
+<figure class="shot" id="reading-and-editing-word-selection"><img class="shot-light" src="../figures/en/light/reading-and-editing-word-selection.webp" alt="The word “deadline” selected in “Running Out of Time”, with arcs to its head and its dependents and the rest of the text faded." loading="lazy"><img class="shot-dark" src="../figures/en/dark/reading-and-editing-word-selection.webp" alt="The word “deadline” selected in “Running Out of Time”, with arcs to its head and its dependents and the rest of the text faded." loading="lazy"><figcaption>The word “deadline” selected in “Running Out of Time”, with arcs to its head and its dependents and the rest of the text faded.</figcaption></figure>
+<h3 id="selecting-a-passage">Selecting a passage<a class="anchor" href="#selecting-a-passage" aria-hidden="true">#</a></h3>
+<p>Select your passage by clicking the beginning of the passage and dragging to its end. Spaces at either end are left out. Alternatively, you can click the numbering in the gutter next to paragraphs or sentences to select them directly, as well as annotations or bars in the margin to select passages.</p>
+<p>How much to select depends on your needs. However, it is recommended to select enough passage text for the selection to be self-contained, as passages are read separately outside of context once coded. In “Climate Debate”, the majority of selections coded were made from one or two complete sentences.</p>
+<p>Copying the passage text is done using <strong class="ui">Edit ▸ Copy</strong> (⌘C).</p>
+<h3 id="selection-bar">The selection bar<a class="anchor" href="#selection-bar" aria-hidden="true">#</a></h3>
+<p>The instant any word or passage has been selected in the document, a bar appears near the bottom of the reader. The bar starts by displaying the first words of your selection and the actions that can be performed on it.</p>
+<p>The figure shows a sentence selected from “Running Out of Time”, which is ready for coding under “Deadlines” as in the Quick Start. The previous passage was already coded with “Deadlines”. Next to the following sentence, there is an annotation attached to a memo beginning with “Distant targets are read as evasion”.</p>
+<figure class="shot" id="reading-and-editing-selection-bar"><img class="shot-light" src="../figures/en/light/reading-and-editing-selection-bar.webp" alt="A passage selected in the op-ed “Running Out of Time”, with the selection bar at the bottom of the reader." loading="lazy"><img class="shot-dark" src="../figures/en/dark/reading-and-editing-selection-bar.webp" alt="A passage selected in the op-ed “Running Out of Time”, with the selection bar at the bottom of the reader." loading="lazy"><figcaption>A passage selected in the op-ed “Running Out of Time”, with the selection bar at the bottom of the reader.</figcaption></figure>
+<p>The selection bar includes the following features:</p>
+<ul>
+<li><strong class="ui">Bookmark</strong> creates a bookmark in the current passage, optionally accompanied by a comment such as “Rhetorical question at the turn to the closing appeal” on a bookmark in “Running Out of Time”. When a selection lies atop a bookmark, however, the button switches to <strong class="ui">Remove Bookmark</strong>.</li>
+<li><strong class="ui">Code</strong> opens the code palette. Select one to code the passage, type into the box to look up the code from the list (the highlighted code, the first match until you move with ↑ and ↓, is applied when pressing Return), and pick a code with a checkmark (one already on the passage) to remove it. After all the codes in the list, the option <strong class="ui">Add Code “…”</strong> creates a new code whose name matches what was typed, assuming there’s no code with such a name already. Finally, there’s the <strong class="ui">In Vivo “…”</strong> option for coding the selection with a new code named after the selected text.</li>
+<li><strong class="ui">Add to Dictionary</strong> will insert the selected text into a category of a project dictionary (see <a href="dictionaries.html">Chapter 19, Dictionaries</a>). This button will only appear if the project contains at least one dictionary.</li>
+<li><strong class="ui">Memo</strong> creates a memo related to the selected passage.</li>
+<li><strong class="ui">Link</strong> initiates creation of a link between two passages. The second passage, in this document or another, must be selected before clicking <strong class="ui">Finish Link</strong>. In the meanwhile, you get a crossed-out link button, <strong class="ui">Cancel the pending link</strong>, which deletes the unfinished link.</li>
+<li>Clicking × at the end of the selection bar clears the current selection, like Esc.</li>
+</ul>
+<figure class="shot" id="reading-and-editing-code-list"><img class="shot-light" src="../figures/en/light/reading-and-editing-code-list.webp" alt="The code palette opened from the selection bar in “Running Out of Time”, with “Dead” typed and “Deadlines” highlighted above Add Code and In Vivo." loading="lazy"><img class="shot-dark" src="../figures/en/dark/reading-and-editing-code-list.webp" alt="The code palette opened from the selection bar in “Running Out of Time”, with “Dead” typed and “Deadlines” highlighted above Add Code and In Vivo." loading="lazy"><figcaption>The code palette opened from the selection bar in “Running Out of Time”, with “Dead” typed and “Deadlines” highlighted above Add Code and In Vivo.</figcaption></figure>
+<figure class="shot" id="reading-and-editing-pending-link"><img class="shot-light" src="../figures/en/light/reading-and-editing-pending-link.webp" alt="A passage in “Running Out of Time” with a link pending, showing Finish Link and the button that cancels the pending link in the selection bar." loading="lazy"><img class="shot-dark" src="../figures/en/dark/reading-and-editing-pending-link.webp" alt="A passage in “Running Out of Time” with a link pending, showing Finish Link and the button that cancels the pending link in the selection bar." loading="lazy"><figcaption>A passage in “Running Out of Time” with a link pending, showing Finish Link and the button that cancels the pending link in the selection bar.</figcaption></figure>
+<p>For information regarding appropriate use of coding, memos, bookmarks, or linking, see <a href="coding.html">Chapter 7, Coding</a>.</p>
+<p>The <strong class="ui">Document</strong> menu contains commands for performing these actions with their respective keyboard shortcuts:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Command</th><th>Shortcut</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">Document ▸ Code</strong></td><td>⇧⌘C</td></tr>
+<tr><td><strong class="ui">Document ▸ In Vivo Code</strong></td><td>⇧⌘V</td></tr>
+<tr><td><strong class="ui">Document ▸ Memo</strong></td><td>⇧⌘M</td></tr>
+<tr><td><strong class="ui">Document ▸ Bookmark</strong> (or <strong class="ui">Remove Bookmark</strong>)</td><td>⇧⌘B</td></tr>
+<tr><td><strong class="ui">Document ▸ Link</strong> (or <strong class="ui">Finish Link</strong>)</td><td>⇧⌘L</td></tr>
+<tr><td><strong class="ui">Document ▸ Cancel Link</strong></td><td>⌥⇧⌘L</td></tr>
+</tbody></table></div>
+<h2 id="editing-text">Editing a document’s text<a class="anchor" href="#editing-text" aria-hidden="true">#</a></h2>
+<p>All document texts may be edited. Editing in LemmaLoom allows you to correct minor errors, including typos in an article, errors introduced during PDF text extraction, incorrectly transcribed words in a transcription, poorly translated phrases in a machine translation, etc. When you edit, LemmaLoom keeps any codings, memos, links, and bookmarks associated with their respective text fragments. Once saved, the whole document gets indexed anew.</p>
+<p>The editor presents the text of your document as plain text in a monospaced font. To edit significant portions of the text, first edit it somewhere else and paste it back into the editor. Alternatively, import the modified document file and begin coding anew. After pasting, be sure to review any annotations, which could now refer to incorrect text (see the note at the end of <a href="#annotations-follow-edits">How annotations follow edits</a> below).</p>
+<h3 id="editing-and-saving">Editing and saving<a class="anchor" href="#editing-and-saving" aria-hidden="true">#</a></h3>
+<p>The kinds of texts you would want to edit the most are probably those generated by LemmaLoom, either a transcription, a translated text, or a PDF’s text extracted by LemmaLoom. In “Climate Debate”, these are “Heat Wave Report 2024”, the transcript of “Radio Debate”, and “Running Out of Time (German)”. Below is an image showing one of the skeptic opinion pieces, “Net Zero Will Cost You”, in the editor, with blank lines separating its paragraphs and no options except for the <strong class="ui">Cancel</strong> and <strong class="ui">Save</strong> buttons in the title band.</p>
+<figure class="shot" id="reading-and-editing-editor"><img class="shot-light" src="../figures/en/light/reading-and-editing-editor.webp" alt="The op-ed “Net Zero Will Cost You” in the text editor, with Cancel and Save in the title band." loading="lazy"><img class="shot-dark" src="../figures/en/dark/reading-and-editing-editor.webp" alt="The op-ed “Net Zero Will Cost You” in the text editor, with Cancel and Save in the title band." loading="lazy"><figcaption>The op-ed “Net Zero Will Cost You” in the text editor, with Cancel and Save in the title band.</figcaption></figure>
+<p>To modify a document’s text:</p>
+<ol>
+<li>Open the document.</li>
+<li>Click <strong class="ui">Edit</strong> at the right end of the title band, or choose <strong class="ui">Document ▸ Edit</strong> (⇧⌘E). The reader becomes a plain text editor with a monospaced font. Lenses, the gutter, the document overview, and the status bar are hidden while you edit, and the line <strong class="ui">Editing replaces the document text; the index rebuilds on save.</strong> appears below the text.</li>
+<li>Make your changes. While you type, ⌘Z undoes your last changes in the editor.</li>
+<li>Click <strong class="ui">Save</strong> in the title band, or choose <strong class="ui">Document ▸ Save</strong> (⌘Return).</li>
+</ol>
+<p>Separate paragraphs with a blank line. In the absence of blank lines, a document has one paragraph per line. Once you introduce even a single blank line, only blank lines separate paragraphs; hence, the number of paragraphs decreases drastically.</p>
+<p>Clicking <strong class="ui">Cancel</strong>, or choosing <strong class="ui">Document ▸ Cancel</strong> (⌘.), will take you out of the editor while losing your current changes; any input you entered since clicking <strong class="ui">Edit</strong> will vanish immediately.</p>
+<p>Should the reader have been collapsed to only the annotated sentences, clicking <strong class="ui">Edit</strong> opens up the complete document first.</p>
+<p>Other actions within a project (coding passages and writing memos, for instance) are automatically saved as you perform them; changes in text are saved only via <strong class="ui">Save</strong>. So long as the editor is open, switching tabs keeps your edits. However, switching to a different project or quitting LemmaLoom without having saved your edits results in losing them permanently.</p>
+<h3 id="after-saving">What saving does<a class="anchor" href="#after-saving" aria-hidden="true">#</a></h3>
+<p>After you save an edited text, LemmaLoom:</p>
+<ol>
+<li>replaces the document’s text with yours;</li>
+<li>moves the codings, memos, bookmarks, and links in the document so that they stay with their text (see <a href="#annotations-follow-edits">How annotations follow edits</a> below);</li>
+<li>indexes the document again from the beginning.</li>
+</ol>
+<p>During indexing, the reader displays the newly modified text underneath the label <strong class="ui">Saving</strong>. Your title band will display <strong class="ui">Saving</strong> in place of <strong class="ui">Edit</strong> as well. Once indexing completes, your lenses, word counts, and inspector will update according to the new text. For documents in a language where LemmaLoom does not conduct grammar analyses, the reader is ready again immediately.</p>
+<figure class="shot" id="reading-and-editing-saving"><img class="shot-light" src="../figures/en/light/reading-and-editing-saving.webp" alt="The long text “Who Pays for the Transition” just after a save, with Saving in the title band and over the text, and the indexing progress in the status bar." loading="lazy"><img class="shot-dark" src="../figures/en/dark/reading-and-editing-saving.webp" alt="The long text “Who Pays for the Transition” just after a save, with Saving in the title band and over the text, and the indexing progress in the status bar." loading="lazy"><figcaption>The long text “Who Pays for the Transition” just after a save, with Saving in the title band and over the text, and the indexing progress in the status bar.</figcaption></figure>
+<p>The time required to index modified documents is about equal to the time needed to initially index them. You can track the progress using the status bar, or the <strong class="ui">Window ▸ Activity</strong> menu item (⌥⌘0). Should indexing be disabled for a particular document, LemmaLoom will re-index it only once you click <strong class="ui">Index Now</strong> in the status bar, and until then the reader keeps showing <strong class="ui">Saving</strong>.</p>
+<h3 id="annotations-follow-edits">How annotations follow edits<a class="anchor" href="#annotations-follow-edits" aria-hidden="true">#</a></h3>
+<p>When you save changes made to a document, LemmaLoom analyzes differences between versions by comparing letters in the previous and updated text in order to figure out what additions and deletions were made. Then, it shifts all associated items, including codings, memos attached to a passage, bookmarks, links, transcripts-to-audio/video associations (see <a href="#correcting-transcripts">Correcting a transcript</a> later in this chapter), and alignments of originals and translations, to correspond with updated locations. <strong class="ui">Scroll Together</strong> and the placing of new copies of annotations rely on that alignment (see <a href="translations.html#annotations-in-both-languages">Annotations in both languages</a> in <a href="translations.html">Chapter 9, Translations and Split View</a>).</p>
+<p>When you make an edit, it applies only to the language version, original or translation, that you perform edits in; annotations in the other language version remain unchanged. If you know ahead of time that you intend to translate a document, consider fixing any errors in it beforehand to avoid translating errors from it into another language.</p>
+<p>Additions or deletions made earlier in the document will shift the passage along with its text. Additions made within a passage will become included in it. Additions made immediately after a passage will fall outside it (unless they end with the same character as the last character of the passage, in which case they become part of it). Deletions within a passage will shorten it. Additions made immediately before a passage will stay outside it. Text that replaces a passage will become the new passage. Deleting all of a passage’s text will leave the annotation intact, with an empty passage.</p>
+<h4 id="an-example">An example<a class="anchor" href="#an-example" aria-hidden="true">#</a></h4>
+<p>The speech titled “A Mayor’s Promise” has the following passage:</p>
+<blockquote><p>We will plant twelve thousand trees, starting in the neighborhoods that need them most.</p>
+</blockquote>
+<p>Suppose that <em>twelve thousand trees</em> is coded with “Hope”. The table shows what changes happen to the coded passage after making each one of these edits, one at a time, to the original sentence:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Edit</th><th>Coded passage afterwards</th></tr></thead>
+<tbody>
+<tr><td><em>We will plant</em> changed to <em>The city will plant</em></td><td><em>twelve thousand trees</em>, moved with its text</td></tr>
+<tr><td><em>twelve thousand</em> changed to <em>12,000</em></td><td><em>12,000 trees</em></td></tr>
+<tr><td><em>street</em> added between <em>thousand</em> and <em>trees</em></td><td><em>twelve thousand street trees</em></td></tr>
+<tr><td><em>around</em> added before <em>twelve</em></td><td><em>twelve thousand trees</em>; <em>around</em> stays outside</td></tr>
+<tr><td><em>by 2035</em> added after <em>trees</em></td><td><em>twelve thousand trees</em>; the addition stays outside</td></tr>
+<tr><td><em>along our streets</em> added after <em>trees</em></td><td><em>twelve thousand trees along our streets</em></td></tr>
+<tr><td><em>twelve thousand trees</em> replaced by <em>a grove</em></td><td><em>a grove</em></td></tr>
+<tr><td><em>twelve thousand trees</em> deleted</td><td>an empty passage</td></tr>
+</tbody></table></div>
+<p>Since the addition <em>by 2035</em> ends in 5 whereas <em>trees</em> ends in <em>s</em>, LemmaLoom places the addition after the passage. Since the addition <em>along our streets</em> also ends in <em>s</em> (like <em>trees</em>), however, LemmaLoom considers it as occurring inside the passage; the new text could equally be the letters <em>s along our street</em> inserted inside the passage, before its last letter.</p>
+<p>If you delete the text of a coding, as in the last row, that coding can be found only in the <strong class="ui">Codings</strong> view of the project shelf, where you may right-click the coding and select <strong class="ui">Delete Coding</strong>. Memos and bookmarks whose text you delete are kept in the same way. To avoid empty annotations, remove them before deleting their text.</p>
+<p>Once editing close to a coding occurs, check in the reader whether the coding still covers the right part of the modified passage. If it needs modification, remove the coding from the passage, and then re-code it (see <a href="coding.html#removing-codings">Removing a code from a passage</a> in <a href="coding.html">Chapter 7, Coding</a>).</p>
+<aside class="callout note"><p class="callout-title">Note</p><p>LemmaLoom will compare letters between the two versions one to one only if there were about a thousand or fewer letters inserted and deleted in total. Should you insert or delete more than that number at once, such as pasting in a newer version of a long passage, LemmaLoom compares lines, sentences, and words first, and letters only within the parts that changed. A changed part that is still too large will be considered a replacement block. Annotations within this block preserve their original positions relative to this new span of text as much as possible, meaning they might end up on different words. Save your work after each larger change and review annotations in the changed part afterward.</p>
+</aside>
+<h3 id="undoing-edits">Undoing an edit<a class="anchor" href="#undoing-edits" aria-hidden="true">#</a></h3>
+<p>Saving an edit results in one entry in the undo history (see <a href="undo.html">Chapter 23, Undo and Redo</a>). To restore the previous state of the edited text, along with all of its codings, memos, bookmarks, and links to their previous positions, choose <strong class="ui">Edit ▸ Undo Edit Text</strong> (⌘Z). This will reindex your document accordingly.</p>
+<h2 id="media-documents">Audio and video documents<a class="anchor" href="#media-documents" aria-hidden="true">#</a></h2>
+<p>When working with an audio or video document like “Radio Debate”, you work with the transcript in exactly the same way as you would with any text document. Once you import the recording, LemmaLoom generates the transcript for you (see <a href="importing.html">Chapter 4, Importing Material</a>). Each stretch of the transcript is tied to the stretch of the recording it came from. Paragraphs begin at points where the speaker shifts or there is a pause in speaking longer than roughly a second and a half.</p>
+<p>You will code the recording using its transcript. Whenever there are passages whose meanings cannot be determined based purely on the transcript, e.g., if it was the speaker’s intonation or sarcasm that made something meaningful, you can listen to them directly.</p>
+<p>The speakers and text remain separate in LemmaLoom. If a recording contains multiple speakers, they will be indicated in the player bar as you listen along. The names of the speakers will follow a naming convention of “Speaker 1”, “Speaker 2”, etc. for LemmaLoom-transcribed recordings; in “Radio Debate”, they will be labeled “Host”, “Activist”, and “Skeptic”. Each speaker’s utterances are automatically coded with a subcode of the code “Speakers”. The names on the player bar retain their original values when you rename your speaker codes (see <a href="importing.html#speaker-detection">Speakers</a> in <a href="importing.html">Chapter 4, Importing Material</a>).</p>
+<h3 id="player-bar">The player bar<a class="anchor" href="#player-bar" aria-hidden="true">#</a></h3>
+<p>Above the text lies the player bar. The contents of this bar, from left to right, are shown below:</p>
+<ul>
+<li>For video only, buttons to collapse the video player down to the controls (<strong class="ui">Collapse to the controls</strong>) or show it again (<strong class="ui">Show the video</strong>), and to move the video beside the text or back above it;</li>
+<li><strong class="ui">Play</strong> or <strong class="ui">Pause</strong> control button;</li>
+<li><strong class="ui">Scroll with audio</strong> control button, which makes the reader follow the recording;</li>
+<li>Elapsed playtime, a playback slider control, and total recording length;</li>
+<li>Speaker of the current passage for any recording with multiple speakers, e.g. “Skeptic”.</li>
+</ul>
+<p>The timings on both the elapsed playtime counter and total length counter are displayed in minutes and seconds form, such as 2:14. Any recordings of an hour or more have hours displayed along with minutes and seconds, such as 3:56:32.</p>
+<p>In the illustration below is the recording “Radio Debate”. This particular recording is roughly five minutes long, currently paused at 1:09, during a speech made by the Skeptic. As <strong class="ui">Scroll with audio</strong> is on, the current passage is highlighted while the remainder of the text is grayed out. The speaker codes appear in the gutter beside each turn.</p>
+<figure class="shot" id="reading-and-editing-media-player"><img class="shot-light" src="../figures/en/light/reading-and-editing-media-player.webp" alt="The audio document “Radio Debate”, with Scroll with audio on and the current passage in the spotlight." loading="lazy"><img class="shot-dark" src="../figures/en/dark/reading-and-editing-media-player.webp" alt="The audio document “Radio Debate”, with Scroll with audio on and the current passage in the spotlight." loading="lazy"><figcaption>The audio document “Radio Debate”, with Scroll with audio on and the current passage in the spotlight.</figcaption></figure>
+<p>To play a recording:</p>
+<ol>
+<li>Open the document.</li>
+<li>Click <strong class="ui">Play</strong> (the triangle), or choose <strong class="ui">Document ▸ Play</strong> (⇧⌘P).</li>
+<li>To stop, click <strong class="ui">Pause</strong> or choose <strong class="ui">Document ▸ Pause</strong> (⇧⌘P).</li>
+<li>To move to another point, drag the slider.</li>
+</ol>
+<p>When pressing <strong class="ui">Play</strong> at the end of a recording, playback will begin anew from the starting point. If you switch tabs or close the document during playback, playback pauses immediately.</p>
+<h3 id="playing-from-text">Playing from a point in the transcript<a class="anchor" href="#playing-from-text" aria-hidden="true">#</a></h3>
+<p>Clicking a word in the transcript moves the player to the start of the passage it belongs to. It does nothing more than move the playhead; hit <strong class="ui">Play</strong> to hear from this point onward. Only if the document is indexed can you navigate by clicking on words (see <a href="#before-analysis">Before indexing has finished</a> earlier in this chapter). If a document uses a language lacking grammar analysis, use the slider instead.</p>
+<p>When checking an uncertain passage, click on a word inside it, then hit ⇧⌘P. This lets you listen, and then pressing ⇧⌘P pauses the playback.</p>
+<h3 id="following-transcript">Following the transcript<a class="anchor" href="#following-transcript" aria-hidden="true">#</a></h3>
+<p>With <strong class="ui">Scroll with audio</strong> turned on (the button is highlighted), the reader will highlight the passage playing and will keep it centered within the pane as the recording progresses. Dragging the slider will drag the highlighted passage along with it. When turned on, <strong class="ui">Scroll with audio</strong> immediately jumps to wherever the recording currently plays. Initially, <strong class="ui">Scroll with audio</strong> is set to off; like the size and position of videos, it applies to every audio and video document.</p>
+<p>If you scroll, click, or navigate with the keyboard during playback, the reader stops following for a few seconds and scrolls back once the next passage in the recording begins. With a passage selected, the reader holds its position. Clicking <strong class="ui">Play</strong> jumps instantly back to the passage being played.</p>
+<p><strong class="ui">Scroll with audio</strong> is especially helpful when coding a recording while listening, or checking the transcripts against the recording. Pause playback with ⇧⌘P when you come across an interesting passage to code, and the reader stays on that passage while you select and code it.</p>
+<p>Within the <strong class="ui">Reader</strong> pane of Settings, <strong class="ui">Audio Playback</strong> determines how the currently playing passage should be displayed. <strong class="ui">Spotlight</strong> dims everything else except the currently played passage. <strong class="ui">Solid block</strong> places the currently played passage on a block of color. Lastly, <strong class="ui">Highlight</strong> highlights the currently played passage slightly.</p>
+<h3 id="video-position">Video above or beside the text<a class="anchor" href="#video-position" aria-hidden="true">#</a></h3>
+<p>A video is played within a frame above the text area. You may drag the divider beneath the video frame up to increase the space available to the text area. Alternatively, clicking <strong class="ui">Collapse to the controls</strong> will collapse the video and leave behind only the player bar.</p>
+<figure class="shot" id="reading-and-editing-video-above"><img class="shot-light" src="../figures/en/light/reading-and-editing-video-above.webp" alt="The video “sample-video” playing in a frame above its transcript, with the player bar between them." loading="lazy"><img class="shot-dark" src="../figures/en/dark/reading-and-editing-video-above.webp" alt="The video “sample-video” playing in a frame above its transcript, with the player bar between them." loading="lazy"><figcaption>The video “sample-video” playing in a frame above its transcript, with the player bar between them.</figcaption></figure>
+<figure class="shot" id="reading-and-editing-video-collapsed"><img class="shot-light" src="../figures/en/light/reading-and-editing-video-collapsed.webp" alt="The video “sample-video” collapsed to the controls of the player bar, above its transcript." loading="lazy"><img class="shot-dark" src="../figures/en/dark/reading-and-editing-video-collapsed.webp" alt="The video “sample-video” collapsed to the controls of the player bar, above its transcript." loading="lazy"><figcaption>The video “sample-video” collapsed to the controls of the player bar, above its transcript.</figcaption></figure>
+<p>Clicking the <strong class="ui">Show the video beside the text</strong> button will place the video to the left of the text area, with the player bar beneath the video. Adjusting the divider between them will resize both areas accordingly, while the text keeps a readable width. Click the <strong class="ui">Show the video above the text</strong> button to restore the original configuration. With wider screen sizes, having the video displayed beside the text increases visible lines in the transcript.</p>
+<figure class="shot" id="reading-and-editing-video-beside"><img class="shot-light" src="../figures/en/light/reading-and-editing-video-beside.webp" alt="The video “sample-video” beside its transcript, with the player bar beneath the video." loading="lazy"><img class="shot-dark" src="../figures/en/dark/reading-and-editing-video-beside.webp" alt="The video “sample-video” beside its transcript, with the player bar beneath the video." loading="lazy"><figcaption>The video “sample-video” beside its transcript, with the player bar beneath the video.</figcaption></figure>
+<h3 id="correcting-transcripts">Correcting a transcript<a class="anchor" href="#correcting-transcripts" aria-hidden="true">#</a></h3>
+<p>Transcripts will inevitably contain some errors, especially in names and domain-specific vocabulary. Correcting transcripts works the same as any other text editing (refer to <a href="#editing-and-saving">Editing and saving</a> earlier in this chapter). Your player bar stays put throughout editing, and playback can still be toggled with ⇧⌘P while editing your transcript.</p>
+<p>It makes most sense to find errors in your transcription first, and then address them. Use the reader’s playback functionality while having <strong class="ui">Scroll with audio</strong> enabled to locate the passages requiring corrections (you can use bookmarks for this purpose). Proceeding to the editor, you then fix the errors accordingly. Ideally, you should correct the transcript prior to coding.</p>
+<p>The ties established between the transcript and the corresponding recordings follow your edits similarly to how codings do (refer to <a href="#annotations-follow-edits">How annotations follow edits</a> earlier in this chapter). This means that a corrected word within a passage continues playing as a part of the passage, and clicking it takes you to the same place in the recording as before your changes.</p>
+<h2 id="full-screen">The full-screen reader<a class="anchor" href="#full-screen" aria-hidden="true">#</a></h2>
+<p>When LemmaLoom is running in full screen mode, the whole window takes the entire screen. The title band hides, and the tools go to the toolbar at the very top of the screen. Full screen mode proves particularly helpful for initial readings of large documents. It’s possible to keep the inspector open while you work on coding documents, for example, to keep the document’s codes in view in its <strong class="ui">Coding</strong> tab.</p>
+<p>The figure below demonstrates how “Running Out of Time” looks when displayed in full screen, where both the sidebar and inspector remain open alongside the open <strong class="ui">Reader Settings</strong> menu in the toolbar.</p>
+<figure class="shot" id="reading-and-editing-full-screen"><img class="shot-light" src="../figures/en/light/reading-and-editing-full-screen.webp" alt="The toolbar of the full-screen reader, with the Reader Settings menu open." loading="lazy"><img class="shot-dark" src="../figures/en/dark/reading-and-editing-full-screen.webp" alt="The toolbar of the full-screen reader, with the Reader Settings menu open." loading="lazy"><figcaption>The toolbar of the full-screen reader, with the Reader Settings menu open.</figcaption></figure>
+<p>How to read in full-screen mode:</p>
+<ol>
+<li>Open the document.</li>
+<li>Choose <strong class="ui">View ▸ Enter Full Screen</strong> (⌃⌘F), or click the green button at the top left of the window.</li>
+<li>To give the text the whole width of the screen, hide the sidebar with <strong class="ui">View ▸ Toggle Sidebar</strong> (⌃⌘S) and the inspector with <strong class="ui">View ▸ Toggle Inspector</strong> (⌃⌘I).</li>
+<li>To leave full screen, choose <strong class="ui">View ▸ Exit Full Screen</strong> (⌃⌘F).</li>
+</ol>
+<p>All menu commands and shortcuts in this chapter function identically within full-screen mode.</p>
+<h2 id="split-view">Reading two documents side by side<a class="anchor" href="#split-view" aria-hidden="true">#</a></h2>
+<p>Split view splits your reader into two panes with each displaying one document. Split view lets you juxtapose two documents, say an op-ed written by activists on a topic and another one written by skeptics on the same issue, or an article next to its own translation. It is also helpful when you are in the middle of coding. Having already coded a document in one pane, you can see the exact nature of how you coded something, and now you can continue applying the code consistently on the document you are currently coding. More information on how to use translations along with split views can be found in <a href="translations.html">Chapter 9, Translations and Split View</a>.</p>
+<p>The figure illustrates the op-ed titled “Running Out of Time” on the left, followed by its German translation titled “Running Out of Time (German)” on the right. The translated document contains copies of the codings made to the original document, and <strong class="ui">Scroll together</strong> keeps the two aligned as you scroll.</p>
+<figure class="shot" id="reading-and-editing-split-view"><img class="shot-light" src="../figures/en/light/reading-and-editing-split-view.webp" alt="The op-ed “Running Out of Time” on the left and its German translation, “Running Out of Time (German)”, on the right, with Scroll together turned on." loading="lazy"><img class="shot-dark" src="../figures/en/dark/reading-and-editing-split-view.webp" alt="The op-ed “Running Out of Time” on the left and its German translation, “Running Out of Time (German)”, on the right, with Scroll together turned on." loading="lazy"><figcaption>The op-ed “Running Out of Time” on the left and its German translation, “Running Out of Time (German)”, on the right, with Scroll together turned on.</figcaption></figure>
+<p>There are several ways to open a second document beside the current one.</p>
+<ul>
+<li>In the sidebar, right-click the document and choose <strong class="ui">Open in Split View</strong> from the shortcut menu.</li>
+<li>Alternatively, right-click the tab of another open document and choose <strong class="ui">Open in Split View</strong> from its menu.</li>
+<li>For opening two documents side by side simultaneously, hold down ⌘ while clicking the second document in the sidebar, right-click one, and choose <strong class="ui">Open Side by Side</strong> from the shortcut menu. Whichever document is positioned higher in the sidebar opens on the left.</li>
+<li>In the case of a translation, right-click it in the sidebar and choose <strong class="ui">Open Beside Original</strong>. The original will open on the left and the translation on the right.</li>
+</ul>
+<figure class="shot" id="reading-and-editing-split-view-menu"><img class="shot-light" src="../figures/en/light/reading-and-editing-split-view-menu.webp" alt="The shortcut menu on “Running Out of Time (German)” in the sidebar, with Open Beside Original." loading="lazy"><img class="shot-dark" src="../figures/en/dark/reading-and-editing-split-view-menu.webp" alt="The shortcut menu on “Running Out of Time (German)” in the sidebar, with Open Beside Original." loading="lazy"><figcaption>The shortcut menu on “Running Out of Time (German)” in the sidebar, with Open Beside Original.</figcaption></figure>
+<p>All mentioned options can also be found under <strong class="ui">Window</strong> in the main menu. From there, <strong class="ui">Open in Split View</strong> lists the open documents available to go beside the active document.</p>
+<p>The newly opened document opens in the right pane. Its tab gets moved out of the tab strip onto the header of the right pane.</p>
+<p>Split view functions in the following manner.</p>
+<ul>
+<li>By clicking either pane, you activate it, which highlights its tab. Tools, menus, and the inspector now pertain only to the activated pane; thus, ⌘F will look through the document inside that pane only.</li>
+<li>By dragging the divider between the two panes, you control their respective sizes. There are minimum size limits for the panes, and LemmaLoom remembers the division and restores it accordingly upon reopening split view.</li>
+<li>Every pane contains its own set of lenses and search bar as well as independent selections and scrolling positions. This allows you, for instance, to enable a grammar lens in one pane, leaving only your codes in the other. Fonts, text size, gutter, and layouts are synchronized between both panes.</li>
+<li>If the two documents correspond to each other as an original and translation or even two translations from an identical original, a lock button, <strong class="ui">Scroll together</strong>, appears on the far right of the header of the right pane. Click that to synchronize scrolling, or alternatively choose <strong class="ui">View ▸ Scroll Together</strong> (⌥⌘L).</li>
+</ul>
+<p>To close split view, click the × on the right pane header, choose <strong class="ui">Close Split View</strong> from that header’s shortcut menu, or select <strong class="ui">Window ▸ Close Split View</strong> from the main menu. The document in the right pane closes with it.</p>
+<h3 id="document-window">Opening a document in its own window<a class="anchor" href="#document-window" aria-hidden="true">#</a></h3>
+<p>Alternatively, you could read your document within its own window. This might be useful if you had another monitor to work with or if you wish to have a text visible while the main window shows something else, perhaps the codebook or a query. To open your document in a separate window, right-click on the tab for that document and select <strong class="ui">Open in New Window</strong>. You could also choose <strong class="ui">Window ▸ Open in New Window</strong> for your current active document. The <strong class="ui">Document</strong> window displays the reader alongside an inspector of its own. LemmaLoom has only one such window, so opening another document in a new window replaces the one it shows.</p>
+<figure class="shot" id="reading-and-editing-document-window"><img class="shot-light" src="../figures/en/light/reading-and-editing-document-window.webp" alt="The Document window showing “Running Out of Time”, with the reader on the left and its own inspector on the right." loading="lazy"><img class="shot-dark" src="../figures/en/dark/reading-and-editing-document-window.webp" alt="The Document window showing “Running Out of Time”, with the reader on the left and its own inspector on the right." loading="lazy"><figcaption>The Document window showing “Running Out of Time”, with the reader on the left and its own inspector on the right.</figcaption></figure>
+<p>From here, you may use the available menu commands and their respective shortcuts, for example, searching for text with ⌘F, resizing text with ⌘+ and ⌘-, editing the document with ⇧⌘E, revealing/hiding the inspector with ⌃⌘I, completing editing with ⌘Return, or using ⌘. to cancel it.</p>
+<h2 id="reading-commands">Commands for reading and editing<a class="anchor" href="#reading-commands" aria-hidden="true">#</a></h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Command</th><th>Shortcut</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">Edit ▸ Find</strong></td><td>⌘F</td><td>Opens or closes the search bar. Disabled while editing.</td></tr>
+<tr><td><strong class="ui">Edit ▸ Find Next</strong></td><td>⌘G</td><td>While the search bar has matches.</td></tr>
+<tr><td><strong class="ui">Edit ▸ Find Previous</strong></td><td>⇧⌘G</td><td>While the search bar has matches.</td></tr>
+<tr><td><strong class="ui">View ▸ Larger Text</strong></td><td>⌘+</td><td>With a document open, up to 200 percent.</td></tr>
+<tr><td><strong class="ui">View ▸ Smaller Text</strong></td><td>⌘-</td><td>With a document open, down to 70 percent.</td></tr>
+<tr><td><strong class="ui">View ▸ Reset Text Size</strong></td><td>⌘0</td><td>With a document open, when the size is not 100 percent.</td></tr>
+<tr><td><strong class="ui">View ▸ Scroll Together</strong></td><td>⌥⌘L</td><td>In split view, with two language versions of one document.</td></tr>
+<tr><td><strong class="ui">View ▸ Toggle Sidebar</strong></td><td>⌃⌘S</td><td>Shows or hides the navigation sidebar.</td></tr>
+<tr><td><strong class="ui">View ▸ Toggle Inspector</strong></td><td>⌃⌘I</td><td>Shows or hides the inspector.</td></tr>
+<tr><td><strong class="ui">View ▸ Enter Full Screen</strong></td><td>⌃⌘F</td><td>Reads <strong class="ui">Exit Full Screen</strong> while in full screen.</td></tr>
+<tr><td><strong class="ui">Document ▸ Edit</strong></td><td>⇧⌘E</td><td>When the document’s text has loaded.</td></tr>
+<tr><td><strong class="ui">Document ▸ Save</strong></td><td>⌘Return</td><td>While editing.</td></tr>
+<tr><td><strong class="ui">Document ▸ Cancel</strong></td><td>⌘.</td><td>While editing.</td></tr>
+<tr><td><strong class="ui">Document ▸ Play</strong> or <strong class="ui">Pause</strong></td><td>⇧⌘P</td><td>In audio and video documents.</td></tr>
+<tr><td><strong class="ui">Edit ▸ Undo Edit Text</strong></td><td>⌘Z</td><td>After saving an edit.</td></tr>
+</tbody></table></div>
+<p>See the list of all keyboard shortcuts in LemmaLoom in <a href="keyboard-shortcuts.html">Chapter 25, Keyboard Shortcuts</a>.</p>
+</article>
+<nav class="pager"><a class="previous" href="importing.html"><span>Previous</span>Importing Material</a><a class="next" href="lenses.html"><span>Next</span>Lenses</a></nav>
+<footer class="site-footer">© 2026 Ryan S. Cooper. All rights reserved.</footer>
+</main>
+<nav class="page-toc" aria-label="On this page"><p>On this page</p><ul>
+<li class="level-2"><a href="#the-reader">The reader</a></li>
+<li class="level-3"><a href="#title-band">The title band</a></li>
+<li class="level-3"><a href="#gutter">The gutter</a></li>
+<li class="level-3"><a href="#minimap">The document overview</a></li>
+<li class="level-3"><a href="#status-bar">The status bar</a></li>
+<li class="level-3"><a href="#before-analysis">Before indexing has finished</a></li>
+<li class="level-3"><a href="#reader-state">What the reader retains</a></li>
+<li class="level-2"><a href="#text-appearance">Changing how text is presented</a></li>
+<li class="level-3"><a href="#font">Font</a></li>
+<li class="level-3"><a href="#text-size">Text size</a></li>
+<li class="level-3"><a href="#gutter-numbering">Gutter numbering</a></li>
+<li class="level-3"><a href="#layout">Layout</a></li>
+<li class="level-3"><a href="#reader-themes">Reader colors</a></li>
+<li class="level-3"><a href="#selection-appearance">How selections are displayed</a></li>
+<li class="level-2"><a href="#finding-text">Finding text</a></li>
+<li class="level-2"><a href="#selecting-text">Selecting text</a></li>
+<li class="level-3"><a href="#selecting-a-word">Selecting a word</a></li>
+<li class="level-3"><a href="#selecting-a-passage">Selecting a passage</a></li>
+<li class="level-3"><a href="#selection-bar">The selection bar</a></li>
+<li class="level-2"><a href="#editing-text">Editing a document’s text</a></li>
+<li class="level-3"><a href="#editing-and-saving">Editing and saving</a></li>
+<li class="level-3"><a href="#after-saving">What saving does</a></li>
+<li class="level-3"><a href="#annotations-follow-edits">How annotations follow edits</a></li>
+<li class="level-3"><a href="#undoing-edits">Undoing an edit</a></li>
+<li class="level-2"><a href="#media-documents">Audio and video documents</a></li>
+<li class="level-3"><a href="#player-bar">The player bar</a></li>
+<li class="level-3"><a href="#playing-from-text">Playing from a point in the transcript</a></li>
+<li class="level-3"><a href="#following-transcript">Following the transcript</a></li>
+<li class="level-3"><a href="#video-position">Video above or beside the text</a></li>
+<li class="level-3"><a href="#correcting-transcripts">Correcting a transcript</a></li>
+<li class="level-2"><a href="#full-screen">The full-screen reader</a></li>
+<li class="level-2"><a href="#split-view">Reading two documents side by side</a></li>
+<li class="level-3"><a href="#document-window">Opening a document in its own window</a></li>
+<li class="level-2"><a href="#reading-commands">Commands for reading and editing</a></li>
+</ul></nav>
+</div>
+<script src="../assets/guide.js" defer></script>
+</body>
+</html>

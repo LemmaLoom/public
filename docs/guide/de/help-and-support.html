@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hilfe und Support · LemmaLoom Benutzerhandbuch</title>
+<link rel="stylesheet" href="../assets/guide.css">
+<link rel="icon" type="image/png" href="../assets/logo.png">
+<script>var r=document.documentElement;r.setAttribute('data-theme','light');try{if(localStorage.getItem('guide-theme')==='dark'){r.setAttribute('data-theme','dark')}}catch(e){}</script>
+</head>
+<body>
+<header class="topbar">
+<button class="menu-toggle" aria-label="Inhalt" aria-expanded="false">☰</button>
+<a class="brand" href="index.html"><span class="wordmark"><span class="lemma">Lemma</span>Loom</span><span class="guide-name">Benutzerhandbuch</span></a>
+<div class="search"><input type="search" id="search" placeholder="Suchen" aria-label="Suchen" autocomplete="off" data-empty="Keine Treffer"><div class="results" id="results" hidden></div></div>
+<nav class="languages" aria-label="Language"><a href="../en/help-and-support.html" lang="en">English</a><a href="../de/help-and-support.html" lang="de" aria-current="true">Deutsch</a><a href="../zh-Hans/help-and-support.html" lang="zh-Hans">简体中文</a></nav>
+<button class="theme-toggle" data-light="Hell" data-dark="Dunkel" aria-label="Erscheinungsbild"></button>
+<a class="pdf-link" href="https://github.com/LemmaLoom/public/raw/main/pdf/lemmaloom-guide-de.pdf">PDF</a>
+</header>
+<div class="layout">
+<nav class="sidebar" aria-label="Inhalt"><ol>
+<li class="unnumbered"><a href="quick-start.html">Schnellstart</a></li>
+<li><a href="introduction.html">Einführung</a></li>
+<li><a href="getting-started.html">Erste Schritte</a></li>
+<li><a href="projects-and-documents.html">Projekte und Dokumente</a></li>
+<li><a href="importing.html">Material importieren</a></li>
+<li><a href="reading-and-editing.html">Lesen und Bearbeiten</a></li>
+<li><a href="lenses.html">Lenses</a></li>
+<li><a href="coding.html">Kodieren</a></li>
+<li><a href="sets-tags-attributes.html">Sets, Gruppen, Tags und Attribute</a></li>
+<li><a href="translations.html">Übersetzungen und geteilte Ansicht</a></li>
+<li><a href="text-inspector.html">Der Text-Inspektor</a></li>
+<li><a href="grammar-inspector.html">Der Grammatik-Inspektor</a></li>
+<li><a href="word-sketch.html">Wortskizze</a></li>
+<li><a href="coding-analysis.html">Codes auswerten</a></li>
+<li><a href="sketch-space.html">Skizzenraum</a></li>
+<li><a href="queries-building.html">Eine Abfrage erstellen</a></li>
+<li><a href="queries-results.html">Abfrageergebnisse und Statistik</a></li>
+<li><a href="queries-patterns.html">Abfragemuster und Erkundung</a></li>
+<li><a href="queries-using-results.html">Abfrageergebnisse nutzen</a></li>
+<li><a href="dictionaries.html">Wörterbücher</a></li>
+<li><a href="custom-analyzers.html">Eigene Analysatoren</a></li>
+<li><a href="analysis-and-indexing.html">Analyse und Indizierung</a></li>
+<li><a href="exchange-and-export.html">Austausch und Export</a></li>
+<li><a href="undo.html">Widerrufen und Wiederholen</a></li>
+<li><a href="settings.html">Einstellungen und Darstellung</a></li>
+<li><a href="keyboard-shortcuts.html">Tastaturkurzbefehle</a></li>
+<li class="current"><a href="help-and-support.html">Hilfe und Support</a></li>
+<li><a href="statistics-reference.html">Statistik im Überblick</a></li>
+<li class="unnumbered"><a href="glossary.html">Glossar</a></li>
+<li class="unnumbered"><a href="thanks.html">Vielen Dank</a></li>
+</ol></nav>
+<main class="content">
+<article>
+<h1 id="help-and-support">Hilfe und Support</h1>
+<p>In drei Fenstern können Sie einen Begriff aus LemmaLoom nachschlagen, sich an den Entwickler wenden und LemmaLoom zitieren. Zwei davon finden Sie im Menü <strong class="ui">Hilfe</strong>, eines im Menü <strong class="ui">LemmaLoom</strong>:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Befehl</th><th>Was er öffnet</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">Hilfe ▸ Glossar</strong></td><td>Kurze Definitionen der Begriffe und Bezeichnungen in LemmaLoom, mit einem Suchfeld</td></tr>
+<tr><td><strong class="ui">Hilfe ▸ Feedback senden</strong></td><td>Ein Fenster für einen Fehlerbericht, einen Funktionswunsch oder eine Frage, aus dem eine E-Mail in Ihrem Mailprogramm wird</td></tr>
+<tr><td><strong class="ui">LemmaLoom ▸ Über LemmaLoom</strong></td><td>Die Versions- und die Build-Nummer, Literaturangaben im MLA- und im APA-Stil und die Lizenzen der Komponenten, die LemmaLoom enthält</td></tr>
+</tbody></table></div>
+<p>Alle drei Befehle öffnen ein eigenes Fenster neben dem Hauptfenster. Ist das Fenster bereits geöffnet, aktiviert ein erneuter Aufruf des Befehls das vorhandene Fenster.</p>
+<p>Alle Beispiele gehen vom Projekt „Klimadebatte“ aus, das unter <a href="introduction.html#example-project">Das Beispielprojekt</a> in <a href="introduction.html">Kapitel 1, Einführung</a> beschrieben ist; um die Befehle selbst auszuprobieren, importieren Sie es mit <strong class="ui">Ablage ▸ Importieren ▸ Beispielprojekt</strong>.</p>
+<h2 id="help-menu">Das Menü „Hilfe“<a class="anchor" href="#help-menu" aria-hidden="true">#</a></h2>
+<p>Ganz oben im Menü <strong class="ui">Hilfe</strong> fügt macOS ein Suchfeld hinzu, das die Namen der Befehle von LemmaLoom in den Menüs durchsucht. Suchen Sie etwa nach <code>Aktivität</code>, erscheint <strong class="ui">Aktivität</strong> unter den Vorschlägen im Suchergebnis. Wenn Sie den Mauszeiger darauf halten, öffnet sich das Menü <strong class="ui">Fenster</strong> und zeigt Ihnen, wo sich der Befehl befindet. ⌘? (auf einer deutschen Tastatur ⇧⌘ß, auf einer US-Tastatur ⇧⌘/) öffnet dieses Suchfeld im Menü <strong class="ui">Hilfe</strong>.</p>
+<figure class="shot" id="help-and-support-help-menu"><img class="shot-light" src="../figures/de/light/help-and-support-help-menu.webp" alt="Das Menü „Hilfe“ mit dem Suchfeld von macOS über den Befehlen „Glossar“ und „Feedback senden“." loading="lazy"><img class="shot-dark" src="../figures/de/dark/help-and-support-help-menu.webp" alt="Das Menü „Hilfe“ mit dem Suchfeld von macOS über den Befehlen „Glossar“ und „Feedback senden“." loading="lazy"><figcaption>Das Menü „Hilfe“ mit dem Suchfeld von macOS über den Befehlen „Glossar“ und „Feedback senden“.</figcaption></figure>
+<h2 id="glossary">Das Glossar<a class="anchor" href="#glossary" aria-hidden="true">#</a></h2>
+<p>Das Glossar definiert das Vokabular der qualitativen Analyse, etwa <em>Code</em>, <em>Segment</em> und <em>Memo</em>, sowie die Bezeichnungen der Grammatikanalyse. <code>NNS</code> ist zum Beispiel eine Bezeichnung für Substantive im Plural, während <code>nsubj</code> das Substantiv kennzeichnet, das als Subjekt eines Teilsatzes dient. Außerdem erklärt es die Statistiken im Inspektor und die Abkürzungen in der Statusleiste und in den Diagrammen. Sie können das Glossar neben Ihrem Projekt geöffnet lassen.</p>
+<p>Jeder Eintrag im Glossar erklärt nur kurz, wofür die Bezeichnung steht.</p>
+<p>Das Glossar ist für alle Projekte dasselbe und erscheint immer in der Sprache der Benutzeroberfläche. Bei deutscher Benutzeroberfläche enthält es deutsche Namen und Definitionen, und seine alphabetisch geordneten Kategorien folgen der deutschen Sortierung (siehe <a href="settings.html#interface-language">Die Sprache der Benutzeroberfläche</a> in <a href="settings.html">Kapitel 24, Einstellungen und Darstellung</a>). Kürzel wie <code>NNS</code> und <code>nsubj</code> bleiben in jeder Sprache der Benutzeroberfläche gleich, denn sie entsprechen den Bezeichnungen, die die Grammatikanalyse tatsächlich verwendet.</p>
+<h3 id="opening-the-glossary">Das Fenster „Glossar“<a class="anchor" href="#opening-the-glossary" aria-hidden="true">#</a></h3>
+<p>In der Seitenleiste des Glossarfensters finden Sie den Eintrag <strong class="ui">Alle</strong> und darunter zwölf weitere Einträge für die einzelnen Kategorien des Glossars. Bei jeder Kategorie steht, wie viele Begriffe sie enthält. Rechts über den Einträgen befindet sich das Feld <strong class="ui">Suchen</strong>.</p>
+<h3 id="finding-glossary-entries">Einen Eintrag finden<a class="anchor" href="#finding-glossary-entries" aria-hidden="true">#</a></h3>
+<ol>
+<li>Wählen Sie <strong class="ui">Hilfe ▸ Glossar</strong>.</li>
+<li>Klicken Sie in der Seitenleiste auf <strong class="ui">Alle</strong>, um alle Kategorien zu durchsuchen, oder auf eine einzelne Kategorie, um nur dort zu suchen.</li>
+<li>Geben Sie im Feld <strong class="ui">Suchen</strong> ein Wort oder eine Bezeichnung ein, etwa <code>nsubj</code>.</li>
+</ol>
+<p>Die Liste wird schon während der Eingabe kürzer. Die Suche findet jeden Eintrag, dessen Name, Kürzel oder Definition Ihre Eingabe enthält. Groß- und Kleinschreibung spielt dabei keine Rolle, Akzente dagegen schon; um <strong class="ui">Cramérs V</strong> zu finden, ohne das é einzugeben, suchen Sie deshalb nach <code>cram</code>.</p>
+<p>Ist <strong class="ui">Alle</strong> ausgewählt, ordnet das Glossar die Einträge nach Kategorien und zeigt beim Scrollen den Namen der aktuellen Kategorie oben in der Liste an. Kategorien ohne Treffer werden ausgelassen. Gibt es überhaupt keinen Treffer, erscheint <strong class="ui">Keine Treffer</strong>. Die Zahlen in der Seitenleiste berücksichtigen die Suche nicht.</p>
+<p>Da die Suche auch die Definitionen der Einträge einbezieht, können kurze Suchbegriffe unerwartete Treffer liefern. Wenn Sie <strong class="ui">Alle</strong> auswählen und nach <code>Subjekt</code> suchen, erhalten Sie viele Ergebnisse. Sie stammen aus den meisten Kategorien. Darunter sind die Funktion <strong class="ui">Subjekt</strong>, die Dependenzrelationen für Subjekte, die Phrasenbezeichnung für einen Teilsatz (definiert als <em>ein Subjekt mit seinem Prädikat</em>), das grammatische Merkmal <strong class="ui">Kasus</strong> und der Buchstabe S aus den Satzmustern. Klicken Sie auf eine andere Kategorie, wird die Liste kürzer, der Suchbegriff bleibt aber erhalten. Wenn Sie <strong class="ui">Dependenzrelationen</strong> auswählen und nach demselben Begriff suchen, bleiben sechs Treffer übrig. Vier davon tragen die Kennzeichnung EN ZH (<code>csubj</code>, <code>csubjpass</code>, <code>nsubj</code> und <code>nsubjpass</code>), zwei die Kennzeichnung DE (<code>sb</code> und <code>sbp</code>).</p>
+<figure class="shot" id="help-and-support-glossary-search"><img class="shot-light" src="../figures/de/light/help-and-support-glossary-search.webp" alt="Das Glossar mit der Auswahl „Alle“ und der Eingabe „Subjekt“ im Feld „Suchen“." loading="lazy"><img class="shot-dark" src="../figures/de/dark/help-and-support-glossary-search.webp" alt="Das Glossar mit der Auswahl „Alle“ und der Eingabe „Subjekt“ im Feld „Suchen“." loading="lazy"><figcaption>Das Glossar mit der Auswahl „Alle“ und der Eingabe „Subjekt“ im Feld „Suchen“.</figcaption></figure>
+<h3 id="reading-glossary-entries">Einen Eintrag lesen<a class="anchor" href="#reading-glossary-entries" aria-hidden="true">#</a></h3>
+<p>Ein Eintrag besteht aus bis zu vier Teilen:</p>
+<ul>
+<li>Das Kürzel des Eintrags in einer Schrift mit fester Zeichenbreite, etwa <code>nsubj</code>, <code>MDD</code> oder <code>¶</code>.</li>
+<li>Der Name des Eintrags in Fettschrift, etwa <strong class="ui">Nominales Subjekt</strong>.</li>
+<li>Rechts neben Kürzel und Name eine Liste von Abkürzungen für die Sprachen, für die der Eintrag gilt. Die Abkürzungen sind EN für Englisch, DE für Deutsch und ZH für Chinesisch; ist keine Sprache angegeben, gilt der Eintrag für alle drei Sprachen.</li>
+<li>Zuletzt folgt auf den Namen die Definition in normaler Schrift. Bei Tags und Relationen besteht die Definition meist aus einem Beispiel. Die Definition von <code>nsubj</code> lautet etwa <em>she in „she runs“</em>; das nominale Subjekt <em>she</em> steht also im Teilsatz <em>she runs</em>.</li>
+</ul>
+<p>Unter <strong class="ui">Morphologie</strong> zeigt jeder Wert eines grammatischen Merkmals zuerst die genaue Zeichenfolge, die die Grammatikanalyse ausgibt, etwa <code>Number=Plur</code>, und danach den grammatischen Fachbegriff dafür, <strong class="ui">Plural</strong>. Das Merkmal selbst, <code>Number</code>, hat über den Werten einen eigenen Eintrag mit Definition.</p>
+<p>Besondere Einträge stehen für etwas, das die Lenses von LemmaLoom automatisch annotieren. Ein solcher Eintrag zeigt sein Kürzel (oder seinen Namen, wenn er kein Kürzel hat) in der Farbe und im Stil dieser Lens. So können Sie eine Farbe direkt einem Begriff zuordnen, den Sie in der Leseansicht hervorgehoben sehen. Halten Sie den Mauszeiger auf das farbige Wort, um den Namen der jeweiligen Lens anzuzeigen. Ändern Sie im Bereich <strong class="ui">Lenses</strong> der Einstellungen die Farbe oder den Stil eines Lens-Aspekts, übernimmt das Glossar diese Anpassung (siehe <a href="settings.html#lenses-pane">Der Bereich „Lenses“</a> in <a href="settings.html">Kapitel 24, Einstellungen und Darstellung</a>).</p>
+<figure class="shot" id="help-and-support-glossary-lens-tooltip"><img class="shot-light" src="../figures/de/light/help-and-support-glossary-lens-tooltip.webp" alt="Das Glossar mit gewählter Kategorie Dependenzrelationen und dem Mauszeiger auf dem Kürzel acl, mit dem Tooltip Grammatische Funktion." loading="lazy"><img class="shot-dark" src="../figures/de/dark/help-and-support-glossary-lens-tooltip.webp" alt="Das Glossar mit gewählter Kategorie Dependenzrelationen und dem Mauszeiger auf dem Kürzel acl, mit dem Tooltip Grammatische Funktion." loading="lazy"><figcaption>Das Glossar mit gewählter Kategorie Dependenzrelationen und dem Mauszeiger auf dem Kürzel acl, mit dem Tooltip Grammatische Funktion.</figcaption></figure>
+<p>Kürzel, Namen und Definitionen lassen sich einzeln auswählen und mit ⌘C kopieren.</p>
+<figure class="shot" id="help-and-support-glossary-dependencies"><img class="shot-light" src="../figures/de/light/help-and-support-glossary-dependencies.webp" alt="Das Glossar mit der Auswahl „Dependenzrelationen“ und der Eingabe „Subjekt“ im Feld „Suchen“; es zeigt sechs Einträge und die Sprachen, für die sie gelten." loading="lazy"><img class="shot-dark" src="../figures/de/dark/help-and-support-glossary-dependencies.webp" alt="Das Glossar mit der Auswahl „Dependenzrelationen“ und der Eingabe „Subjekt“ im Feld „Suchen“; es zeigt sechs Einträge und die Sprachen, für die sie gelten." loading="lazy"><figcaption>Das Glossar mit der Auswahl „Dependenzrelationen“ und der Eingabe „Subjekt“ im Feld „Suchen“; es zeigt sechs Einträge und die Sprachen, für die sie gelten.</figcaption></figure>
+<h2 id="send-feedback">Feedback senden<a class="anchor" href="#send-feedback" aria-hidden="true">#</a></h2>
+<p><strong class="ui">Hilfe ▸ Feedback senden</strong> öffnet das Fenster, in dem Sie einen Fehlerbericht, einen Funktionswunsch oder eine Frage an den Entwickler verfassen. <strong class="ui">E-Mail verfassen</strong> macht aus Ihrem Text eine E-Mail an <code>info@lemmaloom.app</code> in Ihrem Mailprogramm.</p>
+<h3 id="writing-feedback">Eine Nachricht schreiben<a class="anchor" href="#writing-feedback" aria-hidden="true">#</a></h3>
+<ol>
+<li>Wählen Sie <strong class="ui">Hilfe ▸ Feedback senden</strong>.</li>
+<li>Klicken Sie oben im Fenster auf die Art der Nachricht (<strong class="ui">Fehlerbericht</strong>, <strong class="ui">Funktionswunsch</strong>, <strong class="ui">Frage</strong> oder <strong class="ui">Sonstige</strong>). Beim Öffnen des Fensters ist <strong class="ui">Fehlerbericht</strong> ausgewählt.</li>
+<li>Geben Sie Ihre Nachricht in das Feld unter <strong class="ui">Nachricht</strong> ein. Was hineingehört, beschreibt der Abschnitt <a href="#reporting-problems">Ein Problem hilfreich melden</a>.</li>
+<li>Lassen Sie <strong class="ui">Systeminformationen einschließen</strong> ausgewählt, um die Angaben aus der Zeile darunter hinzuzufügen, oder heben Sie die Auswahl auf, um sie wegzulassen.</li>
+<li>Klicken Sie auf <strong class="ui">E-Mail verfassen</strong>.</li>
+<li>Hängen Sie in Ihrem Mailprogramm gegebenenfalls Bildschirmfotos an und senden Sie die E-Mail.</li>
+</ol>
+<p>Das Fenster schließt sich, wenn Sie auf <strong class="ui">E-Mail verfassen</strong> oder <strong class="ui">Abbrechen</strong> klicken; beim nächsten Öffnen ist es leer. Wenn Sie nicht sicher sind, ob Ihr Mailprogramm richtig eingerichtet ist, kopieren Sie eine längere Nachricht (⌘A, dann ⌘C), bevor Sie auf <strong class="ui">E-Mail verfassen</strong> klicken.</p>
+<p>Ist die Nachricht leer oder enthält sie nur Leerzeichen und Leerzeilen, ist <strong class="ui">E-Mail verfassen</strong> deaktiviert und zeigt den Tooltip <strong class="ui">Nachricht ist leer</strong>.</p>
+<figure class="shot" id="help-and-support-feedback-window"><img class="shot-light" src="../figures/de/light/help-and-support-feedback-window.webp" alt="Das Fenster „Feedback senden“ mit der Auswahl „Fehlerbericht“, einer eingegebenen Nachricht zu „Hitzebericht 2024“ und ausgewählter Option „Systeminformationen einschließen“." loading="lazy"><img class="shot-dark" src="../figures/de/dark/help-and-support-feedback-window.webp" alt="Das Fenster „Feedback senden“ mit der Auswahl „Fehlerbericht“, einer eingegebenen Nachricht zu „Hitzebericht 2024“ und ausgewählter Option „Systeminformationen einschließen“." loading="lazy"><figcaption>Das Fenster „Feedback senden“ mit der Auswahl „Fehlerbericht“, einer eingegebenen Nachricht zu „Hitzebericht 2024“ und ausgewählter Option „Systeminformationen einschließen“.</figcaption></figure>
+<h3 id="feedback-email">Was die E-Mail enthält<a class="anchor" href="#feedback-email" aria-hidden="true">#</a></h3>
+<p>Die Betreffzeile gibt an, um welche Art von Nachricht es sich handelt.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Art der Nachricht</th><th>Betreff der E-Mail</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">Fehlerbericht</strong></td><td>LemmaLoom · Bug report</td></tr>
+<tr><td><strong class="ui">Funktionswunsch</strong></td><td>LemmaLoom · Feature request</td></tr>
+<tr><td><strong class="ui">Frage</strong></td><td>LemmaLoom · Question</td></tr>
+<tr><td><strong class="ui">Sonstige</strong></td><td>LemmaLoom · Feedback</td></tr>
+</tbody></table></div>
+<p>Ist <strong class="ui">Systeminformationen einschließen</strong> ausgewählt, folgen unter Ihrer Nachricht eine Trennzeile (<code>--</code>) und vier Zeilen:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Zeile</th><th>Beispiel</th><th>Bedeutung</th></tr></thead>
+<tbody>
+<tr><td>1</td><td><code>LemmaLoom 1.2 (1)</code></td><td>Die Version von LemmaLoom, mit der Build-Nummer in Klammern</td></tr>
+<tr><td>2</td><td><code>macOS Version 27.0 (Build 27A200)</code></td><td>Die Version von macOS</td></tr>
+<tr><td>3</td><td><code>arm64 · 8 GB</code></td><td>Der Prozessortyp (<code>arm64</code> für Apple Silicon, <code>x86_64</code> für Intel) und der eingebaute Arbeitsspeicher des Mac</td></tr>
+<tr><td>4</td><td><code>de</code></td><td>Die Sprache der Benutzeroberfläche (<code>en</code>, <code>de</code> oder <code>zh-Hans</code>)</td></tr>
+</tbody></table></div>
+<p>Das Fenster zeigt dieselben Angaben, allerdings in einer einzigen Zeile, durch Punkte getrennt. Wenn Sie die Auswahl des Markierungsfelds aufheben, wird die Zeile blasser.</p>
+<p>LemmaLoom fügt nur die Trennzeile und diese Zeilen hinzu, und jede davon können Sie vor dem Senden aus dem Entwurf löschen.</p>
+<h3 id="feedback-without-mail">Wenn sich das Mailprogramm nicht öffnet<a class="anchor" href="#feedback-without-mail" aria-hidden="true">#</a></h3>
+<p><strong class="ui">E-Mail verfassen</strong> öffnet eine neue Nachricht im Standard-Mailprogramm Ihres Mac. Das Standard-Mailprogramm legen Sie in Mail fest, unter <strong class="ui">Mail ▸ Einstellungen …</strong>, <strong class="ui">Allgemein</strong>, im Menü <strong class="ui">Standardprogramm für E-Mails</strong>. Ist Mail Ihr Standard-Mailprogramm und dort noch kein Account eingerichtet, fordert Mail Sie auf, einen hinzuzufügen.</p>
+<p>Wenn Sie E-Mails über einen Webmail-Dienst schreiben, kopieren Sie den Text Ihres Feedbacks aus dem Fenster <strong class="ui">Feedback senden</strong> (⌘A, dann ⌘C), öffnen bei Ihrem Webmail-Anbieter eine neue, leere E-Mail und setzen Ihr Feedback dort ein. Senden Sie die Nachricht dann an <code>info@lemmaloom.app</code>; die Adresse können Sie auch unten links im Fenster kopieren. Tippen Sie die Zeile mit den Systeminformationen so in die E-Mail ab, wie das Fenster sie zeigt.</p>
+<h2 id="reporting-problems">Ein Problem hilfreich melden<a class="anchor" href="#reporting-problems" aria-hidden="true">#</a></h2>
+<p>Ein sehr hilfreicher Fehlerbericht enthält die genauen Schritte, die zu dem Problem geführt haben.</p>
+<h3 id="before-reporting">Bevor Sie schreiben<a class="anchor" href="#before-reporting" aria-hidden="true">#</a></h3>
+<p>Oft löst ein kurzer Test Ihr Problem oder zeigt Ihnen zumindest, wo Sie suchen müssen:</p>
+<ul>
+<li>Halten Sie den Mauszeiger auf eine deaktivierte Schaltfläche. Gehört sie zu einem Fenster oder Dialog von LemmaLoom, erklärt ihr Tooltip, warum sie gerade nicht verfügbar ist (siehe <a href="introduction.html#conventions">Konventionen</a> in <a href="introduction.html">Kapitel 1, Einführung</a>). Meist muss der Befehl erst warten, bis etwas abgeschlossen ist, etwa die Indizierung des Dokuments.</li>
+<li>Schlägt die Indizierung eines Dokuments fehl, erscheint in der Seitenleiste neben dem Namen des Dokuments ein rotes Warndreieck. Halten Sie den Mauszeiger auf das Warndreieck, um das Problem zu sehen; danach können Sie mit der rechten Maustaste auf das Dokument klicken und <strong class="ui">Indizierung wiederholen</strong> wählen (siehe <a href="analysis-and-indexing.html#indexing-failures">Wenn die Indizierung fehlschlägt</a> in <a href="analysis-and-indexing.html">Kapitel 21, Analyse und Indizierung</a>).</li>
+<li>Beenden Sie LemmaLoom vollständig, öffnen Sie es erneut und versuchen Sie die Aktion noch einmal.</li>
+<li>Führen Sie genau dieselben Schritte mit einem anderen Dokument aus oder in einem neuen Projekt mit nur einem kleinen Dokument. Tritt das Problem nur bei diesem einen Dokument auf, schreiben Sie das in Ihren Bericht.</li>
+<li>Prüfen Sie im App Store unter <strong class="ui">Updates</strong>, ob Sie die neueste Version von LemmaLoom verwenden.</li>
+</ul>
+<h3 id="report-contents">Was in einen Bericht gehört<a class="anchor" href="#report-contents" aria-hidden="true">#</a></h3>
+<ul>
+<li>Beschreiben Sie zuerst in einem Satz, was Sie erreichen wollten.</li>
+<li>Führen Sie dann die Aktionen, die zu dem Problem geführt haben, Schritt für Schritt auf, eine pro Zeile. Nennen Sie Menüs, Schaltflächen und Felder so, wie LemmaLoom sie bezeichnet.</li>
+<li>Schildern Sie, was Sie erwartet haben und was stattdessen geschehen ist.</li>
+<li>Geben Sie Fehlermeldungen wörtlich an, nach Möglichkeit kopiert, andernfalls abgetippt.</li>
+<li>Geben Sie an, ob das Problem jedes Mal oder gelegentlich auftritt oder nur ein einziges Mal aufgetreten ist.</li>
+<li>Nennen Sie außerdem die Art des Dokuments (Textdatei, PDF, Webseite oder Aufnahme), seine Sprache und ungefähre Länge sowie die Zahl der Dokumente in Ihrem Projekt.</li>
+<li>Fügen Sie auch die Systeminformationen bei, die <strong class="ui">Systeminformationen einschließen</strong> automatisch hinzufügt.</li>
+</ul>
+<p>Für ein Bildschirmfoto eines ganzen Fensters drücken Sie ⇧⌘4, dann die Leertaste, und klicken auf das Fenster; das Bild wird automatisch auf dem Schreibtisch gesichert. ⇧⌘5 bietet weitere Optionen für Bildschirmfotos. Sobald die E-Mail in Ihrem Mailprogramm geöffnet ist, können Sie das Bildschirmfoto anhängen.</p>
+<h3 id="example-report">Ein Beispielbericht<a class="anchor" href="#example-report" aria-hidden="true">#</a></h3>
+<p>Angenommen, die Indizierung des PDF „Hitzebericht 2024“ aus dem Projekt „Klimadebatte“ wird nicht abgeschlossen. So würde ein hilfreicher Fehlerbericht lauten:</p>
+<blockquote><p>„Hitzebericht 2024“, ein PDF-Dokument in meinem Projekt, wird nicht fertig indiziert. Neben seinem Namen in der Seitenleiste steht ein rotes Warndreieck, und sein Tooltip lautet „Die Indizierung dieses Dokuments ist fehlgeschlagen.“</p>
+<p>Ich habe es mit Ablage ▸ Importieren ▸ Dokumente importiert. Es ist auf Deutsch und hat sechs Seiten. In der Leseansicht sieht alles normal aus, nur die Tabelle mit den regionalen Temperaturwerten erscheint als einzelne Zahlen, jede in einer eigenen Zeile. Ein erneuter Versuch mit Indizierung wiederholen im Fenster Aktivität ist nach etwa einer Minute ebenfalls fehlgeschlagen. Auch nach dem Beenden und Neustarten von LemmaLoom blieb das Ergebnis gleich. Die übrigen 14 Dokumente wurden alle erfolgreich indiziert.</p>
+<p>Ich hatte erwartet, dass der Bericht wie die übrigen Dokumente in meinem Projekt indiziert wird. Ein Bildschirmfoto der Tabelle in der Leseansicht ist angehängt.</p>
+</blockquote>
+<p>Unter der Nachricht zeigen vier Zeilen die Systeminformationen Ihres Mac.</p>
+<p>Bei einem Bericht, in dem nur <em>Die Indizierung funktioniert nicht</em> steht, muss der Entwickler womöglich mehrmals nachfragen, bevor die eigentliche Arbeit beginnen kann. Dieses Beispiel dagegen nennt, was bereits getestet wurde, und erwähnt, dass die übrigen Dokumente erfolgreich indiziert sind. Daran erkennt der Entwickler, dass das Problem nur bei der Indizierung dieses einen PDF-Dokuments auftritt.</p>
+<h3 id="crashes">Wenn LemmaLoom unerwartet beendet wird<a class="anchor" href="#crashes" aria-hidden="true">#</a></h3>
+<p>Stürzt eine App unerwartet ab, zeigt macOS ein Fenster für den Absturzbericht. Es enthält neben einer Beschreibung des Problems die Schaltfläche <strong class="ui">Bericht …</strong>. Ein Bericht, den Sie über diese Schaltfläche senden, geht an Apple und wird nur dann an den Entwickler weitergeleitet, wenn Sie die Option <strong class="ui">Mit App-Entwicklern teilen</strong> unter <strong class="ui">Systemeinstellungen ▸ Datenschutz &amp; Sicherheit ▸ Analyse &amp; Verbesserungen</strong> aktiviert haben.</p>
+<p>Sie können den Bericht aber auch selbst senden:</p>
+<ol>
+<li>Klicken Sie in der Meldung auf <strong class="ui">Bericht …</strong>.</li>
+<li>Wählen Sie den Text des Berichts aus und kopieren Sie ihn (⌘C).</li>
+<li>Öffnen Sie LemmaLoom erneut und wählen Sie <strong class="ui">Hilfe ▸ Feedback senden</strong>.</li>
+<li>Setzen Sie den Bericht in das Nachrichtenfeld ein.</li>
+<li>Schreiben Sie oberhalb des Berichts ein paar Zeilen dazu, was Sie getan haben, kurz bevor LemmaLoom beendet wurde. Ein Absturzbericht zeigt, an welcher Stelle im Programm der Absturz geschah; Ihre Zeilen ergänzen, welches Dokument oder welchen Befehl Sie gerade verwendet haben.</li>
+</ol>
+<p>Stürzt LemmaLoom gleich beim nächsten Start wieder ab, kopieren Sie den Bericht und senden Sie ihn per E-Mail an <code>info@lemmaloom.app</code>. Wenn Sie frühere Absturzberichte von LemmaLoom anhängen möchten, öffnen Sie die App „Konsole“ (im Ordner „Dienstprogramme“ innerhalb des Ordners „Programme“) und suchen Sie dort unter <strong class="ui">Absturzberichte</strong>.</p>
+<h3 id="requests-and-questions">Funktionswünsche und Fragen<a class="anchor" href="#requests-and-questions" aria-hidden="true">#</a></h3>
+<p>Beschreiben Sie in einem Funktionswunsch Ihr Forschungsanliegen statt des Bedienelements, das Ihnen vorschwebt. Schreiben Sie, mit welchem Material Sie arbeiten, was darin gefunden, gezählt oder verglichen werden soll und was mit dem Ergebnis geschehen soll. Stützt sich Ihr Wunsch auf eine bestimmte Methode aus der Fachliteratur, geben Sie eine Quelle dafür an. In der Softwareentwicklung nennt man das eine User Story, eine Erzählung aus der Sicht des Nutzers, die beschreibt, was er tun möchte. Ein Entwickler kann die User Story dann in technische Anforderungen und einen Entwicklungsplan überführen, sodass Sie sich um technische Einzelheiten nicht sorgen müssen.</p>
+<h2 id="about-lemmaloom">Über LemmaLoom<a class="anchor" href="#about-lemmaloom" aria-hidden="true">#</a></h2>
+<p>Um die Versionsnummer von LemmaLoom, den Text für eine Literaturangabe und die Lizenzen der Komponenten nachzusehen, wählen Sie <strong class="ui">LemmaLoom ▸ Über LemmaLoom</strong>. Das Fenster beginnt mit dem Namen LemmaLoom, gefolgt von der Version (etwa <strong class="ui">Version 1.2 (1)</strong>). Zuerst steht die Versionsnummer; sie stimmt mit der Angabe im App Store überein. Danach folgt in Klammern die <em>Build-Nummer</em>.</p>
+<p>Darauf folgen Angaben zum Entwickler, das Copyright und eine Zeile mit besonderem Dank. Als Nächstes kommt <strong class="ui">Trinkgeld für den Entwickler</strong>; ein Klick auf diesen Link öffnet ein Fenster, in dem Sie über den App Store ein Trinkgeld geben können. Danach folgt <strong class="ui">LemmaLoom zitieren</strong> mit Literaturangaben in zwei Zitierstilen. <strong class="ui">Lizenzen</strong> führt alle Komponenten, die LemmaLoom verwendet, mit ihren Lizenzen auf.</p>
+<figure class="shot" id="help-and-support-about-window"><img class="shot-light" src="../figures/de/light/help-and-support-about-window.webp" alt="Das Fenster „Über LemmaLoom“." loading="lazy"><img class="shot-dark" src="../figures/de/dark/help-and-support-about-window.webp" alt="Das Fenster „Über LemmaLoom“." loading="lazy"><figcaption>Das Fenster „Über LemmaLoom“.</figcaption></figure>
+<h3 id="citing-lemmaloom">LemmaLoom zitieren<a class="anchor" href="#citing-lemmaloom" aria-hidden="true">#</a></h3>
+<p><strong class="ui">LemmaLoom zitieren</strong> erstellt Literaturangaben in zwei Stilen.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Stil</th><th>Was die Literaturangabe enthält</th></tr></thead>
+<tbody>
+<tr><td>MLA</td><td>Der Name des Entwicklers, Nachname zuerst; der Titel, LemmaLoom; die Version; das Jahr</td></tr>
+<tr><td>APA</td><td>Nachname und Initialen des Entwicklers; das Jahr in Klammern; der Titel, mit der Version in Klammern; die Beschreibung [Computer software]</td></tr>
+</tbody></table></div>
+<p>Um eine Literaturangabe zu kopieren, klicken Sie auf die Schaltfläche daneben, die wie zwei überlappende Blätter aussieht. Sie können auch die Literaturangabe selbst auswählen und den ausgewählten Text mit ⌘C kopieren. Beim Kopieren zeigen diese Schaltflächen kurz ein Häkchen.</p>
+<p>Die Literaturangabe enthält das aktuelle Jahr laut der Uhr Ihres Mac. Unabhängig von der Sprache der Benutzeroberfläche sind Literaturangaben immer englisch.</p>
+<h3 id="licenses">Lizenzen<a class="anchor" href="#licenses" aria-hidden="true">#</a></h3>
+<p><strong class="ui">Lizenzen</strong> führt die Programmbibliotheken, Modelle, Sprachdaten und die Schrift auf, die LemmaLoom enthält. Jeder Eintrag nennt einen Namen und eine Beschreibung, die den Lizenzvertrag und in den meisten Fällen den Inhaber des Copyrights angibt. Namen, Beschreibungen und Lizenztexte sind unabhängig von der Sprache der Benutzeroberfläche immer englisch. Ein Klick auf einen Eintrag zeigt den vollständigen Text der Lizenz oder Lizenzen; ein weiterer Klick blendet ihn wieder aus. Den Text der Lizenzen können Sie auswählen und kopieren.</p>
+<p>Einträge, die auf <em>(data)</em> enden, bedeuten, dass nur Daten aus dem jeweiligen Projekt verwendet wurden, kein Code, etwa trainierte Modelle oder Tabellen mit Wortformen.</p>
+<p>Die Einträge nennen auch die Modelle für Transkription, Sprechertrennung und Grammatikanalyse sowie deren Urheber.</p>
+<figure class="shot" id="help-and-support-about-licenses"><img class="shot-light" src="../figures/de/light/help-and-support-about-licenses.webp" alt="Die Liste „Lizenzen“ im Fenster „Über LemmaLoom“, mit einem geöffneten Eintrag, der seine Lizenztexte zeigt." loading="lazy"><img class="shot-dark" src="../figures/de/dark/help-and-support-about-licenses.webp" alt="Die Liste „Lizenzen“ im Fenster „Über LemmaLoom“, mit einem geöffneten Eintrag, der seine Lizenztexte zeigt." loading="lazy"><figcaption>Die Liste „Lizenzen“ im Fenster „Über LemmaLoom“, mit einem geöffneten Eintrag, der seine Lizenztexte zeigt.</figcaption></figure>
+</article>
+<nav class="pager"><a class="previous" href="keyboard-shortcuts.html"><span>Zurück</span>Tastaturkurzbefehle</a><a class="next" href="statistics-reference.html"><span>Weiter</span>Statistik im Überblick</a></nav>
+<footer class="site-footer">© 2026 Ryan S. Cooper. Alle Rechte vorbehalten.<br>Diese Ausgabe wurde mithilfe von KI aus der englischen Originalausgabe übersetzt. Die Übersetzung kann Fehler oder Ungenauigkeiten enthalten. Im Zweifel ist die englische Ausgabe maßgeblich.</footer>
+</main>
+<nav class="page-toc" aria-label="Auf dieser Seite"><p>Auf dieser Seite</p><ul>
+<li class="level-2"><a href="#help-menu">Das Menü „Hilfe“</a></li>
+<li class="level-2"><a href="#glossary">Das Glossar</a></li>
+<li class="level-3"><a href="#opening-the-glossary">Das Fenster „Glossar“</a></li>
+<li class="level-3"><a href="#finding-glossary-entries">Einen Eintrag finden</a></li>
+<li class="level-3"><a href="#reading-glossary-entries">Einen Eintrag lesen</a></li>
+<li class="level-2"><a href="#send-feedback">Feedback senden</a></li>
+<li class="level-3"><a href="#writing-feedback">Eine Nachricht schreiben</a></li>
+<li class="level-3"><a href="#feedback-email">Was die E-Mail enthält</a></li>
+<li class="level-3"><a href="#feedback-without-mail">Wenn sich das Mailprogramm nicht öffnet</a></li>
+<li class="level-2"><a href="#reporting-problems">Ein Problem hilfreich melden</a></li>
+<li class="level-3"><a href="#before-reporting">Bevor Sie schreiben</a></li>
+<li class="level-3"><a href="#report-contents">Was in einen Bericht gehört</a></li>
+<li class="level-3"><a href="#example-report">Ein Beispielbericht</a></li>
+<li class="level-3"><a href="#crashes">Wenn LemmaLoom unerwartet beendet wird</a></li>
+<li class="level-3"><a href="#requests-and-questions">Funktionswünsche und Fragen</a></li>
+<li class="level-2"><a href="#about-lemmaloom">Über LemmaLoom</a></li>
+<li class="level-3"><a href="#citing-lemmaloom">LemmaLoom zitieren</a></li>
+<li class="level-3"><a href="#licenses">Lizenzen</a></li>
+</ul></nav>
+</div>
+<script src="../assets/guide.js" defer></script>
+</body>
+</html>

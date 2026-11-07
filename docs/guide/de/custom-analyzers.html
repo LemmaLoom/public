@@ -1,0 +1,536 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eigene Analysatoren · LemmaLoom Benutzerhandbuch</title>
+<link rel="stylesheet" href="../assets/guide.css">
+<link rel="icon" type="image/png" href="../assets/logo.png">
+<script>var r=document.documentElement;r.setAttribute('data-theme','light');try{if(localStorage.getItem('guide-theme')==='dark'){r.setAttribute('data-theme','dark')}}catch(e){}</script>
+</head>
+<body>
+<header class="topbar">
+<button class="menu-toggle" aria-label="Inhalt" aria-expanded="false">☰</button>
+<a class="brand" href="index.html"><span class="wordmark"><span class="lemma">Lemma</span>Loom</span><span class="guide-name">Benutzerhandbuch</span></a>
+<div class="search"><input type="search" id="search" placeholder="Suchen" aria-label="Suchen" autocomplete="off" data-empty="Keine Treffer"><div class="results" id="results" hidden></div></div>
+<nav class="languages" aria-label="Language"><a href="../en/custom-analyzers.html" lang="en">English</a><a href="../de/custom-analyzers.html" lang="de" aria-current="true">Deutsch</a><a href="../zh-Hans/custom-analyzers.html" lang="zh-Hans">简体中文</a></nav>
+<button class="theme-toggle" data-light="Hell" data-dark="Dunkel" aria-label="Erscheinungsbild"></button>
+<a class="pdf-link" href="https://github.com/LemmaLoom/public/raw/main/pdf/lemmaloom-guide-de.pdf">PDF</a>
+</header>
+<div class="layout">
+<nav class="sidebar" aria-label="Inhalt"><ol>
+<li class="unnumbered"><a href="quick-start.html">Schnellstart</a></li>
+<li><a href="introduction.html">Einführung</a></li>
+<li><a href="getting-started.html">Erste Schritte</a></li>
+<li><a href="projects-and-documents.html">Projekte und Dokumente</a></li>
+<li><a href="importing.html">Material importieren</a></li>
+<li><a href="reading-and-editing.html">Lesen und Bearbeiten</a></li>
+<li><a href="lenses.html">Lenses</a></li>
+<li><a href="coding.html">Kodieren</a></li>
+<li><a href="sets-tags-attributes.html">Sets, Gruppen, Tags und Attribute</a></li>
+<li><a href="translations.html">Übersetzungen und geteilte Ansicht</a></li>
+<li><a href="text-inspector.html">Der Text-Inspektor</a></li>
+<li><a href="grammar-inspector.html">Der Grammatik-Inspektor</a></li>
+<li><a href="word-sketch.html">Wortskizze</a></li>
+<li><a href="coding-analysis.html">Codes auswerten</a></li>
+<li><a href="sketch-space.html">Skizzenraum</a></li>
+<li><a href="queries-building.html">Eine Abfrage erstellen</a></li>
+<li><a href="queries-results.html">Abfrageergebnisse und Statistik</a></li>
+<li><a href="queries-patterns.html">Abfragemuster und Erkundung</a></li>
+<li><a href="queries-using-results.html">Abfrageergebnisse nutzen</a></li>
+<li><a href="dictionaries.html">Wörterbücher</a></li>
+<li class="current"><a href="custom-analyzers.html">Eigene Analysatoren</a></li>
+<li><a href="analysis-and-indexing.html">Analyse und Indizierung</a></li>
+<li><a href="exchange-and-export.html">Austausch und Export</a></li>
+<li><a href="undo.html">Widerrufen und Wiederholen</a></li>
+<li><a href="settings.html">Einstellungen und Darstellung</a></li>
+<li><a href="keyboard-shortcuts.html">Tastaturkurzbefehle</a></li>
+<li><a href="help-and-support.html">Hilfe und Support</a></li>
+<li><a href="statistics-reference.html">Statistik im Überblick</a></li>
+<li class="unnumbered"><a href="glossary.html">Glossar</a></li>
+<li class="unnumbered"><a href="thanks.html">Vielen Dank</a></li>
+</ol></nav>
+<main class="content">
+<article>
+<h1 id="custom-analyzers">Eigene Analysatoren</h1>
+<p>Ein eigener Analysator ist ein kurzes Programm in JavaScript. Er liest die Grammatikanalyse eines Dokuments und sucht darin nach den Textstellen, die Sie interessieren. Sie schreiben das Skript unter <strong class="ui">Fenster ▸ Analysatoren</strong>, und LemmaLoom führt es bei der Indizierung der Dokumente in den gewählten Sprachen aus, in allen Ihren Projekten. Was Ihr Analysator findet, wird zusammen mit den Dokumenten gespeichert. Anschließend können Sie diese Befunde über die Lens des Analysators ansehen, automatisch kodieren und in Abfragen zählen oder vergleichen.</p>
+<p>Analysatoren sind für Fragen gedacht, die von der Grammatik abhängen und die die eingebauten Lenses nicht in der Form beantworten, die Sie brauchen. Eine einzelne Frage lässt sich mit einer Abfrage schneller beantworten (siehe <a href="queries-building.html">Kapitel 15, Eine Abfrage erstellen</a>); ein Analysator lohnt sich in der Regel dann, wenn Sie in Ihren Dokumenten (den vorhandenen wie den später importierten) immer wieder nach demselben Muster suchen und es sowohl in der Leseansicht annotiert sehen als auch zählen möchten.</p>
+<p>Dieses Kapitel verwendet das Beispielprojekt „Klimadebatte“, das Sie mit <strong class="ui">Ablage ▸ Importieren ▸ Beispielprojekt</strong> importieren (siehe <a href="introduction.html#example-project">Das Beispielprojekt</a> in <a href="introduction.html">Kapitel 1, Einführung</a>). Genauer gesagt geht es darum, ob <em>Klima</em> als grammatisches Subjekt eines Satzes vorkommt, wie in <em>Das Klima hat derweil nicht auf uns gewartet</em>, oder als Objekt, wie in <em>das Klima schützen</em>. Ein Wörterbuch findet jedes Vorkommen des Wortes <em>Klima</em>, gleich in welchem Zusammenhang; ein Analysator unterscheidet dagegen Subjekte und Objekte anhand der Funktionen, die in der Grammatikanalyse verzeichnet sind. Der Beispielanalysator „Klimarollen“ annotiert jedes <em>Klima</em>, das als Subjekt dient, in einer Farbe und jedes <em>Klima</em>, das Objekt ist, in einer anderen. Wie Sie genau diesen Analysator selbst schreiben, beschreibt <a href="#first-analyzer">Ein erster Analysator</a> ausführlich.</p>
+<p>Analysatoren sind der einzige Teil von LemmaLoom, für den Sie programmieren können müssen. Die Skripte sind zwar recht kurz und einfach, sie verwenden aber Variablen, Listen, Schleifen, <code>if</code>-Anweisungen und anonyme Funktionen in der Schreibweise mit <code>=&gt;</code>. Wenn Sie noch nie ein Programm geschrieben haben, führt Sie der kostenlose <a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps">JavaScript-Kurs der MDN Web Docs</a> in die Grundlagen ein. Wenn Sie nicht programmieren möchten, erstellen Sie eine Abfrage, die die gewünschten Daten findet, und wandeln diese Abfrage in einen Analysator um; das Skript entsteht dabei automatisch (siehe <a href="queries-using-results.html#save-as-analyzer">Eine Abfrage in einen Analysator umwandeln</a> in <a href="queries-using-results.html">Kapitel 18, Abfrageergebnisse nutzen</a>). Die erzeugten Skripte eignen sich auch gut als Beispiele zum Lernen.</p>
+<h2 id="key-terms">Wichtige Begriffe<a class="anchor" href="#key-terms" aria-hidden="true">#</a></h2>
+<p>Ein <em>Analysator</em> ist in LemmaLoom ein Programm, das bei der Indizierung läuft und dem Dokument Befunde hinzufügt. (Näheres zur Indizierung in LemmaLoom finden Sie in <a href="analysis-and-indexing.html">Kapitel 21, Analyse und Indizierung</a>.) LemmaLoom bringt drei Analysatoren mit, nämlich <strong class="ui">Kohäsion</strong>, <strong class="ui">Metadiskurs</strong> und <strong class="ui">Rhetorik</strong>. Einen <em>eigenen Analysator</em> schreiben Sie entweder selbst, oder LemmaLoom erzeugt ihn automatisch aus Ihrer Abfrage. Jeder eigene Analysator gehört zu Ihrer Bibliothek und wirkt daher auf die Dokumente aller Projekte.</p>
+<p>Das <em>Skript</em> ist in JavaScript geschrieben und muss eine Funktion namens <code>analyze</code> enthalten. LemmaLoom ruft diese Funktion mit der Analyse Ihres Dokuments auf, und Ihr Analysator muss die Befunde an LemmaLoom zurückgeben.</p>
+<p>Das <em>Dokumentobjekt</em> ist das JavaScript-Objekt, das Ihrer Funktion übergeben wird (<em>Objekt</em> hier im Sinne der Programmierung, also ein Bündel benannter Felder wie <code>text</code> und <code>lemma</code>). Seine Felder stehen für verschiedene Eigenschaften des Dokuments, darunter die Sprache, die Sätze mit ihren Tokens, Phrasen und Nominalgruppen sowie die Ergebnisse der eingebauten Analysatoren.</p>
+<p><em>Tokens</em> sind einzelne Wortformen und Satzzeichen. Zu jedem Token gehören seine Grundform oder sein <em>Lemma</em>, das Wortart-Tag, seine <em>Dependenzrelation</em> zu dem Wort, von dem es abhängt (seinem <em>Kopf</em>), und gegebenenfalls morphologische Merkmale wie Numerus und Tempus.</p>
+<p>Ein <em>Befund</em> ist eine Textstelle, die der Analysator meldet, also eine Folge benachbarter Tokens in einem Satz zusammen mit ihrem Schlüssel.</p>
+<p><em>Schlüssel</em> bezeichnen die Arten von Befunden, etwa <code>subject</code>, <code>object</code> und so weiter. Die <em>Legende</em> fasst Ihre Schlüssel zusammen, jeden mit der Beschriftung, der Farbe und dem Stil, mit denen er dargestellt wird. Aus ihr entsteht die Legende der Lens Ihres Analysators.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Ort</th><th>Was Sie mit einem eigenen Analysator tun können</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">Fenster ▸ Analysatoren</strong></td><td>Analysatoren schreiben, testen, sichern, ändern und löschen</td></tr>
+<tr><td>Dialog <strong class="ui">Dokument importieren</strong> und <strong class="ui">Dokumenteigenschaften</strong></td><td>Festlegen, ob ein Analysator auf einem Dokument läuft; ihn erneut ausführen oder seine Ausgabe entfernen</td></tr>
+<tr><td>Lens-Menü der Leseansicht</td><td>Die Befunde im geöffneten Dokument annotieren</td></tr>
+<tr><td><strong class="ui">Dokument ▸ Automatisch kodieren…</strong></td><td>Die Befunde kodieren</td></tr>
+<tr><td>Abfragen</td><td><strong class="ui">Analyse · Befunde</strong> suchen, in Regeln prüfen, zählen und vergleichen</td></tr>
+</tbody></table></div>
+<h2 id="analyzers-window">Das Fenster „Analysatoren“<a class="anchor" href="#analyzers-window" aria-hidden="true">#</a></h2>
+<p>Wählen Sie <strong class="ui">Fenster ▸ Analysatoren</strong>, um das Fenster zu öffnen. Es ist in drei Spalten aufgeteilt.</p>
+<ul>
+<li>Die erste Spalte links ist die alphabetisch sortierte Liste Ihrer Analysatoren. Jede Zeile nennt die Sprachen, in denen der Analysator läuft, etwa <code>de en</code>. Mit der Schaltfläche <strong class="ui">Analysator hinzufügen</strong> darunter legen Sie einen neuen Analysator an.</li>
+<li>Die zweite Spalte zeigt den ausgewählten Analysator. Oben stehen <strong class="ui">Name</strong>, die Markierungsfelder für die Sprachen <strong class="ui">Englisch</strong>, <strong class="ui">Deutsch</strong> und <strong class="ui">Chinesisch</strong> sowie die Schaltfläche <strong class="ui">Sichern</strong>. Darauf folgen die <strong class="ui">Legende</strong>, der Skripteditor und <strong class="ui">Ausprobieren</strong>, wo Sie den Analysator an einigen Sätzen testen.</li>
+<li>Die dritte Spalte schließlich enthält den Bereich <strong class="ui">Referenz</strong> mit der Liste der Hilfsfunktionen, der benannten Konstanten und der Bestandteile des Dokumentobjekts.</li>
+</ul>
+<figure class="shot" id="custom-analyzers-window"><img class="shot-light" src="../figures/de/light/custom-analyzers-window.webp" alt="Das Fenster „Analysatoren“ mit dem ausgewählten Analysator „Klimarollen“ und seinen Befunden in einem Testsatz unter „Ausprobieren“." loading="lazy"><img class="shot-dark" src="../figures/de/dark/custom-analyzers-window.webp" alt="Das Fenster „Analysatoren“ mit dem ausgewählten Analysator „Klimarollen“ und seinen Befunden in einem Testsatz unter „Ausprobieren“." loading="lazy"><figcaption>Das Fenster „Analysatoren“ mit dem ausgewählten Analysator „Klimarollen“ und seinen Befunden in einem Testsatz unter „Ausprobieren“.</figcaption></figure>
+<p>Beim Öffnen des Fensters zeigt die mittlere Spalte einen neuen, noch nicht gesicherten Analysator, dessen Beispielskript jedes Substantiv findet. Um einen vorhandenen Analysator zu ändern, klicken Sie ihn in der Liste links an. Anfangs nimmt der Bereich <strong class="ui">Ausprobieren</strong> unten in der Spalte nur wenig Höhe ein; ziehen Sie die Trennlinie nach oben, um ihn beim Testen zu vergrößern. LemmaLoom merkt sich die Höhe auch über einen Neustart hinweg.</p>
+<p>Während Sie schreiben, nummeriert der Editor die Zeilen, färbt die Bestandteile des Skripts ein und schlägt Namen vor. Nach <code>POS.</code> bietet das Vorschlagsfenster alle Wortarten an, nach <code>LL.</code> entsprechend die Hilfsfunktionen. Manche Fehler unterstreicht der Editor schon während der Eingabe, zum Beispiel den Verweis auf eine Konstante, die nicht definiert ist. Um einen Haltepunkt in das Skript zu setzen, klicken Sie in den linken Rand neben der gewünschten Zeilennummer (siehe <a href="#breakpoints">Haltepunkte und schrittweise Ausführung</a> weiter unten in diesem Kapitel).</p>
+<figure class="shot" id="custom-analyzers-autocomplete"><img class="shot-light" src="../figures/de/light/custom-analyzers-autocomplete.webp" alt="Der Editor im Fenster Analysatoren, nachdem in einer neuen letzten Zeile POS. eingegeben wurde; die Wortarten werden vorgeschlagen." loading="lazy"><img class="shot-dark" src="../figures/de/dark/custom-analyzers-autocomplete.webp" alt="Der Editor im Fenster Analysatoren, nachdem in einer neuen letzten Zeile POS. eingegeben wurde; die Wortarten werden vorgeschlagen." loading="lazy"><figcaption>Der Editor im Fenster Analysatoren, nachdem in einer neuen letzten Zeile POS. eingegeben wurde; die Wortarten werden vorgeschlagen.</figcaption></figure>
+<aside class="callout note"><p class="callout-title">Hinweis</p><p>Änderungen bleiben nur erhalten, wenn Sie sie sichern. Wenn Sie in der Liste auf einen anderen Analysator klicken, auf <strong class="ui">Analysator hinzufügen</strong> klicken oder das Fenster schließen, gehen nicht gesicherte Änderungen verloren.</p>
+</aside>
+<h2 id="first-analyzer">Ein erster Analysator<a class="anchor" href="#first-analyzer" aria-hidden="true">#</a></h2>
+<p>Der Analysator „Klimarollen“ hat nur zwei Schlüssel, <code>subject</code> und <code>object</code>. Welchen Schlüssel ein <em>Klima</em> erhält, hängt davon ab, ob das Wort im Satz als Subjekt oder als Objekt dient. Das vollständige Skript sieht so aus:</p>
+<pre><code>const CLIMATE = ['climate', 'klima', '气候'];
+function analyze(doc) {
+  const findings = [];
+  for (const sentence of doc.sentences) {
+    sentence.tokens.forEach((token, index) =&gt; {
+      if (CLIMATE.includes(token.lemma.toLowerCase())) {
+        const role = token.derived.function;
+        if (role === FUNCTION.SUBJECT) {
+          findings.push({ sentenceIndex: sentence.index, start: index, end: index + 1, key: 'subject' });
+        }
+        if (role === FUNCTION.OBJECT) {
+          findings.push({ sentenceIndex: sentence.index, start: index, end: index + 1, key: 'object' });
+        }
+      }
+    });
+  }
+  return findings;
+}
+</code></pre>
+<p>Die meisten Dokumente in „Klimadebatte“ sind auf Deutsch geschrieben, „Uns läuft die Zeit davon (Englisch)“ dagegen auf Englisch; „Klimarollen“ läuft deshalb in beiden Sprachen. Seine Legende nennt die beiden Schlüssel „Klima als Subjekt“ und „Klima als Objekt“.</p>
+<p>So legen Sie einen Analysator an:</p>
+<ol>
+<li>Wählen Sie <strong class="ui">Fenster ▸ Analysatoren</strong>. Zeigt die mittlere Spalte einen Analysator, den Sie bereits gesichert haben, klicken Sie unter der Liste auf <strong class="ui">Analysator hinzufügen</strong>.</li>
+<li>Geben Sie in <strong class="ui">Name</strong> einen Namen ein.</li>
+<li>Wählen Sie die Sprachen der Dokumente aus, auf denen der Analysator laufen soll. Anfangs ist <strong class="ui">Englisch</strong> ausgewählt.</li>
+<li>Klicken Sie in den Editor, wählen Sie mit ⌘A das Beispielskript aus, und tippen oder setzen Sie Ihr Skript an seiner Stelle ein.</li>
+<li>Geben Sie jedem Schlüssel in der <strong class="ui">Legende</strong> eine Beschriftung; dort listet LemmaLoom die Schlüssel auf, die es im Skript gefunden hat (siehe <a href="#legend">Schlüssel und Legende</a> weiter unten in diesem Kapitel).</li>
+<li>Testen Sie das Skript unter <strong class="ui">Ausprobieren</strong> (siehe <a href="#try-it-out">Testen mit „Ausprobieren“</a> weiter unten in diesem Kapitel).</li>
+<li>Klicken Sie auf <strong class="ui">Sichern</strong>.</li>
+</ol>
+<p>Ein guter Test für „Klimarollen“ ist ein Satz, der beide Verwendungen enthält, etwa der englische Satz <em>The climate is changing faster than our politics, so we must do more for the climate</em> (das Klima ändert sich schneller als unsere Politik, also müssen wir mehr für das Klima tun). Wenn Sie im Sprachmenü neben dem Testfeld <code>en</code> wählen, hebt <strong class="ui">Ausführen</strong> das erste <em>climate</em> in Blau als <code>subject</code> hervor und das zweite in Rot als <code>object</code>.</p>
+<p>Nach dem Sichern erscheint der neue Analysator in der Liste, und LemmaLoom beginnt automatisch, ihn im Hintergrund auf Ihren Dokumenten in den ausgewählten Sprachen auszuführen. Im Lens-Menü jedes Dokuments in diesen Sprachen steht der Analysator sofort zur Verfügung, und seine Annotationen erscheinen, sobald er auf dem Dokument gelaufen ist.</p>
+<h3 id="reading-the-script">Das Skript lesen<a class="anchor" href="#reading-the-script" aria-hidden="true">#</a></h3>
+<p>Wenn Sie mit JavaScript vertraut sind, können Sie direkt zum Abschnitt <a href="#document-object">Das Dokument, das ein Analysator erhält</a> weiter unten springen. Die Zeilenangaben folgen der Nummerierung, die der Editor nach dem Einsetzen des Skripts zeigt.</p>
+<p>Zeile 1 (<code>const CLIMATE = …</code>) legt fest, welche Lemmata als <em>Klima</em> zählen. <code>const</code> gibt einem Wert einen Namen, und eckige Klammern definieren ein Array. Das englische <em>climates</em> hat das Lemma <em>climate</em>, das deutsche <em>Klimas</em>, wie in <em>des Klimas</em>, das Lemma <em>Klima</em>. Das Array enthält das Wort auf Englisch, Deutsch und Chinesisch. Das deutsche Wort steht hier kleingeschrieben (<code>klima</code>), weil Zeile 6 jedes Lemma vor dem Abgleich in Kleinbuchstaben umwandelt.</p>
+<p>Zeile 2 (<code>function analyze(doc) {</code>) definiert die Funktion, die LemmaLoom aufruft, mit einem Argument namens <code>doc</code>. Dieses Argument ist das Dokumentobjekt, das LemmaLoom übergibt. Zeile 3 (<code>const findings = []</code>) deklariert eine Array-Variable <code>findings</code>, die die Befunde aufnimmt.</p>
+<p>In Zeile 4 (<code>for (const sentence of doc.sentences) {</code>) durchläuft das Skript jeden Satz des Dokuments und führt für jeden die Anweisungen in diesem Block aus. Ebenso durchläuft es in Zeile 5 (<code>sentence.tokens.forEach(…)</code>) die Tokens des aktuellen Satzes. <code>(token, index) =&gt; { … }</code> ist eine anonyme Funktion; <code>forEach</code> ruft sie bei jedem Durchlauf einmal auf und übergibt ihr das aktuelle Token und seine Position im Satz, gezählt ab 0.</p>
+<p>Ist die Bedingung in Zeile 6 (<code>if (CLIMATE.includes(…)) {</code>) erfüllt, das heißt, findet <code>includes</code> das Lemma des Tokens in der Liste <code>CLIMATE</code>, werden die Anweisungen in den geschweiften Klammern dieses <code>if</code> ausgeführt.</p>
+<p>Zeile 7 (<code>const role = token.derived.function;</code>) liest die grammatische Funktion des aktuellen Tokens, denselben Wert, den die Lens <strong class="ui">Grammatische Funktion</strong> zeigt. Die Zeilen 8 (<code>role === FUNCTION.SUBJECT</code>) und 11 (<code>role === FUNCTION.OBJECT</code>) prüfen mit <code>===</code> auf Gleichheit. Dieser Vergleichsoperator ergibt <code>true</code>, wenn beide Operanden gleich sind. Hier prüft das Skript, ob die grammatische Funktion des Tokens <code>FUNCTION.SUBJECT</code> oder <code>FUNCTION.OBJECT</code> ist (siehe <a href="#constants">Konstanten</a> weiter unten in diesem Kapitel).</p>
+<p>Trifft der Vergleich zu, hängt das Skript in den Zeilen 9 und 12 (<code>findings.push(…)</code>) ein Objekt, das einen Befund darstellt, an das Array <code>findings</code> an; ein Objekt steht in geschweiften Klammern. Jedes dieser Objekte hat vier Eigenschaften, nämlich den Satz, aus dem der Befund stammt, die Anfangsposition der Textstelle (<code>start</code>, also der <code>index</code> des aktuellen Tokens), die Position direkt nach ihrem letzten Token (<code>end</code>, hier <code>index + 1</code>) und den Schlüssel. Jeder Befund umfasst deshalb genau ein Wort, und seine Anfangs- und Endposition folgen direkt aufeinander.</p>
+<p>In Zeile 17 (<code>return findings;</code>) gibt das Skript die Ergebnisse schließlich an LemmaLoom zurück.</p>
+<p><em>Objekt</em> ist eine weit gefasste Kategorie der grammatischen Funktionen und umfasst auch das Objekt einer Präposition. Im Englischen zählt das Skript deshalb Fälle wie <em>do more for the climate</em> ebenso wie <em>protect the climate</em>. Subjekte von Passivsätzen wie <em>the climate is affected by our emissions</em> fallen unter die grammatische Funktion <code>FUNCTION.SUBJECT</code> und werden daher als Subjekte gezählt. Wenn Sie Passivsubjekte zu den Objekten zählen möchten, ändern Sie Zeile 7 in <code>const role = token.dep === DEP.NSUBJPASS ? FUNCTION.OBJECT : token.derived.function;</code>. Mit <code>?</code> und <code>:</code> wählt die Zeile zwischen <code>FUNCTION.OBJECT</code> und der eigenen Funktion des Tokens, je nachdem, ob das Token Subjekt eines Passivsatzes ist oder nicht. Diese Lösung gilt nur im Englischen vollständig; die deutsche Grammatikanalyse kennzeichnet Passivsubjekte genauso wie Subjekte im Aktiv, und die chinesische vergibt dieses Label nur an einige Subjekte von 被-Sätzen.</p>
+<p>Auf dieselbe Weise kann das Skript die grammatischen Rollen jedes beliebigen Wortes verfolgen, etwa von <em>Regierung</em> oder <em>Industrie</em>. Ersetzen Sie dazu die Lemmata in Zeile 1 durch Ihre Wörter in Kleinschreibung.</p>
+<h2 id="document-object">Das Dokument, das ein Analysator erhält<a class="anchor" href="#document-object" aria-hidden="true">#</a></h2>
+<p>Die Funktion <code>analyze</code> erhält ein Argument, das im Folgenden <code>doc</code> heißt. Es enthält drei Felder:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Feld</th><th>Inhalt</th></tr></thead>
+<tbody>
+<tr><td><code>doc.language</code></td><td>Die Sprache der Analyse, <code>&quot;en&quot;</code>, <code>&quot;de&quot;</code> oder <code>&quot;zh&quot;</code></td></tr>
+<tr><td><code>doc.sentences</code></td><td>Die Sätze in ihrer Reihenfolge</td></tr>
+<tr><td><code>doc.builtins</code></td><td>Die Ergebnisse der eingebauten Analysatoren <strong class="ui">Kohäsion</strong>, <strong class="ui">Metadiskurs</strong> und <strong class="ui">Rhetorik</strong></td></tr>
+</tbody></table></div>
+<p>Ein Analysator kann nur Ergebnisse liefern, die auf der Analyse des Dokuments beruhen. Um seine Befunde mit Ihren Kodierungen, Memos, Verknüpfungen, Lesezeichen, Attributen, Dokumenteigenschaften oder den Ergebnissen anderer eigener Analysatoren zu kombinieren, erstellen Sie eine Abfrage (siehe <a href="#using-findings">Die Befunde verwenden</a> weiter unten in diesem Kapitel).</p>
+<p>Sehr große Dokumente indiziert LemmaLoom in Teilen von höchstens einem halben Megabyte Text (etwa 80.000 englische Wörter). LemmaLoom ruft <code>analyze</code> für jeden Teil einmal auf, und die Satznummerierung beginnt jedes Mal wieder bei 0. Dokumente üblicher Länge werden als ein einziger Teil indiziert.</p>
+<h3 id="sentences">Sätze<a class="anchor" href="#sentences" aria-hidden="true">#</a></h3>
+<p>Die Einträge in <code>doc.sentences</code> haben diese Felder:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Feld</th><th>Inhalt</th></tr></thead>
+<tbody>
+<tr><td><code>index</code></td><td>Die Nummer des Satzes, gezählt ab 0. Sie ist zugleich die Position des Satzes in <code>doc.sentences</code>.</td></tr>
+<tr><td><code>text</code></td><td>Der Text des Satzes</td></tr>
+<tr><td><code>tokens</code></td><td>Die Tokens des Satzes in ihrer Reihenfolge</td></tr>
+<tr><td><code>root</code></td><td>Die Position des Tokens, das die Wurzel des Satzes bildet, meist sein Hauptverb, oder <code>-1</code>, wenn für den Satz keine Analyse vorliegt</td></tr>
+<tr><td><code>constituents</code></td><td>Die Phrasen des Satzes (siehe <a href="#phrases-and-noun-chunks">Phrasen und Nominalgruppen</a>)</td></tr>
+<tr><td><code>nounChunks</code></td><td>Die Nominalgruppen des Satzes</td></tr>
+</tbody></table></div>
+<h3 id="tokens">Tokens<a class="anchor" href="#tokens" aria-hidden="true">#</a></h3>
+<p>Die Tokens werden innerhalb jedes Satzes ab 0 nummeriert, und Positionen in Skripten beziehen sich auf diese Nummern. Ein Token ist entweder ein Wort oder ein Satzzeichen. Jedes Token hat diese Felder:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Feld</th><th>Inhalt</th><th>Beispiel</th></tr></thead>
+<tbody>
+<tr><td><code>text</code></td><td>Das Token, wie es im Text steht</td><td><code>targets</code></td></tr>
+<tr><td><code>whitespace</code></td><td>Der Leerraum, der auf das Token folgt</td><td><code>&quot; &quot;</code></td></tr>
+<tr><td><code>lemma</code></td><td>Die Grundform; im Chinesischen dasselbe wie <code>text</code></td><td><code>target</code></td></tr>
+<tr><td><code>pos</code></td><td>Die universelle Wortart, mit denselben Kürzeln in jeder Sprache</td><td><code>NOUN</code></td></tr>
+<tr><td><code>tag</code></td><td>Das feingranulare Tag aus dem Tagset der jeweiligen Sprache</td><td><code>NNS</code></td></tr>
+<tr><td><code>dep</code></td><td>Die Dependenzrelation zum Kopf des Tokens</td><td><code>nsubjpass</code></td></tr>
+<tr><td><code>head</code></td><td>Die Position des Kopfes; die Wurzel verweist auf sich selbst</td><td><code>4</code></td></tr>
+<tr><td><code>index</code></td><td>Die eigene Position des Tokens im Satz</td><td><code>2</code></td></tr>
+<tr><td><code>morph</code></td><td>Die morphologischen Merkmale; im Chinesischen leer</td><td><code>{ Number: &quot;Plur&quot; }</code></td></tr>
+<tr><td><code>isStop</code></td><td><code>true</code> bei sehr häufigen Wörtern wie <em>der</em> und <em>von</em></td><td><code>false</code></td></tr>
+<tr><td><code>derived</code></td><td>Drei Kategorien, die LemmaLoom aus den obigen Feldern ableitet (siehe den nächsten Abschnitt)</td><td></td></tr>
+</tbody></table></div>
+<p>Die Beispiele in der Tabelle stammen aus dem englischen Satz <em>The new targets were announced last year.</em> (Die neuen Ziele wurden letztes Jahr angekündigt.) Eine Analyse dieses Satzes sieht in der Regel so aus:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>index</th><th>text</th><th>lemma</th><th>pos</th><th>tag</th><th>dep</th><th>head</th><th>derived.function</th></tr></thead>
+<tbody>
+<tr><td>0</td><td>The</td><td>the</td><td>DET</td><td>DT</td><td>det</td><td>2</td><td>adjectival</td></tr>
+<tr><td>1</td><td>new</td><td>new</td><td>ADJ</td><td>JJ</td><td>amod</td><td>2</td><td>adjectival</td></tr>
+<tr><td>2</td><td>targets</td><td>target</td><td>NOUN</td><td>NNS</td><td>nsubjpass</td><td>4</td><td>subject</td></tr>
+<tr><td>3</td><td>were</td><td>be</td><td>AUX</td><td>VBD</td><td>auxpass</td><td>4</td><td>connector</td></tr>
+<tr><td>4</td><td>announced</td><td>announce</td><td>VERB</td><td>VBN</td><td>ROOT</td><td>4</td><td>mainClause</td></tr>
+<tr><td>5</td><td>last</td><td>last</td><td>ADJ</td><td>JJ</td><td>amod</td><td>6</td><td>adjectival</td></tr>
+<tr><td>6</td><td>year</td><td>year</td><td>NOUN</td><td>NN</td><td>npadvmod</td><td>4</td><td>adverbial</td></tr>
+<tr><td>7</td><td>.</td><td>.</td><td>PUNCT</td><td>.</td><td>punct</td><td>4</td><td>unknown</td></tr>
+</tbody></table></div>
+<p>Lesen Sie die Spalte <code>head</code> als Pfeile, die von jedem Wort auf das Wort zeigen, von dem es abhängt. <em>Targets</em> hängt als Passivsubjekt von <em>announced</em> an Position 4 ab, <em>the</em> und <em>new</em> hängen von <em>targets</em> ab. <em>Announced</em> ist die Wurzel des Satzes und daher sein eigener Kopf, und <code>sentence.root</code> ist 4.</p>
+<p>Tags und Relationen unterscheiden sich je nach Sprache. Im Englischen folgen die Tags der Penn Treebank, und die Relationslabels sind englische Dependenzrelationen wie <code>nsubj</code> und <code>dobj</code>. Im Deutschen folgen die Tags dem STTS und die Relationslabels dem TIGER-Schema, zum Beispiel <code>sb</code> für ein Subjekt und <code>oa</code> für ein Akkusativobjekt. Im Chinesischen folgen die Tags der Chinese Treebank und die Relationslabels sind die englischen Labels und zusätzlich chinesische wie <code>aux:asp</code> und <code>nmod:assmod</code>. Die Werte des Feldes <code>pos</code> und aller Felder in <code>derived</code> sind in allen drei Sprachen gleich; ein Skript, das nur diese prüft, funktioniert daher in jeder Sprache. Der Bereich „Referenz“ führt Tags und Labels mit ihren Namen auf (siehe <a href="#reference-panel">Der Bereich „Referenz“</a> weiter unten in diesem Kapitel).</p>
+<h3 id="derived-categories">Abgeleitete Kategorien<a class="anchor" href="#derived-categories" aria-hidden="true">#</a></h3>
+<p><code>token.derived</code> enthält drei Kategorien, die LemmaLoom für jedes Token berechnet. Jede ist die Kategorie einer Lens und bedeutet in jeder Sprache dasselbe.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Feld</th><th>Lens</th><th>Werte</th></tr></thead>
+<tbody>
+<tr><td><code>derived.function</code></td><td><strong class="ui">Grammatische Funktion</strong></td><td><code>subject</code>, <code>object</code>, <code>predicative</code>, <code>complement</code>, <code>adjectival</code>, <code>adverbial</code>, <code>appositive</code>, <code>agent</code>, <code>conjunct</code>, <code>connector</code>, <code>mainClause</code>, <code>unknown</code></td></tr>
+<tr><td><code>derived.posCategory</code></td><td><strong class="ui">Wortklasse</strong></td><td><code>noun</code>, <code>verb</code>, <code>adjective</code>, <code>adverb</code>, <code>pronoun</code>, <code>determiner</code>, <code>preposition</code>, <code>conjunction</code>, <code>number</code>, <code>interjection</code>, <code>other</code></td></tr>
+<tr><td><code>derived.phraseCategory</code></td><td><strong class="ui">Phrase</strong></td><td><code>nounPhrase</code>, <code>verbPhrase</code>, <code>prepPhrase</code>, <code>adjPhrase</code>, <code>advPhrase</code>, <code>conjPhrase</code>, <code>interjection</code>, <code>other</code> oder eine leere Zeichenkette</td></tr>
+</tbody></table></div>
+<p>LemmaLoom leitet die Funktion eines Tokens aus seiner Dependenzrelation ab. Bei einigen Relationen berücksichtigt es dabei jedoch auch den Kopf des Tokens. Ist der Kopf ein Substantiv, Pronomen oder Numerale, zählt eine Modifikatorrelation wie <code>advmod</code> als <code>adjectival</code>, andernfalls als <code>adverbial</code>. Relationen mit einem Untertyp, erkennbar am Doppelpunkt, zählen nach ihrem Präfix; die Ausnahme ist <code>obl:agent</code>, das als <code>agent</code> zählt. Die Wurzel erhält die Funktion <code>mainClause</code>, und <code>unknown</code> umfasst alle übrigen Relationen, darunter etwa die Satzzeichen.</p>
+<p>Die Phrasenkategorie ist die Kategorie der kleinsten Phrase, die das Token umschließt, wobei Teilsätze nicht mitzählen. Tokens, die nur zu einer Phrase auf Satzebene gehören (wie der Punkt am Satzende), erhalten als Phrasenkategorie eine leere Zeichenkette.</p>
+<h3 id="phrases-and-noun-chunks">Phrasen und Nominalgruppen<a class="anchor" href="#phrases-and-noun-chunks" aria-hidden="true">#</a></h3>
+<p><code>sentence.constituents</code> liefert ein Array mit den Phrasen des Satzes nach dem Phrasenstrukturbaum, den auch die Lens <strong class="ui">Phrase</strong> und die Satzdiagramme darstellen. Jede Phrase enthält die Anfangs- und Endposition ihrer Tokens (<code>start</code> und <code>end</code>) sowie ein Array ihrer <code>labels</code>, etwa <code>['NP']</code> für eine Nominalphrase. Umfassen mehrere Phrasen genau dieselben Tokens, gibt es ein einziges Objekt, das ihre Labels in der Reihenfolge ihrer Verschachtelung von außen nach innen enthält.</p>
+<p><code>sentence.nounChunks</code> liefert die Nominalgruppen des Satzes (englisch <em>noun chunks</em>). Eine Nominalgruppe ist ein Substantiv mit den vorangehenden Wörtern, die zu ihm gehören, wie <em>the new targets</em>. Auch Nominalgruppen enthalten eine Anfangs- und eine Endposition.</p>
+<p>Für <em>The new targets were announced last year.</em> könnten die beiden Arrays so aussehen:</p>
+<pre><code>constituents: [
+  { start: 0, end: 8, labels: ['S'] },
+  { start: 0, end: 3, labels: ['NP'] },
+  { start: 3, end: 7, labels: ['VP'] },
+  { start: 4, end: 7, labels: ['VP'] },
+  { start: 5, end: 7, labels: ['NP'] },
+]
+nounChunks: [
+  { start: 0, end: 3 },
+]
+</code></pre>
+<p><code>S</code> steht für einen Satz, <code>VP</code> für eine Verbalphrase. <em>Last year</em> ist eine Nominalphrase, aber keine Nominalgruppe. Im Englischen bilden sich Nominalgruppen nur um Substantive oder Pronomen, die im Satz als Subjekt, Objekt oder Ähnliches dienen, und <em>year</em> ist hier eine adverbiale Bestimmung. Beide Listen können leer sein, etwa bei einer Antwort, die aus einem einzigen Wort besteht. Berücksichtigen Sie solche Fälle, wenn Sie Ihr Skript schreiben.</p>
+<h3 id="builtin-results">Ergebnisse der eingebauten Analysatoren<a class="anchor" href="#builtin-results" aria-hidden="true">#</a></h3>
+<p>Ihr eigener Analysator läuft auf einem Dokument zuletzt. Zuerst laufen die drei eingebauten Analysatoren und stellen ihre Ergebnisse in <code>doc.builtins</code> bereit. Auch wenn Sie die Ergebnisse eines eingebauten Analysators zuvor entfernt haben, stehen sie Ihrem eigenen Analysator weiterhin zur Verfügung.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Feld</th><th>Inhalt jedes Eintrags</th></tr></thead>
+<tbody>
+<tr><td><code>doc.builtins.cohesion</code></td><td>Ein Eintrag pro Satz, mit <code>sentenceIndex</code>, <code>tie</code> (wie der Satz an das Vorangehende anknüpft), <code>theme</code> und <code>rheme</code> (die Tokenbereiche des Satzanfangs und der Betonungsposition, jeweils als <code>[start, end]</code>; das Feld fehlt, wenn der Satz keinen solchen Bereich hat) und <code>tieWord</code> (das Wort, das die Verknüpfung herstellt)</td></tr>
+<tr><td><code>doc.builtins.metadiscourse</code></td><td>Ein Eintrag pro Wort, das der Analysator gefunden hat, mit <code>sentenceIndex</code>, <code>local</code> (die Position des Tokens) und <code>category</code>, etwa <code>hedge</code></td></tr>
+<tr><td><code>doc.builtins.rhetoric</code></td><td>Ein Eintrag pro rhetorischem Mittel, mit <code>device</code>, etwa <code>passiveVoice</code>, <code>sentenceIndex</code>, <code>range</code> (die Tokens als <code>[start, end]</code>) und <code>note</code></td></tr>
+</tbody></table></div>
+<p><code>tie</code> hat sieben Werte (<code>opening</code>, <code>pronoun</code>, <code>possessive</code>, <code>demonstrative</code>, <code>repetition</code>, <code>zero</code> und <code>broken</code>). <code>category</code> hat fünf mögliche Werte (<code>hedge</code>, <code>booster</code>, <code>attitude</code>, <code>connective</code> und <code>engagement</code>); im Deutschen kann <code>category</code> außerdem <code>modalParticle</code> enthalten, im Chinesischen <code>finalParticle</code>. <code>device</code> schließlich hat dreizehn mögliche Werte, von <code>passiveVoice</code> bis <code>correlative</code>. Der Bereich „Referenz“ führt alle möglichen Werte jedes Feldes auf, zusammen mit den Namen, die die Lens ihnen gibt. Was die einzelnen Analysatoren untersuchen, erfahren Sie in <a href="lenses.html">Kapitel 6, Lenses</a>.</p>
+<h3 id="helper-functions">Hilfsfunktionen<a class="anchor" href="#helper-functions" aria-hidden="true">#</a></h3>
+<p><code>LL</code> stellt einige Funktionen für Aufgaben bereit, die beim Schreiben von Skripten häufig vorkommen.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Funktion</th><th>Ergebnis</th></tr></thead>
+<tbody>
+<tr><td><code>LL.isWord(token)</code></td><td><code>true</code>, außer wenn das Token ein Satzzeichen oder ein Symbol wie <code>$</code> ist</td></tr>
+<tr><td><code>LL.isNominal(pos)</code></td><td><code>true</code> für <code>NOUN</code>, <code>PROPN</code> und <code>PRON</code></td></tr>
+<tr><td><code>LL.isVerbal(pos)</code></td><td><code>true</code> für <code>VERB</code> und <code>AUX</code></td></tr>
+<tr><td><code>LL.children(sentence, i)</code></td><td>Die Positionen der Tokens, deren Kopf Token <code>i</code> ist</td></tr>
+<tr><td><code>LL.subtree(sentence, i)</code></td><td><code>{ start, end }</code>, der lückenlose Bereich um Token <code>i</code> aus ihm und den Tokens, die direkt oder über andere von ihm abhängen</td></tr>
+<tr><td><code>LL.root(sentence)</code></td><td>Die Position der Wurzel des Satzes, dasselbe wie <code>sentence.root</code></td></tr>
+<tr><td><code>LL.text(sentence, start, end)</code></td><td>Der Text der Tokens von <code>start</code> bis ausschließlich <code>end</code>, mit ihrem Leerraum</td></tr>
+<tr><td><code>console.log(...)</code></td><td>Schreibt eine Zeile unter <strong class="ui">Ausprobieren</strong>; Listen und Objekte werden vollständig ausgegeben</td></tr>
+</tbody></table></div>
+<p>Im Beispielsatz liefert <code>LL.children(sentence, 4)</code> das Array <code>[2, 3, 6, 7]</code>, also die Tokens, die von <em>announced</em> abhängen. <code>LL.subtree(sentence, 2)</code> liefert ein Objekt mit den beiden Feldern <code>{ start: 0, end: 3 }</code>, das den Text <em>The new targets</em> umfasst, und <code>LL.text(sentence, 0, 3)</code> liefert den Text <code>&quot;The new targets&quot;</code>.</p>
+<p>Aufrufe von <code>console.log</code> dienen nur der Fehlersuche; wenn der Analysator auf Ihren Dokumenten läuft, wird ihre Ausgabe verworfen.</p>
+<h3 id="constants">Konstanten<a class="anchor" href="#constants" aria-hidden="true">#</a></h3>
+<p>Die allermeisten Felder enthalten Kürzel wie <code>NOUN</code> und <code>nsubjpass</code>. Sie können ein Kürzel als Zeichenkette in Anführungszeichen angeben oder als benannte Konstante; der Ausdruck <code>token.pos === POS.NOUN</code> bedeutet dasselbe wie <code>token.pos === 'NOUN'</code>. Verwenden Sie nach Möglichkeit die benannten Konstanten. Der Editor schlägt sie beim Tippen vor und unterstreicht eine falsch geschriebene Konstante. Eine Zeichenkette in Anführungszeichen übernimmt er dagegen so, wie sie dasteht, ob richtig geschrieben oder nicht. Zur Laufzeit ergibt eine falsch geschriebene Konstante wie <code>POS.NOUM</code> den Wert <code>undefined</code>, und das Skript läuft weiter; die Unterstreichung ist also Ihre einzige Warnung.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Konstante</th><th>Enthält die Werte von</th><th>Beispiel</th></tr></thead>
+<tbody>
+<tr><td><code>POS</code></td><td><code>token.pos</code></td><td><code>POS.NOUN</code> ist <code>'NOUN'</code></td></tr>
+<tr><td><code>TAG</code></td><td><code>token.tag</code>, in allen drei Sprachen</td><td><code>TAG.NNS</code> ist <code>'NNS'</code></td></tr>
+<tr><td><code>DEP</code></td><td><code>token.dep</code>, in allen drei Sprachen</td><td><code>DEP.NSUBJPASS</code> ist <code>'nsubjpass'</code></td></tr>
+<tr><td><code>PHRASE</code></td><td>den <code>labels</code> der Konstituenten</td><td><code>PHRASE.NP</code> ist <code>'NP'</code></td></tr>
+<tr><td><code>MORPH</code></td><td>den Namen der Merkmale in <code>token.morph</code></td><td><code>MORPH.TENSE</code> ist <code>'Tense'</code></td></tr>
+<tr><td><code>FUNCTION</code></td><td><code>token.derived.function</code></td><td><code>FUNCTION.SUBJECT</code> ist <code>'subject'</code></td></tr>
+<tr><td><code>CATEGORY</code></td><td><code>token.derived.posCategory</code></td><td><code>CATEGORY.NOUN</code> ist <code>'noun'</code></td></tr>
+<tr><td><code>PHRASE_CATEGORY</code></td><td><code>token.derived.phraseCategory</code></td><td><code>PHRASE_CATEGORY.NOUN_PHRASE</code> ist <code>'nounPhrase'</code></td></tr>
+<tr><td><code>COHESION</code></td><td><code>tie</code> in <code>doc.builtins.cohesion</code></td><td><code>COHESION.REPETITION</code> ist <code>'repetition'</code></td></tr>
+<tr><td><code>METADISCOURSE</code></td><td><code>category</code> in <code>doc.builtins.metadiscourse</code></td><td><code>METADISCOURSE.HEDGE</code> ist <code>'hedge'</code></td></tr>
+<tr><td><code>RHETORIC</code></td><td><code>device</code> in <code>doc.builtins.rhetoric</code></td><td><code>RHETORIC.PASSIVE_VOICE</code> ist <code>'passiveVoice'</code></td></tr>
+<tr><td><code>KEY</code></td><td>den Schlüsseln in der Legende dieses Analysators</td><td><code>KEY.SUBJECT</code> ist <code>'subject'</code></td></tr>
+</tbody></table></div>
+<p>Die Namen der Konstanten sind in LemmaLoom die Kürzel in Großbuchstaben. Folgt in einem Kürzel auf einen Kleinbuchstaben direkt ein Großbuchstabe, steht dazwischen ein Unterstrich; so wird <code>nounPhrase</code> zu <code>NOUN_PHRASE</code> und <code>mainClause</code> zu <code>MAIN_CLAUSE</code>. Zeichen, die keine Buchstaben sind und nicht in Namen vorkommen dürfen, etwa Doppelpunkte, werden durch Unterstriche ersetzt.</p>
+<p>Die <code>MORPH</code>-Konstanten benennen die Merkmale. Die Werte der Merkmale schreiben Sie als Zeichenketten, etwa <code>token.morph[MORPH.TENSE] === 'Past'</code> oder kürzer <code>token.morph.Tense === 'Past'</code>.</p>
+<p>Für die meisten Kürzel gibt es Konstanten, vier Fälle weichen aber ab:</p>
+<ul>
+<li><code>DEP.ROOT</code> enthält <code>'root'</code>, in den Analysen ist die Wurzel jedoch mit <code>ROOT</code> bezeichnet. Ob ein Token die Wurzel ist, prüfen Sie durch einen Vergleich der Positionen, wie in <code>index === sentence.root</code>, oder mit <code>'ROOT'</code>.</li>
+<li>Die Konstante <code>MORPH</code> enthält zehn häufige Merkmale, nämlich Tense, Number, Person, Mood, VerbForm, Case, Degree, Aspect, Gender und PronType. Ein Merkmal, das nicht in <code>MORPH</code> enthalten ist, schreiben Sie direkt als Zeichenkette, wie in <code>token.morph.Definite === 'Def'</code>.</li>
+<li>Phrasenlabels, die nur im Chinesischen vorkommen, etwa <code>IP</code>, <code>DNP</code> und <code>LCP</code>, schreiben Sie in Anführungszeichen.</li>
+<li>Auch Tags, die nur aus Satzzeichen bestehen, etwa der englische Punkt (<code>.</code>) und das Komma (<code>,</code>) oder das deutsche <code>$,</code>, stehen in Anführungszeichen.</li>
+</ul>
+<p>Vergeben Sie keine Namen, die bereits zu Konstanten oder zu <code>LL</code> oder <code>console</code> gehören. Ein Skript, das eine eigene <code>const KEY</code> definiert, bricht beim Ausführen mit einem Fehler ab.</p>
+<h3 id="reference-panel">Der Bereich „Referenz“<a class="anchor" href="#reference-panel" aria-hidden="true">#</a></h3>
+<p>Der Bereich <strong class="ui">Referenz</strong> rechts im Fenster führt die Teile des Dokumentobjekts, die Hilfsfunktionen und die Konstanten auf. Unter <strong class="ui">API</strong> stehen <code>doc.language</code>, <code>doc.sentences[i].tokens[j]</code>, die drei Listen in <code>doc.builtins</code> sowie die Hilfsfunktionen. Hinter jedem Eintrag steht der Typ seines Werts, etwa <code>String</code> oder <code>Bool</code>. Alle Felder der Satz-, Token- und Befundobjekte finden Sie in den Tabellen dieses Kapitels. Die Abschnitte unter <strong class="ui">API</strong> enthalten die Konstanten, jeweils mit ihrer ausgeschriebenen Bezeichnung:</p>
+<ul>
+<li><strong class="ui">Wortart</strong> (<code>POS</code>), <strong class="ui">Feingranulare Tags</strong> (<code>TAG</code>), <strong class="ui">Dependenzrelationen</strong> (<code>DEP</code>), <strong class="ui">Konstituentenlabels</strong> (<code>PHRASE</code>) und <strong class="ui">Morphologische Merkmale</strong> (<code>MORPH</code>);</li>
+<li><strong class="ui">Grammatische Funktionen</strong> (<code>FUNCTION</code>), <strong class="ui">Wortkategorien</strong> (<code>CATEGORY</code>) und <strong class="ui">Phrasenkategorien</strong> (<code>PHRASE_CATEGORY</code>);</li>
+<li><strong class="ui">Rhetorische Mittel</strong> (<code>RHETORIC</code>), <strong class="ui">Kohäsionsmittel</strong> (<code>COHESION</code>) und <strong class="ui">Metadiskurs-Kategorien</strong> (<code>METADISCOURSE</code>).</li>
+</ul>
+<p>Alle diese Abschnitte sind anfangs eingeklappt; ein Klick auf die Überschrift eines Abschnitts klappt ihn auf oder zu. Um einen bestimmten Eintrag zu finden, geben Sie einen Teil davon in <strong class="ui">Suchen</strong> ein. Eine Konstante wird über ihren Namen, ihr Kürzel oder ihre gebräuchliche Bezeichnung gefunden, ein Eintrag unter <strong class="ui">API</strong> über den genauen Wortlaut seiner Deklaration. Der Bereich zeigt dann die passenden Einträge aller Abschnitte in einer gemeinsamen Liste oder <strong class="ui">Keine Treffer</strong>. Klicken Sie auf einen Eintrag, um ihn an der Position der Einfügemarke in den Editor einzufügen.</p>
+<figure class="shot" id="custom-analyzers-reference"><img class="shot-light" src="../figures/de/light/custom-analyzers-reference.webp" alt="Der Bereich „Referenz“ nach der Eingabe von subject in „Suchen“." loading="lazy"><img class="shot-dark" src="../figures/de/dark/custom-analyzers-reference.webp" alt="Der Bereich „Referenz“ nach der Eingabe von subject in „Suchen“." loading="lazy"><figcaption>Der Bereich „Referenz“ nach der Eingabe von subject in „Suchen“.</figcaption></figure>
+<h2 id="findings-and-legend">Befunde und Legende<a class="anchor" href="#findings-and-legend" aria-hidden="true">#</a></h2>
+<h3 id="findings">Befunde<a class="anchor" href="#findings" aria-hidden="true">#</a></h3>
+<p><code>analyze</code> muss eine Liste zurückgeben, deren Elemente Befunde mit den folgenden Feldern sind:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Feld</th><th>Inhalt</th></tr></thead>
+<tbody>
+<tr><td><code>sentenceIndex</code></td><td>Der <code>index</code> des Satzes</td></tr>
+<tr><td><code>start</code></td><td>Die Position des ersten Tokens der Textstelle</td></tr>
+<tr><td><code>end</code></td><td>Die Position direkt nach dem letzten Token</td></tr>
+<tr><td><code>key</code></td><td>Einer der Schlüssel in der Legende</td></tr>
+<tr><td><code>note</code></td><td>Ein kurzer Text Ihrer Wahl; optional</td></tr>
+</tbody></table></div>
+<p>Im Beispiel <em>The new targets were announced</em> steht das erste Token an Position 0 und das letzte an Position 4; der Befund hat also <code>start: 0</code> und <code>end: 5</code>. Die Zahl der Tokens ist deshalb immer <code>end - start</code>, hier 5.</p>
+<p>Ein Befund muss innerhalb eines einzigen Satzes liegen. Befunde können sich überlappen, sodass ein Token mehrere Schlüssel tragen kann; die Leseansicht stellt dann alle ihre Stile an ihm dar.</p>
+<p>Das Feld <code>note</code> ist für Abfragen gedacht. In einer Abfrage prüfen Sie es mit dem Feld <strong class="ui">Notiz</strong> (siehe <a href="#using-findings">Die Befunde verwenden</a> weiter unten in diesem Kapitel).</p>
+<h3 id="legend">Schlüssel und Legende<a class="anchor" href="#legend" aria-hidden="true">#</a></h3>
+<p>Für jeden Schlüssel, den Ihre Befunde verwenden, muss es eine Zeile in der Legende geben. Der Bereich <strong class="ui">Legende</strong> über dem Editor zeigt für jeden Schlüssel eine Zeile mit diesen Teilen:</p>
+<ul>
+<li><strong class="ui">Schlüssel</strong> enthält den Schlüssel so, wie er im Skript steht.</li>
+<li><strong class="ui">Beschriftung</strong> enthält den Namen, der in der Legende der Lens erscheint und in Abfragen verwendet wird. Anfangs ist die Beschriftung der Schlüssel selbst.</li>
+<li>Das Farbfeld legt die Farbe der Befunde mit diesem Schlüssel fest. Neue Schlüssel erhalten ihre Farben der Reihe nach aus einem Vorrat von acht Farben.</li>
+<li>Das Stilmenü legt fest, wie die Leseansicht die Befunde darstellt, mit den Optionen <strong class="ui">Hervorheben</strong>, <strong class="ui">Unterstreichen</strong>, <strong class="ui">Textfarbe</strong> und <strong class="ui">Fett</strong>. Bei neu hinzugekommenen Schlüsseln ist anfangs <strong class="ui">Hervorheben</strong> ausgewählt.</li>
+</ul>
+<p>Während Sie schreiben, legt LemmaLoom für jeden Schlüssel, der im Skript in Anführungszeichen ausgeschrieben ist (<code>key: '...'</code>), eine Zeile in der Legende an, in der Reihenfolge, in der die Schlüssel im Skript vorkommen. Entfernen Sie einen Schlüssel aus dem Skript, wird seine Zeile aus der Legende gelöscht. Ändern Sie den Namen eines Schlüssels, wird seine Zeile gelöscht und durch eine neue ersetzt, die den geänderten Schlüssel als Beschriftung und die Standardfarbe hat. Vergeben Sie Farben und Beschriftungen deshalb erst, wenn die Namen der Schlüssel feststehen.</p>
+<p>Beschriftung, Farbe und Stil jeder Zeile können Sie jederzeit ändern. Nach dem Sichern erscheinen Änderungen an den Zeilen der Legende in jedem Dokument, in dem die Lens aktiviert ist.</p>
+<h3 id="computed-keys">Schlüssel, die das Skript berechnet<a class="anchor" href="#computed-keys" aria-hidden="true">#</a></h3>
+<p>Ein Schlüssel kann auch aus der Analyse selbst stammen. Ersetzen Sie die beiden <code>if</code>-Anweisungen des Analysators „Klimarollen“ samt den <code>push</code>-Zeilen darin durch die folgende Zeile, wird die grammatische Funktion zum Schlüssel:</p>
+<pre><code>findings.push({ sentenceIndex: sentence.index, start: index, end: index + 1, key: token.derived.function });
+</code></pre>
+<p>Ein <em>Klima</em>, das als Subjekt dient, erhält dann den Schlüssel <code>subject</code>, ein <em>Klima</em>, das Objekt ist, erhält <code>object</code>, ein <em>Klima</em> als Genitivattribut wie in <em>die Feinde des Klimas</em> erhält <code>adjectival</code>, und so weiter für jeden der zwölf Werte, die unter <a href="#derived-categories">Abgeleitete Kategorien</a> weiter oben in diesem Kapitel aufgeführt sind.</p>
+<p>Solche Schlüssel gelangen über einen Testlauf in die Legende. Wenn Sie auf <strong class="ui">Sichern</strong> klicken, führt LemmaLoom das Skript auf einem Beispielsatz aus drei Wörtern aus (im Englischen <em>Cats sleep soundly</em>). Schlüssel, die dabei entstehen, werden automatisch hinzugefügt. Diese Zeilen behalten ihre Beschriftungen und Farben; ein Schlüssel, den das Skript nicht mehr erzeugt, wird beim nächsten Sichern entfernt.</p>
+<p>Schlüssel, die der Testlauf nicht erzeugt, wie in diesem Beispiel, fügen Sie von Hand hinzu:</p>
+<ol>
+<li>Klicken Sie unter der Legende auf <strong class="ui">Schlüssel hinzufügen</strong>.</li>
+<li>Geben Sie den Schlüssel in das Feld <strong class="ui">Schlüssel</strong> der neuen Zeile ein, genau so, wie das Skript ihn erzeugt (etwa <code>adjectival</code>).</li>
+<li>Legen Sie <strong class="ui">Beschriftung</strong>, Farbe und Stil fest.</li>
+</ol>
+<p>Zeilen, die Sie selbst hinzufügen, haben am Ende eine Schaltfläche mit einem Minuszeichen, mit der Sie sie wieder entfernen; solche Zeilen bleiben in der Legende, gleich was Ihr Skript enthält. Beim Sichern lässt LemmaLoom jede Zeile mit leerem <strong class="ui">Schlüssel</strong> weg, und von zwei Zeilen mit demselben Schlüssel behält es nur die erste.</p>
+<figure class="shot" id="custom-analyzers-legend-pane"><img class="shot-light" src="../figures/de/light/custom-analyzers-legend-pane.webp" alt="Der Bereich Legende von „Klimarollen“ mit einer über Schlüssel hinzufügen ergänzten neuen Zeile und geöffnetem Stilmenü." loading="lazy"><img class="shot-dark" src="../figures/de/dark/custom-analyzers-legend-pane.webp" alt="Der Bereich Legende von „Klimarollen“ mit einer über Schlüssel hinzufügen ergänzten neuen Zeile und geöffnetem Stilmenü." loading="lazy"><figcaption>Der Bereich Legende von „Klimarollen“ mit einer über Schlüssel hinzufügen ergänzten neuen Zeile und geöffnetem Stilmenü.</figcaption></figure>
+<aside class="callout note"><p class="callout-title">Hinweis</p><p>Erzeugt Ihr Skript in einem Dokument einen Schlüssel, der nicht in der Legende steht, schlägt der Analysator fehl, und LemmaLoom verwirft alle seine Befunde in diesem Dokument. <strong class="ui">Ausprobieren</strong> bricht mit demselben Fehler ab. Fügen Sie deshalb jeden Schlüssel, den das Skript erzeugen kann, der Legende hinzu.</p>
+</aside>
+<p>Für jeden Schlüssel in Ihrer Legende gibt es eine Konstante in <code>KEY</code>. Steht der Schlüssel <code>subject</code> in Ihrer Legende, können Sie <code>key: KEY.SUBJECT</code> schreiben. Schreiben Sie einen Schlüssel nur als <code>KEY</code>-Konstante, müssen Sie ihn mit <strong class="ui">Schlüssel hinzufügen</strong> eintragen. Einen Schlüssel, der mit einer Ziffer beginnt, wie <code>1st</code>, oder Buchstaben außerhalb von a bis z enthält, wie <code>über</code> oder <code>主语</code>, schreiben Sie in Anführungszeichen.</p>
+<h2 id="languages">Unterstützte Sprachen<a class="anchor" href="#languages" aria-hidden="true">#</a></h2>
+<p>Mit den Markierungsfeldern <strong class="ui">Englisch</strong>, <strong class="ui">Deutsch</strong> und <strong class="ui">Chinesisch</strong> legen Sie fest, auf welchen Dokumenten der Analysator läuft. Das sind die drei Sprachen, die LemmaLoom indiziert. Nur Dokumente in einer ausgewählten Sprache bieten den Analysator im Lens-Menü an und führen ihn in den <strong class="ui">Dokumenteigenschaften</strong> auf. Mindestens eine Sprache muss ausgewählt sein.</p>
+<p>Achten Sie darauf, dass Ihr Skript zu den gewählten Sprachen passt. „Klimarollen“ funktioniert in allen drei Sprachen, auch wenn „Klimadebatte“ nur Englisch und Deutsch braucht. Seine Liste enthält englische, deutsche und chinesische Lemmata, und es prüft <code>token.derived.function</code>, das in allen Sprachen dieselben Werte hat. Skripte, die <code>token.tag</code> oder <code>token.dep</code> prüfen, funktionieren nur in der Sprache ihrer Labels. Mit <code>doc.language</code> kann ein Skript mehrere Sprachen bedienen:</p>
+<pre><code>let subjectLabel = 'nsubj';
+if (doc.language === 'de') {
+  subjectLabel = 'sb';
+}
+</code></pre>
+<p>Auch bei den abgeleiteten Feldern unterscheiden sich die Analysen der einzelnen Sprachen im Detail. Testen Sie deshalb jede Sprache, die Sie auswählen. Im Englischen liefert <em>do more for the climate</em> einen Befund, weil die Analyse <em>climate</em> als Objekt der Präposition <em>for</em> einordnet. Im Deutschen erhält das Substantiv in der Präpositionalphrase <em>für das Klima</em> dagegen meist das Label <code>nk</code> (Teil einer Nominalphrase) und zählt damit als <code>adjectival</code>, sodass der Satz keinen Befund liefert.</p>
+<p>Um eine andere Sprache zu testen, wählen Sie sie im Sprachmenü unter <strong class="ui">Ausprobieren</strong> und geben einen Satz in dieser Sprache ein. Im Menü stehen nur die Sprachen zur Wahl, die Sie ausgewählt haben; es führt sie mit ihren Kürzeln auf, <code>en</code> für Englisch, <code>de</code> für Deutsch und <code>zh</code> für Chinesisch.</p>
+<p>Beim Sichern löscht LemmaLoom die Befunde des Analysators aus Dokumenten in Sprachen, deren Auswahl Sie aufgehoben haben, und führt den Analysator auf den Dokumenten der neu ausgewählten Sprachen aus.</p>
+<h2 id="try-it-out">Testen mit „Ausprobieren“<a class="anchor" href="#try-it-out" aria-hidden="true">#</a></h2>
+<p><strong class="ui">Ausprobieren</strong> führt das Skript, das gerade im Editor steht, auf einem Text aus, den Sie eingeben, gleich ob das Skript gesichert ist oder nicht. Verwenden Sie <strong class="ui">Ausprobieren</strong> beim Schreiben häufig, und nehmen Sie auch Sätze hinzu, die anders gebaut sind als Ihr erstes Beispiel, denn der Analysator muss mit jedem Satzbau in Ihren Dokumenten zurechtkommen.</p>
+<ol>
+<li>Geben Sie einen oder mehrere Sätze in das Feld unter <strong class="ui">Ausprobieren</strong> ein.</li>
+<li>Wählen Sie im Menü neben dem Feld die Sprache des Textes.</li>
+<li>Klicken Sie auf <strong class="ui">Ausführen</strong>.</li>
+</ol>
+<p>LemmaLoom führt auf Ihrem Text dieselbe Grammatikanalyse aus wie auf Dokumenten, dann die eingebauten Analysatoren und danach Ihr Skript. Unter dem Feld erscheint Ihr Text mit den Befunden, annotiert in den Farben und Stilen der Legende. Vor dem ersten Lauf in einer Sprache kann es einige Sekunden dauern, bis die Grammatikanalyse für diese Sprache bereit ist. <strong class="ui">Ausführen</strong> ist deaktiviert, solange das Feld leer ist (<strong class="ui">Kein Text eingegeben</strong>), und während eines Laufs tritt eine sich drehende Fortschrittsanzeige an die Stelle der Schaltfläche.</p>
+<figure class="shot" id="custom-analyzers-try-it-out"><img class="shot-light" src="../figures/de/light/custom-analyzers-try-it-out.webp" alt="„Ausprobieren“ nach einem Lauf, bei dem das erste climate als Subjekt und das zweite als Objekt gefunden wurde." loading="lazy"><img class="shot-dark" src="../figures/de/dark/custom-analyzers-try-it-out.webp" alt="„Ausprobieren“ nach einem Lauf, bei dem das erste climate als Subjekt und das zweite als Objekt gefunden wurde." loading="lazy"><figcaption>„Ausprobieren“ nach einem Lauf, bei dem das erste climate als Subjekt und das zweite als Objekt gefunden wurde.</figcaption></figure>
+<p>Unter dem annotierten Text zeigt eine kleine Konsole alles, was das Skript mit <code>console.log</code> ausgegeben hat, eine Zeile pro Aufruf, jede mit › am Anfang. Findet das Skript nichts, zeigt die Konsole <strong class="ui">0 Befunde</strong>. Um zu sehen, wie die Analyse einen bestimmten Satz auffasst, können Sie die Werte ausgeben. Diese Zeile gibt innerhalb der Schleife über die Sätze jedes Token mit seiner Relation aus:</p>
+<pre><code>console.log(sentence.tokens.map((token) =&gt; token.text + '/' + token.dep));
+</code></pre>
+<p>Für <em>The new targets were announced last year.</em> erzeugt sie <code>[&quot;The/det&quot;,&quot;new/amod&quot;,&quot;targets/nsubjpass&quot;,&quot;were/auxpass&quot;,&quot;announced/ROOT&quot;,&quot;last/amod&quot;,&quot;year/npadvmod&quot;,&quot;./punct&quot;]</code>.</p>
+<p>Der Testtext bleibt im Feld, solange das Fenster geöffnet ist, auch wenn Sie zu einem anderen Analysator wechseln; so können Sie mehrere Analysatoren auf demselben Text ausführen.</p>
+<h3 id="errors">Wenn Fehler auftreten<a class="anchor" href="#errors" aria-hidden="true">#</a></h3>
+<p>Schlägt die Ausführung fehl, hält LemmaLoom Ihr Skript an, zeigt unter dem Editor eine Fehlermeldung in Rot und unterstreicht im Editor die fehlerhafte Zeile, wenn der Fehler zu einer bestimmten Zeile gehört. Bei Fehlern in Ihren Befunden unterstreicht der Editor Zeile 1.</p>
+<figure class="shot" id="custom-analyzers-error"><img class="shot-light" src="../figures/de/light/custom-analyzers-error.webp" alt="Der Fehler nach „Ausführen“, wenn in Zeile 6 token.lema statt token.lemma steht." loading="lazy"><img class="shot-dark" src="../figures/de/dark/custom-analyzers-error.webp" alt="Der Fehler nach „Ausführen“, wenn in Zeile 6 token.lema statt token.lemma steht." loading="lazy"><figcaption>Der Fehler nach „Ausführen“, wenn in Zeile 6 token.lema statt token.lemma steht.</figcaption></figure>
+<div class="table-wrap"><table>
+<thead><tr><th>Meldung</th><th>Bedeutung</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">The script must define a function named analyze(doc).</strong></td><td>Es gibt keine Funktion namens <code>analyze</code>, vielleicht weil ihr Name falsch geschrieben ist.</td></tr>
+<tr><td><strong class="ui">analyze(doc) must return an array of findings.</strong></td><td>Die Funktion gibt nichts zurück oder etwas anderes als eine Liste. Prüfen Sie die Zeile mit <code>return</code>.</td></tr>
+<tr><td><strong class="ui">Finding 3 must have sentenceIndex, start, end, and key.</strong></td><td>Einem Befund fehlt eines der vier Felder, einer ihrer Namen ist falsch geschrieben, oder ein Wert hat den falschen Typ (eine Position, die keine Zahl ist, oder ein Schlüssel, der kein Text ist). Auch eine falsch geschriebene Konstante wie <code>KEY.SUBJCT</code> hat keinen Wert und führt deshalb zu dieser Meldung. Befunde werden ab 0 gezählt, gemeint ist hier also der vierte.</td></tr>
+<tr><td><strong class="ui">Finding 3: sentenceIndex 12 is out of range.</strong></td><td>Es gibt keinen Satz mit dieser Nummer.</td></tr>
+<tr><td><strong class="ui">Finding 3: token range 4..4 is out of range for sentence 0.</strong></td><td><code>end</code> ist nicht größer als <code>start</code>, <code>start</code> liegt unter 0, oder <code>end</code> liegt hinter dem Ende des Satzes.</td></tr>
+<tr><td><strong class="ui">Finding 3: key „objekt“ is not in the legend.</strong></td><td>Der Schlüssel hat keine Zeile in der Legende. Korrigieren Sie das Skript, oder tragen Sie den Schlüssel mit <strong class="ui">Schlüssel hinzufügen</strong> ein.</td></tr>
+<tr><td>Eine Meldung, die mit <strong class="ui">TypeError</strong>, <strong class="ui">ReferenceError</strong> oder <strong class="ui">SyntaxError</strong> beginnt</td><td>Ein Fehler im JavaScript selbst. Der Editor unterstreicht die Zeile.</td></tr>
+</tbody></table></div>
+<p>Ein <strong class="ui">TypeError</strong> weist oft auf ein falsch geschriebenes Feld hin. Angenommen, in Zeile 6 von „Klimarollen“ stünde <code>token.lema.toLowerCase()</code> statt <code>token.lemma.toLowerCase()</code>. Dann bräche die Ausführung in Zeile 6 mit einem <strong class="ui">TypeError</strong> ab, weil <code>token.lema</code> nicht existiert und sich deshalb nicht in Kleinbuchstaben umwandeln lässt.</p>
+<p>Ein Skript, das in einer Endlosschleife festhängt, hält nicht von selbst an. Unter <strong class="ui">Ausprobieren</strong> steht dann dauerhaft die sich drehende Anzeige an der Stelle von <strong class="ui">Ausführen</strong>. Auch <strong class="ui">Sichern</strong> führt das Skript aus und kann deshalb dasselbe Problem auslösen. Wählen Sie in diesem Fall das ganze Skript mit ⌘A aus und kopieren Sie es mit ⌘C, denn beim Beenden gehen nicht gesicherte Änderungen verloren. Beenden Sie dann LemmaLoom (⌘Q), öffnen Sie es wieder und setzen Sie Ihr Skript erneut ein. Eine Endlosschleife ist meist eine <code>while</code>-Schleife, deren Bedingung nie falsch wird. Enthält das Skript eine andere Schleife als <code>for … of</code> oder <code>forEach</code> über eine Liste, testen Sie es an einem kurzen Text, bevor Sie sichern.</p>
+<aside class="callout tip"><p class="callout-title">Tipp</p><p>Drücken Sie im Editor F1, um seine Befehlspalette zu öffnen. Dort finden Sie Befehle, mit denen Sie zu einer bestimmten Zeilennummer springen, Text im Skript suchen oder ersetzen oder Zeilen auskommentieren (sie also in Kommentare verwandeln, die das Skript überspringt). Durch Auskommentieren lässt sich besonders gut eingrenzen, wo im Skript ein Problem liegt.</p>
+</aside>
+<h2 id="breakpoints">Haltepunkte und schrittweise Ausführung<a class="anchor" href="#breakpoints" aria-hidden="true">#</a></h2>
+<p>Entspricht der annotierte Text nicht Ihren Erwartungen, können Sie die Ausführung mitten in einem Testlauf anhalten und den aktuellen Zustand der Variablen des Skripts ansehen.</p>
+<ol>
+<li>Klicken Sie im Editor in den Rand links neben einer Zeilennummer oder auf die Nummer selbst. Ein roter Punkt zeigt, dass die Zeile einen <em>Haltepunkt</em> hat. Ein weiterer Klick entfernt ihn.</li>
+<li>Klicken Sie unter <strong class="ui">Ausprobieren</strong> auf <strong class="ui">Ausführen</strong>.</li>
+</ol>
+<p>Das Skript hält unmittelbar vor der Zeile mit dem Haltepunkt an. Die Zeile wird hervorgehoben, und ein Feld unter dem Testtext zeigt ihre Nummer, etwa <strong class="ui">● L7</strong>, zusammen mit den aktuellen Werten der Variablen des Skripts. Wenn Sie den Mauszeiger im Skripteditor auf eine dieser Variablen halten, sehen Sie ebenfalls ihren Wert.</p>
+<figure class="shot" id="custom-analyzers-breakpoint"><img class="shot-light" src="../figures/de/light/custom-analyzers-breakpoint.webp" alt="„Klimarollen“, angehalten am Haltepunkt in Zeile 7, mit den Werten von doc, sentence, token, findings und index unter dem Testtext." loading="lazy"><img class="shot-dark" src="../figures/de/dark/custom-analyzers-breakpoint.webp" alt="„Klimarollen“, angehalten am Haltepunkt in Zeile 7, mit den Werten von doc, sentence, token, findings und index unter dem Testtext." loading="lazy"><figcaption>„Klimarollen“, angehalten am Haltepunkt in Zeile 7, mit den Werten von doc, sentence, token, findings und index unter dem Testtext.</figcaption></figure>
+<p>An die Stelle von <strong class="ui">Ausführen</strong> treten drei Schaltflächen:</p>
+<ul>
+<li>Die Wiedergabetaste setzt den Lauf bis zum nächsten Haltepunkt oder bis zum Ende des Laufs fort.</li>
+<li>Der gebogene Pfeil geht zur nächsten Zeile weiter, die eine Anweisung beginnt. Dabei geht er auch in Schleifen hinein und in Funktionen, die an <code>forEach</code> übergeben werden. Wenn Sie „Klimarollen“ schrittweise ausführen, gelangen Sie also der Reihe nach zu jedem Token.</li>
+<li>Das Quadrat beendet den Lauf vorzeitig.</li>
+</ul>
+<p>LemmaLoom zeigt nur die Variablen <code>doc</code>, <code>sentence</code>, <code>token</code>, <code>findings</code>, <code>finding</code>, <code>marker</code>, <code>span</code>, <code>clause</code>, <code>i</code> und <code>index</code>, und nur, wenn sie an dieser Stelle des Skripts existieren. Die Beispiele in diesem Kapitel verwenden diese Namen, wo immer es geht. Andere Variablen, etwa <code>role</code> in „Klimarollen“, können Sie mit <code>console.log</code> ausgeben. Lange Werte werden gekürzt; von Listen erscheint nur ihre Länge (<code>Array(3)</code>), Texte werden nach den ersten 80 Zeichen abgeschnitten und Objekte nach 120 Zeichen.</p>
+<p>Mit „Klimarollen“ und dem weiter oben in diesem Kapitel vorgestellten Testsatz hält ein Haltepunkt in Zeile 7 (<code>const role = …</code>) die Ausführung beim ersten <em>climate</em> an; dort ist <code>index</code> gleich 1 und <code>findings</code> gleich <code>Array(0)</code>. Ein Klick auf die Wiedergabetaste hält die Ausführung beim zweiten <em>climate</em> an, wo <code>index</code> gleich 16 und <code>findings</code> gleich <code>Array(1)</code> ist, denn dazwischen ist der Befund für das erste <em>climate</em> hinzugekommen.</p>
+<p>Ein Haltepunkt hält ein Skript nur in einer Zeile an, die eine Anweisung beginnt. Ein Haltepunkt in Zeilen mit schließenden Klammern wie <code>}</code> oder <code>});</code> in „Klimarollen“, in Zeilen, die mit <code>else</code> beginnen, oder in der Fortsetzung einer vorigen Anweisung wird deshalb übersprungen. Bei manchen Skriptstrukturen kann LemmaLoom dem Skript nur von Haltepunkt zu Haltepunkt folgen, und bei einigen wenigen führt es das Skript ganz aus, ohne an einem Haltepunkt anzuhalten. Haltepunkte wirken nur unter <strong class="ui">Ausprobieren</strong>.</p>
+<h2 id="saving">Sichern, ändern und löschen<a class="anchor" href="#saving" aria-hidden="true">#</a></h2>
+<h3 id="saving-an-analyzer">Einen Analysator sichern<a class="anchor" href="#saving-an-analyzer" aria-hidden="true">#</a></h3>
+<p>Um den Analysator zu sichern, klicken Sie oben in der mittleren Spalte auf <strong class="ui">Sichern</strong> oder drücken den Zeilenschalter, während Sie <strong class="ui">Name</strong> oder ein Feld <strong class="ui">Beschriftung</strong> bearbeiten. <strong class="ui">Sichern</strong> ist deaktiviert, solange <strong class="ui">Name</strong> leer ist (<strong class="ui">Name ist leer</strong>) oder keine Sprache ausgewählt ist (<strong class="ui">Keine Sprache gewählt</strong>).</p>
+<p>Bevor LemmaLoom den Analysator sichert, prüft es sein Skript. Zuerst ermittelt es die Schlüssel der Legende, dann führt es Ihr Skript in jeder ausgewählten Sprache auf einem Beispielsatz aus drei Wörtern aus (<em>Cats sleep soundly</em>, <em>Katzen schlafen gern</em> und 猫 喜欢 睡觉). Diese Beispielsätze ergeben leere Ergebnisse für Phrasen, Nominalgruppen, morphologische Merkmale und die eingebauten Analysatoren; die Prüfung erkennt deshalb auch Probleme, die beim Verarbeiten leerer Listen auftreten. Hat Ihr Skript einen Fehler, meldet LemmaLoom ihn unter dem Skripteditor (siehe <a href="#errors">Wenn Fehler auftreten</a> weiter oben in diesem Kapitel). Zwei weitere Meldungen erscheinen nur beim Sichern. <strong class="ui">The script is empty.</strong> bedeutet, dass im Editor kein Skript steht, und <strong class="ui">No keys found in the script.</strong>, dass die Legende leer ist.</p>
+<p>Danach wendet LemmaLoom das geprüfte Skript auf alle Ihre Dokumente in den ausgewählten Sprachen an. Fortschrittsringe erscheinen in der Seitenleiste und unter <strong class="ui">Fenster ▸ Aktivität</strong> (⌥⌘0). Wie lange das dauert, hängt davon ab, wie viele Dokumente Sie haben und wie leistungsfähig Ihr Mac ist.</p>
+<h3 id="changing">Einen Analysator ändern<a class="anchor" href="#changing" aria-hidden="true">#</a></h3>
+<p>Wählen Sie einen Analysator in der Liste aus, ändern Sie ihn und klicken Sie auf <strong class="ui">Sichern</strong>. Was dann geschieht, hängt von der Art der Änderung ab:</p>
+<ul>
+<li>Haben Sie den Namen, eine Beschriftung, eine Farbe oder einen Stil geändert, wirkt sich die Änderung sofort überall aus, wo die Lens des Analysators aktiviert ist.</li>
+<li>Haben Sie das Skript selbst, die Sprachen oder die Schlüssel geändert, führt LemmaLoom den Analysator auf allen Dokumenten in seinen Sprachen erneut aus, auch in einer Sprache, die Sie gerade erst ausgewählt haben. Bis ein Dokument verarbeitet ist, zeigt die Zeile des Analysators in den <strong class="ui">Dokumenteigenschaften</strong> dieses Dokuments <strong class="ui">Veraltet</strong>.</li>
+</ul>
+<p>Das Anlegen, Ändern und Löschen eines Analysators sind Schritte im Widerrufverlauf des Fensters „Analysatoren“. Ist dieses Fenster aktiv, stellt zum Beispiel <strong class="ui">Bearbeiten ▸ Analysator bearbeiten widerrufen</strong> die vorige Fassung des Analysators wieder her. Die mittlere Spalte zeigt weiterhin, was Sie gesichert hatten, bis Sie den Analysator erneut in der Liste auswählen. Sichern Sie vorher, wird die neuere Fassung erneut gesichert. Mehr zum Widerrufen in den einzelnen Fenstern finden Sie unter <a href="undo.html#windows">Zu welchem Fenster ein Schritt gehört</a> in <a href="undo.html">Kapitel 23, Widerrufen und Wiederholen</a>.</p>
+<h3 id="deleting">Einen Analysator löschen<a class="anchor" href="#deleting" aria-hidden="true">#</a></h3>
+<p>Um einen Analysator zu löschen, klicken Sie ihn in der Liste mit der rechten Maustaste an und wählen <strong class="ui">Analysator löschen</strong>. Sie können den Analysator auch zuerst auswählen und dann <strong class="ui">Bearbeiten ▸ Analysator löschen</strong> (⌘⌫) wählen. Dieser Kurzbefehl wirkt, solange die Liste den Fokus hat, wie nach der Auswahl eines Analysators. LemmaLoom löscht den Analysator sofort.</p>
+<p>Da alle Projekte die Analysatoren gemeinsam nutzen, verschwindet ein gelöschter Analysator sofort aus allen Projekten. Seine Lens wird in allen geöffneten Dokumenten deaktiviert, und LemmaLoom entfernt seine Befunde aus allen Dokumenten. <strong class="ui">Bearbeiten ▸ Analysator löschen widerrufen</strong> (⌘Z) stellt ihn wieder her und führt ihn erneut aus. Soll ein Analysator nur aus bestimmten Dokumenten verschwinden, deaktivieren Sie ihn für diese Dokumente (siehe <a href="#per-document">Analysatoren für einzelne Dokumente</a> weiter unten in diesem Kapitel).</p>
+<h2 id="when-analyzers-run">Wann Analysatoren ausgeführt werden<a class="anchor" href="#when-analyzers-run" aria-hidden="true">#</a></h2>
+<p>Ein eigener Analysator läuft am Ende der Indizierung auf Ihren Dokumenten, nach der Grammatikanalyse des jeweiligen Dokuments und den drei eingebauten Analysatoren. Die eigenen Analysatoren für die Sprache des Dokuments laufen nacheinander, sofern sie für das Dokument aktiviert sind. Ihre Befunde werden mit dem Dokument gespeichert; die Lens, <strong class="ui">Automatisch kodieren…</strong> und Abfragen greifen darauf zu.</p>
+<p>Ihre Analysatoren laufen auf einem Dokument:</p>
+<ul>
+<li>beim ersten Indizieren, nach dem Import in das Projekt oder über <strong class="ui">Jetzt indizieren</strong>;</li>
+<li>bei jedem erneuten Indizieren, etwa nach Änderungen am Text oder an der Spracheinstellung des Dokuments;</li>
+<li>nach dem Sichern eines neuen Analysators oder einer Änderung an Skript, ausgewählten Sprachen oder Schlüsseln eines Analysators;</li>
+<li>über <strong class="ui">Ausführen</strong> in den <strong class="ui">Dokumenteigenschaften</strong> des Dokuments.</li>
+</ul>
+<p>Ändern Sie einen vorhandenen Analysator, verwendet LemmaLoom in der Regel die bereits vorliegende Grammatikanalyse Ihrer Dokumente und führt nur die Analysatoren erneut aus, statt alles von vorn zu berechnen. Trotzdem verarbeitet ein Analysator jedes Dokument in seinen Sprachen. Ein ineffizient geschriebenes Skript bremst daher die Verarbeitung aller Dokumente. Gerät das Skript in eine Endlosschleife, läuft es sogar so lange weiter, bis Sie LemmaLoom beenden. Korrigieren oder löschen Sie in diesem Fall den betreffenden Analysator unter <strong class="ui">Fenster ▸ Analysatoren</strong>, bevor Sie LemmaLoom beenden und wieder öffnen.</p>
+<p>Bei der Ausführung auf einem bestimmten Dokument kann ein Fehler auftreten, etwa weil das Dokument eine Wortfolge oder einen Satzbau enthält, die in Ihren Testsätzen nicht vorkamen. LemmaLoom verwirft dann die Befunde des Analysators für dieses Dokument und kennzeichnet den Analysator in den <strong class="ui">Dokumenteigenschaften</strong> als <strong class="ui">Nicht ausgeführt</strong> oder <strong class="ui">Veraltet</strong>. Dort können Sie auf <strong class="ui">Ausführen</strong> klicken, um es erneut zu versuchen. Scheitert das Skript wieder, kennzeichnet LemmaLoom den Analysator in den <strong class="ui">Dokumenteigenschaften</strong> als <strong class="ui">Fehlgeschlagen</strong> und zeigt die Fehlermeldung, wenn Sie den Mauszeiger darauf bewegen. Um den Fehler genau einzugrenzen, kopieren Sie verdächtige Sätze in <strong class="ui">Ausprobieren</strong> und führen das Skript dort aus.</p>
+<figure class="shot" id="custom-analyzers-failed"><img class="shot-light" src="../figures/de/light/custom-analyzers-failed.webp" alt="Die Liste Analysatoren im Abschnitt Indizierung der Dokumenteigenschaften von „Uns läuft die Zeit davon“; „Klimarollen“ ist als Fehlgeschlagen markiert, und die Fehlermeldung erscheint, wenn der Mauszeiger darauf gehalten wird." loading="lazy"><img class="shot-dark" src="../figures/de/dark/custom-analyzers-failed.webp" alt="Die Liste Analysatoren im Abschnitt Indizierung der Dokumenteigenschaften von „Uns läuft die Zeit davon“; „Klimarollen“ ist als Fehlgeschlagen markiert, und die Fehlermeldung erscheint, wenn der Mauszeiger darauf gehalten wird." loading="lazy"><figcaption>Die Liste Analysatoren im Abschnitt Indizierung der Dokumenteigenschaften von „Uns läuft die Zeit davon“; „Klimarollen“ ist als Fehlgeschlagen markiert, und die Fehlermeldung erscheint, wenn der Mauszeiger darauf gehalten wird.</figcaption></figure>
+<h2 id="per-document">Analysatoren für einzelne Dokumente<a class="anchor" href="#per-document" aria-hidden="true">#</a></h2>
+<p>Ein Analysator läuft auf jedem Dokument in seinen Sprachen, sofern er für das Dokument nicht deaktiviert ist. Einen Analysator, der nicht zu einem Dokument passt, können Sie beim Import des Dokuments oder jederzeit danach deaktivieren. Wie Sie die Analysatoren für ein Dokument wählen, beschreibt <a href="analysis-and-indexing.html#document-analyzers">Analysatoren für ein Dokument wählen</a> in <a href="analysis-and-indexing.html">Kapitel 21, Analyse und Indizierung</a>.</p>
+<p>Beim Import eines Dokuments enthält der Dialog <strong class="ui">Dokument importieren</strong> (bei Webseiten <strong class="ui">Aus dem Web importieren</strong>) die Liste <strong class="ui">Analysatoren</strong>, die zuerst die eingebauten Analysatoren und danach Ihre eigenen in alphabetischer Reihenfolge zeigt. Jeder Eintrag hat ein Markierungsfeld; heben Sie seine Auswahl auf, damit der betreffende Analysator nicht auf dem Dokument läuft. Steht <strong class="ui">Sprache</strong> auf <strong class="ui">Automatisch</strong>, erscheinen alle Analysatoren, bei einer bestimmten Sprache nur die für diese Sprache. Ist <strong class="ui">Für die Grammatikanalyse indizieren</strong> nicht ausgewählt, ist die Liste deaktiviert. Mehr dazu finden Sie unter <a href="importing.html#import-indexing-options">Analysatoren und Indizierung</a> in <a href="importing.html">Kapitel 4, Material importieren</a>.</p>
+<p>Für ein Dokument, das bereits in Ihrem Projekt ist, steht die Liste <strong class="ui">Analysatoren</strong> in den <strong class="ui">Dokumenteigenschaften</strong>:</p>
+<ol>
+<li>Klicken Sie in der Seitenleiste mit der rechten Maustaste auf das Dokument und wählen Sie <strong class="ui">Eigenschaften</strong>.</li>
+<li>Suchen Sie im Abschnitt <strong class="ui">Indizierung</strong> die Liste <strong class="ui">Analysatoren</strong>.</li>
+</ol>
+<p>Jeder Analysator, der für die Sprache des Dokuments verfügbar ist, hat dort eine eigene Zeile mit seinem Status (<strong class="ui">Fertig</strong>, <strong class="ui">Veraltet</strong>, <strong class="ui">Nicht ausgeführt</strong>, <strong class="ui">Läuft</strong> oder <strong class="ui">Fehlgeschlagen</strong>).</p>
+<ul>
+<li>Um die Befunde eines Analysators aus einem Dokument zu entfernen, sodass er dort nicht mehr läuft, klicken Sie auf seine Schaltfläche mit dem Papierkorb, <strong class="ui">Ausgabe entfernen</strong>. Diese Schaltfläche erscheint, sobald der Analysator auf dem Dokument gelaufen ist.</li>
+<li>Um einen Analysator auszuführen, dessen Status <strong class="ui">Nicht ausgeführt</strong> oder <strong class="ui">Veraltet</strong> ist oder der aus dem Dokument entfernt wurde, klicken Sie auf <strong class="ui">Ausführen</strong>; ein entfernter Analysator wird dadurch für das Dokument wieder aktiviert.</li>
+</ul>
+<p><strong class="ui">Ausführen</strong> ist deaktiviert, solange das Dokument noch nicht indiziert ist (<strong class="ui">Noch nicht indiziert</strong>) oder die Indizierung für das Dokument ausgeschaltet ist (<strong class="ui">Indizierung ist aus</strong>). Entfernen und Ausführen wirken beide sofort.</p>
+<p>Das Entfernen eines Analysators und das Ausführen eines entfernten Analysators sind Schritte im Widerrufverlauf des Hauptfensters, und <strong class="ui">Bearbeiten ▸ Ausgabe entfernen widerrufen</strong> stellt den Analysator wieder her und führt ihn erneut aus.</p>
+<figure class="shot" id="custom-analyzers-document-properties"><img class="shot-light" src="../figures/de/light/custom-analyzers-document-properties.webp" alt="Die Liste „Analysatoren“ im Abschnitt „Indizierung“ der Dokumenteigenschaften von „Uns läuft die Zeit davon“." loading="lazy"><img class="shot-dark" src="../figures/de/dark/custom-analyzers-document-properties.webp" alt="Die Liste „Analysatoren“ im Abschnitt „Indizierung“ der Dokumenteigenschaften von „Uns läuft die Zeit davon“." loading="lazy"><figcaption>Die Liste „Analysatoren“ im Abschnitt „Indizierung“ der Dokumenteigenschaften von „Uns läuft die Zeit davon“.</figcaption></figure>
+<p>Ein Analysator, den Sie aus einem Dokument entfernt haben, erscheint nicht mehr im Lens-Menü dieses Dokuments, und <strong class="ui">Automatisch kodieren…</strong> sowie Abfragen mit diesem Analysator überspringen das Dokument. Ändern Sie später einen Analysator, der für ein Dokument deaktiviert ist, bleibt er dort deaktiviert; die neue Fassung läuft also nur auf den Dokumenten, für die er aktiviert ist.</p>
+<h2 id="using-findings">Die Befunde verwenden<a class="anchor" href="#using-findings" aria-hidden="true">#</a></h2>
+<h3 id="findings-in-the-reader">In der Leseansicht<a class="anchor" href="#findings-in-the-reader" aria-hidden="true">#</a></h3>
+<p>Über das Lens-Menü können Sie jeden Analysator einzeln aktivieren und deaktivieren, um die Annotationen seiner Befunde direkt in der Leseansicht zu sehen. Um die Annotationen eines Analysators zu aktivieren, öffnen Sie das Lens-Menü am rechten Rand der Titelleiste; dort sind Ihre Analysatoren in einer Gruppe zusammengefasst. Die Lens zeigt die Annotationen, ihre Legende die Beschriftungen. <strong class="ui">Analysatoren deaktivieren</strong> deaktiviert alle Analysator-Lenses auf einmal. Wie Sie einzelne Schlüssel aktivieren und deaktivieren und mit <strong class="ui">Nur die Sätze anzeigen, die eine Lens annotiert</strong> nur die annotierten Sätze anzeigen, erfahren Sie unter <a href="lenses.html#analyzer-lenses">Analysator-Lenses</a> in <a href="lenses.html">Kapitel 6, Lenses</a>.</p>
+<figure class="shot" id="custom-analyzers-lens"><img class="shot-light" src="../figures/de/light/custom-analyzers-lens.webp" alt="„Uns läuft die Zeit davon“ mit aktivierter Lens „Klimarollen“." loading="lazy"><img class="shot-dark" src="../figures/de/dark/custom-analyzers-lens.webp" alt="„Uns läuft die Zeit davon“ mit aktivierter Lens „Klimarollen“." loading="lazy"><figcaption>„Uns läuft die Zeit davon“ mit aktivierter Lens „Klimarollen“.</figcaption></figure>
+<h3 id="coding-findings">Die Befunde kodieren<a class="anchor" href="#coding-findings" aria-hidden="true">#</a></h3>
+<p>Ist die Lens des Analysators aktiviert, kodiert <strong class="ui">Dokument ▸ Automatisch kodieren…</strong> (⇧⌘A) die Befunde des Analysators, und zwar im geöffneten Dokument, in einem Dokumentset oder im ganzen Projekt. Jeder Schlüssel der Befunde wird zu einer Zeile im Dialog <strong class="ui">Automatisch kodieren</strong>, benannt nach seiner Beschriftung. Jede dieser Zeilen können Sie einem vorhandenen Code zuordnen (etwa die Zeile „Klima als Objekt“ dem Code „Verantwortung“ in „Klimadebatte“) oder in einen neuen Code umwandeln (etwa zwei neue Codes aus den beiden Zeilen von „Klimarollen“). Bei einem Set oder Projekt tut LemmaLoom dasselbe in allen enthaltenen Dokumenten, die in einer Sprache des Analysators vorliegen, indiziert sind und für die der Analysator aktiviert ist. Bedenken Sie, dass jeder Fehler der Grammatikanalyse ebenfalls zu einer Kodierung wird. Mehr zu diesem Dialog finden Sie in <a href="coding.html">Kapitel 7, Kodieren</a>.</p>
+<h3 id="findings-in-queries">In Abfragen<a class="anchor" href="#findings-in-queries" aria-hidden="true">#</a></h3>
+<p>Eine Abfrage nach <strong class="ui">Analyse · Befunde</strong> durchsucht, was die Analysatoren gefunden haben, sowohl die mitgelieferten als auch Ihre eigenen. Drei Felder beziehen sich eigens auf Befunde. <strong class="ui">Analysator</strong> prüft, welcher Analysator den Befund gefunden hat, <strong class="ui">Befund</strong> prüft den Schlüssel, unter dem der Befund verzeichnet ist (aufgeführt unter seiner Beschriftung), und <strong class="ui">Notiz</strong> prüft die Notiz des Befunds. Daneben gelten die übrigen Prüfungen einer Abfrage, etwa die Codes eines Befunds und die Attribute seines Dokuments. Abfragen nach <strong class="ui">Bibliothek · Analysatoren</strong> listen die Analysatoren selbst auf und können ihre Felder <strong class="ui">Name</strong>, <strong class="ui">Sprachen</strong> und <strong class="ui">Legendenschlüssel</strong> prüfen (siehe <a href="queries-building.html#query-units">Was gesucht wird</a> in <a href="queries-building.html">Kapitel 15, Eine Abfrage erstellen</a>).</p>
+<p>In „Klimadebatte“ hat jedes Dokument ein Attribut „Haltung“ mit einem der Werte „Aktivismus“, „Skepsis“ oder „Neutral“. Zählen Sie die Befunde des Analysators „Klimarollen“ nach Schlüssel und nach „Haltung“, sollten sich deshalb etwaige Unterschiede darin zeigen, wie Aktivisten und Skeptiker das Thema Klima darstellen. Bei Ihrem eigenen Material gruppieren Sie nach dem Attribut, das Ihre Dokumente aufteilt.</p>
+<p>So zählen Sie die Befunde eines Analysators nach Gruppen:</p>
+<ol>
+<li>Öffnen Sie die Ansicht <strong class="ui">Abfragen</strong> des Projekts.</li>
+<li>Wählen Sie unter <strong class="ui">Suchen</strong> den Eintrag <strong class="ui">Analyse · Befunde</strong>.</li>
+<li>Klicken Sie in der Bedingung <strong class="ui">Wobei</strong> auf <strong class="ui">Hinzufügen</strong> und wählen Sie <strong class="ui">Regel hinzufügen</strong>.</li>
+<li>Wählen Sie im Feldmenü der neuen Regel im Abschnitt <strong class="ui">Befund</strong> den Eintrag <strong class="ui">Analysator</strong>.</li>
+<li>Lassen Sie den Vergleich auf <strong class="ui">ist eines von</strong> und wählen Sie den Analysator als Wert der Regel.</li>
+<li>Wählen Sie unter <strong class="ui">Anzeigen</strong> den Eintrag <strong class="ui">Anzahl</strong>.</li>
+<li>Klicken Sie auf <strong class="ui">Gruppieren nach</strong> und wählen Sie im Feldmenü der neuen Zeile <strong class="ui">Befund</strong>.</li>
+<li>Klicken Sie erneut auf <strong class="ui">Gruppieren nach</strong> und wählen Sie im Feldmenü der zweiten Zeile das Attribut, etwa <strong class="ui">Attribut ▸ Haltung</strong>.</li>
+<li>Wählen Sie im Menü, das <strong class="ui">Treffer</strong> zeigt, den Eintrag <strong class="ui">Pro 10.000 Wörter</strong>.</li>
+</ol>
+<p>Für „Klimarollen“ in „Klimadebatte“ erhalten Sie eine Tabelle mit den Subjekten und Objekten für jeden Wert von „Haltung“. Da die Gruppen unterschiedlich viel Text umfassen, ist das Ergebnis eigentlich eine Tabelle von Raten. Die Rate gibt an, wie viele Befunde in einer Gruppe auf 10.000 Wörter Text in den Dokumenten dieser Gruppe kommen (siehe <a href="queries-results.html#measures">Maße</a> in <a href="queries-results.html">Kapitel 16, Abfrageergebnisse und Statistik</a>). Enthielten die Dokumente der Aktivisten zum Beispiel 4.000 Wörter und 3 Befunde für „Klima als Objekt“ (runde Zahlen, nur als Beispiel), wäre die Rate <span class="math math-inline" role="math" aria-label="3 / 4.000 \times 10.000 = 7{,}5" style="vertical-align:-0.270em"><svg aria-hidden="true" focusable="false" fill="currentColor" style="height:1.080em"  version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'   viewBox='0 -7.47198 98.519525 9.96264'>
+<defs>
+<path id='m1-g0-2' d='M3.875467-2.769614L1.882939-4.752179C1.763387-4.871731 1.743462-4.891656 1.663761-4.891656C1.564134-4.891656 1.464508-4.801993 1.464508-4.692403C1.464508-4.622665 1.484433-4.60274 1.594022-4.493151L3.58655-2.49066L1.594022-.488169C1.484433-.37858 1.464508-.358655 1.464508-.288917C1.464508-.179328 1.564134-.089664 1.663761-.089664C1.743462-.089664 1.763387-.109589 1.882939-.229141L3.865504-2.211706L5.927771-.14944C5.947696-.139477 6.017435-.089664 6.07721-.089664C6.196762-.089664 6.276463-.179328 6.276463-.288917C6.276463-.308842 6.276463-.348692 6.246575-.398506C6.236613-.418431 4.652553-1.982565 4.154421-2.49066L5.977584-4.313823C6.027397-4.373599 6.176837-4.503113 6.22665-4.562889C6.236613-4.582814 6.276463-4.622665 6.276463-4.692403C6.276463-4.801993 6.196762-4.891656 6.07721-4.891656C5.997509-4.891656 5.957659-4.851806 5.84807-4.742217L3.875467-2.769614Z'/>
+<path id='m1-g2-58' d='M1.912827-.52802C1.912827-.816936 1.673724-1.05604 1.384807-1.05604S.856787-.816936 .856787-.52802S1.09589 0 1.384807 0S1.912827-.239103 1.912827-.52802Z'/>
+<path id='m1-g2-59' d='M2.022416-.009963C2.022416-.667497 1.77335-1.05604 1.384807-1.05604C1.05604-1.05604 .856787-.806974 .856787-.52802C.856787-.259029 1.05604 0 1.384807 0C1.504359 0 1.633873-.039851 1.733499-.129514C1.763387-.14944 1.77335-.159402 1.783313-.159402S1.803238-.14944 1.803238-.009963C1.803238 .727273 1.454545 1.325031 1.125778 1.653798C1.016189 1.763387 1.016189 1.783313 1.016189 1.8132C1.016189 1.882939 1.066002 1.92279 1.115816 1.92279C1.225405 1.92279 2.022416 1.155666 2.022416-.009963Z'/>
+<path id='m1-g2-61' d='M4.373599-7.0934C4.423412-7.222914 4.423412-7.262765 4.423412-7.272727C4.423412-7.382316 4.333748-7.47198 4.224159-7.47198C4.154421-7.47198 4.084682-7.442092 4.054795-7.382316L.597758 2.11208C.547945 2.241594 .547945 2.281445 .547945 2.291407C.547945 2.400996 .637609 2.49066 .747198 2.49066C.876712 2.49066 .9066 2.420922 .966376 2.251557L4.373599-7.0934Z'/>
+<path id='m1-g4-48' d='M4.582814-3.188045C4.582814-3.985056 4.533001-4.782067 4.184309-5.519303C3.726027-6.475716 2.909091-6.635118 2.49066-6.635118C1.892902-6.635118 1.165629-6.37609 .757161-5.449564C.438356-4.762142 .388543-3.985056 .388543-3.188045C.388543-2.440847 .428394-1.544209 .836862-.787049C1.265255 .019925 1.992528 .219178 2.480697 .219178C3.01868 .219178 3.775841 .009963 4.214197-.936488C4.533001-1.62391 4.582814-2.400996 4.582814-3.188045ZM2.480697 0C2.092154 0 1.504359-.249066 1.325031-1.205479C1.215442-1.803238 1.215442-2.719801 1.215442-3.307597C1.215442-3.945205 1.215442-4.60274 1.295143-5.140722C1.484433-6.326276 2.231631-6.41594 2.480697-6.41594C2.809465-6.41594 3.466999-6.236613 3.656289-5.250311C3.755915-4.692403 3.755915-3.935243 3.755915-3.307597C3.755915-2.560399 3.755915-1.882939 3.646326-1.24533C3.496887-.298879 2.929016 0 2.480697 0Z'/>
+<path id='m1-g4-49' d='M2.929016-6.37609C2.929016-6.615193 2.929016-6.635118 2.699875-6.635118C2.082192-5.997509 1.205479-5.997509 .886675-5.997509V-5.688667C1.085928-5.688667 1.673724-5.688667 2.191781-5.947696V-.787049C2.191781-.428394 2.161893-.308842 1.265255-.308842H.946451V0C1.295143-.029888 2.161893-.029888 2.560399-.029888S3.825654-.029888 4.174346 0V-.308842H3.855542C2.958904-.308842 2.929016-.418431 2.929016-.787049V-6.37609Z'/>
+<path id='m1-g4-51' d='M2.889166-3.506849C3.706102-3.775841 4.283935-4.473225 4.283935-5.260274C4.283935-6.07721 3.407223-6.635118 2.450809-6.635118C1.444583-6.635118 .687422-6.03736 .687422-5.280199C.687422-4.951432 .9066-4.762142 1.195517-4.762142C1.504359-4.762142 1.703611-4.98132 1.703611-5.270237C1.703611-5.768369 1.235367-5.768369 1.085928-5.768369C1.39477-6.256538 2.052304-6.386052 2.410959-6.386052C2.819427-6.386052 3.367372-6.166874 3.367372-5.270237C3.367372-5.150685 3.347447-4.572852 3.088418-4.134496C2.789539-3.656289 2.450809-3.626401 2.201743-3.616438C2.122042-3.606476 1.882939-3.58655 1.8132-3.58655C1.733499-3.576588 1.663761-3.566625 1.663761-3.466999C1.663761-3.35741 1.733499-3.35741 1.902864-3.35741H2.34122C3.158157-3.35741 3.526775-2.67995 3.526775-1.703611C3.526775-.348692 2.839352-.059776 2.400996-.059776C1.972603-.059776 1.225405-.229141 .876712-.816936C1.225405-.767123 1.534247-.986301 1.534247-1.364882C1.534247-1.723537 1.265255-1.92279 .976339-1.92279C.737235-1.92279 .418431-1.783313 .418431-1.344956C.418431-.438356 1.344956 .219178 2.430884 .219178C3.646326 .219178 4.552927-.687422 4.552927-1.703611C4.552927-2.520548 3.92528-3.297634 2.889166-3.506849Z'/>
+<path id='m1-g4-52' d='M2.929016-1.643836V-.777086C2.929016-.418431 2.909091-.308842 2.171856-.308842H1.96264V0C2.371108-.029888 2.889166-.029888 3.307597-.029888S4.254047-.029888 4.662516 0V-.308842H4.4533C3.716065-.308842 3.696139-.418431 3.696139-.777086V-1.643836H4.692403V-1.952677H3.696139V-6.485679C3.696139-6.684932 3.696139-6.744707 3.536737-6.744707C3.447073-6.744707 3.417186-6.744707 3.337484-6.625156L.278954-1.952677V-1.643836H2.929016ZM2.988792-1.952677H.557908L2.988792-5.668742V-1.952677Z'/>
+<path id='m1-g4-53' d='M4.473225-2.002491C4.473225-3.188045 3.656289-4.184309 2.580324-4.184309C2.102117-4.184309 1.673724-4.024907 1.315068-3.676214V-5.618929C1.514321-5.559153 1.843088-5.489415 2.161893-5.489415C3.387298-5.489415 4.084682-6.396015 4.084682-6.525529C4.084682-6.585305 4.054795-6.635118 3.985056-6.635118C3.975093-6.635118 3.955168-6.635118 3.905355-6.60523C3.706102-6.515567 3.217933-6.316314 2.550436-6.316314C2.15193-6.316314 1.693649-6.386052 1.225405-6.595268C1.145704-6.625156 1.125778-6.625156 1.105853-6.625156C1.006227-6.625156 1.006227-6.545455 1.006227-6.386052V-3.437111C1.006227-3.257783 1.006227-3.178082 1.145704-3.178082C1.215442-3.178082 1.235367-3.20797 1.275218-3.267746C1.384807-3.427148 1.753425-3.965131 2.560399-3.965131C3.078456-3.965131 3.327522-3.506849 3.407223-3.327522C3.566625-2.958904 3.58655-2.570361 3.58655-2.072229C3.58655-1.723537 3.58655-1.125778 3.347447-.707347C3.108344-.318804 2.739726-.059776 2.281445-.059776C1.554172-.059776 .986301-.587796 .816936-1.175592C.846824-1.165629 .876712-1.155666 .986301-1.155666C1.315068-1.155666 1.484433-1.404732 1.484433-1.643836S1.315068-2.132005 .986301-2.132005C.846824-2.132005 .498132-2.062267 .498132-1.603985C.498132-.747198 1.185554 .219178 2.30137 .219178C3.457036 .219178 4.473225-.737235 4.473225-2.002491Z'/>
+<path id='m1-g4-55' d='M4.742217-6.067248C4.83188-6.1868 4.83188-6.206725 4.83188-6.41594H2.410959C1.195517-6.41594 1.175592-6.545455 1.135741-6.734745H.886675L.557908-4.682441H.806974C.836862-4.841843 .926526-5.469489 1.05604-5.589041C1.125778-5.648817 1.902864-5.648817 2.032379-5.648817H4.094645C3.985056-5.489415 3.198007-4.403487 2.978829-4.07472C2.082192-2.729763 1.753425-1.344956 1.753425-.328767C1.753425-.229141 1.753425 .219178 2.211706 .219178S2.669988-.229141 2.669988-.328767V-.836862C2.669988-1.384807 2.699875-1.932752 2.779577-2.470735C2.819427-2.699875 2.958904-3.556663 3.39726-4.174346L4.742217-6.067248Z'/>
+<path id='m1-g4-61' d='M6.844334-3.257783C6.993773-3.257783 7.183064-3.257783 7.183064-3.457036S6.993773-3.656289 6.854296-3.656289H.886675C.747198-3.656289 .557908-3.656289 .557908-3.457036S.747198-3.257783 .896638-3.257783H6.844334ZM6.854296-1.325031C6.993773-1.325031 7.183064-1.325031 7.183064-1.524284S6.993773-1.723537 6.844334-1.723537H.896638C.747198-1.723537 .557908-1.723537 .557908-1.524284S.747198-1.325031 .886675-1.325031H6.854296Z'/>
+</defs>
+<g id='m1-page128'>
+<use x='0' y='0' xlink:href='#m1-g4-51'/>
+<use x='4.981339' y='0' xlink:href='#m1-g2-61'/>
+<use x='9.962678' y='0' xlink:href='#m1-g4-52'/>
+<use x='14.944017' y='0' xlink:href='#m1-g2-58'/>
+<use x='17.711426' y='0' xlink:href='#m1-g4-48'/>
+<use x='22.692765' y='0' xlink:href='#m1-g4-48'/>
+<use x='27.674104' y='0' xlink:href='#m1-g4-48'/>
+<use x='34.869309' y='0' xlink:href='#m1-g0-2'/>
+<use x='44.831922' y='0' xlink:href='#m1-g4-49'/>
+<use x='49.813261' y='0' xlink:href='#m1-g4-48'/>
+<use x='54.7946' y='0' xlink:href='#m1-g2-58'/>
+<use x='57.562009' y='0' xlink:href='#m1-g4-48'/>
+<use x='62.543348' y='0' xlink:href='#m1-g4-48'/>
+<use x='67.524687' y='0' xlink:href='#m1-g4-48'/>
+<use x='75.273358' y='0' xlink:href='#m1-g4-61'/>
+<use x='85.789438' y='0' xlink:href='#m1-g4-55'/>
+<use x='90.770777' y='0' xlink:href='#m1-g2-59'/>
+<use x='93.538186' y='0' xlink:href='#m1-g4-53'/>
+</g>
+</svg></span>.</p>
+<figure class="shot" id="custom-analyzers-findings-query"><img class="shot-light" src="../figures/de/light/custom-analyzers-findings-query.webp" alt="Die Abfrage im Projekt „Klimadebatte“, die die Befunde von „Klimarollen“ nach Befund und nach „Haltung“ als Raten pro 10.000 Wörter zählt." loading="lazy"><img class="shot-dark" src="../figures/de/dark/custom-analyzers-findings-query.webp" alt="Die Abfrage im Projekt „Klimadebatte“, die die Befunde von „Klimarollen“ nach Befund und nach „Haltung“ als Raten pro 10.000 Wörter zählt." loading="lazy"><figcaption>Die Abfrage im Projekt „Klimadebatte“, die die Befunde von „Klimarollen“ nach Befund und nach „Haltung“ als Raten pro 10.000 Wörter zählt.</figcaption></figure>
+<p>Wie in <a href="queries-results.html#compare">Gruppen vergleichen</a> in <a href="queries-results.html">Kapitel 16, Abfrageergebnisse und Statistik</a> beschrieben, wählen Sie für einen Test auf signifikante Unterschiede zwischen den Gruppen unter <strong class="ui">Anzeigen</strong> den Eintrag <strong class="ui">Vergleichen</strong>, löschen dann die Zeile <strong class="ui">Befund</strong> aus <strong class="ui">Gruppieren nach</strong>, sodass nur „Haltung“ bleibt, und fügen schließlich eine Regel <strong class="ui">Befund</strong> <strong class="ui">ist eines von</strong> „Klima als Objekt“ hinzu. Die drei neutralen Dokumente, „Hitzebericht 2024“, „Streit um die CO2-Steuer“ und „Radiodebatte“, nehmen als eigene Gruppe am Vergleich teil.</p>
+<h3 id="analyzers-in-archives">In Archiven<a class="anchor" href="#analyzers-in-archives" aria-hidden="true">#</a></h3>
+<p>Ein LemmaLoom-Archiv (<code>.llz</code>) enthält die Analysatoren, deren Befunde mit den Dokumenten im Archiv gespeichert sind, zusammen mit diesen Befunden. Außerdem enthält ein Archiv alle Analysatoren, die seine gesicherten Abfragen verwenden oder in die sie umgewandelt wurden. Beim Import eines Archivs wird ein Analysator, der denselben Namen trägt wie ein vorhandener Analysator in Ihrer Bibliothek, sonst aber nichts mit ihm zu tun hat, neben diesem importiert. Mehr dazu finden Sie in <a href="exchange-and-export.html">Kapitel 22, Austausch und Export</a>.</p>
+<h2 id="generated-analyzers">Analysatoren aus Abfragen<a class="anchor" href="#generated-analyzers" aria-hidden="true">#</a></h2>
+<p>Um eine Abfrage als Analysator zu sichern, wählen Sie im Menü <strong class="ui">Sichern</strong> der Abfrage <strong class="ui">Als Analysator sichern …</strong>. Die Abfrage muss Wörter, Mustertreffer, Sätze, Phrasen oder Nominalgruppen suchen und nur deren Wörter und Grammatik prüfen; andernfalls lässt sie sich nicht in einen Analysator umwandeln. Der neue Analysator erscheint zusammen mit den anderen unter <strong class="ui">Fenster ▸ Analysatoren</strong>; wie bei jedem anderen Analysator können Sie also sein Skript ansehen, es mit <strong class="ui">Ausprobieren</strong> testen und es direkt ändern. Seine Schlüssel sind entweder die Kategorien Ihrer Abfrage oder, wenn die Abfrage keine Kategorien hat, ein einzelner Schlüssel <code>hit</code> mit der Beschriftung <strong class="ui">Übereinstimmung</strong>. Sie erscheinen als Zeilen der Legende mit einem Feld <strong class="ui">Schlüssel</strong> und einer Schaltfläche mit Minuszeichen, wie Zeilen, die Sie mit <strong class="ui">Schlüssel hinzufügen</strong> anlegen.</p>
+<p>Der erzeugte Analysator ist mit der gesicherten Abfrage, aus der er stammt, <em>verknüpft</em>. Wird die Abfrage mit Änderungen erneut gesichert, erscheint in der Liste neben dem Namen des Analysators <strong class="ui">Veraltet</strong>. So aktualisieren Sie ihn:</p>
+<ol>
+<li>Klicken Sie in der Liste auf den Analysator.</li>
+<li>Klicken Sie auf <strong class="ui">Analysator aktualisieren</strong> links neben <strong class="ui">Sichern</strong>.</li>
+</ol>
+<p>Wenn LemmaLoom aus der gesicherten Abfrage ein neues Skript schreibt, behält es Name und Sprachen des Analysators bei, ersetzt aber Skript und Legende; Änderungen an Beschriftungen, Farben und Stilen des Analysators werden also überschrieben. Ob das neue Skript findet, was die Abfrage findet, prüft LemmaLoom nur bei <strong class="ui">Als Analysator sichern …</strong>. Enthält das neu geschriebene Skript Fehler, erscheinen sie unter dem Editor. Lässt sich die gesicherte Abfrage in ihrem aktuellen Zustand nicht in einen Analysator umwandeln, ist <strong class="ui">Analysator aktualisieren</strong> deaktiviert, mit einer Erklärung des Grundes; <strong class="ui">Bearbeiten ▸ Analysator aktualisieren widerrufen</strong> stellt den Zustand des Analysators vor der Aktualisierung wieder her.</p>
+<p>Die Verknüpfung zwischen gesicherter Abfrage und Analysator endet, sobald Sie das Skript bearbeiten und sichern. Der Analysator zählt dann als einer Ihrer eigenen. Ändern Sie nur Name, Sprachen oder Legende, bleibt die Verknüpfung bestehen. Weitere Möglichkeiten im Umgang mit Analysatoren aus Abfragen finden Sie unter <a href="queries-using-results.html#out-of-date">Einen Analysator auf dem Stand seiner Abfrage halten</a> in <a href="queries-using-results.html">Kapitel 18, Abfrageergebnisse nutzen</a>.</p>
+</article>
+<nav class="pager"><a class="previous" href="dictionaries.html"><span>Zurück</span>Wörterbücher</a><a class="next" href="analysis-and-indexing.html"><span>Weiter</span>Analyse und Indizierung</a></nav>
+<footer class="site-footer">© 2026 Ryan S. Cooper. Alle Rechte vorbehalten.<br>Diese Ausgabe wurde mithilfe von KI aus der englischen Originalausgabe übersetzt. Die Übersetzung kann Fehler oder Ungenauigkeiten enthalten. Im Zweifel ist die englische Ausgabe maßgeblich.</footer>
+</main>
+<nav class="page-toc" aria-label="Auf dieser Seite"><p>Auf dieser Seite</p><ul>
+<li class="level-2"><a href="#key-terms">Wichtige Begriffe</a></li>
+<li class="level-2"><a href="#analyzers-window">Das Fenster „Analysatoren“</a></li>
+<li class="level-2"><a href="#first-analyzer">Ein erster Analysator</a></li>
+<li class="level-3"><a href="#reading-the-script">Das Skript lesen</a></li>
+<li class="level-2"><a href="#document-object">Das Dokument, das ein Analysator erhält</a></li>
+<li class="level-3"><a href="#sentences">Sätze</a></li>
+<li class="level-3"><a href="#tokens">Tokens</a></li>
+<li class="level-3"><a href="#derived-categories">Abgeleitete Kategorien</a></li>
+<li class="level-3"><a href="#phrases-and-noun-chunks">Phrasen und Nominalgruppen</a></li>
+<li class="level-3"><a href="#builtin-results">Ergebnisse der eingebauten Analysatoren</a></li>
+<li class="level-3"><a href="#helper-functions">Hilfsfunktionen</a></li>
+<li class="level-3"><a href="#constants">Konstanten</a></li>
+<li class="level-3"><a href="#reference-panel">Der Bereich „Referenz“</a></li>
+<li class="level-2"><a href="#findings-and-legend">Befunde und Legende</a></li>
+<li class="level-3"><a href="#findings">Befunde</a></li>
+<li class="level-3"><a href="#legend">Schlüssel und Legende</a></li>
+<li class="level-3"><a href="#computed-keys">Schlüssel, die das Skript berechnet</a></li>
+<li class="level-2"><a href="#languages">Unterstützte Sprachen</a></li>
+<li class="level-2"><a href="#try-it-out">Testen mit „Ausprobieren“</a></li>
+<li class="level-3"><a href="#errors">Wenn Fehler auftreten</a></li>
+<li class="level-2"><a href="#breakpoints">Haltepunkte und schrittweise Ausführung</a></li>
+<li class="level-2"><a href="#saving">Sichern, ändern und löschen</a></li>
+<li class="level-3"><a href="#saving-an-analyzer">Einen Analysator sichern</a></li>
+<li class="level-3"><a href="#changing">Einen Analysator ändern</a></li>
+<li class="level-3"><a href="#deleting">Einen Analysator löschen</a></li>
+<li class="level-2"><a href="#when-analyzers-run">Wann Analysatoren ausgeführt werden</a></li>
+<li class="level-2"><a href="#per-document">Analysatoren für einzelne Dokumente</a></li>
+<li class="level-2"><a href="#using-findings">Die Befunde verwenden</a></li>
+<li class="level-3"><a href="#findings-in-the-reader">In der Leseansicht</a></li>
+<li class="level-3"><a href="#coding-findings">Die Befunde kodieren</a></li>
+<li class="level-3"><a href="#findings-in-queries">In Abfragen</a></li>
+<li class="level-3"><a href="#analyzers-in-archives">In Archiven</a></li>
+<li class="level-2"><a href="#generated-analyzers">Analysatoren aus Abfragen</a></li>
+</ul></nav>
+</div>
+<script src="../assets/guide.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,720 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>术语表 · LemmaLoom 用户指南</title>
+<link rel="stylesheet" href="../assets/guide.css">
+<link rel="icon" type="image/png" href="../assets/logo.png">
+<script>var r=document.documentElement;r.setAttribute('data-theme','light');try{if(localStorage.getItem('guide-theme')==='dark'){r.setAttribute('data-theme','dark')}}catch(e){}</script>
+</head>
+<body>
+<header class="topbar">
+<button class="menu-toggle" aria-label="目录" aria-expanded="false">☰</button>
+<a class="brand" href="index.html"><span class="wordmark"><span class="lemma">Lemma</span>Loom</span><span class="guide-name">用户指南</span></a>
+<div class="search"><input type="search" id="search" placeholder="搜索" aria-label="搜索" autocomplete="off" data-empty="无结果"><div class="results" id="results" hidden></div></div>
+<nav class="languages" aria-label="Language"><a href="../en/glossary.html" lang="en">English</a><a href="../de/glossary.html" lang="de">Deutsch</a><a href="../zh-Hans/glossary.html" lang="zh-Hans" aria-current="true">简体中文</a></nav>
+<button class="theme-toggle" data-light="浅色" data-dark="深色" aria-label="外观"></button>
+<a class="pdf-link" href="https://github.com/LemmaLoom/public/raw/main/pdf/lemmaloom-guide-zh-Hans.pdf">PDF</a>
+</header>
+<div class="layout">
+<nav class="sidebar" aria-label="目录"><ol>
+<li class="unnumbered"><a href="quick-start.html">快速入门</a></li>
+<li><a href="introduction.html">简介</a></li>
+<li><a href="getting-started.html">开始使用</a></li>
+<li><a href="projects-and-documents.html">项目与文档</a></li>
+<li><a href="importing.html">导入资料</a></li>
+<li><a href="reading-and-editing.html">阅读与编辑</a></li>
+<li><a href="lenses.html">透镜</a></li>
+<li><a href="coding.html">编码</a></li>
+<li><a href="sets-tags-attributes.html">文档集、分组、标签和属性</a></li>
+<li><a href="translations.html">译文与分屏浏览</a></li>
+<li><a href="text-inspector.html">文本检查器</a></li>
+<li><a href="grammar-inspector.html">语法检查器</a></li>
+<li><a href="word-sketch.html">词汇速写</a></li>
+<li><a href="coding-analysis.html">编码分析</a></li>
+<li><a href="sketch-space.html">速写空间</a></li>
+<li><a href="queries-building.html">构建查询</a></li>
+<li><a href="queries-results.html">查询结果与统计</a></li>
+<li><a href="queries-patterns.html">查询模式与发现</a></li>
+<li><a href="queries-using-results.html">使用查询结果</a></li>
+<li><a href="dictionaries.html">词典</a></li>
+<li><a href="custom-analyzers.html">自定义分析器</a></li>
+<li><a href="analysis-and-indexing.html">分析与索引</a></li>
+<li><a href="exchange-and-export.html">交换与导出</a></li>
+<li><a href="undo.html">撤销与重做</a></li>
+<li><a href="settings.html">设置与外观</a></li>
+<li><a href="keyboard-shortcuts.html">键盘快捷键</a></li>
+<li><a href="help-and-support.html">帮助与支持</a></li>
+<li><a href="statistics-reference.html">统计量一览</a></li>
+<li class="current unnumbered"><a href="glossary.html">术语表</a></li>
+<li class="unnumbered"><a href="thanks.html">感谢</a></li>
+</ol></nav>
+<main class="content">
+<article>
+<h1 id="glossary">术语表</h1>
+<p>以下是<strong class="ui">帮助 ▸ 术语表</strong>中显示的定义，分组方式与应用中相同。</p>
+<h2 id="concepts">概念<a class="anchor" href="#concepts" aria-hidden="true">#</a></h2>
+<p><strong class="ui">备忘录</strong>：附于段落、文档、编码或项目的笔记。</p>
+<p><strong class="ui">编码</strong>：用于标记主题或观点、可应用于文本段落的标签。</p>
+<p><strong class="ui">编码本</strong>：项目中的编码及其说明，以及它们在某一范围内的使用情况。</p>
+<p><strong class="ui">编码集</strong>：用于筛选和比较的有名称的编码集合。</p>
+<p><strong class="ui">编码矩阵</strong>：显示每个编码在每个文档中使用次数的表格。</p>
+<p><strong class="ui">编码实例</strong>：将某个编码应用于一段文本的一次操作。</p>
+<p><strong class="ui">编码适用范围</strong>：编码属于整个项目、某个文档集还是某个文档。</p>
+<p><strong class="ui">编码统计</strong>：编码在某一范围内的频次和覆盖率。</p>
+<p><strong class="ui">编码系统</strong>：项目中所有编码的层级结构。</p>
+<p><strong class="ui">编码行</strong>：每个句子中出现的编码，自上而下。</p>
+<p><strong class="ui">编码样式</strong>：已编码文本在阅读器中的显示方式：高亮、下划线或加框。</p>
+<p><strong class="ui">标签</strong>：用于整理项目、文档、编码、备忘录和链接的自由标签。</p>
+<p><strong class="ui">成分</strong>：短语结构：词如何组合成层层嵌套的短语。</p>
+<p><strong class="ui">词典</strong>：在项目各文档中统计的词项类别。</p>
+<p><strong class="ui">词符</strong>：解析器切分文本后得到的单个词或标点。</p>
+<p><strong class="ui">词元</strong>：词的词典形式（原形），如 ran 和 running 的原形 run。</p>
+<p><strong class="ui">从索引中排除</strong>：匹配的文本在建立索引时会被跳过，但仍显示在阅读器中并可编码。</p>
+<p><strong class="ui">分析器</strong>：在建立索引时运行、为文档添加衔接或修辞等分析结果的模块。</p>
+<p><strong class="ui">分组</strong>：导航栏中用于整理文档的文件夹；一个文档最多属于一个分组。</p>
+<p><strong class="ui">关系</strong>：显示各编码在同一段落中重叠次数的表格。</p>
+<p><strong class="ui">画像</strong>：直观展示编码在文档中出现位置的概览。</p>
+<p><strong class="ui">结构剖析</strong>：显示句中词语如何分布于主语、动词、宾语等句子成分位置的条形图。</p>
+<p><strong class="ui">链接</strong>：两段文本之间的连接，可附带关系名称和评论。</p>
+<p><strong class="ui">马赛克</strong>：按阅读顺序排列的编码颜色，大小对应片段长度。</p>
+<p><strong class="ui">片段</strong>：一个编码实例所覆盖的文本段落。</p>
+<p><strong class="ui">书签</strong>：标记以便日后返回的段落，可附带评论。</p>
+<p><strong class="ui">属性</strong>：属性用于描述文档；例如作者、轮次或评分。</p>
+<p><strong class="ui">索引</strong>：对文档的语法分析：句子、词符、词性、依存关系和短语结构。</p>
+<p><strong class="ui">透镜</strong>：在阅读器中按语法或分析类别为文本着色或标注的图层。</p>
+<p><strong class="ui">文档</strong>：项目中的文本、网页、PDF 或转写的录音。</p>
+<p><strong class="ui">文档集</strong>：可作为分析范围的有名称的文档集合；一个文档可以属于多个文档集。</p>
+<p><strong class="ui">项目</strong>：包含其自身编码、文档集、属性和词典的一组文档。</p>
+<p><strong class="ui">形式 × 功能</strong>：显示名词短语、从句等形式各承担何种语法功能的矩阵。</p>
+<p><strong class="ui">依存</strong>：一个词与其所依附的词（中心词）之间的语法关系。</p>
+<p><strong class="ui">已编码备忘录</strong>：附于段落并归属于某个编码的备忘录，继承该编码的属性和标签。</p>
+<p><strong class="ui">转写文本</strong>：录音的文字，每段文本都与其在媒体中的时间相关联。</p>
+<p><strong class="ui">子编码</strong>：嵌套在另一个编码之下的编码。</p>
+<p><strong class="ui">自定义分析器</strong>：用 JavaScript 编写的分析器。</p>
+<p><strong class="ui">REFI-QDA 编码本</strong> <code>.qdc</code>：在质性分析软件之间交换编码系统的标准文件格式。</p>
+<p><strong class="ui">REFI-QDA 项目</strong> <code>.qdpx</code>：在质性分析软件之间交换完整项目的标准文件格式。</p>
+<h2 id="reader">阅读器与透镜<a class="anchor" href="#reader" aria-hidden="true">#</a></h2>
+<p><strong class="ui">编码</strong>：以编码的颜色和样式显示已编码片段。</p>
+<p><strong class="ui">词类</strong>：按词类为每个词着色。</p>
+<p><strong class="ui">短语</strong>：标注名词短语和介词短语等短语。</p>
+<p><strong class="ui">否定</strong>：标注否定词及其否定的句子部分。</p>
+<p><strong class="ui">句场</strong>：标注德语句子的拓扑场。<em>（德语）</em></p>
+<p><strong class="ui">句式</strong>：标注“把”“被”等汉语特有句式。<em>（中文）</em></p>
+<p><strong class="ui">连接词</strong>：标注连接观点的词，按其表达的关系分组。</p>
+<p><strong class="ui">情态</strong>：标注表示能力、可能、必然、义务和意愿的表达。</p>
+<p><strong class="ui">书签</strong>：显示加了书签的段落。</p>
+<p><strong class="ui">衔接</strong>：显示每个句子如何与前文衔接。</p>
+<p><strong class="ui">形态学</strong>：标注时态、数、格等语法特征。<em>（英语、德语）</em></p>
+<p><strong class="ui">修辞</strong>：标注修辞分析器发现的修辞手法。</p>
+<p><strong class="ui">语法功能</strong>：按词在句中承担的功能（如主语或宾语）着色。</p>
+<p><strong class="ui">元话语</strong>：标注作者用以引导读者的词语，如模糊限制语和增强语。</p>
+<p><strong class="ui">助词</strong>：标注汉语体助词、结构助词和量词。<em>（中文）</em></p>
+<h2 id="grammar">语法<a class="anchor" href="#grammar" aria-hidden="true">#</a></h2>
+<p><strong class="ui">“Be” + 补语</strong> <code>S · be · SC</code>：“Be”把主语和重新指称或描述它的名词或形容词连接起来。<em>（英语）</em></p>
+<p><strong class="ui">“Be” + 状语</strong> <code>S · be · ADV</code>：“Be”把主语和地点或时间连接起来。<em>（英语）</em></p>
+<p><strong class="ui">把字句</strong>：把字句将宾语移到动词之前，表示对其施加的处置。<em>（中文）</em></p>
+<p><strong class="ui">被字句</strong>：被字句表示被动，受事作主语。<em>（中文）</em></p>
+<p><strong class="ui">必要</strong>：表示某事必要或确定的情态意义。</p>
+<p><strong class="ui">表语</strong>：系动词之后描述或确认主语的成分，如 she is a doctor。</p>
+<p><strong class="ui">宾语</strong>：补足动词或介词的名词短语，通常是受动作影响的一方。</p>
+<p><strong class="ui">并列</strong>：在前文基础上增添信息的连接词。</p>
+<p><strong class="ui">并列项</strong>：通过并列与同类成分相连的成分，如 cats and dogs 中的 dogs。</p>
+<p><strong class="ui">补语</strong>：一个词为完整表达意义所需的短语或从句，如 decide 之后的从句。</p>
+<p><strong class="ui">不及物</strong> <code>S · V</code>：不带宾语的动词；动作停留在主语上。<em>（英语）</em></p>
+<p><strong class="ui">存现句</strong>：用“有”表示某物存在或位于某处。<em>（中文）</em></p>
+<p><strong class="ui">得（补语）</strong>：在动词后引出程度补语或结果补语的助词。<em>（中文）</em></p>
+<p><strong class="ui">地（状语）</strong>：连接状语与其动词的助词。<em>（中文）</em></p>
+<p><strong class="ui">的（定语）</strong>：连接定语与其所修饰名词的助词。<em>（中文）</em></p>
+<p><strong class="ui">定语</strong>：修饰名词、起形容词作用的词或短语。</p>
+<p><strong class="ui">否定词</strong>：表示否定的词，如 not、never 或 no。</p>
+<p><strong class="ui">否定辖域</strong>：否定所作用的句子范围。</p>
+<p><strong class="ui">复杂及物</strong> <code>S · V · DO · OC</code>：一个直接宾语加上描述它的补语。<em>（英语）</em></p>
+<p><strong class="ui">过（经历体）</strong>：表示曾经经历过的体助词。<em>（中文）</em></p>
+<p><strong class="ui">后场</strong>：右句框之后的位置，常容纳外置的从句。<em>（德语）</em></p>
+<p><strong class="ui">及物</strong> <code>S · V · DO</code>：作用于直接宾语的动词。<em>（英语）</em></p>
+<p><strong class="ui">句子片段</strong> <code>—</code>：不是完整的独立子句。<em>（英语）</em></p>
+<p><strong class="ui">可能</strong>：表示某事可能或很可能的情态意义。</p>
+<p><strong class="ui">了（完成体）</strong>：表示动作完成的体助词。<em>（中文）</em></p>
+<p><strong class="ui">连接词</strong>：连接分句或短语的词，如连词或关系代词。</p>
+<p><strong class="ui">量词</strong>：数词或指示词与名词之间必须使用的量词。<em>（中文）</em></p>
+<p><strong class="ui">能力</strong>：表示能够做某事的情态意义。</p>
+<p><strong class="ui">祈使式</strong> <code>(You) · V</code>：命令句，主语“you”隐含其中。<em>（英语）</em></p>
+<p><strong class="ui">前场</strong>：德语主句中限定动词之前的位置，容纳一个成分，通常是话题。<em>（德语）</em></p>
+<p><strong class="ui">让步</strong>：承认某一观点但不放弃主要论断的让步连接词。</p>
+<p><strong class="ui">施事</strong>：被动句中动作的执行者，通常由 by 引出。</p>
+<p><strong class="ui">时间</strong>：表示时间先后顺序的连接词。</p>
+<p><strong class="ui">是…的句</strong>：“是……的”结构强调已发生事件的时间、地点或方式。<em>（中文）</em></p>
+<p><strong class="ui">双及物</strong> <code>S · V · IO · DO</code>：同时带间接宾语和直接宾语的动词（give、send、tell...）。<em>（英语）</em></p>
+<p><strong class="ui">条件</strong>：引出条件的连接词。</p>
+<p><strong class="ui">同位语</strong>：紧邻另一名词短语并对其重新指称的名词短语，如 my friend, a teacher。</p>
+<p><strong class="ui">系动</strong> <code>S · LV · SC</code>：系动词（seem、become、taste...），把主语和描述它的补语连接起来。<em>（英语）</em></p>
+<p><strong class="ui">虚拟式</strong>：德语动词的虚拟式（Konjunktiv），用于间接引语、假设和礼貌请求。<em>（德语）</em></p>
+<p><strong class="ui">疑问句</strong> <code>?</code>：直接疑问句。<em>（英语）</em></p>
+<p><strong class="ui">义务</strong>：表示对某人施加义务或要求的情态意义。</p>
+<p><strong class="ui">意愿</strong>：表示意愿或意图的情态意义。</p>
+<p><strong class="ui">因果</strong>：表示原因、理由或结果的连接词。</p>
+<p><strong class="ui">右句框</strong>：右句框：非限定动词、分离的动词小品词，或从句中的限定动词。<em>（德语）</em></p>
+<p><strong class="ui">着（持续体）</strong>：表示动作进行或状态持续的体助词。<em>（中文）</em></p>
+<p><strong class="ui">中场</strong>：两个句框之间的场域，容纳宾语、状语，常常还有主语。<em>（德语）</em></p>
+<p><strong class="ui">主句</strong>：句子赖以构成的独立分句；其动词是依存树的根。</p>
+<p><strong class="ui">主语</strong>：分句所陈述的对象；通常与动词保持一致并执行动作。</p>
+<p><strong class="ui">转折</strong>：表示对比或转折的连接词。</p>
+<p><strong class="ui">状语</strong>：修饰动词、形容词或分句的词、短语或从句，说明方式、时间、地点或原因。</p>
+<p><strong class="ui">左句框</strong>：德语句框的左边界：主句中为限定动词，从句中为从属连词。<em>（德语）</em></p>
+<h2 id="parts-of-speech">词性标记<a class="anchor" href="#parts-of-speech" aria-hidden="true">#</a></h2>
+<p><strong class="ui">形容词</strong> <code>ADJ</code>：描述名词；big、old、green</p>
+<p><strong class="ui">介词</strong> <code>ADP</code>：介词；in、to、during</p>
+<p><strong class="ui">副词</strong> <code>ADV</code>：修饰动词或形容词；very、well、quickly</p>
+<p><strong class="ui">助动词</strong> <code>AUX</code>：助动词；is、has、will、should</p>
+<p><strong class="ui">并列连词</strong> <code>CCONJ</code>：连接对等的部分；and、or、but</p>
+<p><strong class="ui">限定词</strong> <code>DET</code>：引出名词；a、the、this</p>
+<p><strong class="ui">感叹词</strong> <code>INTJ</code>：感叹；oh、wow、ouch</p>
+<p><strong class="ui">名词</strong> <code>NOUN</code>：人、地点、事物或概念；house、time</p>
+<p><strong class="ui">数词</strong> <code>NUM</code>：数字；one、2017、3.5</p>
+<p><strong class="ui">小品词</strong> <code>PART</code>：小的功能词；not、动词前的 to</p>
+<p><strong class="ui">代词</strong> <code>PRON</code>：代替名词；I、you、it、who</p>
+<p><strong class="ui">专有名词</strong> <code>PROPN</code>：名称；Mary、London、NATO</p>
+<p><strong class="ui">标点符号</strong> <code>PUNCT</code>：句号、逗号、括号</p>
+<p><strong class="ui">从属连词</strong> <code>SCONJ</code>：引出从句；if、while、that</p>
+<p><strong class="ui">空白字符</strong> <code>SPACE</code>：解析器保留的空白</p>
+<p><strong class="ui">符号</strong> <code>SYM</code>：如 %、$ 或 = 等字符</p>
+<p><strong class="ui">动词</strong> <code>VERB</code>：动作或状态；run、eat、seem</p>
+<p><strong class="ui">其他</strong> <code>X</code>：解析器无法归类的内容</p>
+<p><strong class="ui">电子邮件 / URL</strong> <code>ADD</code>：如 example.com 等地址<em>（英语）</em></p>
+<p><strong class="ui">词缀</strong> <code>AFX</code>：从词中分出的前缀；pre approved 中的 pre<em>（英语）</em></p>
+<p><strong class="ui">并列连词</strong> <code>CC</code>：and、but、or<em>（英语）</em></p>
+<p><strong class="ui">基数词</strong> <code>CD</code>：one、two、3<em>（英语）</em></p>
+<p><strong class="ui">限定词</strong> <code>DT</code>：the、a、these<em>（英语）</em></p>
+<p><strong class="ui">存在句“there”</strong> <code>EX</code>：there is a problem 中的 there<em>（英语）</em></p>
+<p><strong class="ui">外来词</strong> <code>FW</code>：来自另一种语言的词<em>（英语）</em></p>
+<p><strong class="ui">连字符</strong> <code>HYPH</code> <em>（英语）</em></p>
+<p><strong class="ui">介词/从属连词</strong> <code>IN</code>：in、of、because<em>（英语）</em></p>
+<p><strong class="ui">形容词</strong> <code>JJ</code>：green、quiet<em>（英语）</em></p>
+<p><strong class="ui">形容词，比较级</strong> <code>JJR</code>：greener、quieter<em>（英语）</em></p>
+<p><strong class="ui">形容词，最高级</strong> <code>JJS</code>：greenest、quietest<em>（英语）</em></p>
+<p><strong class="ui">列表项标记</strong> <code>LS</code>：1.、a)<em>（英语）</em></p>
+<p><strong class="ui">情态动词</strong> <code>MD</code>：can、must、should<em>（英语）</em></p>
+<p><strong class="ui">非句末标点</strong> <code>NFP</code>：省略号或装饰性标记<em>（英语）</em></p>
+<p><strong class="ui">名词，单数</strong> <code>NN</code>：table、honesty<em>（英语）</em></p>
+<p><strong class="ui">专有名词，单数</strong> <code>NNP</code>：John、Paris<em>（英语）</em></p>
+<p><strong class="ui">专有名词，复数</strong> <code>NNPS</code>：Vikings、Alps<em>（英语）</em></p>
+<p><strong class="ui">名词，复数</strong> <code>NNS</code>：tables<em>（英语）</em></p>
+<p><strong class="ui">前限定词</strong> <code>PDT</code>：all the boys 中的 all<em>（英语）</em></p>
+<p><strong class="ui">所有格词尾</strong> <code>POS</code>：Mary’s 中的 ’s<em>（英语）</em></p>
+<p><strong class="ui">人称代词</strong> <code>PRP</code>：I、he、it<em>（英语）</em></p>
+<p><strong class="ui">物主代词</strong> <code>PRP$</code>：my、his、their<em>（英语）</em></p>
+<p><strong class="ui">副词</strong> <code>RB</code>：quickly、never<em>（英语）</em></p>
+<p><strong class="ui">副词，比较级</strong> <code>RBR</code>：faster、sooner<em>（英语）</em></p>
+<p><strong class="ui">副词，最高级</strong> <code>RBS</code>：fastest、soonest<em>（英语）</em></p>
+<p><strong class="ui">小品词</strong> <code>RP</code>：give up 中的 up<em>（英语）</em></p>
+<p><strong class="ui">符号</strong> <code>SYM</code>：如 % 或 = 等字符<em>（英语）</em></p>
+<p><strong class="ui">“to”</strong> <code>TO</code>：单词 to 本身<em>（英语）</em></p>
+<p><strong class="ui">感叹词</strong> <code>UH</code>：uh、wow、oh<em>（英语）</em></p>
+<p><strong class="ui">动词，原形</strong> <code>VB</code>：take<em>（英语）</em></p>
+<p><strong class="ui">动词，过去时</strong> <code>VBD</code>：took<em>（英语）</em></p>
+<p><strong class="ui">动词，动名词 / 现在分词</strong> <code>VBG</code>：taking<em>（英语）</em></p>
+<p><strong class="ui">动词，过去分词</strong> <code>VBN</code>：taken<em>（英语）</em></p>
+<p><strong class="ui">动词，非第三人称单数现在时</strong> <code>VBP</code>：they take 中的 take<em>（英语）</em></p>
+<p><strong class="ui">动词，第三人称单数现在时</strong> <code>VBZ</code>：she takes 中的 takes<em>（英语）</em></p>
+<p><strong class="ui">wh-限定词</strong> <code>WDT</code>：which、that<em>（英语）</em></p>
+<p><strong class="ui">wh-代词</strong> <code>WP</code>：who、what<em>（英语）</em></p>
+<p><strong class="ui">疑问物主代词</strong> <code>WP$</code>：whose<em>（英语）</em></p>
+<p><strong class="ui">wh-副词</strong> <code>WRB</code>：where、when、how<em>（英语）</em></p>
+<p><strong class="ui">未知</strong> <code>XX</code> <em>（英语）</em></p>
+<p><strong class="ui">句末标点</strong> <code>.</code>：句号、问号、感叹号<em>（英语）</em></p>
+<p><strong class="ui">逗号</strong> <code>,</code> <em>（英语）</em></p>
+<p><strong class="ui">冒号 / 省略号</strong> <code>:</code> <em>（英语）</em></p>
+<p><strong class="ui">前引号</strong> `` <em>（英语）</em></p>
+<p><strong class="ui">后引号</strong> <code>''</code> <em>（英语）</em></p>
+<p><strong class="ui">左括号</strong> <code>-LRB-</code> <em>（英语）</em></p>
+<p><strong class="ui">右括号</strong> <code>-RRB-</code> <em>（英语）</em></p>
+<p><strong class="ui">形容词（定语）</strong> <code>ADJA</code>：der alte Mann<em>（德语）</em></p>
+<p><strong class="ui">形容词（表语或状语）</strong> <code>ADJD</code>：er ist alt；sie singt gut<em>（德语）</em></p>
+<p><strong class="ui">副词</strong> <code>ADV</code>：schon、bald、gern<em>（德语）</em></p>
+<p><strong class="ui">介词</strong> <code>APPR</code>：in、auf、mit<em>（德语）</em></p>
+<p><strong class="ui">介词与冠词缩合</strong> <code>APPRART</code>：im、zur、am<em>（德语）</em></p>
+<p><strong class="ui">后置词</strong> <code>APPO</code>：der Einfachheit halber<em>（德语）</em></p>
+<p><strong class="ui">框式介词右部</strong> <code>APZR</code>：von jetzt an<em>（德语）</em></p>
+<p><strong class="ui">冠词</strong> <code>ART</code>：der、die、das、ein<em>（德语）</em></p>
+<p><strong class="ui">基数词</strong> <code>CARD</code>：zwei、1994<em>（德语）</em></p>
+<p><strong class="ui">外语成分</strong> <code>FM</code>：来自另一种语言的词<em>（德语）</em></p>
+<p><strong class="ui">感叹词</strong> <code>ITJ</code>：ach、oh、na<em>（德语）</em></p>
+<p><strong class="ui">带zu不定式的从属连词</strong> <code>KOUI</code>：um、ohne、statt<em>（德语）</em></p>
+<p><strong class="ui">引导从句的从属连词</strong> <code>KOUS</code>：weil、dass、obwohl<em>（德语）</em></p>
+<p><strong class="ui">并列连词</strong> <code>KON</code>：und、oder、aber<em>（德语）</em></p>
+<p><strong class="ui">比较连词</strong> <code>KOKOM</code>：als、wie<em>（德语）</em></p>
+<p><strong class="ui">普通名词</strong> <code>NN</code>：Tisch、Herr、Reise<em>（德语）</em></p>
+<p><strong class="ui">专有名词</strong> <code>NE</code>：Hans、Hamburg<em>（德语）</em></p>
+<p><strong class="ui">指示代词（替代）</strong> <code>PDS</code>：dieser、jener<em>（德语）</em></p>
+<p><strong class="ui">指示代词（定语）</strong> <code>PDAT</code>：jener Mensch<em>（德语）</em></p>
+<p><strong class="ui">不定代词（替代）</strong> <code>PIS</code>：keiner、viele、niemand<em>（德语）</em></p>
+<p><strong class="ui">不定代词（定语）</strong> <code>PIAT</code>：kein Mensch、irgendein Glas<em>（德语）</em></p>
+<p><strong class="ui">带限定词的不定代词</strong> <code>PIDAT</code>：die beiden Brüder<em>（德语）</em></p>
+<p><strong class="ui">人称代词</strong> <code>PPER</code>：ich、er、ihm、mich<em>（德语）</em></p>
+<p><strong class="ui">物主代词（替代）</strong> <code>PPOSS</code>：meins、deiner<em>（德语）</em></p>
+<p><strong class="ui">物主代词（定语）</strong> <code>PPOSAT</code>：mein Buch、deine Mutter<em>（德语）</em></p>
+<p><strong class="ui">关系代词（替代）</strong> <code>PRELS</code>：der Hund, der bellt<em>（德语）</em></p>
+<p><strong class="ui">关系代词（定语）</strong> <code>PRELAT</code>：der Mann, dessen Hund bellt<em>（德语）</em></p>
+<p><strong class="ui">反身代词</strong> <code>PRF</code>：sich、mich、dir<em>（德语）</em></p>
+<p><strong class="ui">疑问代词（替代）</strong> <code>PWS</code>：wer、was<em>（德语）</em></p>
+<p><strong class="ui">疑问代词（定语）</strong> <code>PWAT</code>：welche Farbe、wessen Hut<em>（德语）</em></p>
+<p><strong class="ui">疑问或关系副词</strong> <code>PWAV</code>：warum、wo、wann<em>（德语）</em></p>
+<p><strong class="ui">代词性副词</strong> <code>PROAV</code>：dafür、dabei、deswegen<em>（德语）</em></p>
+<p><strong class="ui">不定式前的zu</strong> <code>PTKZU</code>：zu gehen<em>（德语）</em></p>
+<p><strong class="ui">否定小品词</strong> <code>PTKNEG</code>：nicht<em>（德语）</em></p>
+<p><strong class="ui">分离的动词前缀</strong> <code>PTKVZ</code>：er kommt an<em>（德语）</em></p>
+<p><strong class="ui">应答小品词</strong> <code>PTKANT</code>：ja、nein、danke<em>（德语）</em></p>
+<p><strong class="ui">形容词或副词小品词</strong> <code>PTKA</code>：am schönsten、zu schnell<em>（德语）</em></p>
+<p><strong class="ui">截断词首部</strong> <code>TRUNC</code>：An- und Abreise<em>（德语）</em></p>
+<p><strong class="ui">动词（限定形式）</strong> <code>VVFIN</code>：du gehst、wir kommen<em>（德语）</em></p>
+<p><strong class="ui">动词（命令式）</strong> <code>VVIMP</code>：komm!<em>（德语）</em></p>
+<p><strong class="ui">动词（不定式）</strong> <code>VVINF</code>：gehen、ankommen<em>（德语）</em></p>
+<p><strong class="ui">动词（带zu不定式）</strong> <code>VVIZU</code>：anzukommen、loszulassen<em>（德语）</em></p>
+<p><strong class="ui">动词，过去分词</strong> <code>VVPP</code>：gegangen、angekommen<em>（德语）</em></p>
+<p><strong class="ui">助动词（限定形式）</strong> <code>VAFIN</code>：ist、haben、wird<em>（德语）</em></p>
+<p><strong class="ui">助动词（命令式）</strong> <code>VAIMP</code>：sei ruhig!<em>（德语）</em></p>
+<p><strong class="ui">助动词（不定式）</strong> <code>VAINF</code>：werden、sein<em>（德语）</em></p>
+<p><strong class="ui">助动词（过去分词）</strong> <code>VAPP</code>：gewesen、geworden<em>（德语）</em></p>
+<p><strong class="ui">情态动词（限定形式）</strong> <code>VMFIN</code>：kann、sollte、dürfen<em>（德语）</em></p>
+<p><strong class="ui">情态动词（不定式）</strong> <code>VMINF</code>：können、wollen<em>（德语）</em></p>
+<p><strong class="ui">情态动词（过去分词）</strong> <code>VMPP</code>：er hat gekonnt<em>（德语）</em></p>
+<p><strong class="ui">非词符号</strong> <code>XY</code>：非单词的字母或符号；H2O<em>（德语）</em></p>
+<p><strong class="ui">句末标点</strong> <code>$.</code>：句号、问号、感叹号<em>（德语）</em></p>
+<p><strong class="ui">逗号</strong> <code>$,</code> <em>（德语）</em></p>
+<p><strong class="ui">其他标点</strong> <code>$LRB</code>：括号、引号、破折号<em>（德语）</em></p>
+<p><strong class="ui">普通名词</strong> <code>NN</code>：书、时间<em>（中文）</em></p>
+<p><strong class="ui">专有名词</strong> <code>NR</code>：北京、王先生<em>（中文）</em></p>
+<p><strong class="ui">时间名词</strong> <code>NT</code>：昨天、现在<em>（中文）</em></p>
+<p><strong class="ui">代词</strong> <code>PN</code>：我、他、这<em>（中文）</em></p>
+<p><strong class="ui">动词</strong> <code>VV</code>：跑、解释、想<em>（中文）</em></p>
+<p><strong class="ui">系词</strong> <code>VC</code>：是<em>（中文）</em></p>
+<p><strong class="ui">存在动词</strong> <code>VE</code>：有、没有<em>（中文）</em></p>
+<p><strong class="ui">谓词性形容词</strong> <code>VA</code>：作谓语的高、温暖<em>（中文）</em></p>
+<p><strong class="ui">形容词（定语）</strong> <code>JJ</code>：新书中的新<em>（中文）</em></p>
+<p><strong class="ui">副词</strong> <code>AD</code>：很、都、也<em>（中文）</em></p>
+<p><strong class="ui">介词</strong> <code>P</code>：在、向、从<em>（中文）</em></p>
+<p><strong class="ui">方位词</strong> <code>LC</code>：名词后的上、里、中<em>（中文）</em></p>
+<p><strong class="ui">量词</strong> <code>M</code>：个、本、张<em>（中文）</em></p>
+<p><strong class="ui">基数词</strong> <code>CD</code>：一、三、100<em>（中文）</em></p>
+<p><strong class="ui">序数词</strong> <code>OD</code>：第一<em>（中文）</em></p>
+<p><strong class="ui">限定词</strong> <code>DT</code>：这、那、每<em>（中文）</em></p>
+<p><strong class="ui">并列连词</strong> <code>CC</code>：和、或者<em>（中文）</em></p>
+<p><strong class="ui">从属连词</strong> <code>CS</code>：虽然、因为<em>（中文）</em></p>
+<p><strong class="ui">的（名词化）</strong> <code>DEC</code>：将从句变为修饰语的的<em>（中文）</em></p>
+<p><strong class="ui">的（关联）</strong> <code>DEG</code>：连接领属与名词的的<em>（中文）</em></p>
+<p><strong class="ui">得（结果补语）</strong> <code>DER</code>：引出结果或程度的得<em>（中文）</em></p>
+<p><strong class="ui">地（方式状语）</strong> <code>DEV</code>：将短语变为状语的地<em>（中文）</em></p>
+<p><strong class="ui">动态助词</strong> <code>AS</code>：了、着、过<em>（中文）</em></p>
+<p><strong class="ui">语气助词</strong> <code>SP</code>：吗、吧、呢<em>（中文）</em></p>
+<p><strong class="ui">等类词</strong> <code>ETC</code>：等、等等<em>（中文）</em></p>
+<p><strong class="ui">其他助词</strong> <code>MSP</code>：所、以、来<em>（中文）</em></p>
+<p><strong class="ui">把字结构</strong> <code>BA</code>：把提前宾语<em>（中文）</em></p>
+<p><strong class="ui">被（长被动）</strong> <code>LB</code>：带施事的被<em>（中文）</em></p>
+<p><strong class="ui">被（短被动）</strong> <code>SB</code>：不带施事的被<em>（中文）</em></p>
+<p><strong class="ui">标点符号</strong> <code>PU</code>：。，、！？<em>（中文）</em></p>
+<p><strong class="ui">外来词</strong> <code>FW</code>：来自另一种语言的词<em>（中文）</em></p>
+<p><strong class="ui">感叹词</strong> <code>IJ</code>：啊、哦<em>（中文）</em></p>
+<p><strong class="ui">拟声词</strong> <code>ON</code>：哗哗、砰<em>（中文）</em></p>
+<p><strong class="ui">其他</strong> <code>X</code>：解析器无法归类的内容<em>（中文）</em></p>
+<h2 id="dependencies">依存关系<a class="anchor" href="#dependencies" aria-hidden="true">#</a></h2>
+<p><strong class="ui">名词的从句修饰语</strong> <code>acl</code>：描述名词的从句<em>（英语、中文）</em></p>
+<p><strong class="ui">形容词补语</strong> <code>acomp</code>：“she seems happy”中的 happy<em>（英语、中文）</em></p>
+<p><strong class="ui">状语从句修饰语</strong> <code>advcl</code>：because it rained<em>（英语、中文）</em></p>
+<p><strong class="ui">状语</strong> <code>advmod</code>：very、quickly<em>（英语、中文）</em></p>
+<p><strong class="ui">施事</strong> <code>agent</code>：被动句中的施事者；如 by the committee<em>（英语、中文）</em></p>
+<p><strong class="ui">形容词修饰语</strong> <code>amod</code>：“red car”中的 red<em>（英语、中文）</em></p>
+<p><strong class="ui">同位语</strong> <code>appos</code>：“my friend Sam”中的 Sam<em>（英语、中文）</em></p>
+<p><strong class="ui">属性</strong> <code>attr</code>：she is a teacher 中的 a teacher<em>（英语、中文）</em></p>
+<p><strong class="ui">助动词</strong> <code>aux</code>：“has gone”中的 has<em>（英语、中文）</em></p>
+<p><strong class="ui">被动助动词</strong> <code>auxpass</code>：was taken 中的 was<em>（英语、中文）</em></p>
+<p><strong class="ui">格标记</strong> <code>case</code>：所有格 ’s<em>（英语、中文）</em></p>
+<p><strong class="ui">并列连词</strong> <code>cc</code>：and、but、or<em>（英语、中文）</em></p>
+<p><strong class="ui">从句补语</strong> <code>ccomp</code>：said that he left 中的 that he left<em>（英语、中文）</em></p>
+<p><strong class="ui">复合词</strong> <code>compound</code>：“ice cream”中的 ice<em>（英语、中文）</em></p>
+<p><strong class="ui">并列项</strong> <code>conj</code>：bread and butter 中的 butter<em>（英语、中文）</em></p>
+<p><strong class="ui">从句主语</strong> <code>csubj</code>：what she said matters 中的 what she said<em>（英语、中文）</em></p>
+<p><strong class="ui">从句被动主语</strong> <code>csubjpass</code>：作被动主语的从句<em>（英语、中文）</em></p>
+<p><strong class="ui">与格</strong> <code>dative</code>：“gave him the keys”中的 him<em>（英语、中文）</em></p>
+<p><strong class="ui">未分类的依存关系</strong> <code>dep</code>：解析器无法标注的连接<em>（英语、中文）</em></p>
+<p><strong class="ui">限定词</strong> <code>det</code>：the、a、this<em>（英语、中文）</em></p>
+<p><strong class="ui">直接宾语</strong> <code>dobj</code>：kicked the ball 中的 the ball<em>（英语、中文）</em></p>
+<p><strong class="ui">填补词</strong> <code>expl</code>：there is a problem 中的 there<em>（英语、中文）</em></p>
+<p><strong class="ui">感叹词</strong> <code>intj</code>：oh、well<em>（英语、中文）</em></p>
+<p><strong class="ui">间接宾语</strong> <code>iobj</code>：动作的接受者<em>（英语、中文）</em></p>
+<p><strong class="ui">标记</strong> <code>mark</code>：引导从句的 that 或 because<em>（英语、中文）</em></p>
+<p><strong class="ui">元修饰语</strong> <code>meta</code>：游离内容，如署名行<em>（英语、中文）</em></p>
+<p><strong class="ui">否定修饰语</strong> <code>neg</code>：not、never<em>（英语、中文）</em></p>
+<p><strong class="ui">名词性修饰语</strong> <code>nmod</code>：修饰另一名词的名词<em>（英语、中文）</em></p>
+<p><strong class="ui">作状语的名词短语</strong> <code>npadvmod</code>：“arrived last week”中的 last week<em>（英语、中文）</em></p>
+<p><strong class="ui">名词性主语</strong> <code>nsubj</code>：“she runs”中的 she<em>（英语、中文）</em></p>
+<p><strong class="ui">被动名词主语</strong> <code>nsubjpass</code>：the report was filed 中的 the report<em>（英语、中文）</em></p>
+<p><strong class="ui">数词修饰语</strong> <code>nummod</code>：three cats 中的 three<em>（英语、中文）</em></p>
+<p><strong class="ui">宾语</strong> <code>obj</code>：动词所作用的事物<em>（英语、中文）</em></p>
+<p><strong class="ui">宾语补语</strong> <code>oprd</code>：“painted it green”中的 green<em>（英语、中文）</em></p>
+<p><strong class="ui">并列结构</strong> <code>parataxis</code>：并列的子句；he said, I agree<em>（英语、中文）</em></p>
+<p><strong class="ui">介词补语</strong> <code>pcomp</code>：补足介词的从句<em>（英语、中文）</em></p>
+<p><strong class="ui">介词宾语</strong> <code>pobj</code>：in town 中的 town<em>（英语、中文）</em></p>
+<p><strong class="ui">领属修饰语</strong> <code>poss</code>：“her book”中的 her<em>（英语、中文）</em></p>
+<p><strong class="ui">前置关联连词</strong> <code>preconj</code>：either、both<em>（英语、中文）</em></p>
+<p><strong class="ui">前限定词</strong> <code>predet</code>：all the boys 中的 all<em>（英语、中文）</em></p>
+<p><strong class="ui">介词修饰语</strong> <code>prep</code>：in、of、with<em>（英语、中文）</em></p>
+<p><strong class="ui">小品词</strong> <code>prt</code>：give up 中的 up<em>（英语、中文）</em></p>
+<p><strong class="ui">标点符号</strong> <code>punct</code> <em>（英语、中文）</em></p>
+<p><strong class="ui">数量词修饰语</strong> <code>quantmod</code>：about ten 中的 about<em>（英语、中文）</em></p>
+<p><strong class="ui">关系从句修饰语</strong> <code>relcl</code>：the book that I read 中的 that I read<em>（英语、中文）</em></p>
+<p><strong class="ui">句子的根节点</strong> <code>root</code>：通常是主要动词<em>（英语、中文）</em></p>
+<p><strong class="ui">开放性子句补语</strong> <code>xcomp</code>：wants to leave 中的 to leave<em>（英语、中文）</em></p>
+<p><strong class="ui">主语</strong> <code>sb</code>：“die Katze schläft”中的 die Katze<em>（德语）</em></p>
+<p><strong class="ui">被动化主语</strong> <code>sbp</code>：被动句中的von短语；von der Jury<em>（德语）</em></p>
+<p><strong class="ui">宾格宾语</strong> <code>oa</code>：“wirft den Ball”中的 den Ball<em>（德语）</em></p>
+<p><strong class="ui">第二宾格宾语</strong> <code>oa2</code>：第二个直接宾语<em>（德语）</em></p>
+<p><strong class="ui">属格宾语</strong> <code>og</code>：属格形式的宾语<em>（德语）</em></p>
+<p><strong class="ui">与格宾语</strong> <code>da</code>：“gibt ihm das Buch”中的 ihm<em>（德语）</em></p>
+<p><strong class="ui">介词宾语</strong> <code>op</code>：“wartet auf ihn”中的 auf ihn<em>（德语）</em></p>
+<p><strong class="ui">宾语从句</strong> <code>oc</code>：补足动词的从句或不定式<em>（德语）</em></p>
+<p><strong class="ui">表语</strong> <code>pd</code>：“er ist alt”中的 alt<em>（德语）</em></p>
+<p><strong class="ui">修饰语</strong> <code>mo</code>：状语或介词修饰语<em>（德语）</em></p>
+<p><strong class="ui">否定</strong> <code>ng</code>：nicht<em>（德语）</em></p>
+<p><strong class="ui">名词核心成分</strong> <code>nk</code>：名词短语内的冠词或形容词<em>（德语）</em></p>
+<p><strong class="ui">属格定语</strong> <code>ag</code>：“der Hut des Mannes”中的 des Mannes<em>（德语）</em></p>
+<p><strong class="ui">介词属格</strong> <code>pg</code>：代替属格的von短语<em>（德语）</em></p>
+<p><strong class="ui">后置修饰语</strong> <code>mnr</code>：名词后的介词短语<em>（德语）</em></p>
+<p><strong class="ui">定语从句</strong> <code>rc</code>：“der Hund, der bellt”中的 der bellt<em>（德语）</em></p>
+<p><strong class="ui">同位语</strong> <code>app</code>：“mein Freund Hans”中的 Hans<em>（德语）</em></p>
+<p><strong class="ui">并列项</strong> <code>cj</code>：并列结构的成员<em>（德语）</em></p>
+<p><strong class="ui">并列连词</strong> <code>cd</code>：und、oder<em>（德语）</em></p>
+<p><strong class="ui">标句词</strong> <code>cp</code>：引导从句的dass、weil<em>（德语）</em></p>
+<p><strong class="ui">连接词</strong> <code>ju</code>：连接分句的词，如denn<em>（德语）</em></p>
+<p><strong class="ui">形态小品词</strong> <code>pm</code>：不定式前的zu<em>（德语）</em></p>
+<p><strong class="ui">可分动词前缀</strong> <code>svp</code>：“er kommt an”中的 an<em>（德语）</em></p>
+<p><strong class="ui">形式主语es</strong> <code>ep</code>：“es regnet”中的 es<em>（德语）</em></p>
+<p><strong class="ui">占位成分</strong> <code>ph</code>：由后文填充的占位成分<em>（德语）</em></p>
+<p><strong class="ui">重复成分</strong> <code>re</code>：再次提及的内容<em>（德语）</em></p>
+<p><strong class="ui">转述语</strong> <code>rs</code>：引述从句<em>（德语）</em></p>
+<p><strong class="ui">单位成分</strong> <code>uc</code>：多词单位的一部分<em>（德语）</em></p>
+<p><strong class="ui">呼语</strong> <code>vo</code>：直接称呼；Hans, komm her<em>（德语）</em></p>
+<p><strong class="ui">插入语</strong> <code>par</code>：从子句中分出的插入语<em>（德语）</em></p>
+<p><strong class="ui">专名成分</strong> <code>pnc</code>：多词专名的一部分<em>（德语）</em></p>
+<p><strong class="ui">数词成分</strong> <code>nmc</code>：“3,2 Millionen”中的 3,2<em>（德语）</em></p>
+<p><strong class="ui">介词性格标记</strong> <code>ac</code>：位于短语开头的介词<em>（德语）</em></p>
+<p><strong class="ui">形容词成分</strong> <code>adc</code>：复杂形容词的一部分<em>（德语）</em></p>
+<p><strong class="ui">度量成分</strong> <code>ams</code>：“zwei Meter hoch”中的 zwei Meter<em>（德语）</em></p>
+<p><strong class="ui">副词短语成分</strong> <code>avc</code>：复杂状语的一部分<em>（德语）</em></p>
+<p><strong class="ui">比较连词</strong> <code>cm</code>：比较中的als、wie<em>（德语）</em></p>
+<p><strong class="ui">比较补语</strong> <code>cc</code>：“mehr als dreißig”中的 dreißig<em>（德语）</em></p>
+<p><strong class="ui">功能动词结构</strong> <code>cvc</code>：轻动词结构中的名词；in Frage stellen<em>（德语）</em></p>
+<p><strong class="ui">话语标记</strong> <code>dm</code>：also、na ja<em>（德语）</em></p>
+<p><strong class="ui">体标记</strong> <code>aux:asp</code>：动词后的了、着、过<em>（中文）</em></p>
+<p><strong class="ui">情态助动词</strong> <code>aux:modal</code>：能、会、应该<em>（中文）</em></p>
+<p><strong class="ui">量词标记</strong> <code>mark:clf</code>：数词后的量词<em>（中文）</em></p>
+<p><strong class="ui">名词复合</strong> <code>compound:nn</code>：语法规则中的语法<em>（中文）</em></p>
+<p><strong class="ui">动词复合</strong> <code>compound:vc</code>：结果或趋向动词组合<em>（中文）</em></p>
+<p><strong class="ui">时间修饰语</strong> <code>nmod:tmod</code>：表时间的昨天<em>（中文）</em></p>
+<p><strong class="ui">介词修饰语</strong> <code>nmod:prep</code>：介词短语中的名词，依附于动词；在台阶上坐着中的台阶<em>（中文）</em></p>
+<p><strong class="ui">关联修饰语</strong> <code>nmod:assmod</code>：名词前的X的短语<em>（中文）</em></p>
+<p><strong class="ui">话题</strong> <code>nmod:topic</code>：小句所谈论的前置名词<em>（中文）</em></p>
+<p><strong class="ui">领属修饰语</strong> <code>nmod:poss</code>：我的书中的我的<em>（中文）</em></p>
+<p><strong class="ui">把/被的受事</strong> <code>obl:patient</code>：把/被句中受影响的名词<em>（中文）</em></p>
+<p><strong class="ui">被的施事</strong> <code>obl:agent</code>：被后所指的施动者<em>（中文）</em></p>
+<p><strong class="ui">处所状语</strong> <code>advmod:loc</code>：修饰动词的处所短语<em>（中文）</em></p>
+<p><strong class="ui">地字短语状语</strong> <code>advmod:dvp</code>：动词前的X地短语<em>（中文）</em></p>
+<p><strong class="ui">的标记</strong> <code>case:dec</code>：收尾修饰语的的<em>（中文）</em></p>
+<p><strong class="ui">系词</strong> <code>cop</code>：他是老师中的是<em>（中文）</em></p>
+<p><strong class="ui">语气词</strong> <code>discourse</code>：句末的吗、吧、呢<em>（中文）</em></p>
+<p><strong class="ui">结果补语</strong> <code>advmod:rcomp</code>：找到中的到<em>（中文）</em></p>
+<p><strong class="ui">数量修饰语</strong> <code>nmod:range</code>：动词后的数量；减少一半中的一半<em>（中文）</em></p>
+<p><strong class="ui">把标记</strong> <code>aux:ba</code>：把门关上中的把<em>（中文）</em></p>
+<p><strong class="ui">小品词修饰语</strong> <code>aux:prtmod</code>：所说的话中的所<em>（中文）</em></p>
+<p><strong class="ui">方位词从句</strong> <code>advcl:loc</code>：以“以后”或“时”结尾的从句<em>（中文）</em></p>
+<p><strong class="ui">列举结尾词</strong> <code>etc</code>：列举末尾的等<em>（中文）</em></p>
+<p><strong class="ui">专名成分</strong> <code>name</code>：多词专名的一部分<em>（中文）</em></p>
+<h2 id="phrases">短语标记<a class="anchor" href="#phrases" aria-hidden="true">#</a></h2>
+<p><strong class="ui">形容词短语</strong> <code>ADJP</code>：very tall<em>（英语）</em></p>
+<p><strong class="ui">副词短语</strong> <code>ADVP</code>：quite slowly<em>（英语）</em></p>
+<p><strong class="ui">连词短语</strong> <code>CONJP</code>：as well as<em>（英语）</em></p>
+<p><strong class="ui">句子片段</strong> <code>FRAG</code>：不完整的句子<em>（英语）</em></p>
+<p><strong class="ui">感叹词</strong> <code>INTJ</code>：oh、wow<em>（英语）</em></p>
+<p><strong class="ui">列表标记</strong> <code>LST</code>：1.、a)<em>（英语）</em></p>
+<p><strong class="ui">非句法成分</strong> <code>NAC</code>：将名词短语内的词语组合在一起<em>（英语）</em></p>
+<p><strong class="ui">名词性修饰语</strong> <code>NML</code>：组合起来修饰另一名词的名词<em>（英语）</em></p>
+<p><strong class="ui">名词短语</strong> <code>NP</code>：the old house<em>（英语）</em></p>
+<p><strong class="ui">名词性中心语</strong> <code>NX</code>：复杂名词短语的中心词<em>（英语）</em></p>
+<p><strong class="ui">介词短语</strong> <code>PP</code>：in the garden<em>（英语）</em></p>
+<p><strong class="ui">插入语</strong> <code>PRN</code>：从子句中分出的插入语<em>（英语）</em></p>
+<p><strong class="ui">小品词</strong> <code>PRT</code>：give up 中的 up<em>（英语）</em></p>
+<p><strong class="ui">数量短语</strong> <code>QP</code>：about ten<em>（英语）</em></p>
+<p><strong class="ui">简化关系从句</strong> <code>RRC</code>：“the man seen yesterday”中的 seen yesterday<em>（英语）</em></p>
+<p><strong class="ui">小句</strong> <code>S</code>：主语加谓语<em>（英语）</em></p>
+<p><strong class="ui">从句</strong> <code>SBAR</code>：because it rained<em>（英语）</em></p>
+<p><strong class="ui">特殊疑问句</strong> <code>SBARQ</code>：where did she go<em>（英语）</em></p>
+<p><strong class="ui">倒装句</strong> <code>SINV</code>：never have I seen<em>（英语）</em></p>
+<p><strong class="ui">一般疑问句</strong> <code>SQ</code>：did she go<em>（英语）</em></p>
+<p><strong class="ui">异类并列短语</strong> <code>UCP</code>：由连词连接的不同类成分<em>（英语）</em></p>
+<p><strong class="ui">动词短语</strong> <code>VP</code>：ate an apple<em>（英语）</em></p>
+<p><strong class="ui">wh-形容词短语</strong> <code>WHADJP</code>：how tall<em>（英语）</em></p>
+<p><strong class="ui">wh-副词短语</strong> <code>WHADVP</code>：how quickly<em>（英语）</em></p>
+<p><strong class="ui">wh-名词短语</strong> <code>WHNP</code>：which book<em>（英语）</em></p>
+<p><strong class="ui">wh-介词短语</strong> <code>WHPP</code>：in which case<em>（英语）</em></p>
+<p><strong class="ui">未知</strong> <code>X</code> <em>（英语）</em></p>
+<p><strong class="ui">小句</strong> <code>S</code>：主语加谓语<em>（德语）</em></p>
+<p><strong class="ui">并列小句</strong> <code>CS</code>：由und或oder连接的小句<em>（德语）</em></p>
+<p><strong class="ui">名词短语</strong> <code>NP</code>：das alte Haus<em>（德语）</em></p>
+<p><strong class="ui">并列名词短语</strong> <code>CNP</code>：Brot und Butter<em>（德语）</em></p>
+<p><strong class="ui">介词短语</strong> <code>PP</code>：im Garten<em>（德语）</em></p>
+<p><strong class="ui">并列介词短语</strong> <code>CPP</code>：im Haus und im Garten<em>（德语）</em></p>
+<p><strong class="ui">形容词短语</strong> <code>AP</code>：sehr alt<em>（德语）</em></p>
+<p><strong class="ui">并列形容词短语</strong> <code>CAP</code>：alt und müde<em>（德语）</em></p>
+<p><strong class="ui">副词短语</strong> <code>AVP</code>：ziemlich schnell<em>（德语）</em></p>
+<p><strong class="ui">并列副词短语</strong> <code>CAVP</code>：hier und dort<em>（德语）</em></p>
+<p><strong class="ui">非限定动词短语</strong> <code>VP</code>：不定式或分词短语<em>（德语）</em></p>
+<p><strong class="ui">并列动词短语</strong> <code>CVP</code>：并列的非限定动词组<em>（德语）</em></p>
+<p><strong class="ui">zu不定式</strong> <code>VZ</code>：zu gehen<em>（德语）</em></p>
+<p><strong class="ui">并列zu不定式</strong> <code>CVZ</code>：zu kommen und zu gehen<em>（德语）</em></p>
+<p><strong class="ui">并列</strong> <code>CO</code>：由连词连接的不同类成分<em>（德语）</em></p>
+<p><strong class="ui">多词专名</strong> <code>PN</code>：Johann Wolfgang von Goethe<em>（德语）</em></p>
+<p><strong class="ui">多词数字</strong> <code>NM</code>：zwei Millionen<em>（德语）</em></p>
+<p><strong class="ui">am最高级短语</strong> <code>AA</code>：am schönsten<em>（德语）</em></p>
+<p><strong class="ui">语块</strong> <code>CH</code>：外来或未分析的内容<em>（德语）</em></p>
+<p><strong class="ui">固定用语</strong> <code>ISU</code>：固定表达<em>（德语）</em></p>
+<p><strong class="ui">语篇层成分</strong> <code>DL</code>：句子层级之上的内容<em>（德语）</em></p>
+<p><strong class="ui">并列附置词</strong> <code>CAC</code>：vor und nach<em>（德语）</em></p>
+<p><strong class="ui">并列标句词</strong> <code>CCP</code>：ob und wann<em>（德语）</em></p>
+<p><strong class="ui">多词形容词</strong> <code>MTA</code>：New Yorker<em>（德语）</em></p>
+<p><strong class="ui">小句</strong> <code>IP</code>：主语加谓语<em>（中文）</em></p>
+<p><strong class="ui">带标句词的小句</strong> <code>CP</code>：以的或吗结尾的小句<em>（中文）</em></p>
+<p><strong class="ui">名词短语</strong> <code>NP</code>：那座老房子<em>（中文）</em></p>
+<p><strong class="ui">介词短语</strong> <code>PP</code>：在花园里<em>（中文）</em></p>
+<p><strong class="ui">形容词短语</strong> <code>ADJP</code>：大型、主要<em>（中文）</em></p>
+<p><strong class="ui">副词短语</strong> <code>ADVP</code>：非常、已经<em>（中文）</em></p>
+<p><strong class="ui">动词短语</strong> <code>VP</code>：吃了一个苹果<em>（中文）</em></p>
+<p><strong class="ui">的字短语</strong> <code>DNP</code>：修饰名词的X的<em>（中文）</em></p>
+<p><strong class="ui">地字短语</strong> <code>DVP</code>：修饰动词的X地<em>（中文）</em></p>
+<p><strong class="ui">方位短语</strong> <code>LCP</code>：桌子上、房间里<em>（中文）</em></p>
+<p><strong class="ui">量词短语</strong> <code>CLP</code>：量词及其所计量者<em>（中文）</em></p>
+<p><strong class="ui">数量短语</strong> <code>QP</code>：大约十个<em>（中文）</em></p>
+<p><strong class="ui">限定词短语</strong> <code>DP</code>：这本、每个<em>（中文）</em></p>
+<p><strong class="ui">并列动词复合</strong> <code>VCD</code>：并列成一体的动词；调查研究<em>（中文）</em></p>
+<p><strong class="ui">动结式复合</strong> <code>VRD</code>：动词加结果；打破<em>（中文）</em></p>
+<p><strong class="ui">连动结构</strong> <code>VSB</code>：一个动词接另一个动词<em>（中文）</em></p>
+<p><strong class="ui">动系复合</strong> <code>VCP</code>：与是融合的动词<em>（中文）</em></p>
+<p><strong class="ui">正反问</strong> <code>VNV</code>：去不去、是不是<em>（中文）</em></p>
+<p><strong class="ui">可能式</strong> <code>VPT</code>：内嵌得或不的动词；看得见<em>（中文）</em></p>
+<p><strong class="ui">列表标记</strong> <code>LST</code>：（一）、1.<em>（中文）</em></p>
+<p><strong class="ui">插入语</strong> <code>PRN</code>：（包括香港）<em>（中文）</em></p>
+<p><strong class="ui">句子片段</strong> <code>FRAG</code>：新华社北京电<em>（中文）</em></p>
+<p><strong class="ui">异类并列短语</strong> <code>UCP</code>：安全和稳定<em>（中文）</em></p>
+<p><strong class="ui">感叹词</strong> <code>INTJ</code>：啊、哎呀<em>（中文）</em></p>
+<h2 id="morphology">形态学<a class="anchor" href="#morphology" aria-hidden="true">#</a></h2>
+<p><strong class="ui">时态</strong> <code>Tense</code>：动作发生的时间；过去或现在<em>（英语、德语）</em></p>
+<p><strong class="ui">语法数</strong> <code>Number</code>：单数或复数<em>（英语、德语）</em></p>
+<p><strong class="ui">人称</strong> <code>Person</code>：第一人称（I）、第二人称（you）或第三人称（she）<em>（英语、德语）</em></p>
+<p><strong class="ui">语气</strong> <code>Mood</code>：陈述（陈述式）、命令（祈使式）或虚拟式<em>（英语、德语）</em></p>
+<p><strong class="ui">动词形式</strong> <code>VerbForm</code>：限定式、不定式、分词或动名词<em>（英语、德语）</em></p>
+<p><strong class="ui">格</strong> <code>Case</code>：主语形式（主格）、宾语形式（宾格、与格）或所属形式（属格）<em>（英语、德语）</em></p>
+<p><strong class="ui">比较等级</strong> <code>Degree</code>：原级、比较级或最高级<em>（英语、德语）</em></p>
+<p><strong class="ui">体</strong> <code>Aspect</code>：进行中（进行体）或已完成（完成体）<em>（英语、德语）</em></p>
+<p><strong class="ui">性</strong> <code>Gender</code>：阳性、阴性或中性<em>（英语、德语）</em></p>
+<p><strong class="ui">代词类型</strong> <code>PronType</code>：人称、指示、疑问、关系<em>（英语、德语）</em></p>
+<p><strong class="ui">定指性</strong> <code>Definite</code>：定指（the）或不定指（a）<em>（英语、德语）</em></p>
+<p><strong class="ui">极性</strong> <code>Polarity</code>：否定；not、never<em>（英语、德语）</em></p>
+<p><strong class="ui">物主</strong> <code>Poss</code>：表示所属的词；my、their<em>（英语、德语）</em></p>
+<p><strong class="ui">反身</strong> <code>Reflex</code>：反身代词；herself、themselves<em>（英语、德语）</em></p>
+<p><strong class="ui">数词类型</strong> <code>NumType</code>：基数（three）、序数（third）或倍数（once）<em>（英语、德语）</em></p>
+<p><strong class="ui">标点类型</strong> <code>PunctType</code>：句号、逗号、引号、括号或破折号<em>（英语、德语）</em></p>
+<p><strong class="ui">连词类型</strong> <code>ConjType</code>：并列连词；and、or、but<em>（英语、德语）</em></p>
+<p><strong class="ui">完成体</strong> <code>Aspect=Perf</code> <em>（英语、德语）</em></p>
+<p><strong class="ui">进行体</strong> <code>Aspect=Prog</code> <em>（英语、德语）</em></p>
+<p><strong class="ui">宾格</strong> <code>Case=Acc</code> <em>（英语、德语）</em></p>
+<p><strong class="ui">与格</strong> <code>Case=Dat</code> <em>（英语、德语）</em></p>
+<p><strong class="ui">属格</strong> <code>Case=Gen</code> <em>（英语、德语）</em></p>
+<p><strong class="ui">主格</strong> <code>Case=Nom</code> <em>（英语、德语）</em></p>
+<p><strong class="ui">并列</strong> <code>ConjType=Cmp</code> <em>（英语、德语）</em></p>
+<p><strong class="ui">定指</strong> <code>Definite=Def</code> <em>（英语、德语）</em></p>
+<p><strong class="ui">不定指</strong> <code>Definite=Ind</code> <em>（英语、德语）</em></p>
+<p><strong class="ui">比较级</strong> <code>Degree=Cmp</code> <em>（英语、德语）</em></p>
+<p><strong class="ui">原级</strong> <code>Degree=Pos</code> <em>（英语、德语）</em></p>
+<p><strong class="ui">最高级</strong> <code>Degree=Sup</code> <em>（英语、德语）</em></p>
+<p><strong class="ui">阴性</strong> <code>Gender=Fem</code> <em>（英语、德语）</em></p>
+<p><strong class="ui">阳性</strong> <code>Gender=Masc</code> <em>（英语、德语）</em></p>
+<p><strong class="ui">中性</strong> <code>Gender=Neut</code> <em>（英语、德语）</em></p>
+<p><strong class="ui">祈使式</strong> <code>Mood=Imp</code> <em>（英语、德语）</em></p>
+<p><strong class="ui">陈述式</strong> <code>Mood=Ind</code> <em>（英语、德语）</em></p>
+<p><strong class="ui">虚拟式</strong> <code>Mood=Sub</code> <em>（英语、德语）</em></p>
+<p><strong class="ui">基数</strong> <code>NumType=Card</code> <em>（英语、德语）</em></p>
+<p><strong class="ui">倍数</strong> <code>NumType=Mult</code> <em>（英语、德语）</em></p>
+<p><strong class="ui">序数</strong> <code>NumType=Ord</code> <em>（英语、德语）</em></p>
+<p><strong class="ui">复数</strong> <code>Number=Plur</code> <em>（英语、德语）</em></p>
+<p><strong class="ui">单数</strong> <code>Number=Sing</code> <em>（英语、德语）</em></p>
+<p><strong class="ui">第一人称</strong> <code>Person=1</code> <em>（英语、德语）</em></p>
+<p><strong class="ui">第二人称</strong> <code>Person=2</code> <em>（英语、德语）</em></p>
+<p><strong class="ui">第三人称</strong> <code>Person=3</code> <em>（英语、德语）</em></p>
+<p><strong class="ui">否定</strong> <code>Polarity=Neg</code> <em>（英语、德语）</em></p>
+<p><strong class="ui">物主</strong> <code>Poss=Yes</code> <em>（英语、德语）</em></p>
+<p><strong class="ui">冠词</strong> <code>PronType=Art</code> <em>（英语、德语）</em></p>
+<p><strong class="ui">指示</strong> <code>PronType=Dem</code> <em>（英语、德语）</em></p>
+<p><strong class="ui">不定指</strong> <code>PronType=Ind</code> <em>（英语、德语）</em></p>
+<p><strong class="ui">疑问</strong> <code>PronType=Int</code> <em>（英语、德语）</em></p>
+<p><strong class="ui">人称</strong> <code>PronType=Prs</code> <em>（英语、德语）</em></p>
+<p><strong class="ui">关系</strong> <code>PronType=Rel</code> <em>（英语、德语）</em></p>
+<p><strong class="ui">括号</strong> <code>PunctType=Brck</code> <em>（英语、德语）</em></p>
+<p><strong class="ui">逗号</strong> <code>PunctType=Comm</code> <em>（英语、德语）</em></p>
+<p><strong class="ui">破折号</strong> <code>PunctType=Dash</code> <em>（英语、德语）</em></p>
+<p><strong class="ui">句号</strong> <code>PunctType=Peri</code> <em>（英语、德语）</em></p>
+<p><strong class="ui">引号</strong> <code>PunctType=Quot</code> <em>（英语、德语）</em></p>
+<p><strong class="ui">反身</strong> <code>Reflex=Yes</code> <em>（英语、德语）</em></p>
+<p><strong class="ui">过去时</strong> <code>Tense=Past</code> <em>（英语、德语）</em></p>
+<p><strong class="ui">现在时</strong> <code>Tense=Pres</code> <em>（英语、德语）</em></p>
+<p><strong class="ui">限定式</strong> <code>VerbForm=Fin</code> <em>（英语、德语）</em></p>
+<p><strong class="ui">动名词</strong> <code>VerbForm=Ger</code> <em>（英语、德语）</em></p>
+<p><strong class="ui">不定式</strong> <code>VerbForm=Inf</code> <em>（英语、德语）</em></p>
+<p><strong class="ui">分词</strong> <code>VerbForm=Part</code> <em>（英语、德语）</em></p>
+<h2 id="statistics">文本统计<a class="anchor" href="#statistics" aria-hidden="true">#</a></h2>
+<p><strong class="ui">被动句比例</strong>：包含被动结构的句子比例。</p>
+<p><strong class="ui">不同词数</strong>：不同词元（类符）的数量。</p>
+<p><strong class="ui">词汇密度</strong>：实义词所占比例（不含 the、of、is 等虚词）；比例越高文本越紧凑。</p>
+<p><strong class="ui">词数</strong>：词符数，不计标点和空格。</p>
+<p><strong class="ui">段落</strong>：段落数；文本中有空行时按空行划分，否则按每个换行划分。</p>
+<p><strong class="ui">对话比例</strong>：引号内词汇所占比例；根据引号配对估算。</p>
+<p><strong class="ui">覆盖率</strong>：某一编码覆盖的文本字符所占比例，重叠片段只计一次。</p>
+<p><strong class="ui">共现</strong>：应用于同一文档中重叠段落的两个编码。</p>
+<p><strong class="ui">罕用词比例</strong>：仅出现一次的词在不同词汇中的比例。</p>
+<p><strong class="ui">句子</strong>：解析器识别出的句子数。</p>
+<p><strong class="ui">可读性指数（LIX）</strong> <code>LIX 指数</code>：句长加上超过六个字母的词汇比例；40 为中等难度。<em>（英语、德语）</em></p>
+<p><strong class="ui">类符形符比</strong> <code>TTR</code>：不同词数除以总词数；数值越高，词汇越丰富。</p>
+<p><strong class="ui">每段句数</strong>：每段平均句数。</p>
+<p><strong class="ui">每句小句数</strong>：每句包含的小句成分平均数。</p>
+<p><strong class="ui">每句字数</strong>：每句平均字符数；适用于汉语的长度指标。<em>（中文）</em></p>
+<p><strong class="ui">平均词长</strong>：每个词的平均字母数（汉语为每个词的平均字数）。</p>
+<p><strong class="ui">平均句法树深度</strong>：每句最深依存链的平均深度。</p>
+<p><strong class="ui">平均句长</strong>：每句平均词数。</p>
+<p><strong class="ui">平均依存距离</strong> <code>MDD</code>：词与其句法中心词之间的平均距离；距离越大，加工难度越高。</p>
+<p><strong class="ui">嵌套小句比例</strong>：嵌套在其他小句之内的小句比例。</p>
+<p><strong class="ui">维也纳实用文公式</strong>：基于音节、句长与词长的德语学校年级估计。音节数为估算值。<em>（德语）</em></p>
+<p><strong class="ui">虚词比例</strong>：虚词（如 the、of、is）所占比例。</p>
+<p><strong class="ui">移动平均类符形符比</strong> <code>MATTR</code>：在 100 词滑动窗口上平均的类符形符比，可在不同长度的文本间比较。</p>
+<p><strong class="ui">疑问句与感叹句</strong>：以问号或感叹号结尾的句子所占比例。</p>
+<p><strong class="ui">助词密度</strong>：每 100 词中的助词（如“的”“了”“着”）数量。<em>（中文）</em></p>
+<p><strong class="ui">字符数</strong>：文本中的字符数。</p>
+<p><strong class="ui">自动可读性指数</strong> <code>ARI 指数</code>：基于每词字符数与每句词数的年级估计。<em>（英语）</em></p>
+<p><strong class="ui">Coleman-Liau 指数</strong>：基于每 100 词的字母数与句数的年级估计；不涉及音节统计。<em>（英语）</em></p>
+<p><strong class="ui">Flesch 易读度</strong>：0–100 分制，分数越高越易读；60–70 相当于平易的英语。音节数为估算值。<em>（英语）</em></p>
+<p><strong class="ui">Flesch-Amstad 指数</strong>：Flesch 易读度的德语改编版；分数越高越易读。音节数为估算值。<em>（德语）</em></p>
+<p><strong class="ui">Flesch-Kincaid 年级</strong>：流畅阅读该文本所需的美国学校年级。音节数为估算值。<em>（英语）</em></p>
+<p><strong class="ui">Gunning Fog 指数</strong>：所需受教育年数；统计长句及三音节以上的词。音节数为估算值。<em>（英语）</em></p>
+<p><strong class="ui">SMOG 可读性公式</strong> <code>SMOG 指数</code>：基于每句三音节以上词汇数的年级估计，按 30 句折算。音节数为估算值。<em>（英语）</em></p>
+<h2 id="measures">关联度量<a class="anchor" href="#measures" aria-hidden="true">#</a></h2>
+<p><strong class="ui">对数似然比</strong> <code>LL</code>：比较观察共现与期望共现的显著性统计量（G²）；值越高，关联证据越强。</p>
+<p><strong class="ui">互信息</strong> <code>MI</code>：观察共现与期望共现之比以 2 为底的对数：两个词共现比随机情况多出多少。</p>
+<p><strong class="ui">卡方检验</strong> <code>χ²</code>：检验含有某一编码的文档比例在三个或更多组之间的差异是否超出偶然所能解释的范围；没有取值的文档不计入。</p>
+<p><strong class="ui">克莱姆 V 系数</strong> <code>V</code>：卡方检验所衡量的差异强度，取值从 0（无差异）到 1。</p>
+<p><strong class="ui">立方互信息</strong> <code>MI3</code>：互信息的一种变体，对观察频次取三次方，以减弱其对罕见词对的偏向。</p>
+<p><strong class="ui">频次</strong> <code>f</code>：两个词共同出现的次数：在<strong class="ui">搭配词</strong>中指在窗口内共同出现，在词汇速写中指在该关系中相连。</p>
+<p><strong class="ui">期望值</strong>：若两个词相互独立，预期的共现次数。</p>
+<p><strong class="ui">Dice 系数</strong> <code>Dice</code>：共现次数的两倍除以搭配成分的频次与节点词总数之和（对搭配词而言是其窗口中的词数，对词汇速写而言是它在该关系中的配对次数）；取值范围为 0 到 1。</p>
+<p><strong class="ui">Fisher 精确检验</strong>：适用于小频数的显著性检验，用于在速写空间中找出特征关系，以及在编码矩阵中比较两个组。</p>
+<p><strong class="ui">logDice</strong>：14 加上 Dice 系数以 2 为底的对数；最大值为 14，便于在不同规模的语料库之间比较。</p>
+<p><strong class="ui">p 值</strong> <code>p</code>：至少如此强的关联纯属偶然出现的概率；值越小，证据越强。</p>
+<p><strong class="ui">Phi 系数</strong> <code>φ</code>：两个编码之间的关联强度，取值 0 到 1，根据其段落重叠情况计算。</p>
+<p><strong class="ui">t 值</strong>：观察共现减去期望共现，再除以观察频次的平方根；偏向高频、可靠的词对。</p>
+<p><strong class="ui">z 值</strong>：观察共现减去期望共现，再除以期望频次的平方根。</p>
+<h2 id="sketches">词汇速写<a class="anchor" href="#sketches" aria-hidden="true">#</a></h2>
+<p><strong class="ui">编码速写</strong>：搭配成分按覆盖它们的编码分组的词汇速写。</p>
+<p><strong class="ui">宾语</strong>：充当所速写动词宾语的名词。</p>
+<p><strong class="ui">并列于</strong>：通过 and、or 等连词与所速写词语并列的词。</p>
+<p><strong class="ui">补语</strong>：补足所速写词语的词或从句。</p>
+<p><strong class="ui">词汇速写</strong>：对一个词的语法搭配成分的一页式概览，按关系分组并按 logDice 排序。</p>
+<p><strong class="ui">搭配词</strong>：出现在另一个词附近的频率高于随机预期的词。</p>
+<p><strong class="ui">副词修饰语</strong>：修饰所速写词语的副词。</p>
+<p><strong class="ui">构成复合词</strong>：与所速写词语构成复合词的词。</p>
+<p><strong class="ui">介词短语</strong>：附着于所速写词语的介词短语，按介词分组。</p>
+<p><strong class="ui">速写空间</strong>：跨编码或文档组比较一个词的语法搭配成分，标出哪些关系是各编码或各组的特征。</p>
+<p><strong class="ui">特征关系</strong> <code>*</code>：某一编码或文档组使用频率显著高于范围内其余部分的关系（单侧 Fisher 精确检验，p &lt; 0.05）。</p>
+<p><strong class="ui">形容词修饰语</strong>：修饰所速写名词的形容词。</p>
+<p><strong class="ui">修饰</strong>：被所速写词语修饰的词。</p>
+<p><strong class="ui">修饰语</strong>：在速写空间中合并的所有修饰关系：<strong class="ui">形容词修饰语</strong>、<strong class="ui">副词修饰语</strong>和<strong class="ui">修饰</strong>。</p>
+<p><strong class="ui">主语</strong>：充当所速写动词主语的名词。</p>
+<p><strong class="ui">作宾语于</strong>：以所速写名词为宾语的动词。</p>
+<p><strong class="ui">作补语于</strong>：被所速写词语补足的词。</p>
+<p><strong class="ui">作主语于</strong>：以所速写名词为主语的动词。</p>
+<h2 id="discourse">语篇<a class="anchor" href="#discourse" aria-hidden="true">#</a></h2>
+<p><strong class="ui">被动语态</strong>：施动者退出主语位置，凸显受动者。</p>
+<p><strong class="ui">代词衔接</strong>：句子的主位用代词回指前文已提及的内容。</p>
+<p><strong class="ui">独立结构</strong>：名词加分词，独立于主句之外，聚焦于某个细节。<em>（英语）</em></p>
+<p><strong class="ui">关联词对</strong>：成对连词，为所连接的成分增添额外分量。</p>
+<p><strong class="ui">焦点结构</strong>：there 变换、what 分裂句和 it 分裂句，通过重构句子将新信息置于重音位置。</p>
+<p><strong class="ui">介入</strong>：直接把读者带入（你、我们、考虑、设想）。</p>
+<p><strong class="ui">开头</strong>：文档的首句，前面没有可以衔接的内容。</p>
+<p><strong class="ui">力量词</strong>：最高级或经强化的词语，攫取重音，把事实变成可争辩的主张。</p>
+<p><strong class="ui">连接语</strong>：在观点之间引导读者（然而、因此、与此同时）。</p>
+<p><strong class="ui">零形回指</strong>：主语省略，可从前句推知；在汉语中很常见。<em>（中文）</em></p>
+<p><strong class="ui">领属衔接</strong>：主位用物主词（如 its 或 their）回指前文。</p>
+<p><strong class="ui">名词化</strong>：被包装成名词的动作（decide -&gt; decision）。它隐藏了谁在做什么并堆叠抽象概念；将其拆解即可还原出鲜活的动词。</p>
+<p><strong class="ui">模糊限制语</strong>：弱化论断；为怀疑留出余地（也许、可能、暗示）。</p>
+<p><strong class="ui">排比</strong>：并列成分构建成相同的语法形式（三项排比、对称的一对），使形式本身承载意义。</p>
+<p><strong class="ui">前置开头</strong>：以状语或分词短语开头，而不是主语，在施动者登场之前先铺设场景。</p>
+<p><strong class="ui">情态小品词</strong>：调节话语对听者的语气（ja、doch、eben、halt）。<em>（德语）</em></p>
+<p><strong class="ui">首语重复</strong>：连续数句以相同的词语开头，借助重复营造节奏与强调。</p>
+<p><strong class="ui">态度标记</strong>：标示作者对内容的态度（不幸的是、值得注意的是）。</p>
+<p><strong class="ui">同位语</strong>：一个名词短语紧挨另一个，用来重新指称它，无需动用整个从句便可补充信息。</p>
+<p><strong class="ui">衔接检查</strong>：从已知到新知的契约；每个句子都应从熟悉之处开始。</p>
+<p><strong class="ui">新话题</strong>：主位与前两句没有衔接，或句子根本没有主位，可能造成衔接中断。</p>
+<p><strong class="ui">疑问 / 命令</strong>：从平铺直叙中转出；用问句把读者拉进来，用祈使句直接对读者说话。</p>
+<p><strong class="ui">语气助词</strong>：句末语气标记（吗、呢、吧、啊）。<em>（中文）</em></p>
+<p><strong class="ui">圆周句</strong>：主动词姗姗来迟，位于层层修饰语之后，让读者悬而未决，直到分句收束。<em>（英语、德语）</em></p>
+<p><strong class="ui">增强语</strong>：排除疑虑；使作者完全确信（显然、必定）。</p>
+<p><strong class="ui">指示衔接</strong>：主位用指示词（如 this 或 these）回指前文。</p>
+<p><strong class="ui">重复词语</strong>：主位重复前面句子中的实词。</p>
+<h2 id="symbols">缩写与符号<a class="anchor" href="#symbols" aria-hidden="true">#</a></h2>
+<p><strong class="ui">便携式网络图形</strong> <code>PNG</code>：用于导出图形的位图图像格式。</p>
+<p><strong class="ui">便携式文档格式</strong> <code>PDF</code>：一种文档格式；导出的图形为矢量 PDF，PDF 也可作为文档导入。</p>
+<p><strong class="ui">宾语补足语</strong> <code>OC</code>：在句型中，描述宾语的短语，如 they elected her president。<em>（英语）</em></p>
+<p><strong class="ui">宾州树库</strong> <code>PTB</code>：细粒度的英语词性标记集与短语标记。<em>（英语）</em></p>
+<p><strong class="ui">宾州中文树库</strong> <code>CTB</code>：用于细粒度词性标记和短语标记的汉语标注体系。<em>（中文）</em></p>
+<p><strong class="ui">词符</strong> <code>T</code>：词符在句中的编号，显示于阅读器状态栏。</p>
+<p><strong class="ui">搭配窗口</strong> <code>± n</code>：查找搭配词时，词语两侧在同一句内各计入多少个词符位置作为邻近范围。</p>
+<p><strong class="ui">动词</strong> <code>V</code>：在句型中，主要动词。<em>（英语）</em></p>
+<p><strong class="ui">逗号分隔值</strong> <code>CSV</code>：电子表格可打开的纯文本表格格式。</p>
+<p><strong class="ui">段落</strong> <code>¶</code>：段落编号，显示于阅读器状态栏和位置标记中。</p>
+<p><strong class="ui">根</strong> <code>ROOT</code>：依存树中整个句子的中心词。</p>
+<p><strong class="ui">间接宾语</strong> <code>IO</code>：在句型中，动作的接受者或受益者。<em>（英语）</em></p>
+<p><strong class="ui">句子</strong> <code>S</code>：句子编号，显示于阅读器状态栏。</p>
+<p><strong class="ui">美国心理学会</strong> <code>APA</code>：一种引用格式。</p>
+<p><strong class="ui">数字对象标识符</strong> <code>DOI</code>：出版物的永久标识符。</p>
+<p><strong class="ui">斯图加特-图宾根标记集</strong> <code>STTS</code>：细粒度的德语词性标记集。<em>（德语）</em></p>
+<p><strong class="ui">通用词性标记</strong> <code>UPOS</code>：Universal Dependencies 的词性标记，各语言通用。</p>
+<p><strong class="ui">网址</strong> <code>URL</code>：网页地址。</p>
+<p><strong class="ui">系动词</strong> <code>LV</code>：在句型中，如 seem 或 become 这类将主语与描述联系起来的动词。<em>（英语）</em></p>
+<p><strong class="ui">现代语言协会</strong> <code>MLA</code>：一种引用格式。</p>
+<p><strong class="ui">隐含主语</strong> <code>(You)</code>：在句型中，祈使句中未说出的主语。<em>（英语）</em></p>
+<p><strong class="ui">正则表达式</strong> <code>regex</code>：一种文本模式；用于将匹配的文本排除在索引之外，以及在查询中匹配文本。</p>
+<p><strong class="ui">直接宾语</strong> <code>DO</code>：在句型中，直接受动词影响的名词短语。<em>（英语）</em></p>
+<p><strong class="ui">质性数据分析</strong> <code>QDA</code>：对文本、录音等非数值材料的分析，通常通过为段落编码进行。</p>
+<p><strong class="ui">主语</strong> <code>S</code>：在句型中，主语。<em>（英语）</em></p>
+<p><strong class="ui">主语补足语</strong> <code>SC</code>：在句型中，be 或系动词之后描述主语的短语。<em>（英语）</em></p>
+<p><strong class="ui">状语</strong> <code>ADV</code>：在句型中，be 之后必需的状语，如地点或时间。<em>（英语）</em></p>
+<p><strong class="ui">be 的形式</strong> <code>be</code>：在句型中，动词 be 的任何形式。<em>（英语）</em></p>
+<p><strong class="ui">TIGER</strong>：用于依存关系和短语标记的德语树库标注体系。<em>（德语）</em></p>
+</article>
+<nav class="pager"><a class="previous" href="statistics-reference.html"><span>上一章</span>统计量一览</a><a class="next" href="thanks.html"><span>下一章</span>感谢</a></nav>
+<footer class="site-footer">© 2026 Ryan S. Cooper. 保留所有权利。<br>本版本借助人工智能根据英文原版翻译而成，译文可能存在错误或不准确之处。如有疑问，请以英文版为准。</footer>
+</main>
+<nav class="page-toc" aria-label="本页内容"><p>本页内容</p><ul>
+<li class="level-2"><a href="#concepts">概念</a></li>
+<li class="level-2"><a href="#reader">阅读器与透镜</a></li>
+<li class="level-2"><a href="#grammar">语法</a></li>
+<li class="level-2"><a href="#parts-of-speech">词性标记</a></li>
+<li class="level-2"><a href="#dependencies">依存关系</a></li>
+<li class="level-2"><a href="#phrases">短语标记</a></li>
+<li class="level-2"><a href="#morphology">形态学</a></li>
+<li class="level-2"><a href="#statistics">文本统计</a></li>
+<li class="level-2"><a href="#measures">关联度量</a></li>
+<li class="level-2"><a href="#sketches">词汇速写</a></li>
+<li class="level-2"><a href="#discourse">语篇</a></li>
+<li class="level-2"><a href="#symbols">缩写与符号</a></li>
+</ul></nav>
+</div>
+<script src="../assets/guide.js" defer></script>
+</body>
+</html>

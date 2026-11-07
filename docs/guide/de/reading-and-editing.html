@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesen und Bearbeiten · LemmaLoom Benutzerhandbuch</title>
+<link rel="stylesheet" href="../assets/guide.css">
+<link rel="icon" type="image/png" href="../assets/logo.png">
+<script>var r=document.documentElement;r.setAttribute('data-theme','light');try{if(localStorage.getItem('guide-theme')==='dark'){r.setAttribute('data-theme','dark')}}catch(e){}</script>
+</head>
+<body>
+<header class="topbar">
+<button class="menu-toggle" aria-label="Inhalt" aria-expanded="false">☰</button>
+<a class="brand" href="index.html"><span class="wordmark"><span class="lemma">Lemma</span>Loom</span><span class="guide-name">Benutzerhandbuch</span></a>
+<div class="search"><input type="search" id="search" placeholder="Suchen" aria-label="Suchen" autocomplete="off" data-empty="Keine Treffer"><div class="results" id="results" hidden></div></div>
+<nav class="languages" aria-label="Language"><a href="../en/reading-and-editing.html" lang="en">English</a><a href="../de/reading-and-editing.html" lang="de" aria-current="true">Deutsch</a><a href="../zh-Hans/reading-and-editing.html" lang="zh-Hans">简体中文</a></nav>
+<button class="theme-toggle" data-light="Hell" data-dark="Dunkel" aria-label="Erscheinungsbild"></button>
+<a class="pdf-link" href="https://github.com/LemmaLoom/public/raw/main/pdf/lemmaloom-guide-de.pdf">PDF</a>
+</header>
+<div class="layout">
+<nav class="sidebar" aria-label="Inhalt"><ol>
+<li class="unnumbered"><a href="quick-start.html">Schnellstart</a></li>
+<li><a href="introduction.html">Einführung</a></li>
+<li><a href="getting-started.html">Erste Schritte</a></li>
+<li><a href="projects-and-documents.html">Projekte und Dokumente</a></li>
+<li><a href="importing.html">Material importieren</a></li>
+<li class="current"><a href="reading-and-editing.html">Lesen und Bearbeiten</a></li>
+<li><a href="lenses.html">Lenses</a></li>
+<li><a href="coding.html">Kodieren</a></li>
+<li><a href="sets-tags-attributes.html">Sets, Gruppen, Tags und Attribute</a></li>
+<li><a href="translations.html">Übersetzungen und geteilte Ansicht</a></li>
+<li><a href="text-inspector.html">Der Text-Inspektor</a></li>
+<li><a href="grammar-inspector.html">Der Grammatik-Inspektor</a></li>
+<li><a href="word-sketch.html">Wortskizze</a></li>
+<li><a href="coding-analysis.html">Codes auswerten</a></li>
+<li><a href="sketch-space.html">Skizzenraum</a></li>
+<li><a href="queries-building.html">Eine Abfrage erstellen</a></li>
+<li><a href="queries-results.html">Abfrageergebnisse und Statistik</a></li>
+<li><a href="queries-patterns.html">Abfragemuster und Erkundung</a></li>
+<li><a href="queries-using-results.html">Abfrageergebnisse nutzen</a></li>
+<li><a href="dictionaries.html">Wörterbücher</a></li>
+<li><a href="custom-analyzers.html">Eigene Analysatoren</a></li>
+<li><a href="analysis-and-indexing.html">Analyse und Indizierung</a></li>
+<li><a href="exchange-and-export.html">Austausch und Export</a></li>
+<li><a href="undo.html">Widerrufen und Wiederholen</a></li>
+<li><a href="settings.html">Einstellungen und Darstellung</a></li>
+<li><a href="keyboard-shortcuts.html">Tastaturkurzbefehle</a></li>
+<li><a href="help-and-support.html">Hilfe und Support</a></li>
+<li><a href="statistics-reference.html">Statistik im Überblick</a></li>
+<li class="unnumbered"><a href="glossary.html">Glossar</a></li>
+<li class="unnumbered"><a href="thanks.html">Vielen Dank</a></li>
+</ol></nav>
+<main class="content">
+<article>
+<h1 id="reading-and-editing">Lesen und Bearbeiten</h1>
+<p>Die Leseansicht in LemmaLoom ist der mittlere Bereich des Hauptfensters, der den Text Ihres Dokuments enthält. Hier lesen Sie Ihre Dokumente, durchsuchen die Texte, wählen Wörter und Textstellen zum Kodieren oder Annotieren aus und bearbeiten den Text selbst. Wurde das Dokument als Audio- oder Videodatei importiert, zeigt die Leseansicht das Transkript mit der Wiedergabeleiste darüber, sodass Sie die Aufnahme hören können, während Sie das Transkript lesen.</p>
+<p>Die Beispiele in diesem Kapitel beziehen sich auf das Beispielprojekt „Klimadebatte“ (siehe <a href="introduction.html#example-project">Das Beispielprojekt</a> in <a href="introduction.html">Kapitel 1, Einführung</a>). Die meisten stammen aus seinen Meinungsbeiträgen und Kolumnen, etwa „Uns läuft die Zeit davon“ oder „Netto-Null wird teuer“, während sich die Beispiele zu Aufnahmen auf das Dokument „Radiodebatte“ stützen. Sie können das Beispielprojekt über <strong class="ui">Ablage ▸ Importieren ▸ Beispielprojekt</strong> selbst laden; LemmaLoom importiert es als neues Projekt in der Sprache der Benutzeroberfläche.</p>
+<h2 id="the-reader">Die Leseansicht<a class="anchor" href="#the-reader" aria-hidden="true">#</a></h2>
+<p>Wenn Sie in der Seitenleiste auf ein Dokument klicken, öffnet es sich in einem Tab der Leseansicht. Die Leseansicht besteht bei jedem Dokument aus denselben Teilen:</p>
+<ul>
+<li>Die <em>Titelleiste</em> liegt über der Textspalte, auf der Höhe der Fensterknöpfe. Ganz links zeigt sie den Titel LemmaLoom, ganz rechts die Werkzeuge der Leseansicht.</li>
+<li>Die Textspalte nimmt den größten Teil der Leseansicht ein und enthält den gesamten Text. Die Zeilen enden bei einer angenehmen Lesebreite.</li>
+<li>Die <em>Randspalte</em> links neben der Textspalte nummeriert Absätze und Sätze und zeigt alle Ihre Annotationen. Dazu gehören Kodierungen (Textstellen, die Sie kodiert haben), Memos, Lesezeichen und Verknüpfungen. Für jedes annotierte Element erscheint in der Randspalte das passende Symbol.</li>
+<li>Die <em>Dokumentübersicht</em> ganz rechts in der Leseansicht gibt Ihnen einen Überblick darüber, wo sich im Dokument welche Elemente befinden, bezogen auf den gerade sichtbaren Ausschnitt.</li>
+<li>Die <em>Statusleiste</em> unter der Textspalte zeigt Ihre Position im Dokument und die Gesamtlänge des Dokuments.</li>
+</ul>
+<p>Zwischen Titelleiste und Text können außerdem die Suchleiste, eine Legende für die meisten aktivierten Lenses und die Wiedergabeleiste für Audio und Video erscheinen.</p>
+<p>Wie die Abbildung unten zeigt, trägt „Netto-Null wird teuer“, ein skeptischer Meinungsbeitrag aus „Klimadebatte“, überwiegend Kodierungen mit dem Code „Kosten“. Einige Textstellen tragen andere Codes, etwa „Unsicherheit“, „Verantwortung“, „Dringlichkeit“ oder „Fristen“. Ein Satz über eine Rechnung, die „in die Hunderte Milliarden“ geht, trägt sowohl „Kosten“ als auch „Verantwortung“; deshalb steht neben ihm in der Randspalte eine zusammengefasste Annotation mit zwei Punkten.</p>
+<figure class="shot" id="reading-and-editing-reader"><img class="shot-light" src="../figures/de/light/reading-and-editing-reader.webp" alt="„Netto-Null wird teuer“ in der Leseansicht, mit Absatz- und Satznummern und kodierten Textstellen in der Randspalte, der Dokumentübersicht rechts und der Statusleiste darunter." loading="lazy"><img class="shot-dark" src="../figures/de/dark/reading-and-editing-reader.webp" alt="„Netto-Null wird teuer“ in der Leseansicht, mit Absatz- und Satznummern und kodierten Textstellen in der Randspalte, der Dokumentübersicht rechts und der Statusleiste darunter." loading="lazy"><figcaption>„Netto-Null wird teuer“ in der Leseansicht, mit Absatz- und Satznummern und kodierten Textstellen in der Randspalte, der Dokumentübersicht rechts und der Statusleiste darunter.</figcaption></figure>
+<h3 id="title-band">Die Titelleiste<a class="anchor" href="#title-band" aria-hidden="true">#</a></h3>
+<p>Die Schaltflächen am rechten Ende der Titelleiste beziehen sich auf das Dokument, das Sie gerade ansehen. Sind zwei Dokumente nebeneinander geöffnet, gelten sie für den aktiven Bereich, also den, in den Sie zuletzt geklickt haben (siehe <a href="#split-view">Zwei Dokumente nebeneinander lesen</a> weiter unten in diesem Kapitel). Von links nach rechts haben die Schaltflächen diese Aufgaben:</p>
+<ul>
+<li>Das Lens-Menü zeigt den Namen der aktivierten Lens, bei mehreren aktivierten Lenses deren Anzahl oder <strong class="ui">Lens</strong>, wenn keine aktiviert ist. In einem neu geöffneten Dokument sind die Lenses <strong class="ui">Lesezeichen</strong> und <strong class="ui">Codes</strong> aktiviert, sodass das Menü <strong class="ui">2 Lenses</strong> zeigt. Bis das Dokument indiziert ist, bleibt das Menü deaktiviert.</li>
+<li>Die Schaltfläche zum Einklappen mit dem Tooltip <strong class="ui">Nur die Sätze anzeigen, die eine Lens annotiert</strong> klappt das ganze Dokument auf die Sätze ein, die die aktivierten Lenses annotieren. Ein erneuter Klick hebt das Einklappen wieder auf. Die Schaltfläche erscheint nur, wenn eine Lens etwas zu annotieren hat (siehe <a href="lenses.html">Kapitel 6, Lenses</a>).</li>
+<li><strong class="ui">Im Dokument suchen</strong>, dargestellt durch die Lupe, blendet die Suchleiste ein.</li>
+<li><strong class="ui">Schrift, Randspalte und Textgröße</strong>, dargestellt durch ein großes A neben einem kleinen, öffnet ein Menü mit Optionen für die Darstellung des Dokuments.</li>
+<li><strong class="ui">Bearbeiten</strong> schaltet die Leseansicht in den Bearbeitungsmodus.</li>
+</ul>
+<p>Im Bearbeitungsmodus zeigt die Titelleiste nur noch <strong class="ui">Abbrechen</strong> und <strong class="ui">Sichern</strong>.</p>
+<h3 id="gutter">Die Randspalte<a class="anchor" href="#gutter" aria-hidden="true">#</a></h3>
+<p>Die Randspalte besteht aus zwei Teilen. Ganz links stehen die Nummern, in der linken Spalte die der Absätze und in der rechten die der Sätze. Die Sätze sind durch das ganze Dokument fortlaufend nummeriert. Beginnen mehrere Sätze in derselben Zeile, teilen sich ihre Nummern diese Zeile, durch Kommas getrennt, so viele, wie in die Spalte passen.</p>
+<p>Um einen ganzen Absatz oder Satz auszuwählen, klicken Sie in der Randspalte auf seine Nummer. Sind beide Spalten zu sehen, wählt ein Klick in die linke Spalte Absätze aus und ein Klick in die rechte Sätze. Eine so ausgewählte Textstelle behandeln Sie wie jede andere Auswahl und können sie zum Beispiel kodieren. Ein Klick auf eine Nummer ist sogar der schnellste Weg, einen ganzen Absatz oder Satz zu kodieren (siehe <a href="#selecting-text">Text auswählen</a> weiter unten in diesem Kapitel).</p>
+<p>Zwischen den Nummern und dem Text liegt der Randbereich, in dem alles erscheint, was Sie dem Dokument hinzugefügt haben. Kodierungen erscheinen hier, wenn die Lens <strong class="ui">Codes</strong> aktiviert ist, Lesezeichen entsprechend, wenn <strong class="ui">Lesezeichen</strong> aktiviert ist. Memos und Verknüpfungen erscheinen unabhängig von der aktuellen Lens.</p>
+<ul>
+<li>Neben jeder kodierten Textstelle steht ein schmaler Balken in der Farbe ihres Codes. Überlappende Kodierungen stehen nebeneinander. Alle Balken nach dem dritten teilen sich den dritten Platz. Wenn Sie den Mauszeiger auf einen Balken halten, wird die zugehörige Textstelle im Text hervorgehoben.</li>
+<li>Wo eine Kodierung, ein Memo, ein Lesezeichen oder eine Verknüpfung beginnt, steht eine kleine Annotation. Annotationen von Kodierungen enthalten den Namen des Codes, Annotationen von Memos den Anfang des Memos. Annotationen von Lesezeichen zeigen den Kommentar zum Lesezeichen, Annotationen von Verknüpfungen die Art der Verknüpfung.</li>
+<li>Wo Annotationen sich überlappen würden, werden sie zu einer grauen Annotation mit farbigen Punkten und einer Zahl zusammengefasst.</li>
+</ul>
+<p>Ein Klick auf eine Annotation oder einen Balken wählt die Textstelle aus, zu der das Element gehört. Ein Klick auf die Annotation einer Verknüpfung führt dagegen zur Textstelle am anderen Ende der Verknüpfung und öffnet bei Bedarf das andere Dokument. Im Projekt „Klimadebatte“ führt zum Beispiel die Verknüpfung an einer Textstelle im Meinungsbeitrag „Netto-Null wird teuer“ direkt zur Rede „Das Versprechen der Bürgermeisterin“, auf die er antwortet. Wenn Sie den Mauszeiger auf eine Annotation halten, sehen Sie ein Memo, eine Verknüpfung oder einen langen Lesezeichenkommentar vollständig; das Popover einer Verknüpfung zeigt deren Angaben zusammen mit <strong class="ui">Zum anderen Ende springen</strong>. Wenn Sie auf eine zusammengefasste Annotation zeigen oder klicken, erscheinen alle ihre Einträge in einer Liste, und ein Klick auf einen Eintrag wählt dessen Textstelle aus oder springt bei einer Verknüpfung zum anderen Ende.</p>
+<figure class="shot" id="reading-and-editing-link-popover"><img class="shot-light" src="../figures/de/light/reading-and-editing-link-popover.webp" alt="Die Annotation einer Verknüpfung in „Netto-Null wird teuer“ mit dem Mauszeiger darüber; das Popover zeigt die Verknüpfung zu „Das Versprechen der Bürgermeisterin“ und Zum anderen Ende springen." loading="lazy"><img class="shot-dark" src="../figures/de/dark/reading-and-editing-link-popover.webp" alt="Die Annotation einer Verknüpfung in „Netto-Null wird teuer“ mit dem Mauszeiger darüber; das Popover zeigt die Verknüpfung zu „Das Versprechen der Bürgermeisterin“ und Zum anderen Ende springen." loading="lazy"><figcaption>Die Annotation einer Verknüpfung in „Netto-Null wird teuer“ mit dem Mauszeiger darüber; das Popover zeigt die Verknüpfung zu „Das Versprechen der Bürgermeisterin“ und Zum anderen Ende springen.</figcaption></figure>
+<h3 id="minimap">Die Dokumentübersicht<a class="anchor" href="#minimap" aria-hidden="true">#</a></h3>
+<p>Die Dokumentübersicht am rechten Rand der Leseansicht ist eine Bildlaufleiste, die nach den aktivierten Lenses farbcodiert ist. Sie zeigt, wo im Dokument Sie sich gerade befinden und welche Teile des Dokuments die aktivierten Lenses annotieren, zum Beispiel mit Codes. Das ganze Dokument passt in den Streifen der Dokumentübersicht. Der Text selbst erscheint als blasse Linien, die von oben nach unten verlaufen, mit Lücken an den Absatzgrenzen. Kurze Absätze ganz in Großbuchstaben stehen für überschriftenartigen Text und erscheinen als dunklere Striche. Kodierte Abschnitte und die Wörter, die Ihre Lenses einfärben, erscheinen in ihren jeweiligen Farben.</p>
+<p>Die Dokumentübersicht hat noch einige weitere Merkmale:</p>
+<ul>
+<li>Ihre aktuelle Position im Dokument ist durch ein umrandetes Rechteck gekennzeichnet;</li>
+<li>Ihre Lesezeichen erscheinen als kleine Quadrate ganz links;</li>
+<li>Suchtreffer erscheinen als kurze Striche ganz rechts;</li>
+<li>das ausgewählte Wort erscheint als Linie quer über die Dokumentübersicht.</li>
+</ul>
+<p>Wenn Sie den Mauszeiger auf Abschnitte der Dokumentübersicht halten, sehen Sie eine Vorschau des Textes an dieser Stelle, nämlich den Absatz unter dem Mauszeiger mit seiner Nummer und die vier Absätze davor und danach. Sie können klicken, um im Text zu diesem Absatz zu springen (er wird kurz hervorgehoben), oder in der Dokumentübersicht nach oben und unten ziehen, um sich durch das Dokument zu bewegen.</p>
+<figure class="shot" id="reading-and-editing-document-overview"><img class="shot-light" src="../figures/de/light/reading-and-editing-document-overview.webp" alt="Die Dokumentübersicht von „Netto-Null wird teuer“ mit dem Mauszeiger darüber und der Vorschau des Absatzes unter dem Mauszeiger." loading="lazy"><img class="shot-dark" src="../figures/de/dark/reading-and-editing-document-overview.webp" alt="Die Dokumentübersicht von „Netto-Null wird teuer“ mit dem Mauszeiger darüber und der Vorschau des Absatzes unter dem Mauszeiger." loading="lazy"><figcaption>Die Dokumentübersicht von „Netto-Null wird teuer“ mit dem Mauszeiger darüber und der Vorschau des Absatzes unter dem Mauszeiger.</figcaption></figure>
+<h3 id="status-bar">Die Statusleiste<a class="anchor" href="#status-bar" aria-hidden="true">#</a></h3>
+<p>Das linke Ende der Statusleiste zeigt, wo das ausgewählte Element liegt. Bei einem ausgewählten Wort sehen Sie den Absatz und den Satz, zu denen es gehört, und seine Position im Satz (<strong class="ui">¶ 4 · S 22 · T 6</strong> steht zum Beispiel für den vierten Absatz, den zweiundzwanzigsten Satz und das sechste Token). Ein <em>Token</em> ist ein Wort oder ein Satzzeichen. Bei einer ausgewählten Textstelle sehen Sie Absatz und Satz, in denen sie beginnt und endet, sowie die Gesamtzahl ihrer Tokens.</p>
+<p>Sobald die Indizierung abgeschlossen ist, zeigt das rechte Ende knappe Angaben zum Dokument, zum Beispiel <strong class="ui">10 ¶ · 66 S · 1.084 Wörter</strong> bei „Uns läuft die Zeit davon“. Die Wortzahl beruht auf Tokens und schließt also Satzzeichen ein; welche Zahlen erscheinen, hängt von der Nummerierung der Randspalte ab. Bei <strong class="ui">Absätze</strong> sehen Sie die Zahl der Absätze und Wörter, bei <strong class="ui">Sätze</strong> die der Sätze und Wörter und bei <strong class="ui">Aus</strong> nur die der Wörter.</p>
+<p>Solange die Indizierung nicht abgeschlossen ist oder nicht laufen kann, erscheint statt der Zahlen der aktuelle Stand der Indizierung (siehe <a href="analysis-and-indexing.html#reader-status">In der Leseansicht</a> in <a href="analysis-and-indexing.html">Kapitel 21, Analyse und Indizierung</a>).</p>
+<p>Folgende Angaben sind möglich:</p>
+<ul>
+<li>während der ersten Indizierung der Name des aktuellen Schritts und ein Prozentwert;</li>
+<li>der Name des aktiven Analysators, gefolgt von <strong class="ui">läuft</strong>, während ein Analysator das Dokument verarbeitet (eine zusätzliche Verarbeitung für ein bestimmtes Merkmal, etwa Verbindungen zwischen Sätzen);</li>
+<li><strong class="ui">Keine Grammatikanalyse für</strong>, gefolgt vom Namen der Sprache, bei einer Sprache, für die es keine Grammatikanalyse gibt;</li>
+<li><strong class="ui">Indizierung ist aus</strong> mit einem Link <strong class="ui">Jetzt indizieren</strong>, wenn Sie beim Import <strong class="ui">Für die Grammatikanalyse indizieren</strong> deaktiviert und die Indizierung damit ausgeschaltet haben;</li>
+<li>der Grund und ein Link <strong class="ui">Indizierung wiederholen</strong>, wenn bei der Indizierung ein Problem auftritt.</li>
+</ul>
+<h3 id="before-analysis">Bevor die Indizierung abgeschlossen ist<a class="anchor" href="#before-analysis" aria-hidden="true">#</a></h3>
+<p>Sie können das Dokument lesen, sobald Sie es öffnen. Einige Funktionen der Leseansicht bleiben jedoch inaktiv, bis die Indizierung des Dokuments abgeschlossen ist:</p>
+<ul>
+<li>die Randspalte enthält nur Absatznummern, da die Sätze erst bei der Indizierung erkannt werden;</li>
+<li>Textstellen wählen Sie von Hand aus, indem Sie klicken und ziehen;</li>
+<li>das Lens-Menü ist deaktiviert;</li>
+<li>die Statusleiste zeigt den Fortschritt der Indizierung statt der Zahlen.</li>
+</ul>
+<p>Wie lange die Indizierung dauert, hängt von der Größe des Dokuments und von der Ausstattung Ihres Computers ab. Die Grammatikanalyse von LemmaLoom unterstützt Englisch, Deutsch und Chinesisch. Dokumente in anderen Sprachen bleiben in dem oben beschriebenen Zustand, lassen sich aber weiterhin lesen, durchsuchen, kodieren und bearbeiten.</p>
+<h3 id="reader-state">Was sich die Leseansicht merkt<a class="anchor" href="#reader-state" aria-hidden="true">#</a></h3>
+<p>Jedes Dokument merkt sich, wo Sie zuletzt gelesen haben, welche Lenses aktiviert waren und wie der Inspektor eingestellt war. Ein Projekt merkt sich die geöffneten Tabs, den aktiven Tab und welches Dokument in der geteilten Ansicht daneben geöffnet war. LemmaLoom behält all das auch beim Beenden, sodass sich die Leseansicht dort öffnet, wo Sie aufgehört haben.</p>
+<h2 id="text-appearance">Die Darstellung des Textes ändern<a class="anchor" href="#text-appearance" aria-hidden="true">#</a></h2>
+<p>Sie können die Schriftart, die Textgröße, den Inhalt der Randspalte und das Layout des Textes einstellen. Ihre Einstellungen gelten für alle Dokumente in allen Projekten und bleiben erhalten, bis Sie sie ändern.</p>
+<p>Diese Optionen können Sie an drei Stellen anpassen:</p>
+<ul>
+<li>im Menü <strong class="ui">Schrift, Randspalte und Textgröße</strong> in der Titelleiste, mit den Untermenüs <strong class="ui">Schrift</strong>, <strong class="ui">Randspalte</strong> und <strong class="ui">Layout</strong> sowie den Optionen <strong class="ui">Größerer Text</strong>, <strong class="ui">Kleinerer Text</strong> und <strong class="ui">Textgröße zurücksetzen</strong>;</li>
+<li>im Menü <strong class="ui">Darstellung</strong>, das nur die Textgröße betrifft;</li>
+<li>unter <strong class="ui">LemmaLoom ▸ Einstellungen …</strong> (⌘,) im Bereich <strong class="ui">Leseansicht</strong>, der außerdem die Darstellung der Auswahl festlegt und eine Vorschau zeigt.</li>
+</ul>
+<p>Um Ihre Einstellungen und die Darstellung der Auswahl auf den Zustand beim ersten Start von LemmaLoom zurückzusetzen, klicken Sie oben im Bereich <strong class="ui">Leseansicht</strong> auf <strong class="ui">Alles auf Standard zurücksetzen</strong>.</p>
+<h3 id="font">Schrift<a class="anchor" href="#font" aria-hidden="true">#</a></h3>
+<p>Die Leseansicht bietet elf Schriften, nämlich <strong class="ui">System Serif</strong>, <strong class="ui">System Sans</strong>, <strong class="ui">System Rounded</strong>, <strong class="ui">System Mono</strong>, <strong class="ui">Georgia</strong>, <strong class="ui">Palatino</strong>, <strong class="ui">Baskerville</strong>, <strong class="ui">Times New Roman</strong>, <strong class="ui">Helvetica Neue</strong>, <strong class="ui">Avenir Next</strong> und <strong class="ui">Menlo</strong>. Solange Sie nichts ändern, erscheint der Text in <strong class="ui">System Serif</strong>. Chinesischer Text erscheint unabhängig von der gewählten Schrift immer in der chinesischen Standardschrift des Mac.</p>
+<p>Um die Schrift zu wechseln, klicken Sie in der Titelleiste auf <strong class="ui">Schrift, Randspalte und Textgröße</strong> und wählen unter <strong class="ui">Schrift</strong> eine aus. In den Einstellungen finden Sie die Schrift in der Zeile <strong class="ui">Schrift</strong> des Abschnitts <strong class="ui">Typografie</strong>.</p>
+<h3 id="text-size">Textgröße<a class="anchor" href="#text-size" aria-hidden="true">#</a></h3>
+<p>Die Textgröße lässt sich in Schritten von 10 Prozent zwischen 70 und 200 Prozent einstellen. Die Standardgröße von 100 Prozent entspricht 17 Punkt.</p>
+<ul>
+<li>Mit <strong class="ui">Darstellung ▸ Größerer Text</strong> (⌘+) und <strong class="ui">Darstellung ▸ Kleinerer Text</strong> (⌘-) ändern Sie die Textgröße jeweils um einen Schritt.</li>
+<li>Um die Standardgröße wiederherzustellen, wählen Sie <strong class="ui">Darstellung ▸ Textgröße zurücksetzen</strong> (⌘0).</li>
+<li>In den Einstellungen können Sie stattdessen den Regler <strong class="ui">Textgröße</strong> unter <strong class="ui">Typografie</strong> verwenden. Daneben steht der Prozentwert, und die Schaltfläche zum Zurücksetzen gleich dahinter stellt wieder 100 Prozent ein.</li>
+</ul>
+<p>Die Breite der Textspalte passt sich entsprechend an, sodass eine Zeile im Durchschnitt gleich viele Wörter fasst, und der Texteditor (siehe <a href="#editing-text">Den Text eines Dokuments bearbeiten</a> weiter unten in diesem Kapitel) übernimmt dieselben Einstellungen.</p>
+<h3 id="gutter-numbering">Nummerierung in der Randspalte<a class="anchor" href="#gutter-numbering" aria-hidden="true">#</a></h3>
+<p>Das Untermenü <strong class="ui">Randspalte</strong>, in den Einstellungen <strong class="ui">Randnummerierung</strong> genannt, legt fest, wie die Randspalte nummeriert wird:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Einstellung</th><th>Die Randspalte zeigt</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">Beide</strong></td><td>Absatz- und Satznummern (die Voreinstellung)</td></tr>
+<tr><td><strong class="ui">Absätze</strong></td><td>nur Absatznummern</td></tr>
+<tr><td><strong class="ui">Sätze</strong></td><td>nur Satznummern</td></tr>
+<tr><td><strong class="ui">Aus</strong></td><td>keine Nummern</td></tr>
+</tbody></table></div>
+<p>Wenn Sie Textstellen nur nach Absätzen angeben, wirkt die Randspalte mit <strong class="ui">Absätze</strong> ruhiger. Auch bei <strong class="ui">Aus</strong> zeigt der Randbereich jedoch Annotationen wie Kodierungen, Memos, Lesezeichen und Verknüpfungen.</p>
+<h3 id="layout">Layout<a class="anchor" href="#layout" aria-hidden="true">#</a></h3>
+<p>Das Untermenü <strong class="ui">Layout</strong>, in den Einstellungen unter <strong class="ui">Seite</strong>, enthält zwei Layouts, <strong class="ui">Einspaltig</strong> und <strong class="ui">Doppelseite</strong>.</p>
+<p>Standardmäßig werden Dokumente im Layout <strong class="ui">Einspaltig</strong> angezeigt. Der Text steht in einer einzigen Spalte mit der Randspalte daneben.</p>
+<p>Bei <strong class="ui">Doppelseite</strong> wird der Text auf Seiten verteilt, von denen jeweils zwei nebeneinander erscheinen wie in einem aufgeschlagenen Buch. Jede Seite ist so hoch wie die Leseansicht, und Sie scrollen von einem Seitenpaar zum nächsten nach unten. Jede Seite zeigt Absatz- und Satznummern wie im Layout <strong class="ui">Einspaltig</strong>, und auch die Dokumentübersicht funktioniert auf dieselbe Weise. Wenn Sie die Fenstergröße ändern, fließt der Text neu auf die Seiten. Das Layout <strong class="ui">Doppelseite</strong> eignet sich für größere Bildschirme und für eine erste Lektüre langer Dokumente, bevor Sie mit dem Kodieren beginnen.</p>
+<p>Wenn Sie das Layout wechseln, bleibt Ihre aktuelle Position im Dokument erhalten.</p>
+<figure class="shot" id="reading-and-editing-two-page-spread"><img class="shot-light" src="../figures/de/light/reading-and-editing-two-page-spread.webp" alt="„Streit um die CO2-Steuer“, der aus dem Web importierte Nachrichtenartikel, im Layout Doppelseite." loading="lazy"><img class="shot-dark" src="../figures/de/dark/reading-and-editing-two-page-spread.webp" alt="„Streit um die CO2-Steuer“, der aus dem Web importierte Nachrichtenartikel, im Layout Doppelseite." loading="lazy"><figcaption>„Streit um die CO2-Steuer“, der aus dem Web importierte Nachrichtenartikel, im Layout Doppelseite.</figcaption></figure>
+<h3 id="reader-themes">Farben der Leseansicht<a class="anchor" href="#reader-themes" aria-hidden="true">#</a></h3>
+<p>Das Aussehen der Leseansicht, einschließlich Textfarbe und Hintergrund, richtet sich nach dem Thema, das Sie für die ganze Anwendung wählen. Sie wählen es mit der Einstellung <strong class="ui">Thema</strong> unter <strong class="ui">Erscheinungsbild</strong> im Bereich <strong class="ui">Allgemein</strong> der Einstellungen. Mehr zu den Themen finden Sie in <a href="settings.html">Kapitel 24, Einstellungen und Darstellung</a>. Für die Leseansicht wirken sich die Themen so aus:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Thema</th><th>Leseansicht</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">System</strong>, <strong class="ui">Protanopie</strong>, <strong class="ui">Deuteranopie</strong>, <strong class="ui">Tritanopie</strong></td><td>folgt dem hellen oder dunklen Erscheinungsbild von macOS</td></tr>
+<tr><td><strong class="ui">Hell</strong>, <strong class="ui">Hoher Kontrast</strong></td><td>dunkler Text auf Weiß</td></tr>
+<tr><td><strong class="ui">Dunkel</strong>, <strong class="ui">Hoher Kontrast (Dunkel)</strong></td><td>heller Text auf dunklem Hintergrund</td></tr>
+<tr><td><strong class="ui">Creme</strong></td><td>dunkelbrauner Text auf warmem, gebrochen weißem Papier</td></tr>
+<tr><td><strong class="ui">Solarized Hell</strong></td><td>graublauer Text auf blassem Cremeton</td></tr>
+<tr><td><strong class="ui">Solarized Dunkel</strong></td><td>blassgrauer Text auf tiefem Blaugrün</td></tr>
+</tbody></table></div>
+<h3 id="selection-appearance">Wie eine Auswahl dargestellt wird<a class="anchor" href="#selection-appearance" aria-hidden="true">#</a></h3>
+<p>Wenn Sie ein Wort oder eine Textstelle auswählen, erscheinen die Auswahl und bei einem Wort auch seine grammatischen Beziehungen im Text. Wie sie aussehen, legen Sie in den Einstellungen im Abschnitt <strong class="ui">Auswahl</strong> des Bereichs <strong class="ui">Leseansicht</strong> fest. Unten im Bereich zeigt eine Vorschau, wie das Ergebnis aussieht, wenn Sie die Zeilen ändern.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Zeile</th><th>Möglichkeiten</th><th>Was sie steuert</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">Ausgewählter Text</strong></td><td><strong class="ui">Volle Fläche</strong>, <strong class="ui">Hervorheben</strong></td><td>Eine abgerundete Fläche in der Textfarbe mit den ausgewählten Wörtern in der Hintergrundfarbe oder eine leichte Tönung hinter den Wörtern.</td></tr>
+<tr><td><strong class="ui">Kopf und Dependenten</strong></td><td><strong class="ui">Bögen</strong>, <strong class="ui">Linien</strong>, <strong class="ui">Beschriftungen</strong>, <strong class="ui">Hervorheben</strong>, <strong class="ui">Aus</strong></td><td>Wie die Leseansicht zeigt, von welchem Wort das ausgewählte Wort abhängt (seinem <em>Kopf</em>) und welche Wörter von ihm abhängen (seine <em>Dependenten</em>).</td></tr>
+<tr><td><strong class="ui">Umgebender Text</strong></td><td><strong class="ui">Abblenden</strong>, <strong class="ui">Leicht abblenden</strong>, <strong class="ui">Satz hervorheben</strong>, <strong class="ui">Aus</strong></td><td>Ob der übrige Text um die Auswahl herum verblasst oder der Satz des ausgewählten Wortes getönt wird.</td></tr>
+<tr><td><strong class="ui">Audiowiedergabe</strong></td><td><strong class="ui">Spotlight</strong>, <strong class="ui">Volle Fläche</strong>, <strong class="ui">Hervorheben</strong></td><td>Wie die gerade abgespielte Passage dargestellt wird, wenn die Leseansicht der Aufnahme folgt (siehe <a href="#following-transcript">Dem Transkript folgen</a> weiter unten in diesem Kapitel).</td></tr>
+</tbody></table></div>
+<figure class="shot" id="reading-and-editing-reader-settings"><img class="shot-light" src="../figures/de/light/reading-and-editing-reader-settings.webp" alt="Der Bereich Leseansicht der Einstellungen im Ausgangszustand, mit den Abschnitten Typografie, Seite und Auswahl und der Vorschau darunter." loading="lazy"><img class="shot-dark" src="../figures/de/dark/reading-and-editing-reader-settings.webp" alt="Der Bereich Leseansicht der Einstellungen im Ausgangszustand, mit den Abschnitten Typografie, Seite und Auswahl und der Vorschau darunter." loading="lazy"><figcaption>Der Bereich Leseansicht der Einstellungen im Ausgangszustand, mit den Abschnitten Typografie, Seite und Auswahl und der Vorschau darunter.</figcaption></figure>
+<p>In jeder Zeile ist die erste Option die Voreinstellung.</p>
+<p>In der Linguistik ist der Kopf eines Wortes das Wort, das es näher bestimmt oder von dem es abhängt. Im Beispiel <em>ein nationales Programm, das Wohnungen dämmt</em> bestimmt oder beschreibt <em>nationales</em> das Wort <em>Programm</em>; <em>Programm</em> ist also der Kopf, und <em>nationales</em> ist einer seiner Dependenten.</p>
+<p>Mit <strong class="ui">Abblenden</strong> bleiben Sie auf Ihren Satz konzentriert. Soll der Kontext beim Kodieren gut sichtbar bleiben, wählen Sie <strong class="ui">Leicht abblenden</strong> oder <strong class="ui">Satz hervorheben</strong>.</p>
+<h2 id="finding-text">Text suchen<a class="anchor" href="#finding-text" aria-hidden="true">#</a></h2>
+<p>Mit der Suchleiste durchsuchen Sie das geöffnete Dokument nach den Zeichen, die Sie eingeben, und gelangen direkt zu den Treffern. Wenn Sie alle Formen eines Wortes finden möchten, etwa <em>zahlen</em> und <em>gezahlt</em>, oder mehrere Dokumente gleichzeitig durchsuchen wollen, verwenden Sie statt der Suchleiste eine Abfrage. Abfragen berücksichtigen Wortformen und den grammatischen Zusammenhang (siehe <a href="queries-building.html">Kapitel 15, Eine Abfrage erstellen</a>).</p>
+<p>Die Abbildung zeigt die Kolumne „Die Modelle liegen daneben“ eines skeptischen Autors, der „früher selbst beruflich Modelle gebaut“ hat. Bei der Suche nach <em>Modell</em> findet LemmaLoom zwölf Treffer, darunter <em>Modelle</em> und <em>Modellierer</em>, und die Dokumentübersicht zeigt, wie sie sich verteilen.</p>
+<figure class="shot" id="reading-and-editing-find-bar"><img class="shot-light" src="../figures/de/light/reading-and-editing-find-bar.webp" alt="Die Suchleiste in der Kolumne „Die Modelle liegen daneben“ bei der Suche nach „Modell“, mit dem hervorgehobenen aktuellen Treffer im Text und allen Treffern in der Dokumentübersicht." loading="lazy"><img class="shot-dark" src="../figures/de/dark/reading-and-editing-find-bar.webp" alt="Die Suchleiste in der Kolumne „Die Modelle liegen daneben“ bei der Suche nach „Modell“, mit dem hervorgehobenen aktuellen Treffer im Text und allen Treffern in der Dokumentübersicht." loading="lazy"><figcaption>Die Suchleiste in der Kolumne „Die Modelle liegen daneben“ bei der Suche nach „Modell“, mit dem hervorgehobenen aktuellen Treffer im Text und allen Treffern in der Dokumentübersicht.</figcaption></figure>
+<p>So suchen Sie Text in einem Dokument:</p>
+<ol>
+<li>Wählen Sie <strong class="ui">Bearbeiten ▸ Suchen</strong> (⌘F) oder klicken Sie in der Titelleiste auf <strong class="ui">Im Dokument suchen</strong> (die Lupe). Die Suchleiste öffnet sich über dem Text, mit der Einfügemarke im Suchfeld.</li>
+<li>Geben Sie ein, wonach Sie suchen. LemmaLoom sucht schon während der Eingabe und scrollt zum ersten Treffer.</li>
+<li>Drücken Sie den Zeilenschalter oder ⌘G oder klicken Sie auf den Pfeil nach unten, um zum nächsten Treffer zu gehen. Mit ⇧⌘G oder dem Pfeil nach oben gehen Sie zum vorherigen zurück. Nach dem letzten Treffer beginnt die Suche wieder beim ersten, und vom ersten Treffer aus führt ⇧⌘G zum letzten.</li>
+<li>Um die Suchleiste zu schließen, drücken Sie die Esc-Taste, klicken auf das × an ihrem rechten Ende oder wählen erneut <strong class="ui">Bearbeiten ▸ Suchen</strong> (⌘F).</li>
+</ol>
+<p>Der Zähler im Suchfeld zeigt, beim wievielten Treffer Sie gerade sind und wie viele Treffer es insgesamt gibt; <strong class="ui">3/12</strong> bedeutet also den dritten von zwölf Treffern. Gibt es keine Treffer, erscheint <strong class="ui">Nicht gefunden</strong>.</p>
+<p>Die Leseansicht hebt den aktuellen Treffer im Text automatisch hervor. Steht <strong class="ui">Umgebender Text</strong> auf <strong class="ui">Abblenden</strong> oder <strong class="ui">Leicht abblenden</strong>, wird alles um den Treffer herum blasser; bei <strong class="ui">Satz hervorheben</strong> oder <strong class="ui">Aus</strong> werden die Treffer getönt. Alle Treffer erscheinen als kurze Striche am rechten Rand der Dokumentübersicht der Leseansicht.</p>
+<p>Die Suche findet Treffer nach diesen Regeln:</p>
+<ul>
+<li>Groß- und Kleinschreibung sowie Akzente werden ignoriert, <code>modell</code> findet also <em>Modell</em> und <code>cafe</code> findet <em>Café</em>;</li>
+<li>Leerzeichen vor und nach Ihrer Eingabe werden ignoriert;</li>
+<li>Treffer können innerhalb längerer Wörter liegen, <code>modell</code> findet also auch <em>Modelle</em> oder <em>Modellierer</em>. Um eine Wortfolge als Ganzes zu finden, geben Sie sie mit ihren Leerzeichen ein, zum Beispiel <code>schlimmsten Fall</code>;</li>
+<li>chinesischer Text wird auf dieselbe Weise durchsucht, als Folge von Schriftzeichen.</li>
+</ul>
+<p>In LemmaLoom hat jedes Dokument eine eigene Suchleiste. Wenn Sie sie schließen, wird Ihre Suche zurückgesetzt. Ist die Leseansicht auf die annotierten Sätze eines Dokuments eingeklappt, klappt sie beim Öffnen der Suchleiste wieder aus, sodass Sie den ganzen Text des Dokuments durchsuchen können. Wenn Sie die Leseansicht einklappen, schließt sich die Suchleiste automatisch wieder. Während Sie ein Dokument bearbeiten, ist <strong class="ui">Suchen</strong> deaktiviert.</p>
+<h2 id="selecting-text">Text auswählen<a class="anchor" href="#selecting-text" aria-hidden="true">#</a></h2>
+<p>Sobald Sie Textstellen in der Leseansicht ausgewählt haben, können Sie sie kodieren, mit Lesezeichen oder Memos versehen, miteinander verknüpfen oder einem Wörterbuch hinzufügen. Eine Textstelle kann aus einem Wort oder aus einem längeren Textabschnitt bestehen.</p>
+<h3 id="selecting-a-word">Ein Wort auswählen<a class="anchor" href="#selecting-a-word" aria-hidden="true">#</a></h3>
+<p>Klicken Sie auf ein Wort, um es auszuwählen. Ein erneuter Klick auf dasselbe Wort oder die Esc-Taste hebt die Auswahl auf. Einzelne Wörter lassen sich auswählen, sobald das Dokument indiziert ist.</p>
+<p>Wenn Sie ein Wort auswählen, sehen Sie auch, wie es mit dem Rest seines Satzes verbunden ist. Standardmäßig zeigen Bögen die Verbindung des ausgewählten Wortes zu seinem Kopf und seinen Dependenten. Außerdem verblasst alles außerhalb des Satzes, zu dem das Wort gehört. Ist der Inspektor eingeblendet, zeigt sein Tab <strong class="ui">Grammatik</strong> Einzelheiten zum ausgewählten Wort (siehe <a href="grammar-inspector.html">Kapitel 11, Der Grammatik-Inspektor</a>). Wie die Auswahl aussieht und wie ihre Verbindungen dargestellt werden, legen Sie in den Einstellungen fest (siehe <a href="#selection-appearance">Wie eine Auswahl dargestellt wird</a> weiter oben).</p>
+<figure class="shot" id="reading-and-editing-word-selection"><img class="shot-light" src="../figures/de/light/reading-and-editing-word-selection.webp" alt="Ein ausgewähltes Wort in „Uns läuft die Zeit davon“, mit Bögen zu seinem Kopf und seinen abhängigen Wörtern; der übrige Text ist abgeblendet." loading="lazy"><img class="shot-dark" src="../figures/de/dark/reading-and-editing-word-selection.webp" alt="Ein ausgewähltes Wort in „Uns läuft die Zeit davon“, mit Bögen zu seinem Kopf und seinen abhängigen Wörtern; der übrige Text ist abgeblendet." loading="lazy"><figcaption>Ein ausgewähltes Wort in „Uns läuft die Zeit davon“, mit Bögen zu seinem Kopf und seinen abhängigen Wörtern; der übrige Text ist abgeblendet.</figcaption></figure>
+<h3 id="selecting-a-passage">Eine Textstelle auswählen<a class="anchor" href="#selecting-a-passage" aria-hidden="true">#</a></h3>
+<p>Um eine Textstelle auszuwählen, klicken Sie an ihren Anfang und ziehen bis zu ihrem Ende. Leerzeichen an beiden Enden werden weggelassen. Sie können auch auf die Nummern in der Randspalte klicken, um Absätze oder Sätze direkt auszuwählen, oder auf Annotationen und Balken im Randbereich, um die zugehörigen Textstellen auszuwählen.</p>
+<p>Wie viel Sie auswählen, hängt von Ihren Anforderungen ab. Es empfiehlt sich aber, so viel Text auszuwählen, dass die Auswahl für sich allein verständlich ist, denn kodierte Textstellen werden später einzeln und ohne ihren Kontext gelesen. In „Klimadebatte“ umfassen die meisten kodierten Textstellen einen oder zwei ganze Sätze.</p>
+<p>Den ausgewählten Text kopieren Sie mit <strong class="ui">Bearbeiten ▸ Kopieren</strong> (⌘C).</p>
+<h3 id="selection-bar">Die Auswahlleiste<a class="anchor" href="#selection-bar" aria-hidden="true">#</a></h3>
+<p>Sobald Sie im Dokument ein Wort oder eine Textstelle ausgewählt haben, erscheint unten in der Leseansicht eine Leiste. Sie zeigt zuerst die ersten Wörter Ihrer Auswahl und dann die Aktionen, die Sie darauf anwenden können.</p>
+<p>Die Abbildung zeigt einen ausgewählten Satz aus „Uns läuft die Zeit davon“, der wie im Schnellstart mit „Fristen“ kodiert werden soll. Die Textstelle davor ist bereits mit „Fristen“ kodiert. Neben dem folgenden Satz steht die Annotation eines Memos, das mit „Ferne Zielmarken werden als Ausweichen gelesen“ beginnt.</p>
+<figure class="shot" id="reading-and-editing-selection-bar"><img class="shot-light" src="../figures/de/light/reading-and-editing-selection-bar.webp" alt="Eine ausgewählte Textstelle im Meinungsbeitrag „Uns läuft die Zeit davon“, mit der Auswahlleiste unten in der Leseansicht." loading="lazy"><img class="shot-dark" src="../figures/de/dark/reading-and-editing-selection-bar.webp" alt="Eine ausgewählte Textstelle im Meinungsbeitrag „Uns läuft die Zeit davon“, mit der Auswahlleiste unten in der Leseansicht." loading="lazy"><figcaption>Eine ausgewählte Textstelle im Meinungsbeitrag „Uns läuft die Zeit davon“, mit der Auswahlleiste unten in der Leseansicht.</figcaption></figure>
+<p>Die Auswahlleiste bietet Folgendes:</p>
+<ul>
+<li><strong class="ui">Lesezeichen</strong> setzt ein Lesezeichen an der aktuellen Textstelle, auf Wunsch mit einem Kommentar, etwa „Rhetorische Frage am Übergang zum Schlussappell“ bei einem Lesezeichen in „Uns läuft die Zeit davon“. Liegt die Auswahl auf einem Lesezeichen, wird die Schaltfläche jedoch zu <strong class="ui">Lesezeichen entfernen</strong>.</li>
+<li><strong class="ui">Code</strong> öffnet die Code-Palette. Wählen Sie einen Code aus, um die Textstelle damit zu kodieren, oder tippen Sie in das Feld, um einen Code in der Liste zu suchen (der Zeilenschalter vergibt den hervorgehobenen Code; das ist der erste Treffer, bis Sie mit ↑ und ↓ einen anderen ansteuern). Wählen Sie einen Code mit Häkchen (einen, den die Textstelle bereits trägt), um ihn zu entfernen. Nach allen Codes der Liste legt die Option <strong class="ui">Code „…“ hinzufügen</strong> einen neuen Code mit dem eingegebenen Namen an, sofern noch kein Code so heißt. Zuletzt folgt die Option <strong class="ui">In vivo „…“</strong>, die die Auswahl mit einem neuen Code kodiert, der nach dem ausgewählten Text benannt ist.</li>
+<li><strong class="ui">Zum Wörterbuch hinzufügen</strong> fügt den ausgewählten Text in eine Kategorie eines Wörterbuchs des Projekts ein (siehe <a href="dictionaries.html">Kapitel 19, Wörterbücher</a>). Die Schaltfläche erscheint nur, wenn das Projekt mindestens ein Wörterbuch enthält.</li>
+<li><strong class="ui">Memo</strong> legt ein Memo zur ausgewählten Textstelle an.</li>
+<li><strong class="ui">Verknüpfung</strong> beginnt eine Verknüpfung zwischen zwei Textstellen. Bevor Sie auf <strong class="ui">Verknüpfung abschließen</strong> klicken, wählen Sie die zweite Textstelle aus, in diesem oder einem anderen Dokument. In der Zwischenzeit erscheint eine durchgestrichene Verknüpfungsschaltfläche, <strong class="ui">Ausstehende Verknüpfung abbrechen</strong>, mit der Sie die unfertige Verknüpfung löschen.</li>
+<li>Ein Klick auf das × am Ende der Auswahlleiste hebt die aktuelle Auswahl auf, wie die Esc-Taste.</li>
+</ul>
+<figure class="shot" id="reading-and-editing-code-list"><img class="shot-light" src="../figures/de/light/reading-and-editing-code-list.webp" alt="Die Code-Palette, aus der Auswahlleiste in „Uns läuft die Zeit davon“ geöffnet, mit der Eingabe „Frist“ und dem hervorgehobenen Code „Fristen“ über Code hinzufügen und In vivo." loading="lazy"><img class="shot-dark" src="../figures/de/dark/reading-and-editing-code-list.webp" alt="Die Code-Palette, aus der Auswahlleiste in „Uns läuft die Zeit davon“ geöffnet, mit der Eingabe „Frist“ und dem hervorgehobenen Code „Fristen“ über Code hinzufügen und In vivo." loading="lazy"><figcaption>Die Code-Palette, aus der Auswahlleiste in „Uns läuft die Zeit davon“ geöffnet, mit der Eingabe „Frist“ und dem hervorgehobenen Code „Fristen“ über Code hinzufügen und In vivo.</figcaption></figure>
+<figure class="shot" id="reading-and-editing-pending-link"><img class="shot-light" src="../figures/de/light/reading-and-editing-pending-link.webp" alt="Eine Textstelle in „Uns läuft die Zeit davon“ mit einer offenen Verknüpfung, mit Verknüpfung abschließen und der Schaltfläche in der Auswahlleiste, die die offene Verknüpfung abbricht." loading="lazy"><img class="shot-dark" src="../figures/de/dark/reading-and-editing-pending-link.webp" alt="Eine Textstelle in „Uns läuft die Zeit davon“ mit einer offenen Verknüpfung, mit Verknüpfung abschließen und der Schaltfläche in der Auswahlleiste, die die offene Verknüpfung abbricht." loading="lazy"><figcaption>Eine Textstelle in „Uns läuft die Zeit davon“ mit einer offenen Verknüpfung, mit Verknüpfung abschließen und der Schaltfläche in der Auswahlleiste, die die offene Verknüpfung abbricht.</figcaption></figure>
+<p>Wann sich Kodierungen, Memos, Lesezeichen oder Verknüpfungen eignen, erfahren Sie in <a href="coding.html">Kapitel 7, Kodieren</a>.</p>
+<p>Das Menü <strong class="ui">Dokument</strong> enthält Befehle für dieselben Aktionen, mit diesen Kurzbefehlen:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Befehl</th><th>Kurzbefehl</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">Dokument ▸ Code</strong></td><td>⇧⌘C</td></tr>
+<tr><td><strong class="ui">Dokument ▸ In-vivo-Code</strong></td><td>⇧⌘V</td></tr>
+<tr><td><strong class="ui">Dokument ▸ Memo</strong></td><td>⇧⌘M</td></tr>
+<tr><td><strong class="ui">Dokument ▸ Lesezeichen</strong> (oder <strong class="ui">Lesezeichen entfernen</strong>)</td><td>⇧⌘B</td></tr>
+<tr><td><strong class="ui">Dokument ▸ Verknüpfung</strong> (oder <strong class="ui">Verknüpfung abschließen</strong>)</td><td>⇧⌘L</td></tr>
+<tr><td><strong class="ui">Dokument ▸ Verknüpfung abbrechen</strong></td><td>⌥⇧⌘L</td></tr>
+</tbody></table></div>
+<h2 id="editing-text">Den Text eines Dokuments bearbeiten<a class="anchor" href="#editing-text" aria-hidden="true">#</a></h2>
+<p>Den Text jedes Dokuments können Sie bearbeiten. Das Bearbeiten in LemmaLoom dient dazu, kleinere Fehler zu korrigieren, etwa Tippfehler in einem Artikel, Fehler beim Auslesen von Text aus einem PDF, falsch transkribierte Wörter in einem Transkript oder holprige Wendungen in einer maschinellen Übersetzung. Beim Bearbeiten hält LemmaLoom Kodierungen, Memos, Verknüpfungen und Lesezeichen bei den Textstücken, zu denen sie gehören. Nach dem Sichern wird das ganze Dokument neu indiziert.</p>
+<p>Der Editor zeigt den Text Ihres Dokuments als reinen Text in einer Schrift mit fester Zeichenbreite. Um größere Teile des Textes zu ändern, bearbeiten Sie ihn zuerst an anderer Stelle und fügen ihn dann wieder in den Editor ein. Sie können auch die geänderte Datei des Dokuments importieren und von vorn kodieren. Prüfen Sie nach dem Einfügen unbedingt Ihre Annotationen, denn sie können sich nun auf falschen Text beziehen (siehe den Hinweis am Ende von <a href="#annotations-follow-edits">Wie Annotationen Änderungen folgen</a> weiter unten).</p>
+<h3 id="editing-and-saving">Bearbeiten und sichern<a class="anchor" href="#editing-and-saving" aria-hidden="true">#</a></h3>
+<p>Am ehesten werden Sie Texte bearbeiten wollen, die LemmaLoom selbst erzeugt hat, also ein Transkript, eine Übersetzung oder den Text, den LemmaLoom aus einem PDF ausgelesen hat. In „Klimadebatte“ sind das „Hitzebericht 2024“, das Transkript von „Radiodebatte“ und „Uns läuft die Zeit davon (Englisch)“. Die Abbildung unten zeigt einen der skeptischen Meinungsbeiträge, „Netto-Null wird teuer“, im Editor, mit Leerzeilen zwischen den Absätzen und nur den Schaltflächen <strong class="ui">Abbrechen</strong> und <strong class="ui">Sichern</strong> in der Titelleiste.</p>
+<figure class="shot" id="reading-and-editing-editor"><img class="shot-light" src="../figures/de/light/reading-and-editing-editor.webp" alt="Der Meinungsbeitrag „Netto-Null wird teuer“ im Texteditor, mit Abbrechen und Sichern in der Titelleiste." loading="lazy"><img class="shot-dark" src="../figures/de/dark/reading-and-editing-editor.webp" alt="Der Meinungsbeitrag „Netto-Null wird teuer“ im Texteditor, mit Abbrechen und Sichern in der Titelleiste." loading="lazy"><figcaption>Der Meinungsbeitrag „Netto-Null wird teuer“ im Texteditor, mit Abbrechen und Sichern in der Titelleiste.</figcaption></figure>
+<p>So ändern Sie den Text eines Dokuments:</p>
+<ol>
+<li>Öffnen Sie das Dokument.</li>
+<li>Klicken Sie am rechten Ende der Titelleiste auf <strong class="ui">Bearbeiten</strong> oder wählen Sie <strong class="ui">Dokument ▸ Bearbeiten</strong> (⇧⌘E). Die Leseansicht wird zu einem einfachen Texteditor mit einer Schrift fester Zeichenbreite. Lenses, Randspalte, Dokumentübersicht und Statusleiste sind während der Bearbeitung ausgeblendet, und unter dem Text erscheint die Zeile <strong class="ui">Beim Bearbeiten wird der Dokumenttext ersetzt; der Index wird beim Sichern neu aufgebaut.</strong></li>
+<li>Nehmen Sie Ihre Änderungen vor. Während Sie tippen, macht ⌘Z Ihre letzten Änderungen im Editor rückgängig.</li>
+<li>Klicken Sie in der Titelleiste auf <strong class="ui">Sichern</strong> oder wählen Sie <strong class="ui">Dokument ▸ Sichern</strong> (⌘↩).</li>
+</ol>
+<p>Trennen Sie Absätze durch eine Leerzeile. Ohne Leerzeilen ist jede Zeile eines Dokuments ein eigener Absatz. Sobald Sie auch nur eine einzige Leerzeile einfügen, trennen nur noch Leerzeilen die Absätze, und die Zahl der Absätze sinkt deutlich.</p>
+<p>Wenn Sie auf <strong class="ui">Abbrechen</strong> klicken oder <strong class="ui">Dokument ▸ Abbrechen</strong> (⌘.) wählen, verlassen Sie den Editor und verlieren Ihre aktuellen Änderungen; alles, was Sie seit dem Klick auf <strong class="ui">Bearbeiten</strong> eingegeben haben, verschwindet sofort.</p>
+<p>War die Leseansicht auf die annotierten Sätze eingeklappt, zeigt ein Klick auf <strong class="ui">Bearbeiten</strong> zuerst wieder das vollständige Dokument.</p>
+<p>Andere Aktionen in einem Projekt (etwa Textstellen kodieren oder Memos schreiben) werden automatisch gesichert, sobald Sie sie ausführen; Textänderungen dagegen nur über <strong class="ui">Sichern</strong>. Solange der Editor offen ist, bleiben Ihre Änderungen erhalten, wenn Sie den Tab wechseln. Wechseln Sie jedoch zu einem anderen Projekt oder beenden LemmaLoom, ohne Ihre Änderungen gesichert zu haben, gehen sie endgültig verloren.</p>
+<h3 id="after-saving">Was das Sichern bewirkt<a class="anchor" href="#after-saving" aria-hidden="true">#</a></h3>
+<p>Nachdem Sie einen bearbeiteten Text gesichert haben, führt LemmaLoom diese Schritte aus:</p>
+<ol>
+<li>Es ersetzt den Text des Dokuments durch Ihre Fassung.</li>
+<li>Es verschiebt die Kodierungen, Memos, Lesezeichen und Verknüpfungen im Dokument so, dass sie bei ihrem Text bleiben (siehe <a href="#annotations-follow-edits">Wie Annotationen Änderungen folgen</a> weiter unten).</li>
+<li>Es indiziert das Dokument von Anfang an neu.</li>
+</ol>
+<p>Während der Indizierung zeigt die Leseansicht den geänderten Text unter der Beschriftung <strong class="ui">Wird gespeichert</strong>. Auch die Titelleiste zeigt <strong class="ui">Wird gespeichert</strong> anstelle von <strong class="ui">Bearbeiten</strong>. Sobald die Indizierung abgeschlossen ist, richten sich Lenses, Wortzahlen und Inspektor nach dem neuen Text. Bei Dokumenten in einer Sprache, für die LemmaLoom keine Grammatikanalyse durchführt, ist die Leseansicht sofort wieder bereit.</p>
+<figure class="shot" id="reading-and-editing-saving"><img class="shot-light" src="../figures/de/light/reading-and-editing-saving.webp" alt="Der lange Text „Wer bezahlt die Wende“ unmittelbar nach dem Sichern, mit Wird gespeichert in der Titelleiste und über dem Text und dem Indizierungsfortschritt in der Statusleiste." loading="lazy"><img class="shot-dark" src="../figures/de/dark/reading-and-editing-saving.webp" alt="Der lange Text „Wer bezahlt die Wende“ unmittelbar nach dem Sichern, mit Wird gespeichert in der Titelleiste und über dem Text und dem Indizierungsfortschritt in der Statusleiste." loading="lazy"><figcaption>Der lange Text „Wer bezahlt die Wende“ unmittelbar nach dem Sichern, mit Wird gespeichert in der Titelleiste und über dem Text und dem Indizierungsfortschritt in der Statusleiste.</figcaption></figure>
+<p>Die Indizierung eines geänderten Dokuments dauert etwa so lange wie seine erste Indizierung. Den Fortschritt verfolgen Sie in der Statusleiste oder über den Menübefehl <strong class="ui">Fenster ▸ Aktivität</strong> (⌥⌘0). Ist die Indizierung für ein Dokument ausgeschaltet, indiziert LemmaLoom es erst neu, wenn Sie in der Statusleiste auf <strong class="ui">Jetzt indizieren</strong> klicken; bis dahin zeigt die Leseansicht weiter <strong class="ui">Wird gespeichert</strong>.</p>
+<h3 id="annotations-follow-edits">Wie Annotationen Änderungen folgen<a class="anchor" href="#annotations-follow-edits" aria-hidden="true">#</a></h3>
+<p>Wenn Sie Änderungen an einem Dokument sichern, vergleicht LemmaLoom den bisherigen und den neuen Text Buchstabe für Buchstabe, um festzustellen, was hinzugefügt und was gelöscht wurde. Dann verschiebt es alles, was mit dem Text verbunden ist, an die neuen Positionen, nämlich Kodierungen, Memos zu einer Textstelle, Lesezeichen, Verknüpfungen, die Verbindungen zwischen Transkript und Audio oder Video (siehe <a href="#correcting-transcripts">Ein Transkript korrigieren</a> weiter unten in diesem Kapitel) und die Zuordnung zwischen Original und Übersetzung. <strong class="ui">Gemeinsam scrollen</strong> und die Platzierung neuer Kopien von Annotationen beruhen auf dieser Zuordnung (siehe <a href="translations.html#annotations-in-both-languages">Annotationen in beiden Sprachen</a> in <a href="translations.html">Kapitel 9, Übersetzungen und geteilte Ansicht</a>).</p>
+<p>Eine Änderung gilt nur für die Sprachfassung, in der Sie sie vornehmen, also für das Original oder für die Übersetzung; die Annotationen in der anderen Sprachfassung bleiben unverändert. Wenn Sie schon wissen, dass Sie ein Dokument übersetzen möchten, korrigieren Sie seine Fehler am besten vorher, damit sie nicht in die andere Sprache übernommen werden.</p>
+<p>Text, den Sie weiter vorn im Dokument hinzufügen oder löschen, verschiebt die Textstelle mitsamt ihrem Text. Text, den Sie innerhalb einer Textstelle hinzufügen, wird Teil von ihr. Text, den Sie direkt hinter einer Textstelle hinzufügen, bleibt außerhalb (es sei denn, er endet mit demselben Zeichen wie die Textstelle selbst; dann wird er Teil von ihr). Löschungen innerhalb einer Textstelle verkürzen sie. Text, den Sie direkt vor einer Textstelle hinzufügen, bleibt außerhalb. Text, der eine Textstelle ersetzt, wird zur neuen Textstelle. Löschen Sie den gesamten Text einer Textstelle, bleibt die Annotation mit einer leeren Textstelle erhalten.</p>
+<h4 id="ein-beispiel">Ein Beispiel<a class="anchor" href="#ein-beispiel" aria-hidden="true">#</a></h4>
+<p>Die Rede „Das Versprechen der Bürgermeisterin“ enthält diese Textstelle:</p>
+<blockquote><p>Wir werden zwölftausend Bäume pflanzen, zuerst in den Vierteln, die sie am dringendsten brauchen.</p>
+</blockquote>
+<p>Angenommen, <em>zwölftausend Bäume</em> ist mit „Hoffnung“ kodiert. Die Tabelle zeigt, was aus der kodierten Textstelle wird, wenn Sie jede dieser Änderungen einzeln am ursprünglichen Satz vornehmen:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Änderung</th><th>Kodierte Textstelle danach</th></tr></thead>
+<tbody>
+<tr><td><em>Wir werden</em> geändert in <em>Die Stadt wird</em></td><td><em>zwölftausend Bäume</em>, mit ihrem Text verschoben</td></tr>
+<tr><td><em>zwölftausend</em> geändert in <em>12.000</em></td><td><em>12.000 Bäume</em></td></tr>
+<tr><td><em>neue</em> eingefügt zwischen <em>zwölftausend</em> und <em>Bäume</em></td><td><em>zwölftausend neue Bäume</em></td></tr>
+<tr><td><em>rund</em> eingefügt vor <em>zwölftausend</em></td><td><em>zwölftausend Bäume</em>; <em>rund</em> bleibt außerhalb</td></tr>
+<tr><td><em>bis 2035</em> eingefügt hinter <em>Bäume</em></td><td><em>zwölftausend Bäume</em>; der Zusatz bleibt außerhalb</td></tr>
+<tr><td><em>für mehr Kühle</em> eingefügt hinter <em>Bäume</em></td><td><em>zwölftausend Bäume für mehr Kühle</em></td></tr>
+<tr><td><em>zwölftausend Bäume</em> ersetzt durch <em>eine grüne Allee</em></td><td><em>eine grüne Allee</em></td></tr>
+<tr><td><em>zwölftausend Bäume</em> gelöscht</td><td>eine leere Textstelle</td></tr>
+</tbody></table></div>
+<p>Da der Zusatz <em>bis 2035</em> auf 5 endet, <em>Bäume</em> aber auf <em>e</em>, setzt LemmaLoom den Zusatz hinter die Textstelle. Der Zusatz <em>für mehr Kühle</em> endet dagegen wie <em>Bäume</em> auf <em>e</em>, deshalb behandelt LemmaLoom ihn als Einfügung innerhalb der Textstelle; der neue Text könnte ebenso gut aus den Buchstaben <em>e für mehr Kühl</em> bestehen, eingefügt innerhalb der Textstelle vor ihrem letzten Buchstaben.</p>
+<p>Löschen Sie den Text einer Kodierung wie in der letzten Zeile, finden Sie diese Kodierung nur noch in der Detailansicht <strong class="ui">Kodierungen</strong> des Projektregals. Dort können Sie sie mit der rechten Maustaste anklicken und <strong class="ui">Kodierung löschen</strong> wählen. Memos und Lesezeichen, deren Text Sie löschen, bleiben auf dieselbe Weise erhalten. Um leere Annotationen zu vermeiden, entfernen Sie sie, bevor Sie ihren Text löschen.</p>
+<p>Wenn Sie in der Nähe einer Kodierung etwas geändert haben, prüfen Sie in der Leseansicht, ob die Kodierung noch den richtigen Teil der geänderten Textstelle umfasst. Muss sie angepasst werden, entfernen Sie die Kodierung von der Textstelle und kodieren diese neu (siehe <a href="coding.html#removing-codings">Einen Code von einer Textstelle entfernen</a> in <a href="coding.html">Kapitel 7, Kodieren</a>).</p>
+<aside class="callout note"><p class="callout-title">Hinweis</p><p>LemmaLoom vergleicht die beiden Fassungen nur dann Buchstabe für Buchstabe, wenn insgesamt höchstens etwa tausend Buchstaben eingefügt und gelöscht wurden. Fügen Sie auf einmal mehr ein oder löschen mehr, etwa indem Sie eine neuere Fassung eines langen Abschnitts einfügen, vergleicht LemmaLoom zuerst Zeilen, Sätze und Wörter und nur innerhalb der geänderten Teile Buchstaben. Ein geänderter Teil, der dann noch zu groß ist, gilt als ersetzter Block. Annotationen in diesem Block behalten ihre ursprüngliche Lage relativ zum neuen Text so weit wie möglich bei und können deshalb auf anderen Wörtern landen. Sichern Sie nach jeder größeren Änderung und prüfen Sie danach die Annotationen im geänderten Teil.</p>
+</aside>
+<h3 id="undoing-edits">Eine Änderung widerrufen<a class="anchor" href="#undoing-edits" aria-hidden="true">#</a></h3>
+<p>Das Sichern einer Änderung erzeugt einen Eintrag im Widerrufverlauf (siehe <a href="undo.html">Kapitel 23, Widerrufen und Wiederholen</a>). Um den vorherigen Stand des bearbeiteten Textes wiederherzustellen und alle Kodierungen, Memos, Lesezeichen und Verknüpfungen an ihre früheren Positionen zurückzusetzen, wählen Sie <strong class="ui">Bearbeiten ▸ Text bearbeiten widerrufen</strong> (⌘Z). Das Dokument wird dann entsprechend neu indiziert.</p>
+<h2 id="media-documents">Audio- und Videodokumente<a class="anchor" href="#media-documents" aria-hidden="true">#</a></h2>
+<p>Bei einem Audio- oder Videodokument wie der „Radiodebatte“ arbeiten Sie mit dem Transkript genauso wie mit jedem Textdokument. Wenn Sie die Aufnahme importieren, erstellt LemmaLoom das Transkript für Sie (siehe <a href="importing.html">Kapitel 4, Material importieren</a>). Jeder Abschnitt des Transkripts ist mit dem Abschnitt der Aufnahme verbunden, aus dem er stammt. Ein neuer Absatz beginnt dort, wo der Sprecher wechselt oder eine Sprechpause länger als etwa anderthalb Sekunden dauert.</p>
+<p>Die Aufnahme kodieren Sie über ihr Transkript. Wenn sich die Bedeutung einer Passage aus dem Transkript allein nicht erschließt, etwa weil erst die Betonung oder der Sarkasmus des Sprechers ihr Sinn gibt, können Sie sie sich direkt anhören.</p>
+<p>Sprecher und Text werden in LemmaLoom getrennt geführt. Enthält eine Aufnahme mehrere Sprecher, zeigt die Wiedergabeleiste beim Zuhören an, wer gerade spricht. Bei Aufnahmen, die LemmaLoom transkribiert hat, heißen die Sprecher „Sprecher 1“, „Sprecher 2“ und so weiter; in der „Radiodebatte“ heißen sie „Moderation“, „Aktivistin“ und „Skeptiker“. Die Redebeiträge jedes Sprechers werden automatisch mit einem Untercode des Codes „Sprecher“ kodiert. Wenn Sie Ihre Sprechercodes umbenennen, behält die Wiedergabeleiste die ursprünglichen Namen (siehe <a href="importing.html#speaker-detection">Sprecher</a> in <a href="importing.html">Kapitel 4, Material importieren</a>).</p>
+<h3 id="player-bar">Die Wiedergabeleiste<a class="anchor" href="#player-bar" aria-hidden="true">#</a></h3>
+<p>Über dem Text liegt die Wiedergabeleiste. Von links nach rechts enthält sie:</p>
+<ul>
+<li>nur bei Videos Schaltflächen, mit denen Sie den Videoplayer auf die Steuerung reduzieren (<strong class="ui">Auf die Steuerung reduzieren</strong>) oder wieder einblenden (<strong class="ui">Video einblenden</strong>) und das Video neben den Text oder wieder darüber setzen;</li>
+<li>die Schaltfläche <strong class="ui">Wiedergabe</strong> oder <strong class="ui">Pausieren</strong>;</li>
+<li>die Schaltfläche <strong class="ui">Mit dem Audio scrollen</strong>, mit der die Leseansicht der Aufnahme folgt;</li>
+<li>die abgelaufene Zeit, einen Regler für die Wiedergabeposition und die Gesamtlänge der Aufnahme;</li>
+<li>bei Aufnahmen mit mehreren Sprechern den Sprecher der aktuellen Passage, etwa „Skeptiker“.</li>
+</ul>
+<p>Abgelaufene Zeit und Gesamtlänge erscheinen in Minuten und Sekunden, etwa 2:14. Bei Aufnahmen ab einer Stunde Länge kommen die Stunden hinzu, etwa 3:56:32.</p>
+<p>Die Abbildung unten zeigt die Aufnahme „Radiodebatte“. Sie ist gut fünfeinhalb Minuten lang und gerade bei 1:22 angehalten, während der Skeptiker spricht. Da <strong class="ui">Mit dem Audio scrollen</strong> eingeschaltet ist, ist die aktuelle Passage hervorgehoben und der übrige Text abgeblendet. Die Sprechercodes stehen in der Randspalte neben jedem Redebeitrag.</p>
+<figure class="shot" id="reading-and-editing-media-player"><img class="shot-light" src="../figures/de/light/reading-and-editing-media-player.webp" alt="Das Audiodokument „Radiodebatte“ bei eingeschaltetem Mit dem Audio scrollen, mit der aktuellen Passage im Spotlight." loading="lazy"><img class="shot-dark" src="../figures/de/dark/reading-and-editing-media-player.webp" alt="Das Audiodokument „Radiodebatte“ bei eingeschaltetem Mit dem Audio scrollen, mit der aktuellen Passage im Spotlight." loading="lazy"><figcaption>Das Audiodokument „Radiodebatte“ bei eingeschaltetem Mit dem Audio scrollen, mit der aktuellen Passage im Spotlight.</figcaption></figure>
+<p>So spielen Sie eine Aufnahme ab:</p>
+<ol>
+<li>Öffnen Sie das Dokument.</li>
+<li>Klicken Sie auf <strong class="ui">Wiedergabe</strong> (das Dreieck) oder wählen Sie <strong class="ui">Dokument ▸ Wiedergabe</strong> (⇧⌘P).</li>
+<li>Zum Anhalten klicken Sie auf <strong class="ui">Pausieren</strong> oder wählen <strong class="ui">Dokument ▸ Pausieren</strong> (⇧⌘P).</li>
+<li>Um an eine andere Stelle zu springen, ziehen Sie den Regler.</li>
+</ol>
+<p>Klicken Sie am Ende einer Aufnahme auf <strong class="ui">Wiedergabe</strong>, beginnt die Wiedergabe wieder von vorn. Wechseln Sie während der Wiedergabe den Tab oder schließen das Dokument, wird die Wiedergabe sofort angehalten.</p>
+<h3 id="playing-from-text">Ab einer Stelle im Transkript abspielen<a class="anchor" href="#playing-from-text" aria-hidden="true">#</a></h3>
+<p>Ein Klick auf ein Wort im Transkript setzt die Wiedergabe an den Anfang der Passage, zu der das Wort gehört. Der Klick verschiebt nur die Wiedergabeposition; klicken Sie auf <strong class="ui">Wiedergabe</strong>, um ab dieser Stelle zuzuhören. Das Springen per Klick auf ein Wort funktioniert nur in einem indizierten Dokument (siehe <a href="#before-analysis">Bevor die Indizierung abgeschlossen ist</a> weiter oben in diesem Kapitel). Ist ein Dokument in einer Sprache ohne Grammatikanalyse verfasst, verwenden Sie stattdessen den Regler.</p>
+<p>Um eine unklare Passage zu prüfen, klicken Sie auf ein Wort darin und drücken ⇧⌘P. Die Wiedergabe beginnt, und ein erneutes ⇧⌘P hält sie wieder an.</p>
+<h3 id="following-transcript">Dem Transkript folgen<a class="anchor" href="#following-transcript" aria-hidden="true">#</a></h3>
+<p>Ist <strong class="ui">Mit dem Audio scrollen</strong> eingeschaltet (die Schaltfläche ist hervorgehoben), hebt die Leseansicht die gerade abgespielte Passage hervor und hält sie in der Mitte des Bereichs, während die Aufnahme weiterläuft. Wenn Sie den Regler ziehen, wandert die hervorgehobene Passage mit. Beim Einschalten springt <strong class="ui">Mit dem Audio scrollen</strong> sofort an die Stelle, die gerade abgespielt wird. Anfangs ist <strong class="ui">Mit dem Audio scrollen</strong> ausgeschaltet; wie Größe und Position von Videos gilt es für jedes Audio- und Videodokument.</p>
+<p>Wenn Sie während der Wiedergabe scrollen, klicken oder sich mit der Tastatur bewegen, hört die Leseansicht für einige Sekunden auf zu folgen und scrollt zurück, sobald die nächste Passage der Aufnahme beginnt. Ist eine Textstelle ausgewählt, bleibt die Leseansicht an ihrer Position. Ein Klick auf <strong class="ui">Wiedergabe</strong> springt sofort zurück zur gerade abgespielten Passage.</p>
+<p><strong class="ui">Mit dem Audio scrollen</strong> hilft besonders, wenn Sie eine Aufnahme beim Zuhören kodieren oder Transkripte mit der Aufnahme abgleichen. Halten Sie die Wiedergabe mit ⇧⌘P an, wenn Sie auf eine Passage stoßen, die Sie kodieren möchten; die Leseansicht bleibt dann bei dieser Passage, während Sie sie auswählen und kodieren.</p>
+<p>Im Bereich <strong class="ui">Leseansicht</strong> der Einstellungen legt <strong class="ui">Audiowiedergabe</strong> fest, wie die gerade abgespielte Passage dargestellt wird. <strong class="ui">Spotlight</strong> dämpft alles außer der abgespielten Passage. <strong class="ui">Volle Fläche</strong> setzt die abgespielte Passage auf eine farbige Fläche. <strong class="ui">Hervorheben</strong> schließlich hebt die abgespielte Passage leicht hervor.</p>
+<h3 id="video-position">Video über oder neben dem Text<a class="anchor" href="#video-position" aria-hidden="true">#</a></h3>
+<p>Ein Video läuft in einem Rahmen über dem Textbereich. Um dem Textbereich mehr Platz zu geben, ziehen Sie die Trennlinie unter dem Video nach oben. Sie können auch auf <strong class="ui">Auf die Steuerung reduzieren</strong> klicken; dann wird das Video eingeklappt, und nur die Wiedergabeleiste bleibt.</p>
+<figure class="shot" id="reading-and-editing-video-above"><img class="shot-light" src="../figures/de/light/reading-and-editing-video-above.webp" alt="Das Video „sample-video“ in einem Rahmen über seinem Transkript, mit der Wiedergabeleiste dazwischen." loading="lazy"><img class="shot-dark" src="../figures/de/dark/reading-and-editing-video-above.webp" alt="Das Video „sample-video“ in einem Rahmen über seinem Transkript, mit der Wiedergabeleiste dazwischen." loading="lazy"><figcaption>Das Video „sample-video“ in einem Rahmen über seinem Transkript, mit der Wiedergabeleiste dazwischen.</figcaption></figure>
+<figure class="shot" id="reading-and-editing-video-collapsed"><img class="shot-light" src="../figures/de/light/reading-and-editing-video-collapsed.webp" alt="Das Video „sample-video“ auf die Bedienelemente der Wiedergabeleiste eingeklappt, über seinem Transkript." loading="lazy"><img class="shot-dark" src="../figures/de/dark/reading-and-editing-video-collapsed.webp" alt="Das Video „sample-video“ auf die Bedienelemente der Wiedergabeleiste eingeklappt, über seinem Transkript." loading="lazy"><figcaption>Das Video „sample-video“ auf die Bedienelemente der Wiedergabeleiste eingeklappt, über seinem Transkript.</figcaption></figure>
+<p>Ein Klick auf die Schaltfläche <strong class="ui">Video neben dem Text anzeigen</strong> setzt das Video links neben den Textbereich, mit der Wiedergabeleiste unter dem Video. Wenn Sie die Trennlinie dazwischen verschieben, ändern sich die Größen beider Bereiche entsprechend, wobei der Text eine lesbare Breite behält. Mit der Schaltfläche <strong class="ui">Video über dem Text anzeigen</strong> stellen Sie die ursprüngliche Anordnung wieder her. Auf breiteren Bildschirmen sehen Sie mit dem Video neben dem Text mehr Zeilen des Transkripts.</p>
+<figure class="shot" id="reading-and-editing-video-beside"><img class="shot-light" src="../figures/de/light/reading-and-editing-video-beside.webp" alt="Das Video „sample-video“ neben seinem Transkript, mit der Wiedergabeleiste unter dem Video." loading="lazy"><img class="shot-dark" src="../figures/de/dark/reading-and-editing-video-beside.webp" alt="Das Video „sample-video“ neben seinem Transkript, mit der Wiedergabeleiste unter dem Video." loading="lazy"><figcaption>Das Video „sample-video“ neben seinem Transkript, mit der Wiedergabeleiste unter dem Video.</figcaption></figure>
+<h3 id="correcting-transcripts">Ein Transkript korrigieren<a class="anchor" href="#correcting-transcripts" aria-hidden="true">#</a></h3>
+<p>Transkripte enthalten zwangsläufig einige Fehler, vor allem bei Namen und Fachbegriffen. Ein Transkript korrigieren Sie wie jeden anderen Text (siehe <a href="#editing-and-saving">Bearbeiten und sichern</a> weiter oben in diesem Kapitel). Die Wiedergabeleiste bleibt während der Bearbeitung an ihrem Platz, und Sie können die Wiedergabe auch beim Bearbeiten des Transkripts mit ⇧⌘P starten und anhalten.</p>
+<p>Am sinnvollsten ist es, zuerst die Fehler im Transkript zu finden und sie danach zu beheben. Spielen Sie die Aufnahme in der Leseansicht mit eingeschaltetem <strong class="ui">Mit dem Audio scrollen</strong> ab, um die Passagen zu finden, die eine Korrektur brauchen (Lesezeichen eignen sich, um sie festzuhalten). Anschließend beheben Sie die Fehler im Editor. Am besten korrigieren Sie das Transkript vor dem Kodieren.</p>
+<p>Die Verbindungen zwischen dem Transkript und der Aufnahme folgen Ihren Änderungen auf dieselbe Weise wie Kodierungen (siehe <a href="#annotations-follow-edits">Wie Annotationen Änderungen folgen</a> weiter oben in diesem Kapitel). Ein korrigiertes Wort innerhalb einer Passage wird also weiterhin als Teil dieser Passage abgespielt, und ein Klick darauf führt an dieselbe Stelle der Aufnahme wie vor Ihrer Änderung.</p>
+<h2 id="full-screen">Die Leseansicht im Vollbildmodus<a class="anchor" href="#full-screen" aria-hidden="true">#</a></h2>
+<p>Im Vollbildmodus nimmt das Fenster von LemmaLoom den ganzen Bildschirm ein. Die Titelleiste wird ausgeblendet, und ihre Werkzeuge wandern in die Symbolleiste ganz oben am Bildschirm. Der Vollbildmodus ist besonders für die erste Lektüre umfangreicher Dokumente hilfreich. Beim Kodieren können Sie den Inspektor geöffnet lassen, etwa um die Codes des Dokuments in seinem Tab <strong class="ui">Kodierung</strong> im Blick zu behalten.</p>
+<p>Die Abbildung unten zeigt „Uns läuft die Zeit davon“ im Vollbildmodus; Seitenleiste und Inspektor sind noch geöffnet, und in der Symbolleiste ist das Menü <strong class="ui">Leseansicht-Einstellungen</strong> aufgeklappt.</p>
+<figure class="shot" id="reading-and-editing-full-screen"><img class="shot-light" src="../figures/de/light/reading-and-editing-full-screen.webp" alt="Die Symbolleiste der Leseansicht im Vollbildmodus, mit geöffnetem Menü Leseansicht-Einstellungen." loading="lazy"><img class="shot-dark" src="../figures/de/dark/reading-and-editing-full-screen.webp" alt="Die Symbolleiste der Leseansicht im Vollbildmodus, mit geöffnetem Menü Leseansicht-Einstellungen." loading="lazy"><figcaption>Die Symbolleiste der Leseansicht im Vollbildmodus, mit geöffnetem Menü Leseansicht-Einstellungen.</figcaption></figure>
+<p>So lesen Sie im Vollbildmodus:</p>
+<ol>
+<li>Öffnen Sie das Dokument.</li>
+<li>Wählen Sie <strong class="ui">Darstellung ▸ Vollbildmodus</strong> (⌃⌘F) oder klicken Sie auf den grünen Knopf oben links im Fenster.</li>
+<li>Um dem Text die ganze Bildschirmbreite zu geben, blenden Sie die Seitenleiste mit <strong class="ui">Darstellung ▸ Seitenleiste ein-/ausblenden</strong> (⌃⌘S) und den Inspektor mit <strong class="ui">Darstellung ▸ Inspektor ein-/ausblenden</strong> (⌃⌘I) aus.</li>
+<li>Um den Vollbildmodus zu verlassen, wählen Sie <strong class="ui">Darstellung ▸ Vollbildmodus aus</strong> (⌃⌘F).</li>
+</ol>
+<p>Alle Menübefehle und Kurzbefehle aus diesem Kapitel funktionieren im Vollbildmodus genauso.</p>
+<h2 id="split-view">Zwei Dokumente nebeneinander lesen<a class="anchor" href="#split-view" aria-hidden="true">#</a></h2>
+<p>Die geteilte Ansicht teilt die Leseansicht in zwei Bereiche, die jeweils ein Dokument zeigen. So können Sie zwei Dokumente einander gegenüberstellen, etwa einen Meinungsbeitrag von Aktivisten zu einem Thema und einen von Skeptikern zum selben Thema, oder einen Artikel und seine Übersetzung. Auch mitten im Kodieren ist die geteilte Ansicht hilfreich. Steht in einem Bereich ein Dokument, das Sie bereits kodiert haben, sehen Sie genau, wie Sie dort kodiert haben, und können den Code im Dokument, an dem Sie gerade arbeiten, einheitlich weiter anwenden. Mehr dazu, wie Sie Übersetzungen in der geteilten Ansicht verwenden, finden Sie in <a href="translations.html">Kapitel 9, Übersetzungen und geteilte Ansicht</a>.</p>
+<p>Die Abbildung zeigt links den Meinungsbeitrag „Uns läuft die Zeit davon“ und rechts seine englische Übersetzung „Uns läuft die Zeit davon (Englisch)“. Die Übersetzung enthält Kopien der Kodierungen des Originals, und <strong class="ui">Gemeinsam scrollen</strong> hält beim Scrollen beide auf gleicher Höhe.</p>
+<figure class="shot" id="reading-and-editing-split-view"><img class="shot-light" src="../figures/de/light/reading-and-editing-split-view.webp" alt="Der Meinungsbeitrag „Uns läuft die Zeit davon“ links und seine englische Übersetzung „Uns läuft die Zeit davon (Englisch)“ rechts, mit eingeschaltetem Gemeinsam scrollen." loading="lazy"><img class="shot-dark" src="../figures/de/dark/reading-and-editing-split-view.webp" alt="Der Meinungsbeitrag „Uns läuft die Zeit davon“ links und seine englische Übersetzung „Uns läuft die Zeit davon (Englisch)“ rechts, mit eingeschaltetem Gemeinsam scrollen." loading="lazy"><figcaption>Der Meinungsbeitrag „Uns läuft die Zeit davon“ links und seine englische Übersetzung „Uns läuft die Zeit davon (Englisch)“ rechts, mit eingeschaltetem Gemeinsam scrollen.</figcaption></figure>
+<p>Es gibt mehrere Wege, ein zweites Dokument neben dem aktuellen zu öffnen.</p>
+<ul>
+<li>Klicken Sie in der Seitenleiste mit der rechten Maustaste auf das Dokument und wählen Sie im Kontextmenü <strong class="ui">In geteilter Ansicht öffnen</strong>.</li>
+<li>Oder klicken Sie mit der rechten Maustaste auf den Tab eines anderen geöffneten Dokuments und wählen Sie in dessen Menü <strong class="ui">In geteilter Ansicht öffnen</strong>.</li>
+<li>Um zwei Dokumente gleichzeitig nebeneinander zu öffnen, klicken Sie in der Seitenleiste bei gedrückter Taste ⌘ auf das zweite Dokument, klicken mit der rechten Maustaste auf eines der beiden und wählen im Kontextmenü <strong class="ui">Nebeneinander öffnen</strong>. Das Dokument, das in der Seitenleiste weiter oben steht, öffnet sich links.</li>
+<li>Bei einer Übersetzung klicken Sie in der Seitenleiste mit der rechten Maustaste darauf und wählen <strong class="ui">Neben dem Original öffnen</strong>. Das Original öffnet sich links, die Übersetzung rechts.</li>
+</ul>
+<figure class="shot" id="reading-and-editing-split-view-menu"><img class="shot-light" src="../figures/de/light/reading-and-editing-split-view-menu.webp" alt="Das Kontextmenü zu „Uns läuft die Zeit davon (Englisch)“ in der Seitenleiste, mit Neben dem Original öffnen." loading="lazy"><img class="shot-dark" src="../figures/de/dark/reading-and-editing-split-view-menu.webp" alt="Das Kontextmenü zu „Uns läuft die Zeit davon (Englisch)“ in der Seitenleiste, mit Neben dem Original öffnen." loading="lazy"><figcaption>Das Kontextmenü zu „Uns läuft die Zeit davon (Englisch)“ in der Seitenleiste, mit Neben dem Original öffnen.</figcaption></figure>
+<p>Alle genannten Befehle finden Sie auch im Menü <strong class="ui">Fenster</strong> der Menüleiste. Dort listet <strong class="ui">In geteilter Ansicht öffnen</strong> die geöffneten Dokumente auf, die neben dem aktiven Dokument erscheinen können.</p>
+<p>Das neu geöffnete Dokument erscheint im rechten Bereich. Sein Tab wandert aus der Tableiste in die Kopfzeile des rechten Bereichs.</p>
+<p>So funktioniert die geteilte Ansicht.</p>
+<ul>
+<li>Ein Klick in einen der Bereiche macht ihn zum aktiven Bereich und hebt seinen Tab hervor. Werkzeuge, Menüs und Inspektor beziehen sich dann nur auf den aktiven Bereich; ⌘F durchsucht also nur das Dokument in diesem Bereich.</li>
+<li>Wenn Sie die Trennlinie zwischen den beiden Bereichen ziehen, ändern Sie ihre Größe. Jeder Bereich hat eine Mindestgröße, und LemmaLoom merkt sich die Aufteilung und stellt sie wieder her, wenn Sie die geteilte Ansicht erneut öffnen.</li>
+<li>Jeder Bereich hat eigene Lenses und eine eigene Suchleiste sowie eine eigene Auswahl und Scrollposition. So können Sie zum Beispiel in einem Bereich eine Grammatik-Lens aktivieren und im anderen nur Ihre Codes anzeigen. Schrift, Textgröße, Randspalte und Layout sind in beiden Bereichen gleich.</li>
+<li>Gehören die beiden Dokumente als Original und Übersetzung zusammen oder sind sie zwei Übersetzungen desselben Originals, erscheint ganz rechts in der Kopfzeile des rechten Bereichs eine Schaltfläche mit einem Schloss, <strong class="ui">Gemeinsam scrollen</strong>. Klicken Sie darauf, um das Scrollen zu koppeln, oder wählen Sie <strong class="ui">Darstellung ▸ Gemeinsam scrollen</strong> (⌥⌘L).</li>
+</ul>
+<p>Um die geteilte Ansicht zu schließen, klicken Sie auf das × in der Kopfzeile des rechten Bereichs, wählen im Kontextmenü dieser Kopfzeile <strong class="ui">Geteilte Ansicht schließen</strong> oder wählen in der Menüleiste <strong class="ui">Fenster ▸ Geteilte Ansicht schließen</strong>. Das Dokument im rechten Bereich wird dabei ebenfalls geschlossen.</p>
+<h3 id="document-window">Ein Dokument in einem eigenen Fenster öffnen<a class="anchor" href="#document-window" aria-hidden="true">#</a></h3>
+<p>Sie können ein Dokument auch in einem eigenen Fenster lesen. Das ist nützlich, wenn Sie einen zweiten Bildschirm haben oder einen Text im Blick behalten möchten, während das Hauptfenster etwas anderes zeigt, etwa das Codebuch oder eine Abfrage. Um ein Dokument in einem eigenen Fenster zu öffnen, klicken Sie mit der rechten Maustaste auf seinen Tab und wählen <strong class="ui">In neuem Fenster öffnen</strong>. Für das aktive Dokument können Sie auch <strong class="ui">Fenster ▸ In neuem Fenster öffnen</strong> wählen. Das Fenster <strong class="ui">Dokument</strong> zeigt die Leseansicht mit einem eigenen Inspektor. LemmaLoom hat nur ein solches Fenster; wenn Sie ein weiteres Dokument in einem neuen Fenster öffnen, ersetzt es deshalb das bisher angezeigte.</p>
+<figure class="shot" id="reading-and-editing-document-window"><img class="shot-light" src="../figures/de/light/reading-and-editing-document-window.webp" alt="Das Fenster Dokument mit „Uns läuft die Zeit davon“, links die Leseansicht und rechts ihr eigener Inspektor." loading="lazy"><img class="shot-dark" src="../figures/de/dark/reading-and-editing-document-window.webp" alt="Das Fenster Dokument mit „Uns läuft die Zeit davon“, links die Leseansicht und rechts ihr eigener Inspektor." loading="lazy"><figcaption>Das Fenster Dokument mit „Uns läuft die Zeit davon“, links die Leseansicht und rechts ihr eigener Inspektor.</figcaption></figure>
+<p>Dort stehen Ihnen die Menübefehle und ihre Kurzbefehle zur Verfügung, zum Beispiel ⌘F zum Suchen, ⌘+ und ⌘- für die Textgröße, ⇧⌘E zum Bearbeiten, ⌃⌘I zum Ein- und Ausblenden des Inspektors, ⌘↩ zum Abschließen einer Bearbeitung und ⌘. zum Abbrechen.</p>
+<h2 id="reading-commands">Befehle zum Lesen und Bearbeiten<a class="anchor" href="#reading-commands" aria-hidden="true">#</a></h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Befehl</th><th>Kurzbefehl</th><th>Hinweise</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">Bearbeiten ▸ Suchen</strong></td><td>⌘F</td><td>Öffnet oder schließt die Suchleiste. Während der Bearbeitung deaktiviert.</td></tr>
+<tr><td><strong class="ui">Bearbeiten ▸ Weitersuchen</strong></td><td>⌘G</td><td>Wenn die Suchleiste Treffer hat.</td></tr>
+<tr><td><strong class="ui">Bearbeiten ▸ Rückwärts suchen</strong></td><td>⇧⌘G</td><td>Wenn die Suchleiste Treffer hat.</td></tr>
+<tr><td><strong class="ui">Darstellung ▸ Größerer Text</strong></td><td>⌘+</td><td>Bei geöffnetem Dokument, bis 200 Prozent.</td></tr>
+<tr><td><strong class="ui">Darstellung ▸ Kleinerer Text</strong></td><td>⌘-</td><td>Bei geöffnetem Dokument, bis hinunter zu 70 Prozent.</td></tr>
+<tr><td><strong class="ui">Darstellung ▸ Textgröße zurücksetzen</strong></td><td>⌘0</td><td>Bei geöffnetem Dokument, wenn die Größe von 100 Prozent abweicht.</td></tr>
+<tr><td><strong class="ui">Darstellung ▸ Gemeinsam scrollen</strong></td><td>⌥⌘L</td><td>In der geteilten Ansicht, mit zwei Sprachfassungen eines Dokuments.</td></tr>
+<tr><td><strong class="ui">Darstellung ▸ Seitenleiste ein-/ausblenden</strong></td><td>⌃⌘S</td><td>Blendet die Seitenleiste ein oder aus.</td></tr>
+<tr><td><strong class="ui">Darstellung ▸ Inspektor ein-/ausblenden</strong></td><td>⌃⌘I</td><td>Blendet den Inspektor ein oder aus.</td></tr>
+<tr><td><strong class="ui">Darstellung ▸ Vollbildmodus</strong></td><td>⌃⌘F</td><td>Heißt im Vollbildmodus <strong class="ui">Vollbildmodus aus</strong>.</td></tr>
+<tr><td><strong class="ui">Dokument ▸ Bearbeiten</strong></td><td>⇧⌘E</td><td>Sobald der Text des Dokuments geladen ist.</td></tr>
+<tr><td><strong class="ui">Dokument ▸ Sichern</strong></td><td>⌘↩</td><td>Während der Bearbeitung.</td></tr>
+<tr><td><strong class="ui">Dokument ▸ Abbrechen</strong></td><td>⌘.</td><td>Während der Bearbeitung.</td></tr>
+<tr><td><strong class="ui">Dokument ▸ Wiedergabe</strong> oder <strong class="ui">Pausieren</strong></td><td>⇧⌘P</td><td>In Audio- und Videodokumenten.</td></tr>
+<tr><td><strong class="ui">Bearbeiten ▸ Text bearbeiten widerrufen</strong></td><td>⌘Z</td><td>Nach dem Sichern einer Änderung.</td></tr>
+</tbody></table></div>
+<p>Eine Liste aller Kurzbefehle von LemmaLoom finden Sie in <a href="keyboard-shortcuts.html">Kapitel 25, Tastaturkurzbefehle</a>.</p>
+</article>
+<nav class="pager"><a class="previous" href="importing.html"><span>Zurück</span>Material importieren</a><a class="next" href="lenses.html"><span>Weiter</span>Lenses</a></nav>
+<footer class="site-footer">© 2026 Ryan S. Cooper. Alle Rechte vorbehalten.<br>Diese Ausgabe wurde mithilfe von KI aus der englischen Originalausgabe übersetzt. Die Übersetzung kann Fehler oder Ungenauigkeiten enthalten. Im Zweifel ist die englische Ausgabe maßgeblich.</footer>
+</main>
+<nav class="page-toc" aria-label="Auf dieser Seite"><p>Auf dieser Seite</p><ul>
+<li class="level-2"><a href="#the-reader">Die Leseansicht</a></li>
+<li class="level-3"><a href="#title-band">Die Titelleiste</a></li>
+<li class="level-3"><a href="#gutter">Die Randspalte</a></li>
+<li class="level-3"><a href="#minimap">Die Dokumentübersicht</a></li>
+<li class="level-3"><a href="#status-bar">Die Statusleiste</a></li>
+<li class="level-3"><a href="#before-analysis">Bevor die Indizierung abgeschlossen ist</a></li>
+<li class="level-3"><a href="#reader-state">Was sich die Leseansicht merkt</a></li>
+<li class="level-2"><a href="#text-appearance">Die Darstellung des Textes ändern</a></li>
+<li class="level-3"><a href="#font">Schrift</a></li>
+<li class="level-3"><a href="#text-size">Textgröße</a></li>
+<li class="level-3"><a href="#gutter-numbering">Nummerierung in der Randspalte</a></li>
+<li class="level-3"><a href="#layout">Layout</a></li>
+<li class="level-3"><a href="#reader-themes">Farben der Leseansicht</a></li>
+<li class="level-3"><a href="#selection-appearance">Wie eine Auswahl dargestellt wird</a></li>
+<li class="level-2"><a href="#finding-text">Text suchen</a></li>
+<li class="level-2"><a href="#selecting-text">Text auswählen</a></li>
+<li class="level-3"><a href="#selecting-a-word">Ein Wort auswählen</a></li>
+<li class="level-3"><a href="#selecting-a-passage">Eine Textstelle auswählen</a></li>
+<li class="level-3"><a href="#selection-bar">Die Auswahlleiste</a></li>
+<li class="level-2"><a href="#editing-text">Den Text eines Dokuments bearbeiten</a></li>
+<li class="level-3"><a href="#editing-and-saving">Bearbeiten und sichern</a></li>
+<li class="level-3"><a href="#after-saving">Was das Sichern bewirkt</a></li>
+<li class="level-3"><a href="#annotations-follow-edits">Wie Annotationen Änderungen folgen</a></li>
+<li class="level-3"><a href="#undoing-edits">Eine Änderung widerrufen</a></li>
+<li class="level-2"><a href="#media-documents">Audio- und Videodokumente</a></li>
+<li class="level-3"><a href="#player-bar">Die Wiedergabeleiste</a></li>
+<li class="level-3"><a href="#playing-from-text">Ab einer Stelle im Transkript abspielen</a></li>
+<li class="level-3"><a href="#following-transcript">Dem Transkript folgen</a></li>
+<li class="level-3"><a href="#video-position">Video über oder neben dem Text</a></li>
+<li class="level-3"><a href="#correcting-transcripts">Ein Transkript korrigieren</a></li>
+<li class="level-2"><a href="#full-screen">Die Leseansicht im Vollbildmodus</a></li>
+<li class="level-2"><a href="#split-view">Zwei Dokumente nebeneinander lesen</a></li>
+<li class="level-3"><a href="#document-window">Ein Dokument in einem eigenen Fenster öffnen</a></li>
+<li class="level-2"><a href="#reading-commands">Befehle zum Lesen und Bearbeiten</a></li>
+</ul></nav>
+</div>
+<script src="../assets/guide.js" defer></script>
+</body>
+</html>

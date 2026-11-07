@@ -1,0 +1,510 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sets, Groups, Tags, and Attributes · LemmaLoom User Guide</title>
+<link rel="stylesheet" href="../assets/guide.css">
+<link rel="icon" type="image/png" href="../assets/logo.png">
+<script>var r=document.documentElement;r.setAttribute('data-theme','light');try{if(localStorage.getItem('guide-theme')==='dark'){r.setAttribute('data-theme','dark')}}catch(e){}</script>
+</head>
+<body>
+<header class="topbar">
+<button class="menu-toggle" aria-label="Contents" aria-expanded="false">☰</button>
+<a class="brand" href="index.html"><span class="wordmark"><span class="lemma">Lemma</span>Loom</span><span class="guide-name">User Guide</span></a>
+<div class="search"><input type="search" id="search" placeholder="Search" aria-label="Search" autocomplete="off" data-empty="No results"><div class="results" id="results" hidden></div></div>
+<nav class="languages" aria-label="Language"><a href="../en/sets-tags-attributes.html" lang="en" aria-current="true">English</a><a href="../de/sets-tags-attributes.html" lang="de">Deutsch</a><a href="../zh-Hans/sets-tags-attributes.html" lang="zh-Hans">简体中文</a></nav>
+<button class="theme-toggle" data-light="Light" data-dark="Dark" aria-label="Theme"></button>
+<a class="pdf-link" href="https://github.com/LemmaLoom/public/raw/main/pdf/lemmaloom-guide-en.pdf">PDF</a>
+</header>
+<div class="layout">
+<nav class="sidebar" aria-label="Contents"><ol>
+<li class="unnumbered"><a href="quick-start.html">Quick Start</a></li>
+<li><a href="introduction.html">Introduction</a></li>
+<li><a href="getting-started.html">Getting Started</a></li>
+<li><a href="projects-and-documents.html">Projects and Documents</a></li>
+<li><a href="importing.html">Importing Material</a></li>
+<li><a href="reading-and-editing.html">Reading and Editing</a></li>
+<li><a href="lenses.html">Lenses</a></li>
+<li><a href="coding.html">Coding</a></li>
+<li class="current"><a href="sets-tags-attributes.html">Sets, Groups, Tags, and Attributes</a></li>
+<li><a href="translations.html">Translations and Split View</a></li>
+<li><a href="text-inspector.html">The Text Inspector</a></li>
+<li><a href="grammar-inspector.html">The Grammar Inspector</a></li>
+<li><a href="word-sketch.html">Word Sketch</a></li>
+<li><a href="coding-analysis.html">Analyzing Codes</a></li>
+<li><a href="sketch-space.html">Sketch Space</a></li>
+<li><a href="queries-building.html">Building a Query</a></li>
+<li><a href="queries-results.html">Query Results and Statistics</a></li>
+<li><a href="queries-patterns.html">Query Patterns and Discovery</a></li>
+<li><a href="queries-using-results.html">Using Query Results</a></li>
+<li><a href="dictionaries.html">Dictionaries</a></li>
+<li><a href="custom-analyzers.html">Custom Analyzers</a></li>
+<li><a href="analysis-and-indexing.html">Analysis and Indexing</a></li>
+<li><a href="exchange-and-export.html">Exchanging and Exporting</a></li>
+<li><a href="undo.html">Undo and Redo</a></li>
+<li><a href="settings.html">Settings and Appearance</a></li>
+<li><a href="keyboard-shortcuts.html">Keyboard Shortcuts</a></li>
+<li><a href="help-and-support.html">Help and Support</a></li>
+<li><a href="statistics-reference.html">Statistics at a Glance</a></li>
+<li class="unnumbered"><a href="glossary.html">Glossary</a></li>
+<li class="unnumbered"><a href="thanks.html">Thank You</a></li>
+</ol></nav>
+<main class="content">
+<article>
+<h1 id="sets-tags-attributes">Sets, Groups, Tags, and Attributes</h1>
+<p>A typical study compares two parts of a project, such as activists’ texts against skeptic texts, or one outlet against all others. LemmaLoom offers multiple ways to characterize the two parts. An attribute stores factual information pertaining to each document. Sets and smart sets represent named collections of documents that an analysis could cover, groups organize your list of documents in the navigation sidebar, and finally tags provide a completely freeform way of labeling documents in all your projects.</p>
+<p><strong class="ui">Edit ▸ Undo</strong> (⌘Z) allows you to undo changes made to sets, smart sets, tags, and attributes. The menu item specifies precisely what is being undone, such as <strong class="ui">Undo New Set</strong> or <strong class="ui">Undo Set Value</strong>. More detail can be found in <a href="undo.html">Chapter 23, Undo and Redo</a>.</p>
+<h2 id="key-terms">Key terms<a class="anchor" href="#key-terms" aria-hidden="true">#</a></h2>
+<ul>
+<li><em>Sets</em> are named collections of documents manually added to the set by you. Any number of sets may contain a document, and sets can act as <em>scopes</em> of analyses, which are the documents analyzed in an analysis task.</li>
+<li><em>Smart sets</em> are sets whose documents depend on conditions. Whenever something their members depend on changes, LemmaLoom recalculates members of the smart set accordingly.</li>
+<li><em>Conditions</em> test the value of one particular property in a document and consist of a field, comparison, and usually a value. As an example, the condition might test whether “Readership” <strong class="ui">is at least</strong> 100,000.</li>
+<li><em>Groups</em> are folders in the <strong class="ui">Documents</strong> section of the sidebar. Unlike with sets, documents belong to at most one group each.</li>
+<li><em>Tags</em> are brief, free-form labels used to describe aspects of documents, such as “op-ed” or “viral”. Tags exist globally across all of your projects.</li>
+<li><em>Attributes</em> are facts about each document within a project, defined once for the project, such as “Stance” or “Publication Date”. Every document belonging to a project can have its own <em>value</em> of an attribute.</li>
+<li><em>Original</em> documents refer to those that are not translations. Sets always consist of original documents. Any analysis task involving sets, tags, or full projects reads original documents unless you ask for translations.</li>
+</ul>
+<h2 id="choosing">Which one to use<a class="anchor" href="#choosing" aria-hidden="true">#</a></h2>
+<div class="table-wrap"><table>
+<thead><tr><th></th><th>Set</th><th>Smart set</th><th>Group</th><th>Tag</th><th>Attribute</th></tr></thead>
+<tbody>
+<tr><td>A document gets in when</td><td>you add it</td><td>it meets the conditions</td><td>you move it there</td><td>you type the tag</td><td>you enter a value</td></tr>
+<tr><td>Per document</td><td>any number of sets</td><td>any number of smart sets</td><td>at most one group</td><td>any number of tags</td><td>one value per attribute</td></tr>
+<tr><td>Belongs to</td><td>the project</td><td>the project</td><td>the project</td><td>the project (names shared by all projects)</td><td>the project</td></tr>
+<tr><td>Opens in a tab with the project’s views</td><td>yes</td><td>yes</td><td>no</td><td>yes</td><td>no</td></tr>
+</tbody></table></div>
+<p>Which of the options listed above works for you depends on what you wish to achieve with your documents afterward.</p>
+<ul>
+<li>An attribute holds any factual value of interest, which could help you compare and filter your documents later. The position taken by the text in question, the publication outlet, date, etc., are common examples.</li>
+<li>Where there are no specific criteria for collecting documents, you can opt for a set. The set option is appropriate where analyses must focus exclusively on your selected subset of documents. A set would come in handy during analyses of documents picked by hand, for instance, for close readings or discussions with colleagues.</li>
+<li>A smart set fits when attribute values, tags, or other properties already say which documents belong together. It keeps up by itself as you add texts or correct a value.</li>
+<li>Unlike document sets, groups merely organize the documents in the navigation sidebar, for example, by the kind of material or where it came from.</li>
+<li>A tag is a free-form label without a value. Tags fit labels you use the same way in several projects, and each tag opens its documents in a tab, much like a set.</li>
+</ul>
+<p>The “Climate Debate” project has documents organized in various ways; the activists’ texts and the skeptics’ texts make up sets named “Activists” and “Skeptics”. A few articles have been assigned the tags “op-ed” and “viral”. The documents also appear sorted based on the publication medium, in the groups “Print” and “Online”.</p>
+<p>Attributes in “Climate Debate”, for instance, the “Stance” attribute, make it possible to analyze the difference in codings applied to activist versus skeptic texts. The smart set “Wide Reach” automatically updates itself according to a predetermined criterion of high “Readership”.</p>
+<h2 id="example-values">The examples in this chapter<a class="anchor" href="#example-values" aria-hidden="true">#</a></h2>
+<p>The examples use “Climate Debate”, which is the example project for this guide (see <a href="introduction.html#example-project">The example project</a> in <a href="introduction.html">Chapter 1, Introduction</a>). This example project comes pre-indexed and contains 14 original documents with these values, groups, and tags:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Document</th><th>Stance</th><th>Readership</th><th>Publication Date</th><th>Outlet</th><th>Group</th><th>Tags</th></tr></thead>
+<tbody>
+<tr><td>Running Out of Time</td><td>Activist</td><td>412,000</td><td>2024-08-21</td><td>The Northern Herald</td><td>Print</td><td>op-ed</td></tr>
+<tr><td>Letter from the Climate Strike</td><td>Activist</td><td>186,000</td><td>2024-09-02</td><td>Greenline Blog</td><td>Online</td><td>viral</td></tr>
+<tr><td>Why We Block the Roads</td><td>Activist</td><td>41,000</td><td>2023-11-14</td><td>Greenline Blog</td><td>Online</td><td></td></tr>
+<tr><td>Farmers Are Not the Enemy</td><td>Activist</td><td>23,000</td><td>2024-08-09</td><td>Farm &amp; Field</td><td>Print</td><td></td></tr>
+<tr><td>A Mayor’s Promise</td><td>Activist</td><td>8,500</td><td>2024-10-08</td><td>City Hall Bulletin</td><td>Online</td><td></td></tr>
+<tr><td>Hope Takes Work</td><td>Activist</td><td>72,000</td><td>2023-12-02</td><td>The Weekly Ledger</td><td>Print</td><td></td></tr>
+<tr><td>The Models Keep Missing</td><td>Skeptic</td><td>96,000</td><td>2024-03-12</td><td>The Weekly Ledger</td><td>Print</td><td></td></tr>
+<tr><td>Net Zero Will Cost You</td><td>Skeptic</td><td>398,000</td><td>2024-10-22</td><td>The Northern Herald</td><td>Print</td><td>op-ed</td></tr>
+<tr><td>Let’s Not Panic</td><td>Skeptic</td><td>254,000</td><td>2024-09-26</td><td>Plain Talk Online</td><td>Online</td><td>viral</td></tr>
+<tr><td>Who Pays for the Transition</td><td>Skeptic</td><td>57,000</td><td>2024-11-05</td><td>Plain Talk Online</td><td>Online</td><td>op-ed</td></tr>
+<tr><td>Science Is Never Settled</td><td>Skeptic</td><td>68,000</td><td>2024-06-18</td><td>The Weekly Ledger</td><td>Print</td><td></td></tr>
+<tr><td>Heat Wave Report 2024</td><td>Neutral</td><td>3,100</td><td>2024-09-16</td><td>Weather and Climate Agency</td><td></td><td></td></tr>
+<tr><td>Carbon Tax Debate</td><td>Neutral</td><td>875,000</td><td>2024-09-19</td><td>The Northern Herald</td><td></td><td></td></tr>
+<tr><td>Radio Debate</td><td>Neutral</td><td>310,000</td><td>2024-09-17</td><td>Radio Northline</td><td>Online</td><td></td></tr>
+</tbody></table></div>
+<p>Neither “Heat Wave Report 2024” nor “Carbon Tax Debate” belongs to any group or has any tags associated with it. “Running Out of Time (German)” is the project’s fifteenth document; because it is a translation, it shares its values, group, and tags with the original “Running Out of Time”. The set “Activists” contains the six documents whose “Stance” is “Activist”, while “Skeptics” contains the five documents whose “Stance” is “Skeptic”. Lastly, the smart set “Wide Reach” contains the documents with a “Readership” of at least 100,000. The recording of “Radio Debate” lasts 4 minutes and 49 seconds.</p>
+<h2 id="sets">Sets<a class="anchor" href="#sets" aria-hidden="true">#</a></h2>
+<p>Sets specify which documents are analyzed. In “Climate Debate”, both “Activists” and “Skeptics” consist of texts from one side. There is a keyword query in the “Activists” set which contrasts the words in its documents against those in the “Skeptics” set. A keyword list contrasts a set against another set or against everything else in the project. If your study involves comparing categories of text, each category should get its own set.</p>
+<p>In the <strong class="ui">Sets</strong> section of the navigation sidebar, the sets and smart sets in your project are organized according to when they were added, along with the number of documents each contains. Handmade sets feature a stack icon, while smart sets have a filter icon. Expanding the disclosure triangle next to a set reveals its documents. Clicking on one of the documents will open it.</p>
+<figure class="shot" id="sets-tags-attributes-sets-section"><img class="shot-light" src="../figures/en/light/sets-tags-attributes-sets-section.webp" alt="The Sets section of the navigation sidebar with “Activists” expanded, and “Wide Reach”, a smart set, with its filter icon." loading="lazy"><img class="shot-dark" src="../figures/en/dark/sets-tags-attributes-sets-section.webp" alt="The Sets section of the navigation sidebar with “Activists” expanded, and “Wide Reach”, a smart set, with its filter icon." loading="lazy"><figcaption>The Sets section of the navigation sidebar with “Activists” expanded, and “Wide Reach”, a smart set, with its filter icon.</figcaption></figure>
+<h3 id="making-a-set">Making a set<a class="anchor" href="#making-a-set" aria-hidden="true">#</a></h3>
+<p>Making a set is quickest from preselected documents. The figure below shows six texts from the activist side of “Climate Debate” already selected in the navigation sidebar, with <strong class="ui">Add to Set</strong> open in their shortcut menu. “Activists” is disabled in the submenu because it already contains all six documents.</p>
+<figure class="shot" id="sets-tags-attributes-add-to-set"><img class="shot-light" src="../figures/en/light/sets-tags-attributes-add-to-set.webp" alt="The six activist texts selected in the navigation sidebar, with Add to Set open in their shortcut menu." loading="lazy"><img class="shot-dark" src="../figures/en/dark/sets-tags-attributes-add-to-set.webp" alt="The six activist texts selected in the navigation sidebar, with Add to Set open in their shortcut menu." loading="lazy"><figcaption>The six activist texts selected in the navigation sidebar, with Add to Set open in their shortcut menu.</figcaption></figure>
+<p>To turn your selection into a set:</p>
+<ol>
+<li>Select the documents in the <strong class="ui">Documents</strong> section (⌘-click or ⇧-click to select several).</li>
+<li>Right-click one of the selected documents and choose <strong class="ui">Add to Set ▸ New Set from Documents</strong>.</li>
+<li>Type the set’s name and press Return.</li>
+</ol>
+<p>In a large project, you can input part of the name into the <strong class="ui">Search Documents</strong> bar at the top of the navigation sidebar and select your desired documents from the results list. <strong class="ui">Project ▸ Add to Set</strong> gives you access to the same commands as the shortcut menu.</p>
+<p>Should you wish to make a set from a single document, then right-click the document and then go to <strong class="ui">Sets ▸ New Set from Document</strong>. Until renamed, the resulting set retains the placeholder name “New Set from Document”.</p>
+<p>An empty set may also be made first, to be filled at your convenience, by selecting <strong class="ui">New Set</strong> at the bottom of the <strong class="ui">Sets</strong> section or selecting <strong class="ui">Project ▸ New Set</strong>. Enter the desired name, then confirm by pressing Return; pressing Escape maintains the placeholder name “New Set”.</p>
+<p>Alternatively, you could construct a set out of the documents with hits from a particular query. Choose <strong class="ui">Create Set from Hits</strong> under the query’s <strong class="ui">Actions</strong> menu; the set is named after the query (see <a href="queries-using-results.html#create-set-from-hits">Create Set from Hits</a> in <a href="queries-using-results.html">Chapter 18, Using Query Results</a>).</p>
+<h3 id="adding-and-removing">Adding and removing documents<a class="anchor" href="#adding-and-removing" aria-hidden="true">#</a></h3>
+<p>Adding one document to a set involves selecting the document in the <strong class="ui">Documents</strong> section, opening the shortcut menu via right-clicking, going to <strong class="ui">Sets</strong>, and picking the set to add it to. Adding multiple documents would involve selecting the documents first, then right-clicking one document and choosing <strong class="ui">Add to Set</strong> followed by selecting the set to place them into. Any sets which contain every selected document will be disabled. Only ordinary sets are listed, since the conditions of a smart set dictate its content.</p>
+<figure class="shot" id="sets-tags-attributes-set-member-menu"><img class="shot-light" src="../figures/en/light/sets-tags-attributes-set-member-menu.webp" alt="The shortcut menu of “Running Out of Time” under the set “Activists”, with Remove from Set." loading="lazy"><img class="shot-dark" src="../figures/en/dark/sets-tags-attributes-set-member-menu.webp" alt="The shortcut menu of “Running Out of Time” under the set “Activists”, with Remove from Set." loading="lazy"><figcaption>The shortcut menu of “Running Out of Time” under the set “Activists”, with Remove from Set.</figcaption></figure>
+<p>To remove a document from a set:</p>
+<ol>
+<li>Click the disclosure triangle beside the set.</li>
+<li>Right-click the document and choose <strong class="ui">Remove from Set</strong>.</li>
+</ol>
+<p>There’s also the <strong class="ui">Project ▸ Remove from Set</strong> menu entry, which you access after clicking the document below the set. Once you delete the document from the project, the document leaves all existing sets.</p>
+<p>To remove several documents, ⌘-click on them all underneath the set. Either right-click one of them or open the <strong class="ui">Project</strong> menu to access <strong class="ui">Remove from Set</strong>. <strong class="ui">Remove from Set</strong> becomes disabled when the selection also holds documents under another set or in the <strong class="ui">Documents</strong> section.</p>
+<p>Document sets contain only originals. When a translation is added with <strong class="ui">Add to Set</strong>, its original is added instead. <a href="#translations-and-sets">Translations</a> later in this chapter goes deeper into the implications of having translations involved in analyses.</p>
+<h3 id="opening-a-set">Opening a set<a class="anchor" href="#opening-a-set" aria-hidden="true">#</a></h3>
+<p>Sets are opened in tabs, containing all ten views seen under <strong class="ui">Project</strong> on the navigation sidebar (<strong class="ui">Codebook</strong> to <strong class="ui">Queries</strong>). However, the ten views contained within sets pertain only to the documents that belong to the set.</p>
+<p>Open a set by clicking on its title, or right-clicking the set and choosing <strong class="ui">Open Set</strong>. The header of the tab shows the name of the set and how many documents it contains. For more detail about each of the ten views, refer to <a href="projects-and-documents.html#project-shelf">The project shelf</a> in <a href="projects-and-documents.html">Chapter 3, Projects and Documents</a>.</p>
+<p>Word sketches drawn from the set are opened in their own window via the shortcut menu option <strong class="ui">Word Sketch</strong>.</p>
+<h3 id="managing-sets">Renaming, exporting, and deleting a set<a class="anchor" href="#managing-sets" aria-hidden="true">#</a></h3>
+<p>These options appear in the shortcut menu for a set:</p>
+<ul>
+<li><strong class="ui">Rename</strong> transforms the set’s name into an editable field. Enter your desired name, then hit Return.</li>
+<li><strong class="ui">Export</strong> exports all the documents contained within a set along with the set itself in a LemmaLoom archive file. This option lets you pass one part of a project on to a colleague (see <a href="exchange-and-export.html">Chapter 22, Exchanging and Exporting</a>).</li>
+<li><strong class="ui">Delete Set</strong> immediately deletes the selected set. <strong class="ui">Edit ▸ Undo Delete Set</strong> (⌘Z) recovers the deleted set. After you click a set, <strong class="ui">Project ▸ Delete Set</strong> (⌘⌫) deletes it too.</li>
+</ul>
+<figure class="shot" id="sets-tags-attributes-set-menu"><img class="shot-light" src="../figures/en/light/sets-tags-attributes-set-menu.webp" alt="The shortcut menu of the set “Activists”." loading="lazy"><img class="shot-dark" src="../figures/en/dark/sets-tags-attributes-set-menu.webp" alt="The shortcut menu of the set “Activists”." loading="lazy"><figcaption>The shortcut menu of the set “Activists”.</figcaption></figure>
+<p>After deleting a set, codes with a <strong class="ui">Scope</strong> equal to the deleted set show <strong class="ui">None</strong> in the <strong class="ui">Document set</strong> menu. Choose another document set or scope to use them again (see <a href="coding.html#code-scope">Where a code can be used</a> in <a href="coding.html">Chapter 7, Coding</a>). Any queries saved in the set move to the project’s <strong class="ui">Queries</strong> view.</p>
+<h2 id="smart-sets">Smart sets<a class="anchor" href="#smart-sets" aria-hidden="true">#</a></h2>
+<p>Smart sets contain the documents which match their conditions. Within the example project “Climate Debate”, the smart set “Wide Reach” contains six documents whose “Readership” <strong class="ui">is at least</strong> 100,000. Were the “Readership” of “The Models Keep Missing” corrected from 96,000 to 104,000, the document would instantly become part of the “Wide Reach” set, reflected by an increment of one, to 7, in the count next to the set title.</p>
+<p>In most respects, a smart set behaves as a regular set would. A smart set opens in a tab with the same views, and a smart set can serve as a scope anywhere a set might. Since a smart set’s membership comes solely from its conditions, you would modify its content by editing its conditions.</p>
+<p>Anytime an analysis is run on a smart set, its current documents get read by that analysis. This means running an analysis on the “Wide Reach” smart set today could potentially return different results compared to doing the same thing on the “Wide Reach” set next week, if values have changed in between.</p>
+<h3 id="creating-a-smart-set">Creating a smart set<a class="anchor" href="#creating-a-smart-set" aria-hidden="true">#</a></h3>
+<p>“Wide Reach” requires just one condition, but a smart set can combine several. Shown below is the dialog while creating the narrower smart set “Widely Read Activists”, which requires both conditions, “Stance” <strong class="ui">is any of</strong> “Activist” and “Readership” <strong class="ui">is at least</strong> 100,000. As shown by its count (<strong class="ui">2 documents</strong>), the smart set includes just “Running Out of Time” and “Letter from the Climate Strike”.</p>
+<figure class="shot" id="sets-tags-attributes-smart-set-editor"><img class="shot-light" src="../figures/en/light/sets-tags-attributes-smart-set-editor.webp" alt="The New Smart Set dialog for “Widely Read Activists”, with two conditions and a count of 2 documents." loading="lazy"><img class="shot-dark" src="../figures/en/dark/sets-tags-attributes-smart-set-editor.webp" alt="The New Smart Set dialog for “Widely Read Activists”, with two conditions and a count of 2 documents." loading="lazy"><figcaption>The New Smart Set dialog for “Widely Read Activists”, with two conditions and a count of 2 documents.</figcaption></figure>
+<p>To make a smart set:</p>
+<ol>
+<li>Click <strong class="ui">New Smart Set</strong> at the end of the <strong class="ui">Sets</strong> section, or choose <strong class="ui">Project ▸ New Smart Set</strong>. The <strong class="ui">New Smart Set</strong> dialog opens with one condition.</li>
+<li>In <strong class="ui">Name</strong>, type a name for the smart set.</li>
+<li>Set up the condition. Choose the field in the first menu (for <strong class="ui">Attribute</strong>, also the attribute in the second), then the comparison, and give the value (see <a href="#condition-values">Values in a condition</a> later in this chapter).</li>
+<li>To test something else as well, click <strong class="ui">Add Condition</strong> and set up the new condition in the same way.</li>
+<li>In <strong class="ui">Match</strong>, choose <strong class="ui">All</strong> or <strong class="ui">Any</strong> (see <a href="#all-or-any">All or Any</a> below).</li>
+<li>Check the count below the conditions, and click <strong class="ui">Save</strong>.</li>
+</ol>
+<p>Each condition occupies one row. The first menu allows choosing a field, such as <strong class="ui">Attribute</strong>, <strong class="ui">Tags</strong>, or <strong class="ui">Title</strong>. When choosing <strong class="ui">Attribute</strong>, a second menu selects the attribute. Then the next menu lets you pick from all comparisons applicable to the field. Finally, you input the value. The remove button at the end of a row (<strong class="ui">Remove condition</strong>) removes a condition, though this button becomes disabled when there is just one condition remaining (<strong class="ui">Only one left</strong>).</p>
+<p>By default, a new condition always uses the project’s first attribute, along with that attribute’s first comparison. Thus, a fresh condition for “Climate Debate” will automatically use <strong class="ui">Attribute</strong>, “Stance”, <strong class="ui">is any of</strong>. If there were no attributes defined within a project, then the initial condition would automatically default to <strong class="ui">Tags</strong> with <strong class="ui">has any of</strong>.</p>
+<p>The counter updates dynamically, allowing you to preview your smart set as you build the conditions, seeing how many of the original documents in the project satisfy the conditions you have finished. Until you complete a condition, the counter includes all original documents. So, while building the initial condition for “Climate Debate”, the counter reads 14, because there are fourteen original documents.</p>
+<p><strong class="ui">Save</strong> will stay disabled until you fill the smart set’s <strong class="ui">Name</strong> (<strong class="ui">Name is empty</strong>) and finish every condition (<strong class="ui">Incomplete</strong>). You can hover the mouse pointer over <strong class="ui">Save</strong> to learn the exact reason why. <strong class="ui">Incomplete</strong> means that a condition requires a value and lacks one, for example, <strong class="ui">is at least</strong> when nothing has been entered into the field or <strong class="ui">is any of</strong> without selecting items.</p>
+<p>Changing a condition’s field resets its value but retains the comparison whenever possible, or selects the field’s first comparison otherwise. If you change a condition’s comparison, the value is retained, so you can switch from <strong class="ui">is at least</strong> to <strong class="ui">is greater than</strong> without typing the number again.</p>
+<p>Queries for finding documents may also be stored as smart sets (see <a href="queries-using-results.html#save-as-smart-set">Saving a document query as a smart set</a> in <a href="queries-using-results.html">Chapter 18, Using Query Results</a>).</p>
+<h3 id="all-or-any">All or Any<a class="anchor" href="#all-or-any" aria-hidden="true">#</a></h3>
+<p><strong class="ui">Match</strong> controls the logic between your conditions. When setting <strong class="ui">Match</strong> to <strong class="ui">All</strong>, all of your conditions must hold true for a document; adding another condition narrows your smart set. Matching by <strong class="ui">Any</strong> requires that one of your conditions holds true for a document.</p>
+<p>In the case of “Widely Read Activists” shown in the figure above, two conditions are specified. First, six documents have a “Stance” of “Activist”, which include “Running Out of Time”, “Letter from the Climate Strike”, “Why We Block the Roads”, “Farmers Are Not the Enemy”, “A Mayor’s Promise”, and “Hope Takes Work”. Second, six documents have a “Readership” of at least 100,000, which include “Running Out of Time”, “Letter from the Climate Strike”, “Net Zero Will Cost You”, “Let’s Not Panic”, “Carbon Tax Debate”, and “Radio Debate”.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Match</th><th>Documents in the smart set</th><th>Count</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">All</strong></td><td>those on both lists, “Running Out of Time” and “Letter from the Climate Strike”</td><td>2</td></tr>
+<tr><td><strong class="ui">Any</strong></td><td>those on either list, namely the six activist texts, “Net Zero Will Cost You”, “Let’s Not Panic”, “Carbon Tax Debate”, and “Radio Debate”</td><td>10</td></tr>
+</tbody></table></div>
+<p>There are two documents common to both lists. Summing the sizes of the two individual lists, 6 and 6, would result in counting the two documents twice; hence, <strong class="ui">Any</strong> returns 6 + 6 − 2 = 10 documents.</p>
+<p>All conditions of a smart set combine in the same way, considering only properties pertaining directly to the document itself. The rule “activists with a readership of at least 100,000, or any skeptic,” or a rule querying membership in another set requires a query rather than a smart set. Queries allow nesting of rules (<strong class="ui">Add Group</strong>), which has nothing to do with document groups, and have a <strong class="ui">Set</strong> field (see <a href="queries-building.html#query-groups">Groups</a> in <a href="queries-building.html">Chapter 15, Building a Query</a>).</p>
+<h3 id="smart-set-fields">Fields<a class="anchor" href="#smart-set-fields" aria-hidden="true">#</a></h3>
+<p>A condition’s first menu contains the fields listed below. <strong class="ui">Attribute</strong> shows up here only if there are attributes defined within your project.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>What it tests</th><th>Comparisons</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">Attribute</strong></td><td>the value of the attribute chosen in the second menu</td><td>depend on the attribute’s type (see <a href="#attribute-comparisons">Comparisons for attributes</a>)</td></tr>
+<tr><td><strong class="ui">Tags</strong></td><td>the document’s tags</td><td><strong class="ui">has any of</strong>, <strong class="ui">has all of</strong>, <strong class="ui">has none of</strong>, <strong class="ui">is empty</strong>, <strong class="ui">is not empty</strong></td></tr>
+<tr><td><strong class="ui">Group</strong></td><td>the group the document is in</td><td><strong class="ui">is any of</strong>, <strong class="ui">is none of</strong>, <strong class="ui">is empty</strong>, <strong class="ui">is not empty</strong></td></tr>
+<tr><td><strong class="ui">Language</strong></td><td>the document’s language</td><td><strong class="ui">is any of</strong>, <strong class="ui">is none of</strong></td></tr>
+<tr><td><strong class="ui">Format</strong></td><td><strong class="ui">Text</strong>, <strong class="ui">PDF</strong>, <strong class="ui">Web Pages</strong>, <strong class="ui">Audio</strong>, or <strong class="ui">Video</strong></td><td><strong class="ui">is any of</strong>, <strong class="ui">is none of</strong></td></tr>
+<tr><td><strong class="ui">Title</strong></td><td>the document’s name</td><td><strong class="ui">is</strong>, <strong class="ui">is not</strong>, <strong class="ui">contains</strong>, <strong class="ui">does not contain</strong>, <strong class="ui">matches</strong>, <strong class="ui">is empty</strong>, <strong class="ui">is not empty</strong></td></tr>
+<tr><td><strong class="ui">Authors</strong></td><td>the authors in <strong class="ui">Document Properties</strong></td><td>as for <strong class="ui">Tags</strong></td></tr>
+<tr><td><strong class="ui">Date</strong></td><td>the document’s own date from <strong class="ui">Document Properties</strong></td><td><strong class="ui">is</strong>, <strong class="ui">is before</strong>, <strong class="ui">is after</strong>, <strong class="ui">is on or after</strong>, <strong class="ui">is on or before</strong>, <strong class="ui">is between</strong>, <strong class="ui">is empty</strong>, <strong class="ui">is not empty</strong></td></tr>
+<tr><td><strong class="ui">Publisher</strong>, <strong class="ui">Publication</strong>, <strong class="ui">URL</strong>, <strong class="ui">DOI</strong></td><td>the citation details</td><td>as for <strong class="ui">Title</strong></td></tr>
+<tr><td><strong class="ui">Source File</strong></td><td>the name of the imported file, or the address of the imported web page</td><td>as for <strong class="ui">Title</strong></td></tr>
+<tr><td><strong class="ui">Created</strong></td><td>the day the document was added to the project</td><td>as for <strong class="ui">Date</strong></td></tr>
+<tr><td><strong class="ui">Modified</strong></td><td>the day the document was last changed</td><td>as for <strong class="ui">Date</strong></td></tr>
+<tr><td><strong class="ui">Color</strong></td><td>the document’s color</td><td><strong class="ui">is any of</strong>, <strong class="ui">is none of</strong>, <strong class="ui">is empty</strong>, <strong class="ui">is not empty</strong></td></tr>
+<tr><td><strong class="ui">Tokens</strong></td><td>the number of words and punctuation marks, counted when the document is indexed</td><td><strong class="ui">is</strong>, <strong class="ui">is not</strong>, <strong class="ui">is less than</strong>, <strong class="ui">is at most</strong>, <strong class="ui">is greater than</strong>, <strong class="ui">is at least</strong>, <strong class="ui">is between</strong>, <strong class="ui">is empty</strong>, <strong class="ui">is not empty</strong></td></tr>
+<tr><td><strong class="ui">Sentences</strong></td><td>the number of sentences, counted when the document is indexed</td><td>as for <strong class="ui">Tokens</strong></td></tr>
+<tr><td><strong class="ui">Characters</strong></td><td>the number of characters in the text, spaces included</td><td>as for <strong class="ui">Tokens</strong></td></tr>
+<tr><td><strong class="ui">Media Duration</strong></td><td>the length of an audio or video recording</td><td>as for <strong class="ui">Tokens</strong></td></tr>
+<tr><td><strong class="ui">Has Media</strong></td><td>whether the document is an audio or video recording</td><td><strong class="ui">is true</strong>, <strong class="ui">is false</strong>, <strong class="ui">is empty</strong></td></tr>
+<tr><td><strong class="ui">Has Translations</strong></td><td>whether the document has at least one translation</td><td>as for <strong class="ui">Has Media</strong></td></tr>
+<tr><td><strong class="ui">Indexing Skipped</strong></td><td>whether the document was imported without indexing and has not been started with <strong class="ui">Index Now</strong> since</td><td>as for <strong class="ui">Has Media</strong></td></tr>
+<tr><td><strong class="ui">Index Status</strong></td><td>the state of the document’s indexing</td><td><strong class="ui">is any of</strong>, <strong class="ui">is none of</strong>, <strong class="ui">is empty</strong>, <strong class="ui">is not empty</strong></td></tr>
+</tbody></table></div>
+<p><strong class="ui">Language</strong> lists only the languages that your original documents are written in. “Climate Debate” is a project consisting of just English originals since its sole German document is a translation.</p>
+<p><strong class="ui">Modified</strong> refers to the last time your document was edited, renamed, moved between groups, or had its tags or properties altered. Changing its attribute values in the Attributes window, or renaming or deleting a tag in the Tags window, does not affect its <strong class="ui">Modified</strong> date.</p>
+<p>LemmaLoom automatically computes <strong class="ui">Tokens</strong> and <strong class="ui">Sentences</strong> during indexing. Both remain equal to 0 until the process has occurred. You may want to include documents based on conditions like <strong class="ui">Tokens</strong> <strong class="ui">is less than</strong> <code>700</code>. Such a condition also catches documents still waiting to be indexed, and adding a condition like <strong class="ui">Index Status</strong> <strong class="ui">is any of</strong> <strong class="ui">Indexed</strong> helps filter them out. The <strong class="ui">Characters</strong> count uses your document text directly as a source and is there from the moment of import.</p>
+<p><strong class="ui">Has Media</strong>, <strong class="ui">Has Translations</strong>, and <strong class="ui">Indexing Skipped</strong> all evaluate to either true or false. Likewise, <strong class="ui">Index Status</strong> always evaluates to one of the seven values below:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Value</th><th>The document</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">Indexed</strong></td><td>has been indexed</td></tr>
+<tr><td><strong class="ui">Indexing</strong></td><td>is being indexed now</td></tr>
+<tr><td><strong class="ui">Running Analyzer</strong></td><td>is indexed, and an analyzer, built in or your own, is running on it (see <a href="analysis-and-indexing.html#document-analyzers">Choosing analyzers for a document</a> in <a href="analysis-and-indexing.html">Chapter 21, Analysis and Indexing</a>)</td></tr>
+<tr><td><strong class="ui">Failed</strong></td><td>could not be indexed</td></tr>
+<tr><td><strong class="ui">Not Indexed</strong></td><td>is waiting to be indexed</td></tr>
+<tr><td><strong class="ui">Unsupported</strong></td><td>is in a language other than English, German, and Chinese</td></tr>
+<tr><td><strong class="ui">Skipped</strong></td><td>was imported without indexing and has not been indexed since</td></tr>
+</tbody></table></div>
+<p>A smart set with <strong class="ui">Index Status</strong> <strong class="ui">is any of</strong> <strong class="ui">Failed</strong>, <strong class="ui">Not Indexed</strong>, and <strong class="ui">Skipped</strong> contains all of the documents that are waiting for some sort of action to be taken. Documents leave the smart set once they are indexed. To find every document imported without indexing, use <strong class="ui">Indexing Skipped</strong> <strong class="ui">is true</strong>. For more information on the states, see <a href="analysis-and-indexing.html#index-status-field">Finding documents by their index status</a> in <a href="analysis-and-indexing.html">Chapter 21, Analysis and Indexing</a>.</p>
+<h3 id="attribute-comparisons">Comparisons for attributes<a class="anchor" href="#attribute-comparisons" aria-hidden="true">#</a></h3>
+<p>Comparisons on attributes depend on the attribute’s type:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Type</th><th>Comparisons</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">Text</strong></td><td><strong class="ui">is</strong>, <strong class="ui">is not</strong>, <strong class="ui">contains</strong>, <strong class="ui">does not contain</strong>, <strong class="ui">matches</strong>, <strong class="ui">is empty</strong>, <strong class="ui">is not empty</strong></td></tr>
+<tr><td><strong class="ui">Integer</strong>, <strong class="ui">Decimal</strong></td><td><strong class="ui">is</strong>, <strong class="ui">is not</strong>, <strong class="ui">is less than</strong>, <strong class="ui">is at most</strong>, <strong class="ui">is greater than</strong>, <strong class="ui">is at least</strong>, <strong class="ui">is between</strong>, <strong class="ui">is empty</strong>, <strong class="ui">is not empty</strong></td></tr>
+<tr><td><strong class="ui">Date</strong></td><td><strong class="ui">is</strong>, <strong class="ui">is before</strong>, <strong class="ui">is after</strong>, <strong class="ui">is on or after</strong>, <strong class="ui">is on or before</strong>, <strong class="ui">is between</strong>, <strong class="ui">is empty</strong>, <strong class="ui">is not empty</strong></td></tr>
+<tr><td><strong class="ui">Boolean</strong></td><td><strong class="ui">is true</strong>, <strong class="ui">is false</strong>, <strong class="ui">is empty</strong></td></tr>
+<tr><td><strong class="ui">Picker</strong></td><td><strong class="ui">is any of</strong>, <strong class="ui">is none of</strong>, <strong class="ui">is empty</strong>, <strong class="ui">is not empty</strong></td></tr>
+</tbody></table></div>
+<h3 id="condition-values">Values in a condition<a class="anchor" href="#condition-values" aria-hidden="true">#</a></h3>
+<p>The method you use to enter a condition value differs according to both the comparison and the field:</p>
+<ul>
+<li>For text and numbers, enter the condition value in the <strong class="ui">Value</strong> field. When entering values for <strong class="ui">is between</strong>, note that it shows two fields, that the two values can go in either order, and that both are inclusive. Thus, when searching for “Readership” <strong class="ui">is between</strong> <code>50000</code> and <code>100000</code>, results would include documents whose “Readership” value equaled exactly 50,000 or 100,000.</li>
+<li>Dates are selected via a date picker, starting from the current day.</li>
+<li><strong class="ui">is empty</strong>, <strong class="ui">is not empty</strong>, <strong class="ui">is true</strong>, and <strong class="ui">is false</strong> count as complete as soon as they are selected.</li>
+<li>For conditions involving <strong class="ui">is any of</strong>, <strong class="ui">is none of</strong>, and the various comparisons that begin with <strong class="ui">has</strong>, first click the value. Doing so causes a checklist to appear. Select one or more items, then click outside the checklist to close it; the value then shows your choice. Example values include “op-ed” or “viral”, or <strong class="ui">None</strong> when nothing is selected.</li>
+</ul>
+<p>Available list entries include:</p>
+<ul>
+<li>for a <strong class="ui">Picker</strong> attribute, its choices, followed by any other values that documents still have;</li>
+<li>for <strong class="ui">Tags</strong> and <strong class="ui">Authors</strong>, the tags and authors used on documents in the project;</li>
+<li>for <strong class="ui">Group</strong>, groups belonging to the project;</li>
+<li>for <strong class="ui">Language</strong>, languages the original documents are written in;</li>
+<li>for <strong class="ui">Color</strong>, the eleven available document colors, from <strong class="ui">Red</strong> to <strong class="ui">Gray</strong>;</li>
+<li>for <strong class="ui">Format</strong>, the five available formats, and for <strong class="ui">Index Status</strong>, the seven states above.</li>
+</ul>
+<p>Durations in <strong class="ui">Media Duration</strong> are typed as minutes and seconds (e.g., <code>30:00</code>) or hours, minutes, and seconds (e.g., <code>1:05:30</code>). The time is converted to seconds before comparing values; thus, <code>1:05:30</code> is equal to 1 × 3,600 + 5 × 60 + 30 = 3,930 seconds. Single values correspond to seconds. For example, “Radio Debate” lasts 4 minutes 49 seconds (4 × 60 + 49 = 289 seconds), so both <strong class="ui">Media Duration</strong> <strong class="ui">is greater than</strong> <code>4:00</code> (240 seconds) and <strong class="ui">is greater than</strong> <code>5</code> (5 seconds) match it.</p>
+<p>Since recordings are timed to the thousandth of a second, <strong class="ui">is</strong> rarely matches a duration exactly. Instead, <strong class="ui">is at least</strong>, <strong class="ui">is at most</strong>, or <strong class="ui">is between</strong> should be employed.</p>
+<h3 id="how-values-are-compared">How values are compared<a class="anchor" href="#how-values-are-compared" aria-hidden="true">#</a></h3>
+<p>Text comparisons disregard capitals, accents, and whitespace either at the beginning or end of a string. Comparisons ignore whether a character is full-width or half-width (wide vs narrow representations of letters and numerals in Chinese and Japanese text). A comparison with <strong class="ui">is</strong> compares the entire value, whereas <strong class="ui">contains</strong> locates your text anywhere within it. “Outlet” <strong class="ui">contains</strong> <code>herald</code> will locate three documents in “The Northern Herald”. “Outlet” <strong class="ui">contains</strong> <code>the</code> will locate seven documents, the six in “The Northern Herald” and “The Weekly Ledger” and one other document, “Heat Wave Report 2024”, since its outlet, “Weather and Climate Agency”, has <em>the</em> inside <em>Weather</em>. Be sure to check the count before saving when performing a comparison with short text strings.</p>
+<p>A <strong class="ui">matches</strong> comparison matches the whole value with a simple text pattern. The <strong class="ui">matches</strong> comparison uses <code>*</code> as a wildcard meaning any sequence of characters and <code>?</code> as a wildcard meaning exactly one. <strong class="ui">Title</strong> <strong class="ui">matches</strong> <code>*Debate</code> will locate “Carbon Tax Debate” and “Radio Debate”; <strong class="ui">Title</strong> <strong class="ui">matches</strong> <code>Debate</code> will locate nothing, since the pattern must match the whole title.</p>
+<p>Number comparisons compare numbers numerically; therefore, 9 comes before 10. Dates are compared by their calendar days. <strong class="ui">is before</strong> disregards the day itself, whereas <strong class="ui">is on or before</strong> includes it. Both <strong class="ui">Created</strong> and <strong class="ui">Modified</strong> dates and times are recorded by LemmaLoom and turned into a day in your Mac’s local time zone for comparison. “Publication Date” <strong class="ui">is between</strong> September 1, 2024 and September 30, 2024 will locate five documents published within this range in “Climate Debate”.</p>
+<p>Comparisons of lists require at least one of the selected entries for <strong class="ui">is any of</strong> or <strong class="ui">has any of</strong>; all selected entries for <strong class="ui">has all of</strong>. Neither <strong class="ui">is none of</strong> nor <strong class="ui">has none of</strong> allows documents containing any of the selected entries. Comparison of list entries, such as tags, authors, and <strong class="ui">Picker</strong> choices, disregards only capitalization and whitespace either at the beginning or end of an entry’s name. In “Climate Debate”, three documents have been tagged “op-ed” and two others “viral”:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Condition</th><th>Documents</th><th>Count</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">Tags</strong> <strong class="ui">has any of</strong> “op-ed”, “viral”</td><td>Running Out of Time, Letter from the Climate Strike, Net Zero Will Cost You, Let’s Not Panic, Who Pays for the Transition</td><td>5</td></tr>
+<tr><td><strong class="ui">Tags</strong> <strong class="ui">has all of</strong> “op-ed”, “viral”</td><td>none</td><td>0</td></tr>
+<tr><td><strong class="ui">Tags</strong> <strong class="ui">has none of</strong> “op-ed”</td><td>the 14 originals except “Running Out of Time”, “Net Zero Will Cost You”, and “Who Pays for the Transition”</td><td>11</td></tr>
+</tbody></table></div>
+<p>The figure below illustrates the first of these conditions, and its tag list is expanded.</p>
+<figure class="shot" id="sets-tags-attributes-condition-values"><img class="shot-light" src="../figures/en/light/sets-tags-attributes-condition-values.webp" alt="The list of tags open in a Tags condition, with “op-ed” and “viral” selected." loading="lazy"><img class="shot-dark" src="../figures/en/dark/sets-tags-attributes-condition-values.webp" alt="The list of tags open in a Tags condition, with “op-ed” and “viral” selected." loading="lazy"><figcaption>The list of tags open in a Tags condition, with “op-ed” and “viral” selected.</figcaption></figure>
+<h4 id="documents-without-a-value">Documents without a value<a class="anchor" href="#documents-without-a-value" aria-hidden="true">#</a></h4>
+<p>A document without a value fails most comparisons. “Readership” <strong class="ui">is less than</strong> <code>10000</code> returns “A Mayor’s Promise” and “Heat Wave Report 2024”, while anything with no “Readership” at all won’t match. Examples of such documents may include newly imported documents. The five comparisons <strong class="ui">is not</strong>, <strong class="ui">does not contain</strong>, <strong class="ui">is none of</strong>, <strong class="ui">has none of</strong>, and <strong class="ui">is empty</strong> accommodate those documents.</p>
+<p>The difference matters most with <strong class="ui">is none of</strong>. Every original in “Climate Debate” has all four attribute values, yet two originals belong to no group. <strong class="ui">Group</strong> <strong class="ui">is none of</strong> “Print” matches 8 documents, the six in “Online” along with “Heat Wave Report 2024” and “Carbon Tax Debate”, which have no groups assigned. For narrowing it down to just the six “Online” documents, add a second condition, <strong class="ui">Group</strong> <strong class="ui">is not empty</strong>, with <strong class="ui">Match</strong> left on <strong class="ui">All</strong>; this reduces the number to 6.</p>
+<p><strong class="ui">Boolean</strong> attributes treat unassigned documents as empty. <strong class="ui">is false</strong> returns solely those documents whose values are set to false, whether the checkbox was selected and then deselected, imported as false, or specified via the <strong class="ui">Set Value</strong> option with the checkbox deselected. Use <strong class="ui">is empty</strong> for the rest.</p>
+<h3 id="editing-a-smart-set">Changing a smart set<a class="anchor" href="#editing-a-smart-set" aria-hidden="true">#</a></h3>
+<p>If you need to modify conditions in your smart set, right-click the smart set in the list in the navigation sidebar, and click <strong class="ui">Edit</strong> from the shortcut menu, or click the smart set and click <strong class="ui">Project ▸ Edit Smart Set</strong>. Editing in the <strong class="ui">Edit Smart Set</strong> dialog works in the same way as creating does in <strong class="ui">New Smart Set</strong>. Only clicking <strong class="ui">Save</strong> applies your modification. To rename a smart set, right-click the smart set, and click <strong class="ui">Rename</strong> in the shortcut menu. This changes only the name.</p>
+<p>Renaming attributes or groups causes smart sets to adapt accordingly. Here is what deletion and other changes do:</p>
+<ul>
+<li>If you delete a group, it is removed from any condition referencing it. A <strong class="ui">Group</strong> <strong class="ui">is any of</strong> condition with nothing left selected causes a smart set that tested only that group to be emptied, and when you edit the smart set next time, you see <strong class="ui">None</strong> displayed, while <strong class="ui">Save</strong> remains disabled until you specify another group or remove the condition.</li>
+<li>Deleting an attribute means a failure for every document in conditions testing the attribute. With <strong class="ui">All</strong>, the smart set becomes empty; with <strong class="ui">Any</strong>, the other conditions keep working. When you open the smart set with <strong class="ui">Edit</strong>, the broken condition’s attribute menu is blank, and <strong class="ui">Save</strong> stays disabled until you change or remove the condition.</li>
+<li>Changing an attribute’s type can make conditions fail as well. When an attribute changes its type (e.g., “Stance” going from <strong class="ui">Picker</strong> to <strong class="ui">Text</strong>), comparisons no longer applicable to this new type mean failures for every document. Among attribute types, comparisons such as <strong class="ui">is any of</strong> are exclusive to the <strong class="ui">Picker</strong> type, so “Stance” <strong class="ui">is any of</strong> “Activist” fails. When you open the smart set with <strong class="ui">Edit</strong>, such conditions show the first comparison of the new type with an empty value; you must input the value manually, here as “Stance” <strong class="ui">is</strong> <code>Activist</code>, and save.</li>
+<li>Finally, renaming or deleting tags in <strong class="ui">Window ▸ Tags</strong> affects smart sets containing <strong class="ui">Tags</strong> conditions accordingly. Renaming a tag changes the reference name into the new name in any <strong class="ui">Tags</strong> condition. Deleting a tag removes it from <strong class="ui">has any of</strong> and <strong class="ui">has none of</strong> conditions, whereas it remains in <strong class="ui">has all of</strong> conditions and thus causes failures for every document until you edit them.</li>
+</ul>
+<h3 id="smart-sets-export">Smart sets outside LemmaLoom<a class="anchor" href="#smart-sets-export" aria-hidden="true">#</a></h3>
+<p>The REFI-QDA exchange format understands only ordinary sets. Anytime you choose to export your project in this format, all of your smart sets are exported as ordinary sets consisting of their members at the point of export. A LemmaLoom archive retains all conditions used to define a smart set, which allows for future use within another instance of LemmaLoom. For additional details about these two formats, refer to <a href="exchange-and-export.html">Chapter 22, Exchanging and Exporting</a>.</p>
+<h2 id="groups">Groups<a class="anchor" href="#groups" aria-hidden="true">#</a></h2>
+<p>Groups serve as organizational folders for sorting documents within the <strong class="ui">Documents</strong> section in the navigation sidebar. For instance, the “Climate Debate” project contains “Print” and “Online”, which keep the print pieces apart from the online ones, and “Online” also includes “Radio Debate”. Documents may reside in a maximum of one group, while the translations of any document automatically reside within its respective group too. For more information on making, filling, renaming, and deleting groups, see <a href="projects-and-documents.html#groups">Groups</a> in <a href="projects-and-documents.html">Chapter 3, Projects and Documents</a>.</p>
+<p>To analyze the documents of a group, make a smart set with a <strong class="ui">Group</strong> condition (see <a href="#creating-a-smart-set">Creating a smart set</a> earlier in this chapter). Choose <strong class="ui">Group</strong> in the condition’s first menu, keep <strong class="ui">is any of</strong>, and select the group. Such a smart set changes as documents move into or out of the group. In “Climate Debate”, <strong class="ui">Group</strong> <strong class="ui">is any of</strong> “Print” collects the six documents in “Print”, and <strong class="ui">Group</strong> <strong class="ui">is empty</strong> collects the two in no group, “Heat Wave Report 2024” and “Carbon Tax Debate”.</p>
+<p>LemmaLoom queries can also read groups through a <strong class="ui">Group</strong> field, and recipes allow the creation of query results containing counts by group (see <a href="queries-patterns.html#recipes">Recipes</a> in <a href="queries-patterns.html">Chapter 17, Query Patterns and Discovery</a>). The <strong class="ui">Code Matrix</strong> allows you to aggregate its columns by group via <strong class="ui">Group columns by</strong> (see <a href="coding-analysis.html">Chapter 13, Analyzing Codes</a>).</p>
+<h2 id="tags">Tags<a class="anchor" href="#tags" aria-hidden="true">#</a></h2>
+<h3 id="tag-vocabulary">One list for all projects<a class="anchor" href="#tag-vocabulary" aria-hidden="true">#</a></h3>
+<p>Tags can be applied to projects, documents, codes, memos, and links. Every tag that you type belongs to one global list available to the entire library. Queries can even search your entire library based on tags for documents or projects that contain particular tags (see <a href="projects-and-documents.html#working-across-projects">Working across projects</a> in <a href="projects-and-documents.html">Chapter 3, Projects and Documents</a>).</p>
+<p>When you tag a document “viral” inside of “Climate Debate” and then type <code>vir</code> when adding tags to a code within another project, LemmaLoom will recommend “viral”. The name of a tag ignores capitalization, so “Viral” and “viral” refer to the same tag.</p>
+<p>Choose <strong class="ui">Window ▸ Tags</strong> to view the global list. Double-clicking a tag will open its documents in a tab. Alternatively, clicking one of its counts will reveal which items in your active project carry the tag, or which projects employ it. To change the name of a tag globally or remove it from everything carrying it, right-click the tag. See <a href="projects-and-documents.html#tags-window">The Tags window</a> in <a href="projects-and-documents.html">Chapter 3, Projects and Documents</a> for further discussion.</p>
+<h3 id="tagging-documents">Tagging a document<a class="anchor" href="#tagging-documents" aria-hidden="true">#</a></h3>
+<p>“Climate Debate” has three documents tagged “op-ed”, entitled “Running Out of Time”, “Net Zero Will Cost You”, and “Who Pays for the Transition”. Meanwhile, there are two documents tagged “viral”, entitled “Letter from the Climate Strike” and “Let’s Not Panic”. Tags can be assigned while importing a document, in <strong class="ui">Document Properties</strong>, or in the inspector. The latter is faster:</p>
+<ol>
+<li>Open the document.</li>
+<li>In the inspector, click <strong class="ui">Text</strong>, then <strong class="ui">Details</strong>.</li>
+<li>Under <strong class="ui">Tags</strong>, click the field that reads <strong class="ui">Add a tag</strong>, type the tag, and press Return. Typing a comma also ends a tag.</li>
+</ol>
+<p>As soon as you have typed three characters, LemmaLoom suggests matches based on the list of shared tags. Any tag already present in another case keeps its existing spelling, regardless of the capitalization you type. To remove a tag, click the × button on the tag (<strong class="ui">Remove tag</strong>). Whatever changes you make in the inspector are immediately saved, both for the document and all translations thereof.</p>
+<p>Tags can only be added one document at a time. For anything you wish to repeat among many documents, consider making an attribute rather than using tags. With <strong class="ui">Set Value</strong> you can even quickly assign a value to several documents at once, and a <strong class="ui">Boolean</strong> or <strong class="ui">Picker</strong> attribute can serve much as a tag would (see <a href="#bulk-values">Setting one value for many documents</a> later in this chapter).</p>
+<h3 id="tags-in-the-navigator">Tags in the navigation sidebar<a class="anchor" href="#tags-in-the-navigator" aria-hidden="true">#</a></h3>
+<p>The <strong class="ui">Tags</strong> section found at the bottom of the sidebar lists the tags that appear in the active project’s documents alphabetically. Next to each tag is the number of original documents bearing the tag; “Climate Debate” shows 3 documents tagged as “op-ed” and 2 documents tagged as “viral”. This section only counts tags in documents. The Tags window also counts tags in projects, codes, memos, and links.</p>
+<p>Tags are shortcuts to sets of documents bearing them, making tags a quick way to review a few documents at once.</p>
+<ul>
+<li>Click a tag to load it into a tab. The tab features the same ten views as a set but restricted solely to the documents bearing the tag.</li>
+<li>Right-click a tag and choose <strong class="ui">Word Sketch</strong> to generate word sketches based on the tagged documents.</li>
+<li>Right-click a tag and choose <strong class="ui">Rename</strong> or <strong class="ui">Delete Tag</strong> to rename or delete the tag in the same way as you do in the Tags window, with the effect being applied in every project in which the tag exists.</li>
+</ul>
+<figure class="shot" id="sets-tags-attributes-tags-section"><img class="shot-light" src="../figures/en/light/sets-tags-attributes-tags-section.webp" alt="The Tags section at the bottom of the navigation sidebar, with “op-ed” and “viral” and the shortcut menu of “viral”." loading="lazy"><img class="shot-dark" src="../figures/en/dark/sets-tags-attributes-tags-section.webp" alt="The Tags section at the bottom of the navigation sidebar, with “op-ed” and “viral” and the shortcut menu of “viral”." loading="lazy"><figcaption>The Tags section at the bottom of the navigation sidebar, with “op-ed” and “viral” and the shortcut menu of “viral”.</figcaption></figure>
+<p>As soon as you tag any other document with “viral”, the count next to “viral” increases to 3, and the document becomes visible in the views associated with the tag. Once the last document in the project loses a tag, the tag disappears from the Tags section.</p>
+<p>For tags in smart sets, refer to the <strong class="ui">Tags</strong> field presented earlier in this chapter, namely in the section titled <a href="#how-values-are-compared">How values are compared</a>. Tags attached to codes can serve to filter the codebook entries; learn about tagging in codes, memos, and links in <a href="coding.html">Chapter 7, Coding</a>.</p>
+<h2 id="attributes">Attributes<a class="anchor" href="#attributes" aria-hidden="true">#</a></h2>
+<p>The majority of comparisons made within LemmaLoom rely on attributes. Smart sets use attributes to collect documents based on their attribute values, while several analyses partition their outputs by those attributes (refer to the <a href="#using-attributes">Where attributes can be used</a> section below). Within “Climate Debate”, there are four attributes defined. “Stance” separates the texts by sides, “Readership” allows the “Wide Reach” set to extract broadly read texts, “Publication Date” timestamps each text, and “Outlet” keeps track of each text’s origin.</p>
+<h3 id="attribute-types">Attribute types<a class="anchor" href="#attribute-types" aria-hidden="true">#</a></h3>
+<p>Every attribute has a type among six options. The type dictates what a value may be, how it should be entered, and what comparisons a condition may make about it.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Type</th><th>A value is</th><th>Entered with</th><th>In “Climate Debate”</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">Text</strong></td><td>any text</td><td>a text field</td><td>Outlet</td></tr>
+<tr><td><strong class="ui">Integer</strong></td><td>a whole number, which may be negative</td><td>a number field</td><td>Readership</td></tr>
+<tr><td><strong class="ui">Decimal</strong></td><td>a number that may have a decimal part</td><td>a number field</td><td></td></tr>
+<tr><td><strong class="ui">Boolean</strong></td><td>true or false</td><td>a checkbox</td><td></td></tr>
+<tr><td><strong class="ui">Date</strong></td><td>a calendar day</td><td>a date picker</td><td>Publication Date</td></tr>
+<tr><td><strong class="ui">Picker</strong></td><td>one of a list of choices you set</td><td>a menu</td><td>“Stance”, with the choices “Activist”, “Skeptic”, and “Neutral”</td></tr>
+</tbody></table></div>
+<p>The <strong class="ui">Picker</strong> ensures consistent spelling, while the Attributes window sorts its values according to their choice order. Either an <strong class="ui">Integer</strong> or <strong class="ui">Decimal</strong> attribute type permits comparative operators like <strong class="ui">is at least</strong>, as well as range-based grouping via the <strong class="ui">Code Matrix</strong> or Sketch Space. A <strong class="ui">Date</strong> attribute enables both <strong class="ui">is before</strong> and <strong class="ui">is after</strong> operators, while the <strong class="ui">Code Matrix</strong> can group dates by year or month. Free text should be entered as values into a <strong class="ui">Text</strong> attribute. The “Outlet” attribute of “Climate Debate”, for example, uses a <strong class="ui">Text</strong> attribute type. <a href="#converting-types">Changing an attribute’s type</a> (possible within limits) is discussed later in this chapter.</p>
+<h3 id="attributes-sheet">The Attributes window<a class="anchor" href="#attributes-sheet" aria-hidden="true">#</a></h3>
+<p>The Attributes window displays each original document of a project alongside its attribute values in tabular form. The window can be accessed via the main menu option <strong class="ui">Project ▸ Attributes</strong>, or via the shortcut menu of the project under <strong class="ui">Projects</strong> in the sidebar (right-click on it and then choose <strong class="ui">Attributes</strong>). The window can remain open during work. The illustration depicts the window for “Climate Debate” ordered by “Readership” descending with the six activist documents selected.</p>
+<figure class="shot" id="sets-tags-attributes-attributes-sheet"><img class="shot-light" src="../figures/en/light/sets-tags-attributes-attributes-sheet.webp" alt="The Attributes window for “Climate Debate”, sorted by “Readership”, with the six activist texts selected." loading="lazy"><img class="shot-dark" src="../figures/en/dark/sets-tags-attributes-attributes-sheet.webp" alt="The Attributes window for “Climate Debate”, sorted by “Readership”, with the six activist texts selected." loading="lazy"><figcaption>The Attributes window for “Climate Debate”, sorted by “Readership”, with the six activist texts selected.</figcaption></figure>
+<p>The row across the top contains <strong class="ui">Search</strong>, followed at the end by <strong class="ui">Import</strong>, <strong class="ui">Export</strong>, <strong class="ui">Manage</strong>, and <strong class="ui">Add Attribute</strong>. The body displays the table, which includes a checkbox column, a <strong class="ui">Document</strong> column, and a column for every attribute within the project. Without attributes in a project, the window will display only <strong class="ui">Import</strong> and <strong class="ui">Add Attribute</strong>.</p>
+<p>The window displays original documents exclusively. Translation documents take on the attribute values of their original document counterparts, meaning that whatever value you enter for “Running Out of Time” will also apply to “Running Out of Time (German)”.</p>
+<h3 id="defining-an-attribute">Defining an attribute<a class="anchor" href="#defining-an-attribute" aria-hidden="true">#</a></h3>
+<figure class="shot" id="sets-tags-attributes-new-attribute"><img class="shot-light" src="../figures/en/light/sets-tags-attributes-new-attribute.webp" alt="The New Attribute dialog in the Attributes window, with the name “Region”, the type Picker, and four choices." loading="lazy"><img class="shot-dark" src="../figures/en/dark/sets-tags-attributes-new-attribute.webp" alt="The New Attribute dialog in the Attributes window, with the name “Region”, the type Picker, and four choices." loading="lazy"><figcaption>The New Attribute dialog in the Attributes window, with the name “Region”, the type Picker, and four choices.</figcaption></figure>
+<p>How to define attributes in the Attributes window:</p>
+<ol>
+<li>Click <strong class="ui">Add Attribute</strong>.</li>
+<li>In the <strong class="ui">New Attribute</strong> dialog, type a <strong class="ui">Name</strong>.</li>
+<li>Choose its <strong class="ui">Type</strong>.</li>
+<li>For a <strong class="ui">Picker</strong>, type its choices in <strong class="ui">Choices</strong>, one per row; <strong class="ui">Add Choice</strong> adds a row.</li>
+<li>If you like, describe in <strong class="ui">Description</strong> what the attribute records.</li>
+<li>Click <strong class="ui">Add</strong>.</li>
+</ol>
+<p>The <strong class="ui">Add</strong> button is disabled if the <strong class="ui">Name</strong> field is left blank (<strong class="ui">Name is empty</strong>), if another attribute exists in your project with the same name, ignoring capitalization (<strong class="ui">Name already used</strong>), and when you add a <strong class="ui">Picker</strong> attribute without any choice options (<strong class="ui">No choices</strong>). Upon creation, the attribute shows itself as the right-most column of the table and contains no values per document.</p>
+<p>You can also add attributes to your projects via the <strong class="ui">New Project</strong> and <strong class="ui">Project Properties</strong> dialogs, <strong class="ui">Document Properties</strong>, the <strong class="ui">Import Document</strong> dialog, the inspector, and by importing attribute values from spreadsheets. Aside from adding attribute values from spreadsheets and the <strong class="ui">New Attribute</strong> dialog, LemmaLoom provides suggestions of attributes available in all of your projects if at least three characters of a name were inputted. Suggestions show the attribute’s type. Picking one from the suggestions or directly entering its name copies its type and choices, keeping consistency among attributes in multiple studies. The newly added attribute belongs exclusively to this project.</p>
+<h3 id="entering-values">Entering values<a class="anchor" href="#entering-values" aria-hidden="true">#</a></h3>
+<p>Click on a cell in the Attributes window and enter the value in a way that depends upon the attribute type:</p>
+<ul>
+<li>For <strong class="ui">Text</strong>, type out the text value.</li>
+<li>For <strong class="ui">Integer</strong> and <strong class="ui">Decimal</strong>, enter the number and press Return, or click somewhere else outside the cell. Only numeric inputs are valid here, and deleting the input will delete the attribute value.</li>
+<li>For <strong class="ui">Boolean</strong>, select or deselect the checkbox.</li>
+<li>For <strong class="ui">Date</strong>, choose a particular date from the date picker.</li>
+<li>For <strong class="ui">Picker</strong>, select an option from the menu, or choose <strong class="ui">None</strong> to remove the value.</li>
+</ul>
+<p>All changes made while editing attributes are automatically saved.</p>
+<aside class="callout note"><p class="callout-title">Note</p><p>Cells for dates that contain no values display today’s date. Cells for Booleans that contain no values appear deselected. Both store their respective values upon any edits you’ve made. If you deselect a checkbox, it will store a false value, rather than storing nothing (refer back to <a href="#documents-without-a-value">Documents without a value</a> discussed above). To distinguish between the two cases, sort by the column, whereupon documents without a value appear last. Removing a date or Boolean value requires the remove button in the inspector, detailed next.</p>
+</aside>
+<p>The inspector is typically faster when dealing with individual documents. It displays the attributes and tags of the active document (see image below showing “Running Out of Time”, which has four values and the tag “op-ed”).</p>
+<figure class="shot" id="sets-tags-attributes-inspector-overview"><img class="shot-light" src="../figures/en/light/sets-tags-attributes-inspector-overview.webp" alt="The Details facet of the Text inspector for “Running Out of Time”, with its attribute values and tags." loading="lazy"><img class="shot-dark" src="../figures/en/dark/sets-tags-attributes-inspector-overview.webp" alt="The Details facet of the Text inspector for “Running Out of Time”, with its attribute values and tags." loading="lazy"><figcaption>The Details facet of the Text inspector for “Running Out of Time”, with its attribute values and tags.</figcaption></figure>
+<p>To investigate what the value of an attribute is for a specific document, you should open the document and click <strong class="ui">Text</strong> and then <strong class="ui">Details</strong> in the inspector. You will find each attribute with a value for this document listed below <strong class="ui">Attributes</strong>, each in a separate row. You can edit the value in its row. To delete the value while keeping the attribute intact in the project, click the remove button at the end of its row (<strong class="ui">Remove attribute</strong>). Changes are immediate.</p>
+<figure class="shot" id="sets-tags-attributes-add-attribute-type"><img class="shot-light" src="../figures/en/light/sets-tags-attributes-add-attribute-type.webp" alt="The Details facet for “Running Out of Time” with a new attribute named “Region” typed into the field below the list and the Type menu open." loading="lazy"><img class="shot-dark" src="../figures/en/dark/sets-tags-attributes-add-attribute-type.webp" alt="The Details facet for “Running Out of Time” with a new attribute named “Region” typed into the field below the list and the Type menu open." loading="lazy"><figcaption>The Details facet for “Running Out of Time” with a new attribute named “Region” typed into the field below the list and the Type menu open.</figcaption></figure>
+<p>To assign a value to an attribute not currently shown:</p>
+<ol>
+<li>Type the attribute’s name in the field below the list. Suggestions appear once you have typed three characters.</li>
+<li>If the name is new to the project, choose a <strong class="ui">Type</strong> in the menu that appears. For a <strong class="ui">Picker</strong>, also type its choices.</li>
+<li>Click <strong class="ui">Add Attribute</strong>, or press Return.</li>
+<li>Enter the value in the new row.</li>
+</ol>
+<p>The <strong class="ui">Add Attribute</strong> button is disabled in three instances, when the name is empty (<strong class="ui">Name is empty</strong>), when the attribute is already assigned to the document (<strong class="ui">Already added</strong>), and when creating a new <strong class="ui">Picker</strong> with no choices (<strong class="ui">No options</strong>). Every time you enter a new name in the field below the list, you add that attribute to the entire project. A row left with an empty value is deleted only after you leave the document, and the attribute stays in the project.</p>
+<p>Any changes made to a translation’s value inside the inspector affect its corresponding original value.</p>
+<p><strong class="ui">Document Properties</strong> features identical fields in its <strong class="ui">Attributes</strong> part, which get saved once <strong class="ui">Save</strong> is pressed (refer to <a href="projects-and-documents.html#properties-attributes">Attributes</a> in <a href="projects-and-documents.html">Chapter 3, Projects and Documents</a>). See <a href="importing.html#attribute-import">Importing attribute values from a spreadsheet</a> in <a href="importing.html">Chapter 4, Importing Material</a> for importing attribute values from spreadsheets.</p>
+<h3 id="bulk-values">Setting one value for many documents<a class="anchor" href="#bulk-values" aria-hidden="true">#</a></h3>
+<p>If several documents have the same value for an attribute, you can assign the value to them simultaneously. In the “Climate Debate” project, six documents share the value “Activist” of “Stance”, five share “Skeptic”, and three share “Neutral”; hence, each value can be assigned to its documents in one step. See the figure showing the six activist documents selected in <a href="#attributes-sheet">The Attributes window</a> earlier in this chapter for the purpose of assigning their common value.</p>
+<figure class="shot" id="sets-tags-attributes-set-value-dialog"><img class="shot-light" src="../figures/en/light/sets-tags-attributes-set-value-dialog.webp" alt="The Set Value dialog for “Stance” with “Activist” chosen, opened with six documents selected in the Attributes window." loading="lazy"><img class="shot-dark" src="../figures/en/dark/sets-tags-attributes-set-value-dialog.webp" alt="The Set Value dialog for “Stance” with “Activist” chosen, opened with six documents selected in the Attributes window." loading="lazy"><figcaption>The Set Value dialog for “Stance” with “Activist” chosen, opened with six documents selected in the Attributes window.</figcaption></figure>
+<p>How to assign one value to several documents:</p>
+<ol>
+<li>In the Attributes window, select the checkboxes beside the documents. The checkbox at the top of the column selects or deselects every row shown.</li>
+<li>Beside <strong class="ui">Search</strong>, the window now shows the number of selected documents, such as <strong class="ui">6 documents selected</strong>, and a <strong class="ui">Set Value</strong> menu. Choose <strong class="ui">Set Value</strong> and then the attribute.</li>
+<li>In the <strong class="ui">Set Value</strong> dialog, choose or enter the value.</li>
+<li>Click <strong class="ui">Apply</strong>.</li>
+</ol>
+<p>The value replaces anything previously stored for that attribute in the selected documents. <strong class="ui">Edit ▸ Undo Set Value</strong> (⌘Z) reverses it.</p>
+<p>Depending on whether your attribute is of type <strong class="ui">Picker</strong>, <strong class="ui">Boolean</strong>, <strong class="ui">Date</strong>, or any other type of value, the <strong class="ui">Set Value</strong> dialog offers you a menu, checkbox, date picker, or text field. When you are entering a <strong class="ui">Decimal</strong>, you can type the decimal separator that your Mac uses. <strong class="ui">Apply</strong> becomes disabled either when there isn’t anything in the input field (<strong class="ui">No value</strong>) or the entered value doesn’t meet the restrictions imposed by the attribute’s type (<strong class="ui">Invalid value</strong>), like entering <code>about 40000</code> into “Readership”. <strong class="ui">Set Value</strong> is a feature for inputting values only; deleting existing values requires clearing the value in each document individually.</p>
+<p><strong class="ui">Set Value</strong> operates on selected visible rows. If you select multiple rows prior to entering something into <strong class="ui">Search</strong>, the search can hide some of them, even though the hidden rows stay selected. The number shown next to <strong class="ui">Set Value</strong> is thus equal to the actual number of currently selected and visible rows. To set the same value across multiple documents retrieved by searching, execute a search and click the checkbox at the top of the column.</p>
+<h3 id="searching-sorting">Searching and sorting<a class="anchor" href="#searching-sorting" aria-hidden="true">#</a></h3>
+<p><strong class="ui">Search</strong> lets you show only the rows containing the term you type in their titles or cells. Search ignores case. In the example project “Climate Debate”, a search term of ledger produces the texts titled “Hope Takes Work”, “The Models Keep Missing”, and “Science Is Never Settled”, which are the three texts from “The Weekly Ledger”.</p>
+<p>When you click a column heading, the rows are sorted in increasing order based on the values in that column. A subsequent click reverses the sorting order. Arrows show which sorting direction is selected.</p>
+<ul>
+<li>Values of numeric type are sorted according to their magnitudes. Hence, 8,500 comes before 23,000.</li>
+<li><strong class="ui">Picker</strong> values are sorted in the order of the <strong class="ui">Choices</strong>. With the choices “Activist”, “Skeptic”, and “Neutral”, activists come before the others.</li>
+<li>Textual items are sorted alphabetically, and numbers included within a text value are sorted numerically, e.g., “Draft 2” precedes “Draft 10”. Dates are sorted chronologically, whereas <strong class="ui">Boolean</strong> values are sorted false before true.</li>
+<li>Documents missing a value are positioned last, irrespective of sorting direction.</li>
+<li>In cases of ties involving identical ranking, documents are sorted alphabetically by title, ascending or descending depending on whether sorting is lowest-to-highest or highest-to-lowest.</li>
+</ul>
+<p>Clicking the “Readership” heading twice sorts the rows from the highest “Readership” value. According to the figure in <a href="#attributes-sheet">The Attributes window</a> earlier in this chapter, this produces a sorted list from high to low, starting with “Carbon Tax Debate” (875,000), “Running Out of Time” (412,000), and “Net Zero Will Cost You” (398,000). Documents with fewer readers follow, ending with “A Mayor’s Promise” (8,500) and “Heat Wave Report 2024” (3,100). All documents lacking a value for this attribute come last. Sorting remains active until you close the window.</p>
+<h3 id="editing-an-attribute">Changing an attribute<a class="anchor" href="#editing-an-attribute" aria-hidden="true">#</a></h3>
+<p>To edit an attribute, choose <strong class="ui">Manage</strong>, then the attribute, then <strong class="ui">Edit</strong>, or right-click on the attribute’s column heading and select <strong class="ui">Edit</strong>. The <strong class="ui">Edit Attribute</strong> dialog has the fields <strong class="ui">Name</strong>, <strong class="ui">Type</strong>, <strong class="ui">Choices</strong> (only for a <strong class="ui">Picker</strong>), and <strong class="ui">Description</strong> (which REFI-QDA format export includes); these correspond directly to the fields for <strong class="ui">New Attribute</strong>. Pressing the <strong class="ui">Save</strong> button updates the attribute definition; the <strong class="ui">Save</strong> button becomes disabled when the <strong class="ui">Name</strong> field is blank (<strong class="ui">Name is empty</strong>), or when there are no choices in a <strong class="ui">Picker</strong> (<strong class="ui">No choices</strong>).</p>
+<figure class="shot" id="sets-tags-attributes-manage-menu"><img class="shot-light" src="../figures/en/light/sets-tags-attributes-manage-menu.webp" alt="The Manage menu of the Attributes window for “Climate Debate”, with “Readership” chosen and Edit highlighted." loading="lazy"><img class="shot-dark" src="../figures/en/dark/sets-tags-attributes-manage-menu.webp" alt="The Manage menu of the Attributes window for “Climate Debate”, with “Readership” chosen and Edit highlighted." loading="lazy"><figcaption>The Manage menu of the Attributes window for “Climate Debate”, with “Readership” chosen and Edit highlighted.</figcaption></figure>
+<p>Choices in a <strong class="ui">Picker</strong> attribute may be edited to include additional options, to reorder existing options, or delete choices. The order of choices reflects how options appear in the menu and how they are sorted. Documents retain their choice value regardless of whether the list of choices changes.</p>
+<ul>
+<li>When deleting a choice that some documents have, those documents continue to hold that choice. The choice appears after all the listed choices in their menu and continues to be used in smart sets.</li>
+<li>Renaming a choice (e.g., changing “Skeptic” to “Critic”) leaves documents with the old choice, so moving them requires adding a new choice with the renamed label. Once added, documents having the old choice may then be reassigned to the renamed choice with <strong class="ui">Set Value</strong> before removing the old choice.</li>
+</ul>
+<h3 id="converting-types">Changing an attribute’s type<a class="anchor" href="#converting-types" aria-hidden="true">#</a></h3>
+<p>It may occur that a certain attribute ends up needing a different type altogether; perhaps the values of your <strong class="ui">Text</strong> attribute should be limited to a predetermined number of options in order to maintain consistency, thus necessitating a <strong class="ui">Picker</strong> attribute type. The drop-down list under <strong class="ui">Type</strong> in the <strong class="ui">Edit Attribute</strong> dialog lists the current type along with each other type that is compatible with all the values currently set in the attribute. When you save, LemmaLoom rewrites the values in the new type. Compatibility of values is defined by:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Type</th><th>Values that fit</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">Text</strong></td><td>any value</td></tr>
+<tr><td><strong class="ui">Picker</strong></td><td>any value</td></tr>
+<tr><td><strong class="ui">Integer</strong></td><td>whole numbers written with digits, with a minus sign if needed and no leading zeros; <code>12.0</code> fits and becomes <code>12</code></td></tr>
+<tr><td><strong class="ui">Decimal</strong></td><td>numbers written with digits, a minus sign if needed, at most one decimal point, and no leading zeros, up to 15 significant digits (<code>0.5</code> fits, <code>.5</code> does not); <code>14</code> becomes <code>14.0</code></td></tr>
+<tr><td><strong class="ui">Boolean</strong></td><td><code>true</code>, <code>false</code>, <code>yes</code>, <code>no</code>, <code>1</code>, and <code>0</code>, in any capitals; they become true or false</td></tr>
+<tr><td><strong class="ui">Date</strong></td><td>dates in exactly the form <code>2024-08-21</code> (four-digit year, two-digit month and day, hyphens); <code>21.08.2024</code> does not fit</td></tr>
+</tbody></table></div>
+<p>The “Climate Debate” project has the following types available for its attributes in the menu:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Attribute</th><th>Current type</th><th>Types offered</th></tr></thead>
+<tbody>
+<tr><td>Stance</td><td><strong class="ui">Picker</strong></td><td><strong class="ui">Text</strong>, <strong class="ui">Picker</strong></td></tr>
+<tr><td>Readership</td><td><strong class="ui">Integer</strong></td><td><strong class="ui">Text</strong>, <strong class="ui">Integer</strong>, <strong class="ui">Decimal</strong>, <strong class="ui">Picker</strong></td></tr>
+<tr><td>Publication Date</td><td><strong class="ui">Date</strong></td><td><strong class="ui">Text</strong>, <strong class="ui">Date</strong>, <strong class="ui">Picker</strong></td></tr>
+<tr><td>Outlet</td><td><strong class="ui">Text</strong></td><td><strong class="ui">Text</strong>, <strong class="ui">Picker</strong></td></tr>
+</tbody></table></div>
+<p>Imagine if somebody had entered <code>about 40000</code> into a <strong class="ui">Text</strong> attribute used to track the number of readers. <strong class="ui">Integer</strong> would be made available to you only once you discovered that particular entry via <strong class="ui">Search</strong> or by sorting the column, then changed it to an integer.</p>
+<p>Upon switching to <strong class="ui">Picker</strong>, if <strong class="ui">Choices</strong> is empty at first, LemmaLoom automatically enters whatever values the documents already have, sorted alphabetically. The figure below demonstrates this; “Outlet” was switched to <strong class="ui">Picker</strong>, and <strong class="ui">Choices</strong> included all eight outlets from “City Hall Bulletin” to “Weather and Climate Agency”. Reorder or extend the choices before you click <strong class="ui">Save</strong>.</p>
+<figure class="shot" id="sets-tags-attributes-edit-attribute"><img class="shot-light" src="../figures/en/light/sets-tags-attributes-edit-attribute.webp" alt="The Edit Attribute dialog for “Outlet”, switched to Picker, with its choices filled in from the existing values." loading="lazy"><img class="shot-dark" src="../figures/en/dark/sets-tags-attributes-edit-attribute.webp" alt="The Edit Attribute dialog for “Outlet”, switched to Picker, with its choices filled in from the existing values." loading="lazy"><figcaption>The Edit Attribute dialog for “Outlet”, switched to Picker, with its choices filled in from the existing values.</figcaption></figure>
+<p>The new type also determines what types of comparison a condition can use. Changing between <strong class="ui">Integer</strong> and <strong class="ui">Decimal</strong> maintains all your comparisons without issue. Should you change an attribute’s type in any other way, however, you must verify your smart sets after the fact, as discussed in <a href="#editing-a-smart-set">Changing a smart set</a> earlier in this chapter.</p>
+<h3 id="ordering-attributes">Ordering attributes<a class="anchor" href="#ordering-attributes" aria-hidden="true">#</a></h3>
+<p>Attributes display in the order that you created them. If you want to move an attribute, choose <strong class="ui">Manage</strong>, followed by selecting the attribute, and <strong class="ui">Move Left</strong> or <strong class="ui">Move Right</strong>; alternatively, right-click on the attribute column heading itself.</p>
+<p>The order is consistent anywhere that attributes appear. This includes the columns of the Attributes window, the inspector, <strong class="ui">Document Properties</strong>, <strong class="ui">Project Properties</strong>, and the attribute menu of smart set conditions. New conditions begin with the first attribute, so the one tested most frequently should come before others.</p>
+<h3 id="deleting-an-attribute">Deleting an attribute<a class="anchor" href="#deleting-an-attribute" aria-hidden="true">#</a></h3>
+<p>Deleting an attribute means selecting <strong class="ui">Manage</strong>, then the attribute, then <strong class="ui">Delete</strong>, or right-clicking its column heading and choosing <strong class="ui">Delete</strong>. The attribute will be instantly deleted along with its value from each of your documents in the project. Smart set conditions set on the attribute now become false for every document (see <a href="#editing-a-smart-set">Changing a smart set</a> earlier in this chapter). <strong class="ui">Edit ▸ Undo Delete Attribute</strong> (⌘Z) will restore the deleted attribute and its values. Deleting an attribute from <strong class="ui">Project Properties</strong> results in identical consequences when you click <strong class="ui">Save</strong>; <strong class="ui">Edit ▸ Undo Project Properties</strong> restores everything.</p>
+<h3 id="exporting-importing-values">Exporting and importing values<a class="anchor" href="#exporting-importing-values" aria-hidden="true">#</a></h3>
+<p><strong class="ui">Export</strong> creates a CSV file which spreadsheets can open, containing one row per item shown, in the order shown. It contains the document titles in the <strong class="ui">Document</strong> column, followed by all attributes as columns. The file name will be based on your project name, e.g., <code>Climate Debate-attributes.csv</code>.</p>
+<p><strong class="ui">Import</strong> reads attribute values from either a CSV or tab-delimited file, and even creates attributes during import if needed. See <a href="importing.html#attribute-import">Importing attribute values from a spreadsheet</a> in <a href="importing.html">Chapter 4, Importing Material</a> for details on how this works. Often, the simplest way to add or change many attribute values will be to export the table, modify it within a spreadsheet program, and reimport it.</p>
+<h3 id="using-attributes">Where attributes can be used<a class="anchor" href="#using-attributes" aria-hidden="true">#</a></h3>
+<ul>
+<li>Smart sets examine attribute values as discussed previously in <a href="#smart-sets">Smart sets</a> in this chapter.</li>
+<li>The <strong class="ui">Code Matrix</strong> can group its columns by attributes (refer to <a href="coding-analysis.html">Chapter 13, Analyzing Codes</a>).</li>
+<li>Sketch Space will compare the grammatical properties of words among different attribute values (refer to <a href="sketch-space.html#attribute-columns">Comparing attribute values</a> in <a href="sketch-space.html">Chapter 14, Sketch Space</a>).</li>
+<li>Queries will test attribute values in rules (refer to <a href="queries-building.html#query-fields">Fields</a> in <a href="queries-building.html">Chapter 15, Building a Query</a>). <strong class="ui">Compare</strong> will show counts for each value of an attribute side by side, along with a statistical test (refer to <a href="queries-results.html">Chapter 16, Query Results and Statistics</a>).</li>
+</ul>
+<p>Codes can hold attributes too, which hold values for each individual coding instance. These are added directly to codes, and the Attributes window only displays the attributes pertaining to documents. Refer to <a href="coding.html#coding-attributes">Codes with attributes</a> within <a href="coding.html">Chapter 7, Coding</a> for more information.</p>
+<h2 id="scopes">Sets and tags as scopes<a class="anchor" href="#scopes" aria-hidden="true">#</a></h2>
+<p>The documents analyzed can be constrained by a set, a smart set, or a tag. The table below lists the locations where you choose each one:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Where</th><th>Sets and smart sets</th><th>Tags</th></tr></thead>
+<tbody>
+<tr><td>A tab opened from the sidebar, with its ten views</td><td>yes</td><td>yes</td></tr>
+<tr><td>The menu after the word field in the Word Sketch window</td><td>yes</td><td>yes</td></tr>
+<tr><td>The scope menu of <strong class="ui">Window ▸ Queries</strong></td><td>the sets of the active project</td><td>no</td></tr>
+<tr><td><strong class="ui">Documents</strong> in the <strong class="ui">Auto Code</strong> dialog</td><td>yes</td><td>no</td></tr>
+<tr><td><strong class="ui">Export</strong> in the shortcut menu</td><td>yes</td><td>no</td></tr>
+<tr><td><strong class="ui">Scope</strong> ▸ <strong class="ui">Document set</strong> in the <strong class="ui">New Code</strong> and <strong class="ui">Edit Code</strong> dialogs (see <a href="coding.html#code-scope">Where a code can be used</a> in <a href="coding.html">Chapter 7, Coding</a>)</td><td>yes</td><td>no</td></tr>
+<tr><td><strong class="ui">Compare With</strong> ▸ <strong class="ui">Set</strong> in a <strong class="ui">Keywords</strong> query (see <a href="queries-results.html#keywords">Keywords</a> in <a href="queries-results.html">Chapter 16, Query Results and Statistics</a>)</td><td>yes</td><td>no</td></tr>
+</tbody></table></div>
+<p>The drop-down menu after the word field in the Word Sketch window reflects the scope you are using currently. It begins by listing the whole project, followed by its sets (in alphabetical order), tags, and lastly the document in the active tab. Where only sets are offered, switch to the <strong class="ui">Queries</strong> view within the tab of a particular tag, or make a smart set with a <strong class="ui">Tags</strong> condition.</p>
+<h2 id="translations-and-sets">Translations<a class="anchor" href="#translations-and-sets" aria-hidden="true">#</a></h2>
+<p>Regular sets, smart sets, and tags in the navigation sidebar consider only the original versions of documents. The translation will follow the original wherever it goes.</p>
+<p>For example, only the original document is listed under a set (refer to <a href="#adding-and-removing">Adding and removing documents</a> above), while the smart set considers the values of the original document. Tags, attribute values, and the group are shared by an original and its translations, so they are always the same for both.</p>
+<p>Analyzing a set, tag, or project will by default take place among original documents. Thus, analyzing “Running Out of Time” and “Running Out of Time (German)” would amount to analyzing one piece of text. The coding views of a set count codings in original documents too. When coding a passage in a translation document, LemmaLoom creates a coding instance in the same place in the corresponding original document; thus, the coding instance in “Running Out of Time (German)” will be counted once, in the original “Running Out of Time”.</p>
+<p>There are two kinds of analysis methods that can read translations rather than original documents. Queries have a <strong class="ui">Corpus</strong> parameter in their <strong class="ui">Options</strong> condition; its settings allow for the corpus to consist of <strong class="ui">Originals</strong>, <strong class="ui">Translations</strong>, or <strong class="ui">Both</strong> (see <a href="queries-building.html#query-options">Options</a> in <a href="queries-building.html">Chapter 15, Building a Query</a>). Word sketches for a set, a tag, or the project provide options in a dropdown menu after the word field if translation documents are included. This menu has a <strong class="ui">Corpus</strong> section containing options <strong class="ui">Originals</strong> and an option for each available translation language, such as <strong class="ui">Translations (German)</strong> (see <a href="word-sketch.html">Chapter 12, Word Sketch</a>). For additional information about working with translations, visit <a href="translations.html">Chapter 9, Translations and Split View</a>.</p>
+</article>
+<nav class="pager"><a class="previous" href="coding.html"><span>Previous</span>Coding</a><a class="next" href="translations.html"><span>Next</span>Translations and Split View</a></nav>
+<footer class="site-footer">© 2026 Ryan S. Cooper. All rights reserved.</footer>
+</main>
+<nav class="page-toc" aria-label="On this page"><p>On this page</p><ul>
+<li class="level-2"><a href="#key-terms">Key terms</a></li>
+<li class="level-2"><a href="#choosing">Which one to use</a></li>
+<li class="level-2"><a href="#example-values">The examples in this chapter</a></li>
+<li class="level-2"><a href="#sets">Sets</a></li>
+<li class="level-3"><a href="#making-a-set">Making a set</a></li>
+<li class="level-3"><a href="#adding-and-removing">Adding and removing documents</a></li>
+<li class="level-3"><a href="#opening-a-set">Opening a set</a></li>
+<li class="level-3"><a href="#managing-sets">Renaming, exporting, and deleting a set</a></li>
+<li class="level-2"><a href="#smart-sets">Smart sets</a></li>
+<li class="level-3"><a href="#creating-a-smart-set">Creating a smart set</a></li>
+<li class="level-3"><a href="#all-or-any">All or Any</a></li>
+<li class="level-3"><a href="#smart-set-fields">Fields</a></li>
+<li class="level-3"><a href="#attribute-comparisons">Comparisons for attributes</a></li>
+<li class="level-3"><a href="#condition-values">Values in a condition</a></li>
+<li class="level-3"><a href="#how-values-are-compared">How values are compared</a></li>
+<li class="level-3"><a href="#editing-a-smart-set">Changing a smart set</a></li>
+<li class="level-3"><a href="#smart-sets-export">Smart sets outside LemmaLoom</a></li>
+<li class="level-2"><a href="#groups">Groups</a></li>
+<li class="level-2"><a href="#tags">Tags</a></li>
+<li class="level-3"><a href="#tag-vocabulary">One list for all projects</a></li>
+<li class="level-3"><a href="#tagging-documents">Tagging a document</a></li>
+<li class="level-3"><a href="#tags-in-the-navigator">Tags in the navigation sidebar</a></li>
+<li class="level-2"><a href="#attributes">Attributes</a></li>
+<li class="level-3"><a href="#attribute-types">Attribute types</a></li>
+<li class="level-3"><a href="#attributes-sheet">The Attributes window</a></li>
+<li class="level-3"><a href="#defining-an-attribute">Defining an attribute</a></li>
+<li class="level-3"><a href="#entering-values">Entering values</a></li>
+<li class="level-3"><a href="#bulk-values">Setting one value for many documents</a></li>
+<li class="level-3"><a href="#searching-sorting">Searching and sorting</a></li>
+<li class="level-3"><a href="#editing-an-attribute">Changing an attribute</a></li>
+<li class="level-3"><a href="#converting-types">Changing an attribute’s type</a></li>
+<li class="level-3"><a href="#ordering-attributes">Ordering attributes</a></li>
+<li class="level-3"><a href="#deleting-an-attribute">Deleting an attribute</a></li>
+<li class="level-3"><a href="#exporting-importing-values">Exporting and importing values</a></li>
+<li class="level-3"><a href="#using-attributes">Where attributes can be used</a></li>
+<li class="level-2"><a href="#scopes">Sets and tags as scopes</a></li>
+<li class="level-2"><a href="#translations-and-sets">Translations</a></li>
+</ul></nav>
+</div>
+<script src="../assets/guide.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>透镜 · LemmaLoom 用户指南</title>
+<link rel="stylesheet" href="../assets/guide.css">
+<link rel="icon" type="image/png" href="../assets/logo.png">
+<script>var r=document.documentElement;r.setAttribute('data-theme','light');try{if(localStorage.getItem('guide-theme')==='dark'){r.setAttribute('data-theme','dark')}}catch(e){}</script>
+</head>
+<body>
+<header class="topbar">
+<button class="menu-toggle" aria-label="目录" aria-expanded="false">☰</button>
+<a class="brand" href="index.html"><span class="wordmark"><span class="lemma">Lemma</span>Loom</span><span class="guide-name">用户指南</span></a>
+<div class="search"><input type="search" id="search" placeholder="搜索" aria-label="搜索" autocomplete="off" data-empty="无结果"><div class="results" id="results" hidden></div></div>
+<nav class="languages" aria-label="Language"><a href="../en/lenses.html" lang="en">English</a><a href="../de/lenses.html" lang="de">Deutsch</a><a href="../zh-Hans/lenses.html" lang="zh-Hans" aria-current="true">简体中文</a></nav>
+<button class="theme-toggle" data-light="浅色" data-dark="深色" aria-label="外观"></button>
+<a class="pdf-link" href="https://github.com/LemmaLoom/public/raw/main/pdf/lemmaloom-guide-zh-Hans.pdf">PDF</a>
+</header>
+<div class="layout">
+<nav class="sidebar" aria-label="目录"><ol>
+<li class="unnumbered"><a href="quick-start.html">快速入门</a></li>
+<li><a href="introduction.html">简介</a></li>
+<li><a href="getting-started.html">开始使用</a></li>
+<li><a href="projects-and-documents.html">项目与文档</a></li>
+<li><a href="importing.html">导入资料</a></li>
+<li><a href="reading-and-editing.html">阅读与编辑</a></li>
+<li class="current"><a href="lenses.html">透镜</a></li>
+<li><a href="coding.html">编码</a></li>
+<li><a href="sets-tags-attributes.html">文档集、分组、标签和属性</a></li>
+<li><a href="translations.html">译文与分屏浏览</a></li>
+<li><a href="text-inspector.html">文本检查器</a></li>
+<li><a href="grammar-inspector.html">语法检查器</a></li>
+<li><a href="word-sketch.html">词汇速写</a></li>
+<li><a href="coding-analysis.html">编码分析</a></li>
+<li><a href="sketch-space.html">速写空间</a></li>
+<li><a href="queries-building.html">构建查询</a></li>
+<li><a href="queries-results.html">查询结果与统计</a></li>
+<li><a href="queries-patterns.html">查询模式与发现</a></li>
+<li><a href="queries-using-results.html">使用查询结果</a></li>
+<li><a href="dictionaries.html">词典</a></li>
+<li><a href="custom-analyzers.html">自定义分析器</a></li>
+<li><a href="analysis-and-indexing.html">分析与索引</a></li>
+<li><a href="exchange-and-export.html">交换与导出</a></li>
+<li><a href="undo.html">撤销与重做</a></li>
+<li><a href="settings.html">设置与外观</a></li>
+<li><a href="keyboard-shortcuts.html">键盘快捷键</a></li>
+<li><a href="help-and-support.html">帮助与支持</a></li>
+<li><a href="statistics-reference.html">统计量一览</a></li>
+<li class="unnumbered"><a href="glossary.html">术语表</a></li>
+<li class="unnumbered"><a href="thanks.html">感谢</a></li>
+</ol></nav>
+<main class="content">
+<article>
+<h1 id="lenses">透镜</h1>
+<p><em>透镜</em>按类别标注阅读器中的词。类别可以是词性，也可以是编码。例如，<strong class="ui">词类</strong>透镜为所有名词加蓝色下划线，为所有动词加红色下划线；<strong class="ui">编码</strong>透镜则以各个编码的颜色显示你的编码实例。</p>
+<p>透镜帮助你在阅读时发现文本中的规律。例如，在评论文章“时间不多了”中启用<strong class="ui">否定</strong>，每个<em>不</em>和<em>没有</em>，连同它们在句中否定的内容，都会醒目地显示出来。同样，把一个模糊限制语词典作为透镜启用，可以看出作者在哪些地方缓和了自己的论断。通常，你会先用透镜找出与研究问题相关的段落，在编码和计数之前对它们进行细读。本章的所有示例都来自本指南的示例项目“气候辩论”，选取<strong class="ui">文件 ▸ 导入 ▸ 示例项目</strong>即可把它添加到你的资料库中（见<a href="introduction.html">第 1 章“简介”</a>中的<a href="introduction.html#example-project">示例项目</a>）。</p>
+<h2 id="lenses-at-a-glance">透镜概览<a class="anchor" href="#lenses-at-a-glance" aria-hidden="true">#</a></h2>
+<p>透镜标注的每个类别都是这个透镜的一个<em>标注项</em>，例如<strong class="ui">词类</strong>中的<strong class="ui">名词</strong>，或<strong class="ui">情态</strong>中的<strong class="ui">义务</strong>。只有少数标注项共用颜色；其他每个标注项都有自己独有的颜色。大多数透镜会在文本上方显示一个<em>图例</em>，图例由代表各个标注项的彩色图例项组成。从图例可以看出每种颜色代表什么，也可以用它启用或停用透镜的单个标注项。本章后文的<a href="#legend">解读透镜</a>有更详细的说明。</p>
+<p>LemmaLoom 提供五类透镜：</p>
+<ul>
+<li><em>内置透镜</em>，从<strong class="ui">词类</strong>到<strong class="ui">修辞</strong>，呈现建立索引时对文档所做的语法分析（见<a href="analysis-and-indexing.html">第 21 章“分析与索引”</a>）。</li>
+<li><strong class="ui">编码</strong>透镜和<strong class="ui">书签</strong>透镜呈现你在文档中所做的标注。</li>
+<li>每个词典都有自己的透镜，即<em>词典透镜</em>，用来标注词典中的词条，每个类别一种颜色（见<a href="dictionaries.html">第 19 章“词典”</a>）。</li>
+<li><em>查询透镜</em>呈现已存储查询的命中结果（见<a href="queries-using-results.html">第 18 章“使用查询结果”</a>）。</li>
+<li><em>分析器透镜</em>呈现你自己编写的某个分析器找到的结果（见<a href="custom-analyzers.html">第 20 章“自定义分析器”</a>）。</li>
+</ul>
+<p>内置透镜有助于理解文本的措辞和语法结构，适用于 LemmaLoom 中任何已建立索引的文档。</p>
+<p>要在不启用任何透镜的情况下查看文档，请在透镜菜单中选取<strong class="ui">全部清除</strong>。</p>
+<p>每个打开的文档都有自己的一组透镜。例如，并排查看两个文档时（见<a href="reading-and-editing.html">第 5 章“阅读与编辑”</a>中的<a href="reading-and-editing.html#split-view">并排阅读两个文档</a>），你可以用<strong class="ui">情态</strong>阅读“时间不多了”，同时用<strong class="ui">衔接</strong>阅读专栏“模型总是失准”。第一次打开的文档已启用<strong class="ui">编码</strong>和<strong class="ui">书签</strong>透镜。对于保持打开的文档，LemmaLoom 会记住已启用的透镜和已停用的标注项，并在再次打开项目时恢复。启用或停用透镜或标注项，以及折叠文档，都会立即生效；要撤回这些操作，只能做相反的操作（见<a href="undo.html">第 23 章“撤销与重做”</a>中的<a href="undo.html#outside-the-project">项目以外的更改</a>）。</p>
+<p>索引建立完成之前，透镜菜单不可用。英语、德语和中文以外语言的文档，菜单也一直不可用，不过其中仍会显示编码实例和书签。导入时没有建立索引的文档，菜单同样不可用，直到索引建立完成（见<a href="analysis-and-indexing.html">第 21 章“分析与索引”</a>中的<a href="analysis-and-indexing.html#turning-indexing-off">导入时不建立索引</a>）。</p>
+<h2 id="lens-menu">透镜菜单<a class="anchor" href="#lens-menu" aria-hidden="true">#</a></h2>
+<p>透镜菜单是标题栏右端工具中的第一个，位于放大镜和<strong class="ui">字体、边栏与文字大小</strong>菜单之前（见<a href="reading-and-editing.html">第 5 章“阅读与编辑”</a>中的<a href="reading-and-editing.html#title-band">标题栏</a>）。从菜单的标签可以看出是否启用了透镜、启用了几个，以及是哪些：</p>
+<ul>
+<li>没有启用透镜时，显示<strong class="ui">透镜</strong>；</li>
+<li>启用一个透镜时，显示它的名称，例如<strong class="ui">情态</strong>或<strong class="ui">模糊限制语</strong>；</li>
+<li>启用多个透镜时，显示透镜的数量，例如 <strong class="ui">2 个透镜</strong>。</li>
+</ul>
+<p>将鼠标指针悬停在菜单上，可以看到当前已启用的透镜的名称。索引建立完成之前，悬停提示为<strong class="ui">索引完成后即可使用透镜</strong>。编辑文档文本时，透镜菜单和图例都会隐藏。</p>
+<p>在下图中，“时间不多了”同时启用了三个透镜（<strong class="ui">情态</strong>、<strong class="ui">书签</strong>和<strong class="ui">编码</strong>），所以菜单显示 <strong class="ui">3 个透镜</strong>。编码“临界点”和“时间节点”的编码实例显示在页边和文本中。在菜单中，<strong class="ui">书签</strong>和<strong class="ui">编码</strong>之后是另外两个属于“气候辩论”的透镜（项目词典“模糊限制语”和查询透镜“紧迫性话题”）。</p>
+<figure class="shot" id="lenses-menu"><img class="shot-light" src="../figures/zh-Hans/light/lenses-menu.webp" alt="“时间不多了”的透镜菜单，已启用情态、书签和编码，下面列出了词典“模糊限制语”和查询透镜“紧迫性话题”。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/lenses-menu.webp" alt="“时间不多了”的透镜菜单，已启用情态、书签和编码，下面列出了词典“模糊限制语”和查询透镜“紧迫性话题”。" loading="lazy"><figcaption>“时间不多了”的透镜菜单，已启用情态、书签和编码，下面列出了词典“模糊限制语”和查询透镜“紧迫性话题”。</figcaption></figure>
+<p>菜单最多分为三组，以分隔线隔开：</p>
+<div class="table-wrap"><table>
+<thead><tr><th>组</th><th>内容</th></tr></thead>
+<tbody>
+<tr><td>内置透镜</td><td>该文档语言可用的内置透镜，顺序与本章后文<a href="#built-in-lenses">内置透镜</a>一节表格中的顺序相同，后面是<strong class="ui">清除透镜</strong></td></tr>
+<tr><td>分析器</td><td>你自己编写的、适用于该文档语言的分析器，后面是<strong class="ui">清除分析器</strong>。至少有一个这样的分析器时，才会出现这一组。</td></tr>
+<tr><td>标注</td><td>先是<strong class="ui">书签</strong>和<strong class="ui">编码</strong>，然后是按名称排序的项目词典，再是查询透镜，然后是<strong class="ui">自动编码…</strong>各项，最后是<strong class="ui">清除标注</strong></td></tr>
+</tbody></table></div>
+<p><strong class="ui">全部清除</strong>位于这几组之上。</p>
+<p>启用或停用透镜：</p>
+<ol>
+<li>在阅读器中打开文档。</li>
+<li>点按标题栏中的透镜菜单。</li>
+<li>选取一个透镜。菜单中它的旁边会出现勾号，大多数透镜还会在文本上方显示图例。</li>
+<li>要再添加一个透镜，请再次打开菜单并选取它。每次选取之后，菜单都会关闭。</li>
+<li>要停用一个透镜，请再次选取它。</li>
+</ol>
+<p>下面四个清除项可以一次停用多个透镜：</p>
+<div class="table-wrap"><table>
+<thead><tr><th>菜单项</th><th>停用的透镜</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">全部清除</strong></td><td>所有透镜，包括<strong class="ui">编码</strong>和<strong class="ui">书签</strong></td></tr>
+<tr><td><strong class="ui">清除透镜</strong></td><td>第一组中的内置透镜，以及所有查询透镜</td></tr>
+<tr><td><strong class="ui">清除分析器</strong></td><td>所有分析器透镜</td></tr>
+<tr><td><strong class="ui">清除标注</strong></td><td><strong class="ui">编码</strong>、<strong class="ui">书签</strong>、词典透镜和查询透镜</td></tr>
+</tbody></table></div>
+<p>如果某一项不可用，说明它要停用的透镜一个也没有启用。想去掉内置透镜的颜色、同时保留编码实例继续阅读时，请选取<strong class="ui">清除透镜</strong>。</p>
+<aside class="callout note"><p class="callout-title">注意</p><p><strong class="ui">全部清除</strong>和<strong class="ui">清除标注</strong>会把编码实例和书签从视图中隐藏。要重新显示它们，请选取<strong class="ui">编码</strong>或<strong class="ui">书签</strong>。</p>
+</aside>
+<p>菜单中的<strong class="ui">自动编码…</strong>项为词典透镜、查询透镜或分析器透镜标注的段落编码（见<a href="coding.html">第 7 章“编码”</a>中的<a href="coding.html#auto-code-from-lens">从透镜自动编码</a>）。只有至少启用了一个这样的透镜，这一项才会出现。启用了多个这样的透镜时，每个透镜各有一项，例如<strong class="ui">使用模糊限制语自动编码…</strong>。</p>
+<figure class="shot" id="lenses-hedges-menu"><img class="shot-light" src="../figures/zh-Hans/light/lenses-hedges-menu.webp" alt="“电台辩论”的透镜菜单，已启用“模糊限制语”和“紧迫性话题”，每个都带有一个自动编码项。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/lenses-hedges-menu.webp" alt="“电台辩论”的透镜菜单，已启用“模糊限制语”和“紧迫性话题”，每个都带有一个自动编码项。" loading="lazy"><figcaption>“电台辩论”的透镜菜单，已启用“模糊限制语”和“紧迫性话题”，每个都带有一个自动编码项。</figcaption></figure>
+<p>在全屏幕模式下，标题栏会隐藏，透镜菜单移到屏幕最上方的工具栏中。那里的菜单项相同，本章后文介绍的折叠按钮在那里变为<strong class="ui">折叠至匹配项</strong>，当前文档处于折叠状态时则显示为<strong class="ui">展开文档</strong>。索引建立完成之前，菜单不可用，它的悬停提示为<strong class="ui">尚未索引</strong>（见<a href="reading-and-editing.html">第 5 章“阅读与编辑”</a>中的<a href="reading-and-editing.html#full-screen">全屏幕阅读器</a>）。</p>
+<p>并排查看两个文档时，标题栏中的工具作用于当前窗格。要切换窗格，请在另一个文档窗格中点按一下。</p>
+<h2 id="legend">解读透镜<a class="anchor" href="#legend" aria-hidden="true">#</a></h2>
+<p>启用大多数透镜后，它们的图例会立即出现在文本上方。图例先显示透镜的名称，后面是它的各个标注项，每个标注项显示为一个带有该标注项颜色的图例项。点按一个图例项会停用透镜的这个标注项，再点按一次则重新启用，它在文档中的标注随之隐藏或重新出现。停用的图例项显示为淡色。多个图例按透镜启用的先后顺序排列。</p>
+<p>大多数图例项带有一个标注项颜色的小方块。不过，如果透镜默认以下划线显示某个标注项，例如<strong class="ui">衔接</strong>中的<strong class="ui">句末新信息（重音）</strong>，它的图例项显示的就是一小段彩色横条。</p>
+<h3 id="visible-keys">选择启用哪些标注项<a class="anchor" href="#visible-keys" aria-hidden="true">#</a></h3>
+<p>启用透镜时，它的所有标注项都会启用。如果你的问题只涉及其中一两种颜色，通常就要缩小透镜的范围，只显示这几种颜色。例如，你也许只想研究动词，或者只想看作者在哪里表达义务。</p>
+<ul>
+<li><strong class="ui">无</strong>停用所有标注项，<strong class="ui">全部</strong>启用所有标注项。所有标注项都已启用时，<strong class="ui">全部</strong>不可用；没有任何标注项启用时，<strong class="ui">无</strong>不可用。</li>
+<li>右键点按图例项，会打开快捷菜单。<strong class="ui">仅启用此项</strong>只启用这一个标注项。<strong class="ui">停用</strong>或<strong class="ui">启用</strong>切换这个标注项的状态，<strong class="ui">全部启用</strong>则重新启用所有标注项。</li>
+</ul>
+<p>停用的标注项所对应的词会变淡。其他透镜所做的标注会盖过停用标注项造成的变淡效果。</p>
+<p>下图显示“时间不多了”的<strong class="ui">情态</strong>图例，<strong class="ui">义务</strong>图例项的快捷菜单已经打开。选取<strong class="ui">仅启用此项</strong>，就只显示表示义务的词，例如“这一点不该让任何人感到安心”中的<em>该</em>。</p>
+<figure class="shot" id="lenses-legend-menu"><img class="shot-light" src="../figures/zh-Hans/light/lenses-legend-menu.webp" alt="“时间不多了”的情态图例，义务图例项的菜单已打开。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/lenses-legend-menu.webp" alt="“时间不多了”的情态图例，义务图例项的菜单已打开。" loading="lazy"><figcaption>“时间不多了”的情态图例，义务图例项的菜单已打开。</figcaption></figure>
+<p>只保留透镜的某一个标注项：</p>
+<ol>
+<li>启用这个透镜。</li>
+<li>在图例中右键点按这个标注项的图例项，然后选取<strong class="ui">仅启用此项</strong>。</li>
+<li>要重新启用所有标注项，请点按<strong class="ui">全部</strong>。</li>
+</ol>
+<p>把文档折叠为有标注的句子时，只会保留被某个已启用标注项标注的句子（详见本章后文的<a href="#collapse">只显示有标注的句子</a>）。<strong class="ui">自动编码</strong>对话框中只有已启用的标注项才有对应的行，所以自动编码时会略过所有停用的标注项。</p>
+<p>你还可以从检查器的<strong class="ui">语法</strong>标签页启用三个透镜。在它的<strong class="ui">语篇</strong>分面中，展开<strong class="ui">衔接</strong>、<strong class="ui">元话语</strong>或<strong class="ui">修辞</strong>下的某个类别，然后点按<strong class="ui">在正文中高亮</strong>。LemmaLoom 会在需要时启用相应的透镜，并让它只显示所选类别的内容。再点按一次这个链接，所有标注项就会恢复正常显示（见<a href="grammar-inspector.html">第 11 章“语法检查器”</a>中的<a href="grammar-inspector.html#discourse-highlight">在正文中高亮某个类别</a>）。</p>
+<h2 id="combining-lenses">组合透镜<a class="anchor" href="#combining-lenses" aria-hidden="true">#</a></h2>
+<p>两个透镜以相同的样式标注同一个词时，两种颜色会同时显示。高亮变为渐变色，上部是第一个透镜的颜色，下部是第二个透镜的颜色。下划线同样变为渐变色，左端是第一种颜色，右端是第二种颜色。文本颜色也是渐变的，每个字从上部的第一种颜色过渡到下部的第二种颜色。</p>
+<p>组合透镜时，最好让一个透镜用高亮、另一个用下划线，这样最容易辨认。<strong class="ui">词类</strong>和<strong class="ui">语法功能</strong>默认使用下划线样式，其他大多数透镜则高亮词语。所以，<strong class="ui">情态</strong>宜与<strong class="ui">词类</strong>搭配，而不宜与<strong class="ui">短语</strong>搭配，因为<strong class="ui">短语</strong>会高亮文档中的大多数词，遮住其他透镜的高亮。此外，有四个透镜的标注样式可以在设置中更改，为第三个透镜腾出位置（见本章后文的<a href="#lens-colors-and-styles">透镜的颜色与样式</a>）。</p>
+<figure class="shot" id="lenses-combined"><img class="shot-light" src="../figures/zh-Hans/light/lenses-combined.webp" alt="“时间不多了”同时启用了“情态”和“词类”，每个透镜的图例都在文本上方。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/lenses-combined.webp" alt="“时间不多了”同时启用了“情态”和“词类”，每个透镜的图例都在文本上方。" loading="lazy"><figcaption>“时间不多了”同时启用了“情态”和“词类”，每个透镜的图例都在文本上方。</figcaption></figure>
+<p>文档概览是阅读器右边缘的竖直窄条，它会显示已启用透镜的颜色。处理很长的文档时，这一点很有用，因为从文档概览可以很快找到标注集中的地方，在文档概览中点按就能在文档中跳转（见<a href="reading-and-editing.html">第 5 章“阅读与编辑”</a>中的<a href="reading-and-editing.html#minimap">文档概览</a>）。</p>
+<h2 id="collapse">只显示有标注的句子<a class="anchor" href="#collapse" aria-hidden="true">#</a></h2>
+<p>透镜还可以把文档折叠为它所标注的句子。这样，你就能连续阅读所有谈到要求的句子，或者所有已编码的段落。文档很长时，或者在编码之前比较许多相似的句子时，折叠尤其有用。</p>
+<p>折叠文档要用<em>折叠按钮</em>。它紧挨在透镜菜单右侧，只显示一个图标（两个箭头夹着一个矩形），文档折叠时图标会着色。启用了任何内置透镜、词典透镜、查询透镜或分析器透镜时，或者启用了<strong class="ui">编码</strong>或<strong class="ui">书签</strong>且文档中有编码实例或书签时，这个按钮就会出现。</p>
+<p>文档折叠期间，只要有一个当前已启用的透镜标注了某个句子，这个句子就会保留。也就是说，对于内置透镜、词典透镜、查询透镜或分析器透镜，句子中要有一个或几个词带有某个已启用的标注项；对于<strong class="ui">编码</strong>和<strong class="ui">书签</strong>，则要分别有编码实例或书签与句子重叠。</p>
+<p>两个保留的句子之间如果有省略的句子，会用一行三个隔开的圆点表示。第一个保留的句子之前和最后一个之后的句子直接省略，不显示圆点。</p>
+<p>在下面的示例中，“时间不多了”只启用了<strong class="ui">情态</strong>透镜，并且除<strong class="ui">必要</strong>以外的所有标注项都已停用。折叠之后只剩下三个句子，两句含有<em>必须</em>，一句含有<em>需要</em>。然而后者“我们不需要再来一份报告”否定了一种必要，而不是提出必要。</p>
+<figure class="shot" id="lenses-collapsed"><img class="shot-light" src="../figures/zh-Hans/light/lenses-collapsed.webp" alt="“时间不多了”折叠为情态透镜标注为必要的句子。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/lenses-collapsed.webp" alt="“时间不多了”折叠为情态透镜标注为必要的句子。" loading="lazy"><figcaption>“时间不多了”折叠为情态透镜标注为必要的句子。</figcaption></figure>
+<p>让透镜只显示有标注的句子：</p>
+<ol>
+<li>启用透镜，并在它的图例中停用你不需要的标注项。</li>
+<li>如果不想同时保留已编码和加了书签的句子，请停用<strong class="ui">编码</strong>和<strong class="ui">书签</strong>。<strong class="ui">清除标注</strong>会停用这两者，同时让内置透镜保持启用，不过它也会停用词典透镜和查询透镜。</li>
+<li>点按折叠按钮。</li>
+<li>要重新阅读整个文档，请再次点按折叠按钮。这时它的悬停提示为<strong class="ui">重新显示整个文档</strong>。</li>
+</ol>
+<p>文档折叠期间，对透镜和标注项所做的更改会立即反映在文档中。如果一个句子也不剩，就会显示整个文档。开始编辑或打开<strong class="ui">查找</strong>（⌘F）也会显示整个文档。</p>
+<p>在折叠的文档中添加的编码实例、书签和备忘录，都会保留在完整文本中的相应位置。</p>
+<h2 id="built-in-lenses">内置透镜<a class="anchor" href="#built-in-lenses" aria-hidden="true">#</a></h2>
+<p>内置透镜呈现对文档语法的分析，包括文档中的词、这些词的词类和形态、词与词之间的关系，以及由这些词组成的短语。语法分析中的错误也会出现在透镜中。对于经过编辑的书面文字，分析大多准确；口语中常有重复、打断和不完整的句子，分析的准确度就低一些。建议先用透镜找出可能相关的段落，并在断言某种现象出现的频率之前抽查其中一部分。</p>
+<p>有些透镜依据简短的词表而不是语法，包括<strong class="ui">情态</strong>、<strong class="ui">连接词</strong>和<strong class="ui">元话语</strong>。词表中的词只要以相应的词类出现，这些透镜就会标注它，不管它在上下文中是什么意思。</p>
+<p>LemmaLoom 中有哪些内置透镜可用，取决于所分析文档的语言：</p>
+<div class="table-wrap"><table>
+<thead><tr><th>透镜</th><th>英语</th><th>德语</th><th>中文</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">词类</strong></td><td>有</td><td>有</td><td>有</td></tr>
+<tr><td><strong class="ui">语法功能</strong></td><td>有</td><td>有</td><td>有</td></tr>
+<tr><td><strong class="ui">短语</strong></td><td>有</td><td>有</td><td>有</td></tr>
+<tr><td><strong class="ui">形态学</strong></td><td>有</td><td>有</td><td>无</td></tr>
+<tr><td><strong class="ui">情态</strong></td><td>有</td><td>有</td><td>有</td></tr>
+<tr><td><strong class="ui">否定</strong></td><td>有</td><td>有</td><td>有</td></tr>
+<tr><td><strong class="ui">连接词</strong></td><td>有</td><td>有</td><td>有</td></tr>
+<tr><td><strong class="ui">句场</strong></td><td>无</td><td>有</td><td>无</td></tr>
+<tr><td><strong class="ui">句式</strong></td><td>无</td><td>无</td><td>有</td></tr>
+<tr><td><strong class="ui">助词</strong></td><td>无</td><td>无</td><td>有</td></tr>
+<tr><td><strong class="ui">衔接</strong></td><td>有</td><td>有</td><td>有</td></tr>
+<tr><td><strong class="ui">元话语</strong></td><td>有</td><td>有</td><td>有</td></tr>
+<tr><td><strong class="ui">修辞</strong></td><td>有</td><td>有</td><td>有</td></tr>
+</tbody></table></div>
+<p><strong class="ui">衔接</strong>、<strong class="ui">元话语</strong>和<strong class="ui">修辞</strong>都来自建立索引时由分析器完成的分析。在<strong class="ui">文档信息</strong>的<strong class="ui">索引</strong>部分可以看到哪些分析器处理过你的文档（在导航栏中右键点按文档，然后选取<strong class="ui">信息</strong>）。如果你在那里移除了其中某个分析器的输出，对应的透镜就会从这个文档的透镜菜单中消失；点按<strong class="ui">运行</strong>即可恢复（见<a href="analysis-and-indexing.html">第 21 章“分析与索引”</a>中的<a href="analysis-and-indexing.html#removing-analyzer-output">移除分析器的输出</a>）。</p>
+<h3 id="word-class">词类<a class="anchor" href="#word-class" aria-hidden="true">#</a></h3>
+<p><strong class="ui">词类</strong>按词性为文档中的每个词加下划线。图例有十个图例项：<strong class="ui">名词</strong>、<strong class="ui">动词</strong>、<strong class="ui">形容词</strong>、<strong class="ui">副词</strong>、<strong class="ui">代词</strong>、<strong class="ui">限定词</strong>、<strong class="ui">介词</strong>、<strong class="ui">连词</strong>、<strong class="ui">数词</strong>和<strong class="ui">感叹词</strong>。这个透镜让你看出一篇文本偏重哪些词类，从而很快了解文本的结构；例如，官方报告往往大量使用名词。只保留<strong class="ui">形容词</strong>这一个标注项，就能直观地看到作者用哪些形容词来作出评价。</p>
+<p>用<strong class="ui">词类</strong>透镜分析 <em>The fuel tax rarely spares a rural family</em>（燃油税很少放过农村家庭）时，<em>fuel</em>、<em>tax</em> 和 <em>family</em> 作为名词加下划线，<em>spares</em> 作为动词，<em>rarely</em> 作为副词，<em>rural</em> 作为形容词，<em>The</em> 和 <em>a</em> 作为限定词。</p>
+<p>下图显示启用了<strong class="ui">词类</strong>的“时间不多了”的开头，即一个炎热夜晚的故事。</p>
+<figure class="shot" id="lenses-word-class"><img class="shot-light" src="../figures/zh-Hans/light/lenses-word-class.webp" alt="“时间不多了”中的词类透镜，图例位于文本上方。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/lenses-word-class.webp" alt="“时间不多了”中的词类透镜，图例位于文本上方。" loading="lazy"><figcaption>“时间不多了”中的词类透镜，图例位于文本上方。</figcaption></figure>
+<p>这些词类都很宽泛，其中几类包含的词超出了名称字面上的范围：</p>
+<ul>
+<li><strong class="ui">动词</strong>包括助动词和情态动词，如 <em>have</em>、<em>be</em>、<em>can</em> 和 <em>should</em>。</li>
+<li>在英语中，<strong class="ui">代词</strong>包括 <em>my</em> 和 <em>their</em> 这样的物主代词，以及 <em>there is</em> 中的 <em>there</em>。德语的物主代词，如 <em>mein</em> 和 <em>ihr</em>，归入<strong class="ui">限定词</strong>。</li>
+<li>小品词都归入<strong class="ui">介词</strong>类，包括英语 <em>to work</em> 中的 <em>to</em>、<em>pick up</em> 中的 <em>up</em> 和表示所属的 <em>'s</em>，德语的 <em>zu</em> 和 <em>nicht</em>，以及中文里的<em>的</em>和<em>了</em>。</li>
+<li>在英语中，<strong class="ui">介词</strong>还包括 <em>because</em>、<em>if</em> 和 <em>that</em>（如 <em>I think that</em> 中的 <em>that</em>）这样的从属连词。英语分析把它们标为介词，在德语和中文中它们则归入<strong class="ui">连词</strong>。</li>
+</ul>
+<p>不属于这十类的词，例如外来词，加灰色下划线。</p>
+<h3 id="grammatical-function">语法功能<a class="anchor" href="#grammatical-function" aria-hidden="true">#</a></h3>
+<p><strong class="ui">语法功能</strong>按每个词在句子结构中的作用为它加下划线。这个透镜显示文本中是谁或什么在发出动作，例如<em>气候</em>是动词的主语（如<em>气候都在变化</em>），还是动词的宾语（如<em>保护孩子们将要继承的气候</em>）。</p>
+<p>在句子结构中，主要动词以外的每个词都连到另一个词上，即它的<em>中心词</em>。例如在 <em>a rural family</em> 中，<em>rural</em> 连到 <em>family</em>。每个词按它与自己的中心词之间的关系着色。因此在一个短语中，中心词显示整个短语的功能，修饰它的词则着色为<strong class="ui">定语</strong>或<strong class="ui">状语</strong>。</p>
+<p>在 <em>The fuel tax rarely spares a rural family</em> 中：</p>
+<ul>
+<li><em>tax</em> 标为<strong class="ui">主语</strong>，<em>The</em> 和 <em>fuel</em> 着色为<strong class="ui">定语</strong>；</li>
+<li><em>rarely</em> 着色为<strong class="ui">状语</strong>；</li>
+<li><em>family</em> 标为<strong class="ui">宾语</strong>，<em>a</em> 和 <em>rural</em> 都着色为<strong class="ui">定语</strong>；</li>
+<li>主要动词 <em>spares</em> 不着色。</li>
+</ul>
+<figure class="shot" id="lenses-grammatical-function"><img class="shot-light" src="../figures/zh-Hans/light/lenses-grammatical-function.webp" alt="“时间不多了”启用了“语法功能”透镜，图例位于文本上方。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/lenses-grammatical-function.webp" alt="“时间不多了”启用了“语法功能”透镜，图例位于文本上方。" loading="lazy"><figcaption>“时间不多了”启用了“语法功能”透镜，图例位于文本上方。</figcaption></figure>
+<p>图例有十个图例项：</p>
+<div class="table-wrap"><table>
+<thead><tr><th>标注项</th><th>标注的内容</th><th>示例</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">主语</strong></td><td>动词的主语，包括用作形式主语的 <em>it</em> 和 <em>there</em></td><td><em>two students fainted</em> 中的 <em>students</em></td></tr>
+<tr><td><strong class="ui">宾语</strong></td><td>动词或介词的宾语</td><td><em>signed more petitions</em> 中的 <em>petitions</em>；<em>on a road</em> 中的 <em>road</em></td></tr>
+<tr><td><strong class="ui">表语</strong></td><td>补足 <em>be</em>、<em>seem</em> 等系动词的词</td><td><em>floods are expensive</em> 中的 <em>expensive</em></td></tr>
+<tr><td><strong class="ui">补语</strong></td><td>补足另一个动词的小句中的动词</td><td><em>the country has to share the bill</em> 中的 <em>share</em></td></tr>
+<tr><td><strong class="ui">定语</strong></td><td>修饰名词的词，如冠词、形容词、物主词、数词、用作修饰语的名词，以及附着于名词的介词</td><td><em>a rural family</em> 中的 <em>rural</em>；<em>the end of the decade</em> 中的 <em>of</em></td></tr>
+<tr><td><strong class="ui">状语</strong></td><td>修饰动词、形容词或副词的词，包括附着于动词的介词、状语从句和 <em>not</em></td><td><em>rarely</em>；<em>voted after midnight</em> 中的 <em>after</em></td></tr>
+<tr><td><strong class="ui">同位语</strong></td><td>换一种说法指称旁边那个名词短语的名词短语</td><td><em>one of my regulars, a retired mail carrier</em> 中的 <em>carrier</em></td></tr>
+<tr><td><strong class="ui">施事</strong></td><td>引出被动动词动作发出者的 <em>by</em></td><td><em>filtered by fear</em> 中的 <em>by</em></td></tr>
+<tr><td><strong class="ui">并列项</strong></td><td>并列结构中的第二个及以后的成员</td><td><em>activists and skeptics</em> 中的 <em>skeptics</em></td></tr>
+<tr><td><strong class="ui">连接词</strong></td><td>起连接作用的小词，如连词、从属连词、助动词和小品词</td><td><em>and</em>；<em>because</em>；<em>have warned</em> 中的 <em>have</em></td></tr>
+</tbody></table></div>
+<p>德语和中文各有单独的分析，使用自己的一套关系。LemmaLoom 把两者都归入同样的十种功能，所以在每种语言中，颜色代表的作用大致相同。不过，德语分析把被动结构中的 <em>von</em> 短语标为被动主语，因此在 <em>von der Regierung beschlossen</em>（由政府决定）中，<em>von</em> 着色为<strong class="ui">主语</strong>。如果一个词不对应十种功能中的任何一种，例如句子的主要动词，就不着色。</p>
+<h3 id="phrase">短语<a class="anchor" href="#phrase" aria-hidden="true">#</a></h3>
+<p><strong class="ui">短语</strong>为每个词加高亮，颜色取决于包含这个词的最小短语。“2024 热浪报告”这类公文中的名词短语通常很长，所以很容易看出来，你可以拿它们与演讲中的名词短语对比。</p>
+<figure class="shot" id="lenses-phrase"><img class="shot-light" src="../figures/zh-Hans/light/lenses-phrase.webp" alt="“2024 热浪报告”启用了“短语”透镜。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/lenses-phrase.webp" alt="“2024 热浪报告”启用了“短语”透镜。" loading="lazy"><figcaption>“2024 热浪报告”启用了“短语”透镜。</figcaption></figure>
+<p>图例中每种短语各有一个图例项，即<strong class="ui">名词短语</strong>、<strong class="ui">动词短语</strong>、<strong class="ui">介词短语</strong>、<strong class="ui">形容词短语</strong>、<strong class="ui">副词短语</strong>、<strong class="ui">连词短语</strong>（<em>as well as</em>、<em>rather than</em>）和<strong class="ui">感叹词</strong>。最小短语属于其他类型的词（例如 <em>pick up</em> 中的 <em>up</em>）加灰色高亮。</p>
+<p>另一个标注项<strong class="ui">名词组块</strong>把名词短语的核心作为一个整体标注出来，也就是作主语或宾语的名词或代词，加上它前面属于同一个名词短语的词。例如，在 <em>We wrote to the city council after the flood</em>（洪水过后，我们给市议会写了信）中，三个名词组块是 <em>We</em>、<em>the city council</em> 和 <em>the flood</em>。因此，名词组块中的词带有两种高亮，二者相互渐变（见本章前文的<a href="#combining-lenses">组合透镜</a>）。要单独查看短语，可以在图例中停用<strong class="ui">名词组块</strong>；要查看组块，则只保留<strong class="ui">名词组块</strong>。</p>
+<h3 id="morphology">形态学<a class="anchor" href="#morphology" aria-hidden="true">#</a></h3>
+<p><strong class="ui">形态学</strong>按每个词的某一项语法特征为它着色。这些特征包括时态、数、级、动词形式，在德语中还有格、语气和性。每个图例项先写出一项特征，再写出这项特征的一个取值，例如<strong class="ui">时态：过去时</strong>或<strong class="ui">数：复数</strong>。启用这个透镜后，你可以追踪时态的变化，例如英文译本“时间不多了 (英语)”怎样从讲述一个炎热夜晚的故事转入现在时。这种转换常常标志着文本从轶事转向论证。</p>
+<figure class="shot" id="lenses-morphology"><img class="shot-light" src="../figures/zh-Hans/light/lenses-morphology.webp" alt="“时间不多了 (英语)”启用了“形态学”透镜。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/lenses-morphology.webp" alt="“时间不多了 (英语)”启用了“形态学”透镜。" loading="lazy"><figcaption>“时间不多了 (英语)”启用了“形态学”透镜。</figcaption></figure>
+<p>一个词可以同时表达几项特征。例如，德语名词 <em>Aktivistinnen</em>（女活动人士们）就表达了格、数和性。启用这个透镜后，每个词只显示下表中它所具有的第一项特征：</p>
+<div class="table-wrap"><table>
+<thead><tr><th>语言</th><th>顺序</th></tr></thead>
+<tbody>
+<tr><td>英语</td><td>时态、数、级、动词形式</td></tr>
+<tr><td>德语</td><td>格、语气、时态、动词形式、级、数、性</td></tr>
+</tbody></table></div>
+<p>在英语中，动词通常显示时态，名词和代词显示数，形容词显示级（原级 <em>hot</em>、比较级 <em>hotter</em>、最高级 <em>hottest</em>）。过去分词，如 <em>has warmed</em> 中的 <em>warmed</em>，标为<strong class="ui">时态：过去时</strong>，因为时态优先。原形，如 <em>to act</em> 中的 <em>act</em>，标为<strong class="ui">动词形式：不定式</strong>。</p>
+<p>在 LemmaLoom 中，有时两个标注项共用一种颜色。例如在英语中，<strong class="ui">时态：现在时</strong>和<strong class="ui">动词形式：不定式</strong>都是蓝绿色，所以 <em>acts</em> 和 <em>to act</em> 看起来一样；在德语中，<strong class="ui">格：属格</strong>与<strong class="ui">时态：过去时</strong>同为紫色。如果需要区分它们，请在设置中更改其中一个标注项的颜色。本章后文的<a href="#lens-colors-and-styles">透镜的颜色与样式</a>一节会进一步介绍如何自定义透镜的颜色和样式。</p>
+<p>在德语中，名词、冠词、形容词和代词显示它们的格。动词处于<strong class="ui">语气：虚拟式</strong>或<strong class="ui">语气：祈使式</strong>时，显示语气；其他限定式动词显示时态；不定式和分词显示动词形式（<strong class="ui">动词形式：不定式</strong>、<strong class="ui">动词形式：分词</strong>）。因此在德语中，启用全部标注项时，<strong class="ui">数</strong>和<strong class="ui">性</strong>只出现在没有格的词上。</p>
+<h3 id="modality">情态<a class="anchor" href="#modality" aria-hidden="true">#</a></h3>
+<p><strong class="ui">情态</strong>透镜高亮文本中表达可能、必要和意愿的词。借助它，你可以看出一篇文档的确定程度。例如，你可以比较活动人士和怀疑论者的文章说某件事必须发生的频率，以及说它可能发生的频率。<strong class="ui">情态</strong>依据词表工作，按词典形式匹配。词表中的每个词只在用作动词、助动词或副词时才会被标注（在英语中，<em>able</em> 用作形容词时也会被标注）。</p>
+<div class="table-wrap"><table>
+<thead><tr><th>标注项</th><th>英语</th><th>德语</th><th>中文</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">能力</strong></td><td>can, could, able</td><td>können</td><td>能、会、可以、能够</td></tr>
+<tr><td><strong class="ui">可能</strong></td><td>may, might, perhaps, maybe, possibly</td><td>mögen, dürfen, vielleicht, möglicherweise, eventuell</td><td>可能、也许、或许、大概、恐怕、兴许</td></tr>
+<tr><td><strong class="ui">必要</strong></td><td>must, need</td><td>müssen</td><td>必须、需要、务必、必得</td></tr>
+<tr><td><strong class="ui">义务</strong></td><td>should, ought, shall</td><td>sollen</td><td>应该、应当、该、理应</td></tr>
+<tr><td><strong class="ui">意愿</strong></td><td>will, would, want, wish, intend</td><td>wollen, möchten</td><td>要、想、愿意、打算、希望</td></tr>
+<tr><td><strong class="ui">虚拟式</strong></td><td></td><td>其他任何处于虚拟式的动词，如 <em>hätte</em> 或 <em>wäre</em></td><td></td></tr>
+</tbody></table></div>
+<p><strong class="ui">虚拟式</strong>是德语独有的标注项。德语情态动词处于虚拟式时，例如 <em>könnte</em>，仍保留它所属情态动词的标注项，这里是<strong class="ui">能力</strong>。</p>
+<p>词表匹配时不考虑词义。在“时间不多了”的“当然要花钱”一句中，<em>要</em>表示需要，却带有<strong class="ui">意愿</strong>标注项。</p>
+<h3 id="negation">否定<a class="anchor" href="#negation" aria-hidden="true">#</a></h3>
+<p><strong class="ui">否定</strong>把否定词高亮为<strong class="ui">否定词</strong>，并把它们在句中作用的范围加下划线，标为<strong class="ui">否定辖域</strong>。这个透镜能找出否认的说法，以及作者驳斥某种立场的地方，例如“时间不多了”中的“这些都算不上激进”。</p>
+<p>在英语中，否定词有 <em>not</em>、<em>n't</em>、<em>never</em>、<em>no</em>、<em>nobody</em>、<em>nothing</em>、<em>none</em>、<em>neither</em>、<em>nor</em> 和 <em>nowhere</em>，以及英语分析标为否定的其他任何词。德语的否定词包括 <em>nicht</em>、<em>kein</em>、<em>nie</em>、<em>niemals</em>、<em>niemand</em>、<em>nichts</em>、<em>weder</em> 和 <em>noch</em>。不过，<em>noch</em> 无论是什么意思都会被标注，所以 <em>wir haben noch Zeit</em>（我们还有时间）中的 <em>noch</em> 也会被标注。中文的否定词包括<em>不</em>、<em>没</em>、<em>没有</em>、<em>别</em>、<em>无</em>和<em>未</em>等。</p>
+<p>否定辖域是否定词所附着的那个词，加上在语法上依附于它的所有词。如果否定词修饰主要动词（<em>not</em> 的大多数用法都是如此），辖域就几乎是整个小句。“时间不多了 (英语)”中的 <em>We don't need another report</em>（我们不需要再来一份报告）就是这样，<em>n't</em> 作为否定词高亮，其余每个词，包括 <em>We</em> 和 <em>do</em>，都作为辖域加下划线。在 <em>No minister wanted the carbon tax</em>（没有哪位部长想要碳税）中，<em>No</em> 附着于 <em>minister</em>，所以只有 <em>minister</em> 加下划线。</p>
+<figure class="shot" id="lenses-negation"><img class="shot-light" src="../figures/zh-Hans/light/lenses-negation.webp" alt="“时间不多了”中的句子“我们不需要再来一份报告”，启用了“否定”透镜。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/lenses-negation.webp" alt="“时间不多了”中的句子“我们不需要再来一份报告”，启用了“否定”透镜。" loading="lazy"><figcaption>“时间不多了”中的句子“我们不需要再来一份报告”，启用了“否定”透镜。</figcaption></figure>
+<h3 id="connectives">连接词<a class="anchor" href="#connectives" aria-hidden="true">#</a></h3>
+<p><strong class="ui">连接词</strong>按连接性词语的意义为它们分类，例如因果（<em>because</em>）或转折（<em>but</em>）。借助这个透镜，你可以理清文档的逻辑，例如哪里给出了理由，哪里作出了让步。<strong class="ui">连接词</strong>依据词表工作，只找出用作连词或副词的连接性词语。</p>
+<figure class="shot" id="lenses-connectives"><img class="shot-light" src="../figures/zh-Hans/light/lenses-connectives.webp" alt="“净零代价高昂”启用了“连接词”透镜，图例位于文本上方。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/lenses-connectives.webp" alt="“净零代价高昂”启用了“连接词”透镜，图例位于文本上方。" loading="lazy"><figcaption>“净零代价高昂”启用了“连接词”透镜，图例位于文本上方。</figcaption></figure>
+<div class="table-wrap"><table>
+<thead><tr><th>标注项</th><th>英语</th><th>德语</th><th>中文</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">并列</strong></td><td>and, also, moreover, furthermore, besides, likewise, similarly</td><td>und, auch, außerdem, zudem, ferner</td><td>而且、并且、此外、另外、以及</td></tr>
+<tr><td><strong class="ui">转折</strong></td><td>but, however, yet, nevertheless, instead, whereas, rather</td><td>aber, jedoch, allerdings, hingegen, sondern</td><td>但是、但、然而、不过、可是、却</td></tr>
+<tr><td><strong class="ui">因果</strong></td><td>because, therefore, thus, hence, consequently, since, so</td><td>weil, denn, daher, deshalb, folglich, da, also</td><td>因为、由于、所以、因此、于是</td></tr>
+<tr><td><strong class="ui">时间</strong></td><td>then, meanwhile, afterwards, before, after, finally, next, when, while</td><td>dann, danach, bevor, nachdem, schließlich, während, als</td><td>然后、接着、随后、之后、最后、首先</td></tr>
+<tr><td><strong class="ui">条件</strong></td><td>if, unless, otherwise, provided</td><td>wenn, falls, sofern, sonst</td><td>如果、要是、假如、只要、除非、否则</td></tr>
+<tr><td><strong class="ui">让步</strong></td><td>although, though, albeit</td><td>obwohl, obgleich, dennoch, trotzdem</td><td>虽然、尽管、即使、哪怕</td></tr>
+</tbody></table></div>
+<p>表中只列出了一部分，大多数标注项的词表还要长一些。在演讲和辩论中，<strong class="ui">并列</strong>几乎会标注每一个 <em>and</em>；如果它挤占了其他标注项，建议把它停用。</p>
+<p><em>before the money runs out</em>（在钱用完之前）中的 <em>before</em> 连接两个小句，所以带有<strong class="ui">时间</strong>标注项；<em>before an election</em>（在选举之前）中的 <em>before</em> 用作介词，所以不带。只要用作连词或副词，表中的每个词无论表示什么意思都保留自己的标注项。<em>so hot</em>（这么热）中的 <em>so</em> 即使与原因无关，也算作<strong class="ui">因果</strong>；<em>since</em> 即使在 <em>since the flood reached her street</em>（自从洪水漫到她家那条街）中也仍是<strong class="ui">因果</strong>；<em>while</em> 即使表示 <em>whereas</em>（而），也仍是<strong class="ui">时间</strong>。此外，德语的 <em>da</em>（表示“那里”，在口语中很常见）无论意思如何，都算作<strong class="ui">因果</strong>。</p>
+<p><strong class="ui">元话语</strong>透镜有自己的<strong class="ui">连接语</strong>标注项。无论表达哪种关系，它只标注说话人用来引导听者的连接性副词，例如 <em>however</em> 和 <em>therefore</em>（见本章后文的<a href="#metadiscourse">元话语</a>）。</p>
+<h3 id="sentence-fields">句场（德语）<a class="anchor" href="#sentence-fields" aria-hidden="true">#</a></h3>
+<p><strong class="ui">句场</strong>按照德语语法所用的场模型显示德语句子的词序。限定动词，也就是随句子主语变位的动词，构成<strong class="ui">左句框</strong>。分词、不定式和动词的可分前缀通常出现在小句末尾，构成<strong class="ui">右句框</strong>。左句框之前的所有成分构成<strong class="ui">前场</strong>，两个句框之间的成分构成<strong class="ui">中场</strong>，右句框之后的一切属于<strong class="ui">后场</strong>。如果一项研究要分析德语作者用什么成分作为句子的开头，这个透镜就很有用，因为前场通常容纳话题或作者强调的信息。</p>
+<p>下面这个例句包含全部五个场：</p>
+<p><em>Meine Nachbarin hat gestern bis drei Uhr draußen gesessen, weil ihre Wohnung unerträglich heiß war.</em>（我的邻居昨天在外面一直坐到三点，因为她的公寓热得让人受不了。）</p>
+<div class="table-wrap"><table>
+<thead><tr><th>场</th><th>词</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">前场</strong></td><td>Meine Nachbarin</td></tr>
+<tr><td><strong class="ui">左句框</strong></td><td>hat</td></tr>
+<tr><td><strong class="ui">中场</strong></td><td>gestern bis drei Uhr draußen</td></tr>
+<tr><td><strong class="ui">右句框</strong></td><td>gesessen</td></tr>
+<tr><td><strong class="ui">后场</strong></td><td>weil ihre Wohnung unerträglich heiß war</td></tr>
+</tbody></table></div>
+<p>如果句子没有右句框，例如 <em>Wir streiken heute vor dem Rathaus</em>（我们今天在市政厅前罢课），限定动词之后的全部内容都属于<strong class="ui">中场</strong>。可分前缀充当右句框，例如 <em>Der Streik fängt um acht an</em>（罢课八点开始）中的 <em>an</em>。</p>
+<p>透镜把每个句子都当作单个小句，并把第一个出现的限定动词当作左句框。如果句子以从句开头，例如 <em>Weil es so heiß war, bin ich nach Hause gegangen</em>（因为天太热，我就回家了），句场就会划分错误：第一个限定动词是 <em>war</em>，所以 <em>war</em> 成为左句框，主句动词 <em>bin</em> 则落入中场。右句框的确定方法相同，由最后一个分词、不定式或可分前缀构成；在 <em>Wir haben versucht, die Abgeordneten zu überzeugen</em>（我们试过说服议员们）中，右句框是 <em>überzeugen</em>，<em>versucht</em> 属于中场，句子也就没有后场。没有限定动词的句子，LemmaLoom 不着色。标点符号也不着色。</p>
+<p>下图显示德语评论文章“Uns läuft die Zeit davon”的一部分，它是德语版示例项目中与“时间不多了”相对应的文章。第一句以 <em>Um Mitternacht, am heißesten Tag dieses Sommers, zeigte</em> 开头，所以 <em>Um Mitternacht, am heißesten Tag dieses Sommers</em> 是前场，<em>zeigte</em> 是左句框。这个句子没有右句框，<em>zeigte</em> 之后的部分都属于中场。</p>
+<figure class="shot" id="lenses-sentence-fields"><img class="shot-light" src="../figures/zh-Hans/light/lenses-sentence-fields.webp" alt="德语评论文章“Uns läuft die Zeit davon”中的句场透镜。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/lenses-sentence-fields.webp" alt="德语评论文章“Uns läuft die Zeit davon”中的句场透镜。" loading="lazy"><figcaption>德语评论文章“Uns läuft die Zeit davon”中的句场透镜。</figcaption></figure>
+<h3 id="chinese-lenses">句式与助词（中文）<a class="anchor" href="#chinese-lenses" aria-hidden="true">#</a></h3>
+<p>有两个透镜只用于分析中文文档。如果你的研究关注事件是怎样呈现的，例如把字句中施事者怎样对某个对象施加动作，或者被字句中某人怎样承受某个动作，这两个透镜可以帮助你更好地理解文本。</p>
+<p><strong class="ui">句式</strong>高亮四种句式中的典型标志词：</p>
+<div class="table-wrap"><table>
+<thead><tr><th>标注项</th><th>标注的内容</th><th>示例</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">把字句</strong></td><td><em>把</em>，它把宾语提到动词之前</td><td>他们把太阳能板装在屋顶上。</td></tr>
+<tr><td><strong class="ui">被字句</strong></td><td><em>被</em>以及分析能识别的其他被动标记</td><td>铁轨被高温晒弯了。</td></tr>
+<tr><td><strong class="ui">是…的句</strong></td><td>框住一个句子的<em>是</em>和句末的<em>的</em></td><td>我是去年开始参加罢课的。</td></tr>
+<tr><td><strong class="ui">存现句</strong></td><td>用作动词的<em>有</em>（以及<em>没有</em>）</td><td>广场上有两百个学生。</td></tr>
+</tbody></table></div>
+<p>分析给表示领有的<em>有</em>（如“我有时间”）和存现的<em>有</em>打上同样的标记，所以<strong class="ui">句式</strong>也会标注前者。</p>
+<figure class="shot" id="lenses-chinese"><img class="shot-light" src="../figures/zh-Hans/light/lenses-chinese.webp" alt="启用“句式”透镜的中文文本“时间不多了”，标出了被字句和“没有”。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/lenses-chinese.webp" alt="启用“句式”透镜的中文文本“时间不多了”，标出了被字句和“没有”。" loading="lazy"><figcaption>启用“句式”透镜的中文文本“时间不多了”，标出了被字句和“没有”。</figcaption></figure>
+<p><strong class="ui">助词</strong>高亮语法助词和量词：</p>
+<div class="table-wrap"><table>
+<thead><tr><th>标注项</th><th>标注的内容</th><th>示例</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">了（完成体）</strong></td><td>动词后作完成体助词的<em>了</em></td><td>我们签了请愿书</td></tr>
+<tr><td><strong class="ui">着（持续体）</strong></td><td>动词后的<em>着</em></td><td>她举着牌子</td></tr>
+<tr><td><strong class="ui">过（经历体）</strong></td><td>动词后的<em>过</em></td><td>我去过那个农场</td></tr>
+<tr><td><strong class="ui">的（定语）</strong></td><td>把修饰语与名词连起来的<em>的</em></td><td>我的女儿；种大麦的农民</td></tr>
+<tr><td><strong class="ui">地（状语）</strong></td><td>把修饰语与动词连起来的<em>地</em></td><td>慢慢地走</td></tr>
+<tr><td><strong class="ui">得（补语）</strong></td><td>引出程度补语或结果补语的<em>得</em></td><td>涨得很快</td></tr>
+<tr><td><strong class="ui">量词</strong></td><td>表示计量单位的词</td><td>两百个学生中的<em>个</em></td></tr>
+</tbody></table></div>
+<p>分析把句末的<em>了</em>当作语气助词，所以它不在此列。<strong class="ui">元话语</strong>透镜把它标为<strong class="ui">语气助词</strong>。</p>
+<h3 id="cohesion">衔接<a class="anchor" href="#cohesion" aria-hidden="true">#</a></h3>
+<p><strong class="ui">衔接</strong>显示每个句子怎样与文档前文所说的内容相连。它基于这样一个前提：每个句子通常以前文已经确立的内容（<em>主位</em>）开头，以新信息结尾。按照篇章语言学的观点，如果每个主位都与前面的某个句子相连，文本就更容易理解。</p>
+<p>透镜找出每个句子的主位，并按主位与前面句子的关系为它加高亮。在英语中，主位是句子主要动词的完整主语短语。在德语中，主位是<strong class="ui">前场</strong>；没有前场时，则是完整的主语短语。在中文中，主位是话题；分析找不到话题时，则是完整的主语短语。</p>
+<div class="table-wrap"><table>
+<thead><tr><th>标注项</th><th>使用场合</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">开头</strong></td><td>文档的第一个句子，前面没有可以相连的内容</td></tr>
+<tr><td><strong class="ui">代词衔接</strong></td><td>主位中含有第三人称代词，如 <em>she</em>、<em>it</em> 或 <em>they</em></td></tr>
+<tr><td><strong class="ui">领属衔接</strong></td><td>主位中含有第三人称物主词，如 <em>his</em>、<em>its</em> 或 <em>their</em>。<em>Her</em> 算作<strong class="ui">代词衔接</strong>，因为代词检验在前。</td></tr>
+<tr><td><strong class="ui">指示衔接</strong></td><td>主位中含有 <em>this</em>、<em>that</em>、<em>these</em>、<em>those</em> 或 <em>such</em></td></tr>
+<tr><td><strong class="ui">重复词语</strong></td><td>主位中的某个名词、代词、数词或形容词，与前两个句子之一中某个名词、代词、数词、动词或形容词的词典形式相同</td></tr>
+<tr><td><strong class="ui">零形回指</strong></td><td>仅限中文。主要动词没有主语，所以这个句子延续前一句的话题（<em>回指</em>即指向前文已经提到的事物）。这个图例项出现在每个文档的图例中。</td></tr>
+<tr><td><strong class="ui">新话题</strong></td><td>以上都不是。主位引入了新的内容，或者句子根本没有主位。</td></tr>
+</tbody></table></div>
+<p>各项检验按上表的顺序进行，第一个成立的检验决定句子得到哪个标注项。<strong class="ui">代词衔接</strong>和<strong class="ui">重复词语</strong>都显示为绿色，在<strong class="ui">语篇</strong>分面的<strong class="ui">衔接</strong>部分可以把它们区分开。</p>
+<p>没有主语的句子，例如祈使句，或 <em>Net zero by 2050.</em>（2050 年实现净零。）这样的片段句，都没有主位，因此归入<strong class="ui">新话题</strong>（在中文中通常是<strong class="ui">零形回指</strong>），只有句末加下划线。</p>
+<p>此外，每个句子的<strong class="ui">句末新信息（重音）</strong>都会加下划线。它是包含句子最后一个词的最小短语；如果这个短语超过六个词，则只是最后一个词。</p>
+<p>请看下面的例子：</p>
+<ol>
+<li><em>Our village had four buses a day.</em>（我们村一天有四班公交车。）（<strong class="ui">开头</strong>）</li>
+<li><em>They ran to the market town and back.</em>（它们往返于村子和集镇之间。）（<strong class="ui">代词衔接</strong>）</li>
+<li><em>Their timetable was cut twice in two years.</em>（它们的班次两年里被削减了两次。）（<strong class="ui">领属衔接</strong>）</li>
+<li><em>The town now pays for an electric minibus.</em>（镇上现在出钱运营一辆电动小巴。）（<strong class="ui">重复词语</strong>，因为 <em>town</em> 重复了第 2 句中的词）</li>
+<li><em>Fuel prices keep climbing.</em>（燃油价格不断上涨。）（<strong class="ui">新话题</strong>）</li>
+</ol>
+<p>一连串的<strong class="ui">新话题</strong>句子可能表示听者或读者得在没有提示的情况下自己把前后句联系起来，不过透镜对衔接的衡量相当粗略。它只凭形式识别代词。衔接只算相同词语的重复，所以按这个标准，<em>village</em>（村子）和 <em>town</em>（镇子）这样意思相关的词都算作新词。代词也算作重复。连续多个句子都以代词<em>我们</em>开头时，例如在“来自气候罢课的信”中，许多主位都会归入<strong class="ui">重复词语</strong>。</p>
+<p>在下图中，新闻报道“碳税之争”逐一介绍各个群体的看法。按照这个标准，引出新群体的句子中，介绍执政党后座议员的那一句和以“一些人”开头的那一句，主位是<strong class="ui">新话题</strong>。“朝野双方的农村议员”和“另一些人”同样引出新群体，但“农村”和“一些”在前文出现过，所以算作<strong class="ui">重复词语</strong>。后座议员的引语中含有代词“他们”，透镜把这里算作<strong class="ui">代词衔接</strong>。</p>
+<figure class="shot" id="lenses-cohesion"><img class="shot-light" src="../figures/zh-Hans/light/lenses-cohesion.webp" alt="新闻报道“碳税之争”中的衔接透镜，每个句子的主位已高亮，句末加了下划线。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/lenses-cohesion.webp" alt="新闻报道“碳税之争”中的衔接透镜，每个句子的主位已高亮，句末加了下划线。" loading="lazy"><figcaption>新闻报道“碳税之争”中的衔接透镜，每个句子的主位已高亮，句末加了下划线。</figcaption></figure>
+<p>检查器<strong class="ui">语法</strong>标签页中<strong class="ui">语篇</strong>分面的<strong class="ui">衔接</strong>部分，逐句列出文档中的衔接关系（没有主位的句子也包括在内；见<a href="grammar-inspector.html">第 11 章“语法检查器”</a>中的<a href="grammar-inspector.html#discourse-cohesion">衔接</a>）。</p>
+<h3 id="metadiscourse">元话语<a class="anchor" href="#metadiscourse" aria-hidden="true">#</a></h3>
+<p>说话人可以用许多词来评论自己所说的话，或直接对听者说话，例如 <em>perhaps</em>（也许）、<em>obviously</em>（显然）和 <em>you</em>（你）。<strong class="ui">元话语</strong>透镜可以高亮所有这些词，让你从弱化、强化和称呼听者这几方面考察作者的立场。这个透镜依据词表，并检查每个词的词类。</p>
+<div class="table-wrap"><table>
+<thead><tr><th>标注项</th><th>标注的内容</th><th>英文示例</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">模糊限制语</strong></td><td>缓和一个说法</td><td>perhaps, probably, roughly, may, might, could, seem, suggest, often, usually</td></tr>
+<tr><td><strong class="ui">增强语</strong></td><td>排除疑问</td><td>clearly, obviously, certainly, indeed, always, never, demonstrate</td></tr>
+<tr><td><strong class="ui">态度标记</strong></td><td>表明说话人对所说内容的感受</td><td>fortunately, unfortunately, surprisingly, sadly, hopefully</td></tr>
+<tr><td><strong class="ui">连接语</strong></td><td>在观点之间起引导作用</td><td>however, therefore, thus, nevertheless, meanwhile, instead；句首的 <em>also</em>、<em>so</em>、<em>then</em> 和 <em>finally</em></td></tr>
+<tr><td><strong class="ui">介入</strong></td><td>称呼听者，或把听者包括进来</td><td>you, your, we, us, our, let；<em>consider</em>、<em>imagine</em>、<em>note</em> 等祈使形式</td></tr>
+<tr><td><strong class="ui">情态小品词</strong></td><td>仅限德语。针对听者调节句子语气的小品词。</td><td>ja, doch, eben, halt, mal, schon</td></tr>
+<tr><td><strong class="ui">语气助词</strong></td><td>仅限中文。句末的助词。</td><td>吗、呢、吧、啊</td></tr>
+</tbody></table></div>
+<p>德语和中文有各自的词表。在德语中，用作敬称<em>您</em>的 <em>Sie</em> 不在句首时算作<strong class="ui">介入</strong>。</p>
+<p>在公开演讲和公开信中，作者经常使用<em>我们</em>和<em>你们</em>这样的代词，<strong class="ui">介入</strong>的标注会非常多，以致淹没其他标注。必要时，可以在图例中停用<strong class="ui">介入</strong>，以便看清其他标注项。</p>
+<figure class="shot" id="lenses-metadiscourse"><img class="shot-light" src="../figures/zh-Hans/light/lenses-metadiscourse.webp" alt="“一位市长的承诺”启用了“元话语”透镜。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/lenses-metadiscourse.webp" alt="“一位市长的承诺”启用了“元话语”透镜。" loading="lazy"><figcaption>“一位市长的承诺”启用了“元话语”透镜。</figcaption></figure>
+<h3 id="rhetoric">修辞<a class="anchor" href="#rhetoric" aria-hidden="true">#</a></h3>
+<p><strong class="ui">修辞</strong>突出显示作者有意使用的修辞手法，例如被动语态和排比。<strong class="ui">修辞</strong>用于事先写好的文本最有效，例如评论文章和题为“一位市长的承诺”的演讲，可以帮助你分析双方的说服性文本各是怎样构建的。大多数手法以高亮显示，<strong class="ui">名词化</strong>、<strong class="ui">力量词</strong>和<strong class="ui">首语重复</strong>则加下划线。<strong class="ui">被动语态</strong>和<strong class="ui">关联词对</strong>都是紫色高亮。</p>
+<figure class="shot" id="lenses-rhetoric"><img class="shot-light" src="../figures/zh-Hans/light/lenses-rhetoric.webp" alt="“一位市长的承诺”启用了“修辞”透镜，图例位于文本上方。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/lenses-rhetoric.webp" alt="“一位市长的承诺”启用了“修辞”透镜，图例位于文本上方。" loading="lazy"><figcaption>“一位市长的承诺”启用了“修辞”透镜，图例位于文本上方。</figcaption></figure>
+<p>下表按检验顺序列出各种手法：</p>
+<div class="table-wrap"><table>
+<thead><tr><th>标注项</th><th>标注的内容</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">被动语态</strong></td><td>被动动词词组，如 <em>the schools were closed</em>（学校被关闭了）</td></tr>
+<tr><td><strong class="ui">名词化</strong></td><td>由动词或形容词变来的名词。在英语中，指以 <em>-tion</em>、<em>-sion</em>、<em>-ment</em>、<em>-ness</em>、<em>-ity</em>、<em>-ance</em>、<em>-ence</em> 或 <em>-ism</em> 结尾、长度在七个字母以上的名词（<em>decision</em>、<em>payment</em>）；在德语中，指以 <em>-ung</em>、<em>-heit</em>、<em>-keit</em> 等结尾的名词</td></tr>
+<tr><td><strong class="ui">前置开头</strong></td><td>句首位于主语之前的成分，如状语或分词短语（<em>After the flood, the council…</em>）</td></tr>
+<tr><td><strong class="ui">排比</strong></td><td>三个或更多并列的成分，或两个各有主语的并列小句（<em>we marched and they watched</em>）</td></tr>
+<tr><td><strong class="ui">圆周句</strong></td><td>至少有 12 个词，且至少 55% 的词位于主要动词之前的句子（在 20 个词的句子中，主要动词之前至少要有 11 个词）。在德语中，指中场在右句框收拢之前容纳了 8 个或更多词的句子</td></tr>
+<tr><td><strong class="ui">疑问 / 命令</strong></td><td>整个疑问句或祈使句</td></tr>
+<tr><td><strong class="ui">焦点结构</strong></td><td>为突出某个成分而改换结构的句子，如 <em>there is…</em>、<em>what we need is…</em> 和 <em>it was the farmers who…</em></td></tr>
+<tr><td><strong class="ui">独立结构</strong></td><td>带有分词、游离于小句之外的名词（<em>the vote taken, we went home</em>）</td></tr>
+<tr><td><strong class="ui">同位语</strong></td><td>换一种说法指称旁边那个名词短语的名词短语</td></tr>
+<tr><td><strong class="ui">力量词</strong></td><td>最高级、经过加强的形容词或副词（<em>extremely hot</em>），或 <em>only</em>、<em>never</em>、<em>even</em> 这样起强调作用的副词</td></tr>
+<tr><td><strong class="ui">关联词对</strong></td><td>成对的连词，如 <em>both … and</em>、<em>either … or</em> 和 <em>neither … nor</em></td></tr>
+<tr><td><strong class="ui">衔接检查</strong></td><td>六个词以上、被<strong class="ui">衔接</strong>透镜算作<strong class="ui">新话题</strong>的句子的主位</td></tr>
+<tr><td><strong class="ui">首语重复</strong></td><td>以同一个词开头的连续句子的前两个词，开头词为 <em>the</em>、<em>a</em>、<em>an</em>、<em>and</em>、<em>but</em>、<em>so</em> 和 <em>then</em> 的除外。这是一种修辞格，与<strong class="ui">衔接</strong>中的<strong class="ui">零形回指</strong>无关。</td></tr>
+</tbody></table></div>
+<p>每个词只显示表中的一种修辞手法，即按表中顺序第一个适用于它的那一种。<strong class="ui">疑问 / 命令</strong>作用于整个句子，<strong class="ui">圆周句</strong>作用于句子主要动词之前的所有内容，所以这两种手法优先于表中排在后面的其他手法。<em>我</em>和<em>我们</em>这样的第一人称代词也算作开头词，所以在“我们为什么封路”中，<strong class="ui">首语重复</strong>会标注许多句子的开头。</p>
+<p>大多数检验在德语和中文中有各自的版本。例如在德语中，<strong class="ui">前置开头</strong>标注不含主语的前场；在中文中，它高亮前置的话题。<strong class="ui">独立结构</strong>只在英语文档中检测，<strong class="ui">圆周句</strong>在英语和德语文档中检测。所有手法的图例项，包括这两种，都会显示在每个文档的图例中。</p>
+<p>检查器<strong class="ui">语法</strong>标签页中<strong class="ui">语篇</strong>分面的<strong class="ui">修辞</strong>部分，列出找到的所有修辞手法，并简要说明标注的原因。这份列表也包括正文中看不到的发现，即标注项已停用的那些，以及所在的词已显示表中更靠前手法的那些（见<a href="grammar-inspector.html">第 11 章“语法检查器”</a>中的<a href="grammar-inspector.html#discourse-rhetoric">修辞</a>）。</p>
+<h2 id="codes-and-bookmarks">编码与书签<a class="anchor" href="#codes-and-bookmarks" aria-hidden="true">#</a></h2>
+<p><strong class="ui">编码</strong>以每个编码自己的格式和颜色显示文档中所有已编码的段落（创建或编辑编码时，在<strong class="ui">格式</strong>中选取<strong class="ui">高亮</strong>、<strong class="ui">下划线</strong>或<strong class="ui">方框</strong>；见<a href="coding.html">第 7 章“编码”</a>中的<a href="coding.html#code-fields">编码的字段</a>）。它还会在文本左侧的页边栏中，在每个编码实例旁边画一条彩色竖条。停用<strong class="ui">编码</strong>后，这些都会隐藏。编码时请让<strong class="ui">编码</strong>保持启用。编码完成后，如果阅读文本时不想看到编码实例，就停用<strong class="ui">编码</strong>。</p>
+<p><strong class="ui">书签</strong>以书签的颜色高亮每个加了书签的段落，并在页边栏和文档概览中显示这个书签。只要启用了这个透镜，就会这样显示。</p>
+<p>无论启用了哪些透镜，备忘录和链接都会显示，就像启用<strong class="ui">编码</strong>时的编码实例一样。</p>
+<h2 id="dictionary-lenses">词典透镜<a class="anchor" href="#dictionary-lenses" aria-hidden="true">#</a></h2>
+<p>词典以各自的名称出现在透镜菜单的标注组中。词典透镜以每个类别指定的颜色高亮该类别的词条，它的图例中每个类别各有一个图例项。“气候辩论”项目有一个词典“模糊限制语”，其中有<strong class="ui">近似语</strong>和<strong class="ui">缓和语</strong>两个类别。启用“模糊限制语”后，图例中会有这两个图例项。以“电台辩论”中的“在我看来，这个负担似乎落在了几乎每一个人身上”为例，<em>似乎</em>作为缓和语高亮，<em>几乎</em>作为近似语高亮。如果你的研究对某些词语有自己的分类（例如模糊限制语、归咎于人的说法，或者某个政策领域的术语），词典透镜就很有用。</p>
+<figure class="shot" id="lenses-dictionary"><img class="shot-light" src="../figures/zh-Hans/light/lenses-dictionary.webp" alt="“电台辩论”启用了词典“模糊限制语”，图例中有“近似语”和“缓和语”。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/lenses-dictionary.webp" alt="“电台辩论”启用了词典“模糊限制语”，图例中有“近似语”和“缓和语”。" loading="lazy"><figcaption>“电台辩论”启用了词典“模糊限制语”，图例中有“近似语”和“缓和语”。</figcaption></figure>
+<p>词典按完整的词匹配词条，不区分大小写和重音符号，但中文词条只要在文本中出现就能匹配（见<a href="dictionaries.html">第 19 章“词典”</a>中的<a href="dictionaries.html#matching-rules">词条如何匹配</a>）。每种词形都必须作为单独的词条输入。例如，如果希望英文的 <em>model</em> 和 <em>models</em> 都能匹配，就要把两者分别添加为词条。词典匹配不考虑词在句中的语法和用法。“科学从无定论”中有一句“它也会让一个退休教师在公开场合说一句‘我说不准’”，这里的<em>说不准</em>只是被引用的一句话，作者并没有用它缓和自己的论断，但它仍作为缓和语高亮。启用透镜后，图例会立即出现，高亮则要等词条匹配完成后才显示。透镜启用期间编辑词典，标注会随之更新。</p>
+<p><strong class="ui">元话语</strong>中<strong class="ui">模糊限制语</strong>的词表是预先定好的，而词典收录的是你自己定义的词条和分类。如果要加上词性之类的规则，可以使用查询透镜。</p>
+<h2 id="query-lenses">查询透镜<a class="anchor" href="#query-lenses" aria-hidden="true">#</a></h2>
+<p>任何在文本中查找段落的查询，都可以存储为查询透镜。打开<strong class="ui">存储</strong>菜单（查询横栏中带向下箭头的方框），然后点按<strong class="ui">存储为透镜…</strong>（见<a href="queries-using-results.html">第 18 章“使用查询结果”</a>中的<a href="queries-using-results.html#save-as-lens">把查询存储为透镜</a>）。“气候辩论”项目有一个已存储的查询透镜“紧迫性话题”，它高亮含有<em>紧迫</em>、<em>危机</em>、<em>紧急</em>或<em>期限</em>且与带有编码“紧迫性”的段落重叠的句子。如果你的问题需要组合多个规则，例如把词语与它的语法特征结合起来，或者把编码实例与词语结合起来，查询透镜就很合适。哪些文档提供某个查询透镜，取决于存储查询时在<strong class="ui">可用范围</strong>中的选择：</p>
+<ul>
+<li>为<strong class="ui">所有项目</strong>或<strong class="ui">项目</strong>存储的查询，出现在项目的每个文档中；</li>
+<li>为<strong class="ui">文档集</strong>存储的查询，出现在该文档集的文档及其译文中；</li>
+<li>为<strong class="ui">文档</strong>存储的查询，只出现在那个文档中。</li>
+</ul>
+<p>“紧迫性话题”是为<strong class="ui">项目</strong>存储的，所以“气候辩论”项目的每个文档都可以用它来标注。</p>
+<figure class="shot" id="lenses-query"><img class="shot-light" src="../figures/zh-Hans/light/lenses-query.webp" alt="“时间不多了”启用了查询透镜“紧迫性话题”，图例位于文本上方。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/lenses-query.webp" alt="“时间不多了”启用了查询透镜“紧迫性话题”，图例位于文本上方。" loading="lazy"><figcaption>“时间不多了”启用了查询透镜“紧迫性话题”，图例位于文本上方。</figcaption></figure>
+<p>查询透镜标注它所属查询的命中结果。查询没有类别时，透镜的图例只有一个以查询命名的图例项，所有命中结果都以高亮显示。查询有类别时，每个类别是一个标注项，有自己的颜色和样式（<strong class="ui">高亮</strong>或<strong class="ui">下划线</strong>，在查询的<strong class="ui">类别</strong>条件中设定）。使用<strong class="ui">着色依据</strong>时，命中结果中的每个不同取值各成为一个标注项，总共最多十六个。前八个取值以高亮显示，后八个以同样的八种颜色加下划线（见<a href="queries-building.html">第 15 章“构建查询”</a>中的<a href="queries-building.html#query-categories">类别与着色依据</a>）。查询透镜的图例项一律显示方块。</p>
+<p>文档中的编码实例或书签发生变化时，查询透镜会重新运行，所以查找已编码段落的查询会随着你的编码保持最新。要把查询透镜从透镜菜单中移除，请打开查询的<strong class="ui">存储</strong>菜单，然后点按<strong class="ui">移除透镜</strong>。查询要成为透镜所需满足的条件，见<a href="queries-using-results.html">第 18 章“使用查询结果”</a>中的<a href="queries-using-results.html#lens-requirements">哪些查询可以成为透镜</a>。</p>
+<h2 id="analyzer-lenses">分析器透镜<a class="anchor" href="#analyzer-lenses" aria-hidden="true">#</a></h2>
+<p>你在<strong class="ui">窗口 ▸ 分析器</strong>中定义的分析器会找出文本片段，并为它们指定键。分析器图例中的键决定它的透镜有哪些标注项。你的所有分析器都以各自的名称列在透镜菜单的第二组中，并且只出现在分析器能处理其语言的文档中。只有被指定了分析器图例中某个键的片段才会显示在透镜中，其颜色和样式（<strong class="ui">高亮</strong>、<strong class="ui">下划线</strong>、<strong class="ui">文本颜色</strong>或<strong class="ui">粗体</strong>）按图例中那个键的定义显示。如果你要在各个文档中反复寻找某种模式，而现有的透镜、词典和查询都无法捕捉它，就需要编写分析器。</p>
+<figure class="shot" id="lenses-analyzer"><img class="shot-light" src="../figures/zh-Hans/light/lenses-analyzer.webp" alt="“时间不多了”启用了分析器透镜“气候角色”，透镜菜单中的“分析器”组已打开。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/lenses-analyzer.webp" alt="“时间不多了”启用了分析器透镜“气候角色”，透镜菜单中的“分析器”组已打开。" loading="lazy"><figcaption>“时间不多了”启用了分析器透镜“气候角色”，透镜菜单中的“分析器”组已打开。</figcaption></figure>
+<p>如果为某个文档跳过一个分析器，或者在<strong class="ui">文档信息</strong>中移除它的输出，它的透镜就会从这个文档的透镜菜单中消失（见<a href="custom-analyzers.html">第 20 章“自定义分析器”</a>中的<a href="custom-analyzers.html#per-document">按文档设置分析器</a>）。关于怎样编写分析器以及分析器何时运行，详见<a href="custom-analyzers.html">第 20 章“自定义分析器”</a>。</p>
+<h2 id="lens-colors-and-styles">透镜的颜色与样式<a class="anchor" href="#lens-colors-and-styles" aria-hidden="true">#</a></h2>
+<p>有四个透镜（<strong class="ui">词类</strong>、<strong class="ui">语法功能</strong>、<strong class="ui">短语</strong>和<strong class="ui">形态学</strong>）的颜色和样式可以自定义。无论你查看的是哪个项目中的哪个文档，你的自定义设置都会影响这些透镜的外观。其他内置透镜的颜色是预设的。词典、查询和分析器生成的透镜，颜色取决于它们的类别和键。如果两个标注项在你看来难以分辨，或者你要叠加的透镜超出了默认样式所能容纳的数量，就可以调整颜色。</p>
+<p>每个标注项可以显示为以下四种样式之一：</p>
+<div class="table-wrap"><table>
+<thead><tr><th>样式</th><th>词的外观</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">高亮</strong></td><td>词的后面衬一条浅色色带</td></tr>
+<tr><td><strong class="ui">下划线</strong></td><td>词的下面有一条彩色线</td></tr>
+<tr><td><strong class="ui">文本颜色</strong></td><td>文字显示为该颜色</td></tr>
+<tr><td><strong class="ui">粗体</strong></td><td>文字显示为粗体，并带有该颜色</td></tr>
+</tbody></table></div>
+<p><strong class="ui">词类</strong>和<strong class="ui">语法功能</strong>透镜默认使用下划线，<strong class="ui">短语</strong>和<strong class="ui">形态学</strong>透镜则默认使用高亮。</p>
+<p>下图显示设置窗口的<strong class="ui">透镜</strong>面板，<strong class="ui">词类</strong>和<strong class="ui">语法功能</strong>透镜的每个标注项各占一行，都设为<strong class="ui">下划线</strong>。</p>
+<figure class="shot" id="lenses-settings"><img class="shot-light" src="../figures/zh-Hans/light/lenses-settings.webp" alt="设置中的透镜面板，显示词类和语法功能两部分。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/lenses-settings.webp" alt="设置中的透镜面板，显示词类和语法功能两部分。" loading="lazy"><figcaption>设置中的透镜面板，显示词类和语法功能两部分。</figcaption></figure>
+<p>更改一个标注项的外观：</p>
+<ol>
+<li>选取 <strong class="ui">LemmaLoom ▸ 设置…</strong>（⌘,），然后点按<strong class="ui">透镜</strong>。</li>
+<li>找到这个透镜所在的部分和这个标注项所在的行，例如<strong class="ui">词类</strong>下的<strong class="ui">名词</strong>。</li>
+<li>从这一行的菜单中选取一种样式。菜单显示当前的样式，例如<strong class="ui">下划线</strong>。</li>
+<li>点按旁边的颜色池，然后选取一种颜色。</li>
+</ol>
+<p>更改会立即反映在已打开的文档中。在<strong class="ui">帮助 ▸ 术语表</strong>中，代表某个标注项的标记和术语（例如代表<strong class="ui">名词</strong>的 NN）按这个标注项的颜色和样式设置显示。图例中的图例项显示的是标注项的默认颜色和形状，因此更改之后，图例项与它在文本中所标注的词看起来会不一样。每个更改过的标注项都会有一个重置按钮，显示在这一行的末尾，形状是一个弯箭头，悬停提示如<strong class="ui">重置 名词</strong>。点按它可以把这个标注项恢复为默认设置。面板最上方的<strong class="ui">全部重置为默认</strong>按钮会同时重置全部四个透镜的所有标注项（见<a href="settings.html">第 24 章“设置与外观”</a>中的<a href="settings.html#lenses-pane">透镜面板</a>）。</p>
+<aside class="callout tip"><p class="callout-title">提示</p><p>要同时查看三个透镜，请让每个透镜使用不同的样式。把<strong class="ui">词类</strong>的十个标注项都设为<strong class="ui">文本颜色</strong>，然后把这个透镜与使用下划线的<strong class="ui">语法功能</strong>和使用高亮的<strong class="ui">情态</strong>组合起来。</p>
+</aside>
+</article>
+<nav class="pager"><a class="previous" href="reading-and-editing.html"><span>上一章</span>阅读与编辑</a><a class="next" href="coding.html"><span>下一章</span>编码</a></nav>
+<footer class="site-footer">© 2026 Ryan S. Cooper. 保留所有权利。<br>本版本借助人工智能根据英文原版翻译而成，译文可能存在错误或不准确之处。如有疑问，请以英文版为准。</footer>
+</main>
+<nav class="page-toc" aria-label="本页内容"><p>本页内容</p><ul>
+<li class="level-2"><a href="#lenses-at-a-glance">透镜概览</a></li>
+<li class="level-2"><a href="#lens-menu">透镜菜单</a></li>
+<li class="level-2"><a href="#legend">解读透镜</a></li>
+<li class="level-3"><a href="#visible-keys">选择启用哪些标注项</a></li>
+<li class="level-2"><a href="#combining-lenses">组合透镜</a></li>
+<li class="level-2"><a href="#collapse">只显示有标注的句子</a></li>
+<li class="level-2"><a href="#built-in-lenses">内置透镜</a></li>
+<li class="level-3"><a href="#word-class">词类</a></li>
+<li class="level-3"><a href="#grammatical-function">语法功能</a></li>
+<li class="level-3"><a href="#phrase">短语</a></li>
+<li class="level-3"><a href="#morphology">形态学</a></li>
+<li class="level-3"><a href="#modality">情态</a></li>
+<li class="level-3"><a href="#negation">否定</a></li>
+<li class="level-3"><a href="#connectives">连接词</a></li>
+<li class="level-3"><a href="#sentence-fields">句场（德语）</a></li>
+<li class="level-3"><a href="#chinese-lenses">句式与助词（中文）</a></li>
+<li class="level-3"><a href="#cohesion">衔接</a></li>
+<li class="level-3"><a href="#metadiscourse">元话语</a></li>
+<li class="level-3"><a href="#rhetoric">修辞</a></li>
+<li class="level-2"><a href="#codes-and-bookmarks">编码与书签</a></li>
+<li class="level-2"><a href="#dictionary-lenses">词典透镜</a></li>
+<li class="level-2"><a href="#query-lenses">查询透镜</a></li>
+<li class="level-2"><a href="#analyzer-lenses">分析器透镜</a></li>
+<li class="level-2"><a href="#lens-colors-and-styles">透镜的颜色与样式</a></li>
+</ul></nav>
+</div>
+<script src="../assets/guide.js" defer></script>
+</body>
+</html>

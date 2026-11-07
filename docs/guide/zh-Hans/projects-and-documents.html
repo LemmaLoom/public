@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>项目与文档 · LemmaLoom 用户指南</title>
+<link rel="stylesheet" href="../assets/guide.css">
+<link rel="icon" type="image/png" href="../assets/logo.png">
+<script>var r=document.documentElement;r.setAttribute('data-theme','light');try{if(localStorage.getItem('guide-theme')==='dark'){r.setAttribute('data-theme','dark')}}catch(e){}</script>
+</head>
+<body>
+<header class="topbar">
+<button class="menu-toggle" aria-label="目录" aria-expanded="false">☰</button>
+<a class="brand" href="index.html"><span class="wordmark"><span class="lemma">Lemma</span>Loom</span><span class="guide-name">用户指南</span></a>
+<div class="search"><input type="search" id="search" placeholder="搜索" aria-label="搜索" autocomplete="off" data-empty="无结果"><div class="results" id="results" hidden></div></div>
+<nav class="languages" aria-label="Language"><a href="../en/projects-and-documents.html" lang="en">English</a><a href="../de/projects-and-documents.html" lang="de">Deutsch</a><a href="../zh-Hans/projects-and-documents.html" lang="zh-Hans" aria-current="true">简体中文</a></nav>
+<button class="theme-toggle" data-light="浅色" data-dark="深色" aria-label="外观"></button>
+<a class="pdf-link" href="https://github.com/LemmaLoom/public/raw/main/pdf/lemmaloom-guide-zh-Hans.pdf">PDF</a>
+</header>
+<div class="layout">
+<nav class="sidebar" aria-label="目录"><ol>
+<li class="unnumbered"><a href="quick-start.html">快速入门</a></li>
+<li><a href="introduction.html">简介</a></li>
+<li><a href="getting-started.html">开始使用</a></li>
+<li class="current"><a href="projects-and-documents.html">项目与文档</a></li>
+<li><a href="importing.html">导入资料</a></li>
+<li><a href="reading-and-editing.html">阅读与编辑</a></li>
+<li><a href="lenses.html">透镜</a></li>
+<li><a href="coding.html">编码</a></li>
+<li><a href="sets-tags-attributes.html">文档集、分组、标签和属性</a></li>
+<li><a href="translations.html">译文与分屏浏览</a></li>
+<li><a href="text-inspector.html">文本检查器</a></li>
+<li><a href="grammar-inspector.html">语法检查器</a></li>
+<li><a href="word-sketch.html">词汇速写</a></li>
+<li><a href="coding-analysis.html">编码分析</a></li>
+<li><a href="sketch-space.html">速写空间</a></li>
+<li><a href="queries-building.html">构建查询</a></li>
+<li><a href="queries-results.html">查询结果与统计</a></li>
+<li><a href="queries-patterns.html">查询模式与发现</a></li>
+<li><a href="queries-using-results.html">使用查询结果</a></li>
+<li><a href="dictionaries.html">词典</a></li>
+<li><a href="custom-analyzers.html">自定义分析器</a></li>
+<li><a href="analysis-and-indexing.html">分析与索引</a></li>
+<li><a href="exchange-and-export.html">交换与导出</a></li>
+<li><a href="undo.html">撤销与重做</a></li>
+<li><a href="settings.html">设置与外观</a></li>
+<li><a href="keyboard-shortcuts.html">键盘快捷键</a></li>
+<li><a href="help-and-support.html">帮助与支持</a></li>
+<li><a href="statistics-reference.html">统计量一览</a></li>
+<li class="unnumbered"><a href="glossary.html">术语表</a></li>
+<li class="unnumbered"><a href="thanks.html">感谢</a></li>
+</ol></nav>
+<main class="content">
+<article>
+<h1 id="projects-and-documents">项目与文档</h1>
+<p>LemmaLoom 把你的所有工作都保存在项目中。一个项目包含你的文档，以及你在这些文档上添加的编码、编码实例、备忘录和链接。你用来整理和分析这些文档的文档集、分组、属性、词典和已存储的查询，也保存在项目中。一般来说，最好把一项研究的所有相关材料都放在同一个项目中。LemmaLoom 的大多数视图一次只涵盖一个项目。</p>
+<p>本章的示例全部取自示例项目“气候辩论”。“气候辩论”包含十一篇讨论气候变化的虚构文本，有评论文章、专栏、博客文章和一篇演讲；其中六篇出自活动人士之手（例如“时间不多了”），五篇出自怀疑论者之手（例如“模型总是失准”）。“气候辩论”中另外还有三个文档。“2024 热浪报告”是一个 PDF 文件，“碳税之争”是一篇从网上导入的新闻报道，“电台辩论”则是一场经过录音和转写的电台辩论。最后，“时间不多了 (英语)”是“时间不多了”的译文。因此，项目中一共有 15 个文档。你也可以直接在 LemmaLoom 中查看这个项目。选取<strong class="ui">文件 ▸ 导入 ▸ 示例项目</strong>，把它以界面所用的语言添加为新项目。LemmaLoom 会自动导入“气候辩论”项目，并把它设为当前项目。</p>
+<h2 id="key-terms">基本概念<a class="anchor" href="#key-terms" aria-hidden="true">#</a></h2>
+<p>你定义的编码、文档集、分组、属性和词典都只属于各自的<em>项目</em>。标签和自定义分析器属于你的所有项目，为<strong class="ui">所有项目</strong>存储的查询也是如此。在项目中，一份材料就是一个<em>文档</em>。文档可以是纯文本文件、PDF 文档、网页，也可以是音频和视频录音的转写文本。翻译一个文档会生成另一个文档，称为<em>译文</em>（<a href="translations.html">第 9 章“译文与分屏浏览”</a>）；译文列在原文下方，并带有原文的所有标签。</p>
+<p><em>分组</em>的作用类似于导航栏中的文件夹；每个文档最多属于一个分组（也可以不属于任何分组）。分组主要用来让文档列表保持整齐。<strong class="ui">编码矩阵</strong>还可以按分组合并它的列，智能文档集和查询也可以按分组挑选文档。<em>文档集</em>是文档的集合，用来分析特定的文档，或者在几组文档之间进行比较。同一个文档可以属于任意多个文档集。<em>智能文档集</em>按指定的条件收录文档（例如“读者数”大于或等于 100,000），并会根据这些条件自动维护自己的内容。</p>
+<p><em>标签</em>（例如“评论”或“热门”）是你自己创建的名称。标签几乎可以表示对你的研究有意义的任何东西。项目、文档、编码、备忘录和链接共用同一份标签列表。<em>属性</em>是每个文档各自的特性（例如它的“立场”或“发表日期”）。属性一经定义，就适用于整个项目。</p>
+<p>导航栏上部的<em>项目视图栏</em>显示十个视图，第一个是<strong class="ui">编码本</strong>，最后一个是<strong class="ui">查询</strong>。每个文档集和每个标签也能打开同样的这些视图，只涵盖其中的文档。<em>范围</em>指一个视图所处理的文档，可以是整个项目、一个文档集，或者带有某个标签的文档。</p>
+<p>其中有几样东西的作用相互重叠，所以在开始实际分析之前，最好先弄清楚哪一样在什么情况下更合适。如果你打算按某项事实（例如立场或日期）比较文档，就把它定义为属性。文档集适合用来分析特定的文档（也就是限定范围）。如果某个属性或标签可以替你挑选这些文档，智能文档集会很方便。分组只用来整理列表。在每个项目中都应当表示同一含义的名称，就放在标签中。</p>
+<p>在“气候辩论”中，“立场”被定义为属性，所以<strong class="ui">编码统计</strong>和<strong class="ui">编码矩阵</strong>可以按辩论双方细分结果。关键词列表比较的是文档集，为此项目中另外加入了“行动派”和“怀疑派”两个文档集。“纸媒”和“网络”是只用来整理列表的分组。标签“评论”表示一类文本。</p>
+<h2 id="navigator">导航栏<a class="anchor" href="#navigator" aria-hidden="true">#</a></h2>
+<p>导航栏位于主窗口左侧。最上面是你的项目列表，下面是当前项目中的所有内容。点按工具栏左端的导航栏按钮，可以显示或隐藏导航栏。<strong class="ui">显示 ▸ 显示/隐藏导航栏</strong>（⌃⌘S）的作用相同。</p>
+<figure class="shot" id="projects-and-documents-navigator"><img class="shot-light" src="../figures/zh-Hans/light/projects-and-documents-navigator.webp" alt="导航栏中的“气候辩论”，从项目视图栏一直到标签。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/projects-and-documents-navigator.webp" alt="导航栏中的“气候辩论”，从项目视图栏一直到标签。" loading="lazy"><figcaption>导航栏中的“气候辩论”，从项目视图栏一直到标签。</figcaption></figure>
+<p>导航栏从上到下分为以下几个部分：</p>
+<div class="table-wrap"><table>
+<thead><tr><th>部分</th><th>列出的内容</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">收藏</strong></td><td>你加了星标的项目。至少有一个项目被收藏后，这个部分才会出现。</td></tr>
+<tr><td><strong class="ui">项目</strong></td><td>你的全部项目，按名称排序。当前项目的名称以粗体显示。</td></tr>
+<tr><td><strong class="ui">项目</strong></td><td>当前项目的项目视图栏（见本章后文的<a href="#project-shelf">项目视图栏</a>）。</td></tr>
+<tr><td><strong class="ui">文档集</strong></td><td>当前项目的文档集和智能文档集，各自附有文档数量，后面是<strong class="ui">新建文档集</strong>和<strong class="ui">新建智能文档集</strong>。</td></tr>
+<tr><td><strong class="ui">文档</strong></td><td>先是当前项目的分组，然后是不属于任何分组的文档。译文列在原文下方。</td></tr>
+<tr><td><strong class="ui">标签</strong></td><td>当前项目中文档上用到的每个标签，以及带有该标签的文档数量。至少有一个文档带有标签后，这个部分才会出现。</td></tr>
+</tbody></table></div>
+<p><strong class="ui">搜索文档</strong>栏位于最顶部，在所有内容的上方。你输入文字后，导航栏只列出当前项目中名称含有这些文字的文档。按下 Return 键会打开第一个结果，按向下箭头键可以进入列表。按下 Esc 键会清除输入的文字，导航栏重新完整显示。选取<strong class="ui">编辑 ▸ 查找文档</strong>（⇧⌘F），可以让隐藏的导航栏重新出现，并把插入点直接放进搜索栏。</p>
+<p>每一行开头的图标表示文档的类型。音频文档的图标是声波，视频文档是一段胶片，文本、PDF 和网页文档则是一页纸。没有源文件的文档（例如从 REFI-QDA 项目导入的文本）显示为带铅笔的方块。你为文档设置的颜色也会用在它的图标上。每行末尾是两个字母的语言代码，例如 EN、DE 或 ZH（法语文本为 FR）；将鼠标指针悬停在代码上，可以看到语言的全称。代码旁边有一个状态图标，表示索引的完成程度。关于索引，请参阅<a href="analysis-and-indexing.html">第 21 章“分析与索引”</a>。</p>
+<div class="table-wrap"><table>
+<thead><tr><th>状态图标</th><th>含义</th></tr></thead>
+<tbody>
+<tr><td>无</td><td>文档已建立索引，可以用于所有分析。</td></tr>
+<tr><td>进度环</td><td>文档正在建立索引，或者有分析器正在处理它。将鼠标指针悬停在进度环上，可以看到当前阶段和已完成的百分比。</td></tr>
+<tr><td>虚线圆圈</td><td><strong class="ui">等待建立索引</strong>。文档正在排队，索引会自动开始。</td></tr>
+<tr><td>带暂停符号的圆圈</td><td><strong class="ui">索引已关闭</strong>。文档导入时没有建立索引。在<strong class="ui">文档信息</strong>中点按<strong class="ui">立即建立索引</strong>即可开始（见本章后文的<a href="#properties-indexing">索引</a>）。</td></tr>
+<tr><td>带问号的圆圈</td><td><strong class="ui">该语言不支持索引</strong>。你可以阅读和编码这个文档，但透镜、<strong class="ui">语法</strong>标签页和词汇速写需要英语、德语或中文文档。</td></tr>
+<tr><td>红色警告三角形</td><td>建立索引失败。将鼠标指针悬停在三角形上，可以看到失败原因。要重试，请右键点按该文档并选取<strong class="ui">重试索引</strong>。</td></tr>
+</tbody></table></div>
+<figure class="shot" id="projects-and-documents-sidebar-badges"><img class="shot-light" src="../figures/zh-Hans/light/projects-and-documents-sidebar-badges.webp" alt="边栏中的索引标记：进度环、点线圆圈、暂停符号，以及法语文本的问号。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/projects-and-documents-sidebar-badges.webp" alt="边栏中的索引标记：进度环、点线圆圈、暂停符号，以及法语文本的问号。" loading="lazy"><figcaption>边栏中的索引标记：进度环、点线圆圈、暂停符号，以及法语文本的问号。</figcaption></figure>
+<p>文档正在建立索引时，它在导航栏中的名称和图标显示为灰色。这时你已经可以打开和查看这个文档，并为它编码。索引完成后，透镜菜单和检查器中的<strong class="ui">语法</strong>标签页就可以使用了。</p>
+<p>导入音频、视频或 PDF 文件时，<strong class="ui">文档</strong>部分的末尾会先出现一行，在文件成为可用的文档之前，这一行一直显示进度指示。翻译文档时，原文下方会出现类似的一行，显示目标语言和进度环。</p>
+<h2 id="projects">项目<a class="anchor" href="#projects" aria-hidden="true">#</a></h2>
+<h3 id="creating-a-project">新建项目<a class="anchor" href="#creating-a-project" aria-hidden="true">#</a></h3>
+<p>“气候辩论”是为一项研究建立的项目，为其中的文档定义了四个属性。属性“立场”使用选择器数据类型。“立场”的值来自预先定义的列表“行动派”“怀疑派”和“中立”，这样可以保证值的写法一致。报告、新闻报道和电台辩论这三个文档的立场是“中立”。属性“读者数”存储整数，“发表日期”存储日期。“媒体”存储文本，因为它的值无法事先列出。如下图所示，对话框中只定义了这些属性中的前两个。</p>
+<figure class="shot" id="projects-and-documents-new-project"><img class="shot-light" src="../figures/zh-Hans/light/projects-and-documents-new-project.webp" alt="“新建项目”对话框，其中已填写“立场”和“读者数”。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/projects-and-documents-new-project.webp" alt="“新建项目”对话框，其中已填写“立场”和“读者数”。" loading="lazy"><figcaption>“新建项目”对话框，其中已填写“立场”和“读者数”。</figcaption></figure>
+<p>新建项目的步骤如下：</p>
+<ol>
+<li>选取<strong class="ui">文件 ▸ 新建项目</strong>（⇧⌘N）。</li>
+<li>在<strong class="ui">名称</strong>中输入项目名称。如果这一栏留空，项目会命名为<strong class="ui">新建项目</strong>。</li>
+<li>要为项目设置颜色，请点按<strong class="ui">颜色</strong>旁边的一个色块。一开始选中的是第一个色块，即<strong class="ui">无颜色</strong>。</li>
+<li>要为项目添加标签，请在<strong class="ui">标签</strong>中输入标签并按下 Return 键。输入英文逗号也会结束一个标签。</li>
+<li>如果要现在设置属性，请在<strong class="ui">属性</strong>下为每个属性点按一次<strong class="ui">添加属性</strong>。输入属性名称，并选择它的<strong class="ui">类型</strong>。对于<strong class="ui">选择器</strong>，还要在下方逐行输入各个选项，每行一个。</li>
+<li>点按<strong class="ui">创建</strong>，或按下 Return 键。</li>
+</ol>
+<p>项目创建后，LemmaLoom 会把它设为当前项目。关于如何把文档放进项目，请参阅<a href="importing.html">第 4 章“导入资料”</a>。</p>
+<p>属性有六种类型。<strong class="ui">文本</strong>存储文本，<strong class="ui">日期</strong>存储日期，<strong class="ui">整数</strong>存储整数，<strong class="ui">小数</strong>存储带小数部分的数，<strong class="ui">布尔值</strong>表示是或否并使用复选框，<strong class="ui">选择器</strong>存储从固定列表中选出的一项。<a href="sets-tags-attributes.html">第 8 章“文档集、分组、标签和属性”</a>中的<a href="sets-tags-attributes.html#attribute-types">属性类型</a>说明了如何根据用途选择合适的属性类型。输入属性名称时，自动补全会从你的各个项目中建议已有的属性。如果名称与其中某个属性相同，它的类型和选项会自动沿用过来。以后也可以通过<strong class="ui">项目信息</strong>或文档信息添加新属性，或者直接在属性窗口（<strong class="ui">项目 ▸ 属性</strong>）中添加。关于文档如何获得属性值，请参阅<a href="sets-tags-attributes.html">第 8 章“文档集、分组、标签和属性”</a>。</p>
+<p>导出的 LemmaLoom 项目可以用作备份，也可以与同事共享。要载入这样的项目，请选取<strong class="ui">文件 ▸ 导入 ▸ LemmaLoom 归档</strong>。也可以通过<strong class="ui">文件 ▸ 导入 ▸ REFI-QDA 项目</strong>导入，这会载入在其他支持 REFI-QDA 标准的软件中创建的项目。你还可以在访达中用 LemmaLoom 打开 <code>.llz</code> 或 <code>.qdpx</code> 文件，以同样的方式导入。关于这两种格式的详细说明，请参阅<a href="exchange-and-export.html">第 22 章“交换与导出”</a>。</p>
+<h3 id="switching-projects">在项目之间切换<a class="anchor" href="#switching-projects" aria-hidden="true">#</a></h3>
+<p>在<strong class="ui">项目</strong>或<strong class="ui">收藏</strong>下点按任意一个项目的名称，即可把它设为当前项目。选中后，导航栏的其余部分会显示这个项目的视图栏、文档集、文档和标签。</p>
+<p>你会直接回到原来的位置，首先打开的是退出 LemmaLoom 之前最后使用的项目。每个项目都有自己的标签页；再次回到某个项目时，这些标签页都会恢复，离开时所在的标签页也会重新成为当前标签页。此外，这个项目中每个打开的文档都会恢复它启用的透镜和滚动位置。在分屏浏览中与它一同打开的另一个文档也会重新打开，检查器的状态也是如此。</p>
+<h3 id="favorites">收藏<a class="anchor" href="#favorites" aria-hidden="true">#</a></h3>
+<p>项目也可以列在导航栏的顶部。将鼠标指针悬停在<strong class="ui">项目</strong>下的项目条目上，然后点按该行右侧出现的星形图标。加了星标的项目随后也会出现在另一个名为<strong class="ui">收藏</strong>的部分中。再次点按星形，或者使用项目的快捷菜单，可以把项目从<strong class="ui">收藏</strong>中移除。</p>
+<h3 id="project-menu">项目的快捷菜单<a class="anchor" href="#project-menu" aria-hidden="true">#</a></h3>
+<p>右键点按或按住 Control 键点按一个项目时，快捷菜单中会出现以下命令：</p>
+<div class="table-wrap"><table>
+<thead><tr><th>命令</th><th>作用</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">添加到收藏</strong>、<strong class="ui">从收藏中移除</strong></td><td>为项目加上或去掉星标。</td></tr>
+<tr><td><strong class="ui">重命名</strong></td><td>把名称变成文本框。输入新名称后按下 Return 键；按下 Esc 键则保留原名。<strong class="ui">编辑 ▸ 撤销重命名</strong>（⌘Z）可以恢复原名。</td></tr>
+<tr><td><strong class="ui">信息</strong></td><td>打开<strong class="ui">项目信息</strong>（见下文的<a href="#project-properties">项目信息</a>）。</td></tr>
+<tr><td><strong class="ui">属性</strong></td><td>打开属性窗口，这是一张列出每个文档属性值的表格。见<a href="sets-tags-attributes.html">第 8 章“文档集、分组、标签和属性”</a>中的<a href="sets-tags-attributes.html#attributes-sheet">属性窗口</a>。</td></tr>
+<tr><td><strong class="ui">编码本</strong></td><td>在编码本窗口中打开项目的编码本。</td></tr>
+<tr><td><strong class="ui">词汇速写</strong></td><td>为整个项目打开词汇速写窗口。见<a href="word-sketch.html">第 12 章“词汇速写”</a>。</td></tr>
+<tr><td><strong class="ui">删除项目</strong></td><td>确认后删除项目（见下文的<a href="#deleting-a-project">删除项目</a>）。</td></tr>
+</tbody></table></div>
+<figure class="shot" id="projects-and-documents-project-menu"><img class="shot-light" src="../figures/zh-Hans/light/projects-and-documents-project-menu.webp" alt="“项目”下“气候辩论”的快捷菜单。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/projects-and-documents-project-menu.webp" alt="“项目”下“气候辩论”的快捷菜单。" loading="lazy"><figcaption>“项目”下“气候辩论”的快捷菜单。</figcaption></figure>
+<p>菜单栏的<strong class="ui">项目</strong>菜单中，大多数命令要么作用于当前项目，要么取决于你在导航栏中选中的内容。例如，<strong class="ui">新建文档集</strong>、<strong class="ui">新建智能文档集</strong>和<strong class="ui">属性</strong>作用于当前项目；而文档命令（即<strong class="ui">重命名</strong>、<strong class="ui">信息</strong>、<strong class="ui">移到分组</strong>、<strong class="ui">添加到文档集</strong>、<strong class="ui">从文档集中移除</strong>和<strong class="ui">翻译</strong>）与文档快捷菜单中的同名命令一样，作用于导航栏中当前选中的文档。<strong class="ui">打开</strong>列出项目视图栏的十个视图。<strong class="ui">编辑智能文档集</strong>针对当前标签页中的智能文档集。</p>
+<p>删除命令（⌘⌫）作用于你最近一次在导航栏中点按的对象，命令的名称也会相应地显示为<strong class="ui">删除项目</strong>、<strong class="ui">删除文档集</strong>、<strong class="ui">删除分组</strong>或<strong class="ui">删除文档</strong>。删除项目或文档之前，LemmaLoom 会先请你确认。文档集和分组则会直接删除，不经确认。之后可以用<strong class="ui">编辑 ▸ 撤销</strong>（⌘Z）恢复文档集或分组。</p>
+<h3 id="project-properties">项目信息<a class="anchor" href="#project-properties" aria-hidden="true">#</a></h3>
+<p>从项目的快捷菜单中选取<strong class="ui">信息</strong>，即可打开<strong class="ui">项目信息</strong>对话框。它的栏目与<strong class="ui">新建项目</strong>相同，可以用来更改项目的名称、颜色、标签和属性。</p>
+<p><strong class="ui">名称</strong>中填写内容之前，<strong class="ui">存储</strong>按钮一直不可用。<strong class="ui">颜色</strong>会改变导航栏中项目盒子图标的颜色；项目为当前项目时，图标后面的高亮背景也会使用这个颜色。收藏项目在<strong class="ui">项目</strong>列表中的星形同样会使用这个颜色。标签窗口会统计为项目加上的<strong class="ui">标签</strong>，在<strong class="ui">窗口 ▸ 查询</strong>中对所有项目进行查询时，也可以按这些标签查找项目。<strong class="ui">属性</strong>中列出项目中每个属性的名称和类型，每一项末尾都有一个移除按钮（<strong class="ui">移除属性</strong>）。要新建属性，请点按<strong class="ui">添加属性</strong>。</p>
+<figure class="shot" id="projects-and-documents-project-properties"><img class="shot-light" src="../figures/zh-Hans/light/projects-and-documents-project-properties.webp" alt="“气候辩论”的项目信息，显示它的四个属性和各自的移除按钮。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/projects-and-documents-project-properties.webp" alt="“气候辩论”的项目信息，显示它的四个属性和各自的移除按钮。" loading="lazy"><figcaption>“气候辩论”的项目信息，显示它的四个属性和各自的移除按钮。</figcaption></figure>
+<p>点按<strong class="ui">存储</strong>会一次应用所有更改。这些更改合为一步，用<strong class="ui">编辑 ▸ 撤销项目信息</strong>（⌘Z）可以撤销。</p>
+<aside class="callout note"><p class="callout-title">注意</p><p>在这里移除属性后，一旦点按<strong class="ui">存储</strong>，这个属性就会立即从项目中删除，项目中所有文档的该属性值也会随之删除。如果只想更改属性的名称、类型或选项，请使用属性窗口。见<a href="sets-tags-attributes.html">第 8 章“文档集、分组、标签和属性”</a>中的<a href="sets-tags-attributes.html#editing-an-attribute">修改属性</a>。</p>
+</aside>
+<h3 id="deleting-a-project">删除项目<a class="anchor" href="#deleting-a-project" aria-hidden="true">#</a></h3>
+<ol>
+<li>右键点按项目并选取<strong class="ui">删除项目</strong>。也可以点按项目，然后选取<strong class="ui">项目 ▸ 删除项目</strong>（⌘⌫）。</li>
+<li>随后出现的提示框会写明项目名称，并警告其中的所有内容都将被删除。点按<strong class="ui">删除</strong>。</li>
+</ol>
+<p>项目的所有文档会随项目本身一起删除。这些文档的媒体文件、译文、编码实例、备忘录、链接和书签也会被删除，为整个项目创建的所有内容也是如此。项目的编码和编码集、文档集和分组、属性及属性值同样会被删除。词典和存储在项目中的查询也会一并删除。如果删除的是当前项目，列表中剩下的第一个项目会成为当前项目。</p>
+<aside class="callout note"><p class="callout-title">注意</p><p>项目删除后，无法通过撤销历史恢复。要备份当前项目，请选取<strong class="ui">文件 ▸ 导出 ▸ LemmaLoom 项目</strong>。</p>
+</aside>
+<h3 id="working-across-projects">跨项目工作<a class="anchor" href="#working-across-projects" aria-hidden="true">#</a></h3>
+<p>通常，项目中的所有内容（编码、文档集、分组、属性、词典和已存储的查询）都与其他项目隔离。视图一般一次只涵盖一个项目，例如<strong class="ui">编码本</strong>、<strong class="ui">编码统计</strong>、<strong class="ui">编码矩阵</strong>、词汇速写和<strong class="ui">速写空间</strong>。有些功能可以涵盖你的所有项目。借助这些功能，你可以在不同的研究之间进行比较，或者把以前建好的工具再次用于其他研究。</p>
+<p>在<strong class="ui">窗口 ▸ 查询</strong>顶部的范围菜单中选择<strong class="ui">所有项目</strong>，就可以一次查询你所有项目中的原文文档。关于这个范围的详细说明，请参阅<a href="queries-building.html">第 15 章“构建查询”</a>中的<a href="queries-building.html#queries-window">查询窗口</a>和<a href="queries-building.html#query-scopes">范围</a>。使用规则时，只有在这里才能用<strong class="ui">项目</strong>字段设置条件。也只有在这个范围内，<strong class="ui">数量</strong>或<strong class="ui">比较</strong>才能按项目给结果分组，这时结果列表中会有一个<strong class="ui">项目</strong>列。有些模板也在这个范围内工作，包括<strong class="ui">按属性统计编码实例</strong>、<strong class="ui">按分组统计修辞</strong>和<strong class="ui">文档表</strong>。</p>
+<figure class="shot" id="projects-and-documents-queries-all-projects"><img class="shot-light" src="../figures/zh-Hans/light/projects-and-documents-queries-all-projects.webp" alt="“查询”窗口，适用范围设为所有项目，数量按项目分组。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/projects-and-documents-queries-all-projects.webp" alt="“查询”窗口，适用范围设为所有项目，数量按项目分组。" loading="lazy"><figcaption>“查询”窗口，适用范围设为所有项目，数量按项目分组。</figcaption></figure>
+<p>存储查询时，在<strong class="ui">可用范围</strong>中选择<strong class="ui">所有项目</strong>，这个查询就可以在每个项目中使用。以这种方式存储为透镜的查询，可以在任何文档中启用。请参阅<a href="queries-building.html">第 15 章“构建查询”</a>中的<a href="queries-building.html#saving-queries">存储查询</a>。标签本来就是这样工作的，它们同时作用于所有项目。一个标签无论出现在哪里（例如多个项目中的“评论”），都是同一个标签。标签既可以加在单个文档上，也可以加在项目上，因此跨所有项目的查询可以找出带有指定标签的文档或项目。关于所有项目共用的标签，详见<a href="sets-tags-attributes.html">第 8 章“文档集、分组、标签和属性”</a>中的<a href="sets-tags-attributes.html#tag-vocabulary">所有项目共用一份列表</a>。所有项目共用的还有自定义分析器（<a href="custom-analyzers.html">第 20 章“自定义分析器”</a>）；你在<strong class="ui">窗口 ▸ 分析器</strong>中编写的分析器属于整个资料库，可以在任何项目的文档上运行，跨所有项目的查询也可以统计这类分析器找到的内容。</p>
+<p>如果编码本、编码相关的视图或词汇速写需要涵盖几项研究，就应当把这些材料放在同一个项目中，再用文档集、分组或某个属性来区分各项研究。</p>
+<h2 id="documents">文档<a class="anchor" href="#documents" aria-hidden="true">#</a></h2>
+<p>文档通过导入进入项目。关于各类材料的导入方法，请参阅<a href="importing.html">第 4 章“导入资料”</a>。</p>
+<h3 id="opening-documents">在标签页中打开文档<a class="anchor" href="#opening-documents" aria-hidden="true">#</a></h3>
+<p>在导航栏中点按一个文档，它会在阅读器正上方的标签页中打开，这个标签页也会成为当前标签页。文档集中列出的文档也是如此。如果这个文档已经在标签页栏的某处打开，在导航栏中再次选中它只会把它现有的标签页设为当前标签页。使用键盘时，可以用上箭头键和下箭头键在导航栏中移动，按下 Return 键打开选中的文档。</p>
+<p>项目视图栏、文档集和标签的详细视图也都在标签页栏的标签页中打开，更多信息请参阅本章后文的<a href="#project-shelf">项目视图栏</a>。只要至少打开了一个标签页，标签页栏就会显示出来；标签页多到一行放不下时，可以左右滚动标签页栏。</p>
+<figure class="shot" id="projects-and-documents-tabs"><img class="shot-light" src="../figures/zh-Hans/light/projects-and-documents-tabs.webp" alt="标签页中有两篇评论文章、编码本和“行动派”文档集，“希望要靠行动”在预览标签页中打开。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/projects-and-documents-tabs.webp" alt="标签页中有两篇评论文章、编码本和“行动派”文档集，“希望要靠行动”在预览标签页中打开。" loading="lazy"><figcaption>标签页中有两篇评论文章、编码本和“行动派”文档集，“希望要靠行动”在预览标签页中打开。</figcaption></figure>
+<p>要用键盘在标签页之间切换，请选取<strong class="ui">窗口 ▸ 显示下一个标签页</strong>（⇧⌘]）或<strong class="ui">窗口 ▸ 显示上一个标签页</strong>（⇧⌘[）。在最后一个标签页上继续切换，会回到第一个标签页。右键点按标签页时，快捷菜单中有<strong class="ui">在新窗口中打开</strong>、<strong class="ui">在分屏浏览中打开</strong>和<strong class="ui">关闭标签页</strong>。</p>
+<p>选取<strong class="ui">在新窗口中打开</strong>后，文档会转到单独的文档窗口中。文档窗口始终只容纳一个文档，打开第二个文档会替换前一个。对于文档集或标签，<strong class="ui">在新窗口中打开</strong>只适用于显示<strong class="ui">词汇速写</strong>或<strong class="ui">查询</strong>的标签页；对于项目视图栏中的视图，它会打开编码本窗口、词汇速写窗口或查询窗口。<strong class="ui">在分屏浏览中打开</strong>会把你的文档和当前的另一个文档左右并排显示在分屏浏览中。关于分屏浏览，请参阅<a href="translations.html">第 9 章“译文与分屏浏览”</a>。<strong class="ui">窗口</strong>菜单中也有<strong class="ui">在新窗口中打开</strong>和<strong class="ui">在分屏浏览中打开</strong>。从这个菜单调用时，它们的用法有所不同；这些命令作用于当前标签页。此外，那里的<strong class="ui">在分屏浏览中打开</strong>会列出可以放在当前文档旁边的已打开文档。</p>
+<h3 id="preview-tab">预览标签页<a class="anchor" href="#preview-tab" aria-hidden="true">#</a></h3>
+<p>当你打开一条查询结果，或者在某个文档集或整个项目的词汇速写中显示一处出现位置时，就会出现<em>预览标签页</em>。之后的结果会在标签页栏中的同一位置打开，替换之前的结果。</p>
+<p>要保留预览标签页，请点按它，或者用<strong class="ui">显示下一个标签页</strong>或<strong class="ui">显示上一个标签页</strong>命令切换到它。这个标签页会像其他标签页一样保持打开。在导航栏中点按这个文档，效果相同。如果包含结果的文档已经在普通标签页中打开，LemmaLoom 会在那个标签页中显示结果。如果文档在分屏浏览中打开，右侧窗格会获得焦点。</p>
+<h3 id="closing-tabs">关闭标签页<a class="anchor" href="#closing-tabs" aria-hidden="true">#</a></h3>
+<p>点按标签页上的 × 会关闭这个标签页。也可以按下 ⌘W（或选取<strong class="ui">文件 ▸ 关闭标签页</strong>）关闭当前标签页。关闭后位于最右侧的标签页会成为当前标签页。</p>
+<p>打开分屏浏览时，在右侧窗格中按下 ⌘W 会关闭分屏浏览；在其他位置，⌘W 照常关闭当前标签页。在分屏浏览中，如果关闭左侧的最后一个标签页，右侧窗格中的文档会移到它的位置。</p>
+<p>有标签页打开时，选取<strong class="ui">文件 ▸ 关闭窗口</strong>（⇧⌘W）会关闭主窗口。窗口中没有打开的标签页时，<strong class="ui">关闭窗口</strong>会换成<strong class="ui">文件 ▸ 关闭</strong>（⌘W）。这个命令会关闭窗口；如果这是最后一个 LemmaLoom 窗口，LemmaLoom 也会随之退出。</p>
+<h3 id="selecting-documents">选择多个文档<a class="anchor" href="#selecting-documents" aria-hidden="true">#</a></h3>
+<p>文档可以成批选择。选中后，命令会同时作用于每个文档。</p>
+<p>在<strong class="ui">文档</strong>部分中，按住 ⌘ 键点按一个文档，可以把它加入所选内容。再按住 ⌘ 键点按一次，则把它移出所选内容。按住 ⇧ 键点按，可以选中一整段范围的文档，从你上一次点按的文档一直到这一次点按的文档。这个范围按列表顺序计算，也包括已收起的分组中的文档和原文下方的译文。因此在选择时，请先留意快捷菜单顶部显示的所选文档数量，然后再进行删除。</p>
+<p>直接点按任意一个文档，只会选中这一个文档并打开它。在<strong class="ui">文档集</strong>部分中，同样的点按方式也可以选择某个文档集下的文档。</p>
+<p>右键点按所选内容中的任意一个文档，会打开快捷菜单。菜单顶部显示所选文档的数量，例如<strong class="ui">已选择 3 个文档</strong>。如果恰好选中两个文档，<strong class="ui">并排打开</strong>命令会把列表中靠上的文档放在主窗格中，把靠下的文档放在分屏浏览中。你可以选取<strong class="ui">移到分组</strong>，从<strong class="ui">未分组</strong>、各个分组和<strong class="ui">新建分组</strong>中选择。选取<strong class="ui">添加到文档集</strong>，可以看到你手动填充的每个文档集，以及<strong class="ui">从所选文档新建文档集</strong>。如果某个文档集已经包含全部所选文档，它在这里不可用。如果所选内容中有译文，添加的是它的原文。<strong class="ui">导出</strong>会把所选文档存储为 LemmaLoom 归档（见<a href="exchange-and-export.html">第 22 章“交换与导出”</a>）。菜单的最后一项是<strong class="ui">删除文档</strong>（见本章后文的<a href="#deleting-documents">删除文档</a>）。</p>
+<figure class="shot" id="projects-and-documents-add-to-set-menu"><img class="shot-light" src="../figures/zh-Hans/light/projects-and-documents-add-to-set-menu.webp" alt="六个所选文档的快捷菜单，顶部为“已选择 6 个文档”，其中已展开“添加到文档集”。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/projects-and-documents-add-to-set-menu.webp" alt="六个所选文档的快捷菜单，顶部为“已选择 6 个文档”，其中已展开“添加到文档集”。" loading="lazy"><figcaption>六个所选文档的快捷菜单，顶部为“已选择 6 个文档”，其中已展开“添加到文档集”。</figcaption></figure>
+<h3 id="document-menu">文档的快捷菜单<a class="anchor" href="#document-menu" aria-hidden="true">#</a></h3>
+<p>在<strong class="ui">文档</strong>部分中右键点按单个文档，会出现以下快捷菜单：</p>
+<div class="table-wrap"><table>
+<thead><tr><th>命令</th><th>作用</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">在分屏浏览中打开</strong></td><td>在当前文档旁边打开该文档。如果没有其他文档是当前文档，或者该文档已经在分屏浏览中，这个命令不可用。</td></tr>
+<tr><td><strong class="ui">在原文旁边打开</strong></td><td>仅在译文的快捷菜单中显示。在左侧打开原文，在右侧打开译文。</td></tr>
+<tr><td><strong class="ui">重命名</strong></td><td>把名称变成文本框。</td></tr>
+<tr><td><strong class="ui">移到分组</strong></td><td>把文档及其译文移入某个分组，或者用<strong class="ui">未分组</strong>把它们移出所有分组。</td></tr>
+<tr><td><strong class="ui">文档集</strong></td><td>把文档加入某个文档集，或者用<strong class="ui">从文档新建文档集</strong>以它新建一个文档集。</td></tr>
+<tr><td><strong class="ui">信息</strong></td><td>打开<strong class="ui">文档信息</strong>（见下文的<a href="#document-properties">文档信息</a>）。</td></tr>
+<tr><td><strong class="ui">翻译</strong></td><td>翻译该文档。见<a href="translations.html">第 9 章“译文与分屏浏览”</a>。</td></tr>
+<tr><td><strong class="ui">导出</strong></td><td>把文档存储为 LemmaLoom 归档。</td></tr>
+<tr><td><strong class="ui">重试索引</strong></td><td>建立索引失败时出现，位于说明失败原因的那一行下方。</td></tr>
+<tr><td><strong class="ui">删除文档</strong></td><td>确认后删除文档（见本章后文的<a href="#deleting-documents">删除文档</a>）。</td></tr>
+</tbody></table></div>
+<p>无论你把原文移到哪里，译文都会随之一起移动，所以请对原文使用<strong class="ui">移到分组</strong>和<strong class="ui">文档集</strong>。如果需要这个文档的另一份译文，请再次翻译原文。在任何文档集下，文档的快捷菜单都以<strong class="ui">打开</strong>开头；在手动填充的文档集中，菜单以<strong class="ui">从文档集中移除</strong>结尾。</p>
+<figure class="shot" id="projects-and-documents-document-menu"><img class="shot-light" src="../figures/zh-Hans/light/projects-and-documents-document-menu.webp" alt="在导航栏中右键点按“时间不多了”。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/projects-and-documents-document-menu.webp" alt="在导航栏中右键点按“时间不多了”。" loading="lazy"><figcaption>在导航栏中右键点按“时间不多了”。</figcaption></figure>
+<h3 id="renaming-a-document">重命名文档<a class="anchor" href="#renaming-a-document" aria-hidden="true">#</a></h3>
+<ol>
+<li>右键点按文档并选取<strong class="ui">重命名</strong>。</li>
+<li>输入新名称并按下 Return 键。</li>
+</ol>
+<p>按下 Esc 键会恢复原名，点按别处则保留新名称。<strong class="ui">编辑 ▸ 撤销重命名</strong>（⌘Z）可以恢复原名。你也可以在<strong class="ui">文档信息</strong>中重命名文档。</p>
+<h2 id="document-properties">文档信息<a class="anchor" href="#document-properties" aria-hidden="true">#</a></h2>
+<p>除正文本身以外，LemmaLoom 为文档存储的所有元数据都可以在<strong class="ui">文档信息</strong>中找到。例如，“气候辩论”中“时间不多了”的日期是 2024 年 8 月 21 日，它带有标签“评论”。它在项目四个属性上的值，可以让你对它进行分类，并与项目中的其他文档进行比较。</p>
+<figure class="shot" id="projects-and-documents-document-properties"><img class="shot-light" src="../figures/zh-Hans/light/projects-and-documents-document-properties.webp" alt="“时间不多了”的文档信息，从“详细信息”到“属性”。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/projects-and-documents-document-properties.webp" alt="“时间不多了”的文档信息，从“详细信息”到“属性”。" loading="lazy"><figcaption>“时间不多了”的文档信息，从“详细信息”到“属性”。</figcaption></figure>
+<p>更改文档信息的步骤如下：</p>
+<ol>
+<li>在导航栏中右键点按文档，选取<strong class="ui">信息</strong>。</li>
+<li>在<strong class="ui">详细信息</strong>、<strong class="ui">整理</strong>、<strong class="ui">属性</strong>、<strong class="ui">引用</strong>和<strong class="ui">索引</strong>中进行更改。</li>
+<li>点按<strong class="ui">存储</strong>。</li>
+</ol>
+<p><strong class="ui">存储</strong>会把你的更改作为一次操作应用，<strong class="ui">编辑 ▸ 撤销文档信息</strong>（⌘Z）会同时撤销所有这些更改。<strong class="ui">取消</strong>会放弃你的所有更改并关闭对话框。</p>
+<h3 id="properties-details">详细信息<a class="anchor" href="#properties-details" aria-hidden="true">#</a></h3>
+<p><strong class="ui">名称</strong>显示在导航栏中、文档的标签页上，以及每一项分析的结果中。<strong class="ui">名称</strong>必须填写，<strong class="ui">存储</strong>才可用。</p>
+<p><strong class="ui">作者</strong>中每行填写一位作者。<strong class="ui">添加作者</strong>会再增加一行。有多行时，每行都有一个移除按钮（<strong class="ui">移除作者</strong>）。存储时，留空的行会被自动删除。</p>
+<p><strong class="ui">日期</strong>是文档录制、写成或发表的日期。</p>
+<aside class="callout note"><p class="callout-title">注意</p><p>文档的<strong class="ui">日期</strong>中总有一个日期。对于没有日期的文档，这一栏最初显示的是今天的日期，<strong class="ui">存储</strong>时存下的也是这个日期。智能文档集和查询可以按日期选择文档，所以请在存储之前选好正确的日期。</p>
+</aside>
+<h3 id="properties-organization">整理<a class="anchor" href="#properties-organization" aria-hidden="true">#</a></h3>
+<p><strong class="ui">颜色</strong>为文档设置十一种可用颜色中的一种，或者设为<strong class="ui">无颜色</strong>。智能文档集和查询可以按颜色筛选文档。颜色会用在导航栏中文档的图标上，也会用在文档标签页的高亮上。</p>
+<p><strong class="ui">标签</strong>一次接受一个标签。输入完一个标签后，按下 Return 键或在后面输入英文逗号，即可结束这个标签的输入。只要输入三个字符（汉字只需一个），就会出现与输入内容相符的已有标签作为自动补全建议，匹配时忽略大小写。例如已有标签“CO2”时，如果你输入 <code>co2</code>，LemmaLoom 会自动加上已有的标签“CO2”。每个标签旁边还有一个 × 按钮，用来移除这个标签。</p>
+<p>如果文档有译文，文档和它的译文带有相同的标签。编辑其中一个的标签，其余文档的标签也会随之改变。</p>
+<h3 id="properties-attributes">属性<a class="anchor" href="#properties-attributes" aria-hidden="true">#</a></h3>
+<p>这一部分列出这个文档的属性值，所用的控件取决于属性的类型。复选框表示<strong class="ui">布尔值</strong>属性的值，日期选择器表示<strong class="ui">日期</strong>属性，数字控件表示<strong class="ui">整数</strong>和<strong class="ui">小数</strong>属性，文本控件表示<strong class="ui">文本</strong>属性。最后，<strong class="ui">选择器</strong>属性显示为列出其选项的菜单，菜单中也可以选择<strong class="ui">无</strong>。</p>
+<p>要为另一个属性添加值，请执行以下操作：</p>
+<ol>
+<li>在底部的空白栏中输入属性名称。输入时会出现建议。</li>
+<li>如果项目中还没有这个名称，请选择它的<strong class="ui">类型</strong>。对于<strong class="ui">选择器</strong>，还要输入各个选项，每行一个。</li>
+<li>点按<strong class="ui">添加属性</strong>，或按下 Return 键。这个属性随即加入列表。</li>
+<li>输入值。</li>
+</ol>
+<p>用这个对话框新建的属性属于整个项目，此时其他文档都还没有这个属性的值。值旁边的移除按钮（<strong class="ui">移除属性</strong>）只从这个文档中删除该属性的值，属性本身仍保留在项目中。</p>
+<p>如果名称栏为空、该属性已经在列表中（<strong class="ui">已添加</strong>），或者新的选择器还没有选项（<strong class="ui">无选项</strong>），<strong class="ui">添加属性</strong>按钮不可用。将鼠标指针悬停在<strong class="ui">添加属性</strong>按钮上，可以看到是哪一种原因。</p>
+<p>要为多个文档设置某个属性的值，请使用属性窗口，它把所有文档的属性值并排列出。见<a href="sets-tags-attributes.html">第 8 章“文档集、分组、标签和属性”</a>中的<a href="sets-tags-attributes.html#attributes-sheet">属性窗口</a>。</p>
+<h3 id="properties-citation">引用<a class="anchor" href="#properties-citation" aria-hidden="true">#</a></h3>
+<p>引用信息包括<strong class="ui">出版方</strong>、<strong class="ui">出版物</strong>、<strong class="ui">URL</strong> 和 <strong class="ui">DOI</strong> 几栏，记录已发表文档的出处。<strong class="ui">出版物</strong>指文档发表的地方，例如期刊或网站。在内置的“气候辩论”项目中，“碳税之争”的 <strong class="ui">URL</strong> 栏中是导入这个文档时所用的网址。</p>
+<p><strong class="ui">导入文档</strong>和<strong class="ui">从网页导入</strong>对话框中也有同样的这些栏目，导入时就可以全部填写（详见<a href="importing.html">第 4 章“导入资料”</a>）。</p>
+<p>智能文档集和查询可以按引用信息以及作者和日期进行筛选。以 REFI-QDA 文件格式导出的项目会把所有引用信息保存在每个文档的描述中。支持 REFI-QDA 标准的软件能够从导出文档的描述中识别这些信息。</p>
+<h3 id="properties-indexing">索引<a class="anchor" href="#properties-indexing" aria-hidden="true">#</a></h3>
+<p>对于导入时没有建立索引的文档，这一部分的顶部会显示<strong class="ui">索引已关闭</strong>。那里有一个<strong class="ui">立即建立索引</strong>按钮，用来开始建立索引。关于是否应当关闭索引，请参阅<a href="analysis-and-indexing.html">第 21 章“分析与索引”</a>中的<a href="analysis-and-indexing.html#turning-indexing-off">导入时不建立索引</a>。</p>
+<p>文档采用哪种语法分析，取决于你在<strong class="ui">语言</strong>中的选择。可以选择<strong class="ui">英语</strong>、<strong class="ui">德语</strong>或<strong class="ui">中文</strong>，也可以选择<strong class="ui">自动</strong>，让 LemmaLoom 根据文本内容检测语言。例如，如果检测到的语言是法语，它会与其他选项一起显示在菜单中。存储对语言的更改后，文档会重新建立索引。选择<strong class="ui">自动</strong>时，菜单随后会显示 LemmaLoom 检测到的语言。其他语言的文档仍然可以阅读和编码，这类文档在导航栏中的状态图标显示<strong class="ui">该语言不支持索引</strong>。</p>
+<p><strong class="ui">分析器</strong>列出这种语言的文档可以使用的分析器，包括内置的<strong class="ui">衔接</strong>、<strong class="ui">元话语</strong>和<strong class="ui">修辞</strong>分析器，以及你为这种语言定义的自定义分析器（见<a href="custom-analyzers.html">第 20 章“自定义分析器”</a>）。每个分析器旁边显示它的状态，可能是<strong class="ui">完成</strong>、<strong class="ui">已过期</strong>、<strong class="ui">未运行</strong>、<strong class="ui">运行中</strong>或<strong class="ui">失败</strong>。如果结果是由分析器的较早版本生成的，或者编辑文档后现有结果已不再覆盖文档的全部文本，结果就会变为<strong class="ui">已过期</strong>。将鼠标指针悬停在状态为<strong class="ui">失败</strong>的行上，可以看到失败原因。</p>
+<p>如果分析器的结果显示<strong class="ui">已过期</strong>，或者还没有生成，可以用<strong class="ui">运行</strong>按钮更新结果。在文档完成索引之前，这个按钮一直不可用。废纸篓按钮（<strong class="ui">移除输出</strong>）会删除这个分析器为该文档生成的全部结果；此后重新建立索引时，这个分析器要等你点按<strong class="ui">运行</strong>后才会再次运行。</p>
+<p><strong class="ui">运行</strong>、<strong class="ui">移除输出</strong>和<strong class="ui">立即建立索引</strong>在点按后立即生效，无需再用<strong class="ui">存储</strong>确认。</p>
+<p><strong class="ui">从索引中排除</strong>下的模式可以让语法分析跳过特定的文本，例如转写文本中的时间戳和标明说话人的名称。匹配的文本仍然显示在阅读器中，你也仍然可以在其中创建编码实例。</p>
+<p>模式要用<em>正则表达式</em>的写法来定义，这是一种简洁描述某类文本的方式。例如 <code>\[\d+:\d+\]</code> 表示 <code>[12:04]</code> 这样的时间戳，其中 <code>\d+</code> 匹配一个或多个数字，<code>\[</code> 和 <code>\]</code> 匹配方括号本身。它与预设模式<strong class="ui">时间戳 [mm:ss]</strong> 相同。</p>
+<p>在栏中直接输入模式，然后点按<strong class="ui">添加</strong>或按下 Return 键。<strong class="ui">预设</strong>提供五个预先定义的模式，即<strong class="ui">时间戳 [hh:mm:ss]</strong>、<strong class="ui">时间戳 [mm:ss]</strong>、<strong class="ui">说话人名称</strong>、<strong class="ui">网址</strong>和<strong class="ui">电子邮件地址</strong>。它们后面是你在设置中存储的模式（见<a href="settings.html">第 24 章“设置与外观”</a>）。如果某个预设已经在列表中，它在<strong class="ui">预设</strong>中不可用。模式<strong class="ui">说话人名称</strong>匹配 <code>Speaker 1:</code> 这类带编号的说话人名称；对于有名字的说话人，应当自己编写模式，例如 <code>(主持人|活动人士|怀疑论者)：</code>。各个备选项之间用竖线分隔。</p>
+<figure class="shot" id="projects-and-documents-properties-presets"><img class="shot-light" src="../figures/zh-Hans/light/projects-and-documents-properties-presets.webp" alt="“碳税之争”文档信息中的“索引”部分，已输入一个模式，“预设”菜单处于打开状态。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/projects-and-documents-properties-presets.webp" alt="“碳税之争”文档信息中的“索引”部分，已输入一个模式，“预设”菜单处于打开状态。" loading="lazy"><figcaption>“碳税之争”文档信息中的“索引”部分，已输入一个模式，“预设”菜单处于打开状态。</figcaption></figure>
+<p>你定义的每个模式下方都有一行形如<strong class="ui">匹配诸如……的文本</strong>的文字，给出一段与它匹配的示例。如果有效的模式无法给出示例，它下方会显示<strong class="ui">有效模式</strong>。你输入时，栏的下方也会显示同样的一行。如果模式无效，LemmaLoom 会在下方显示<strong class="ui">无效模式</strong>，<strong class="ui">添加</strong>随之保持不可用。</p>
+<p>每个模式所在行的末尾都有一个移除按钮（<strong class="ui">移除模式</strong>）。点按<strong class="ui">存储</strong>时，栏中如果还有有效的模式，也会一并添加。存储对模式的更改后，文档会重新建立索引。</p>
+<figure class="shot" id="projects-and-documents-document-indexing"><img class="shot-light" src="../figures/zh-Hans/light/projects-and-documents-document-indexing.webp" alt="“碳税之争”的引用和索引信息。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/projects-and-documents-document-indexing.webp" alt="“碳税之争”的引用和索引信息。" loading="lazy"><figcaption>“碳税之争”的引用和索引信息。</figcaption></figure>
+<h3 id="source-file">源文件<a class="anchor" href="#source-file" aria-hidden="true">#</a></h3>
+<p>LemmaLoom 会记录文档的来源，可能是源文件的名称，也可能是网页地址。智能文档集和查询中有两个字段用到这项元数据。例如，你可以用<strong class="ui">源文件</strong>找出从名称含有 <code>报告</code> 的文件导入的所有文档。文档的<strong class="ui">格式</strong>可以是<strong class="ui">文本</strong>、<strong class="ui">PDF</strong>、<strong class="ui">网页</strong>、<strong class="ui">音频</strong>或<strong class="ui">视频</strong>。如果文档来自音频或视频录音，它的格式取决于它来自哪种媒体。对于来自 REFI-QDA 项目的文档，<strong class="ui">源文件</strong>为空；如果它们不是录音，<strong class="ui">格式</strong>为<strong class="ui">文本</strong>。</p>
+<h2 id="deleting-documents">删除文档<a class="anchor" href="#deleting-documents" aria-hidden="true">#</a></h2>
+<ol>
+<li>右键点按文档并选取<strong class="ui">删除文档</strong>。要删除多个文档，请先选中它们（见本章前文的<a href="#selecting-documents">选择多个文档</a>），然后选取<strong class="ui">删除文档</strong>。在导航栏的<strong class="ui">文档</strong>下选中文档后，选取<strong class="ui">项目 ▸ 删除文档</strong>（⌘⌫）效果相同。</li>
+<li>随后出现的提示框会写明文档名称或文档数量，并警告其中的所有内容都将被删除。点按<strong class="ui">删除</strong>。</li>
+</ol>
+<p>删除文档会移除它的文本、媒体文件和语法分析，它的编码实例、备忘录、链接、书签和属性值也会被移除。适用范围为这个文档的编码会随之移除，见<a href="coding.html">第 7 章“编码”</a>中的<a href="coding.html#code-scope">编码的适用范围</a>。包含这个文档的所有文档集都会把它移出。如果有只为这个文档存储的查询，它们会变为项目级的查询。删除原文时，它的译文也会被删除。单独删除译文时，适用范围为这份译文的编码会移到原文上。如果误删了文档，可以用<strong class="ui">编辑 ▸ 撤销删除文档</strong>（⌘Z）恢复，一次删除了多个文档时也是如此。上面提到的所有内容都会随文档一起恢复，索引会在后台重新建立。撤销历史会一直保留到你退出 LemmaLoom。关于撤销历史和其他可以撤销的操作，请参阅<a href="undo.html">第 23 章“撤销与重做”</a>。</p>
+<h2 id="groups">分组<a class="anchor" href="#groups" aria-hidden="true">#</a></h2>
+<p>分组是用来整理文档的容器。每个文档只能属于一个分组，译文则总是与原文在同一个分组中。“气候辩论”有“纸媒”和“网络”两个分组，它们按照文档是刊登在纸质媒体上还是发表在网上来给文档分类。这些分组是为了方便浏览列表，“气候辩论”中的比较依靠的是属性“立场”和文档集。</p>
+<p><strong class="ui">文档</strong>按创建时间的先后列出分组，不属于任何分组的文档列在所有分组之后。每次打开 LemmaLoom 时，所有分组一开始都是收起的；点按分组的展开三角形可以展开它们。</p>
+<p>新建分组的步骤如下：</p>
+<ol>
+<li>选取<strong class="ui">文件 ▸ 新建分组</strong>（⌥⌘N）。一个名为<strong class="ui">新建分组</strong>的分组随即出现，名称处于选中状态。</li>
+<li>输入名称并按下 Return 键。</li>
+</ol>
+<p>选中两个或更多文档后，右键点按其中一个，选取<strong class="ui">移到分组 ▸ 新建分组</strong>。这些文档都会移入新分组，新分组已经展开，你可以立即为它命名。对于选中的单个文档，<strong class="ui">项目 ▸ 移到分组 ▸ 新建分组</strong>的作用与此类似。</p>
+<p>要移动单个文档，请右键点按它，然后在<strong class="ui">移到分组</strong>下选取目标分组。如果文档已经属于某个分组，这个分组的选项不可用。选取<strong class="ui">未分组</strong>会把文档移到其他未分组的文档中间。移入的文档会排在新分组的最后。用<strong class="ui">导入文档</strong>对话框导入文档时，可以指定要把文档放入的<strong class="ui">分组</strong>。</p>
+<p>右键点按分组，可以使用<strong class="ui">重命名</strong>和<strong class="ui">删除分组</strong>。也可以点按分组，然后选取<strong class="ui">项目 ▸ 删除分组</strong>（⌘⌫）。删除分组后，其中的文档会移出分组，与其他不属于任何分组的文档列在一起。指定了被删除分组的智能文档集条件会失去这个分组，原本为<strong class="ui">分组</strong> <strong class="ui">是以下任一</strong> “纸媒”的条件就会变成一个什么都没有选择的条件；这样的条件对每个文档都不成立，之后需要编辑这个智能文档集。<strong class="ui">编辑 ▸ 撤销</strong>（⌘Z）可以撤销之前对分组所做的更改，包括删除。</p>
+<aside class="callout tip"><p class="callout-title">提示</p><p>要分析某个分组中的文档，请新建一个智能文档集，用<strong class="ui">分组</strong>条件指定这个分组。请参阅<a href="sets-tags-attributes.html">第 8 章“文档集、分组、标签和属性”</a>中的<a href="sets-tags-attributes.html#groups">分组</a>。这个智能文档集会在自己的标签页中打开，并可以使用项目视图栏中的各个视图。</p>
+</aside>
+<h2 id="sets-and-tags-in-the-navigator">导航栏中的文档集和标签<a class="anchor" href="#sets-and-tags-in-the-navigator" aria-hidden="true">#</a></h2>
+<p><strong class="ui">文档集</strong>下的每个文档集旁边都显示其中的文档数量。手动填充的文档集旁边有堆叠图标，智能文档集旁边则是筛选图标。点按文档集旁边的三角形会列出其中的文档，点按列表中的文档即可打开它。要在单独的标签页中打开文档集，请点按它的名称（见下文的<a href="#project-shelf">项目视图栏</a>）。<strong class="ui">新建文档集</strong>会新建一个空的文档集，它的名称处于可编辑的文本框中。<strong class="ui">新建智能文档集</strong>则会打开新智能文档集的条件编辑器。每个文档集都有快捷菜单，其中有<strong class="ui">打开文档集</strong>、<strong class="ui">词汇速写</strong>、<strong class="ui">重命名</strong>、<strong class="ui">编辑</strong>（仅适用于智能文档集）、<strong class="ui">导出</strong>和<strong class="ui">删除文档集</strong>。关于文档集的更多信息，请参阅<a href="sets-tags-attributes.html">第 8 章“文档集、分组、标签和属性”</a>。右键点按手动填充的文档集中的文档，会显示<strong class="ui">从文档集中移除</strong>。如果在这个文档集下选中了多个文档，它们会全部被移除。</p>
+<figure class="shot" id="projects-and-documents-set-menu"><img class="shot-light" src="../figures/zh-Hans/light/projects-and-documents-set-menu.webp" alt="“行动派”文档集的快捷菜单。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/projects-and-documents-set-menu.webp" alt="“行动派”文档集的快捷菜单。" loading="lazy"><figcaption>“行动派”文档集的快捷菜单。</figcaption></figure>
+<p>译文与原文属于相同的文档集，文档集中只列出原文。把译文加入文档集时，加入的是它的原文。</p>
+<p>标签列在<strong class="ui">标签</strong>下。点按一个标签会打开一个标签页，其中有与文档集相同的十个视图，涵盖带有这个标签的文档。每个标签的快捷菜单中都有<strong class="ui">词汇速写</strong>，用来为它的文档生成词汇速写。快捷菜单中还有<strong class="ui">重命名</strong>和<strong class="ui">删除标签</strong>，它们的作用与下文的标签窗口中相同，两者都会在所有项目中更改这个标签。</p>
+<h2 id="tags-window">标签窗口<a class="anchor" href="#tags-window" aria-hidden="true">#</a></h2>
+<p>在<strong class="ui">窗口 ▸ 标签</strong>中，可以看到你所有项目共用的标签列表，以及每个标签的使用次数。例如，在“气候辩论”项目中，有三个文档带有标签“评论”，即“时间不多了”“净零代价高昂”和“转型谁来买单”。有两个文档带有标签“热门”，即“来自气候罢课的信”和“不必恐慌”。你也可以在这个窗口中重命名、合并和删除标签。</p>
+<figure class="shot" id="projects-and-documents-tags-window"><img class="shot-light" src="../figures/zh-Hans/light/projects-and-documents-tags-window.webp" alt="标签窗口中的每个标签及其计数。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/projects-and-documents-tags-window.webp" alt="标签窗口中的每个标签及其计数。" loading="lazy"><figcaption>标签窗口中的每个标签及其计数。</figcaption></figure>
+<p>标签窗口在每个标签旁边显示五个计数，分别位于<strong class="ui">项目</strong>、<strong class="ui">文档</strong>、<strong class="ui">编码</strong>、<strong class="ui">备忘录</strong>和<strong class="ui">链接</strong>列中。第一个计数包括使用这个标签的每个项目，无论标签加在项目本身（在<strong class="ui">新建项目</strong>或<strong class="ui">项目信息</strong>中）还是加在它的某个文档、编码、备忘录或链接上；后四个计数则只针对当前项目，所以每个数字都与点按它后得到的结果一致。只在其他项目中出现的标签也会列在表中，它在<strong class="ui">文档</strong>、<strong class="ui">编码</strong>、<strong class="ui">备忘录</strong>和<strong class="ui">链接</strong>列中的计数为 0。<strong class="ui">文档</strong>计数表示有多少个文档带有这个标签，其中一份原文和它的译文只计一次，因为它们带有相同的标签。在<strong class="ui">搜索</strong>中输入名称的一部分，可以筛选标签。标签不区分大小写，“CO2”与“co2”被视为同一个标签，窗口显示较常见的那种写法。</p>
+<p>点按标签可以选中它，连按两次或按下 Return 键会在主窗口的标签页中打开它。在导航栏的<strong class="ui">标签</strong>下点按一个标签，效果完全相同。每个大于零的计数都可以点按。点按<strong class="ui">文档</strong>计数会在新标签页中打开带这个标签的文档，与连按两次这一行的效果相同；点按<strong class="ui">编码</strong>计数会把当前项目的<strong class="ui">编码本</strong>筛选为只显示带这个标签的内容；同样，点按<strong class="ui">备忘录</strong>和<strong class="ui">链接</strong>计数会筛选<strong class="ui">备忘录</strong>和<strong class="ui">链接</strong>视图。点按视图顶部标签上的 ×（<strong class="ui">移除筛选</strong>）即可重新显示全部条目。点按<strong class="ui">项目</strong>下的计数会列出使用这个标签的项目，选取其中一个即可把它设为当前项目。</p>
+<figure class="shot" id="projects-and-documents-tags-codes-filter"><img class="shot-light" src="../figures/zh-Hans/light/projects-and-documents-tags-codes-filter.webp" alt="为编码“成本”添加标签“评论”并点按该标签的“编码”计数后，按该标签筛选的编码本。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/projects-and-documents-tags-codes-filter.webp" alt="为编码“成本”添加标签“评论”并点按该标签的“编码”计数后，按该标签筛选的编码本。" loading="lazy"><figcaption>为编码“成本”添加标签“评论”并点按该标签的“编码”计数后，按该标签筛选的编码本。</figcaption></figure>
+<p>重命名标签的步骤如下：</p>
+<ol>
+<li>右键点按标签并选取<strong class="ui">重命名</strong>。</li>
+<li>输入新名称并按下 Return 键。按下 Esc 键则取消。</li>
+</ol>
+<p>重命名标签后，所有带这个标签的项目、文档、编码、备忘录和链接都会使用新名称。智能文档集的条件和查询的规则中凡是指定了这个标签的，也都会相应更新。如果这个标签在某个标签页中打开，该标签页会使用新名称。如果把一个标签重命名为另一个标签的名称，两个标签会合并，使用后者的名称。</p>
+<p>从标签的快捷菜单中选取<strong class="ui">删除</strong>，即可删除这个标签。这个标签会从所有项目中带有它的对象上删除。主窗口中显示这个标签的标签页会自动关闭。</p>
+<p><strong class="ui">编辑 ▸ 撤销重命名标签</strong>（或<strong class="ui">编辑 ▸ 撤销删除标签</strong>，⌘Z）可以撤销你最近一次重命名或删除。标签窗口为当前窗口时，这个命令可用。</p>
+<h2 id="project-shelf">项目视图栏<a class="anchor" href="#project-shelf" aria-hidden="true">#</a></h2>
+<p>项目视图栏用来处理整个项目。导航栏的<strong class="ui">项目</strong>部分中有十个详细视图，每个视图都涵盖当前项目中的所有文档。点按后，这些视图会在文档旁边的标签页中打开，标签页以视图命名（例如<strong class="ui">编码统计</strong>）。</p>
+<p>如果你只想查看项目中的某个特定子集，就要打开你选择的文档集或标签。这样会打开同样的十个详细视图，但只涵盖这个子集中的文档。在“气候辩论”项目中，打开“行动派”文档集后，这十个视图只涵盖其中六篇行动派文本。这些子集的标签页会显示子集的名称和文档数量，标签页中还有一排按钮，每个按钮代表一个视图。默认显示<strong class="ui">编码本</strong>视图，点按其他任何按钮即可切换到相应的视图。如果窗口宽度不够，这些按钮会换成一个菜单。</p>
+<figure class="shot" id="projects-and-documents-set-tab"><img class="shot-light" src="../figures/zh-Hans/light/projects-and-documents-set-tab.webp" alt="在标签页中打开的“行动派”文档集的编码统计。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/projects-and-documents-set-tab.webp" alt="在标签页中打开的“行动派”文档集的编码统计。" loading="lazy"><figcaption>在标签页中打开的“行动派”文档集的编码统计。</figcaption></figure>
+<div class="table-wrap"><table>
+<thead><tr><th>视图</th><th>显示的内容</th><th>详见</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">编码本</strong></td><td>编码树，以及每个编码的编码片段数。对于选中的编码，显示它的说明，它在范围内的编码片段、文档和覆盖率，使用它的文档，以及与它同时出现的编码。</td><td><a href="coding.html">第 7 章“编码”</a></td></tr>
+<tr><td><strong class="ui">编码实例</strong></td><td>范围内的每个编码片段，以及它的编码和所在文档。你可以搜索和筛选这个列表，也可以在文档中打开某个编码片段。</td><td><a href="coding-analysis.html">第 13 章“编码分析”</a></td></tr>
+<tr><td><strong class="ui">备忘录</strong></td><td>范围内的备忘录，以及每条备忘录所属的文档和编码。</td><td><a href="coding.html">第 7 章“编码”</a></td></tr>
+<tr><td><strong class="ui">链接</strong></td><td>范围内文段之间的链接，以及每条链接的两端。</td><td><a href="coding.html">第 7 章“编码”</a></td></tr>
+<tr><td><strong class="ui">编码统计</strong></td><td>每个编码的使用次数和覆盖的文本量，可以按属性细分。</td><td><a href="coding-analysis.html">第 13 章“编码分析”</a></td></tr>
+<tr><td><strong class="ui">编码矩阵</strong></td><td>一张表格，每个编码占一行，显示每个编码在每个文档中的使用次数。<strong class="ui">列分组依据</strong>可以按属性、分组、语言或格式合并文档。</td><td><a href="coding-analysis.html">第 13 章“编码分析”</a></td></tr>
+<tr><td><strong class="ui">关系</strong></td><td>一张表格，显示各个编码在同一文段中重叠的次数。</td><td><a href="coding-analysis.html">第 13 章“编码分析”</a></td></tr>
+<tr><td><strong class="ui">词汇速写</strong></td><td>对于你选定的词，显示它在整个范围内与哪些词搭配，并按语法关系分组。</td><td><a href="word-sketch.html">第 12 章“词汇速写”</a></td></tr>
+<tr><td><strong class="ui">词典</strong></td><td>项目的词典，以及每个类别的词语在范围内的计数。</td><td><a href="dictionaries.html">第 19 章“词典”</a></td></tr>
+<tr><td><strong class="ui">查询</strong></td><td>查询构建器，在范围内的文档中搜索。</td><td><a href="queries-building.html">第 15 章“构建查询”</a></td></tr>
+</tbody></table></div>
+<p>要在阅读器旁边的单独窗口中打开一个视图，请使用<strong class="ui">在窗口中打开</strong>。这个按钮上有两个斜向箭头，位于视图上方那一栏的右端。<strong class="ui">词汇速写</strong>会在词汇速写窗口中打开，<strong class="ui">查询</strong>则在查询窗口中打开。其他八个视图都在编码本窗口中打开，这个窗口顶部有一排横向排列的按钮，分别对应全部十个视图。在文档集或标签的标签页中，只有<strong class="ui">词汇速写</strong>和<strong class="ui">查询</strong>可以在各自的窗口中打开。可以使用这个按钮，也可以右键点按标签页本身并选取<strong class="ui">在新窗口中打开</strong>。你还可以选取菜单项<strong class="ui">窗口 ▸ 编码本</strong>，或者右键点按项目并选取<strong class="ui">编码本</strong>，来打开编码本窗口。</p>
+<figure class="shot" id="projects-and-documents-codebook-window"><img class="shot-light" src="../figures/zh-Hans/light/projects-and-documents-codebook-window.webp" alt="“编码本”窗口，已选中“紧迫性”，顶部有十个视图按钮。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/projects-and-documents-codebook-window.webp" alt="“编码本”窗口，已选中“紧迫性”，顶部有十个视图按钮。" loading="lazy"><figcaption>“编码本”窗口，已选中“紧迫性”，顶部有十个视图按钮。</figcaption></figure>
+</article>
+<nav class="pager"><a class="previous" href="getting-started.html"><span>上一章</span>开始使用</a><a class="next" href="importing.html"><span>下一章</span>导入资料</a></nav>
+<footer class="site-footer">© 2026 Ryan S. Cooper. 保留所有权利。<br>本版本借助人工智能根据英文原版翻译而成，译文可能存在错误或不准确之处。如有疑问，请以英文版为准。</footer>
+</main>
+<nav class="page-toc" aria-label="本页内容"><p>本页内容</p><ul>
+<li class="level-2"><a href="#key-terms">基本概念</a></li>
+<li class="level-2"><a href="#navigator">导航栏</a></li>
+<li class="level-2"><a href="#projects">项目</a></li>
+<li class="level-3"><a href="#creating-a-project">新建项目</a></li>
+<li class="level-3"><a href="#switching-projects">在项目之间切换</a></li>
+<li class="level-3"><a href="#favorites">收藏</a></li>
+<li class="level-3"><a href="#project-menu">项目的快捷菜单</a></li>
+<li class="level-3"><a href="#project-properties">项目信息</a></li>
+<li class="level-3"><a href="#deleting-a-project">删除项目</a></li>
+<li class="level-3"><a href="#working-across-projects">跨项目工作</a></li>
+<li class="level-2"><a href="#documents">文档</a></li>
+<li class="level-3"><a href="#opening-documents">在标签页中打开文档</a></li>
+<li class="level-3"><a href="#preview-tab">预览标签页</a></li>
+<li class="level-3"><a href="#closing-tabs">关闭标签页</a></li>
+<li class="level-3"><a href="#selecting-documents">选择多个文档</a></li>
+<li class="level-3"><a href="#document-menu">文档的快捷菜单</a></li>
+<li class="level-3"><a href="#renaming-a-document">重命名文档</a></li>
+<li class="level-2"><a href="#document-properties">文档信息</a></li>
+<li class="level-3"><a href="#properties-details">详细信息</a></li>
+<li class="level-3"><a href="#properties-organization">整理</a></li>
+<li class="level-3"><a href="#properties-attributes">属性</a></li>
+<li class="level-3"><a href="#properties-citation">引用</a></li>
+<li class="level-3"><a href="#properties-indexing">索引</a></li>
+<li class="level-3"><a href="#source-file">源文件</a></li>
+<li class="level-2"><a href="#deleting-documents">删除文档</a></li>
+<li class="level-2"><a href="#groups">分组</a></li>
+<li class="level-2"><a href="#sets-and-tags-in-the-navigator">导航栏中的文档集和标签</a></li>
+<li class="level-2"><a href="#tags-window">标签窗口</a></li>
+<li class="level-2"><a href="#project-shelf">项目视图栏</a></li>
+</ul></nav>
+</div>
+<script src="../assets/guide.js" defer></script>
+</body>
+</html>

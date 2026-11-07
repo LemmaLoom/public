@@ -1,0 +1,695 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>编码 · LemmaLoom 用户指南</title>
+<link rel="stylesheet" href="../assets/guide.css">
+<link rel="icon" type="image/png" href="../assets/logo.png">
+<script>var r=document.documentElement;r.setAttribute('data-theme','light');try{if(localStorage.getItem('guide-theme')==='dark'){r.setAttribute('data-theme','dark')}}catch(e){}</script>
+</head>
+<body>
+<header class="topbar">
+<button class="menu-toggle" aria-label="目录" aria-expanded="false">☰</button>
+<a class="brand" href="index.html"><span class="wordmark"><span class="lemma">Lemma</span>Loom</span><span class="guide-name">用户指南</span></a>
+<div class="search"><input type="search" id="search" placeholder="搜索" aria-label="搜索" autocomplete="off" data-empty="无结果"><div class="results" id="results" hidden></div></div>
+<nav class="languages" aria-label="Language"><a href="../en/coding.html" lang="en">English</a><a href="../de/coding.html" lang="de">Deutsch</a><a href="../zh-Hans/coding.html" lang="zh-Hans" aria-current="true">简体中文</a></nav>
+<button class="theme-toggle" data-light="浅色" data-dark="深色" aria-label="外观"></button>
+<a class="pdf-link" href="https://github.com/LemmaLoom/public/raw/main/pdf/lemmaloom-guide-zh-Hans.pdf">PDF</a>
+</header>
+<div class="layout">
+<nav class="sidebar" aria-label="目录"><ol>
+<li class="unnumbered"><a href="quick-start.html">快速入门</a></li>
+<li><a href="introduction.html">简介</a></li>
+<li><a href="getting-started.html">开始使用</a></li>
+<li><a href="projects-and-documents.html">项目与文档</a></li>
+<li><a href="importing.html">导入资料</a></li>
+<li><a href="reading-and-editing.html">阅读与编辑</a></li>
+<li><a href="lenses.html">透镜</a></li>
+<li class="current"><a href="coding.html">编码</a></li>
+<li><a href="sets-tags-attributes.html">文档集、分组、标签和属性</a></li>
+<li><a href="translations.html">译文与分屏浏览</a></li>
+<li><a href="text-inspector.html">文本检查器</a></li>
+<li><a href="grammar-inspector.html">语法检查器</a></li>
+<li><a href="word-sketch.html">词汇速写</a></li>
+<li><a href="coding-analysis.html">编码分析</a></li>
+<li><a href="sketch-space.html">速写空间</a></li>
+<li><a href="queries-building.html">构建查询</a></li>
+<li><a href="queries-results.html">查询结果与统计</a></li>
+<li><a href="queries-patterns.html">查询模式与发现</a></li>
+<li><a href="queries-using-results.html">使用查询结果</a></li>
+<li><a href="dictionaries.html">词典</a></li>
+<li><a href="custom-analyzers.html">自定义分析器</a></li>
+<li><a href="analysis-and-indexing.html">分析与索引</a></li>
+<li><a href="exchange-and-export.html">交换与导出</a></li>
+<li><a href="undo.html">撤销与重做</a></li>
+<li><a href="settings.html">设置与外观</a></li>
+<li><a href="keyboard-shortcuts.html">键盘快捷键</a></li>
+<li><a href="help-and-support.html">帮助与支持</a></li>
+<li><a href="statistics-reference.html">统计量一览</a></li>
+<li class="unnumbered"><a href="glossary.html">术语表</a></li>
+<li class="unnumbered"><a href="thanks.html">感谢</a></li>
+</ol></nav>
+<main class="content">
+<article>
+<h1 id="coding">编码</h1>
+<p>编码是为段落标明其含义的工作，做法是给段落应用编码。大多数研究都从针对文档提出的问题开始，编码用来帮助回答这些问题。你的全部编码构成项目的编码本；如果研究需要，编码还可以按层级包含子编码。LemmaLoom 会保留每一段已编码的文字，以后你可以汇集每个编码的全部段落，在不同文档之间加以比较（见<a href="coding-analysis.html">第 13 章“编码分析”</a>）。</p>
+<p>备忘录、链接和书签与编码实例一样，都从阅读器中的选区开始。编码为段落贴上标签，而备忘录、链接和书签分别用来评述段落、把段落相互关联，以及以后再找到它们。如果词典、查询或自定义分析器已经找到了某些段落，可以用自动编码一次为它们全部编码。</p>
+<p>本章的示例都基于本指南随附的示例项目“气候辩论”。你可以通过<strong class="ui">文件 ▸ 导入 ▸ 示例项目</strong>添加它（见<a href="introduction.html">第 1 章“简介”</a>中的<a href="introduction.html#example-project">示例项目</a>）。它的编码本有五个代表各个主题的顶层编码，即“成本”“紧迫性”“科学”“情绪”和“责任”。“情绪”下有子编码“恐惧”和“希望”；“不确定性”属于“科学”。“紧迫性”也有两个子编码，即“临界点”和“时间节点”。</p>
+<h2 id="key-terms">概念与基本术语<a class="anchor" href="#key-terms" aria-hidden="true">#</a></h2>
+<p><em>编码</em>是表示话题或概念的标签，可以应用到文本中的段落上。编码组成树状结构，一个编码可以包含<em>子编码</em>，子编码下面还可以再有子编码。项目中所有编码组成的整棵树称为<em>编码系统</em>。在项目视图栏的<strong class="ui">编码本</strong>视图中，可以看到编码系统、各个编码的描述以及它们的使用次数。</p>
+<p>把一个编码应用到一段文本上，就得到一个<em>编码实例</em>。获得编码的这段文本称为<em>编码片段</em>，简称<em>片段</em>。同一段文字可以应用多个编码；这些编码实例可以相互重叠，也可以一个嵌套在另一个里面。</p>
+<p>每个编码都有一项<em>格式</em>设置（高亮、下划线或方框），决定阅读器如何显示应用了这个编码的段落；还有一项<em>适用范围</em>，可以把编码限定在一个文档集或单个文档中。</p>
+<p><em>编码集</em>是一组有名称的编码，其中的编码可以取自树中任何位置，供速写空间和查询使用。</p>
+<p>编码还可以有自己的<em>属性</em>，例如“恐惧”的强度。这与文档的“立场”或“读者数”是同一类属性，只是每个编码实例各有自己的值。</p>
+<p><em>备忘录</em>是你针对一段文字写下的笔记；与某个编码关联的备忘录就成为<em>已编码备忘录</em>。已编码备忘录算作这个编码的编码实例，继承它的标签，并且为它的各个属性保存自己的值。</p>
+<p>建立链接，就是用一条<em>链接</em>把两段文字连在一起；这两段文字可以出自同一个文档，也可以分属两个文档。链接可以附带一条评论，并在两段文字之间注明一种<em>关系</em>（例如“相矛盾”）。</p>
+<p><em>书签</em>是另一种标注，用来标记你以后想再找到的段落。书签有自己的评论字段，也可以设置颜色。</p>
+<p>上述所有标注都附着在文本中的段落上。因此，编辑文档时，这些标注会跟随各自的文字移动（见<a href="reading-and-editing.html">第 5 章“阅读与编辑”</a>中的<a href="reading-and-editing.html#annotations-follow-edits">标注如何跟随编辑</a>）。如果文档有译文，标注还会复制到译文中的对应段落（见本章后文的<a href="#codings-in-translations">译文中的编码实例</a>）。</p>
+<h2 id="where-you-code">编码界面<a class="anchor" href="#where-you-code" aria-hidden="true">#</a></h2>
+<p>编码在阅读器中应用。创建和维护编码，既可以在检查器的<strong class="ui">编码</strong>标签页中进行，也可以在项目视图栏的<strong class="ui">编码本</strong>和<strong class="ui">编码实例</strong>视图中进行。</p>
+<h3 id="selection-bar">选区栏和“文档”菜单<a class="anchor" href="#selection-bar" aria-hidden="true">#</a></h3>
+<p>在阅读器中选中文字后，阅读器底部附近会出现选区栏。每个按钮都作用于所选内容，并且在<strong class="ui">文档</strong>菜单中都有对应的命令：</p>
+<div class="table-wrap"><table>
+<thead><tr><th>按钮</th><th>命令</th><th>快捷键</th><th>作用</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">书签</strong>（或<strong class="ui">移除书签</strong>）</td><td><strong class="ui">文档 ▸ 书签</strong></td><td>⇧⌘B</td><td>为这段文字加书签，或者移除与之重叠的书签</td></tr>
+<tr><td><strong class="ui">编码</strong></td><td><strong class="ui">文档 ▸ 编码</strong></td><td>⇧⌘C</td><td>打开编码面板</td></tr>
+<tr><td><strong class="ui">备忘录</strong></td><td><strong class="ui">文档 ▸ 备忘录</strong></td><td>⇧⌘M</td><td>为这段文字新建一条备忘录</td></tr>
+<tr><td><strong class="ui">链接</strong>（或<strong class="ui">完成链接</strong>）</td><td><strong class="ui">文档 ▸ 链接</strong></td><td>⇧⌘L</td><td>从这里开始一个链接，或者结束你已经开始的链接</td></tr>
+</tbody></table></div>
+<p>选区栏上还有<strong class="ui">添加到词典</strong>命令，它会把所选文字插入项目词典的某个类别（见<a href="dictionaries.html">第 19 章“词典”</a>中的<a href="dictionaries.html#adding-from-text">从文档中添加词条</a>）。选区栏最右端是 ×，点按它会取消选择，与按下 Esc 键的作用相同。关于如何选择词、句子和段落，详见<a href="reading-and-editing.html">第 5 章“阅读与编辑”</a>中的<a href="reading-and-editing.html#selecting-text">选择文本</a>。</p>
+<figure class="shot" id="coding-selection-bar"><img class="shot-light" src="../figures/zh-Hans/light/coding-selection-bar.webp" alt="“时间不多了”中选中了一段文字，选区栏上有“书签”“编码”“添加到词典”“备忘录”“链接”和取消选择的按钮。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/coding-selection-bar.webp" alt="“时间不多了”中选中了一段文字，选区栏上有“书签”“编码”“添加到词典”“备忘录”“链接”和取消选择的按钮。" loading="lazy"><figcaption>“时间不多了”中选中了一段文字，选区栏上有“书签”“编码”“添加到词典”“备忘录”“链接”和取消选择的按钮。</figcaption></figure>
+<figure class="shot" id="coding-finish-link"><img class="shot-light" src="../figures/zh-Hans/light/coding-finish-link.webp" alt="“时间不多了”中点按“链接”之后的选区栏，显示“完成链接”和取消待定链接的按钮。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/coding-finish-link.webp" alt="“时间不多了”中点按“链接”之后的选区栏，显示“完成链接”和取消待定链接的按钮。" loading="lazy"><figcaption>“时间不多了”中点按“链接”之后的选区栏，显示“完成链接”和取消待定链接的按钮。</figcaption></figure>
+<p>编辑文档文本时，选区栏会隐藏，这些命令也会不可用。</p>
+<p><strong class="ui">文档</strong>菜单中还有三个与编码有关的命令。<strong class="ui">实境编码</strong>（⇧⌘V）用一个以所选词语命名的编码为所选段落编码（见本章的<a href="#coding-a-passage">为一段文字编码</a>）。<strong class="ui">自动编码…</strong>（⇧⌘A）自动为某个透镜标注的所有段落编码（见本章的<a href="#auto-coding">自动为段落编码</a>）。<strong class="ui">取消链接</strong>（⌥⇧⌘L）放弃你正在建立的链接。</p>
+<h3 id="coding-inspector">检查器的“编码”标签页<a class="anchor" href="#coding-inspector" aria-hidden="true">#</a></h3>
+<p>检查器的<strong class="ui">编码</strong>标签页（标签形图标，⌥⌘3）作用于当前活动的文档。这个标签页有六个分面：</p>
+<div class="table-wrap"><table>
+<thead><tr><th>分面</th><th>显示内容</th><th>参见</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">编码</strong></td><td>编码系统，以及每个编码在本文档中的编码实例数。你在这里创建、编辑和合并编码，也在这里查看编码集。</td><td><a href="#codes-facet">“编码”分面</a></td></tr>
+<tr><td><strong class="ui">编码实例</strong></td><td>本文档的编码实例和备忘录，按阅读顺序排列，并附每个编码实例的属性值</td><td><a href="#codings-facet">“编码实例”分面</a></td></tr>
+<tr><td><strong class="ui">链接</strong></td><td>至少有一端在本文档中的链接</td><td><a href="#following-links">沿链接跳转</a></td></tr>
+<tr><td><strong class="ui">编码统计</strong></td><td>每个编码在文档中的使用次数、覆盖了多少文本，以及哪些编码相互重叠</td><td><a href="coding-analysis.html">第 13 章“编码分析”</a>中的<a href="coding-analysis.html#code-stats-facet">编码频率与覆盖率</a></td></tr>
+<tr><td><strong class="ui">画像</strong></td><td>表现文档编码情况的两幅图，即<strong class="ui">马赛克</strong>和<strong class="ui">编码行</strong></td><td><a href="coding-analysis.html">第 13 章“编码分析”</a>中的<a href="coding-analysis.html#portrait">画像</a></td></tr>
+<tr><td><strong class="ui">编码速写</strong></td><td>一种词汇速写，按周围的编码把一个词的各种用法分开</td><td><a href="word-sketch.html">第 12 章“词汇速写”</a>中的<a href="word-sketch.html#code-sketch">编码速写</a></td></tr>
+</tbody></table></div>
+<p>书签则位于<strong class="ui">文本</strong>标签页中（见本章后文的<a href="#bookmarks">书签</a>）。</p>
+<h3 id="shelf-views">项目视图栏<a class="anchor" href="#shelf-views" aria-hidden="true">#</a></h3>
+<p>项目视图栏的十个视图中，有四个存放你的编码和标注，即<strong class="ui">编码本</strong>、<strong class="ui">编码实例</strong>、<strong class="ui">备忘录</strong>和<strong class="ui">链接</strong>。从导航栏的<strong class="ui">项目</strong>中打开时，这四个视图都涵盖整个项目；从文档集或标签的标签页中打开时，它们只涵盖相应文档集或标签中的文档。关于这些视图本身及其标签页的详细说明，请参阅<a href="projects-and-documents.html">第 3 章“项目与文档”</a>中的<a href="projects-and-documents.html#project-shelf">项目视图栏</a>。</p>
+<p>本章介绍<strong class="ui">编码本</strong>、<strong class="ui">备忘录</strong>和<strong class="ui">链接</strong>。<strong class="ui">编码实例</strong>视图列出范围内所有已编码的段落，并可以按属性值筛选这些段落。它与<strong class="ui">编码统计</strong>、<strong class="ui">编码矩阵</strong>和<strong class="ui">关系</strong>一起，在<a href="coding-analysis.html">第 13 章“编码分析”</a>中的<a href="coding-analysis.html#codings-view">“编码实例”视图</a>中介绍。</p>
+<h2 id="codes">编码<a class="anchor" href="#codes" aria-hidden="true">#</a></h2>
+<h3 id="creating-a-code">创建编码<a class="anchor" href="#creating-a-code" aria-hidden="true">#</a></h3>
+<p>编码可以在检查器的<strong class="ui">编码</strong>分面或<strong class="ui">编码本</strong>视图中创建。编码过程本身则是在阅读器中选中段落，再通过编码面板为所选内容应用编码。在分析过程中直接从编码面板当场创建编码的方法，见下文<a href="#coding-a-passage">为一段文字编码</a>。一般来说，事先为你的问题创建一批初始编码会有帮助，不过在分析过程中根据材料添加新的编码也没有问题。编码本通常在最初几个文档的编码过程中逐渐成形，编码随时都可以编辑和合并（见本章后文的<a href="#organizing-codes">整理编码</a>）。</p>
+<p>要在检查器中创建编码：</p>
+<ol>
+<li>打开一个文档。</li>
+<li>在检查器中点按<strong class="ui">编码</strong>标签页，然后点按<strong class="ui">编码</strong>。</li>
+<li>点按<strong class="ui">编码系统</strong>右侧的 <strong class="ui">+</strong>。</li>
+<li>在<strong class="ui">新建编码</strong>对话框的<strong class="ui">名称</strong>中输入名称。</li>
+<li>按照下文<a href="#code-fields">编码的字段</a>中的说明设置其他字段，或者保持原样。</li>
+<li>点按<strong class="ui">存储</strong>。</li>
+</ol>
+<p>要创建子编码，请在<strong class="ui">编码</strong>分面中右键点按上级编码，然后选取<strong class="ui">添加子编码</strong>。打开的是同一个对话框，新编码会出现在上级编码下方。</p>
+<p>在<strong class="ui">编码本</strong>视图中，点按列表下方的<strong class="ui">添加编码</strong>会创建顶层编码。在同一视图中右键点按上级编码，会出现<strong class="ui">添加子编码</strong>。菜单命令<strong class="ui">项目 ▸ 添加编码</strong>打开新建顶层编码的对话框；<strong class="ui">项目 ▸ 添加子编码</strong>则打开对话框，为<strong class="ui">编码</strong>分面或<strong class="ui">编码本</strong>视图中当前选中的编码新建子编码。</p>
+<p>编码有名称之前，<strong class="ui">存储</strong>按钮一直不可用（悬停提示为<strong class="ui">名称为空</strong>）。请务必给每个编码起一个不重复的名称，因为在菜单和表格中很难区分两个同名的编码。</p>
+<h3 id="code-fields">编码的字段<a class="anchor" href="#code-fields" aria-hidden="true">#</a></h3>
+<p><strong class="ui">新建编码</strong>和<strong class="ui">编辑编码</strong>对话框的字段完全相同。“气候辩论”中的每个主题编码（包括“时间节点”）都有自己的颜色，格式为<strong class="ui">高亮</strong>，适用范围为<strong class="ui">项目</strong>，<strong class="ui">说明</strong>中还有一段描述，写明这个编码指的是什么。例如，“时间节点”的描述是“目标年份、倒计时和截止日期，无论是被要求的、被承诺的还是被批评的。”</p>
+<figure class="shot" id="coding-code-sheet"><img class="shot-light" src="../figures/zh-Hans/light/coding-code-sheet.webp" alt="“时间节点”的“编辑编码”对话框，从“时间不多了”的“编码”分面打开。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/coding-code-sheet.webp" alt="“时间节点”的“编辑编码”对话框，从“时间不多了”的“编码”分面打开。" loading="lazy"><figcaption>“时间节点”的“编辑编码”对话框，从“时间不多了”的“编码”分面打开。</figcaption></figure>
+<p><strong class="ui">颜色</strong>设置决定编码在阅读器中的外观。可以选择<strong class="ui">无颜色</strong>，也可以从<strong class="ui">红色</strong>到<strong class="ui">粉色</strong>的八种颜色中选一种。如果这些都不合适，最右端还有一个颜色池（<strong class="ui">选择任意颜色</strong>）。设为<strong class="ui">无颜色</strong>的编码，在文本中以主题的强调色显示，在页边栏中显示为黄色。为文档编码时，不妨给多个编码选用不同的颜色，以免相互重叠的编码实例在文本和页边栏中混在一起。</p>
+<p><strong class="ui">格式</strong>决定阅读器如何呈现已编码的文字。<strong class="ui">高亮</strong>用编码的颜色填充背景；<strong class="ui">下划线</strong>在文字下方画一条该颜色的横线；<strong class="ui">方框</strong>在文字周围画一个边框。编码实例相互重叠时，混用几种格式有助于把它们区分开，例如方框里的一个高亮短语依然清晰可辨。所选格式适用于这个编码的全部编码实例，包括已编码备忘录。</p>
+<p>关于<strong class="ui">适用范围</strong>，以及可以附加到编码上的<strong class="ui">标签</strong>和<strong class="ui">属性</strong>，本章另有专门的小节加以说明，即<a href="#code-scope">编码的适用范围</a>、<a href="#code-tags">编码上的标签</a>和<a href="#coding-attributes">带属性的编码</a>。</p>
+<p>你可以在编码的<strong class="ui">说明</strong>中描述这个编码，解释它涵盖哪些内容，并写下在整个研究过程中一致应用它的准则。这段描述显示在<strong class="ui">编码本</strong>视图中编码名称的下方，也会写入导出的编码本。</p>
+<h3 id="code-scope">编码的适用范围<a class="anchor" href="#code-scope" aria-hidden="true">#</a></h3>
+<p><strong class="ui">适用范围</strong>菜单为每个编码提供三种适用范围：</p>
+<ul>
+<li><strong class="ui">项目</strong>让编码可以在项目的所有文档中使用。新建的编码默认使用这一范围。</li>
+<li><strong class="ui">文档集</strong>把编码的使用限定在一个文档集的文档中。请在下方的<strong class="ui">文档集</strong>下拉菜单中选择这个文档集。适用范围也可以是按条件挑选文档的智能文档集（见<a href="sets-tags-attributes.html">第 8 章“文档集、分组、标签和属性”</a>中的<a href="sets-tags-attributes.html#smart-sets">智能文档集</a>）。适用范围为文档集时，新文档一旦加入这个文档集，LemmaLoom 就会让这个编码在其中可用；文档不再属于这个文档集时，就不再在其中提供这个编码。</li>
+<li><strong class="ui">文档</strong>把编码的适用范围定为某一个文档，编码适用于这个文档及其译文。请在下方的<strong class="ui">文档</strong>下拉菜单中选择目标文档。</li>
+</ul>
+<figure class="shot" id="coding-scope-menu"><img class="shot-light" src="../figures/zh-Hans/light/coding-scope-menu.webp" alt="“编辑编码”对话框中“恐惧”的“文档集”菜单，列出“气候辩论”的文档集和智能文档集。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/coding-scope-menu.webp" alt="“编辑编码”对话框中“恐惧”的“文档集”菜单，列出“气候辩论”的文档集和智能文档集。" loading="lazy"><figcaption>“编辑编码”对话框中“恐惧”的“文档集”菜单，列出“气候辩论”的文档集和智能文档集。</figcaption></figure>
+<p>编码面板、<strong class="ui">编码</strong>分面和<strong class="ui">自动编码</strong>对话框按照适用范围，只显示与当前文档相关的编码。适用范围为文档集或文档的编码，需要先在相应的下拉菜单中选定文档集或文档。<strong class="ui">编码本</strong>视图显示所有适用范围的编码。</p>
+<p>大多数情况下，适用范围设为项目就足够了。不过，如果某些编码只在部分文档中有意义，例如“行动派”文档集中关于抗议策略的编码，就可以使用文档集或文档范围。LemmaLoom 在转写过程中生成的说话人编码属于文档编码，因为它们只与单个文档（录音的转写稿）有关。例如，在“气候辩论”项目中，“说话人”（子编码为“主持人”“活动人士”和“怀疑论者”）是“电台辩论”的文档编码，所以你为“时间不多了”编码时，编码面板中不会出现它（见<a href="importing.html">第 4 章“导入资料”</a>中的<a href="importing.html#speaker-detection">说话人</a>）。</p>
+<p>以后缩小编码的适用范围时，此前的编码实例在文本和各项统计中都保持不变。在缩小后的范围以外的文档中，这些编码实例只能通过<strong class="ui">编码实例</strong>分面或项目视图栏的<strong class="ui">编码实例</strong>视图删除（见本章后文的<a href="#removing-codings">移除一段文字上的编码</a>）。如果删除了编码所属的文档集，要再次应用这个编码，需要先为它指定新的适用范围。删除文档时，它的文档编码会一并删除。删除译文时，译文的文档编码会转给原文。</p>
+<p>关于文档集或项目范围的词汇速写如何处理文档编码，请参阅<a href="word-sketch.html">第 12 章“词汇速写”</a>中的<a href="word-sketch.html#document-codes">文档编码</a>。</p>
+<h3 id="subcodes">子编码和编码树<a class="anchor" href="#subcodes" aria-hidden="true">#</a></h3>
+<p>在<strong class="ui">编码</strong>分面和<strong class="ui">编码本</strong>视图中，树的每一层编码都按名称顺序排列，子编码缩进显示在上级编码下方。</p>
+<p>如果层级结构对你的研究有帮助，就使用子编码。这样可以按一个宽泛主题的不同表现形式把它细分。例如，在示例项目“气候辩论”中，“紧迫性”分为“时间节点”和“临界点”，前者指目标年份和截止日期，后者指据称一旦越过、损害就无法逆转的阈值。如果没有这种自然的层级，简单的平铺列表就够用了。</p>
+<p>上级编码本身也是一个普通的编码。如果一段文字属于这个宽泛的主题，却不属于子编码所涵盖的任何一种表现形式，就用上级编码为它编码。在“一位市长的承诺”中，“我们没有慢慢起步的余地”被编码为“紧迫性”，因为它既不属于“临界点”，也不属于“时间节点”。上级编码旁边的数字只统计直接用它编码的段落。</p>
+<p>要移动编码，请在<strong class="ui">编码</strong>分面或<strong class="ui">编码本</strong>视图中把它拖到新的上级编码上，或者右键点按它并选取<strong class="ui">移到</strong>。<strong class="ui">移到</strong>子菜单以树的形式列出编码，但不包括被移动的编码本身及其子编码。列表最上方的<strong class="ui">顶层</strong>会让所选编码脱离上级编码。<strong class="ui">项目 ▸ 移到</strong>对当前选中的编码起同样的作用。编码会保留它的编码实例，它的子编码也随之一起移动。</p>
+<h2 id="applying-codes">应用编码<a class="anchor" href="#applying-codes" aria-hidden="true">#</a></h2>
+<h3 id="coding-a-passage">为一段文字编码<a class="anchor" href="#coding-a-passage" aria-hidden="true">#</a></h3>
+<p>在“时间不多了”的第四段中，三个目标“2050年实现净零。本十年末告别煤炭。2030年排放减半。”被编码为“时间节点”。插图中选中的段落出自“农民不是敌人”，它同时被编码为“成本”和“责任”，因为它既谈到转型的账由谁来付，也谈到应该由谁行动。所以编码面板在这两个编码旁边都显示勾号。</p>
+<figure class="shot" id="coding-palette-applied"><img class="shot-light" src="../figures/zh-Hans/light/coding-palette-applied.webp" alt="“农民不是敌人”中通过页边栏竖条选中的一段文字，编码面板显示“成本”和“责任”已经应用。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/coding-palette-applied.webp" alt="“农民不是敌人”中通过页边栏竖条选中的一段文字，编码面板显示“成本”和“责任”已经应用。" loading="lazy"><figcaption>“农民不是敌人”中通过页边栏竖条选中的一段文字，编码面板显示“成本”和“责任”已经应用。</figcaption></figure>
+<p>要为一段文字编码：</p>
+<ol>
+<li>选中一段文字、点按页边栏中的段落编号或句子编号，或者点按单个词。</li>
+<li>点按选区栏中的<strong class="ui">编码</strong>，或者按下 ⇧⌘C。</li>
+<li>在编码面板中点按编码。如果这个编码有属性，会先出现一个对话框，询问属性的值（见本章后文的<a href="#coding-attributes">带属性的编码</a>）。</li>
+</ol>
+<p>能选中什么取决于文档。单个词和句子编号只有在文档建立索引之后才能选择。选中一段文字则适用于所有文档，包括用英语、德语和中文以外的语言写成的文档。</p>
+<p>编码面板按名称顺序列出当前文档中可以使用的所有编码，每一项都显示编码名称及其颜色。由于列表是平铺的而不是分层的，“时间节点”排在“情绪”之后、“希望”之前。面板打开时，焦点位于<strong class="ui">搜索编码</strong>输入框中，输入名称的一部分即可缩短列表，结果中的第一项会高亮显示。按下 Return 键，高亮的编码就会应用到这段文字上；↑ 和 ↓ 键可以移动高亮，在输入之前也可以。因此，只要输入几个字再按 Return 键，就能完全用键盘为一段文字编码。</p>
+<p>为一段文字应用编码后，编码面板仍然保持打开，你可以立即为同一段文字应用更多编码。按下 Esc 键或点按面板以外的任何地方，即可关闭面板。</p>
+<p>如果某个可用的编码已经覆盖了所选段落的一部分，它的名称旁边就会显示勾号。点按带勾号的编码，或者在它高亮时按下 Return 键，就会从这段文字上移除这个编码（见下文<a href="#removing-codings">移除一段文字上的编码</a>）。要改变一个编码实例覆盖的范围，需要先移除现有的编码实例，再重新编码。要给现有的编码实例换一个编码，可以使用<strong class="ui">编码实例</strong>分面中的<strong class="ui">更改编码</strong>（见下文<a href="#codings-facet">“编码实例”分面</a>）。</p>
+<p>分析过程中想到的编码，可以在阅读文档时通过编码面板直接加进编码本。如果列表中没有哪个编码的名称与你输入的相同，列表底部会出现<strong class="ui">添加编码“…”</strong>，它会创建一个以此命名的编码并应用它。<strong class="ui">实境编码“…”</strong>始终排在列表最后；它根据文档中当前选中的文字新建一个<em>实境编码</em>，用所选文字为编码命名，并应用这个编码。例如，在“时间不多了”中选中“标上了日期的愿望”，面板就会提供<strong class="ui">实境编码“标上了日期的愿望”</strong>。<strong class="ui">文档 ▸ 实境编码</strong>（⇧⌘V）不打开面板也能完成同样的操作。名称超过 60 个字符时会被截短，并以省略号结尾。如果本文档中可以使用的某个编码已经有这个名称（不区分大小写），LemmaLoom 就会使用这个编码，而不会新建一个。</p>
+<p>通过面板中的添加编码或实境编码功能创建的编码，位于编码本层级的顶层，颜色为<strong class="ui">无颜色</strong>，格式为<strong class="ui">高亮</strong>，适用范围为<strong class="ui">项目</strong>。下次检查编码本时，不妨给这些编码选一种颜色，并把它们放到树中合适的位置（见本章后文的<a href="#organizing-codes">整理编码</a>）。在最初几轮编码中，实境编码让编码更贴近材料原本的措辞，因而可能很有用；等编码稳定下来，再给它们重命名或把它们合并。<strong class="ui">编辑 ▸ 撤销应用编码</strong>（⌘Z）会同时移除这个编码实例和新编码。</p>
+<h3 id="coded-text">编码的显示方式<a class="anchor" href="#coded-text" aria-hidden="true">#</a></h3>
+<p><strong class="ui">编码</strong>透镜启用时（文档打开时默认启用），每个编码实例都以其编码的颜色和格式标示出来。页边栏中，每段已编码文字的旁边有一条与编码同色的细竖条，这段文字开头处的旁边还有一个显示编码名称的小标注。相互重叠的编码实例并排显示，最多三条竖条；更多的编码实例共用第三条竖条。将鼠标指针悬停在竖条上，对应的段落会高亮显示；点按竖条或编码标注，即可选中这段文字。</p>
+<p>如果页边栏中有几个标注几乎处在同一高度，LemmaLoom 只为它们显示一个标注，就像上图中所选段落旁边的那个。编码实例、备忘录、书签和链接端点都以同样的方式合并；每个合并后的标注为前三项各显示一个彩色圆点，并标出其中的项数。将鼠标指针悬停在合并标注上或点按它，会列出其中的各项，点按一项即可选中它的段落；如果这一项是链接端点，点按它会跳到链接的另一端。</p>
+<figure class="shot" id="coding-combined-annotation"><img class="shot-light" src="../figures/zh-Hans/light/coding-combined-annotation.webp" alt="“时间不多了”中的合并标注，列表已展开，显示编码“不确定性”和链接“相矛盾”。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/coding-combined-annotation.webp" alt="“时间不多了”中的合并标注，列表已展开，显示编码“不确定性”和链接“相矛盾”。" loading="lazy"><figcaption>“时间不多了”中的合并标注，列表已展开，显示编码“不确定性”和链接“相矛盾”。</figcaption></figure>
+<p>停用<strong class="ui">编码</strong>透镜，会一次性移除编码实例的所有视觉标记（见<a href="lenses.html">第 6 章“透镜”</a>中的<a href="lenses.html#codes-and-bookmarks">编码与书签</a>）。</p>
+<h3 id="removing-codings">移除一段文字上的编码<a class="anchor" href="#removing-codings" aria-hidden="true">#</a></h3>
+<ol>
+<li>选中这段文字。点按页边栏中它的竖条或标注，可以正好选中已编码的文字。</li>
+<li>打开编码面板（⇧⌘C）。</li>
+<li>点按带勾号的编码。</li>
+</ol>
+<p>点按这个编码，会删除这个编码中与所选内容重叠的所有编码实例，即使这些编码实例超出了所选范围也是如此。如果同一个编码的几个编码实例挨得很近，选择时请多加小心。</p>
+<p>如果只想移除某一个编码实例，而不是所有重叠的编码实例，请使用<strong class="ui">编码实例</strong>分面。点按这个编码实例，再点按其文字下方的<strong class="ui">删除</strong>；或者右键点按它，从菜单中选取<strong class="ui">删除编码实例</strong>。如果你正在查看项目视图栏的<strong class="ui">编码实例</strong>视图，也可以右键点按片段，然后选取<strong class="ui">删除编码实例</strong>。</p>
+<p>删除一个编码实例，也会删除它的属性值，以及它在文档译文中的副本。</p>
+<h3 id="codings-facet">“编码实例”分面<a class="anchor" href="#codings-facet" aria-hidden="true">#</a></h3>
+<p><strong class="ui">编码实例</strong>分面按阅读顺序显示当前文档中的所有编码实例。顶部的切换控件在<strong class="ui">编码实例</strong>和<strong class="ui">备忘录</strong>之间切换，两者的标签后面都在括号中标出数量，例如“时间不多了”的<strong class="ui">编码实例 (13)</strong>。关于备忘录，本章后文的<a href="#managing-memos">阅读、编辑和删除备忘录</a>有更详细的说明。</p>
+<p>每个编码实例占一行，显示编码的颜色和名称、位置以及文字的第一行。第 4 段第 2 句的位置写作 ¶4·2。在没有句子的文档中（例如尚未建立索引的文档），只显示段落，如 ¶4。点按一个编码实例，LemmaLoom 会把阅读器滚动到这段已编码的文字。这一行同时展开，显示最多四行文字、为它设置的属性值以及<strong class="ui">删除</strong>按钮。再点按一次即可收起。右键点按则可以选取<strong class="ui">跳转到来源</strong>、<strong class="ui">更改编码</strong>或<strong class="ui">删除编码实例</strong>。</p>
+<figure class="shot" id="coding-codings-facet"><img class="shot-light" src="../figures/zh-Hans/light/coding-codings-facet.webp" alt="“时间不多了”的“编码实例”分面，显示“编码实例 (13)”，其中“时间节点”的编码实例已展开。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/coding-codings-facet.webp" alt="“时间不多了”的“编码实例”分面，显示“编码实例 (13)”，其中“时间节点”的编码实例已展开。" loading="lazy"><figcaption>“时间不多了”的“编码实例”分面，显示“编码实例 (13)”，其中“时间节点”的编码实例已展开。</figcaption></figure>
+<p><strong class="ui">更改编码</strong>以树的形式分层列出可以指定的编码。选取一个之后，这个编码实例及其在译文中的副本都会改用所选编码。如果新编码有名称和类型都相同的属性，编码实例会保留这些属性的值；其他属性的值则会丢失。用<strong class="ui">编辑 ▸ 撤销更改编码</strong>（⌘Z）可以撤销编码的更改，这些值也会一起恢复。项目视图栏的<strong class="ui">编码实例</strong>视图中，每个片段的快捷菜单里也有相同的菜单项。</p>
+<figure class="shot" id="coding-change-code-menu"><img class="shot-light" src="../figures/zh-Hans/light/coding-change-code-menu.webp" alt="“农民不是敌人”的“编码实例”分面中，“成本”编码实例的快捷菜单，“更改编码”子菜单已打开。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/coding-change-code-menu.webp" alt="“农民不是敌人”的“编码实例”分面中，“成本”编码实例的快捷菜单，“更改编码”子菜单已打开。" loading="lazy"><figcaption>“农民不是敌人”的“编码实例”分面中，“成本”编码实例的快捷菜单，“更改编码”子菜单已打开。</figcaption></figure>
+<p>编码实例列表上方还有三个控件：</p>
+<ul>
+<li><strong class="ui">搜索</strong>按编码名称或文字搜索，以缩短列表。</li>
+<li>漏斗按钮<strong class="ui">按编码筛选</strong>把列表限定为所选编码的编码实例。选取<strong class="ui">所有编码</strong>即可恢复显示全部编码实例。</li>
+<li><strong class="ui">导出</strong>可以把当前显示的所有编码实例导出为 CSV 文件，各列为编码、位置、开始、结束和文本。其中“开始”和“结束”以从文档开头算起的字符数表示这段文字所在的位置。</li>
+</ul>
+<h3 id="coding-attributes">带属性的编码<a class="anchor" href="#coding-attributes" aria-hidden="true">#</a></h3>
+<p>有时，编码需要比简单的是或否更细致的区分。例如，在一项关于气候类文章中恐惧情绪的研究中，你可能想为每个恐惧的编码实例记下强度。这里的属性就是“强度”，选项可以是“低”“中”或“高”，“恐惧”的每个编码实例各取其中之一。一般来说，如果某种性质在每段已编码的文字中都存在（在这个例子中，就是情绪有多强烈），就用属性。如果一个编码下还有另一个层次，值得在编码面板和编码表格中作为独立的条目出现，就用子编码。</p>
+<p>要为编码添加属性：</p>
+<ol>
+<li>打开编码的对话框，例如在<strong class="ui">编码</strong>分面中连按这个编码。</li>
+<li>在<strong class="ui">属性</strong>下点按<strong class="ui">添加属性</strong>。</li>
+<li>输入属性名称。输入时会提示项目中已有的属性名称；选择其中一个，也会一并沿用它的类型和选项。</li>
+<li>在名称旁边显示<strong class="ui">文本</strong>的菜单中选择类型，即<strong class="ui">文本</strong>、<strong class="ui">整数</strong>、<strong class="ui">小数</strong>、<strong class="ui">布尔值</strong>（真或假）、<strong class="ui">日期</strong>或<strong class="ui">选择器</strong>（从一组选项中选一个）。</li>
+<li>如果选择了<strong class="ui">选择器</strong>，请在出现的各行中输入各个选项，每行一个。</li>
+<li>点按<strong class="ui">存储</strong>。</li>
+</ol>
+<p><strong class="ui">添加属性</strong>上方列出编码已有的属性，每个都标出类型。铅笔按钮（<strong class="ui">编辑</strong>）会打开<strong class="ui">编辑属性</strong>对话框，你可以在其中编辑属性的名称、选项和<strong class="ui">描述</strong>；如果属性中已记录的值允许，还可以更改类型。这个对话框的<strong class="ui">存储</strong>按钮会立即应用更改，无需在编码对话框中再次确认；即使你随后取消了编码对话框，这些更改也会保留。减号按钮（<strong class="ui">移除属性</strong>）会在你存储编码时删除这个属性及其全部值。关于上述各种类型的详细说明，请参阅<a href="sets-tags-attributes.html">第 8 章“文档集、分组、标签和属性”</a>中的<a href="sets-tags-attributes.html#attribute-types">属性类型</a>。</p>
+<figure class="shot" id="coding-code-attribute-sheet"><img class="shot-light" src="../figures/zh-Hans/light/coding-code-attribute-sheet.webp" alt="“恐惧”的“编辑编码”对话框，其中属性“强度”的类型为选择器，选项为低、中和高。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/coding-code-attribute-sheet.webp" alt="“恐惧”的“编辑编码”对话框，其中属性“强度”的类型为选择器，选项为低、中和高。" loading="lazy"><figcaption>“恐惧”的“编辑编码”对话框，其中属性“强度”的类型为选择器，选项为低、中和高。</figcaption></figure>
+<p>为文字应用带属性的编码时，LemmaLoom 会先打开一个小对话框，请你填写相应的属性。填好需要的值，然后点按<strong class="ui">应用编码</strong>。</p>
+<figure class="shot" id="coding-value-sheet"><img class="shot-light" src="../figures/zh-Hans/light/coding-value-sheet.webp" alt="为“时间不多了”中的一段文字应用“恐惧”时，询问“强度”的值的对话框。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/coding-value-sheet.webp" alt="为“时间不多了”中的一段文字应用“恐惧”时，询问“强度”的值的对话框。" loading="lazy"><figcaption>为“时间不多了”中的一段文字应用“恐惧”时，询问“强度”的值的对话框。</figcaption></figure>
+<p>应用带属性的编码之后，要修改这些值，请在<strong class="ui">编码实例</strong>分面中点按这个编码实例。修改任何一个值控件后，更改会立即保存。</p>
+<p>在项目视图栏的<strong class="ui">编码实例</strong>视图中，所选片段的属性值旁边有可以直接修改它们的控件。在这个视图中，还可以按属性值筛选片段。<strong class="ui">编码统计</strong>的<strong class="ui">属性分布</strong>部分（分面和项目视图栏中的视图都有）按属性值细分每个编码的编码实例，详见<a href="coding-analysis.html">第 13 章“编码分析”</a>中的<a href="coding-analysis.html#attribute-breakdowns">属性分布</a>。查询构建器可以按属性值查询编码实例（见<a href="queries-building.html">第 15 章“构建查询”</a>）。</p>
+<p>归属于带属性编码的已编码备忘录，有自己的一套属性值（见本章后文的<a href="#coded-memos">已编码备忘录</a>）。</p>
+<h3 id="codings-in-translations">译文中的编码实例<a class="anchor" href="#codings-in-translations" aria-hidden="true">#</a></h3>
+<p>通过翻译，你可以为文档创建不同语言的版本。“时间不多了 (英语)”就是一份英语译文，在导航栏中列在原文下方。在“时间不多了”中为任何一段文字编码，译文中的对应段落也会得到同样的编码，反之亦然。在任一文档中创建的备忘录、链接和书签也都会复制过去。所有副本始终相互关联。</p>
+<p>副本与段落贴合得有多准确，取决于两份文本的句子如何对齐（详见<a href="translations.html">第 9 章“译文与分屏浏览”</a>中的<a href="translations.html#copy-placement">副本存放在哪里</a>）。删除或编辑其中一个副本，这个编码实例的所有副本都会随之变化。编码实例和它的副本也共用相同的属性值。</p>
+<p>对文档集或项目进行的分析，默认只针对原文文档。因此，在分析结果中，一个编码实例和它的副本只计一次（见<a href="translations.html">第 9 章“译文与分屏浏览”</a>中的<a href="translations.html#translations-in-analyses">分析中的译文</a>）。</p>
+<h2 id="organizing-codes">整理编码<a class="anchor" href="#organizing-codes" aria-hidden="true">#</a></h2>
+<h3 id="editing-a-code">编辑编码<a class="anchor" href="#editing-a-code" aria-hidden="true">#</a></h3>
+<p>要打开<strong class="ui">编辑编码</strong>对话框：</p>
+<ul>
+<li>在<strong class="ui">编码</strong>分面中连按编码，即可直接打开；右键点按编码并选取<strong class="ui">编辑</strong>也可以打开。</li>
+<li>同样，在<strong class="ui">编码本</strong>视图中，连按编码、点按详细信息中编码名称旁边的<strong class="ui">编辑</strong>，或者右键点按编码并选取<strong class="ui">编辑</strong>，都可以打开它。</li>
+</ul>
+<p>在这两个地方，点按一下即可选中编码，选中后按下 Return 键会打开<strong class="ui">编辑编码</strong>对话框。完成所需的更改后点按<strong class="ui">存储</strong>，所有更改都会立即反映在当前打开的文档中。</p>
+<h3 id="codes-facet">“编码”分面<a class="anchor" href="#codes-facet" aria-hidden="true">#</a></h3>
+<p><strong class="ui">编码</strong>分面在<strong class="ui">编码系统</strong>标题下，列出适用范围包含当前文档的编码。在这个例子中，当前文档（“时间不多了”）可以使用的编码，是“气候辩论”中除“说话人”及其子编码以外的全部编码，因为“说话人”及其子编码属于“电台辩论”。“成本”和“不确定性”各有一条自己的备忘录，因此显示便笺图标；编码集“论点”显示在编码系统下方。</p>
+<figure class="shot" id="coding-codes-facet"><img class="shot-light" src="../figures/zh-Hans/light/coding-codes-facet.webp" alt="“时间不多了”的“编码”分面，编码系统下方是编码集“论点”。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/coding-codes-facet.webp" alt="“时间不多了”的“编码”分面，编码系统下方是编码集“论点”。" loading="lazy"><figcaption>“时间不多了”的“编码”分面，编码系统下方是编码集“论点”。</figcaption></figure>
+<p>每一行从左到右依次显示：</p>
+<ul>
+<li>编码的颜色和名称；</li>
+<li>便笺图标，表示有一条专门附在这个编码上的备忘录，只有导入的项目才可能有这种备忘录（见本章后文的<a href="#other-memos">关于文档、编码和项目的备忘录</a>）；</li>
+<li>最右侧是这个编码在本文档中的使用次数（包括与这个编码相关的已编码备忘录）。点按这个数字（<strong class="ui">显示编码实例</strong>），可以在<strong class="ui">编码实例</strong>分面中查看编码实例列表。</li>
+</ul>
+<p>标题行有两个按钮。<strong class="ui">导出</strong>把整个列表导出为 CSV 文件，<strong class="ui">+</strong> 用来添加新编码。右键点按编码，会出现<strong class="ui">编辑</strong>、<strong class="ui">添加子编码</strong>、<strong class="ui">显示编码实例</strong>、<strong class="ui">移到</strong>、<strong class="ui">合并到</strong>、<strong class="ui">添加到编码集</strong>和<strong class="ui">删除</strong>等选项；<strong class="ui">项目</strong>菜单为所选编码提供<strong class="ui">添加子编码</strong>、<strong class="ui">移到</strong>、<strong class="ui">合并到</strong>、<strong class="ui">添加到编码集</strong>和<strong class="ui">删除编码</strong>。</p>
+<figure class="shot" id="coding-codes-facet-menu"><img class="shot-light" src="../figures/zh-Hans/light/coding-codes-facet-menu.webp" alt="“编码”分面中编码“时间节点”的快捷菜单，“添加到编码集”子菜单已打开。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/coding-codes-facet-menu.webp" alt="“编码”分面中编码“时间节点”的快捷菜单，“添加到编码集”子菜单已打开。" loading="lazy"><figcaption>“编码”分面中编码“时间节点”的快捷菜单，“添加到编码集”子菜单已打开。</figcaption></figure>
+<p>如果项目中有编码集，它们会显示在编码系统下方一个名为<strong class="ui">编码集</strong>的单独部分中（见下文<a href="#code-sets">编码集</a>）。</p>
+<h3 id="code-tags">编码上的标签<a class="anchor" href="#code-tags" aria-hidden="true">#</a></h3>
+<p>标签是简短的名称，可以加在项目、文档、编码、备忘录和链接上。整个 LemmaLoom 共用一份标签列表，所以像“待跟进”这样的标签，无论用在哪里，含义都相同（见<a href="sets-tags-attributes.html">第 8 章“文档集、分组、标签和属性”</a>中的<a href="sets-tags-attributes.html#tags">标签</a>）。与在其他地方一样，编码上的标签用于整理，而不是表达含义。例如，你可以用标签标出还需要进一步检查的编码。</p>
+<p>为编码加标签要在编码的对话框中进行。在<strong class="ui">标签</strong>字段（占位文字为<strong class="ui">添加标签</strong>）中输入标签，然后按下 Return 键。输入英文逗号也会结束一个标签。输入时会显示 LemmaLoom 中任何地方已有的标签作为建议。点按标签旁边的按钮（×）移除这个标签。</p>
+<p>在<strong class="ui">编码本</strong>视图中，只要至少有一个编码带有标签，就可以按标签筛选编码。列表下方会出现<strong class="ui">按标签筛选</strong>按钮。选择一个标签后，列表只显示带有这个标签的编码。这些编码的上级编码仍然可见，因此树的结构保持不变。所选标签显示在列表上方；点按它的 × 即可重新显示全部编码。</p>
+<figure class="shot" id="coding-codebook-tag-filter"><img class="shot-light" src="../figures/zh-Hans/light/coding-codebook-tag-filter.webp" alt="按标签“follow-up”筛选的“气候辩论”的“编码本”视图。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/coding-codebook-tag-filter.webp" alt="按标签“follow-up”筛选的“气候辩论”的“编码本”视图。" loading="lazy"><figcaption>按标签“follow-up”筛选的“气候辩论”的“编码本”视图。</figcaption></figure>
+<p>归属于某个编码的备忘录会自动继承这个编码的标签。在查询中，可以用<strong class="ui">标签</strong>规则，按编码上的标签查找特定的编码（见<a href="queries-building.html">第 15 章“构建查询”</a>）。</p>
+<h3 id="code-sets">编码集<a class="anchor" href="#code-sets" aria-hidden="true">#</a></h3>
+<p>编码集可以把编码树中任何位置的多个编码汇集在一起，供比较或查询使用。例如，你可以为某个研究问题的相关编码建一个编码集。在示例项目“气候辩论”中，编码集“论点”包含来自树中不同位置的“成本”“责任”“科学”和“不确定性”。</p>
+<p>要创建编码集：</p>
+<ol>
+<li>在<strong class="ui">编码</strong>分面或<strong class="ui">编码本</strong>视图中右键点按一个编码。</li>
+<li>选取<strong class="ui">添加到编码集 ▸ 从编码新建编码集</strong>。</li>
+</ol>
+<p>LemmaLoom 随即创建一个包含这个编码的编码集，并选中它的默认名称<strong class="ui">新建编码集</strong>，你可以直接输入自己的名称，然后按下 Return 键。请根据其中编码的共同点为编码集命名，例如它们针对的研究问题。以后要重命名编码集，请在<strong class="ui">编码集</strong>部分右键点按它，然后选取<strong class="ui">重命名</strong>。要把另一个编码添加到某个编码集，请先右键点按这个编码，然后选取<strong class="ui">添加到编码集</strong>，再从菜单中选择目标编码集。</p>
+<p><strong class="ui">编码</strong>分面和<strong class="ui">编码本</strong>视图中，编码树下方的<strong class="ui">编码集</strong>部分列出现有的每个编码集，并显示其中的编码数量。点按一个编码集即可展开或收起。要查看某个编码属于哪些编码集，请右键点按这个编码，打开<strong class="ui">添加到编码集</strong>，它所属的编码集会显示为不可用。要删除编码集，请右键点按它并选取<strong class="ui">删除</strong>，或者在<strong class="ui">编码</strong>分面中点按它旁边的废纸篓按钮。</p>
+<p>要把编码从编码集中移出，请展开这个编码集，然后右键点按目标编码，选取<strong class="ui">从编码集中移除</strong>。</p>
+<p>在速写空间中，编码集可以提供用于比较编码的各列（见<a href="sketch-space.html">第 14 章“速写空间”</a>中的<a href="sketch-space.html#grouping-codes">编码的分组</a>）。编码集也可以作为查询列出的条目，即<strong class="ui">编码集</strong>；针对编码的<strong class="ui">编码集</strong>设置规则，可以找出某个编码集包含的编码（见<a href="queries-building.html">第 15 章“构建查询”</a>）。</p>
+<h3 id="merging-codes">合并编码<a class="anchor" href="#merging-codes" aria-hidden="true">#</a></h3>
+<p>合并两个编码，就是把一个编码并入另一个编码。用第一个编码应用的所有编码实例都转到第二个编码名下，第一个编码则被删除。当你发现两个编码其实是一个意思，或者想把子编码并回上级编码时，就可以合并。如果只想在层级中移动编码而不合并，请使用<strong class="ui">移到</strong>（见本章前文的<a href="#subcodes">子编码和编码树</a>）。你可以先用较细的编码，以后根据需要再合并。</p>
+<ol>
+<li>在<strong class="ui">编码</strong>分面或<strong class="ui">编码本</strong>视图中，右键点按要合并掉的编码；或者选中它，然后打开<strong class="ui">项目 ▸ 合并到</strong>。</li>
+<li>选取<strong class="ui">合并到</strong>，然后选取要保留的编码。菜单中不包括这个编码本身及其子编码。在<strong class="ui">编码</strong>分面中，菜单只列出在打开的文档中可以使用的编码；在<strong class="ui">编码本</strong>视图中，菜单列出项目的所有编码。</li>
+<li>对话框会写明两个编码的名称，并说明将有多少个编码片段和子编码移过去。点按<strong class="ui">合并</strong>。</li>
+</ol>
+<p>在“气候辩论”项目的编码本中，“时间节点”有 12 个片段，“紧迫性”有 10 个片段。选择把“时间节点”合并到“紧迫性”时，会出现对话框，显示<strong class="ui">将“时间节点”合并到“紧迫性”？</strong>，并告诉你有 13 个编码片段将移到“紧迫性”，而“时间节点”会被整个删除。确认之后，编码本中“紧迫性”的片段数为 10 + 12 = 22。</p>
+<figure class="shot" id="coding-merge-alert"><img class="shot-light" src="../figures/zh-Hans/light/coding-merge-alert.webp" alt="询问是否把“时间节点”合并到“紧迫性”的对话框。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/coding-merge-alert.webp" alt="询问是否把“时间节点”合并到“紧迫性”的对话框。" loading="lazy"><figcaption>询问是否把“时间节点”合并到“紧迫性”的对话框。</figcaption></figure>
+<p>这个对话框中的所有数字，以及删除编码时对话框中的数字，统计的都是项目中的全部编码实例，包括“时间不多了 (英语)”等译文中的副本。由于<strong class="ui">编码本</strong>视图不计译文中的副本，对于在“时间不多了”中用过的编码，你会发现对话框中的数字比<strong class="ui">片段</strong>大。“时间节点”在“时间不多了”中只有一个编码实例，所以算上它的副本，对话框中的总数是 12 + 1 = 13。</p>
+<p>移过去的内容包括：</p>
+<ul>
+<li>被合并编码的所有编码实例和已编码备忘录。</li>
+<li>它的子编码，它们成为保留编码的子编码。</li>
+<li>关于被合并编码本身的备忘录。</li>
+<li>它在编码集中的位置；如果两个编码同时出现在某个编码集中，合并后保留的编码在其中只出现一次。</li>
+<li>属性及其值；如果保留编码已有名称和类型都相同的属性，两者会合并为一个。</li>
+</ul>
+<p>所有引用被合并编码的已存储查询，此后会自动改为引用保留的编码。被合并编码的名称、颜色、格式、适用范围、标签和描述都会删除，只留下保留的编码。</p>
+<p>如果合并前一段文字在完全相同的范围内同时带有这两个编码，合并后这段文字就带有保留编码的两个编码实例。这两个编码实例在<strong class="ui">编码实例</strong>分面中分别列出，并且都计入这个编码在项目中的编码实例总数。如果这会影响你的统计，请移除其中一个编码实例（见本章前文的<a href="#removing-codings">移除一段文字上的编码</a>）。</p>
+<h3 id="deleting-codes">删除编码<a class="anchor" href="#deleting-codes" aria-hidden="true">#</a></h3>
+<ol>
+<li>右键点按编码，然后选取<strong class="ui">删除</strong>（在<strong class="ui">编码</strong>分面中）或<strong class="ui">删除编码</strong>（在<strong class="ui">编码本</strong>视图中）；或者选中编码，然后选取<strong class="ui">项目 ▸ 删除编码</strong>。</li>
+<li>对话框会说明有多少内容将随之删除，例如<strong class="ui">这将移除 2 个子编码和 31 个编码片段。</strong>点按<strong class="ui">删除</strong>。</li>
+</ol>
+<p>删除一个编码时，删除会逐级波及它下面的所有子编码，移除上级编码和各级子编码的所有编码实例，以及与这些编码实例相关的属性值。例如，删除编码“紧迫性”会一共删掉 31 个编码实例，其中“紧迫性”11 个、“时间节点”13 个、“临界点”7 个，每个数字都包括“时间不多了 (英语)”中的副本。删除编码时，归属于它的备忘录会变成普通备忘录。</p>
+<figure class="shot" id="coding-delete-code-alert"><img class="shot-light" src="../figures/zh-Hans/light/coding-delete-code-alert.webp" alt="删除编码“紧迫性”时出现的对话框。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/coding-delete-code-alert.webp" alt="删除编码“紧迫性”时出现的对话框。" loading="lazy"><figcaption>删除编码“紧迫性”时出现的对话框。</figcaption></figure>
+<p><strong class="ui">编辑 ▸ 撤销删除编码</strong>（⌘Z）可以恢复因删除编码而丢失的一切。</p>
+<h3 id="codebook-view">“编码本”视图<a class="anchor" href="#codebook-view" aria-hidden="true">#</a></h3>
+<p><strong class="ui">编码本</strong>视图显示当前项目的完整编码系统，以及每个编码的描述、统计数字和标签。你可以从导航栏的<strong class="ui">项目</strong>下打开它，也可以在任何文档集或标签的标签页中点按<strong class="ui">编码本</strong>。文档集或标签的标签页打开时，显示的就是<strong class="ui">编码本</strong>。</p>
+<p>插图中，“气候辩论”的编码本里选中了“成本”。它在 10 个文档中共有 19 个片段，其中“净零代价高昂”最多（5 个）。这个编码覆盖了项目全部文本的 3.4%。它的片段与编码“责任”重叠了 5 次。</p>
+<figure class="shot" id="coding-codebook-view"><img class="shot-light" src="../figures/zh-Hans/light/coding-codebook-view.webp" alt="“气候辩论”的“编码本”视图，已选中“成本”。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/coding-codebook-view.webp" alt="“气候辩论”的“编码本”视图，已选中“成本”。" loading="lazy"><figcaption>“气候辩论”的“编码本”视图，已选中“成本”。</figcaption></figure>
+<p>左侧是编码树，下方是项目中的编码集列表（见本章前文的<a href="#code-sets">编码集</a>）。树中每个编码旁边的数字，表示它在当前范围内的编码片段数。编码树下方是<strong class="ui">添加编码</strong>、标签筛选按钮（见本章前文的<a href="#code-tags">编码上的标签</a>）和<strong class="ui">导出</strong>。拖移编码树和详细信息之间的分隔线，可以给其中一方更多空间。</p>
+<p>选中一个编码，右侧会显示它的详细信息，包括：</p>
+<ul>
+<li>它的颜色、名称和<strong class="ui">编辑</strong>按钮；</li>
+<li>取自<strong class="ui">说明</strong>的描述；</li>
+<li><strong class="ui">适用范围</strong>和<strong class="ui">格式</strong>设置；</li>
+<li><strong class="ui">此范围内的使用</strong>，包括三个数字（<strong class="ui">片段</strong>、<strong class="ui">文档</strong>和<strong class="ui">覆盖率</strong>百分比），以及含有这个编码的每个文档各一个条形，按片段数从多到少排列；</li>
+<li><strong class="ui">共现编码</strong>，列出片段与这个编码的片段相交的所有其他编码，以及相交的次数；</li>
+<li><strong class="ui">标签</strong>，即这个编码带有的所有标签。</li>
+</ul>
+<p>点按<strong class="ui">此范围内的使用</strong>下的任意条形，就会在阅读器中打开对应的文档，并定位到这个编码的第一个片段。<strong class="ui">此范围内的使用</strong>标题右侧有一个导出按钮，可以把这些条形存储为图片（PNG 或 PDF），或者把数字存储为 CSV 文件。</p>
+<p>连按<strong class="ui">片段</strong>，或者右键点按它并选取<strong class="ui">显示编码实例</strong>，会在<strong class="ui">编码实例</strong>视图中打开这个编码的片段。<strong class="ui">共现编码</strong>下列出的编码也是如此，它会列出这个编码中与那个编码相交的片段。如有需要，还可以用<strong class="ui">编码实例</strong>视图中筛选条件旁边的<strong class="ui">包括子编码</strong>选项加入子编码的片段（见<a href="coding-analysis.html">第 13 章“编码分析”</a>中的<a href="coding-analysis.html#codings-view">“编码实例”视图</a>）。</p>
+<p>这些数字只统计原文文档中的编码实例（也就是说，“时间不多了”中的一个编码实例和它在“时间不多了 (英语)”中的副本只计一次）。上级编码的数字只统计上级编码自己的编码实例，已编码备忘录不计在内。</p>
+<h4 id="reading-the-numbers">解读这些数字<a class="anchor" href="#reading-the-numbers" aria-hidden="true">#</a></h4>
+<p><strong class="ui">片段</strong>是这个编码在范围内各文档中的编码实例数。<strong class="ui">文档</strong>是至少含有这个编码的一个片段的文档总数。</p>
+<p><strong class="ui">覆盖率</strong>是这个编码的片段所覆盖的字符数占范围内各文档字符总数的比例。这个统计量可以说明，某个编码只是零星覆盖几行文字，还是覆盖了文档中的大段内容。</p>
+<div class="math math-display" role="math" aria-label="\text{Coverage} = \frac{c}{n} \times 100\%"><svg aria-hidden="true" focusable="false" fill="currentColor" style="height:2.187em"  version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'   viewBox='123.51623 -17.863155 96.678642 17.863139'>
+<defs>
+<path id='m1-g2-99' d='M3.945205-3.785803C3.785803-3.785803 3.646326-3.785803 3.506849-3.646326C3.347447-3.496887 3.327522-3.327522 3.327522-3.257783C3.327522-3.01868 3.506849-2.909091 3.696139-2.909091C3.985056-2.909091 4.254047-3.148194 4.254047-3.5467C4.254047-4.034869 3.785803-4.403487 3.078456-4.403487C1.733499-4.403487 .408468-2.978829 .408468-1.574097C.408468-.67746 .986301 .109589 2.022416 .109589C3.447073 .109589 4.283935-.946451 4.283935-1.066002C4.283935-1.125778 4.224159-1.195517 4.164384-1.195517C4.11457-1.195517 4.094645-1.175592 4.034869-1.09589C3.247821-.109589 2.161893-.109589 2.042341-.109589C1.414695-.109589 1.145704-.597758 1.145704-1.195517C1.145704-1.603985 1.344956-2.570361 1.683686-3.188045C1.992528-3.755915 2.540473-4.184309 3.088418-4.184309C3.427148-4.184309 3.805729-4.054795 3.945205-3.785803Z'/>
+<path id='m1-g2-110' d='M.876712-.587796C.846824-.438356 .787049-.209215 .787049-.159402C.787049 .019925 .926526 .109589 1.075965 .109589C1.195517 .109589 1.374844 .029888 1.444583-.169365C1.454545-.18929 1.574097-.657534 1.633873-.9066L1.853051-1.803238C1.912827-2.022416 1.972603-2.241594 2.022416-2.470735C2.062267-2.6401 2.141968-2.929016 2.15193-2.968867C2.30137-3.277709 2.82939-4.184309 3.775841-4.184309C4.224159-4.184309 4.313823-3.815691 4.313823-3.486924C4.313823-2.86924 3.825654-1.594022 3.666252-1.165629C3.576588-.936488 3.566625-.816936 3.566625-.707347C3.566625-.239103 3.915318 .109589 4.383562 .109589C5.32005 .109589 5.688667-1.344956 5.688667-1.424658C5.688667-1.524284 5.599004-1.524284 5.569116-1.524284C5.469489-1.524284 5.469489-1.494396 5.419676-1.344956C5.220423-.667497 4.891656-.109589 4.403487-.109589C4.234122-.109589 4.164384-.209215 4.164384-.438356C4.164384-.687422 4.254047-.926526 4.343711-1.145704C4.533001-1.673724 4.951432-2.769614 4.951432-3.337484C4.951432-4.004981 4.523039-4.403487 3.805729-4.403487C2.909091-4.403487 2.420922-3.765878 2.251557-3.536737C2.201743-4.094645 1.793275-4.403487 1.334994-4.403487S.687422-4.014944 .587796-3.835616C.428394-3.496887 .288917-2.909091 .288917-2.86924C.288917-2.769614 .388543-2.769614 .408468-2.769614C.508095-2.769614 .518057-2.779577 .577833-2.998755C.747198-3.706102 .946451-4.184309 1.305106-4.184309C1.504359-4.184309 1.613948-4.054795 1.613948-3.726027C1.613948-3.516812 1.58406-3.407223 1.454545-2.889166L.876712-.587796Z'/>
+<path id='m1-g0-2' d='M3.875467-2.769614L1.882939-4.752179C1.763387-4.871731 1.743462-4.891656 1.663761-4.891656C1.564134-4.891656 1.464508-4.801993 1.464508-4.692403C1.464508-4.622665 1.484433-4.60274 1.594022-4.493151L3.58655-2.49066L1.594022-.488169C1.484433-.37858 1.464508-.358655 1.464508-.288917C1.464508-.179328 1.564134-.089664 1.663761-.089664C1.743462-.089664 1.763387-.109589 1.882939-.229141L3.865504-2.211706L5.927771-.14944C5.947696-.139477 6.017435-.089664 6.07721-.089664C6.196762-.089664 6.276463-.179328 6.276463-.288917C6.276463-.308842 6.276463-.348692 6.246575-.398506C6.236613-.418431 4.652553-1.982565 4.154421-2.49066L5.977584-4.313823C6.027397-4.373599 6.176837-4.503113 6.22665-4.562889C6.236613-4.582814 6.276463-4.622665 6.276463-4.692403C6.276463-4.801993 6.196762-4.891656 6.07721-4.891656C5.997509-4.891656 5.957659-4.851806 5.84807-4.742217L3.875467-2.769614Z'/>
+<path id='m1-g4-37' d='M6.824408-7.0934C6.884184-7.183064 6.90411-7.212951 6.90411-7.272727C6.90411-7.382316 6.814446-7.47198 6.704857-7.47198C6.60523-7.47198 6.555417-7.402242 6.495641-7.332503C5.997509-6.655044 5.330012-6.386052 4.60274-6.386052C3.905355-6.386052 3.287671-6.635118 2.739726-7.153176C2.550436-7.32254 2.34122-7.47198 2.022416-7.47198C1.265255-7.47198 .557908-6.635118 .557908-5.469489C.557908-4.26401 1.275218-3.457036 2.022416-3.457036C2.749689-3.457036 3.317559-4.343711 3.317559-5.459527C3.317559-5.599004 3.317559-6.067248 3.108344-6.585305C3.755915-6.216687 4.254047-6.166874 4.612702-6.166874C5.369863-6.166874 5.877958-6.475716 5.937733-6.515567L5.947696-6.505604L1.474471 .159402C1.384807 .288917 1.384807 .33873 1.384807 .358655C1.384807 .468244 1.484433 .557908 1.58406 .557908S1.703611 .518057 1.783313 .408468L6.824408-7.0934ZM2.032379-3.676214C1.833126-3.676214 1.175592-3.805729 1.175592-5.459527C1.175592-7.123288 1.823163-7.252802 2.032379-7.252802C2.560399-7.252802 3.068493-6.515567 3.068493-5.469489C3.068493-4.393524 2.550436-3.676214 2.032379-3.676214ZM6.445828 .33873C6.246575 .33873 5.589041 .209215 5.589041-1.444583C5.589041-3.108344 6.236613-3.237858 6.445828-3.237858C6.973848-3.237858 7.481943-2.500623 7.481943-1.454545C7.481943-.37858 6.963885 .33873 6.445828 .33873ZM7.731009-1.444583C7.731009-2.590286 7.143213-3.457036 6.435866-3.457036C5.678705-3.457036 4.971357-2.620174 4.971357-1.454545C4.971357-.249066 5.688667 .557908 6.435866 .557908C7.163138 .557908 7.731009-.328767 7.731009-1.444583Z'/>
+<path id='m1-g4-48' d='M4.582814-3.188045C4.582814-3.985056 4.533001-4.782067 4.184309-5.519303C3.726027-6.475716 2.909091-6.635118 2.49066-6.635118C1.892902-6.635118 1.165629-6.37609 .757161-5.449564C.438356-4.762142 .388543-3.985056 .388543-3.188045C.388543-2.440847 .428394-1.544209 .836862-.787049C1.265255 .019925 1.992528 .219178 2.480697 .219178C3.01868 .219178 3.775841 .009963 4.214197-.936488C4.533001-1.62391 4.582814-2.400996 4.582814-3.188045ZM2.480697 0C2.092154 0 1.504359-.249066 1.325031-1.205479C1.215442-1.803238 1.215442-2.719801 1.215442-3.307597C1.215442-3.945205 1.215442-4.60274 1.295143-5.140722C1.484433-6.326276 2.231631-6.41594 2.480697-6.41594C2.809465-6.41594 3.466999-6.236613 3.656289-5.250311C3.755915-4.692403 3.755915-3.935243 3.755915-3.307597C3.755915-2.560399 3.755915-1.882939 3.646326-1.24533C3.496887-.298879 2.929016 0 2.480697 0Z'/>
+<path id='m1-g4-49' d='M2.929016-6.37609C2.929016-6.615193 2.929016-6.635118 2.699875-6.635118C2.082192-5.997509 1.205479-5.997509 .886675-5.997509V-5.688667C1.085928-5.688667 1.673724-5.688667 2.191781-5.947696V-.787049C2.191781-.428394 2.161893-.308842 1.265255-.308842H.946451V0C1.295143-.029888 2.161893-.029888 2.560399-.029888S3.825654-.029888 4.174346 0V-.308842H3.855542C2.958904-.308842 2.929016-.418431 2.929016-.787049V-6.37609Z'/>
+<path id='m1-g4-61' d='M6.844334-3.257783C6.993773-3.257783 7.183064-3.257783 7.183064-3.457036S6.993773-3.656289 6.854296-3.656289H.886675C.747198-3.656289 .557908-3.656289 .557908-3.457036S.747198-3.257783 .896638-3.257783H6.844334ZM6.854296-1.325031C6.993773-1.325031 7.183064-1.325031 7.183064-1.524284S6.993773-1.723537 6.844334-1.723537H.896638C.747198-1.723537 .557908-1.723537 .557908-1.524284S.747198-1.325031 .886675-1.325031H6.854296Z'/>
+<path id='m1-g4-67' d='M.557908-3.407223C.557908-1.344956 2.171856 .219178 4.024907 .219178C5.648817 .219178 6.625156-1.165629 6.625156-2.321295C6.625156-2.420922 6.625156-2.49066 6.495641-2.49066C6.386052-2.49066 6.386052-2.430884 6.37609-2.331258C6.296389-.9066 5.230386-.089664 4.144458-.089664C3.536737-.089664 1.58406-.428394 1.58406-3.39726C1.58406-6.37609 3.526775-6.714819 4.134496-6.714819C5.220423-6.714819 6.107098-5.808219 6.306351-4.353674C6.326276-4.214197 6.326276-4.184309 6.465753-4.184309C6.625156-4.184309 6.625156-4.214197 6.625156-4.423412V-6.784558C6.625156-6.953923 6.625156-7.023661 6.515567-7.023661C6.475716-7.023661 6.435866-7.023661 6.356164-6.90411L5.858032-6.166874C5.489415-6.525529 4.98132-7.023661 4.024907-7.023661C2.161893-7.023661 .557908-5.439601 .557908-3.407223Z'/>
+<path id='m1-g4-97' d='M3.317559-.757161C3.35741-.358655 3.626401 .059776 4.094645 .059776C4.303861 .059776 4.911582-.079701 4.911582-.886675V-1.444583H4.662516V-.886675C4.662516-.308842 4.41345-.249066 4.303861-.249066C3.975093-.249066 3.935243-.697385 3.935243-.747198V-2.739726C3.935243-3.158157 3.935243-3.5467 3.576588-3.915318C3.188045-4.303861 2.689913-4.463263 2.211706-4.463263C1.39477-4.463263 .707347-3.995019 .707347-3.337484C.707347-3.038605 .9066-2.86924 1.165629-2.86924C1.444583-2.86924 1.62391-3.068493 1.62391-3.327522C1.62391-3.447073 1.574097-3.775841 1.115816-3.785803C1.384807-4.134496 1.872976-4.244085 2.191781-4.244085C2.67995-4.244085 3.247821-3.855542 3.247821-2.968867V-2.600249C2.739726-2.570361 2.042341-2.540473 1.414695-2.241594C.667497-1.902864 .418431-1.384807 .418431-.946451C.418431-.139477 1.384807 .109589 2.012453 .109589C2.669988 .109589 3.128269-.288917 3.317559-.757161ZM3.247821-2.391034V-1.39477C3.247821-.448319 2.530511-.109589 2.082192-.109589C1.594022-.109589 1.185554-.458281 1.185554-.956413C1.185554-1.504359 1.603985-2.331258 3.247821-2.391034Z'/>
+<path id='m1-g4-101' d='M1.115816-2.510585C1.175592-3.995019 2.012453-4.244085 2.351183-4.244085C3.377335-4.244085 3.476961-2.899128 3.476961-2.510585H1.115816ZM1.105853-2.30137H3.88543C4.104608-2.30137 4.134496-2.30137 4.134496-2.510585C4.134496-3.496887 3.596513-4.463263 2.351183-4.463263C1.195517-4.463263 .278954-3.437111 .278954-2.191781C.278954-.856787 1.325031 .109589 2.470735 .109589C3.686177 .109589 4.134496-.996264 4.134496-1.185554C4.134496-1.285181 4.054795-1.305106 4.004981-1.305106C3.915318-1.305106 3.895392-1.24533 3.875467-1.165629C3.526775-.139477 2.630137-.139477 2.530511-.139477C2.032379-.139477 1.633873-.438356 1.404732-.806974C1.105853-1.285181 1.105853-1.942715 1.105853-2.30137Z'/>
+<path id='m1-g4-103' d='M2.211706-1.713574C1.344956-1.713574 1.344956-2.709838 1.344956-2.938979C1.344956-3.20797 1.354919-3.526775 1.504359-3.775841C1.58406-3.895392 1.8132-4.174346 2.211706-4.174346C3.078456-4.174346 3.078456-3.178082 3.078456-2.948941C3.078456-2.67995 3.068493-2.361146 2.919054-2.11208C2.839352-1.992528 2.610212-1.713574 2.211706-1.713574ZM1.05604-1.325031C1.05604-1.364882 1.05604-1.594022 1.225405-1.793275C1.613948-1.514321 2.022416-1.484433 2.211706-1.484433C3.138232-1.484433 3.825654-2.171856 3.825654-2.938979C3.825654-3.307597 3.666252-3.676214 3.417186-3.905355C3.775841-4.244085 4.134496-4.293898 4.313823-4.293898C4.333748-4.293898 4.383562-4.293898 4.41345-4.283935C4.303861-4.244085 4.254047-4.134496 4.254047-4.014944C4.254047-3.845579 4.383562-3.726027 4.542964-3.726027C4.64259-3.726027 4.83188-3.795766 4.83188-4.024907C4.83188-4.194271 4.712329-4.513076 4.323786-4.513076C4.124533-4.513076 3.686177-4.4533 3.267746-4.044832C2.849315-4.373599 2.430884-4.403487 2.211706-4.403487C1.285181-4.403487 .597758-3.716065 .597758-2.948941C.597758-2.510585 .816936-2.132005 1.066002-1.92279C.936488-1.77335 .757161-1.444583 .757161-1.09589C.757161-.787049 .886675-.408468 1.195517-.209215C.597758-.039851 .278954 .388543 .278954 .787049C.278954 1.504359 1.265255 2.052304 2.480697 2.052304C3.656289 2.052304 4.692403 1.544209 4.692403 .767123C4.692403 .418431 4.552927-.089664 4.044832-.368618C3.516812-.647572 2.938979-.647572 2.331258-.647572C2.082192-.647572 1.653798-.647572 1.58406-.657534C1.265255-.697385 1.05604-1.006227 1.05604-1.325031ZM2.49066 1.823163C1.484433 1.823163 .797011 1.315068 .797011 .787049C.797011 .328767 1.175592-.039851 1.613948-.069738H2.201743C3.058531-.069738 4.174346-.069738 4.174346 .787049C4.174346 1.325031 3.466999 1.823163 2.49066 1.823163Z'/>
+<path id='m1-g4-111' d='M4.692403-2.132005C4.692403-3.407223 3.696139-4.463263 2.49066-4.463263C1.24533-4.463263 .278954-3.377335 .278954-2.132005C.278954-.846824 1.315068 .109589 2.480697 .109589C3.686177 .109589 4.692403-.86675 4.692403-2.132005ZM2.49066-.139477C2.062267-.139477 1.62391-.348692 1.354919-.806974C1.105853-1.24533 1.105853-1.853051 1.105853-2.211706C1.105853-2.600249 1.105853-3.138232 1.344956-3.576588C1.613948-4.034869 2.082192-4.244085 2.480697-4.244085C2.919054-4.244085 3.347447-4.024907 3.606476-3.596513S3.865504-2.590286 3.865504-2.211706C3.865504-1.853051 3.865504-1.315068 3.646326-.876712C3.427148-.428394 2.988792-.139477 2.49066-.139477Z'/>
+<path id='m1-g4-114' d='M1.663761-3.307597V-4.403487L.278954-4.293898V-3.985056C.976339-3.985056 1.05604-3.915318 1.05604-3.427148V-.757161C1.05604-.308842 .946451-.308842 .278954-.308842V0C.667497-.009963 1.135741-.029888 1.414695-.029888C1.8132-.029888 2.281445-.029888 2.67995 0V-.308842H2.470735C1.733499-.308842 1.713574-.418431 1.713574-.777086V-2.311333C1.713574-3.297634 2.132005-4.184309 2.889166-4.184309C2.958904-4.184309 2.978829-4.184309 2.998755-4.174346C2.968867-4.164384 2.769614-4.044832 2.769614-3.785803C2.769614-3.506849 2.978829-3.35741 3.198007-3.35741C3.377335-3.35741 3.626401-3.476961 3.626401-3.795766S3.317559-4.403487 2.889166-4.403487C2.161893-4.403487 1.803238-3.73599 1.663761-3.307597Z'/>
+<path id='m1-g4-118' d='M4.144458-3.317559C4.234122-3.5467 4.403487-3.975093 5.061021-3.985056V-4.293898C4.83188-4.273973 4.542964-4.26401 4.313823-4.26401C4.07472-4.26401 3.616438-4.283935 3.447073-4.293898V-3.985056C3.815691-3.975093 3.92528-3.745953 3.92528-3.556663C3.92528-3.466999 3.905355-3.427148 3.865504-3.317559L2.849315-.777086L1.733499-3.556663C1.673724-3.686177 1.673724-3.706102 1.673724-3.726027C1.673724-3.985056 2.062267-3.985056 2.241594-3.985056V-4.293898C1.942715-4.283935 1.384807-4.26401 1.155666-4.26401C.886675-4.26401 .488169-4.273973 .18929-4.293898V-3.985056C.816936-3.985056 .856787-3.92528 .986301-3.616438L2.420922-.079701C2.480697 .059776 2.500623 .109589 2.630137 .109589S2.799502 .019925 2.839352-.079701L4.144458-3.317559Z'/>
+</defs>
+<g id='m1-page1'>
+<use x='123.51623' y='-6.833885' xlink:href='#m1-g4-67'/>
+<use x='130.71149' y='-6.833885' xlink:href='#m1-g4-111'/>
+<use x='135.416081' y='-6.833885' xlink:href='#m1-g4-118'/>
+<use x='140.39742' y='-6.833885' xlink:href='#m1-g4-101'/>
+<use x='144.825271' y='-6.833885' xlink:href='#m1-g4-114'/>
+<use x='148.727322' y='-6.833885' xlink:href='#m1-g4-97'/>
+<use x='153.708661' y='-6.833885' xlink:href='#m1-g4-103'/>
+<use x='158.69' y='-6.833885' xlink:href='#m1-g4-101'/>
+<use x='165.885118' y='-6.833885' xlink:href='#m1-g4-61'/>
+<use x='178.430985' y='-13.573687' xlink:href='#m1-g2-99'/>
+<rect x='177.596711' y='-9.523795' height='.398484' width='5.979925'/>
+<use x='177.596711' y='-.000015' xlink:href='#m1-g2-110'/>
+<use x='186.986016' y='-6.833885' xlink:href='#m1-g0-2'/>
+<use x='196.94863' y='-6.833885' xlink:href='#m1-g4-49'/>
+<use x='201.929969' y='-6.833885' xlink:href='#m1-g4-48'/>
+<use x='206.911308' y='-6.833885' xlink:href='#m1-g4-48'/>
+<use x='211.892647' y='-6.833885' xlink:href='#m1-g4-37'/>
+</g>
+</svg></div>
+<p>公式中的 Coverage 即覆盖率。<span class="math math-inline" role="math" aria-label="c" style="vertical-align:-0.000em"><svg aria-hidden="true" focusable="false" fill="currentColor" style="height:0.465em"  version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'   viewBox='0 -4.289468 4.311397 4.289468'>
+<defs>
+<path id='m2-g2-99' d='M3.945205-3.785803C3.785803-3.785803 3.646326-3.785803 3.506849-3.646326C3.347447-3.496887 3.327522-3.327522 3.327522-3.257783C3.327522-3.01868 3.506849-2.909091 3.696139-2.909091C3.985056-2.909091 4.254047-3.148194 4.254047-3.5467C4.254047-4.034869 3.785803-4.403487 3.078456-4.403487C1.733499-4.403487 .408468-2.978829 .408468-1.574097C.408468-.67746 .986301 .109589 2.022416 .109589C3.447073 .109589 4.283935-.946451 4.283935-1.066002C4.283935-1.125778 4.224159-1.195517 4.164384-1.195517C4.11457-1.195517 4.094645-1.175592 4.034869-1.09589C3.247821-.109589 2.161893-.109589 2.042341-.109589C1.414695-.109589 1.145704-.597758 1.145704-1.195517C1.145704-1.603985 1.344956-2.570361 1.683686-3.188045C1.992528-3.755915 2.540473-4.184309 3.088418-4.184309C3.427148-4.184309 3.805729-4.054795 3.945205-3.785803Z'/>
+</defs>
+<g id='m2-page2'>
+<use x='0' y='0' xlink:href='#m2-g2-99'/>
+</g>
+</svg></span> 是这个编码各片段的字符总数。如果同一个编码的片段在同一文档中相互重叠，重叠的字符只计一次。<span class="math math-inline" role="math" aria-label="n" style="vertical-align:-0.000em"><svg aria-hidden="true" focusable="false" fill="currentColor" style="height:0.465em"  version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'   viewBox='0 -4.289468 5.979925 4.289468'>
+<defs>
+<path id='m3-g2-110' d='M.876712-.587796C.846824-.438356 .787049-.209215 .787049-.159402C.787049 .019925 .926526 .109589 1.075965 .109589C1.195517 .109589 1.374844 .029888 1.444583-.169365C1.454545-.18929 1.574097-.657534 1.633873-.9066L1.853051-1.803238C1.912827-2.022416 1.972603-2.241594 2.022416-2.470735C2.062267-2.6401 2.141968-2.929016 2.15193-2.968867C2.30137-3.277709 2.82939-4.184309 3.775841-4.184309C4.224159-4.184309 4.313823-3.815691 4.313823-3.486924C4.313823-2.86924 3.825654-1.594022 3.666252-1.165629C3.576588-.936488 3.566625-.816936 3.566625-.707347C3.566625-.239103 3.915318 .109589 4.383562 .109589C5.32005 .109589 5.688667-1.344956 5.688667-1.424658C5.688667-1.524284 5.599004-1.524284 5.569116-1.524284C5.469489-1.524284 5.469489-1.494396 5.419676-1.344956C5.220423-.667497 4.891656-.109589 4.403487-.109589C4.234122-.109589 4.164384-.209215 4.164384-.438356C4.164384-.687422 4.254047-.926526 4.343711-1.145704C4.533001-1.673724 4.951432-2.769614 4.951432-3.337484C4.951432-4.004981 4.523039-4.403487 3.805729-4.403487C2.909091-4.403487 2.420922-3.765878 2.251557-3.536737C2.201743-4.094645 1.793275-4.403487 1.334994-4.403487S.687422-4.014944 .587796-3.835616C.428394-3.496887 .288917-2.909091 .288917-2.86924C.288917-2.769614 .388543-2.769614 .408468-2.769614C.508095-2.769614 .518057-2.779577 .577833-2.998755C.747198-3.706102 .946451-4.184309 1.305106-4.184309C1.504359-4.184309 1.613948-4.054795 1.613948-3.726027C1.613948-3.516812 1.58406-3.407223 1.454545-2.889166L.876712-.587796Z'/>
+</defs>
+<g id='m3-page3'>
+<use x='0' y='0' xlink:href='#m3-g2-110'/>
+</g>
+</svg></span> 是范围内所有文档的字符总数，不论是否已编码。空格和换行符也计算在内。</p>
+<p>在“怀疑派”文档集的编码本中，“成本”在 5 个文档中的 3 个里共有 9 个片段。假设这个范围内的文档共有 6,000 个字符，这 9 个片段一共占其中的 330 个。这两个数字是假设的，但它们的比例与实际情况相当接近。视图显示<strong class="ui">片段</strong> 9、<strong class="ui">文档</strong> 3，以及：</p>
+<div class="math math-display" role="math" aria-label="\text{Coverage} = \frac{330}{6{,}000} \times 100\% = 0.055 \times 100\% = 5.5\%"><svg aria-hidden="true" focusable="false" fill="currentColor" style="height:2.686em"  version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'   viewBox='62.302529 -21.931233 219.10609 21.931222'>
+<defs>
+<path id='m4-g0-2' d='M3.875467-2.769614L1.882939-4.752179C1.763387-4.871731 1.743462-4.891656 1.663761-4.891656C1.564134-4.891656 1.464508-4.801993 1.464508-4.692403C1.464508-4.622665 1.484433-4.60274 1.594022-4.493151L3.58655-2.49066L1.594022-.488169C1.484433-.37858 1.464508-.358655 1.464508-.288917C1.464508-.179328 1.564134-.089664 1.663761-.089664C1.743462-.089664 1.763387-.109589 1.882939-.229141L3.865504-2.211706L5.927771-.14944C5.947696-.139477 6.017435-.089664 6.07721-.089664C6.196762-.089664 6.276463-.179328 6.276463-.288917C6.276463-.308842 6.276463-.348692 6.246575-.398506C6.236613-.418431 4.652553-1.982565 4.154421-2.49066L5.977584-4.313823C6.027397-4.373599 6.176837-4.503113 6.22665-4.562889C6.236613-4.582814 6.276463-4.622665 6.276463-4.692403C6.276463-4.801993 6.196762-4.891656 6.07721-4.891656C5.997509-4.891656 5.957659-4.851806 5.84807-4.742217L3.875467-2.769614Z'/>
+<path id='m4-g1-58' d='M1.912827-.52802C1.912827-.816936 1.673724-1.05604 1.384807-1.05604S.856787-.816936 .856787-.52802S1.09589 0 1.384807 0S1.912827-.239103 1.912827-.52802Z'/>
+<path id='m4-g1-59' d='M2.022416-.009963C2.022416-.667497 1.77335-1.05604 1.384807-1.05604C1.05604-1.05604 .856787-.806974 .856787-.52802C.856787-.259029 1.05604 0 1.384807 0C1.504359 0 1.633873-.039851 1.733499-.129514C1.763387-.14944 1.77335-.159402 1.783313-.159402S1.803238-.14944 1.803238-.009963C1.803238 .727273 1.454545 1.325031 1.125778 1.653798C1.016189 1.763387 1.016189 1.783313 1.016189 1.8132C1.016189 1.882939 1.066002 1.92279 1.115816 1.92279C1.225405 1.92279 2.022416 1.155666 2.022416-.009963Z'/>
+<path id='m4-g3-37' d='M6.824408-7.0934C6.884184-7.183064 6.90411-7.212951 6.90411-7.272727C6.90411-7.382316 6.814446-7.47198 6.704857-7.47198C6.60523-7.47198 6.555417-7.402242 6.495641-7.332503C5.997509-6.655044 5.330012-6.386052 4.60274-6.386052C3.905355-6.386052 3.287671-6.635118 2.739726-7.153176C2.550436-7.32254 2.34122-7.47198 2.022416-7.47198C1.265255-7.47198 .557908-6.635118 .557908-5.469489C.557908-4.26401 1.275218-3.457036 2.022416-3.457036C2.749689-3.457036 3.317559-4.343711 3.317559-5.459527C3.317559-5.599004 3.317559-6.067248 3.108344-6.585305C3.755915-6.216687 4.254047-6.166874 4.612702-6.166874C5.369863-6.166874 5.877958-6.475716 5.937733-6.515567L5.947696-6.505604L1.474471 .159402C1.384807 .288917 1.384807 .33873 1.384807 .358655C1.384807 .468244 1.484433 .557908 1.58406 .557908S1.703611 .518057 1.783313 .408468L6.824408-7.0934ZM2.032379-3.676214C1.833126-3.676214 1.175592-3.805729 1.175592-5.459527C1.175592-7.123288 1.823163-7.252802 2.032379-7.252802C2.560399-7.252802 3.068493-6.515567 3.068493-5.469489C3.068493-4.393524 2.550436-3.676214 2.032379-3.676214ZM6.445828 .33873C6.246575 .33873 5.589041 .209215 5.589041-1.444583C5.589041-3.108344 6.236613-3.237858 6.445828-3.237858C6.973848-3.237858 7.481943-2.500623 7.481943-1.454545C7.481943-.37858 6.963885 .33873 6.445828 .33873ZM7.731009-1.444583C7.731009-2.590286 7.143213-3.457036 6.435866-3.457036C5.678705-3.457036 4.971357-2.620174 4.971357-1.454545C4.971357-.249066 5.688667 .557908 6.435866 .557908C7.163138 .557908 7.731009-.328767 7.731009-1.444583Z'/>
+<path id='m4-g3-48' d='M4.582814-3.188045C4.582814-3.985056 4.533001-4.782067 4.184309-5.519303C3.726027-6.475716 2.909091-6.635118 2.49066-6.635118C1.892902-6.635118 1.165629-6.37609 .757161-5.449564C.438356-4.762142 .388543-3.985056 .388543-3.188045C.388543-2.440847 .428394-1.544209 .836862-.787049C1.265255 .019925 1.992528 .219178 2.480697 .219178C3.01868 .219178 3.775841 .009963 4.214197-.936488C4.533001-1.62391 4.582814-2.400996 4.582814-3.188045ZM2.480697 0C2.092154 0 1.504359-.249066 1.325031-1.205479C1.215442-1.803238 1.215442-2.719801 1.215442-3.307597C1.215442-3.945205 1.215442-4.60274 1.295143-5.140722C1.484433-6.326276 2.231631-6.41594 2.480697-6.41594C2.809465-6.41594 3.466999-6.236613 3.656289-5.250311C3.755915-4.692403 3.755915-3.935243 3.755915-3.307597C3.755915-2.560399 3.755915-1.882939 3.646326-1.24533C3.496887-.298879 2.929016 0 2.480697 0Z'/>
+<path id='m4-g3-49' d='M2.929016-6.37609C2.929016-6.615193 2.929016-6.635118 2.699875-6.635118C2.082192-5.997509 1.205479-5.997509 .886675-5.997509V-5.688667C1.085928-5.688667 1.673724-5.688667 2.191781-5.947696V-.787049C2.191781-.428394 2.161893-.308842 1.265255-.308842H.946451V0C1.295143-.029888 2.161893-.029888 2.560399-.029888S3.825654-.029888 4.174346 0V-.308842H3.855542C2.958904-.308842 2.929016-.418431 2.929016-.787049V-6.37609Z'/>
+<path id='m4-g3-51' d='M2.889166-3.506849C3.706102-3.775841 4.283935-4.473225 4.283935-5.260274C4.283935-6.07721 3.407223-6.635118 2.450809-6.635118C1.444583-6.635118 .687422-6.03736 .687422-5.280199C.687422-4.951432 .9066-4.762142 1.195517-4.762142C1.504359-4.762142 1.703611-4.98132 1.703611-5.270237C1.703611-5.768369 1.235367-5.768369 1.085928-5.768369C1.39477-6.256538 2.052304-6.386052 2.410959-6.386052C2.819427-6.386052 3.367372-6.166874 3.367372-5.270237C3.367372-5.150685 3.347447-4.572852 3.088418-4.134496C2.789539-3.656289 2.450809-3.626401 2.201743-3.616438C2.122042-3.606476 1.882939-3.58655 1.8132-3.58655C1.733499-3.576588 1.663761-3.566625 1.663761-3.466999C1.663761-3.35741 1.733499-3.35741 1.902864-3.35741H2.34122C3.158157-3.35741 3.526775-2.67995 3.526775-1.703611C3.526775-.348692 2.839352-.059776 2.400996-.059776C1.972603-.059776 1.225405-.229141 .876712-.816936C1.225405-.767123 1.534247-.986301 1.534247-1.364882C1.534247-1.723537 1.265255-1.92279 .976339-1.92279C.737235-1.92279 .418431-1.783313 .418431-1.344956C.418431-.438356 1.344956 .219178 2.430884 .219178C3.646326 .219178 4.552927-.687422 4.552927-1.703611C4.552927-2.520548 3.92528-3.297634 2.889166-3.506849Z'/>
+<path id='m4-g3-53' d='M4.473225-2.002491C4.473225-3.188045 3.656289-4.184309 2.580324-4.184309C2.102117-4.184309 1.673724-4.024907 1.315068-3.676214V-5.618929C1.514321-5.559153 1.843088-5.489415 2.161893-5.489415C3.387298-5.489415 4.084682-6.396015 4.084682-6.525529C4.084682-6.585305 4.054795-6.635118 3.985056-6.635118C3.975093-6.635118 3.955168-6.635118 3.905355-6.60523C3.706102-6.515567 3.217933-6.316314 2.550436-6.316314C2.15193-6.316314 1.693649-6.386052 1.225405-6.595268C1.145704-6.625156 1.125778-6.625156 1.105853-6.625156C1.006227-6.625156 1.006227-6.545455 1.006227-6.386052V-3.437111C1.006227-3.257783 1.006227-3.178082 1.145704-3.178082C1.215442-3.178082 1.235367-3.20797 1.275218-3.267746C1.384807-3.427148 1.753425-3.965131 2.560399-3.965131C3.078456-3.965131 3.327522-3.506849 3.407223-3.327522C3.566625-2.958904 3.58655-2.570361 3.58655-2.072229C3.58655-1.723537 3.58655-1.125778 3.347447-.707347C3.108344-.318804 2.739726-.059776 2.281445-.059776C1.554172-.059776 .986301-.587796 .816936-1.175592C.846824-1.165629 .876712-1.155666 .986301-1.155666C1.315068-1.155666 1.484433-1.404732 1.484433-1.643836S1.315068-2.132005 .986301-2.132005C.846824-2.132005 .498132-2.062267 .498132-1.603985C.498132-.747198 1.185554 .219178 2.30137 .219178C3.457036 .219178 4.473225-.737235 4.473225-2.002491Z'/>
+<path id='m4-g3-54' d='M1.315068-3.267746V-3.506849C1.315068-6.027397 2.550436-6.386052 3.058531-6.386052C3.297634-6.386052 3.716065-6.326276 3.935243-5.987547C3.785803-5.987547 3.387298-5.987547 3.387298-5.539228C3.387298-5.230386 3.626401-5.080946 3.845579-5.080946C4.004981-5.080946 4.303861-5.17061 4.303861-5.559153C4.303861-6.156912 3.865504-6.635118 3.038605-6.635118C1.763387-6.635118 .418431-5.349938 .418431-3.148194C.418431-.488169 1.574097 .219178 2.500623 .219178C3.606476 .219178 4.552927-.71731 4.552927-2.032379C4.552927-3.297634 3.666252-4.254047 2.560399-4.254047C1.882939-4.254047 1.514321-3.745953 1.315068-3.267746ZM2.500623-.059776C1.872976-.059776 1.574097-.657534 1.514321-.806974C1.334994-1.275218 1.334994-2.072229 1.334994-2.251557C1.334994-3.028643 1.653798-4.024907 2.550436-4.024907C2.709838-4.024907 3.16812-4.024907 3.476961-3.407223C3.656289-3.038605 3.656289-2.530511 3.656289-2.042341C3.656289-1.564134 3.656289-1.066002 3.486924-.707347C3.188045-.109589 2.729763-.059776 2.500623-.059776Z'/>
+<path id='m4-g3-61' d='M6.844334-3.257783C6.993773-3.257783 7.183064-3.257783 7.183064-3.457036S6.993773-3.656289 6.854296-3.656289H.886675C.747198-3.656289 .557908-3.656289 .557908-3.457036S.747198-3.257783 .896638-3.257783H6.844334ZM6.854296-1.325031C6.993773-1.325031 7.183064-1.325031 7.183064-1.524284S6.993773-1.723537 6.844334-1.723537H.896638C.747198-1.723537 .557908-1.723537 .557908-1.524284S.747198-1.325031 .886675-1.325031H6.854296Z'/>
+<path id='m4-g3-67' d='M.557908-3.407223C.557908-1.344956 2.171856 .219178 4.024907 .219178C5.648817 .219178 6.625156-1.165629 6.625156-2.321295C6.625156-2.420922 6.625156-2.49066 6.495641-2.49066C6.386052-2.49066 6.386052-2.430884 6.37609-2.331258C6.296389-.9066 5.230386-.089664 4.144458-.089664C3.536737-.089664 1.58406-.428394 1.58406-3.39726C1.58406-6.37609 3.526775-6.714819 4.134496-6.714819C5.220423-6.714819 6.107098-5.808219 6.306351-4.353674C6.326276-4.214197 6.326276-4.184309 6.465753-4.184309C6.625156-4.184309 6.625156-4.214197 6.625156-4.423412V-6.784558C6.625156-6.953923 6.625156-7.023661 6.515567-7.023661C6.475716-7.023661 6.435866-7.023661 6.356164-6.90411L5.858032-6.166874C5.489415-6.525529 4.98132-7.023661 4.024907-7.023661C2.161893-7.023661 .557908-5.439601 .557908-3.407223Z'/>
+<path id='m4-g3-97' d='M3.317559-.757161C3.35741-.358655 3.626401 .059776 4.094645 .059776C4.303861 .059776 4.911582-.079701 4.911582-.886675V-1.444583H4.662516V-.886675C4.662516-.308842 4.41345-.249066 4.303861-.249066C3.975093-.249066 3.935243-.697385 3.935243-.747198V-2.739726C3.935243-3.158157 3.935243-3.5467 3.576588-3.915318C3.188045-4.303861 2.689913-4.463263 2.211706-4.463263C1.39477-4.463263 .707347-3.995019 .707347-3.337484C.707347-3.038605 .9066-2.86924 1.165629-2.86924C1.444583-2.86924 1.62391-3.068493 1.62391-3.327522C1.62391-3.447073 1.574097-3.775841 1.115816-3.785803C1.384807-4.134496 1.872976-4.244085 2.191781-4.244085C2.67995-4.244085 3.247821-3.855542 3.247821-2.968867V-2.600249C2.739726-2.570361 2.042341-2.540473 1.414695-2.241594C.667497-1.902864 .418431-1.384807 .418431-.946451C.418431-.139477 1.384807 .109589 2.012453 .109589C2.669988 .109589 3.128269-.288917 3.317559-.757161ZM3.247821-2.391034V-1.39477C3.247821-.448319 2.530511-.109589 2.082192-.109589C1.594022-.109589 1.185554-.458281 1.185554-.956413C1.185554-1.504359 1.603985-2.331258 3.247821-2.391034Z'/>
+<path id='m4-g3-101' d='M1.115816-2.510585C1.175592-3.995019 2.012453-4.244085 2.351183-4.244085C3.377335-4.244085 3.476961-2.899128 3.476961-2.510585H1.115816ZM1.105853-2.30137H3.88543C4.104608-2.30137 4.134496-2.30137 4.134496-2.510585C4.134496-3.496887 3.596513-4.463263 2.351183-4.463263C1.195517-4.463263 .278954-3.437111 .278954-2.191781C.278954-.856787 1.325031 .109589 2.470735 .109589C3.686177 .109589 4.134496-.996264 4.134496-1.185554C4.134496-1.285181 4.054795-1.305106 4.004981-1.305106C3.915318-1.305106 3.895392-1.24533 3.875467-1.165629C3.526775-.139477 2.630137-.139477 2.530511-.139477C2.032379-.139477 1.633873-.438356 1.404732-.806974C1.105853-1.285181 1.105853-1.942715 1.105853-2.30137Z'/>
+<path id='m4-g3-103' d='M2.211706-1.713574C1.344956-1.713574 1.344956-2.709838 1.344956-2.938979C1.344956-3.20797 1.354919-3.526775 1.504359-3.775841C1.58406-3.895392 1.8132-4.174346 2.211706-4.174346C3.078456-4.174346 3.078456-3.178082 3.078456-2.948941C3.078456-2.67995 3.068493-2.361146 2.919054-2.11208C2.839352-1.992528 2.610212-1.713574 2.211706-1.713574ZM1.05604-1.325031C1.05604-1.364882 1.05604-1.594022 1.225405-1.793275C1.613948-1.514321 2.022416-1.484433 2.211706-1.484433C3.138232-1.484433 3.825654-2.171856 3.825654-2.938979C3.825654-3.307597 3.666252-3.676214 3.417186-3.905355C3.775841-4.244085 4.134496-4.293898 4.313823-4.293898C4.333748-4.293898 4.383562-4.293898 4.41345-4.283935C4.303861-4.244085 4.254047-4.134496 4.254047-4.014944C4.254047-3.845579 4.383562-3.726027 4.542964-3.726027C4.64259-3.726027 4.83188-3.795766 4.83188-4.024907C4.83188-4.194271 4.712329-4.513076 4.323786-4.513076C4.124533-4.513076 3.686177-4.4533 3.267746-4.044832C2.849315-4.373599 2.430884-4.403487 2.211706-4.403487C1.285181-4.403487 .597758-3.716065 .597758-2.948941C.597758-2.510585 .816936-2.132005 1.066002-1.92279C.936488-1.77335 .757161-1.444583 .757161-1.09589C.757161-.787049 .886675-.408468 1.195517-.209215C.597758-.039851 .278954 .388543 .278954 .787049C.278954 1.504359 1.265255 2.052304 2.480697 2.052304C3.656289 2.052304 4.692403 1.544209 4.692403 .767123C4.692403 .418431 4.552927-.089664 4.044832-.368618C3.516812-.647572 2.938979-.647572 2.331258-.647572C2.082192-.647572 1.653798-.647572 1.58406-.657534C1.265255-.697385 1.05604-1.006227 1.05604-1.325031ZM2.49066 1.823163C1.484433 1.823163 .797011 1.315068 .797011 .787049C.797011 .328767 1.175592-.039851 1.613948-.069738H2.201743C3.058531-.069738 4.174346-.069738 4.174346 .787049C4.174346 1.325031 3.466999 1.823163 2.49066 1.823163Z'/>
+<path id='m4-g3-111' d='M4.692403-2.132005C4.692403-3.407223 3.696139-4.463263 2.49066-4.463263C1.24533-4.463263 .278954-3.377335 .278954-2.132005C.278954-.846824 1.315068 .109589 2.480697 .109589C3.686177 .109589 4.692403-.86675 4.692403-2.132005ZM2.49066-.139477C2.062267-.139477 1.62391-.348692 1.354919-.806974C1.105853-1.24533 1.105853-1.853051 1.105853-2.211706C1.105853-2.600249 1.105853-3.138232 1.344956-3.576588C1.613948-4.034869 2.082192-4.244085 2.480697-4.244085C2.919054-4.244085 3.347447-4.024907 3.606476-3.596513S3.865504-2.590286 3.865504-2.211706C3.865504-1.853051 3.865504-1.315068 3.646326-.876712C3.427148-.428394 2.988792-.139477 2.49066-.139477Z'/>
+<path id='m4-g3-114' d='M1.663761-3.307597V-4.403487L.278954-4.293898V-3.985056C.976339-3.985056 1.05604-3.915318 1.05604-3.427148V-.757161C1.05604-.308842 .946451-.308842 .278954-.308842V0C.667497-.009963 1.135741-.029888 1.414695-.029888C1.8132-.029888 2.281445-.029888 2.67995 0V-.308842H2.470735C1.733499-.308842 1.713574-.418431 1.713574-.777086V-2.311333C1.713574-3.297634 2.132005-4.184309 2.889166-4.184309C2.958904-4.184309 2.978829-4.184309 2.998755-4.174346C2.968867-4.164384 2.769614-4.044832 2.769614-3.785803C2.769614-3.506849 2.978829-3.35741 3.198007-3.35741C3.377335-3.35741 3.626401-3.476961 3.626401-3.795766S3.317559-4.403487 2.889166-4.403487C2.161893-4.403487 1.803238-3.73599 1.663761-3.307597Z'/>
+<path id='m4-g3-118' d='M4.144458-3.317559C4.234122-3.5467 4.403487-3.975093 5.061021-3.985056V-4.293898C4.83188-4.273973 4.542964-4.26401 4.313823-4.26401C4.07472-4.26401 3.616438-4.283935 3.447073-4.293898V-3.985056C3.815691-3.975093 3.92528-3.745953 3.92528-3.556663C3.92528-3.466999 3.905355-3.427148 3.865504-3.317559L2.849315-.777086L1.733499-3.556663C1.673724-3.686177 1.673724-3.706102 1.673724-3.726027C1.673724-3.985056 2.062267-3.985056 2.241594-3.985056V-4.293898C1.942715-4.283935 1.384807-4.26401 1.155666-4.26401C.886675-4.26401 .488169-4.273973 .18929-4.293898V-3.985056C.816936-3.985056 .856787-3.92528 .986301-3.616438L2.420922-.079701C2.480697 .059776 2.500623 .109589 2.630137 .109589S2.799502 .019925 2.839352-.079701L4.144458-3.317559Z'/>
+</defs>
+<g id='m4-page40'>
+<use x='62.302529' y='-8.771064' xlink:href='#m4-g3-67'/>
+<use x='69.497789' y='-8.771064' xlink:href='#m4-g3-111'/>
+<use x='74.20238' y='-8.771064' xlink:href='#m4-g3-118'/>
+<use x='79.183719' y='-8.771064' xlink:href='#m4-g3-101'/>
+<use x='83.61157' y='-8.771064' xlink:href='#m4-g3-114'/>
+<use x='87.513621' y='-8.771064' xlink:href='#m4-g3-97'/>
+<use x='92.49496' y='-8.771064' xlink:href='#m4-g3-103'/>
+<use x='97.476299' y='-8.771064' xlink:href='#m4-g3-101'/>
+<use x='104.671417' y='-8.771064' xlink:href='#m4-g3-61'/>
+<use x='120.257382' y='-15.510865' xlink:href='#m4-g3-51'/>
+<use x='125.238721' y='-15.510865' xlink:href='#m4-g3-51'/>
+<use x='130.22006' y='-15.510865' xlink:href='#m4-g3-48'/>
+<rect x='116.38301' y='-11.460973' height='.398484' width='22.692749'/>
+<use x='116.38301' y='-1.937194' xlink:href='#m4-g3-54'/>
+<use x='121.364349' y='-1.937194' xlink:href='#m4-g1-59'/>
+<use x='124.131758' y='-1.937194' xlink:href='#m4-g3-48'/>
+<use x='129.113097' y='-1.937194' xlink:href='#m4-g3-48'/>
+<use x='134.094436' y='-1.937194' xlink:href='#m4-g3-48'/>
+<use x='142.485139' y='-8.771064' xlink:href='#m4-g0-2'/>
+<use x='152.447753' y='-8.771064' xlink:href='#m4-g3-49'/>
+<use x='157.429092' y='-8.771064' xlink:href='#m4-g3-48'/>
+<use x='162.410431' y='-8.771064' xlink:href='#m4-g3-48'/>
+<use x='167.39177' y='-8.771064' xlink:href='#m4-g3-37'/>
+<use x='178.461328' y='-8.771064' xlink:href='#m4-g3-61'/>
+<use x='188.977408' y='-8.771064' xlink:href='#m4-g3-48'/>
+<use x='193.958747' y='-8.771064' xlink:href='#m4-g1-58'/>
+<use x='196.726156' y='-8.771064' xlink:href='#m4-g3-48'/>
+<use x='201.707495' y='-8.771064' xlink:href='#m4-g3-53'/>
+<use x='206.688834' y='-8.771064' xlink:href='#m4-g3-53'/>
+<use x='213.884039' y='-8.771064' xlink:href='#m4-g0-2'/>
+<use x='223.846652' y='-8.771064' xlink:href='#m4-g3-49'/>
+<use x='228.827991' y='-8.771064' xlink:href='#m4-g3-48'/>
+<use x='233.80933' y='-8.771064' xlink:href='#m4-g3-48'/>
+<use x='238.790669' y='-8.771064' xlink:href='#m4-g3-37'/>
+<use x='249.860227' y='-8.771064' xlink:href='#m4-g3-61'/>
+<use x='260.376307' y='-8.771064' xlink:href='#m4-g3-53'/>
+<use x='265.357646' y='-8.771064' xlink:href='#m4-g1-58'/>
+<use x='268.125055' y='-8.771064' xlink:href='#m4-g3-53'/>
+<use x='273.106394' y='-8.771064' xlink:href='#m4-g3-37'/>
+</g>
+</svg></div>
+<p>“不必恐慌”和“科学从无定论”两个文档没有“成本”的片段，但它们的字符仍计入 <span class="math math-inline" role="math" aria-label="n" style="vertical-align:-0.000em"><svg aria-hidden="true" focusable="false" fill="currentColor" style="height:0.465em"  version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'   viewBox='0 -4.289468 5.979925 4.289468'>
+<defs>
+<path id='m5-g2-110' d='M.876712-.587796C.846824-.438356 .787049-.209215 .787049-.159402C.787049 .019925 .926526 .109589 1.075965 .109589C1.195517 .109589 1.374844 .029888 1.444583-.169365C1.454545-.18929 1.574097-.657534 1.633873-.9066L1.853051-1.803238C1.912827-2.022416 1.972603-2.241594 2.022416-2.470735C2.062267-2.6401 2.141968-2.929016 2.15193-2.968867C2.30137-3.277709 2.82939-4.184309 3.775841-4.184309C4.224159-4.184309 4.313823-3.815691 4.313823-3.486924C4.313823-2.86924 3.825654-1.594022 3.666252-1.165629C3.576588-.936488 3.566625-.816936 3.566625-.707347C3.566625-.239103 3.915318 .109589 4.383562 .109589C5.32005 .109589 5.688667-1.344956 5.688667-1.424658C5.688667-1.524284 5.599004-1.524284 5.569116-1.524284C5.469489-1.524284 5.469489-1.494396 5.419676-1.344956C5.220423-.667497 4.891656-.109589 4.403487-.109589C4.234122-.109589 4.164384-.209215 4.164384-.438356C4.164384-.687422 4.254047-.926526 4.343711-1.145704C4.533001-1.673724 4.951432-2.769614 4.951432-3.337484C4.951432-4.004981 4.523039-4.403487 3.805729-4.403487C2.909091-4.403487 2.420922-3.765878 2.251557-3.536737C2.201743-4.094645 1.793275-4.403487 1.334994-4.403487S.687422-4.014944 .587796-3.835616C.428394-3.496887 .288917-2.909091 .288917-2.86924C.288917-2.769614 .388543-2.769614 .408468-2.769614C.508095-2.769614 .518057-2.779577 .577833-2.998755C.747198-3.706102 .946451-4.184309 1.305106-4.184309C1.504359-4.184309 1.613948-4.054795 1.613948-3.726027C1.613948-3.516812 1.58406-3.407223 1.454545-2.889166L.876712-.587796Z'/>
+</defs>
+<g id='m5-page3'>
+<use x='0' y='0' xlink:href='#m5-g2-110'/>
+</g>
+</svg></span>。在项目的编码本中，<span class="math math-inline" role="math" aria-label="n" style="vertical-align:-0.000em"><svg aria-hidden="true" focusable="false" fill="currentColor" style="height:0.465em"  version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'   viewBox='0 -4.289468 5.979925 4.289468'>
+<defs>
+<path id='m6-g2-110' d='M.876712-.587796C.846824-.438356 .787049-.209215 .787049-.159402C.787049 .019925 .926526 .109589 1.075965 .109589C1.195517 .109589 1.374844 .029888 1.444583-.169365C1.454545-.18929 1.574097-.657534 1.633873-.9066L1.853051-1.803238C1.912827-2.022416 1.972603-2.241594 2.022416-2.470735C2.062267-2.6401 2.141968-2.929016 2.15193-2.968867C2.30137-3.277709 2.82939-4.184309 3.775841-4.184309C4.224159-4.184309 4.313823-3.815691 4.313823-3.486924C4.313823-2.86924 3.825654-1.594022 3.666252-1.165629C3.576588-.936488 3.566625-.816936 3.566625-.707347C3.566625-.239103 3.915318 .109589 4.383562 .109589C5.32005 .109589 5.688667-1.344956 5.688667-1.424658C5.688667-1.524284 5.599004-1.524284 5.569116-1.524284C5.469489-1.524284 5.469489-1.494396 5.419676-1.344956C5.220423-.667497 4.891656-.109589 4.403487-.109589C4.234122-.109589 4.164384-.209215 4.164384-.438356C4.164384-.687422 4.254047-.926526 4.343711-1.145704C4.533001-1.673724 4.951432-2.769614 4.951432-3.337484C4.951432-4.004981 4.523039-4.403487 3.805729-4.403487C2.909091-4.403487 2.420922-3.765878 2.251557-3.536737C2.201743-4.094645 1.793275-4.403487 1.334994-4.403487S.687422-4.014944 .587796-3.835616C.428394-3.496887 .288917-2.909091 .288917-2.86924C.288917-2.769614 .388543-2.769614 .408468-2.769614C.508095-2.769614 .518057-2.779577 .577833-2.998755C.747198-3.706102 .946451-4.184309 1.305106-4.184309C1.504359-4.184309 1.613948-4.054795 1.613948-3.726027C1.613948-3.516812 1.58406-3.407223 1.454545-2.889166L.876712-.587796Z'/>
+</defs>
+<g id='m6-page3'>
+<use x='0' y='0' xlink:href='#m6-g2-110'/>
+</g>
+</svg></span> 包括所有行动派文本、“2024 热浪报告”以及其余所有文档，而 <span class="math math-inline" role="math" aria-label="c" style="vertical-align:-0.000em"><svg aria-hidden="true" focusable="false" fill="currentColor" style="height:0.465em"  version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'   viewBox='0 -4.289468 4.311397 4.289468'>
+<defs>
+<path id='m7-g2-99' d='M3.945205-3.785803C3.785803-3.785803 3.646326-3.785803 3.506849-3.646326C3.347447-3.496887 3.327522-3.327522 3.327522-3.257783C3.327522-3.01868 3.506849-2.909091 3.696139-2.909091C3.985056-2.909091 4.254047-3.148194 4.254047-3.5467C4.254047-4.034869 3.785803-4.403487 3.078456-4.403487C1.733499-4.403487 .408468-2.978829 .408468-1.574097C.408468-.67746 .986301 .109589 2.022416 .109589C3.447073 .109589 4.283935-.946451 4.283935-1.066002C4.283935-1.125778 4.224159-1.195517 4.164384-1.195517C4.11457-1.195517 4.094645-1.175592 4.034869-1.09589C3.247821-.109589 2.161893-.109589 2.042341-.109589C1.414695-.109589 1.145704-.597758 1.145704-1.195517C1.145704-1.603985 1.344956-2.570361 1.683686-3.188045C1.992528-3.755915 2.540473-4.184309 3.088418-4.184309C3.427148-4.184309 3.805729-4.054795 3.945205-3.785803Z'/>
+</defs>
+<g id='m7-page2'>
+<use x='0' y='0' xlink:href='#m7-g2-99'/>
+</g>
+</svg></span> 包括所有这些文档中“成本”的片段。假设项目共有 18,000 个字符，“成本”的片段占其中的 612 个，即上面提到的 330 个，加上项目中其他文档里的 282 个。于是，尽管没有任何编码实例发生变化，项目的编码本得出的却是 <span class="math math-inline" role="math" aria-label="612 / 18{,}000 = 0.034" style="vertical-align:-0.270em"><svg aria-hidden="true" focusable="false" fill="currentColor" style="height:1.080em"  version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'   viewBox='0 -7.47198 83.575637 9.96264'>
+<defs>
+<path id='m8-g9-58' d='M1.912827-.52802C1.912827-.816936 1.673724-1.05604 1.384807-1.05604S.856787-.816936 .856787-.52802S1.09589 0 1.384807 0S1.912827-.239103 1.912827-.52802Z'/>
+<path id='m8-g9-59' d='M2.022416-.009963C2.022416-.667497 1.77335-1.05604 1.384807-1.05604C1.05604-1.05604 .856787-.806974 .856787-.52802C.856787-.259029 1.05604 0 1.384807 0C1.504359 0 1.633873-.039851 1.733499-.129514C1.763387-.14944 1.77335-.159402 1.783313-.159402S1.803238-.14944 1.803238-.009963C1.803238 .727273 1.454545 1.325031 1.125778 1.653798C1.016189 1.763387 1.016189 1.783313 1.016189 1.8132C1.016189 1.882939 1.066002 1.92279 1.115816 1.92279C1.225405 1.92279 2.022416 1.155666 2.022416-.009963Z'/>
+<path id='m8-g9-61' d='M4.373599-7.0934C4.423412-7.222914 4.423412-7.262765 4.423412-7.272727C4.423412-7.382316 4.333748-7.47198 4.224159-7.47198C4.154421-7.47198 4.084682-7.442092 4.054795-7.382316L.597758 2.11208C.547945 2.241594 .547945 2.281445 .547945 2.291407C.547945 2.400996 .637609 2.49066 .747198 2.49066C.876712 2.49066 .9066 2.420922 .966376 2.251557L4.373599-7.0934Z'/>
+<path id='m8-g11-48' d='M4.582814-3.188045C4.582814-3.985056 4.533001-4.782067 4.184309-5.519303C3.726027-6.475716 2.909091-6.635118 2.49066-6.635118C1.892902-6.635118 1.165629-6.37609 .757161-5.449564C.438356-4.762142 .388543-3.985056 .388543-3.188045C.388543-2.440847 .428394-1.544209 .836862-.787049C1.265255 .019925 1.992528 .219178 2.480697 .219178C3.01868 .219178 3.775841 .009963 4.214197-.936488C4.533001-1.62391 4.582814-2.400996 4.582814-3.188045ZM2.480697 0C2.092154 0 1.504359-.249066 1.325031-1.205479C1.215442-1.803238 1.215442-2.719801 1.215442-3.307597C1.215442-3.945205 1.215442-4.60274 1.295143-5.140722C1.484433-6.326276 2.231631-6.41594 2.480697-6.41594C2.809465-6.41594 3.466999-6.236613 3.656289-5.250311C3.755915-4.692403 3.755915-3.935243 3.755915-3.307597C3.755915-2.560399 3.755915-1.882939 3.646326-1.24533C3.496887-.298879 2.929016 0 2.480697 0Z'/>
+<path id='m8-g11-49' d='M2.929016-6.37609C2.929016-6.615193 2.929016-6.635118 2.699875-6.635118C2.082192-5.997509 1.205479-5.997509 .886675-5.997509V-5.688667C1.085928-5.688667 1.673724-5.688667 2.191781-5.947696V-.787049C2.191781-.428394 2.161893-.308842 1.265255-.308842H.946451V0C1.295143-.029888 2.161893-.029888 2.560399-.029888S3.825654-.029888 4.174346 0V-.308842H3.855542C2.958904-.308842 2.929016-.418431 2.929016-.787049V-6.37609Z'/>
+<path id='m8-g11-50' d='M1.265255-.767123L2.321295-1.793275C3.875467-3.16812 4.473225-3.706102 4.473225-4.702366C4.473225-5.838107 3.576588-6.635118 2.361146-6.635118C1.235367-6.635118 .498132-5.718555 .498132-4.83188C.498132-4.273973 .996264-4.273973 1.026152-4.273973C1.195517-4.273973 1.544209-4.393524 1.544209-4.801993C1.544209-5.061021 1.364882-5.32005 1.016189-5.32005C.936488-5.32005 .916563-5.32005 .886675-5.310087C1.115816-5.957659 1.653798-6.326276 2.231631-6.326276C3.138232-6.326276 3.566625-5.519303 3.566625-4.702366C3.566625-3.905355 3.068493-3.118306 2.520548-2.500623L.607721-.368618C.498132-.259029 .498132-.239103 .498132 0H4.194271L4.473225-1.733499H4.224159C4.174346-1.43462 4.104608-.996264 4.004981-.846824C3.935243-.767123 3.277709-.767123 3.058531-.767123H1.265255Z'/>
+<path id='m8-g11-51' d='M2.889166-3.506849C3.706102-3.775841 4.283935-4.473225 4.283935-5.260274C4.283935-6.07721 3.407223-6.635118 2.450809-6.635118C1.444583-6.635118 .687422-6.03736 .687422-5.280199C.687422-4.951432 .9066-4.762142 1.195517-4.762142C1.504359-4.762142 1.703611-4.98132 1.703611-5.270237C1.703611-5.768369 1.235367-5.768369 1.085928-5.768369C1.39477-6.256538 2.052304-6.386052 2.410959-6.386052C2.819427-6.386052 3.367372-6.166874 3.367372-5.270237C3.367372-5.150685 3.347447-4.572852 3.088418-4.134496C2.789539-3.656289 2.450809-3.626401 2.201743-3.616438C2.122042-3.606476 1.882939-3.58655 1.8132-3.58655C1.733499-3.576588 1.663761-3.566625 1.663761-3.466999C1.663761-3.35741 1.733499-3.35741 1.902864-3.35741H2.34122C3.158157-3.35741 3.526775-2.67995 3.526775-1.703611C3.526775-.348692 2.839352-.059776 2.400996-.059776C1.972603-.059776 1.225405-.229141 .876712-.816936C1.225405-.767123 1.534247-.986301 1.534247-1.364882C1.534247-1.723537 1.265255-1.92279 .976339-1.92279C.737235-1.92279 .418431-1.783313 .418431-1.344956C.418431-.438356 1.344956 .219178 2.430884 .219178C3.646326 .219178 4.552927-.687422 4.552927-1.703611C4.552927-2.520548 3.92528-3.297634 2.889166-3.506849Z'/>
+<path id='m8-g11-52' d='M2.929016-1.643836V-.777086C2.929016-.418431 2.909091-.308842 2.171856-.308842H1.96264V0C2.371108-.029888 2.889166-.029888 3.307597-.029888S4.254047-.029888 4.662516 0V-.308842H4.4533C3.716065-.308842 3.696139-.418431 3.696139-.777086V-1.643836H4.692403V-1.952677H3.696139V-6.485679C3.696139-6.684932 3.696139-6.744707 3.536737-6.744707C3.447073-6.744707 3.417186-6.744707 3.337484-6.625156L.278954-1.952677V-1.643836H2.929016ZM2.988792-1.952677H.557908L2.988792-5.668742V-1.952677Z'/>
+<path id='m8-g11-54' d='M1.315068-3.267746V-3.506849C1.315068-6.027397 2.550436-6.386052 3.058531-6.386052C3.297634-6.386052 3.716065-6.326276 3.935243-5.987547C3.785803-5.987547 3.387298-5.987547 3.387298-5.539228C3.387298-5.230386 3.626401-5.080946 3.845579-5.080946C4.004981-5.080946 4.303861-5.17061 4.303861-5.559153C4.303861-6.156912 3.865504-6.635118 3.038605-6.635118C1.763387-6.635118 .418431-5.349938 .418431-3.148194C.418431-.488169 1.574097 .219178 2.500623 .219178C3.606476 .219178 4.552927-.71731 4.552927-2.032379C4.552927-3.297634 3.666252-4.254047 2.560399-4.254047C1.882939-4.254047 1.514321-3.745953 1.315068-3.267746ZM2.500623-.059776C1.872976-.059776 1.574097-.657534 1.514321-.806974C1.334994-1.275218 1.334994-2.072229 1.334994-2.251557C1.334994-3.028643 1.653798-4.024907 2.550436-4.024907C2.709838-4.024907 3.16812-4.024907 3.476961-3.407223C3.656289-3.038605 3.656289-2.530511 3.656289-2.042341C3.656289-1.564134 3.656289-1.066002 3.486924-.707347C3.188045-.109589 2.729763-.059776 2.500623-.059776Z'/>
+<path id='m8-g11-56' d='M1.62391-4.552927C1.165629-4.851806 1.125778-5.190535 1.125778-5.3599C1.125778-5.967621 1.77335-6.386052 2.480697-6.386052C3.20797-6.386052 3.845579-5.867995 3.845579-5.150685C3.845579-4.582814 3.457036-4.104608 2.859278-3.755915L1.62391-4.552927ZM3.078456-3.606476C3.795766-3.975093 4.283935-4.493151 4.283935-5.150685C4.283935-6.067248 3.39726-6.635118 2.49066-6.635118C1.494396-6.635118 .687422-5.897883 .687422-4.971357C.687422-4.79203 .707347-4.343711 1.125778-3.875467C1.235367-3.755915 1.603985-3.506849 1.853051-3.337484C1.275218-3.048568 .418431-2.49066 .418431-1.504359C.418431-.448319 1.43462 .219178 2.480697 .219178C3.606476 .219178 4.552927-.607721 4.552927-1.673724C4.552927-2.032379 4.443337-2.480697 4.064757-2.899128C3.875467-3.108344 3.716065-3.20797 3.078456-3.606476ZM2.082192-3.188045L3.307597-2.410959C3.58655-2.221669 4.054795-1.92279 4.054795-1.315068C4.054795-.577833 3.307597-.059776 2.49066-.059776C1.633873-.059776 .916563-.67746 .916563-1.504359C.916563-2.082192 1.235367-2.719801 2.082192-3.188045Z'/>
+<path id='m8-g11-61' d='M6.844334-3.257783C6.993773-3.257783 7.183064-3.257783 7.183064-3.457036S6.993773-3.656289 6.854296-3.656289H.886675C.747198-3.656289 .557908-3.656289 .557908-3.457036S.747198-3.257783 .896638-3.257783H6.844334ZM6.854296-1.325031C6.993773-1.325031 7.183064-1.325031 7.183064-1.524284S6.993773-1.723537 6.844334-1.723537H.896638C.747198-1.723537 .557908-1.723537 .557908-1.524284S.747198-1.325031 .886675-1.325031H6.854296Z'/>
+</defs>
+<g id='m8-page7'>
+<use x='0' y='0' xlink:href='#m8-g11-54'/>
+<use x='4.981339' y='0' xlink:href='#m8-g11-49'/>
+<use x='9.962678' y='0' xlink:href='#m8-g11-50'/>
+<use x='14.944017' y='0' xlink:href='#m8-g9-61'/>
+<use x='19.925356' y='0' xlink:href='#m8-g11-49'/>
+<use x='24.906695' y='0' xlink:href='#m8-g11-56'/>
+<use x='29.888034' y='0' xlink:href='#m8-g9-59'/>
+<use x='32.655443' y='0' xlink:href='#m8-g11-48'/>
+<use x='37.636782' y='0' xlink:href='#m8-g11-48'/>
+<use x='42.618121' y='0' xlink:href='#m8-g11-48'/>
+<use x='50.366792' y='0' xlink:href='#m8-g11-61'/>
+<use x='60.882872' y='0' xlink:href='#m8-g11-48'/>
+<use x='65.864211' y='0' xlink:href='#m8-g9-58'/>
+<use x='68.63162' y='0' xlink:href='#m8-g11-48'/>
+<use x='73.612959' y='0' xlink:href='#m8-g11-51'/>
+<use x='78.594298' y='0' xlink:href='#m8-g11-52'/>
+</g>
+</svg></span>，即 3.4%。比较几个编码的覆盖率时，请在同一个范围内比较，这时所有相关编码的 <span class="math math-inline" role="math" aria-label="n" style="vertical-align:-0.000em"><svg aria-hidden="true" focusable="false" fill="currentColor" style="height:0.465em"  version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'   viewBox='0 -4.289468 5.979925 4.289468'>
+<defs>
+<path id='m9-g2-110' d='M.876712-.587796C.846824-.438356 .787049-.209215 .787049-.159402C.787049 .019925 .926526 .109589 1.075965 .109589C1.195517 .109589 1.374844 .029888 1.444583-.169365C1.454545-.18929 1.574097-.657534 1.633873-.9066L1.853051-1.803238C1.912827-2.022416 1.972603-2.241594 2.022416-2.470735C2.062267-2.6401 2.141968-2.929016 2.15193-2.968867C2.30137-3.277709 2.82939-4.184309 3.775841-4.184309C4.224159-4.184309 4.313823-3.815691 4.313823-3.486924C4.313823-2.86924 3.825654-1.594022 3.666252-1.165629C3.576588-.936488 3.566625-.816936 3.566625-.707347C3.566625-.239103 3.915318 .109589 4.383562 .109589C5.32005 .109589 5.688667-1.344956 5.688667-1.424658C5.688667-1.524284 5.599004-1.524284 5.569116-1.524284C5.469489-1.524284 5.469489-1.494396 5.419676-1.344956C5.220423-.667497 4.891656-.109589 4.403487-.109589C4.234122-.109589 4.164384-.209215 4.164384-.438356C4.164384-.687422 4.254047-.926526 4.343711-1.145704C4.533001-1.673724 4.951432-2.769614 4.951432-3.337484C4.951432-4.004981 4.523039-4.403487 3.805729-4.403487C2.909091-4.403487 2.420922-3.765878 2.251557-3.536737C2.201743-4.094645 1.793275-4.403487 1.334994-4.403487S.687422-4.014944 .587796-3.835616C.428394-3.496887 .288917-2.909091 .288917-2.86924C.288917-2.769614 .388543-2.769614 .408468-2.769614C.508095-2.769614 .518057-2.779577 .577833-2.998755C.747198-3.706102 .946451-4.184309 1.305106-4.184309C1.504359-4.184309 1.613948-4.054795 1.613948-3.726027C1.613948-3.516812 1.58406-3.407223 1.454545-2.889166L.876712-.587796Z'/>
+</defs>
+<g id='m9-page3'>
+<use x='0' y='0' xlink:href='#m9-g2-110'/>
+</g>
+</svg></span> 都相同；同时还要结合<strong class="ui">片段</strong>来看。</p>
+<p><strong class="ui">编码统计</strong>分面为单个文档提供同样的度量，详见<a href="coding-analysis.html">第 13 章“编码分析”</a>中的<a href="coding-analysis.html#code-stats-facet">编码频率与覆盖率</a>。</p>
+<p><strong class="ui">共现编码</strong>统计的是相互重叠的片段对的数量。一个“成本”片段每与另一个编码的一个片段重叠一次，那个编码在<strong class="ui">共现编码</strong>中的计数就加 1；如果同一段“成本”文字与两个不同的“责任”片段重叠，“责任”的计数就加 2。这里的数字高，也可能只是说明两个编码都用得多，因为一个有许多长片段的编码，单凭偶然也会与其他编码重叠。在“气候辩论”项目中，“成本”和“责任”是用得最多的两个编码，各有 19 个片段；“成本”的<strong class="ui">共现编码</strong>中，“责任”的数字是 5。要定量衡量两个编码在同一文档中同时出现的倾向，请参阅<strong class="ui">编码统计</strong>分面中的<strong class="ui">共现</strong>部分，详见<a href="coding-analysis.html">第 13 章“编码分析”</a>中的<a href="coding-analysis.html#co-occurrences">文档中的共现</a>。</p>
+<h4 id="exporting-the-codebook">导出编码本<a class="anchor" href="#exporting-the-codebook" aria-hidden="true">#</a></h4>
+<p>树下方的<strong class="ui">导出</strong>把树中显示的编码导出为 CSV 文件，其中有六个字段（编码、路径、层级、数量、描述和颜色）。“路径”字段显示编码在树的层级中相对于其他编码的位置。例如，“紧迫性”下的编码“时间节点”，路径显示为 <code>紧迫性 / 时间节点</code>。“层级”显示编码位于层级中的第几层（顶层编码为 1，子编码为 2，依此类推）。“数量”显示范围内的编码片段总数。设置了标签筛选时，只导出视图中显示的编码。如果要以 REFI-QDA 格式导出编码本，请参阅<a href="exchange-and-export.html">第 22 章“交换与导出”</a>中的<a href="exchange-and-export.html#codebook-export">导出编码本</a>。</p>
+<h4 id="the-codebook-window">编码本窗口<a class="anchor" href="#the-codebook-window" aria-hidden="true">#</a></h4>
+<p>要让编码本与阅读器并排显示，请先从导航栏的<strong class="ui">项目</strong>中打开<strong class="ui">编码本</strong>视图，然后点按视图上方横栏最右端的<strong class="ui">在窗口中打开</strong>（两个斜向箭头）。你也可以选取<strong class="ui">窗口 ▸ 编码本</strong>，或者在导航栏中右键点按项目，然后选取<strong class="ui">编码本</strong>，来打开编码本窗口。编码本窗口涵盖整个项目。窗口顶部有一排按钮，项目视图栏的每个视图各对应一个。项目的<strong class="ui">编码实例</strong>、<strong class="ui">备忘录</strong>和<strong class="ui">链接</strong>视图也有同样的<strong class="ui">在窗口中打开</strong>按钮，点按后会在窗口中打开相应的视图。</p>
+<figure class="shot" id="coding-codebook-window"><img class="shot-light" src="../figures/zh-Hans/light/coding-codebook-window.webp" alt="“气候辩论”的编码本窗口，已选中“紧迫性”。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/coding-codebook-window.webp" alt="“气候辩论”的编码本窗口，已选中“紧迫性”。" loading="lazy"><figcaption>“气候辩论”的编码本窗口，已选中“紧迫性”。</figcaption></figure>
+<h2 id="memos">备忘录<a class="anchor" href="#memos" aria-hidden="true">#</a></h2>
+<p>备忘录记录你对某段文字意义的思考，例如段落之间的比较、你的感想，以及编码过程中产生的各种问题。通常，你会一边为文档编码一边撰写备忘录，以后在得出结论时再回头看它们。在示例项目“气候辩论”中，四个文档里有针对若干段落的备忘录。例如，在文档“时间不多了”中，针对“这不过是一个标上了日期的愿望，好让每一届政府都能把最难办的部分推给下一届。”这段文字的备忘录指出，遥远的目标被解读为推诿，而不是雄心。</p>
+<h3 id="writing-a-memo">撰写备忘录<a class="anchor" href="#writing-a-memo" aria-hidden="true">#</a></h3>
+<ol>
+<li>选中备忘录所针对的文字。</li>
+<li>点按选区栏中的<strong class="ui">备忘录</strong>，或者按下 ⇧⌘M。</li>
+<li><strong class="ui">新建备忘录</strong>对话框的顶部显示所选文字。在<strong class="ui">备忘录</strong>中输入你的笔记。</li>
+<li>要为备忘录加标签，请在<strong class="ui">标签</strong>中输入标签。要让它成为已编码备忘录，请在<strong class="ui">编码</strong>中选择一个编码（见下文<a href="#coded-memos">已编码备忘录</a>）。</li>
+<li>点按<strong class="ui">存储</strong>。</li>
+</ol>
+<p>备忘录中写入内容之前，<strong class="ui">存储</strong>按钮一直不可用（悬停提示为<strong class="ui">备忘录为空</strong>）。</p>
+<h3 id="coded-memos">已编码备忘录<a class="anchor" href="#coded-memos" aria-hidden="true">#</a></h3>
+<p>在<strong class="ui">编码</strong>菜单中选择了编码的备忘录，就成为已编码备忘录。如果你的笔记针对的是所选编码，而不是所选段落本身，例如说明某段文字为什么符合你正在应用的编码，就使用已编码备忘录。在“时间不多了”中，关于在浓雾中朝悬崖边走去的那个例句被编码为“恐惧”。如果像插图中那样，为这段文字写备忘录时把<strong class="ui">编码</strong>设为“恐惧”，“恐惧”在<strong class="ui">编码</strong>分面和<strong class="ui">编码统计</strong>分面中就会计两次，编码实例一次，备忘录一次。如果你想讨论与编码有关的内容，又不想增加编码统计中的计数，请在<strong class="ui">编码</strong>菜单中选择<strong class="ui">无</strong>。</p>
+<figure class="shot" id="coding-memo-sheet"><img class="shot-light" src="../figures/zh-Hans/light/coding-memo-sheet.webp" alt="为“时间不多了”中一段文字打开的“新建备忘录”对话框，编码选择了“恐惧”。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/coding-memo-sheet.webp" alt="为“时间不多了”中一段文字打开的“新建备忘录”对话框，编码选择了“恐惧”。" loading="lazy"><figcaption>为“时间不多了”中一段文字打开的“新建备忘录”对话框，编码选择了“恐惧”。</figcaption></figure>
+<p>已编码备忘录以编码的颜色和格式呈现，它在页边栏中的标注也采用编码的颜色。</p>
+<p>在<strong class="ui">编码</strong>和<strong class="ui">编码统计</strong>分面中，已编码备忘录算作其编码的一个编码实例；在查询结果中也是如此，除非你取消勾选<strong class="ui">已编码备忘录计为编码实例</strong>（见<a href="queries-building.html">第 15 章“构建查询”</a>中的<a href="queries-building.html#query-options">选项</a>）。<strong class="ui">编码本</strong>视图和<strong class="ui">编码实例</strong>视图只统计编码实例。</p>
+<p>已编码备忘录采用其编码的标签。为备忘录选择编码后，<strong class="ui">标签</strong>输入字段会变为<strong class="ui">继承的标签</strong>，显示这些标签，你之前在这个字段中输入的内容都会删除。如果编码没有任何标签，对话框会显示说明<strong class="ui">已编码备忘录继承其编码的属性和标签。</strong></p>
+<figure class="shot" id="coding-coded-memo-inherited"><img class="shot-light" src="../figures/zh-Hans/light/coding-coded-memo-inherited.webp" alt="为“时间不多了”中一段文字打开的“新建备忘录”对话框，编码选择了“恐惧”，显示继承的标签和属性“强度”。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/coding-coded-memo-inherited.webp" alt="为“时间不多了”中一段文字打开的“新建备忘录”对话框，编码选择了“恐惧”，显示继承的标签和属性“强度”。" loading="lazy"><figcaption>为“时间不多了”中一段文字打开的“新建备忘录”对话框，编码选择了“恐惧”，显示继承的标签和属性“强度”。</figcaption></figure>
+<p>如果编码有属性，会出现<strong class="ui">属性</strong>字段，每个属性各有一个控件。</p>
+<p><strong class="ui">编码</strong>下拉菜单列出本文档中可以使用的编码。选择<strong class="ui">无</strong>，已编码备忘录就会变回普通备忘录。</p>
+<h3 id="memos-in-reader">阅读器中的备忘录<a class="anchor" href="#memos-in-reader" aria-hidden="true">#</a></h3>
+<p>备忘录所针对的文字以黄色标示，已编码备忘录的文字则采用其编码的颜色和格式。页边栏中，这段文字开头处的标注显示备忘录的开头几个词，将鼠标指针悬停在标注上可以看到备忘录的全部内容。点按标注即可选中这段文字。</p>
+<figure class="shot" id="coding-memo-in-reader"><img class="shot-light" src="../figures/zh-Hans/light/coding-memo-in-reader.webp" alt="“时间不多了”中的备忘录标注，鼠标指针悬停其上，显示备忘录的全部内容。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/coding-memo-in-reader.webp" alt="“时间不多了”中的备忘录标注，鼠标指针悬停其上，显示备忘录的全部内容。" loading="lazy"><figcaption>“时间不多了”中的备忘录标注，鼠标指针悬停其上，显示备忘录的全部内容。</figcaption></figure>
+<p>无论透镜是否启用，备忘录都会显示；即使停用了<strong class="ui">编码</strong>透镜，已编码备忘录也仍然可见。</p>
+<h3 id="managing-memos">阅读、编辑和删除备忘录<a class="anchor" href="#managing-memos" aria-hidden="true">#</a></h3>
+<p>当前文档的备忘录显示在检查器的<strong class="ui">编码实例</strong>分面中。在顶部的切换控件中切换到<strong class="ui">备忘录</strong>即可。</p>
+<p>每条备忘录占一行，显示备忘录图标（形如对话气泡）、编码名称（仅限已编码备忘录）、所针对段落的位置、备忘录的第一行文字及其标签。已编码备忘录的图标是实心的，颜色与其编码相同。点按一行，阅读器会滚动到这段文字，这一行同时展开，显示最多六行文字、备忘录的属性值、<strong class="ui">编辑</strong>按钮和<strong class="ui">删除</strong>按钮。右键点按一行会打开快捷菜单，其中有<strong class="ui">编辑</strong>、<strong class="ui">跳转到来源</strong>和<strong class="ui">删除</strong>。</p>
+<figure class="shot" id="coding-memos-facet"><img class="shot-light" src="../figures/zh-Hans/light/coding-memos-facet.webp" alt="“时间不多了”的“编码实例”分面已切换到“备忘录”，其中一条备忘录已展开。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/coding-memos-facet.webp" alt="“时间不多了”的“编码实例”分面已切换到“备忘录”，其中一条备忘录已展开。" loading="lazy"><figcaption>“时间不多了”的“编码实例”分面已切换到“备忘录”，其中一条备忘录已展开。</figcaption></figure>
+<p><strong class="ui">搜索</strong>在备忘录本身的文字及其标签中查找。筛选按钮（<strong class="ui">按编码筛选</strong>）可以按编码筛选备忘录。<strong class="ui">导出</strong>按钮把显示的各行导出为 CSV 文件，其中各列为编码、位置、文本（所针对的段落本身）、备忘录和标签。</p>
+<p><strong class="ui">编辑</strong>按钮会打开<strong class="ui">编辑备忘录</strong>对话框，它的字段与<strong class="ui">新建备忘录</strong>完全相同，左下角另有一个<strong class="ui">删除</strong>按钮。</p>
+<h3 id="memos-view">“备忘录”视图<a class="anchor" href="#memos-view" aria-hidden="true">#</a></h3>
+<p>项目视图栏的<strong class="ui">备忘录</strong>视图以表格形式显示你的备忘录。可以显示整个项目的备忘录，也可以只显示某个文档集中文档的备忘录。表格有<strong class="ui">文档</strong>、<strong class="ui">编码</strong>和<strong class="ui">备忘录</strong>三列。左上角显示当前列出的行数，例如“行动派”文档集显示<strong class="ui">2 条备忘录</strong>。</p>
+<figure class="shot" id="coding-memos-view"><img class="shot-light" src="../figures/zh-Hans/light/coding-memos-view.webp" alt="“行动派”文档集的“备忘录”视图，显示 2 条备忘录，详情窗格已打开。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/coding-memos-view.webp" alt="“行动派”文档集的“备忘录”视图，显示 2 条备忘录，详情窗格已打开。" loading="lazy"><figcaption>“行动派”文档集的“备忘录”视图，显示 2 条备忘录，详情窗格已打开。</figcaption></figure>
+<ul>
+<li><strong class="ui">搜索</strong>按文字、文档标题、编码名称或标签查找备忘录。</li>
+<li>选中一行，表格下方会打开一个窗格，显示备忘录全文、它的标签和属性值，并有<strong class="ui">编辑</strong>和<strong class="ui">跳转到来源</strong>两个按钮，分别用于编辑备忘录和跳转到添加这条备忘录的来源文档。拖移表格和窗格之间的分隔线，可以给其中一方更多空间。</li>
+<li>连按一行，或者选取<strong class="ui">跳转到来源</strong>，也会打开文档并定位到所选备忘录的位置。</li>
+<li>右键点按一行，可以选取<strong class="ui">编辑</strong>、<strong class="ui">跳转到来源</strong>和<strong class="ui">删除</strong>。</li>
+<li><strong class="ui">导出</strong>按钮把当前显示的各行导出为 CSV 文件。</li>
+</ul>
+<h3 id="other-memos">关于文档、编码和项目的备忘录<a class="anchor" href="#other-memos" aria-hidden="true">#</a></h3>
+<p>在 LemmaLoom 中，备忘录直接附在段落上。不过，从支持 REFI-QDA 标准的软件导入项目时，附在整个文档、编码以及项目本身上的备忘录也可能一并导入（见<a href="exchange-and-export.html">第 22 章“交换与导出”</a>中的<a href="exchange-and-export.html#refi-import">导入 REFI-QDA 项目</a>）。</p>
+<p>文档备忘录位于这个文档的<strong class="ui">编码实例</strong>分面中的<strong class="ui">备忘录</strong>下。它们也列在项目的<strong class="ui">备忘录</strong>视图中，以及包含这个文档的任何文档集的<strong class="ui">备忘录</strong>视图中。</p>
+<p>编码备忘录和项目备忘录只出现在项目的<strong class="ui">备忘录</strong>视图中，它们的<strong class="ui">文档</strong>列显示<strong class="ui">无标题</strong>。关于同一个编码的所有笔记，最终会在<strong class="ui">备忘录</strong>视图中合并为一条备忘录。项目本身也有一条描述其内容的备忘录。</p>
+<p>导入的项目中附在链接上的笔记，会成为这些链接的评论。</p>
+<h2 id="links">链接<a class="anchor" href="#links" aria-hidden="true">#</a></h2>
+<p>链接表示两段文字之间的关系，例如回应、解释、矛盾、重复，或者任何你自己决定的关系。如果文本之间相互回应，或者你需要让论点与其证据保持紧密联系，链接就很有用。“气候辩论”中有五个链接。“不必恐慌”中有一个链接以“相矛盾”的关系指向“时间不多了”，因为两个文档都承认没有人知道气候系统的阈值在哪里，却由此得出了不同的结论。项目中还有一个从“电台辩论”指向“2024 热浪报告”的“支持”链接，因为主持人引用了后者中的一个统计数字。</p>
+<h3 id="linking-passages">链接两段文字<a class="anchor" href="#linking-passages" aria-hidden="true">#</a></h3>
+<p>插图显示的是正在两段摘录之间新建的另一个链接。在“气候辩论”中，“时间不多了”和“净零代价高昂”都不信任目标日期，但两位作者的理由截然不同。“时间不多了”把遥远的期限称为“一个标上了日期的愿望”。相比之下，“净零代价高昂”把一个目标年份称为“政治决定，而不是工程决定”。这个链接从第一段摘录指向第二段，关系为“形成对照”，可以让你从一段摘录直接跳到另一段。</p>
+<figure class="shot" id="coding-link-sheet"><img class="shot-light" src="../figures/zh-Hans/light/coding-link-sheet.webp" alt="“新建链接”对话框，把“时间不多了”中的一段文字链接到“净零代价高昂”中的一段文字。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/coding-link-sheet.webp" alt="“新建链接”对话框，把“时间不多了”中的一段文字链接到“净零代价高昂”中的一段文字。" loading="lazy"><figcaption>“新建链接”对话框，把“时间不多了”中的一段文字链接到“净零代价高昂”中的一段文字。</figcaption></figure>
+<p>要链接两段文字：</p>
+<ol>
+<li>选中第一段文字。</li>
+<li>点按选区栏中的<strong class="ui">链接</strong>，或者按下 ⇧⌘L。LemmaLoom 会把这段文字记为链接的起点。</li>
+<li>选中第二段文字，它可以在同一个文档中，也可以在另一个文档中。在文档之间切换时，链接的起点会一直保留。</li>
+<li>点按选区栏中的<strong class="ui">完成链接</strong>，或者再次按下 ⇧⌘L。</li>
+<li><strong class="ui">新建链接</strong>对话框显示起点所在的文档和文字，箭头下方是终点的文字。在<strong class="ui">关系</strong>中输入关系。</li>
+<li>填写<strong class="ui">评论</strong>和<strong class="ui">标签</strong>，或者留空，然后点按<strong class="ui">存储</strong>。</li>
+</ol>
+<p>链接是有方向的，从起点的段落指向终点的段落，关系也按这个方向理解。如果创建时没有填写其他关系，链接的关系默认为<strong class="ui">关联于</strong>。请选用你预计会经常重复使用的关系（例如“相矛盾”“解释”“举例”），这样以后就很容易按这些关系查找链接。</p>
+<p>链接的起点和终点必须位于同一个项目中，两者也可以位于同一个文档中。</p>
+<p>在<strong class="ui">新建链接</strong>对话框中点按<strong class="ui">取消</strong>，链接的起点仍会保留，你可以从这里另建一个指向项目中其他位置的链接。</p>
+<p>要在完成之前取消链接，请选取<strong class="ui">文档 ▸ 取消链接</strong>（⌥⇧⌘L）；或者在任意位置选中一段文字，然后点按<strong class="ui">完成链接</strong>按钮旁边的<strong class="ui">取消待定链接</strong>（带斜线的链接图标）。</p>
+<h3 id="following-links">沿链接跳转<a class="anchor" href="#following-links" aria-hidden="true">#</a></h3>
+<p>每个链接的两端在页边栏中各有一个标注。标注以强调色显示，写有两段文字之间的关系。将鼠标指针悬停在标注上，可以看到链接的信息，包括两段文字之间的关系、另一个文档（或<strong class="ui">在此文档中</strong>）、另一端的文字本身，以及链接的评论。点按标注，或者点按弹出窗口中的<strong class="ui">跳转到另一端</strong>，即可跳到链接的另一端。如果另一端在另一个文档中，跳转时会打开那个文档，它显示在单独的标签页中。</p>
+<figure class="shot" id="coding-following-link"><img class="shot-light" src="../figures/zh-Hans/light/coding-following-link.webp" alt="“净零代价高昂”中的链接标注，鼠标指针悬停其上，显示链接的关系、另一个文档“一位市长的承诺”、另一端的文字、评论和“跳转到另一端”。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/coding-following-link.webp" alt="“净零代价高昂”中的链接标注，鼠标指针悬停其上，显示链接的关系、另一个文档“一位市长的承诺”、另一端的文字、评论和“跳转到另一端”。" loading="lazy"><figcaption>“净零代价高昂”中的链接标注，鼠标指针悬停其上，显示链接的关系、另一个文档“一位市长的承诺”、另一端的文字、评论和“跳转到另一端”。</figcaption></figure>
+<p><strong class="ui">链接</strong>分面位于检查器的<strong class="ui">编码</strong>标签页中。它列出有一端在当前文档中的所有链接，标题类似<strong class="ui">链接 (3)</strong>。标题右侧的<strong class="ui">导出</strong>把完整的链接列表导出为 CSV 文件。列表由条目组成，每个条目显示起点、标有关系的链接箭头和终点，下方是链接的评论和标签。位于当前文档中的一端显示它在文本中的位置，位于另一个文档中的一端则显示那个文档的标题。点按某一端旁边的箭头按钮（<strong class="ui">跳转到此端</strong>或<strong class="ui">在另一个文档中打开</strong>），即可跳到这一端；点按当前文档中的一端会跳到那里，连按另一个文档中的一端则会打开它。</p>
+<figure class="shot" id="coding-links-facet"><img class="shot-light" src="../figures/zh-Hans/light/coding-links-facet.webp" alt="“时间不多了”的“链接”分面，列出“不必恐慌”指向它的链接。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/coding-links-facet.webp" alt="“时间不多了”的“链接”分面，列出“不必恐慌”指向它的链接。" loading="lazy"><figcaption>“时间不多了”的“链接”分面，列出“不必恐慌”指向它的链接。</figcaption></figure>
+<h3 id="managing-links">编辑和删除链接<a class="anchor" href="#managing-links" aria-hidden="true">#</a></h3>
+<p>在<strong class="ui">链接</strong>分面中，右键点按链接，然后选取<strong class="ui">编辑</strong>或<strong class="ui">删除</strong>。同样，在项目视图栏的<strong class="ui">链接</strong>视图中，右键点按链接，然后选取<strong class="ui">编辑</strong>或<strong class="ui">删除链接</strong>。</p>
+<p>在<strong class="ui">编辑链接</strong>对话框中，可以更改链接的关系、评论和标签。如果要把链接连到另一段文字上，需要删除现有的链接，再新建一个。</p>
+<h3 id="links-view">“链接”视图<a class="anchor" href="#links-view" aria-hidden="true">#</a></h3>
+<p>在项目视图栏的<strong class="ui">链接</strong>视图中，可以查看项目中的所有链接，或者至少有一端在某个文档集的文档中的链接。显示的链接总数位于左上角。<strong class="ui">链接</strong>视图中的<strong class="ui">搜索</strong>（位于顶部横栏右侧）可以按链接涉及的段落、关系、评论、标签或文档标题进行筛选。插图显示项目“气候辩论”的五个链接，关系有“支持”“相矛盾”和“回应”。</p>
+<figure class="shot" id="coding-links-view"><img class="shot-light" src="../figures/zh-Hans/light/coding-links-view.webp" alt="“气候辩论”的“链接”视图。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/coding-links-view.webp" alt="“气候辩论”的“链接”视图。" loading="lazy"><figcaption>“气候辩论”的“链接”视图。</figcaption></figure>
+<p>每个链接占一行，显示起点文档和终点文档，中间以箭头相连。接着是关系和两段文字（终点的文字颜色较浅）。链接的标签排在最后，位于两段文字下方。点按文档标题即可直接跳到那一端。连按一行，或者选中一行后按下 Return 键，会跳到链接的起点。右键点按任意一行，可以选取<strong class="ui">编辑</strong>、<strong class="ui">打开源端</strong>（起点）、<strong class="ui">打开目标端</strong>（终点）和<strong class="ui">删除链接</strong>。</p>
+<p>复制到译文中的链接，在列表中只出现一次。<strong class="ui">导出</strong>可以把列表存储为 CSV 文件，其中各列为源文档、源文本、关系、目标文档、目标文本、评论和标签。没有可导出的链接时，<strong class="ui">导出</strong>按钮不可用，将鼠标指针悬停在上面会显示<strong class="ui">没有可导出的内容</strong>。</p>
+<h2 id="bookmarks">书签<a class="anchor" href="#bookmarks" aria-hidden="true">#</a></h2>
+<p>书签标记你以后可能需要再找到的段落，例如准备在论文中引用的话，或者你上次编码停下的位置。“气候辩论”项目中有四个文档带有书签，每个书签都附有评论。例如，“不必恐慌”在“至少有些事情，是有定论的。”上有一个书签，评论为“带反讽意味的结束语”。</p>
+<figure class="shot" id="coding-bookmark-sheet"><img class="shot-light" src="../figures/zh-Hans/light/coding-bookmark-sheet.webp" alt="“不必恐慌”中一段文字的“新建书签”对话框。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/coding-bookmark-sheet.webp" alt="“不必恐慌”中一段文字的“新建书签”对话框。" loading="lazy"><figcaption>“不必恐慌”中一段文字的“新建书签”对话框。</figcaption></figure>
+<p>要在 LemmaLoom 中为段落加书签：</p>
+<ol>
+<li>选中这段文字。</li>
+<li>点按选区栏中的<strong class="ui">书签</strong>，或者按下 ⇧⌘B。</li>
+<li>在<strong class="ui">新建书签</strong>对话框中，在<strong class="ui">评论（可选）</strong>中输入一段说明，并在<strong class="ui">颜色</strong>下点按一种颜色。书签提供<strong class="ui">无颜色</strong>和编码所用的八个色块。</li>
+<li>点按<strong class="ui">存储</strong>。</li>
+</ol>
+<p>启用<strong class="ui">书签</strong>透镜时（每次打开文档时默认启用），段落会以书签的颜色高亮；没有颜色的书签以黄色高亮。页边栏中这段文字旁边有一个显示评论的标注，文档概览的左边缘则有一个小方块，标出书签所在的位置。</p>
+<p>所选内容与某个书签重叠时，选区栏上的<strong class="ui">书签</strong>会变为<strong class="ui">移除书签</strong>。按下 ⇧⌘B，书签会立即消失；你可以用菜单项<strong class="ui">编辑 ▸ 撤销移除书签</strong>（⌘Z）把它恢复。</p>
+<p>某个文档的书签列表位于检查器<strong class="ui">文本</strong>标签页的<strong class="ui">书签</strong>下（见<a href="text-inspector.html">第 10 章“文本检查器”</a>中的<a href="text-inspector.html#bookmarks-facet">书签分面</a>）。每一行显示一个与书签同色的书签图标、评论（没有评论时显示这段文字）以及位置。点按任意一行，即可在阅读器中跳到这段文字；右键点按则可以选取<strong class="ui">编辑</strong>（打开带有<strong class="ui">删除</strong>按钮的<strong class="ui">编辑书签</strong>对话框）和<strong class="ui">删除</strong>。<strong class="ui">搜索</strong>按评论或文字查找书签。要把书签导出为 CSV 文件（各列为位置、文本和评论），请点按<strong class="ui">导出</strong>按钮。</p>
+<p>如果想为查询的所有命中添加书签，可以使用查询<strong class="ui">操作</strong>菜单中的<strong class="ui">为命中添加书签…</strong>（见<a href="queries-using-results.html">第 18 章“使用查询结果”</a>中的<a href="queries-using-results.html#bookmark-hits">为命中添加书签</a>）。要同时查看多个文档的书签，可以构建一个列出<strong class="ui">书签</strong>的查询。单位<strong class="ui">备忘录</strong>、<strong class="ui">链接</strong>和<strong class="ui">编码实例</strong>也有类似的功能（见<a href="queries-building.html">第 15 章“构建查询”</a>中的<a href="queries-building.html#query-units">选择要查找的内容</a>）。</p>
+<h2 id="auto-coding">自动为段落编码<a class="anchor" href="#auto-coding" aria-hidden="true">#</a></h2>
+<p>自动编码借助透镜找到标注，然后在一次运行中为这些标注标出的所有段落编码。凡是可以按措辞或语法模式搜索到的内容，都适合用自动编码，包括词典中的模糊限制语和已存储查询的结果。请把一次运行看作初步的编码（见本章后文的<a href="#auto-code-example">示例</a>）。</p>
+<p>在各种透镜中，只有你自己建立的透镜才能用于自动编码：</p>
+<ul>
+<li>由词典生成的透镜，词典是你自己收集的词和短语（见<a href="dictionaries.html">第 19 章“词典”</a>）；</li>
+<li>由存储为透镜的查询得到的透镜（见<a href="queries-using-results.html">第 18 章“使用查询结果”</a>中的<a href="queries-using-results.html#save-as-lens">把查询存储为透镜</a>）；</li>
+<li>以及自定义分析器提供的透镜（见<a href="custom-analyzers.html">第 20 章“自定义分析器”</a>）。</li>
+</ul>
+<p>此外，你也可以在检查器中直接为查询返回的段落自动编码。</p>
+<h3 id="auto-code-from-lens">从透镜自动编码<a class="anchor" href="#auto-code-from-lens" aria-hidden="true">#</a></h3>
+<p>在“气候辩论”中，词典“模糊限制语”在每个文档中都可以作为透镜使用。词典的每个类别都是透镜的一个标注项，在图例中各有一个图例项，即“近似语”和“缓和语”。</p>
+<p>要从透镜自动编码：</p>
+<ol>
+<li>打开文档，在阅读器顶部的透镜菜单中启用这个透镜。文档建立索引之前，这个菜单不可用。</li>
+<li>选取<strong class="ui">文档 ▸ 自动编码…</strong>（⇧⌘A）。透镜菜单中也有这一项，就在<strong class="ui">清除标注</strong>上方。如果启用了不止一个这类透镜，每个透镜各有一项，以透镜命名，例如<strong class="ui">使用模糊限制语自动编码…</strong>，⇧⌘A 选取其中第一项。</li>
+<li>在<strong class="ui">自动编码</strong>对话框中，按照下文<a href="#auto-code-sheet">“自动编码”对话框</a>中的说明设置这次运行，然后点按<strong class="ui">自动编码</strong>。</li>
+</ol>
+<h3 id="auto-code-from-query">从查询自动编码<a class="anchor" href="#auto-code-from-query" aria-hidden="true">#</a></h3>
+<p>“气候辩论”项目中有一个已存储的查询“紧迫性话题”，它没有定义任何类别。这个查询的<strong class="ui">自动编码</strong>对话框中只有一行，名为“紧迫性话题”。对于这一行，如果你想让 LemmaLoom 用“紧迫性”为段落自动编码，就选择“紧迫性”；也可以保留<strong class="ui">新建编码：紧迫性话题</strong>。</p>
+<p>要根据查询自动编码：</p>
+<ol>
+<li>打开一个文档。在检查器中点按<strong class="ui">多重模式</strong>，然后点按<strong class="ui">查询</strong>。</li>
+<li>构建查询，或者载入一个已存储的查询。</li>
+<li>打开<strong class="ui">操作</strong>菜单（带圆圈的 ⋯），选取<strong class="ui">自动编码…</strong>。</li>
+<li>在<strong class="ui">自动编码</strong>对话框中设置这次运行，然后点按<strong class="ui">自动编码</strong>。</li>
+</ol>
+<p>无论查询是否已经存储，对话框使用的都是查询构建器中当前定义的查询。如果查询无法标注段落，例如它查找的是文档或编码而不是段落，或者<strong class="ui">显示</strong>没有设为<strong class="ui">列表</strong>，<strong class="ui">自动编码…</strong>这一项就会不可用。将鼠标指针悬停在这一项上，可以看到它不可用的具体原因。关于哪些查询可以成为透镜的完整说明，请参阅<a href="queries-using-results.html">第 18 章“使用查询结果”</a>中的<a href="queries-using-results.html#lens-requirements">哪些查询可以成为透镜</a>。</p>
+<figure class="shot" id="coding-query-actions-menu"><img class="shot-light" src="../figures/zh-Hans/light/coding-query-actions-menu.webp" alt="查询“紧迫性话题”的“操作”菜单，最上面是“自动编码…”。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/coding-query-actions-menu.webp" alt="查询“紧迫性话题”的“操作”菜单，最上面是“自动编码…”。" loading="lazy"><figcaption>查询“紧迫性话题”的“操作”菜单，最上面是“自动编码…”。</figcaption></figure>
+<figure class="shot" id="coding-auto-code-query"><img class="shot-light" src="../figures/zh-Hans/light/coding-auto-code-query.webp" alt="从查询“紧迫性话题”打开的“自动编码”对话框。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/coding-auto-code-query.webp" alt="从查询“紧迫性话题”打开的“自动编码”对话框。" loading="lazy"><figcaption>从查询“紧迫性话题”打开的“自动编码”对话框。</figcaption></figure>
+<h3 id="auto-code-sheet">“自动编码”对话框<a class="anchor" href="#auto-code-sheet" aria-hidden="true">#</a></h3>
+<p>如下图所示，“模型总是失准”中透镜“模糊限制语”的对话框有两行，词典的每个类别各占一行。</p>
+<figure class="shot" id="coding-auto-code-sheet"><img class="shot-light" src="../figures/zh-Hans/light/coding-auto-code-sheet.webp" alt="“模型总是失准”中“模糊限制语”透镜的“自动编码”对话框。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/coding-auto-code-sheet.webp" alt="“模型总是失准”中“模糊限制语”透镜的“自动编码”对话框。" loading="lazy"><figcaption>“模型总是失准”中“模糊限制语”透镜的“自动编码”对话框。</figcaption></figure>
+<p>第一行是<strong class="ui">透镜</strong>或<strong class="ui">查询</strong>，写明提供段落的透镜或查询的名称。</p>
+<p>在<strong class="ui">编码</strong>下，透镜图例中的每个图例项各占一行，一开始都处于勾选状态。对词典来说，每个类别一行；对查询来说，有类别时每个类别一行，没有类别时只有一行，以查询命名；对分析器来说，图例中的每一项一行。只有图例中已启用的图例项才会在这里有对应的行。停用某个图例项，它就没有自己的行，因而在这次运行中被跳过（见<a href="lenses.html">第 6 章“透镜”</a>中的<a href="lenses.html#visible-keys">选择启用哪些标注项</a>）。</p>
+<p>在每一行右侧显示<strong class="ui">新建编码：…</strong>的菜单中选择一个现有编码，就把这个编码指定给这一行；如果没有选择现有编码，这一行就使用<strong class="ui">新建编码：…</strong>，创建一个与这一行同名、同色的编码。如果有编码的名称与这一行相同（不区分大小写和重音符号），菜单会预先选中它。菜单列出当前文档中可以使用的所有编码。取消勾选某一行，运行时就会忽略这一行。</p>
+<p>在<strong class="ui">文档</strong>菜单中，可以选择<strong class="ui">此文档</strong>、项目中的任意文档集或<strong class="ui">整个项目</strong>。选择<strong class="ui">此文档</strong>时，你可以看到这个透镜在文档中为勾选的各行找到了多少段文字（<strong class="ui">片段</strong>）。已经带有所选编码的段落也计入这个数字，但运行时会被跳过。</p>
+<p>正在载入段落时（<strong class="ui">正在加载</strong>），或者没有勾选任何一行时（<strong class="ui">未选择任何内容</strong>），<strong class="ui">自动编码</strong>不可用。</p>
+<p>点按<strong class="ui">自动编码</strong>即开始运行。对话框保持打开，所有设置都会锁定；因此，要用新的设置再运行一次，需要重新选取<strong class="ui">自动编码…</strong>。运行期间，<strong class="ui">自动编码</strong>按钮变为<strong class="ui">停止</strong>。</p>
+<ul>
+<li><strong class="ui">进度</strong>显示已完成的文档数，例如<strong class="ui">3 / 5</strong>。</li>
+<li>点按<strong class="ui">停止</strong>会在当前文档编码完成后结束运行。此前的编码实例全部保留。</li>
+<li>运行结束后，<strong class="ui">进度</strong>显示<strong class="ui">已添加编码实例：</strong>和数量。<strong class="ui">自动编码</strong>按钮变为<strong class="ui">完成</strong>，点按它即可关闭对话框。</li>
+</ul>
+<figure class="shot" id="coding-auto-code-done"><img class="shot-light" src="../figures/zh-Hans/light/coding-auto-code-done.webp" alt="在“怀疑派”文档集上运行之后的“自动编码”对话框，显示“已添加编码实例：”和“完成”。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/coding-auto-code-done.webp" alt="在“怀疑派”文档集上运行之后的“自动编码”对话框，显示“已添加编码实例：”和“完成”。" loading="lazy"><figcaption>在“怀疑派”文档集上运行之后的“自动编码”对话框，显示“已添加编码实例：”和“完成”。</figcaption></figure>
+<h3 id="auto-code-rules">自动编码的规则<a class="anchor" href="#auto-code-rules" aria-hidden="true">#</a></h3>
+<ul>
+<li>如果一段文字已在完全相同的范围内带有所选编码，就会被跳过（也就是说，第二次运行会跳过第一次运行编码过的段落）。不过，如果所选编码的现有编码实例只是与这段文字重叠，例如这段文字位于一个整段都带有这个编码的段落之中，它仍会被编码。</li>
+<li>在文档集或整个项目上运行时，每个原文文档依次得到处理，就像你在应用中打开了它一样；如果你是从某个文档的译文（例如“时间不多了 (英语)”）开始运行的，自动编码就会处理这份译文，而不是“时间不多了”。</li>
+<li>基于词典的透镜直接处理文本，所以也会为尚未建立索引的文档编码。基于分析器的透镜则只为已建立索引且语言受该分析器支持的文档编码；此外，如果你在某个文档中取消勾选了这个分析器，这个文档会被跳过。</li>
+<li>各行来自打开的文档。如果查询透镜按<strong class="ui">着色依据</strong>为结果着色（见<a href="queries-building.html">第 15 章“构建查询”</a>中的<a href="queries-building.html#query-categories">类别与着色依据</a>），只有在当前文档中出现的值才有对应的行，在其他所有文档中也只为这些值编码。</li>
+<li>对于使用新编码的行，找到第一段文字时会在编码树的顶层创建这个新编码。它的适用范围为<strong class="ui">项目</strong>，格式为<strong class="ui">高亮</strong>，名称和颜色与这一行相同。</li>
+<li>只属于单个文档或文档集的现有编码，只在那个文档或文档集中应用。</li>
+<li>自动编码创建的编码实例不带属性值，即使编码有属性也是如此。</li>
+<li>与手动编码一样，新建的编码实例也会添加到文档的译文中。</li>
+<li>整次运行在撤销历史中算作一步，所以<strong class="ui">编辑 ▸ 撤销自动编码</strong>（⌘Z）会清除这次运行添加的每个编码实例和创建的每个编码，包括你点按<strong class="ui">停止</strong>之前创建的那些。</li>
+</ul>
+<h3 id="auto-code-example">示例<a class="anchor" href="#auto-code-example" aria-hidden="true">#</a></h3>
+<p>词典“模糊限制语”有两个类别，即包括<em>大约</em>、<em>左右</em>和<em>大致</em>等词条的“近似语”，以及包括<em>我觉得</em>、<em>也许</em>和<em>或许</em>等词条的“缓和语”。怀疑派文档使用模糊限制语的频率远高于行动派文档；因此，为“怀疑派”文档集中的模糊限制语编码，可以让它们与你现有的编码一起出现在编码表格中。</p>
+<p>在“模型总是失准”中启用“模糊限制语”后，<strong class="ui">文档 ▸ 自动编码…</strong>会打开上图所示的对话框。<strong class="ui">近似语</strong>和<strong class="ui">缓和语</strong>两行提供<strong class="ui">新建编码：近似语</strong>和<strong class="ui">新建编码：缓和语</strong>，因为项目中还没有这两个名称的编码。选择<strong class="ui">此文档</strong>时，<strong class="ui">片段</strong>显示共 7 段，即在“模型总是失准”中找到的 2 个近似语和 5 个缓和语。取消勾选“缓和语”后，数字降为 2。</p>
+<p>勾选两行并把<strong class="ui">文档</strong>改为<strong class="ui">怀疑派</strong>后，<strong class="ui">进度</strong>会依次计数这个文档集中的五个文档，最后停在<strong class="ui">已添加编码实例：38</strong>。其中 7 个在“模型总是失准”中，31 个在其他文档中。此后，编码本中多了两个新的顶层编码“近似语”和“缓和语”，颜色与词典中的类别相同。在包含“时间不多了”的文档集上运行时，“时间不多了 (英语)”会得到这些编码实例的副本，而<strong class="ui">已添加编码实例：</strong>只统计原文中的编码实例。</p>
+<p>再次打开对话框时，由于名称相同，“近似语”和“缓和语”会被默认选中。再运行一次后，<strong class="ui">进度</strong>显示<strong class="ui">已添加编码实例：0</strong>，表示没有需要另外编码的段落。如果在第一次运行之后立即选取<strong class="ui">编辑 ▸ 撤销自动编码</strong>，就会删除这一整批 38 个编码实例和相应的两个编码。</p>
+<p>每个匹配项都会被编码，不论是否准确。在“模型总是失准”中，“近似语”词条<em>大约</em>出现在“大约十二年前”里，这里它确实是模糊限制语。“科学从无定论”中的“在公开场合说一句‘我说不准’”含有“缓和语”词条<em>说不准</em>，所以同样会被编码，但作者在这里只是提到这句话，并没有为自己的说法留余地。请仔细通读已编码的段落，在<strong class="ui">编码实例</strong>分面或<strong class="ui">编码实例</strong>视图中删除不正确的编码实例。</p>
+<h2 id="undo">撤销编码操作<a class="anchor" href="#undo" aria-hidden="true">#</a></h2>
+<p>对编码、编码实例、备忘录、链接或书签所做的任何更改，都可以用<strong class="ui">编辑 ▸ 撤销</strong>（⌘Z）撤销，已撤销的操作可以用<strong class="ui">编辑 ▸ 重做</strong>（⇧⌘Z）重做。菜单中会写出将要撤销或重做的操作名称：</p>
+<div class="table-wrap"><table>
+<thead><tr><th>操作</th><th>菜单项</th></tr></thead>
+<tbody>
+<tr><td>创建、编辑或移动编码</td><td><strong class="ui">撤销新建编码</strong>、<strong class="ui">撤销编辑编码</strong>、<strong class="ui">撤销移动编码</strong></td></tr>
+<tr><td>合并或删除编码</td><td><strong class="ui">撤销合并</strong>、<strong class="ui">撤销删除编码</strong></td></tr>
+<tr><td>创建、重命名、填充或删除编码集</td><td><strong class="ui">撤销新建编码集</strong>、<strong class="ui">撤销重命名</strong>、<strong class="ui">撤销添加到编码集</strong>、<strong class="ui">撤销从编码集中移除</strong>、<strong class="ui">撤销删除编码集</strong></td></tr>
+<tr><td>应用、更改或移除编码</td><td><strong class="ui">撤销应用编码</strong>、<strong class="ui">撤销更改编码</strong>、<strong class="ui">撤销删除编码实例</strong></td></tr>
+<tr><td>更改编码实例的属性值</td><td><strong class="ui">撤销设置值</strong></td></tr>
+<tr><td>自动编码</td><td><strong class="ui">撤销自动编码</strong></td></tr>
+<tr><td>备忘录</td><td><strong class="ui">撤销新建备忘录</strong>、<strong class="ui">撤销编辑备忘录</strong>、<strong class="ui">撤销删除备忘录</strong></td></tr>
+<tr><td>链接</td><td><strong class="ui">撤销新建链接</strong>、<strong class="ui">撤销编辑链接</strong>、<strong class="ui">撤销删除链接</strong></td></tr>
+<tr><td>书签</td><td><strong class="ui">撤销书签</strong>、<strong class="ui">撤销编辑书签</strong>、<strong class="ui">撤销移除书签</strong></td></tr>
+</tbody></table></div>
+<p>关于撤销历史如何在窗口之间运作以及何时会被清空，请参阅<a href="undo.html">第 23 章“撤销与重做”</a>。</p>
+</article>
+<nav class="pager"><a class="previous" href="lenses.html"><span>上一章</span>透镜</a><a class="next" href="sets-tags-attributes.html"><span>下一章</span>文档集、分组、标签和属性</a></nav>
+<footer class="site-footer">© 2026 Ryan S. Cooper. 保留所有权利。<br>本版本借助人工智能根据英文原版翻译而成，译文可能存在错误或不准确之处。如有疑问，请以英文版为准。</footer>
+</main>
+<nav class="page-toc" aria-label="本页内容"><p>本页内容</p><ul>
+<li class="level-2"><a href="#key-terms">概念与基本术语</a></li>
+<li class="level-2"><a href="#where-you-code">编码界面</a></li>
+<li class="level-3"><a href="#selection-bar">选区栏和“文档”菜单</a></li>
+<li class="level-3"><a href="#coding-inspector">检查器的“编码”标签页</a></li>
+<li class="level-3"><a href="#shelf-views">项目视图栏</a></li>
+<li class="level-2"><a href="#codes">编码</a></li>
+<li class="level-3"><a href="#creating-a-code">创建编码</a></li>
+<li class="level-3"><a href="#code-fields">编码的字段</a></li>
+<li class="level-3"><a href="#code-scope">编码的适用范围</a></li>
+<li class="level-3"><a href="#subcodes">子编码和编码树</a></li>
+<li class="level-2"><a href="#applying-codes">应用编码</a></li>
+<li class="level-3"><a href="#coding-a-passage">为一段文字编码</a></li>
+<li class="level-3"><a href="#coded-text">编码的显示方式</a></li>
+<li class="level-3"><a href="#removing-codings">移除一段文字上的编码</a></li>
+<li class="level-3"><a href="#codings-facet">“编码实例”分面</a></li>
+<li class="level-3"><a href="#coding-attributes">带属性的编码</a></li>
+<li class="level-3"><a href="#codings-in-translations">译文中的编码实例</a></li>
+<li class="level-2"><a href="#organizing-codes">整理编码</a></li>
+<li class="level-3"><a href="#editing-a-code">编辑编码</a></li>
+<li class="level-3"><a href="#codes-facet">“编码”分面</a></li>
+<li class="level-3"><a href="#code-tags">编码上的标签</a></li>
+<li class="level-3"><a href="#code-sets">编码集</a></li>
+<li class="level-3"><a href="#merging-codes">合并编码</a></li>
+<li class="level-3"><a href="#deleting-codes">删除编码</a></li>
+<li class="level-3"><a href="#codebook-view">“编码本”视图</a></li>
+<li class="level-2"><a href="#memos">备忘录</a></li>
+<li class="level-3"><a href="#writing-a-memo">撰写备忘录</a></li>
+<li class="level-3"><a href="#coded-memos">已编码备忘录</a></li>
+<li class="level-3"><a href="#memos-in-reader">阅读器中的备忘录</a></li>
+<li class="level-3"><a href="#managing-memos">阅读、编辑和删除备忘录</a></li>
+<li class="level-3"><a href="#memos-view">“备忘录”视图</a></li>
+<li class="level-3"><a href="#other-memos">关于文档、编码和项目的备忘录</a></li>
+<li class="level-2"><a href="#links">链接</a></li>
+<li class="level-3"><a href="#linking-passages">链接两段文字</a></li>
+<li class="level-3"><a href="#following-links">沿链接跳转</a></li>
+<li class="level-3"><a href="#managing-links">编辑和删除链接</a></li>
+<li class="level-3"><a href="#links-view">“链接”视图</a></li>
+<li class="level-2"><a href="#bookmarks">书签</a></li>
+<li class="level-2"><a href="#auto-coding">自动为段落编码</a></li>
+<li class="level-3"><a href="#auto-code-from-lens">从透镜自动编码</a></li>
+<li class="level-3"><a href="#auto-code-from-query">从查询自动编码</a></li>
+<li class="level-3"><a href="#auto-code-sheet">“自动编码”对话框</a></li>
+<li class="level-3"><a href="#auto-code-rules">自动编码的规则</a></li>
+<li class="level-3"><a href="#auto-code-example">示例</a></li>
+<li class="level-2"><a href="#undo">撤销编码操作</a></li>
+</ul></nav>
+</div>
+<script src="../assets/guide.js" defer></script>
+</body>
+</html>

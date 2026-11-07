@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Keyboard Shortcuts · LemmaLoom User Guide</title>
+<link rel="stylesheet" href="../assets/guide.css">
+<link rel="icon" type="image/png" href="../assets/logo.png">
+<script>var r=document.documentElement;r.setAttribute('data-theme','light');try{if(localStorage.getItem('guide-theme')==='dark'){r.setAttribute('data-theme','dark')}}catch(e){}</script>
+</head>
+<body>
+<header class="topbar">
+<button class="menu-toggle" aria-label="Contents" aria-expanded="false">☰</button>
+<a class="brand" href="index.html"><span class="wordmark"><span class="lemma">Lemma</span>Loom</span><span class="guide-name">User Guide</span></a>
+<div class="search"><input type="search" id="search" placeholder="Search" aria-label="Search" autocomplete="off" data-empty="No results"><div class="results" id="results" hidden></div></div>
+<nav class="languages" aria-label="Language"><a href="../en/keyboard-shortcuts.html" lang="en" aria-current="true">English</a><a href="../de/keyboard-shortcuts.html" lang="de">Deutsch</a><a href="../zh-Hans/keyboard-shortcuts.html" lang="zh-Hans">简体中文</a></nav>
+<button class="theme-toggle" data-light="Light" data-dark="Dark" aria-label="Theme"></button>
+<a class="pdf-link" href="https://github.com/LemmaLoom/public/raw/main/pdf/lemmaloom-guide-en.pdf">PDF</a>
+</header>
+<div class="layout">
+<nav class="sidebar" aria-label="Contents"><ol>
+<li class="unnumbered"><a href="quick-start.html">Quick Start</a></li>
+<li><a href="introduction.html">Introduction</a></li>
+<li><a href="getting-started.html">Getting Started</a></li>
+<li><a href="projects-and-documents.html">Projects and Documents</a></li>
+<li><a href="importing.html">Importing Material</a></li>
+<li><a href="reading-and-editing.html">Reading and Editing</a></li>
+<li><a href="lenses.html">Lenses</a></li>
+<li><a href="coding.html">Coding</a></li>
+<li><a href="sets-tags-attributes.html">Sets, Groups, Tags, and Attributes</a></li>
+<li><a href="translations.html">Translations and Split View</a></li>
+<li><a href="text-inspector.html">The Text Inspector</a></li>
+<li><a href="grammar-inspector.html">The Grammar Inspector</a></li>
+<li><a href="word-sketch.html">Word Sketch</a></li>
+<li><a href="coding-analysis.html">Analyzing Codes</a></li>
+<li><a href="sketch-space.html">Sketch Space</a></li>
+<li><a href="queries-building.html">Building a Query</a></li>
+<li><a href="queries-results.html">Query Results and Statistics</a></li>
+<li><a href="queries-patterns.html">Query Patterns and Discovery</a></li>
+<li><a href="queries-using-results.html">Using Query Results</a></li>
+<li><a href="dictionaries.html">Dictionaries</a></li>
+<li><a href="custom-analyzers.html">Custom Analyzers</a></li>
+<li><a href="analysis-and-indexing.html">Analysis and Indexing</a></li>
+<li><a href="exchange-and-export.html">Exchanging and Exporting</a></li>
+<li><a href="undo.html">Undo and Redo</a></li>
+<li><a href="settings.html">Settings and Appearance</a></li>
+<li class="current"><a href="keyboard-shortcuts.html">Keyboard Shortcuts</a></li>
+<li><a href="help-and-support.html">Help and Support</a></li>
+<li><a href="statistics-reference.html">Statistics at a Glance</a></li>
+<li class="unnumbered"><a href="glossary.html">Glossary</a></li>
+<li class="unnumbered"><a href="thanks.html">Thank You</a></li>
+</ol></nav>
+<main class="content">
+<article>
+<h1 id="keyboard-shortcuts">Keyboard Shortcuts</h1>
+<p>The tables below list every keyboard shortcut in LemmaLoom, separated by menu. Where exactly each of these shortcuts applies is also noted.</p>
+<p>See <a href="introduction.html#conventions">Conventions</a> in <a href="introduction.html">Chapter 1, Introduction</a> for descriptions of modifier key symbols used throughout these menus. ⌘ refers to Command, ⇧ to Shift, ⌥ to Option, and ⌃ to Control. Keyboard shortcuts displayed here are for a US keyboard layout. If you are using a different keyboard layout, macOS may remap keyboard shortcuts such as ⇧⌘[ to keys available to you; the menu will reflect that change.</p>
+<h2 id="how-shortcuts-work">How shortcuts work<a class="anchor" href="#how-shortcuts-work" aria-hidden="true">#</a></h2>
+<p>Every shortcut in LemmaLoom corresponds to a command displayed in the menu bar next to the keys needed for the action. Exceptions to this rule include Esc, Return, the arrow keys, and the Delete key (⌫), which act on whichever part of the window is currently being used (see <a href="#esc-and-return">Esc, Return, and the arrow keys</a> later in this chapter). Some actions require you to click or scroll on something in addition to pressing a key (see <a href="#modifier-clicks">Clicks with a modifier key</a> later in this chapter). Lastly, the script editor found in the Analyzers window also has its own set of editing keyboard shortcuts (see <a href="custom-analyzers.html">Chapter 20, Custom Analyzers</a>).</p>
+<p>Shortcuts always act on the active window. If the main window is active, commands for a document act on the document in the active tab. In split view, actions will affect the pane you clicked in last; this is known as the <em>active pane</em> (see <a href="translations.html#active-pane">The active pane</a> in <a href="translations.html">Chapter 9, Translations and Split View</a>).</p>
+<p>A shortcut works only while its command is available in the menu. <strong class="ui">Document ▸ Code</strong> (⇧⌘C), for example, stays disabled until you select a word or a passage in the reader. The last column of each table below says what a command needs.</p>
+<p>A few commands change their name with certain situations but retain the same keys. Additionally, some key combinations serve different functions depending on which window is being used:</p>
+<ul>
+<li>⇧⌘B is either <strong class="ui">Bookmark</strong>, or <strong class="ui">Remove Bookmark</strong> when the selection overlaps a bookmark.</li>
+<li>⇧⌘L is either <strong class="ui">Link</strong>, or <strong class="ui">Finish Link</strong> once a link has been started.</li>
+<li>⇧⌘A is <strong class="ui">Auto Code…</strong> unless more than one of the enabled lenses has an option to auto code passages. When multiple such lenses are enabled, the key corresponds to the first of the commands named after them, e.g., <strong class="ui">Auto Code with Hedges…</strong>.</li>
+<li>⇧⌘P switches between <strong class="ui">Play</strong> and <strong class="ui">Pause</strong> when playing recordings.</li>
+<li>⌘W closes tabs (<strong class="ui">Close Tab</strong>) in the main window while a tab is open. Everywhere else, ⌘W corresponds to <strong class="ui">Close</strong> instead.</li>
+<li>⌘⌫ deletes projects, sets, groups, or documents when selected in the navigation sidebar (<strong class="ui">Delete Project</strong>, <strong class="ui">Delete Set</strong>, <strong class="ui">Delete Group</strong>, <strong class="ui">Delete Document</strong>, or <strong class="ui">Delete Documents</strong>). It deletes all selected documents simultaneously when more than one is selected. Inside the Analyzers window, ⌘⌫ deletes analyzers from the list (<strong class="ui">Delete Analyzer</strong>) while the list is active.</li>
+<li>⌘+, ⌘-, and ⌘0 increase/decrease/reset the text size (<strong class="ui">Larger Text</strong>, <strong class="ui">Smaller Text</strong>, <strong class="ui">Reset Text Size</strong>), but in the Diagram window they respectively zoom in/out and restore actual size (<strong class="ui">Zoom In</strong>, <strong class="ui">Zoom Out</strong>, <strong class="ui">Actual Size</strong>).</li>
+<li>⌃⌘F is <strong class="ui">Enter Full Screen</strong>, or <strong class="ui">Exit Full Screen</strong> in full screen.</li>
+</ul>
+<p>When editing a document’s text, <strong class="ui">Save</strong> (⌘Return) and <strong class="ui">Cancel</strong> (⌘.) take the place of <strong class="ui">Edit</strong> (⇧⌘E). While linking passages, <strong class="ui">Cancel Link</strong> (⌥⇧⌘L) becomes visible below <strong class="ui">Finish Link</strong>.</p>
+<h3 id="shortcuts-by-window">Shortcuts in each window<a class="anchor" href="#shortcuts-by-window" aria-hidden="true">#</a></h3>
+<p>LemmaLoom has a main window and multiple smaller windows. All of these share a common menu bar. However, most of the commands available via the menu require context provided by either the main window or an open document, meaning when another window is active, those commands appear disabled until you click the main window. Some smaller windows provide additional commands.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Active window</th><th>Shortcuts that work</th></tr></thead>
+<tbody>
+<tr><td>The main window</td><td>All of them, when what they act on is open, except those that belong to the Diagram and Analyzers windows</td></tr>
+<tr><td>A document in a window of its own (choose <strong class="ui">Window ▸ Open in New Window</strong>, or right-click a document’s tab and choose <strong class="ui">Open in New Window</strong>)</td><td>The <strong class="ui">Document</strong> menu; <strong class="ui">Find</strong>, <strong class="ui">Find Next</strong>, and <strong class="ui">Find Previous</strong>; <strong class="ui">Toggle Inspector</strong> and the four inspector tabs; <strong class="ui">Larger Text</strong>, <strong class="ui">Smaller Text</strong>, and <strong class="ui">Reset Text Size</strong>; <strong class="ui">Run Query</strong> while the inspector shows a query; the commands under <strong class="ui">View ▸ Word Sketch</strong> while it shows a word sketch; <strong class="ui">Close</strong> (⌘W)</td></tr>
+<tr><td>The Word Sketch window</td><td>The commands under <strong class="ui">View ▸ Word Sketch</strong>; <strong class="ui">Close</strong> (⌘W)</td></tr>
+<tr><td>The Diagram window</td><td><strong class="ui">Zoom In</strong>, <strong class="ui">Zoom Out</strong>, and <strong class="ui">Actual Size</strong>; <strong class="ui">Close</strong> (⌘W)</td></tr>
+<tr><td>The Codebook window</td><td><strong class="ui">Run Query</strong> in its <strong class="ui">Queries</strong> view, and the commands under <strong class="ui">View ▸ Word Sketch</strong> in its <strong class="ui">Word Sketch</strong> view; <strong class="ui">Close</strong> (⌘W)</td></tr>
+<tr><td>The Queries window</td><td><strong class="ui">Run Query</strong> (⌘R); <strong class="ui">Close</strong> (⌘W)</td></tr>
+<tr><td>The Analyzers window</td><td><strong class="ui">Delete Analyzer</strong> (⌘⌫) while the list is active; <strong class="ui">Close</strong> (⌘W)</td></tr>
+<tr><td>Any other window, such as Tags, Attributes, Activity, Glossary, or Settings</td><td><strong class="ui">Close</strong> (⌘W)</td></tr>
+</tbody></table></div>
+<p>There are several menu item shortcuts available no matter which window has focus, namely <strong class="ui">File ▸ New Window</strong> (⌘N), <strong class="ui">LemmaLoom ▸ Settings…</strong> (⌘,), <strong class="ui">Window ▸ Activity</strong> (⌥⌘0), <strong class="ui">Window ▸ Minimize</strong> (⌘M), <strong class="ui">Edit ▸ Undo</strong> (⌘Z), and <strong class="ui">Edit ▸ Redo</strong> (⇧⌘Z). All the typical macOS keyboard shortcuts function as usual as well, such as <strong class="ui">Copy</strong> (⌘C) and <strong class="ui">Quit LemmaLoom</strong> (⌘Q). <strong class="ui">View ▸ Enter Full Screen</strong> functions in the main window, the Queries window, and results windows.</p>
+<h2 id="shortcuts-by-menu">Shortcuts by menu<a class="anchor" href="#shortcuts-by-menu" aria-hidden="true">#</a></h2>
+<p>The tables run through the menu bar from left to right. Each table lists all LemmaLoom commands of its menu in order.</p>
+<h3 id="lemmaloom-menu">LemmaLoom<a class="anchor" href="#lemmaloom-menu" aria-hidden="true">#</a></h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Command</th><th>Shortcut</th><th>Where it works</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">LemmaLoom ▸ About LemmaLoom</strong></td><td>None</td><td>Any window. See <a href="help-and-support.html#about-lemmaloom">About LemmaLoom</a> in <a href="help-and-support.html">Chapter 26, Help and Support</a>.</td></tr>
+<tr><td><strong class="ui">LemmaLoom ▸ Settings…</strong></td><td>⌘,</td><td>Any window. Opens Settings, or switches to it if it is already open. See <a href="settings.html">Chapter 24, Settings and Appearance</a>.</td></tr>
+<tr><td><strong class="ui">LemmaLoom ▸ Hide LemmaLoom</strong></td><td>⌘H</td><td>Any window. Click LemmaLoom in the Dock to show its windows again.</td></tr>
+<tr><td><strong class="ui">LemmaLoom ▸ Hide Others</strong></td><td>⌥⌘H</td><td>Any window. Hides the windows of other applications.</td></tr>
+<tr><td><strong class="ui">LemmaLoom ▸ Quit LemmaLoom</strong></td><td>⌘Q</td><td>Any window</td></tr>
+</tbody></table></div>
+<p>Quitting ends the undo history, which lasts only while LemmaLoom is running (see <a href="undo.html#history-lifetime">How long the history lasts</a> in <a href="undo.html">Chapter 23, Undo and Redo</a>). LemmaLoom also quits whenever you close its last open window, such as closing the main window with ⇧⌘W when nothing else is open.</p>
+<h3 id="file-menu">File<a class="anchor" href="#file-menu" aria-hidden="true">#</a></h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Command</th><th>Shortcut</th><th>Where it works</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">File ▸ New Window</strong></td><td>⌘N</td><td>Any window. Opens another main window.</td></tr>
+<tr><td><strong class="ui">File ▸ New Project</strong></td><td>⇧⌘N</td><td>Main window</td></tr>
+<tr><td><strong class="ui">File ▸ New Group</strong></td><td>⌥⌘N</td><td>Main window, once there is an active project. The group appears in the sidebar with its name ready for typing.</td></tr>
+<tr><td><strong class="ui">File ▸ Import ▸ Documents</strong></td><td>⇧⌘I</td><td>Main window, once there is an active project. Opens a file dialog for text, PDF, audio, and video files.</td></tr>
+<tr><td><strong class="ui">File ▸ Import ▸ Web Pages</strong></td><td>⌥⇧⌘I</td><td>Main window, once there is an active project. Opens a dialog for web addresses.</td></tr>
+<tr><td><strong class="ui">File ▸ Import ▸ REFI-QDA Project</strong>, <strong class="ui">REFI-QDA Codebook</strong>, and <strong class="ui">LemmaLoom Archive</strong></td><td>None</td><td>Main window. <strong class="ui">REFI-QDA Codebook</strong> needs an active project. See <a href="exchange-and-export.html">Chapter 22, Exchanging and Exporting</a>.</td></tr>
+<tr><td><strong class="ui">File ▸ Import ▸ Example Project</strong></td><td>None</td><td>Main window. Adds “Climate Debate” as a new project in the language of the interface. See <a href="introduction.html#example-project">The example project</a> in <a href="introduction.html">Chapter 1, Introduction</a>.</td></tr>
+<tr><td><strong class="ui">File ▸ Export ▸ REFI-QDA Project</strong>, <strong class="ui">REFI-QDA Codebook</strong>, and <strong class="ui">LemmaLoom Project</strong></td><td>None</td><td>Main window, once there is an active project</td></tr>
+<tr><td><strong class="ui">File ▸ Export ▸ LemmaLoom Document</strong> or <strong class="ui">LemmaLoom Documents</strong></td><td>None</td><td>Main window, with documents selected in the sidebar or a document active in the reader. The name follows the number of selected documents. See <a href="exchange-and-export.html#exporting-documents">Exporting documents</a> in <a href="exchange-and-export.html">Chapter 22, Exchanging and Exporting</a>.</td></tr>
+<tr><td><strong class="ui">File ▸ Export ▸ LemmaLoom Set</strong></td><td>None</td><td>Main window, with a set selected in the sidebar or open in the active tab. See <a href="exchange-and-export.html#exporting-set">Exporting a set</a> in <a href="exchange-and-export.html">Chapter 22, Exchanging and Exporting</a>.</td></tr>
+<tr><td><strong class="ui">File ▸ Close Tab</strong></td><td>⌘W</td><td>Main window, while a tab is open. With the right pane of a split view active, it closes the split view.</td></tr>
+<tr><td><strong class="ui">File ▸ Close Window</strong></td><td>⇧⌘W</td><td>Main window, while a tab is open</td></tr>
+<tr><td><strong class="ui">File ▸ Close</strong></td><td>⌘W</td><td>Every other window, and the main window when no tab is open. Closes the window.</td></tr>
+</tbody></table></div>
+<p>All import and export commands except <strong class="ui">Import ▸ Documents</strong> and <strong class="ui">Import ▸ Web Pages</strong> are disabled whenever another import/export action is happening.</p>
+<p>Which tab becomes active after you close a tab is covered under <a href="projects-and-documents.html#closing-tabs">Closing tabs</a> in <a href="projects-and-documents.html">Chapter 3, Projects and Documents</a>.</p>
+<figure class="shot" id="keyboard-shortcuts-file-menu"><img class="shot-light" src="../figures/en/light/keyboard-shortcuts-file-menu.webp" alt="The File menu with the Import submenu open." loading="lazy"><img class="shot-dark" src="../figures/en/dark/keyboard-shortcuts-file-menu.webp" alt="The File menu with the Import submenu open." loading="lazy"><figcaption>The File menu with the Import submenu open.</figcaption></figure>
+<h3 id="edit-menu">Edit<a class="anchor" href="#edit-menu" aria-hidden="true">#</a></h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Command</th><th>Shortcut</th><th>Where it works</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">Edit ▸ Undo</strong></td><td>⌘Z</td><td>Any window with a step to undo. The command names the step, such as <strong class="ui">Undo Apply Code</strong>.</td></tr>
+<tr><td><strong class="ui">Edit ▸ Redo</strong></td><td>⇧⌘Z</td><td>After an undo, until you make a new change</td></tr>
+<tr><td><strong class="ui">Edit ▸ Cut</strong>, <strong class="ui">Copy</strong>, <strong class="ui">Paste</strong></td><td>⌘X, ⌘C, ⌘V</td><td>Text fields. <strong class="ui">Copy</strong> also copies text selected in the reader.</td></tr>
+<tr><td><strong class="ui">Edit ▸ Select All</strong></td><td>⌘A</td><td>Text fields, and the reader once you have clicked in a document’s text. There it selects the whole document, and the selection bar appears.</td></tr>
+<tr><td><strong class="ui">Edit ▸ Move to Category</strong></td><td>None</td><td>In the <strong class="ui">Dictionaries</strong> view, with terms selected in a category. Moves them to the category you choose. See <a href="dictionaries.html#adding-terms">Adding and removing terms</a> in <a href="dictionaries.html">Chapter 19, Dictionaries</a>.</td></tr>
+<tr><td><strong class="ui">Edit ▸ Delete Analyzer</strong></td><td>⌘⌫</td><td>Analyzers window, with an analyzer selected. The shortcut works while the list is active, as it is after you click an analyzer. See <a href="custom-analyzers.html#deleting">Deleting an analyzer</a> in <a href="custom-analyzers.html">Chapter 20, Custom Analyzers</a>.</td></tr>
+<tr><td><strong class="ui">Edit ▸ Find</strong></td><td>⌘F</td><td>With a document active whose text has loaded, except while you edit it. Opens the search bar. Pressed again, it closes the bar and clears the search.</td></tr>
+<tr><td><strong class="ui">Edit ▸ Find Next</strong></td><td>⌘G</td><td>While the search bar has matches. After the last match comes the first.</td></tr>
+<tr><td><strong class="ui">Edit ▸ Find Previous</strong></td><td>⇧⌘G</td><td>While the search bar has matches. Before the first match comes the last.</td></tr>
+<tr><td><strong class="ui">Edit ▸ Find Document</strong></td><td>⇧⌘F</td><td>Main window, once there is an active project. Puts the cursor in the <strong class="ui">Search Documents</strong> field at the top of the sidebar, and shows the sidebar first if it is hidden. See <a href="projects-and-documents.html#navigator">The navigation sidebar</a> in <a href="projects-and-documents.html">Chapter 3, Projects and Documents</a>.</td></tr>
+<tr><td><strong class="ui">Edit ▸ Query from Selection</strong></td><td>None</td><td>With words selected in the reader, except while you edit. See <a href="queries-patterns.html#query-from-selection">Query from Selection</a> in <a href="queries-patterns.html">Chapter 17, Query Patterns and Discovery</a>.</td></tr>
+<tr><td><strong class="ui">Edit ▸ New Query</strong></td><td>None</td><td>Wherever a query is shown. Puts an empty query in place of the current one.</td></tr>
+<tr><td><strong class="ui">Edit ▸ Run Query</strong></td><td>⌘R</td><td>Wherever the active window shows a query. Disabled while the query has an error that stops it from running, such as an invalid pattern.</td></tr>
+</tbody></table></div>
+<p>Each window maintains a separate undo history, and ⌘Z affects only the history of the currently active window. When your cursor is located within a text field, ⌘Z will undo typing in that text field instead. For detailed information on both actions, please refer to <a href="undo.html">Chapter 23, Undo and Redo</a>.</p>
+<p><strong class="ui">Run Query</strong> executes the query displayed in the currently active window immediately. A query is displayed within a window in one of these places:</p>
+<ul>
+<li>in the <strong class="ui">Query</strong> facet of the inspector’s <strong class="ui">Multimode</strong> tab (the row below the tabs consists of facets; see <a href="getting-started.html#inspector">The inspector</a> in <a href="getting-started.html">Chapter 2, Getting Started</a>);</li>
+<li>within the <strong class="ui">Queries</strong> view in a set, a tag, or the project, both in the main window and in the Codebook window;</li>
+<li>within the Queries window (access <strong class="ui">Window ▸ Queries</strong>).</li>
+</ul>
+<p>A query in a document runs automatically after each change you make to it. A query in a set or project composed of documents amounting to about 300,000 tokens (words and punctuation marks together) or greater waits for you and displays a <strong class="ui">Run Query</strong> button if it reads their text. You can execute it with ⌘R faster than any other way (see <a href="queries-building.html#running-queries">Running a query</a> in <a href="queries-building.html">Chapter 15, Building a Query</a>).</p>
+<p><strong class="ui">New Query</strong> inherits the unit of the current query, the kind of item it finds (see <a href="queries-building.html#query-units">Choosing what to find</a> in <a href="queries-building.html">Chapter 15, Building a Query</a>). This feature resets any unsaved changes made so far. You can undo the deletion of those changes via <strong class="ui">Edit ▸ Undo</strong>.</p>
+<figure class="shot" id="keyboard-shortcuts-edit-menu"><img class="shot-light" src="../figures/en/light/keyboard-shortcuts-edit-menu.webp" alt="The Edit menu, with a passage selected in “Running Out of Time” and the query “Urgency Talk” open in the inspector." loading="lazy"><img class="shot-dark" src="../figures/en/dark/keyboard-shortcuts-edit-menu.webp" alt="The Edit menu, with a passage selected in “Running Out of Time” and the query “Urgency Talk” open in the inspector." loading="lazy"><figcaption>The Edit menu, with a passage selected in “Running Out of Time” and the query “Urgency Talk” open in the inspector.</figcaption></figure>
+<h3 id="view-menu">View<a class="anchor" href="#view-menu" aria-hidden="true">#</a></h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Command</th><th>Shortcut</th><th>Where it works</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">View ▸ Toggle Sidebar</strong></td><td>⌃⌘S</td><td>Main window</td></tr>
+<tr><td><strong class="ui">View ▸ Toggle Inspector</strong></td><td>⌃⌘I</td><td>Main window and a document’s own window. In the main window, it is disabled while the active tab is a set, a tag, or a view of the project shelf. Each document remembers whether its inspector was shown.</td></tr>
+<tr><td><strong class="ui">View ▸ Inspector ▸ Text</strong></td><td>⌥⌘1</td><td>With a document active, in the main window or in its own window</td></tr>
+<tr><td><strong class="ui">View ▸ Inspector ▸ Grammar</strong></td><td>⌥⌘2</td><td>As for <strong class="ui">Text</strong></td></tr>
+<tr><td><strong class="ui">View ▸ Inspector ▸ Coding</strong></td><td>⌥⌘3</td><td>As for <strong class="ui">Text</strong></td></tr>
+<tr><td><strong class="ui">View ▸ Inspector ▸ Multimode</strong></td><td>⌥⌘4</td><td>As for <strong class="ui">Text</strong></td></tr>
+<tr><td><strong class="ui">View ▸ Larger Text</strong></td><td>⌘+</td><td>With a document active, in the main window or in its own window. Up to 200 percent.</td></tr>
+<tr><td><strong class="ui">View ▸ Smaller Text</strong></td><td>⌘-</td><td>As for <strong class="ui">Larger Text</strong>. Down to 70 percent.</td></tr>
+<tr><td><strong class="ui">View ▸ Reset Text Size</strong></td><td>⌘0</td><td>As for <strong class="ui">Larger Text</strong>, when the size is not 100 percent</td></tr>
+<tr><td><strong class="ui">View ▸ Zoom In</strong></td><td>⌘+</td><td>Diagram window. See <a href="grammar-inspector.html#diagram-window">The Diagram window</a> in <a href="grammar-inspector.html">Chapter 11, The Grammar Inspector</a>.</td></tr>
+<tr><td><strong class="ui">View ▸ Zoom Out</strong></td><td>⌘-</td><td>Diagram window</td></tr>
+<tr><td><strong class="ui">View ▸ Actual Size</strong></td><td>⌘0</td><td>Diagram window, when the diagram is not at its actual size</td></tr>
+<tr><td><strong class="ui">View ▸ Zoom to Fit</strong></td><td>None</td><td>Diagram window</td></tr>
+<tr><td><strong class="ui">View ▸ Scroll Together</strong></td><td>⌥⌘L</td><td>Main window, in split view with two language versions of one document. A checkmark shows when it is on. See <a href="translations.html#scroll-together">Scrolling together</a> in <a href="translations.html">Chapter 9, Translations and Split View</a>.</td></tr>
+<tr><td><strong class="ui">View ▸ Word Sketch ▸ Back</strong></td><td>⌘[</td><td>In the <strong class="ui">Word Sketch</strong> view and window, and in the word sketches of the inspector, once the history has an earlier word. See <a href="word-sketch.html#history">Going back and forward</a> in <a href="word-sketch.html">Chapter 12, Word Sketch</a>.</td></tr>
+<tr><td><strong class="ui">View ▸ Word Sketch ▸ Forward</strong></td><td>⌘]</td><td>As for <strong class="ui">Back</strong>, after you have gone back</td></tr>
+<tr><td><strong class="ui">View ▸ Word Sketch ▸ Focus Word Field</strong></td><td>⌘L</td><td>In the <strong class="ui">Word Sketch</strong> view and window, and in the word sketches of the inspector. Puts the cursor in the <strong class="ui">Word</strong> field.</td></tr>
+<tr><td><strong class="ui">View ▸ Word Sketch ▸ Grammar</strong>, <strong class="ui">Coding</strong>, and <strong class="ui">Multimode</strong></td><td>⌘1, ⌘2, ⌘3</td><td>In the <strong class="ui">Word Sketch</strong> view and window, and in the word sketches of the inspector. Switches to that mode, and a checkmark shows the current one.</td></tr>
+<tr><td><strong class="ui">View ▸ Enter Full Screen</strong></td><td>⌃⌘F</td><td>The main window, the Queries window, and results windows. The menu may show the keys as fn F (the Globe key and F); both work. See <a href="reading-and-editing.html#full-screen">The full-screen reader</a> in <a href="reading-and-editing.html">Chapter 5, Reading and Editing</a>.</td></tr>
+</tbody></table></div>
+<p>⌥⌘1 through ⌥⌘4 display the inspector if it isn’t currently showing, then switch to the tab. If a set, a tag, or a project shelf view like <strong class="ui">Codebook</strong> is the active tab, the inspector will be closed automatically, and <strong class="ui">Toggle Inspector</strong>, along with ⌥⌘1 through ⌥⌘4, will become disabled. If you need more info on the project shelf, see <a href="getting-started.html#project-shelf">The project shelf</a> in <a href="getting-started.html">Chapter 2, Getting Started</a>.</p>
+<p><strong class="ui">Larger Text</strong>, <strong class="ui">Smaller Text</strong>, and <strong class="ui">Reset Text Size</strong> will change the text sizes of every document by increments of 10 percent. They use the same setting as the <strong class="ui">Text Size</strong> slider in Settings (see <a href="reading-and-editing.html#text-size">Text size</a> in <a href="reading-and-editing.html">Chapter 5, Reading and Editing</a>); however, in the Diagram window, ⌘+, ⌘-, and ⌘0 zoom in/out/reset the diagram. On US keyboards, ⌘+ is equivalent to pressing ⇧⌘= for both <strong class="ui">Larger Text</strong> and <strong class="ui">Zoom In</strong>.</p>
+<p>Commands listed under <strong class="ui">View ▸ Word Sketch</strong> will apply actions related to the <strong class="ui">Word Sketch</strong> view of the project, the <strong class="ui">Word Sketch</strong> view of a set/tag, the Word Sketch window itself, and the word sketches found in the inspector. Since modes in the inspector refer to word sketches, when you select <strong class="ui">Grammar</strong> mode, for example, you’ll see <strong class="ui">Word Sketch</strong> in the inspector’s <strong class="ui">Grammar</strong> tab, <strong class="ui">Coding</strong> will bring up <strong class="ui">Code Sketch</strong> in the <strong class="ui">Coding</strong> tab, and <strong class="ui">Multimode</strong> will display <strong class="ui">Sketch Space</strong> in the <strong class="ui">Multimode</strong> tab. All three use the same history for storing your word sketches, so the word carries over.</p>
+<p><strong class="ui">Show Tab Bar</strong> and <strong class="ui">Show All Tabs</strong>, at the top of the menu, come directly from macOS. They pertain to merging windows into tabs.</p>
+<figure class="shot" id="keyboard-shortcuts-view-menu"><img class="shot-light" src="../figures/en/light/keyboard-shortcuts-view-menu.webp" alt="The View menu with the Inspector submenu open." loading="lazy"><img class="shot-dark" src="../figures/en/dark/keyboard-shortcuts-view-menu.webp" alt="The View menu with the Inspector submenu open." loading="lazy"><figcaption>The View menu with the Inspector submenu open.</figcaption></figure>
+<h3 id="project-menu">Project<a class="anchor" href="#project-menu" aria-hidden="true">#</a></h3>
+<p>Most commands from this menu affect whatever is selected from the navigation sidebar, making them operate from the main window. However, for commands relating to codes, they operate based on whichever code has been selected within the <strong class="ui">Codebook</strong> view or <strong class="ui">Codes</strong> facet of any window. Learn more about this in <a href="projects-and-documents.html">Chapter 3, Projects and Documents</a>, <a href="sets-tags-attributes.html">Chapter 8, Sets, Groups, Tags, and Attributes</a>, and <a href="coding.html#organizing-codes">Organizing codes</a> in <a href="coding.html">Chapter 7, Coding</a>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Command</th><th>Shortcut</th><th>Where it works</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">Project ▸ New Set</strong> and <strong class="ui">New Smart Set</strong></td><td>None</td><td>Main window, once there is an active project</td></tr>
+<tr><td><strong class="ui">Project ▸ Edit Smart Set</strong></td><td>None</td><td>Main window, with a smart set selected in the sidebar or open in the active tab</td></tr>
+<tr><td><strong class="ui">Project ▸ Add Code</strong></td><td>None</td><td>Main window, once there is an active project</td></tr>
+<tr><td><strong class="ui">Project ▸ Add Subcode</strong>, <strong class="ui">Move To</strong>, <strong class="ui">Merge Into</strong>, <strong class="ui">Add to Code Set</strong>, and <strong class="ui">Delete Code</strong></td><td>None</td><td>With a code selected in the <strong class="ui">Codebook</strong> view or in the <strong class="ui">Codes</strong> facet</td></tr>
+<tr><td><strong class="ui">Project ▸ Rename</strong> and <strong class="ui">Properties</strong></td><td>None</td><td>Main window, with one document selected in the sidebar</td></tr>
+<tr><td><strong class="ui">Project ▸ Move to Group</strong> and <strong class="ui">Add to Set</strong></td><td>None</td><td>Main window, with documents selected in the sidebar</td></tr>
+<tr><td><strong class="ui">Project ▸ Remove from Set</strong></td><td>None</td><td>Main window, with one or more documents selected under the same set in the sidebar, as long as it is not a smart set</td></tr>
+<tr><td><strong class="ui">Project ▸ Translate</strong></td><td>None</td><td>Main window, with an original selected in the sidebar or active in the reader</td></tr>
+<tr><td><strong class="ui">Project ▸ Delete Project</strong>, <strong class="ui">Delete Set</strong>, <strong class="ui">Delete Group</strong>, <strong class="ui">Delete Document</strong>, or <strong class="ui">Delete Documents</strong></td><td>⌘⌫</td><td>Main window, after you click a project, a set, or a group in the sidebar, or select documents under <strong class="ui">Documents</strong>. The command is named after what it deletes.</td></tr>
+<tr><td><strong class="ui">Project ▸ Attributes</strong></td><td>None</td><td>Main window, once there is an active project. Opens the Attributes window.</td></tr>
+<tr><td><strong class="ui">Project ▸ Open</strong></td><td>None</td><td>Main window, once there is an active project. Lists the ten views of the project shelf and opens the one you choose in a tab.</td></tr>
+</tbody></table></div>
+<p>Documents and projects can only be deleted after confirmation. Sets and groups, on the other hand, are deleted instantly, and <strong class="ui">Edit ▸ Undo</strong> (⌘Z) brings them back.</p>
+<figure class="shot" id="keyboard-shortcuts-project-menu"><img class="shot-light" src="../figures/en/light/keyboard-shortcuts-project-menu.webp" alt="The Project menu with the code “Deadlines” selected in the Codebook of “Climate Debate”." loading="lazy"><img class="shot-dark" src="../figures/en/dark/keyboard-shortcuts-project-menu.webp" alt="The Project menu with the code “Deadlines” selected in the Codebook of “Climate Debate”." loading="lazy"><figcaption>The Project menu with the code “Deadlines” selected in the Codebook of “Climate Debate”.</figcaption></figure>
+<h3 id="document-menu">Document<a class="anchor" href="#document-menu" aria-hidden="true">#</a></h3>
+<p>These commands operate upon the document in the active pane, or in a document’s own window.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Command</th><th>Shortcut</th><th>Where it works</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">Document ▸ Edit</strong></td><td>⇧⌘E</td><td>Once the document’s text has loaded. Turns the reader into a text editor.</td></tr>
+<tr><td><strong class="ui">Document ▸ Save</strong></td><td>⌘Return</td><td>While you edit. Saves the text, which LemmaLoom then indexes again.</td></tr>
+<tr><td><strong class="ui">Document ▸ Cancel</strong></td><td>⌘.</td><td>While you edit. Discards everything typed since you chose <strong class="ui">Edit</strong>.</td></tr>
+<tr><td><strong class="ui">Document ▸ Code</strong></td><td>⇧⌘C</td><td>With a word or passage selected, except while you edit. Opens the code palette, the list of codes you can apply to the selection.</td></tr>
+<tr><td><strong class="ui">Document ▸ In Vivo Code</strong></td><td>⇧⌘V</td><td>As for <strong class="ui">Code</strong>. Codes the selection with a code named after its words, and creates that code if there is none of that name yet. See <a href="coding.html#coding-a-passage">Coding a passage</a> in <a href="coding.html">Chapter 7, Coding</a>.</td></tr>
+<tr><td><strong class="ui">Document ▸ Auto Code…</strong></td><td>⇧⌘A</td><td>With a dictionary, query, or analyzer lens enabled in the lens menu (see <a href="lenses.html">Chapter 6, Lenses</a>). With more than one of them enabled, the menu has a command for each, named after the lens, such as <strong class="ui">Auto Code with Hedges…</strong>, and ⇧⌘A goes with the first. See <a href="coding.html#auto-coding">Coding passages automatically</a> in <a href="coding.html">Chapter 7, Coding</a>.</td></tr>
+<tr><td><strong class="ui">Document ▸ Memo</strong></td><td>⇧⌘M</td><td>As for <strong class="ui">Code</strong>. Opens the <strong class="ui">New Memo</strong> dialog for the selection.</td></tr>
+<tr><td><strong class="ui">Document ▸ Bookmark</strong></td><td>⇧⌘B</td><td>As for <strong class="ui">Code</strong>. Opens the <strong class="ui">New Bookmark</strong> dialog. When the selection overlaps a bookmark, the command is <strong class="ui">Remove Bookmark</strong> and removes it at once; ⌘Z brings it back.</td></tr>
+<tr><td><strong class="ui">Document ▸ Link</strong></td><td>⇧⌘L</td><td>As for <strong class="ui">Code</strong>. Starts a link from the selection. The command then becomes <strong class="ui">Finish Link</strong>. Select the other passage, in this document or another, and press ⇧⌘L again to open the <strong class="ui">New Link</strong> dialog.</td></tr>
+<tr><td><strong class="ui">Document ▸ Cancel Link</strong></td><td>⌥⇧⌘L</td><td>While you are making a link, with or without a selection. Gives up the link you started.</td></tr>
+<tr><td><strong class="ui">Document ▸ Play</strong></td><td>⇧⌘P</td><td>Audio and video documents. While the recording plays, the command is <strong class="ui">Pause</strong>.</td></tr>
+</tbody></table></div>
+<p><strong class="ui">Edit</strong>, <strong class="ui">Save</strong>, and <strong class="ui">Cancel</strong> commands are disabled while LemmaLoom saves your changes.</p>
+<p>For applying codes, creating memos, adding bookmarks, and making links, further details can be found in <a href="coding.html">Chapter 7, Coding</a>. Editing your texts and playback are discussed in <a href="reading-and-editing.html">Chapter 5, Reading and Editing</a>.</p>
+<figure class="shot" id="keyboard-shortcuts-document-menu"><img class="shot-light" src="../figures/en/light/keyboard-shortcuts-document-menu.webp" alt="The Document menu with a passage selected in “Running Out of Time”." loading="lazy"><img class="shot-dark" src="../figures/en/dark/keyboard-shortcuts-document-menu.webp" alt="The Document menu with a passage selected in “Running Out of Time”." loading="lazy"><figcaption>The Document menu with a passage selected in “Running Out of Time”.</figcaption></figure>
+<h3 id="window-menu">Window<a class="anchor" href="#window-menu" aria-hidden="true">#</a></h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Command</th><th>Shortcut</th><th>Where it works</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">Window ▸ Minimize</strong></td><td>⌘M</td><td>The active window</td></tr>
+<tr><td><strong class="ui">Window ▸ Show Previous Tab</strong></td><td>⇧⌘[</td><td>Main window, with at least two tabs open. Before the first tab comes the last.</td></tr>
+<tr><td><strong class="ui">Window ▸ Show Next Tab</strong></td><td>⇧⌘]</td><td>Main window, with at least two tabs open. After the last tab comes the first.</td></tr>
+<tr><td><strong class="ui">Window ▸ Open in New Window</strong></td><td>None</td><td>Main window. Opens the document in the active pane, or the view in the active tab, in a window of its own. In the tab of a set or a tag, only the <strong class="ui">Word Sketch</strong> and <strong class="ui">Queries</strong> views open in a window. See <a href="reading-and-editing.html#document-window">Opening a document in its own window</a> in <a href="reading-and-editing.html">Chapter 5, Reading and Editing</a>.</td></tr>
+<tr><td><strong class="ui">Window ▸ Open in Split View</strong></td><td>None</td><td>Main window, with a document active. Lists the open documents that can go beside it. See <a href="translations.html#opening-split-view">Opening two documents side by side</a> in <a href="translations.html">Chapter 9, Translations and Split View</a>.</td></tr>
+<tr><td><strong class="ui">Window ▸ Open Beside Original</strong></td><td>None</td><td>Main window, with a translation selected in the sidebar or active in the reader</td></tr>
+<tr><td><strong class="ui">Window ▸ Open Side by Side</strong></td><td>None</td><td>Main window, with two documents selected in the sidebar</td></tr>
+<tr><td><strong class="ui">Window ▸ Close Split View</strong></td><td>None</td><td>Main window, in split view</td></tr>
+<tr><td><strong class="ui">Window ▸ Activity</strong></td><td>⌥⌘0</td><td>Any window. Opens the Activity window, or switches to it if it is already open. See <a href="importing.html#activity-window">The Activity window</a> in <a href="importing.html">Chapter 4, Importing Material</a>.</td></tr>
+<tr><td><strong class="ui">Window ▸ Analyzers</strong></td><td>None</td><td>Any window. See <a href="custom-analyzers.html">Chapter 20, Custom Analyzers</a>.</td></tr>
+<tr><td><strong class="ui">Window ▸ Codebook</strong></td><td>None</td><td>Any window, once there is an active project. See <a href="coding.html#codebook-view">The Codebook view</a> in <a href="coding.html">Chapter 7, Coding</a>.</td></tr>
+<tr><td><strong class="ui">Window ▸ Tags</strong></td><td>None</td><td>Any window. See <a href="projects-and-documents.html#tags-window">The Tags window</a> in <a href="projects-and-documents.html">Chapter 3, Projects and Documents</a>.</td></tr>
+<tr><td><strong class="ui">Window ▸ Queries</strong></td><td>None</td><td>Any window. See <a href="queries-building.html#queries-window">The Queries window</a> in <a href="queries-building.html">Chapter 15, Building a Query</a>.</td></tr>
+</tbody></table></div>
+<p>The tabs refer to those above the reader, specifically the documents, sets, tags, and views from the project shelf. Activating any tab makes the left pane active in any split view that you may currently be viewing.</p>
+<p>At the lower end of the menu, macOS provides two other options labeled <strong class="ui">Show Previous Tab</strong> and <strong class="ui">Show Next Tab</strong>; these switch between merged windows. However, for switching the tabs above the reader, you must use ⇧⌘[ and ⇧⌘] accordingly. Finally, the list of open LemmaLoom windows is displayed at the bottom of the menu.</p>
+<figure class="shot" id="keyboard-shortcuts-window-menu"><img class="shot-light" src="../figures/en/light/keyboard-shortcuts-window-menu.webp" alt="The Window menu with two documents open in tabs of the main window." loading="lazy"><img class="shot-dark" src="../figures/en/dark/keyboard-shortcuts-window-menu.webp" alt="The Window menu with two documents open in tabs of the main window." loading="lazy"><figcaption>The Window menu with two documents open in tabs of the main window.</figcaption></figure>
+<h3 id="help-menu">Help<a class="anchor" href="#help-menu" aria-hidden="true">#</a></h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Command</th><th>Shortcut</th><th>Where it works</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">Help ▸ Glossary</strong></td><td>None</td><td>Any window. See <a href="help-and-support.html#glossary">The Glossary</a> in <a href="help-and-support.html">Chapter 26, Help and Support</a>.</td></tr>
+<tr><td><strong class="ui">Help ▸ Send Feedback</strong></td><td>None</td><td>Any window. See <a href="help-and-support.html#send-feedback">Sending feedback</a> in <a href="help-and-support.html">Chapter 26, Help and Support</a>.</td></tr>
+</tbody></table></div>
+<aside class="callout tip"><p class="callout-title">Tip</p><p>macOS includes a search field at the top of the <strong class="ui">Help</strong> menu. To open the <strong class="ui">Help</strong> menu and place the insertion point inside the search field, press ⇧⌘/. After typing in part of a command name, e.g., <code>scroll</code>, hovering the mouse pointer over any resulting hits tells you which menus the command lives in and what the keyboard shortcut for it is.</p>
+</aside>
+<h2 id="buttons-and-shortcuts">Buttons that have a shortcut<a class="anchor" href="#buttons-and-shortcuts" aria-hidden="true">#</a></h2>
+<p>Many buttons behave like a menu command and have the same shortcut keys as the menu command. These buttons usually lie inside the <a href="reading-and-editing.html#title-band">title band</a> at the top of the reading area, or the search bar beneath it. Some buttons may appear in the <a href="reading-and-editing.html#selection-bar">selection bar</a> once selections are made, and in the <a href="reading-and-editing.html#player-bar">player bar</a> in an audio/video document. <a href="reading-and-editing.html">Chapter 5, Reading and Editing</a> gives detail about each one.</p>
+<figure class="shot" id="keyboard-shortcuts-buttons"><img class="shot-light" src="../figures/en/light/keyboard-shortcuts-buttons.webp" alt="The main window with “Running Out of Time” and its German translation side by side and a passage selected in the left pane." loading="lazy"><img class="shot-dark" src="../figures/en/dark/keyboard-shortcuts-buttons.webp" alt="The main window with “Running Out of Time” and its German translation side by side and a passage selected in the left pane." loading="lazy"><figcaption>The main window with “Running Out of Time” and its German translation side by side and a passage selected in the left pane.</figcaption></figure>
+<div class="table-wrap"><table>
+<thead><tr><th>Button</th><th>Where it is</th><th>Same as</th><th>Shortcut</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">Toggle Sidebar</strong></td><td>Left end of the window’s toolbar</td><td><strong class="ui">View ▸ Toggle Sidebar</strong></td><td>⌃⌘S</td></tr>
+<tr><td><strong class="ui">Toggle Inspector</strong></td><td>Right end of the window’s toolbar</td><td><strong class="ui">View ▸ Toggle Inspector</strong></td><td>⌃⌘I</td></tr>
+<tr><td>× on a tab (<strong class="ui">Close Tab</strong>)</td><td>Row of tabs</td><td><strong class="ui">File ▸ Close Tab</strong>, for the active tab</td><td>⌘W</td></tr>
+<tr><td>× on the right pane’s tab (<strong class="ui">Close Split View</strong>)</td><td>Top of the right pane in split view</td><td><strong class="ui">File ▸ Close Tab</strong>, with the right pane active</td><td>⌘W</td></tr>
+<tr><td>The lock (<strong class="ui">Scroll together</strong>)</td><td>Top of the right pane, with two language versions side by side</td><td><strong class="ui">View ▸ Scroll Together</strong></td><td>⌥⌘L</td></tr>
+<tr><td><strong class="ui">Find in document</strong> (the magnifying glass)</td><td>Title band</td><td><strong class="ui">Edit ▸ Find</strong></td><td>⌘F</td></tr>
+<tr><td><strong class="ui">Larger Text</strong>, <strong class="ui">Smaller Text</strong>, <strong class="ui">Reset Text Size</strong></td><td>The <strong class="ui">Font, gutter, and text size</strong> menu in the title band</td><td>The commands of the same names in the <strong class="ui">View</strong> menu</td><td>⌘+, ⌘-, ⌘0</td></tr>
+<tr><td><strong class="ui">Edit</strong></td><td>Title band</td><td><strong class="ui">Document ▸ Edit</strong></td><td>⇧⌘E</td></tr>
+<tr><td><strong class="ui">Save</strong> and <strong class="ui">Cancel</strong></td><td>Title band, while you edit</td><td><strong class="ui">Document ▸ Save</strong> and <strong class="ui">Document ▸ Cancel</strong></td><td>⌘Return and ⌘.</td></tr>
+<tr><td><strong class="ui">Next match</strong> and <strong class="ui">Previous match</strong> (the down and up arrows)</td><td>Search bar</td><td><strong class="ui">Edit ▸ Find Next</strong> and <strong class="ui">Edit ▸ Find Previous</strong></td><td>⌘G and ⇧⌘G</td></tr>
+<tr><td><strong class="ui">Close search bar</strong> (×)</td><td>Search bar</td><td><strong class="ui">Edit ▸ Find</strong>, while the bar is open</td><td>⌘F or Esc</td></tr>
+<tr><td><strong class="ui">Bookmark</strong> or <strong class="ui">Remove Bookmark</strong></td><td>Selection bar</td><td><strong class="ui">Document ▸ Bookmark</strong></td><td>⇧⌘B</td></tr>
+<tr><td><strong class="ui">Code</strong></td><td>Selection bar</td><td><strong class="ui">Document ▸ Code</strong></td><td>⇧⌘C</td></tr>
+<tr><td><strong class="ui">In Vivo “…”</strong></td><td>Last entry of the code palette</td><td><strong class="ui">Document ▸ In Vivo Code</strong></td><td>⇧⌘V</td></tr>
+<tr><td><strong class="ui">Memo</strong></td><td>Selection bar</td><td><strong class="ui">Document ▸ Memo</strong></td><td>⇧⌘M</td></tr>
+<tr><td><strong class="ui">Link</strong> or <strong class="ui">Finish Link</strong></td><td>Selection bar</td><td><strong class="ui">Document ▸ Link</strong></td><td>⇧⌘L</td></tr>
+<tr><td><strong class="ui">Cancel the pending link</strong> (the crossed-out link)</td><td>Selection bar, while you are making a link</td><td><strong class="ui">Document ▸ Cancel Link</strong></td><td>⌥⇧⌘L</td></tr>
+<tr><td><strong class="ui">Clear selection</strong> (×)</td><td>Selection bar</td><td>No menu command</td><td>Esc</td></tr>
+<tr><td><strong class="ui">Play</strong> or <strong class="ui">Pause</strong></td><td>Player bar</td><td><strong class="ui">Document ▸ Play</strong></td><td>⇧⌘P</td></tr>
+<tr><td><strong class="ui">Run Query</strong> (the triangle)</td><td>The bar above a query</td><td><strong class="ui">Edit ▸ Run Query</strong></td><td>⌘R</td></tr>
+<tr><td><strong class="ui">Back</strong> and <strong class="ui">Forward</strong> (the arrows)</td><td>The bar above a word sketch</td><td><strong class="ui">View ▸ Word Sketch ▸ Back</strong> and <strong class="ui">Forward</strong></td><td>⌘[ and ⌘]</td></tr>
+<tr><td><strong class="ui">Grammar</strong>, <strong class="ui">Coding</strong>, and <strong class="ui">Multimode</strong></td><td>The mode control in the <strong class="ui">Word Sketch</strong> view and window</td><td>The commands of the same names under <strong class="ui">View ▸ Word Sketch</strong></td><td>⌘1, ⌘2, ⌘3</td></tr>
+<tr><td><strong class="ui">Zoom in</strong> and <strong class="ui">Zoom out</strong> (the magnifying glasses)</td><td>The zoom bar of the Diagram window</td><td><strong class="ui">View ▸ Zoom In</strong> and <strong class="ui">View ▸ Zoom Out</strong></td><td>⌘+ and ⌘-</td></tr>
+</tbody></table></div>
+<p>When viewing in full screen mode, the tools in the title band transfer to the toolbar in the window (refer to <a href="reading-and-editing.html#full-screen">The full-screen reader</a> in <a href="reading-and-editing.html">Chapter 5, Reading and Editing</a>). Their shortcut keys remain functional too, and the text menu is called <strong class="ui">Reader Settings</strong> there.</p>
+<h2 id="esc-and-return">Esc, Return, and the arrow keys<a class="anchor" href="#esc-and-return" aria-hidden="true">#</a></h2>
+<p>Esc, Return, and the arrow keys work outside the menus, and what they do depends on where you are.</p>
+<p>The Esc key closes or clears what you are working in:</p>
+<ul>
+<li>In the reader, Esc will clear selections, leaving pending links alone. Should you change your mind about making a link, you could use <strong class="ui">Document ▸ Cancel Link</strong> (⌥⇧⌘L).</li>
+<li>In the search bar, Esc closes the bar and clears any active search.</li>
+<li>With Esc pressed in the code palette, you close that palette, retaining your current selection.</li>
+<li>For the <strong class="ui">Search Documents</strong> field and sidebar both, Esc clears the search results and displays all documents.</li>
+<li>In dialogs with a <strong class="ui">Cancel</strong> button, Esc triggers it.</li>
+<li>Lastly, should you happen to press Esc while renaming any of your projects, documents, sets, groups, or tags, you keep the old names.</li>
+</ul>
+<p>In split view, Esc in the reader affects only the active pane.</p>
+<p>Return accepts an input wherever needed, applies choices, or opens what you selected:</p>
+<ul>
+<li>With Return inside the search bar, you proceed to the next match of the search string (like ⌘G), whereas Return in the <strong class="ui">Search Documents</strong> field opens the first document found.</li>
+<li>From the sidebar, you may also click or press Return on a document to open it.</li>
+<li>In other lists, such as the <strong class="ui">Codebook</strong>, <strong class="ui">Codings</strong>, <strong class="ui">Memos</strong>, and <strong class="ui">Links</strong> views or the Tags window, a click selects an item, and a double-click or Return opens it.</li>
+<li>Inside the code palette, Return applies the highlighted entry (after typing in <strong class="ui">Search codes</strong>, the highlight goes to the very first remaining entry). If the selection already has the highlighted code, Return removes it.</li>
+<li>When operating a dialog with the cursor being outside all fields, or in a one-line field that does not handle Return itself, pressing Return clicks the highlighted button, such as <strong class="ui">Save</strong> or <strong class="ui">Auto Code</strong>; the fields in the items below handle Return themselves, even in a dialog.</li>
+<li>Renaming operations, including renaming a dictionary in the <strong class="ui">Dictionaries</strong> view, always accept Return or clicking elsewhere as confirmation of entered changes.</li>
+<li><strong class="ui">Add a tag</strong> fields always accept Return or commas as tag separators.</li>
+<li><strong class="ui">Add term</strong> fields in query text rules and dictionary categories accept Return to add the term. In a query, they will accept several terms separated by commas.</li>
+<li>After entering a new attribute name into its field, pressing Return adds the attribute.</li>
+<li>Return will add the entered pattern under <strong class="ui">Exclude from indexing</strong> in <strong class="ui">Import Document</strong> or <strong class="ui">Document Properties</strong> dialogs.</li>
+<li>Within <strong class="ui">Word</strong> fields of Word Sketch, Code Sketch, and Sketch Space, you get sketches of entered terms by pressing Return.</li>
+<li>Finally, inside the Analyzers window, Return clicks <strong class="ui">Save</strong> while you type in <strong class="ui">Name</strong> or a <strong class="ui">Label</strong> field.</li>
+</ul>
+<p>↑ and ↓ move through the sidebar and the code palette:</p>
+<ul>
+<li>In the sidebar, ↑ and ↓ move through the available rows; pressing Return afterwards opens the newly selected document.</li>
+<li>With ↓ pressed inside the <strong class="ui">Search Documents</strong> field, you choose the first document from the results and move into the list.</li>
+<li>Within the code palette, ↑ and ↓ highlight successive entries in the palette, including <strong class="ui">Add Code “…”</strong> and <strong class="ui">In Vivo “…”</strong> at its end.</li>
+</ul>
+<p>In a category’s table in the <strong class="ui">Dictionaries</strong> view, the Delete key (⌫) removes the selected terms.</p>
+<aside class="callout note"><p class="callout-title">Note</p><p>While <strong class="ui">Auto Code</strong> runs, the dialog’s highlighted button is <strong class="ui">Stop</strong>, so hitting Return stops the run. Codings applied prior to that remain, and can be undone with <strong class="ui">Edit ▸ Undo Auto Code</strong> (⌘Z).</p>
+</aside>
+<h2 id="modifier-clicks">Clicks with a modifier key<a class="anchor" href="#modifier-clicks" aria-hidden="true">#</a></h2>
+<p>There are several actions which pair a key with your mouse or trackpad.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Keys</th><th>Where</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td>⌘-click</td><td>A document in the <strong class="ui">Documents</strong> section of the sidebar</td><td>Adds the document to the selection, or takes it out again</td></tr>
+<tr><td>⇧-click</td><td>A document in the <strong class="ui">Documents</strong> section of the sidebar</td><td>Adds every document between it and the one you clicked last</td></tr>
+<tr><td>⌘ and scroll</td><td>The map of a word sketch, in Word Sketch, Code Sketch, or Sketch Space</td><td>Zooms in or out around the mouse pointer. Plain scrolling moves the enlarged map.</td></tr>
+</tbody></table></div>
+<p>Select multiple documents, right-click on any of them, and access actions which affect all selected documents (refer to <a href="projects-and-documents.html#selecting-documents">Selecting several documents</a> in <a href="projects-and-documents.html">Chapter 3, Projects and Documents</a>). The zoom feature is detailed in <a href="word-sketch.html#the-map">The map</a> in <a href="word-sketch.html">Chapter 12, Word Sketch</a>.</p>
+<h2 id="shortcuts-by-key">All shortcuts by key<a class="anchor" href="#shortcuts-by-key" aria-hidden="true">#</a></h2>
+<p>This table includes all of the shortcuts found within LemmaLoom’s menus organized first by modifier and then by key. The table may come in handy if you are trying to figure out which command you accidentally invoked, or whether keys you wish to assign are taken already.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Keys</th><th>Command</th></tr></thead>
+<tbody>
+<tr><td>⌘,</td><td><strong class="ui">LemmaLoom ▸ Settings…</strong></td></tr>
+<tr><td>⌘.</td><td><strong class="ui">Document ▸ Cancel</strong></td></tr>
+<tr><td>⌘+</td><td><strong class="ui">View ▸ Larger Text</strong>, or <strong class="ui">View ▸ Zoom In</strong> in the Diagram window</td></tr>
+<tr><td>⌘-</td><td><strong class="ui">View ▸ Smaller Text</strong>, or <strong class="ui">View ▸ Zoom Out</strong> in the Diagram window</td></tr>
+<tr><td>⌘[</td><td><strong class="ui">View ▸ Word Sketch ▸ Back</strong></td></tr>
+<tr><td>⌘]</td><td><strong class="ui">View ▸ Word Sketch ▸ Forward</strong></td></tr>
+<tr><td>⌘0</td><td><strong class="ui">View ▸ Reset Text Size</strong>, or <strong class="ui">View ▸ Actual Size</strong> in the Diagram window</td></tr>
+<tr><td>⌘1 to ⌘3</td><td><strong class="ui">View ▸ Word Sketch ▸ Grammar</strong>, <strong class="ui">Coding</strong>, and <strong class="ui">Multimode</strong></td></tr>
+<tr><td>⌘A</td><td><strong class="ui">Edit ▸ Select All</strong></td></tr>
+<tr><td>⌘C</td><td><strong class="ui">Edit ▸ Copy</strong></td></tr>
+<tr><td>⌘F</td><td><strong class="ui">Edit ▸ Find</strong></td></tr>
+<tr><td>⌘G</td><td><strong class="ui">Edit ▸ Find Next</strong></td></tr>
+<tr><td>⌘H</td><td><strong class="ui">LemmaLoom ▸ Hide LemmaLoom</strong></td></tr>
+<tr><td>⌘L</td><td><strong class="ui">View ▸ Word Sketch ▸ Focus Word Field</strong></td></tr>
+<tr><td>⌘M</td><td><strong class="ui">Window ▸ Minimize</strong></td></tr>
+<tr><td>⌘N</td><td><strong class="ui">File ▸ New Window</strong></td></tr>
+<tr><td>⌘Q</td><td><strong class="ui">LemmaLoom ▸ Quit LemmaLoom</strong></td></tr>
+<tr><td>⌘R</td><td><strong class="ui">Edit ▸ Run Query</strong></td></tr>
+<tr><td>⌘V</td><td><strong class="ui">Edit ▸ Paste</strong></td></tr>
+<tr><td>⌘W</td><td><strong class="ui">File ▸ Close Tab</strong> or <strong class="ui">File ▸ Close</strong></td></tr>
+<tr><td>⌘X</td><td><strong class="ui">Edit ▸ Cut</strong></td></tr>
+<tr><td>⌘Z</td><td><strong class="ui">Edit ▸ Undo</strong></td></tr>
+<tr><td>⌘Return</td><td><strong class="ui">Document ▸ Save</strong></td></tr>
+<tr><td>⌘⌫</td><td><strong class="ui">Project ▸ Delete Project</strong>, <strong class="ui">Delete Set</strong>, <strong class="ui">Delete Group</strong>, <strong class="ui">Delete Document</strong>, or <strong class="ui">Delete Documents</strong>, or <strong class="ui">Edit ▸ Delete Analyzer</strong> in the Analyzers window</td></tr>
+<tr><td>⇧⌘/</td><td>The search field of the <strong class="ui">Help</strong> menu</td></tr>
+<tr><td>⇧⌘[</td><td><strong class="ui">Window ▸ Show Previous Tab</strong></td></tr>
+<tr><td>⇧⌘\</td><td><strong class="ui">View ▸ Show All Tabs</strong></td></tr>
+<tr><td>⇧⌘]</td><td><strong class="ui">Window ▸ Show Next Tab</strong></td></tr>
+<tr><td>⇧⌘A</td><td><strong class="ui">Document ▸ Auto Code…</strong></td></tr>
+<tr><td>⇧⌘B</td><td><strong class="ui">Document ▸ Bookmark</strong> or <strong class="ui">Remove Bookmark</strong></td></tr>
+<tr><td>⇧⌘C</td><td><strong class="ui">Document ▸ Code</strong></td></tr>
+<tr><td>⇧⌘E</td><td><strong class="ui">Document ▸ Edit</strong></td></tr>
+<tr><td>⇧⌘F</td><td><strong class="ui">Edit ▸ Find Document</strong></td></tr>
+<tr><td>⇧⌘G</td><td><strong class="ui">Edit ▸ Find Previous</strong></td></tr>
+<tr><td>⇧⌘I</td><td><strong class="ui">File ▸ Import ▸ Documents</strong></td></tr>
+<tr><td>⇧⌘L</td><td><strong class="ui">Document ▸ Link</strong> or <strong class="ui">Finish Link</strong></td></tr>
+<tr><td>⇧⌘M</td><td><strong class="ui">Document ▸ Memo</strong></td></tr>
+<tr><td>⇧⌘N</td><td><strong class="ui">File ▸ New Project</strong></td></tr>
+<tr><td>⇧⌘P</td><td><strong class="ui">Document ▸ Play</strong> or <strong class="ui">Pause</strong></td></tr>
+<tr><td>⇧⌘V</td><td><strong class="ui">Document ▸ In Vivo Code</strong></td></tr>
+<tr><td>⇧⌘W</td><td><strong class="ui">File ▸ Close Window</strong></td></tr>
+<tr><td>⇧⌘Z</td><td><strong class="ui">Edit ▸ Redo</strong></td></tr>
+<tr><td>⌥⌘0</td><td><strong class="ui">Window ▸ Activity</strong></td></tr>
+<tr><td>⌥⌘1 to ⌥⌘4</td><td><strong class="ui">View ▸ Inspector ▸ Text</strong>, <strong class="ui">Grammar</strong>, <strong class="ui">Coding</strong>, and <strong class="ui">Multimode</strong></td></tr>
+<tr><td>⌥⌘H</td><td><strong class="ui">LemmaLoom ▸ Hide Others</strong></td></tr>
+<tr><td>⌥⌘L</td><td><strong class="ui">View ▸ Scroll Together</strong></td></tr>
+<tr><td>⌥⌘N</td><td><strong class="ui">File ▸ New Group</strong></td></tr>
+<tr><td>⌥⇧⌘I</td><td><strong class="ui">File ▸ Import ▸ Web Pages</strong></td></tr>
+<tr><td>⌥⇧⌘L</td><td><strong class="ui">Document ▸ Cancel Link</strong></td></tr>
+<tr><td>⌃⌘F</td><td><strong class="ui">View ▸ Enter Full Screen</strong> or <strong class="ui">Exit Full Screen</strong></td></tr>
+<tr><td>⌃⌘I</td><td><strong class="ui">View ▸ Toggle Inspector</strong></td></tr>
+<tr><td>⌃⌘S</td><td><strong class="ui">View ▸ Toggle Sidebar</strong></td></tr>
+<tr><td>⌃Tab</td><td><strong class="ui">Window ▸ Show Next Tab</strong> (merged windows)</td></tr>
+<tr><td>⌃⇧Tab</td><td><strong class="ui">Window ▸ Show Previous Tab</strong> (merged windows)</td></tr>
+<tr><td>fn E</td><td><strong class="ui">Edit ▸ Emoji &amp; Symbols</strong></td></tr>
+<tr><td>⌃fn C</td><td><strong class="ui">Window ▸ Center</strong></td></tr>
+<tr><td>⌃fn F</td><td><strong class="ui">Window ▸ Fill</strong></td></tr>
+</tbody></table></div>
+<h2 id="keyboard-example">Coding from the keyboard<a class="anchor" href="#keyboard-example" aria-hidden="true">#</a></h2>
+<p>You select a passage via mouse or trackpad interaction, but nearly everything around it can be done from the keyboard. Suppose you are reading “Climate Debate” for passages about deadlines, with “Running Out of Time” and “Letter from the Climate Strike” open in tabs and “Running Out of Time” active. Feel free to import the example project with <strong class="ui">File ▸ Import ▸ Example Project</strong> to follow along.</p>
+<ol>
+<li>Press ⌥⌘3. The inspector shows its <strong class="ui">Coding</strong> tab.</li>
+<li>Press ⌘F and type <code>retired</code>. The reader goes to the only match, in the paragraph about the dates that leaders have promised.</li>
+<li>Press Esc to close the search bar.</li>
+<li>Select the sentence <em>A deadline that falls after everyone in office has retired is not a deadline at all.</em></li>
+<li>Press ⇧⌘C. The code palette opens with the cursor in <strong class="ui">Search codes</strong>.</li>
+<li>Type <code>dead</code>. “Deadlines” is the only code left in the list.</li>
+<li>Press Return. “Deadlines” gets a checkmark, and the palette stays open.</li>
+<li>Press Esc to close the palette. The passage is still selected.</li>
+<li>Press ⇧⌘M. The <strong class="ui">New Memo</strong> dialog opens.</li>
+<li>Click in the <strong class="ui">Memo</strong> field and type a note such as <code>Targets fall after their authors retire; compare Letter from the Climate Strike.</code></li>
+<li>Click <strong class="ui">Save</strong>.</li>
+<li>Press ⇧⌘] to go on to “Letter from the Climate Strike”.</li>
+</ol>
+<p>When applying a code to an incorrect passage, close the palette and hit ⌘Z. <strong class="ui">Edit ▸ Undo Apply Code</strong> takes the coding back. When the palette is active, hitting Return once more removes “Deadlines”.</p>
+<figure class="shot" id="keyboard-shortcuts-code-palette"><img class="shot-light" src="../figures/en/light/keyboard-shortcuts-code-palette.webp" alt="The code palette opened with ⇧⌘C in “Running Out of Time”, with dead typed in the search field and “Deadlines” as the only code left." loading="lazy"><img class="shot-dark" src="../figures/en/dark/keyboard-shortcuts-code-palette.webp" alt="The code palette opened with ⇧⌘C in “Running Out of Time”, with dead typed in the search field and “Deadlines” as the only code left." loading="lazy"><figcaption>The code palette opened with ⇧⌘C in “Running Out of Time”, with dead typed in the search field and “Deadlines” as the only code left.</figcaption></figure>
+<h2 id="custom-shortcuts">Adding custom keyboard shortcuts<a class="anchor" href="#custom-shortcuts" aria-hidden="true">#</a></h2>
+<p>It is possible to define a keyboard shortcut for any menu command within any app in macOS. This allows you to quickly run commands you regularly execute, like <strong class="ui">Edit ▸ Query from Selection</strong> and <strong class="ui">Project ▸ Add Code</strong>. Additionally, you may redefine existing shortcuts to your liking.</p>
+<ol>
+<li>Open <strong class="ui">System Settings</strong> and click <strong class="ui">Keyboard</strong>.</li>
+<li>Click <strong class="ui">Keyboard Shortcuts…</strong>.</li>
+<li>Click <strong class="ui">App Shortcuts</strong> in the list on the left.</li>
+<li>Click the add button (+).</li>
+<li>Choose LemmaLoom as the application.</li>
+<li>As the menu title, type the command’s name exactly as the menu shows it, such as <code>Query from Selection</code>.</li>
+<li>Click in the shortcut field and press keys that are still free (see <a href="#shortcuts-by-key">All shortcuts by key</a> earlier in this chapter), such as ⌃⌥⌘Q.</li>
+<li>Click <strong class="ui">Done</strong>.</li>
+</ol>
+<p>When assigning keys to an item whose name has an ellipsis, e.g., <strong class="ui">Auto Code…</strong>, type the ellipsis as a single character. On the US keyboard, this means pressing Option along with the semicolon key, rather than entering three periods. Some items occur twice in the application’s menus (for example, <strong class="ui">REFI-QDA Project</strong> is under both <strong class="ui">Import</strong> and <strong class="ui">Export</strong>). For this sort of case, you would need to input the whole path to the command with the separator <code>-&gt;</code> in between menus, e.g., <code>File-&gt;Export-&gt;REFI-QDA Project</code>.</p>
+<p>Once saved, the shortcut appears next to the command in LemmaLoom’s menu. If it does not, quit LemmaLoom and relaunch the app.</p>
+<p>macOS identifies commands based on the names of their respective menu items. This means that the name you type should match the menu entry’s name in the currently selected application language. Changing languages thus necessitates setting the shortcuts all over again according to the new command names, such as <strong class="ui">Abfrage aus Auswahl</strong> in German. For the same reason, any command changing names will answer to your shortcut only under the name you typed. Keys assigned to the <strong class="ui">Auto Code…</strong> command no longer function when multiple lenses capable of auto coding are enabled simultaneously, because the menu then offers <strong class="ui">Auto Code with Hedges…</strong> and similar commands instead.</p>
+</article>
+<nav class="pager"><a class="previous" href="settings.html"><span>Previous</span>Settings and Appearance</a><a class="next" href="help-and-support.html"><span>Next</span>Help and Support</a></nav>
+<footer class="site-footer">© 2026 Ryan S. Cooper. All rights reserved.</footer>
+</main>
+<nav class="page-toc" aria-label="On this page"><p>On this page</p><ul>
+<li class="level-2"><a href="#how-shortcuts-work">How shortcuts work</a></li>
+<li class="level-3"><a href="#shortcuts-by-window">Shortcuts in each window</a></li>
+<li class="level-2"><a href="#shortcuts-by-menu">Shortcuts by menu</a></li>
+<li class="level-3"><a href="#lemmaloom-menu">LemmaLoom</a></li>
+<li class="level-3"><a href="#file-menu">File</a></li>
+<li class="level-3"><a href="#edit-menu">Edit</a></li>
+<li class="level-3"><a href="#view-menu">View</a></li>
+<li class="level-3"><a href="#project-menu">Project</a></li>
+<li class="level-3"><a href="#document-menu">Document</a></li>
+<li class="level-3"><a href="#window-menu">Window</a></li>
+<li class="level-3"><a href="#help-menu">Help</a></li>
+<li class="level-2"><a href="#buttons-and-shortcuts">Buttons that have a shortcut</a></li>
+<li class="level-2"><a href="#esc-and-return">Esc, Return, and the arrow keys</a></li>
+<li class="level-2"><a href="#modifier-clicks">Clicks with a modifier key</a></li>
+<li class="level-2"><a href="#shortcuts-by-key">All shortcuts by key</a></li>
+<li class="level-2"><a href="#keyboard-example">Coding from the keyboard</a></li>
+<li class="level-2"><a href="#custom-shortcuts">Adding custom keyboard shortcuts</a></li>
+</ul></nav>
+</div>
+<script src="../assets/guide.js" defer></script>
+</body>
+</html>

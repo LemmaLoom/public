@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>撤销与重做 · LemmaLoom 用户指南</title>
+<link rel="stylesheet" href="../assets/guide.css">
+<link rel="icon" type="image/png" href="../assets/logo.png">
+<script>var r=document.documentElement;r.setAttribute('data-theme','light');try{if(localStorage.getItem('guide-theme')==='dark'){r.setAttribute('data-theme','dark')}}catch(e){}</script>
+</head>
+<body>
+<header class="topbar">
+<button class="menu-toggle" aria-label="目录" aria-expanded="false">☰</button>
+<a class="brand" href="index.html"><span class="wordmark"><span class="lemma">Lemma</span>Loom</span><span class="guide-name">用户指南</span></a>
+<div class="search"><input type="search" id="search" placeholder="搜索" aria-label="搜索" autocomplete="off" data-empty="无结果"><div class="results" id="results" hidden></div></div>
+<nav class="languages" aria-label="Language"><a href="../en/undo.html" lang="en">English</a><a href="../de/undo.html" lang="de">Deutsch</a><a href="../zh-Hans/undo.html" lang="zh-Hans" aria-current="true">简体中文</a></nav>
+<button class="theme-toggle" data-light="浅色" data-dark="深色" aria-label="外观"></button>
+<a class="pdf-link" href="https://github.com/LemmaLoom/public/raw/main/pdf/lemmaloom-guide-zh-Hans.pdf">PDF</a>
+</header>
+<div class="layout">
+<nav class="sidebar" aria-label="目录"><ol>
+<li class="unnumbered"><a href="quick-start.html">快速入门</a></li>
+<li><a href="introduction.html">简介</a></li>
+<li><a href="getting-started.html">开始使用</a></li>
+<li><a href="projects-and-documents.html">项目与文档</a></li>
+<li><a href="importing.html">导入资料</a></li>
+<li><a href="reading-and-editing.html">阅读与编辑</a></li>
+<li><a href="lenses.html">透镜</a></li>
+<li><a href="coding.html">编码</a></li>
+<li><a href="sets-tags-attributes.html">文档集、分组、标签和属性</a></li>
+<li><a href="translations.html">译文与分屏浏览</a></li>
+<li><a href="text-inspector.html">文本检查器</a></li>
+<li><a href="grammar-inspector.html">语法检查器</a></li>
+<li><a href="word-sketch.html">词汇速写</a></li>
+<li><a href="coding-analysis.html">编码分析</a></li>
+<li><a href="sketch-space.html">速写空间</a></li>
+<li><a href="queries-building.html">构建查询</a></li>
+<li><a href="queries-results.html">查询结果与统计</a></li>
+<li><a href="queries-patterns.html">查询模式与发现</a></li>
+<li><a href="queries-using-results.html">使用查询结果</a></li>
+<li><a href="dictionaries.html">词典</a></li>
+<li><a href="custom-analyzers.html">自定义分析器</a></li>
+<li><a href="analysis-and-indexing.html">分析与索引</a></li>
+<li><a href="exchange-and-export.html">交换与导出</a></li>
+<li class="current"><a href="undo.html">撤销与重做</a></li>
+<li><a href="settings.html">设置与外观</a></li>
+<li><a href="keyboard-shortcuts.html">键盘快捷键</a></li>
+<li><a href="help-and-support.html">帮助与支持</a></li>
+<li><a href="statistics-reference.html">统计量一览</a></li>
+<li class="unnumbered"><a href="glossary.html">术语表</a></li>
+<li class="unnumbered"><a href="thanks.html">感谢</a></li>
+</ol></nav>
+<main class="content">
+<article>
+<h1 id="undo">撤销与重做</h1>
+<p>在 LemmaLoom 中所做的更改会在修改的那一刻立即保存，LemmaLoom 同时把这些更改记入历史。用<strong class="ui">编辑 ▸ 撤销</strong>可以撤回这些更改，每次一步，按从新到旧的顺序沿着历史往回退，直到回到你想要的那一步。项目中几乎所有操作都可以撤销，包括删除文档和为整个文档集自动编码。</p>
+<p>删除项目、文档或编码，以及合并两个编码时，LemmaLoom 会请你确认。其他大多数内容（例如分组、文档集、标签、属性、词典和分析器）会立即删除，不做提示。误删的内容可以用<strong class="ui">编辑 ▸ 撤销</strong>恢复。</p>
+<p>删除项目是永久性的，导入或翻译文档则会清除一部分历史。本章后文的<a href="#what-you-cannot-undo">无法撤销的操作</a>会具体说明这些情况。</p>
+<p>本指南的示例使用“气候辩论”项目，<a href="introduction.html">第 1 章“简介”</a>中的<a href="introduction.html#example-project">示例项目</a>对它有完整的介绍。如果想动手练习，可以用<strong class="ui">文件 ▸ 导入 ▸ 示例项目</strong>导入这个项目。</p>
+<h2 id="key-terms">关键术语<a class="anchor" href="#key-terms" aria-hidden="true">#</a></h2>
+<ul>
+<li><em>步骤</em>是 LemmaLoom 记录下来的一次操作。它的名称显示在<strong class="ui">编辑</strong>菜单中，表明是哪个命令引起了这次更改，例如<strong class="ui">应用编码</strong>和<strong class="ui">删除文档</strong>。一次编码是一步；运行一次<strong class="ui">自动编码</strong>（见<a href="coding.html">第 7 章“编码”</a>中的<a href="coding.html#auto-coding">自动为段落编码</a>），即使生成了两百个编码实例和四个新编码，也只算一步。</li>
+<li><em>撤销历史</em>是指所有可以撤销的步骤。每个窗口都有各自独立的撤销历史（见本章后文的<a href="#windows">步骤属于哪个窗口</a>）。</li>
+</ul>
+<h2 id="undoing-a-change">撤销更改<a class="anchor" href="#undoing-a-change" aria-hidden="true">#</a></h2>
+<ol>
+<li>点按你做出更改的那个窗口，使它成为当前窗口。对大多数更改来说，这就是主窗口。</li>
+<li>如果光标在文本框中，请点按文本框以外的地方。</li>
+<li>打开<strong class="ui">编辑</strong>菜单。第一项写明将要撤销的步骤，例如<strong class="ui">撤销应用编码</strong>。</li>
+<li>选取这一项，或者按下 ⌘Z。</li>
+</ol>
+<figure class="shot" id="undo-edit-menu"><img class="shot-light" src="../figures/zh-Hans/light/undo-edit-menu.webp" alt="在“希望要靠行动”中把一段文字编码为“恐惧”之后的“编辑”菜单。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/undo-edit-menu.webp" alt="在“希望要靠行动”中把一段文字编码为“恐惧”之后的“编辑”菜单。" loading="lazy"><figcaption>在“希望要靠行动”中把一段文字编码为“恐惧”之后的“编辑”菜单。</figcaption></figure>
+<p>如果要在历史中后退多步，请再次从菜单中选取<strong class="ui">撤销</strong>。每选取一次，菜单就会显示历史中下一步的名称。快速连按几次 ⌘Z，会依次撤回这些操作。没有可以撤销的步骤时，这个命令的名称变为<strong class="ui">撤销</strong>，并处于停用状态。</p>
+<p>撤销会把这一步影响到的所有内容恢复原状。因此，执行<strong class="ui">撤销删除文档</strong>后，文档会连同它的全部文本、编码实例、备忘录、链接、书签和属性值一起回来，并重新归入它原先所在的每个文档集。</p>
+<p>如果撤销会恢复文本内容，LemmaLoom 会在后台为这些文本重新建立索引（见<a href="analysis-and-indexing.html">第 21 章“分析与索引”</a>中的<a href="analysis-and-indexing.html#reanalysis">重新为文档建立索引</a>）。索引进度可以在<strong class="ui">窗口 ▸ 活动</strong>（⌥⌘0）中查看。</p>
+<h3 id="redoing-a-change">重做更改<a class="anchor" href="#redoing-a-change" aria-hidden="true">#</a></h3>
+<p>撤销一步之后，<strong class="ui">编辑</strong>菜单中总会出现重做这一步的选项，例如<strong class="ui">重做应用编码</strong>。点按这个菜单项，或者在键盘上按下 ⇧⌘Z。撤销了多少步，就可以重做多少步，从最后撤销的那一步开始。</p>
+<p>可以重做的步骤只保留到你在同一窗口中做出下一项更改为止。例如，如果你又为一段文字编码，之前撤销的步骤就永久丢失了，<strong class="ui">重做</strong>也随之停用。</p>
+<figure class="shot" id="undo-redo-menu"><img class="shot-light" src="../figures/zh-Hans/light/undo-redo-menu.webp" alt="撤销删除“碳税之争”之后的“编辑”菜单。“撤销”显示的是删除之前的那一步，“重做”显示的是这次删除。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/undo-redo-menu.webp" alt="撤销删除“碳税之争”之后的“编辑”菜单。“撤销”显示的是删除之前的那一步，“重做”显示的是这次删除。" loading="lazy"><figcaption>撤销删除“碳税之争”之后的“编辑”菜单。“撤销”显示的是删除之前的那一步，“重做”显示的是这次删除。</figcaption></figure>
+<h3 id="worked-example">一个例子<a class="anchor" href="#worked-example" aria-hidden="true">#</a></h3>
+<p>假设你正在主窗口中处理“希望要靠行动”。你把一段文字编码为“恐惧”，然后在检查器<strong class="ui">文本</strong>标签页的<strong class="ui">详细信息</strong>分面中，把这篇文章的属性“媒体”从“每周纪事”改为 <code>北方先驱报</code>，最后删除了“碳税之争”。下表列出每次操作之后，以及随后几次撤销和重做之后，<strong class="ui">编辑</strong>菜单中出现的选项。</p>
+<figure class="shot" id="undo-outlet-edit"><img class="shot-light" src="../figures/zh-Hans/light/undo-outlet-edit.webp" alt="“希望要靠行动”的详细信息分面，“媒体”属性正在改为“北方先驱报”。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/undo-outlet-edit.webp" alt="“希望要靠行动”的详细信息分面，“媒体”属性正在改为“北方先驱报”。" loading="lazy"><figcaption>“希望要靠行动”的详细信息分面，“媒体”属性正在改为“北方先驱报”。</figcaption></figure>
+<div class="table-wrap"><table>
+<thead><tr><th>序号</th><th>你的操作</th><th>撤销项</th><th>重做项</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>把一段文字编码为“恐惧”</td><td><strong class="ui">撤销应用编码</strong></td><td><strong class="ui">重做</strong>（已停用）</td></tr>
+<tr><td>2</td><td>在“媒体”字段中选中“每周纪事”，输入 <code>北方先驱报</code>，然后点按阅读器</td><td><strong class="ui">撤销设置值</strong></td><td><strong class="ui">重做</strong>（已停用）</td></tr>
+<tr><td>3</td><td>删除“碳税之争”</td><td><strong class="ui">撤销删除文档</strong></td><td><strong class="ui">重做</strong>（已停用）</td></tr>
+<tr><td>4</td><td>按下 ⌘Z</td><td><strong class="ui">撤销设置值</strong></td><td><strong class="ui">重做删除文档</strong></td></tr>
+<tr><td>5</td><td>按下 ⌘Z</td><td><strong class="ui">撤销应用编码</strong></td><td><strong class="ui">重做设置值</strong></td></tr>
+<tr><td>6</td><td>按下 ⇧⌘Z</td><td><strong class="ui">撤销设置值</strong></td><td><strong class="ui">重做删除文档</strong></td></tr>
+<tr><td>7</td><td>把另一段文字编码为“希望”</td><td><strong class="ui">撤销应用编码</strong></td><td><strong class="ui">重做</strong>（已停用）</td></tr>
+</tbody></table></div>
+<p>第 4 行之后，“碳税之争”回到项目中。第 5 行之后，“媒体”变回“每周纪事”；第 6 行又让 <code>北方先驱报</code> 回来了。第 7 行的编码是新的更改，所以<strong class="ui">重做</strong>已停用，“碳税之争”仍留在项目中。</p>
+<p>第 2 行虽然输入了 5 个字，却只有一步。原因见下文的<a href="#typing-attribute-values">在属性字段中输入值</a>。</p>
+<h2 id="how-steps-are-recorded">更改如何成为步骤<a class="anchor" href="#how-steps-are-recorded" aria-hidden="true">#</a></h2>
+<p>每个命令都算作一步，无论它改动了多少内容。例如：</p>
+<ul>
+<li>选中六个文档时执行<strong class="ui">删除文档</strong>，算作一步。同样，删除“时间不多了”时，“时间不多了 (英语)”会在同一步中一并删除，因为后者是前者的译本。</li>
+<li>在<strong class="ui">文档信息</strong>中点按<strong class="ui">存储</strong>也是一步，无论你更改了文档的多少项信息（例如名称、标签、属性值或语言）。</li>
+<li>一次<strong class="ui">自动编码</strong>运行算作一步。撤销会移除这次运行添加的所有编码实例，并删除它创建的所有编码。如果你在运行完成之前点按了<strong class="ui">停止</strong>，撤销会撤回到那时为止已经完成的全部内容。</li>
+<li>查询<strong class="ui">操作</strong>菜单中的<strong class="ui">为命中添加书签…</strong>和<strong class="ui">添加到词典</strong>，以及属性窗口中的<strong class="ui">导入</strong>，每执行一次也都算作一步，涵盖它们生成的全部内容。</li>
+</ul>
+<p>撤销一个命令，也会撤回它在别处引起的更改。你在“时间不多了”中为一段文字编码时，LemmaLoom 会在“时间不多了 (英语)”中添加相应的编码实例。撤销<strong class="ui">应用编码</strong>会同时撤回两个文档中的更改。</p>
+<h3 id="typing-attribute-values">在属性字段中输入值<a class="anchor" href="#typing-attribute-values" aria-hidden="true">#</a></h3>
+<p>在检查器<strong class="ui">文本</strong>标签页的<strong class="ui">详细信息</strong>分面中以及属性窗口中，文本类型的属性字段会在你输入时自动保存，其他类型的值则在输入后立即自动保存。只要中间没有其他步骤，LemmaLoom 就会把同一文档中对同一字段的所有更改归入一个<strong class="ui">设置值</strong>步骤。</p>
+<p>在“媒体”中输入 <code>北方先驱报</code> 只产生一步，<strong class="ui">编辑 ▸ 撤销设置值</strong>会把字段恢复到你开始输入之前的状态。更改“立场”会产生另一步。如果最后又回到了起点（例如输入一些内容后又把它删掉），整个步骤就会从历史中移除。检查器<strong class="ui">编码</strong>标签页的<strong class="ui">编码实例</strong>分面中，编码实例和备忘录的属性字段也是如此。</p>
+<p>要一次撤销整个值，请先点按别处，再选取<strong class="ui">编辑 ▸ 撤销设置值</strong>。</p>
+<h3 id="long-changes">需要一段时间的更改<a class="anchor" href="#long-changes" aria-hidden="true">#</a></h3>
+<p>删除多个文档、为文档集自动编码和导入编码本都需要一些时间。当前的步骤要等完成之后才会显示在<strong class="ui">编辑</strong>菜单中。在此之前，⌘Z 撤销的是前一步。撤销之前，请确认最后一个被删除的文档已经从导航栏中消失、自动编码对话框显示<strong class="ui">完成</strong>，或者<strong class="ui">正在导入 REFI-QDA 编码本</strong>对话框已经关闭。</p>
+<h2 id="windows">步骤属于哪个窗口<a class="anchor" href="#windows" aria-hidden="true">#</a></h2>
+<p>LemmaLoom 的每个窗口都有自己的历史。主窗口、编码本窗口、文档窗口（来自<strong class="ui">在新窗口中打开</strong>），以及你正在使用的查询、查询结果、分析器、标签和属性窗口都是如此。用<strong class="ui">文件 ▸ 新建窗口</strong>再打开一个主窗口，它又会有一份独立的历史来记录更改。<strong class="ui">编辑 ▸ 撤销</strong>和<strong class="ui">编辑 ▸ 重做</strong>等命令只作用于当前窗口。</p>
+<ul>
+<li>步骤属于更改开始时的当前窗口。在标签窗口中重命名标签“热门”之后，请先点按标签窗口，再选取<strong class="ui">编辑 ▸ 撤销重命名标签</strong>。</li>
+<li>从对话框中发起的操作所引起的更改，属于打开这个对话框的窗口。<strong class="ui">文档信息</strong>对话框的更改记录在主窗口的历史中；对话框关闭后，请在主窗口中用<strong class="ui">编辑 ▸ 撤销</strong>撤回这些更改。同样，编码面板的更改记录在你打开它的那个窗口的历史中。从属性窗口打开的对话框，其更改都记录在属性窗口的历史中。</li>
+<li>后台操作属于发起它的窗口，与完成时哪个窗口是当前窗口无关。在主窗口中开始的<strong class="ui">自动编码</strong>会记入主窗口的历史。</li>
+<li>主窗口的历史涵盖你的所有项目。如果你在“气候辩论”中为一段文字编码，然后切换到另一个项目，再按下 ⌘Z，这次编码会在原来的项目中撤销，而另一个项目仍是当前项目。如果想看到撤销的结果，请先切换回去。</li>
+</ul>
+<figure class="shot" id="undo-codebook-window"><img class="shot-light" src="../figures/zh-Hans/light/undo-codebook-window.webp" alt="“气候辩论”的编码本窗口是当前窗口。它的“编辑”菜单提供撤销刚才对编码“成本”所做更改的选项。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/undo-codebook-window.webp" alt="“气候辩论”的编码本窗口是当前窗口。它的“编辑”菜单提供撤销刚才对编码“成本”所做更改的选项。" loading="lazy"><figcaption>“气候辩论”的编码本窗口是当前窗口。它的“编辑”菜单提供撤销刚才对编码“成本”所做更改的选项。</figcaption></figure>
+<aside class="callout note"><p class="callout-title">注意</p><p>如果你在两个窗口中先后编辑了同一项内容，例如先在编码本窗口中编辑编码“成本”，再在主窗口的<strong class="ui">编码</strong>分面中编辑它，就需要先撤销第二次编辑，再撤销第一次，并且各自在做出编辑的那个窗口中撤销。否则，在一个窗口中撤销的编辑，可能会在你到另一个窗口中撤销时重新出现。</p>
+</aside>
+<h2 id="what-you-can-undo">可以撤销的操作<a class="anchor" href="#what-you-can-undo" aria-hidden="true">#</a></h2>
+<p>下列每个表格的最右一栏，是<strong class="ui">编辑</strong>菜单中跟在<strong class="ui">撤销</strong>或<strong class="ui">重做</strong>后面的名称。</p>
+<h3 id="steps-coding">编码与编码实例<a class="anchor" href="#steps-coding" aria-hidden="true">#</a></h3>
+<div class="table-wrap"><table>
+<thead><tr><th>你的操作</th><th>步骤</th></tr></thead>
+<tbody>
+<tr><td>为一段文字编码，包括带属性的编码所要求填写的值</td><td><strong class="ui">应用编码</strong></td></tr>
+<tr><td>在编码面板中用<strong class="ui">添加编码“…”</strong>或<strong class="ui">实境编码“…”</strong>，或者用<strong class="ui">文档 ▸ 实境编码</strong>，一次完成新建编码并用它为这段文字编码</td><td><strong class="ui">应用编码</strong></td></tr>
+<tr><td>在编码面板中移除编码实例，或者在<strong class="ui">编码实例</strong>分面或<strong class="ui">编码实例</strong>视图中使用<strong class="ui">删除编码实例</strong></td><td><strong class="ui">删除编码实例</strong></td></tr>
+<tr><td>用<strong class="ui">更改编码</strong>为编码实例换一个编码</td><td><strong class="ui">更改编码</strong></td></tr>
+<tr><td>新建编码，包括在编码本窗口和<strong class="ui">编码</strong>分面中使用<strong class="ui">添加子编码</strong></td><td><strong class="ui">新建编码</strong></td></tr>
+<tr><td>更改编码的<strong class="ui">名称</strong>、<strong class="ui">颜色</strong>、<strong class="ui">格式</strong>、<strong class="ui">适用范围</strong>、<strong class="ui">标签</strong>、<strong class="ui">属性</strong>或<strong class="ui">说明</strong></td><td><strong class="ui">编辑编码</strong></td></tr>
+<tr><td>通过拖动或<strong class="ui">移到</strong>，把编码移到另一个编码之下或移到顶层</td><td><strong class="ui">移动编码</strong></td></tr>
+<tr><td><strong class="ui">合并到</strong>另一个编码</td><td><strong class="ui">合并</strong></td></tr>
+<tr><td>删除编码</td><td><strong class="ui">删除编码</strong></td></tr>
+<tr><td><strong class="ui">添加到编码集 ▸ 从编码新建编码集</strong></td><td><strong class="ui">新建编码集</strong></td></tr>
+<tr><td><strong class="ui">添加到编码集</strong></td><td><strong class="ui">添加到编码集</strong></td></tr>
+<tr><td><strong class="ui">从编码集中移除</strong></td><td><strong class="ui">从编码集中移除</strong></td></tr>
+<tr><td>重命名编码集</td><td><strong class="ui">重命名</strong></td></tr>
+<tr><td>用编码集快捷菜单中的<strong class="ui">删除</strong>，或者<strong class="ui">编码</strong>分面中它的废纸篓按钮删除编码集</td><td><strong class="ui">删除编码集</strong></td></tr>
+<tr><td>在<a href="lenses.html">透镜</a>或查询中使用<strong class="ui">自动编码…</strong></td><td><strong class="ui">自动编码</strong></td></tr>
+<tr><td><strong class="ui">文件 ▸ 导入 ▸ REFI-QDA 编码本</strong></td><td><strong class="ui">REFI-QDA 编码本</strong></td></tr>
+</tbody></table></div>
+<p>撤销<strong class="ui">删除编码</strong>会恢复这个编码本身，包括它的所有子编码、这些编码的编码实例以及相关的属性值。<strong class="ui">撤销合并</strong>会取消这次合并，恢复被合并的编码，连同它的所有编码实例、子编码、备忘录、编码集以及与它相关的已存储查询。</p>
+<p><strong class="ui">撤销REFI-QDA 编码本</strong>会移除这次导入添加到编码本中的全部内容（见<a href="exchange-and-export.html">第 22 章“交换与导出”</a>中的<a href="exchange-and-export.html#refi-codebook">REFI-QDA 编码本</a>）。</p>
+<h3 id="steps-annotations">备忘录、链接和书签<a class="anchor" href="#steps-annotations" aria-hidden="true">#</a></h3>
+<div class="table-wrap"><table>
+<thead><tr><th>你的操作</th><th>步骤</th></tr></thead>
+<tbody>
+<tr><td>写备忘录</td><td><strong class="ui">新建备忘录</strong></td></tr>
+<tr><td>更改备忘录的文本、编码、标签或属性值</td><td><strong class="ui">编辑备忘录</strong></td></tr>
+<tr><td>删除备忘录</td><td><strong class="ui">删除备忘录</strong></td></tr>
+<tr><td>链接两段文字</td><td><strong class="ui">新建链接</strong></td></tr>
+<tr><td>更改链接的关系、评论、颜色或标签</td><td><strong class="ui">编辑链接</strong></td></tr>
+<tr><td>删除链接</td><td><strong class="ui">删除链接</strong></td></tr>
+<tr><td>为一段文字添加书签</td><td><strong class="ui">书签</strong></td></tr>
+<tr><td>更改书签的评论或颜色</td><td><strong class="ui">编辑书签</strong></td></tr>
+<tr><td>移除书签</td><td><strong class="ui">移除书签</strong></td></tr>
+<tr><td>查询<strong class="ui">操作</strong>菜单中的<strong class="ui">为命中添加书签…</strong></td><td><strong class="ui">为命中添加书签</strong></td></tr>
+</tbody></table></div>
+<p>LemmaLoom 会把你的备忘录、链接和书签复制到文档的译文中。这些副本与原件属于同一步，所以撤销会同时作用于两者。</p>
+<h3 id="steps-documents">项目与文档<a class="anchor" href="#steps-documents" aria-hidden="true">#</a></h3>
+<div class="table-wrap"><table>
+<thead><tr><th>你的操作</th><th>步骤</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">文件 ▸ 新建项目</strong></td><td><strong class="ui">新建项目</strong></td></tr>
+<tr><td>重命名项目、文档、分组或文档集</td><td><strong class="ui">重命名</strong></td></tr>
+<tr><td>在<strong class="ui">项目信息</strong>中点按<strong class="ui">存储</strong>，包括在其中添加或移除的属性</td><td><strong class="ui">项目信息</strong></td></tr>
+<tr><td>在<strong class="ui">文档信息</strong>中点按<strong class="ui">存储</strong></td><td><strong class="ui">文档信息</strong></td></tr>
+<tr><td>在检查器<strong class="ui">文本</strong>标签页的<strong class="ui">详细信息</strong>分面中更改文档的标签</td><td><strong class="ui">编辑标签</strong></td></tr>
+<tr><td>编辑文档文本后点按<strong class="ui">存储</strong></td><td><strong class="ui">编辑文本</strong></td></tr>
+<tr><td>选中一个文档时使用<strong class="ui">删除文档</strong></td><td><strong class="ui">删除文档</strong></td></tr>
+<tr><td>选中多个文档时使用<strong class="ui">删除文档</strong></td><td><strong class="ui">删除文档</strong></td></tr>
+<tr><td><strong class="ui">文件 ▸ 新建分组</strong>，或者<strong class="ui">移到分组 ▸ 新建分组</strong></td><td><strong class="ui">新建分组</strong></td></tr>
+<tr><td><strong class="ui">移到分组</strong></td><td><strong class="ui">移到分组</strong></td></tr>
+<tr><td><strong class="ui">删除分组</strong></td><td><strong class="ui">删除分组</strong></td></tr>
+<tr><td><strong class="ui">文档信息</strong>中分析器旁边的废纸篓按钮（<strong class="ui">移除输出</strong>）</td><td><strong class="ui">移除输出</strong></td></tr>
+<tr><td>对已移除输出的分析器点按<strong class="ui">运行</strong></td><td><strong class="ui">运行</strong></td></tr>
+<tr><td>对导入时未建立索引的文档使用<strong class="ui">立即建立索引</strong>（在<strong class="ui">文档信息</strong>或阅读器的状态栏中）</td><td><strong class="ui">立即建立索引</strong></td></tr>
+</tbody></table></div>
+<p><strong class="ui">文件 ▸ 新建分组</strong>会产生两步，先是<strong class="ui">新建分组</strong>，然后是你输入名称并按下 Return 键时产生的<strong class="ui">重命名</strong>。要移除这个分组，请撤销两次；如果你使用了默认名称，只需撤销一次，因为那时只有一步可以撤销。<strong class="ui">移到分组 ▸ 新建分组</strong>和导航栏中的<strong class="ui">新建文档集</strong>也是如此。</p>
+<p>删除分组后，其中的文档仍留在项目中，但不再属于任何分组。执行<strong class="ui">撤销删除分组</strong>后，这些文档会回到恢复的分组中，引用这个分组名称的智能文档集条件也会恢复。</p>
+<p>撤销<strong class="ui">删除文档</strong>后（无论删除的是一个还是多个文档），每个文档都会连同它的译文和媒体文件一起恢复（见<a href="projects-and-documents.html">第 3 章“项目与文档”</a>中的<a href="projects-and-documents.html#deleting-documents">删除文档</a>）。适用范围为该文档的所有编码会重新加入；存储在该文档中的查询在删除时被移到了项目层级，撤销后也会回到该文档中。如果某个文档有等待中的翻译，删除这个文档会中止翻译；撤销删除之后，请重新开始翻译。</p>
+<p><strong class="ui">撤销编辑文本</strong>会恢复之前的文本，每个编码实例、备忘录、书签和链接也都回到原来的位置。对于录音，转写文本的时间信息会恢复；对于有译文的文档，对齐也会恢复。</p>
+<p>更多详细说明见<a href="reading-and-editing.html">第 5 章“阅读与编辑”</a>中的<a href="reading-and-editing.html#undoing-edits">撤销编辑</a>。</p>
+<p>如果撤销的是在<strong class="ui">文档信息</strong>中对语言或<strong class="ui">从索引中排除</strong>模式所做的更改，文档会重新建立索引。<strong class="ui">撤销移除输出</strong>也是如此，分析器会重新为这个文档运行。<strong class="ui">撤销运行</strong>会删除分析器的输出，<strong class="ui">撤销立即建立索引</strong>则会重新关闭这个文档的索引（见<a href="analysis-and-indexing.html">第 21 章“分析与索引”</a>中的<a href="analysis-and-indexing.html#document-analyzers">为文档选择分析器</a>）。</p>
+<h3 id="steps-organizing">文档集、标签和属性<a class="anchor" href="#steps-organizing" aria-hidden="true">#</a></h3>
+<div class="table-wrap"><table>
+<thead><tr><th>你的操作</th><th>步骤</th></tr></thead>
+<tbody>
+<tr><td>在导航栏中使用<strong class="ui">新建文档集</strong>，或者在查询中使用<strong class="ui">从命中创建文档集</strong></td><td><strong class="ui">新建文档集</strong></td></tr>
+<tr><td><strong class="ui">添加到文档集</strong></td><td><strong class="ui">添加到文档集</strong></td></tr>
+<tr><td><strong class="ui">从文档集中移除</strong></td><td><strong class="ui">从文档集中移除</strong></td></tr>
+<tr><td><strong class="ui">删除文档集</strong></td><td><strong class="ui">删除文档集</strong></td></tr>
+<tr><td><strong class="ui">新建智能文档集</strong>，或者在查询中使用<strong class="ui">存储为智能文档集</strong></td><td><strong class="ui">新建智能文档集</strong></td></tr>
+<tr><td>用<strong class="ui">编辑</strong>或<strong class="ui">项目 ▸ 编辑智能文档集</strong>更改智能文档集的条件</td><td><strong class="ui">编辑智能文档集</strong></td></tr>
+<tr><td>在标签窗口或导航栏中重命名标签</td><td><strong class="ui">重命名标签</strong></td></tr>
+<tr><td>在标签窗口或导航栏中删除标签</td><td><strong class="ui">删除标签</strong></td></tr>
+<tr><td>属性窗口中的<strong class="ui">添加属性</strong>，或者在检查器<strong class="ui">文本</strong>标签页的<strong class="ui">详细信息</strong>分面中输入新的属性名称</td><td><strong class="ui">添加属性</strong></td></tr>
+<tr><td>用<strong class="ui">编辑</strong>更改属性的名称、类型、选项或描述（在属性窗口的<strong class="ui">管理</strong>菜单中，或者在编码编辑器中编码属性的旁边）</td><td><strong class="ui">编辑属性</strong></td></tr>
+<tr><td><strong class="ui">管理</strong>菜单中的<strong class="ui">左移</strong>或<strong class="ui">右移</strong></td><td><strong class="ui">移动属性</strong></td></tr>
+<tr><td><strong class="ui">管理</strong>菜单中的<strong class="ui">删除</strong></td><td><strong class="ui">删除属性</strong></td></tr>
+<tr><td>为一个文档输入、更改或清除值，或者用<strong class="ui">设置值</strong>为多个文档设置值</td><td><strong class="ui">设置值</strong></td></tr>
+<tr><td>属性窗口中的<strong class="ui">导入</strong></td><td><strong class="ui">导入属性</strong></td></tr>
+</tbody></table></div>
+<p><strong class="ui">撤销删除文档集</strong>会恢复这个文档集（如果是智能文档集，还包括它的条件），以及与它关联的每个查询。</p>
+<p>标签由你的所有项目共用，因此<strong class="ui">重命名标签</strong>和<strong class="ui">删除标签</strong>会影响使用这个标签的每个项目、文档、编码、备忘录、链接和智能文档集条件。撤销<strong class="ui">重命名标签</strong>时，这个标签在出现过的所有地方都会恢复原来的名称，为它打开的标签页也会随之改回原名。<strong class="ui">撤销删除标签</strong>会让原先带有这个标签的所有内容重新带上它，但删除标签时关闭的标签页仍保持关闭。</p>
+<p>如果一个<strong class="ui">编辑属性</strong>步骤更改了属性类型，撤销它也会恢复 LemmaLoom 转换过的所有值。无论是在<strong class="ui">项目信息</strong>中还是在属性窗口中删除的属性，撤销后都会连同它在删除前所在各处的值一起回来。<strong class="ui">撤销导入属性</strong>会撤回这次导入写入的每个值和创建的每个属性。</p>
+<h3 id="steps-queries">查询、词典和分析器<a class="anchor" href="#steps-queries" aria-hidden="true">#</a></h3>
+<div class="table-wrap"><table>
+<thead><tr><th>你的操作</th><th>步骤</th></tr></thead>
+<tbody>
+<tr><td>用<strong class="ui">存储</strong>或<strong class="ui">存储为…</strong>存储查询，或者把新查询存储为透镜</td><td><strong class="ui">存储查询</strong></td></tr>
+<tr><td>对已存储的查询使用<strong class="ui">重命名…</strong></td><td><strong class="ui">重命名</strong></td></tr>
+<tr><td>对已存储的查询使用<strong class="ui">存储为透镜…</strong></td><td><strong class="ui">存储为透镜</strong></td></tr>
+<tr><td><strong class="ui">移除透镜</strong></td><td><strong class="ui">移除透镜</strong></td></tr>
+<tr><td><strong class="ui">删除查询</strong></td><td><strong class="ui">删除查询</strong></td></tr>
+<tr><td><strong class="ui">新建词典</strong></td><td><strong class="ui">新建词典</strong></td></tr>
+<tr><td>重命名词典或类别</td><td><strong class="ui">重命名</strong></td></tr>
+<tr><td><strong class="ui">删除词典</strong></td><td><strong class="ui">删除词典</strong></td></tr>
+<tr><td><strong class="ui">添加类别</strong></td><td><strong class="ui">添加类别</strong></td></tr>
+<tr><td>更改类别的颜色</td><td><strong class="ui">编辑类别</strong></td></tr>
+<tr><td><strong class="ui">删除类别</strong></td><td><strong class="ui">删除类别</strong></td></tr>
+<tr><td>在<strong class="ui">添加词条</strong>字段中添加词条，或者使用阅读器选区栏或查询<strong class="ui">操作</strong>菜单中的<strong class="ui">添加到词典</strong></td><td><strong class="ui">添加到词典</strong></td></tr>
+<tr><td>移除词条</td><td><strong class="ui">移除词条</strong></td></tr>
+<tr><td>通过拖动或<strong class="ui">移到类别</strong>，把词条移到另一个类别</td><td><strong class="ui">移动词条</strong></td></tr>
+<tr><td>在<strong class="ui">窗口 ▸ 分析器</strong>中为新分析器点按<strong class="ui">存储</strong>，或者在查询中使用<strong class="ui">存储为分析器…</strong></td><td><strong class="ui">添加分析器</strong></td></tr>
+<tr><td>为已有的分析器点按<strong class="ui">存储</strong>，或者对已有分析器的查询使用<strong class="ui">存储为分析器…</strong></td><td><strong class="ui">编辑分析器</strong></td></tr>
+<tr><td>删除分析器</td><td><strong class="ui">删除分析器</strong></td></tr>
+<tr><td><strong class="ui">更新分析器</strong></td><td><strong class="ui">更新分析器</strong></td></tr>
+</tbody></table></div>
+<p>你在构建器中对查询所做的更改，会在存储查询时写入（见<a href="queries-building.html">第 15 章“构建查询”</a>中的<a href="queries-building.html#saving-queries">存储查询</a>）。打开已存储的查询或模板，或者选取<strong class="ui">新建查询</strong>，都会替换查询的当前状态。如果自上次存储以来有过更改，可以用<strong class="ui">编辑 ▸ 撤销</strong>把它们找回来；“撤销”菜单项以你打开的查询或模板命名，或者显示为<strong class="ui">撤销新建查询</strong>。此外，选取查询<strong class="ui">操作</strong>菜单中的<strong class="ui">冻结值</strong>也会替换当前查询。无论查询之前是否有尚未存储的更改，都可以用<strong class="ui">撤销冻结值</strong>撤回。</p>
+<p>如果已存储的查询有尚未存储的更改，对它选取<strong class="ui">存储为透镜…</strong>时，LemmaLoom 会先把这些更改存储为单独的<strong class="ui">存储查询</strong>步骤，再存储为透镜；因此撤销两次才能把两者都撤回。</p>
+<p>撤销对分析器脚本或语言的更改，或者撤销删除分析器时，分析器会对其所适用语言的文档重新运行。</p>
+<p>有关分析器的更多信息，请参阅<a href="custom-analyzers.html">第 20 章“自定义分析器”</a>。</p>
+<h2 id="what-you-cannot-undo">无法撤销的操作<a class="anchor" href="#what-you-cannot-undo" aria-hidden="true">#</a></h2>
+<h3 id="deleting-a-project">删除项目<a class="anchor" href="#deleting-a-project" aria-hidden="true">#</a></h3>
+<p>删除项目是不可撤回的操作，它还会从每个窗口的历史中移除与这个项目、它的文档或属性有关的步骤。如果需要一份日后可以恢复的备份，请先用<strong class="ui">文件 ▸ 导出 ▸ LemmaLoom 项目</strong>导出项目（见<a href="exchange-and-export.html">第 22 章“交换与导出”</a>）。</p>
+<h3 id="importing">导入文档<a class="anchor" href="#importing" aria-hidden="true">#</a></h3>
+<p>导入文本文件、PDF 文档、网页或录音时，新文档一出现，这个项目之前的大多数步骤就会从每个窗口的历史中清除。其他项目中的步骤会保留，对自定义分析器的更改也会保留。</p>
+<p>假设你之前删除了“碳税之争”，并把“时间节点”合并到了“紧迫性”，现在又向同一个项目导入一个 PDF 文件。导入之后，删除“碳税之争”和把“时间节点”合并到“紧迫性”这两步就都无法撤销了。需要撤销的步骤，请在导入之前撤销。</p>
+<p>如果决定把导入的文档从项目中移除，请删除它，这次删除本身可以撤销。有关导入文档的更多信息，请参阅<a href="importing.html">第 4 章“导入资料”</a>中的<a href="importing.html#importing-documents">导入文档</a>。</p>
+<p>要移除 REFI-QDA 项目、LemmaLoom 归档或示例项目导入的内容，请删除整个项目，或者删除它添加的文档。有两种导入是可以撤销的步骤，即<strong class="ui">REFI-QDA 编码本</strong>和<strong class="ui">导入属性</strong>（见上文的表格）。</p>
+<h3 id="translating">翻译文档<a class="anchor" href="#translating" aria-hidden="true">#</a></h3>
+<p>译文（见<a href="translations.html">第 9 章“译文与分屏浏览”</a>）一完成并出现在原文下方，LemmaLoom 就会从每个窗口的历史中删去之前与原文有关的所有步骤，包括原文中编码实例、链接、书签和属性值的步骤，以及对原文所做的编辑和更改。</p>
+<p>如果不再需要某个译文，像删除其他文档一样删除它即可，这次删除可以撤销。</p>
+<h3 id="outside-the-project">项目以外的更改<a class="anchor" href="#outside-the-project" aria-hidden="true">#</a></h3>
+<p>历史记录的是对项目内容所做的全部更改。下列更改一经做出就立即生效，要撤回它们，把它们改回去即可：</p>
+<ul>
+<li>在<strong class="ui">LemmaLoom ▸ 设置…</strong>中所做的更改，包括主题选择、阅读器的外观设置和透镜的颜色自定义；</li>
+<li>在<strong class="ui">收藏</strong>中添加或移除项目；</li>
+<li>打开了哪些标签页、启用了哪些透镜、阅读器中隐藏了哪些编码、检查器显示哪个标签页，以及窗格的大小。</li>
+</ul>
+<h2 id="typing">在文本框中输入<a class="anchor" href="#typing" aria-hidden="true">#</a></h2>
+<p>光标在文本框中时（例如编码编辑器中的<strong class="ui">名称</strong>栏、备忘录文本、你在导航栏中正在输入的名称，以及各个搜索栏），⌘Z 和 ⇧⌘Z 会像在其他 macOS 应用中一样撤销和重做你的输入。在文本框中，<strong class="ui">编辑</strong>菜单显示<strong class="ui">撤销键入</strong>。离开文本框之后，⌘Z 又会作用于 LemmaLoom 的历史。</p>
+<p>输入的文字只有在你确认之后才会成为步骤。确认是指在对话框中点按<strong class="ui">存储</strong>（命名时则是按下 Return 键或点按别处）。命名时按下 Esc 键，或者在对话框中点按<strong class="ui">取消</strong>，都会放弃你输入的内容。<strong class="ui">文档信息</strong>中的<strong class="ui">立即建立索引</strong>、<strong class="ui">运行</strong>和<strong class="ui">移除输出</strong>等命令会立即生效。从编码编辑器弹出的<strong class="ui">编辑属性</strong>对话框中的<strong class="ui">存储</strong>按钮也是如此，它会把编辑这个属性的全部改动合为一个<strong class="ui">编辑属性</strong>步骤。即使你随后点按<strong class="ui">取消</strong>，这些步骤也都会保留。</p>
+<p>文档文本编辑器也遵循这一规则。编辑时，⌘Z 撤销你的输入。点按<strong class="ui">存储</strong>会把整次编辑记为一个<strong class="ui">编辑文本</strong>步骤，点按<strong class="ui">取消</strong>则放弃这次编辑。<a href="reading-and-editing.html">第 5 章“阅读与编辑”</a>中的<a href="reading-and-editing.html#editing-and-saving">编辑与存储</a>对此有更详细的说明。</p>
+<p>属性值是这一规则的例外，因为属性字段会自动保存你输入的任何值（见本章前文的<a href="#typing-attribute-values">在属性字段中输入值</a>）。</p>
+<h2 id="history-lifetime">历史保留多久<a class="anchor" href="#history-lifetime" aria-hidden="true">#</a></h2>
+<p>历史会一直保留到你退出 LemmaLoom。关闭最后一个打开的窗口时，LemmaLoom 会退出。不过，关闭任何一个窗口，都会结束这个窗口的历史。再次打开 LemmaLoom 后，在本次使用中做出更改之前，<strong class="ui">编辑 ▸ 撤销</strong>会一直处于停用状态。</p>
+<p>删除含有媒体录音的文档时，LemmaLoom 会保留它的音频或视频录音，以便日后撤销。下次启动 LemmaLoom 时，这个录音会被永久删除（见<a href="getting-started.html">第 2 章“开始使用”</a>中的<a href="getting-started.html#library">工作保存在哪里</a>）。</p>
+<h2 id="undo-commands">命令<a class="anchor" href="#undo-commands" aria-hidden="true">#</a></h2>
+<div class="table-wrap"><table>
+<thead><tr><th>命令</th><th>快捷键</th><th>适用场合</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">编辑 ▸ 撤销</strong></td><td>⌘Z</td><td>在任何有步骤可撤销的窗口中</td></tr>
+<tr><td><strong class="ui">编辑 ▸ 重做</strong></td><td>⇧⌘Z</td><td>撤销之后，直到你做出新的更改</td></tr>
+</tbody></table></div>
+<p>LemmaLoom 的所有快捷键都列在<a href="keyboard-shortcuts.html">第 25 章“键盘快捷键”</a>中。</p>
+</article>
+<nav class="pager"><a class="previous" href="exchange-and-export.html"><span>上一章</span>交换与导出</a><a class="next" href="settings.html"><span>下一章</span>设置与外观</a></nav>
+<footer class="site-footer">© 2026 Ryan S. Cooper. 保留所有权利。<br>本版本借助人工智能根据英文原版翻译而成，译文可能存在错误或不准确之处。如有疑问，请以英文版为准。</footer>
+</main>
+<nav class="page-toc" aria-label="本页内容"><p>本页内容</p><ul>
+<li class="level-2"><a href="#key-terms">关键术语</a></li>
+<li class="level-2"><a href="#undoing-a-change">撤销更改</a></li>
+<li class="level-3"><a href="#redoing-a-change">重做更改</a></li>
+<li class="level-3"><a href="#worked-example">一个例子</a></li>
+<li class="level-2"><a href="#how-steps-are-recorded">更改如何成为步骤</a></li>
+<li class="level-3"><a href="#typing-attribute-values">在属性字段中输入值</a></li>
+<li class="level-3"><a href="#long-changes">需要一段时间的更改</a></li>
+<li class="level-2"><a href="#windows">步骤属于哪个窗口</a></li>
+<li class="level-2"><a href="#what-you-can-undo">可以撤销的操作</a></li>
+<li class="level-3"><a href="#steps-coding">编码与编码实例</a></li>
+<li class="level-3"><a href="#steps-annotations">备忘录、链接和书签</a></li>
+<li class="level-3"><a href="#steps-documents">项目与文档</a></li>
+<li class="level-3"><a href="#steps-organizing">文档集、标签和属性</a></li>
+<li class="level-3"><a href="#steps-queries">查询、词典和分析器</a></li>
+<li class="level-2"><a href="#what-you-cannot-undo">无法撤销的操作</a></li>
+<li class="level-3"><a href="#deleting-a-project">删除项目</a></li>
+<li class="level-3"><a href="#importing">导入文档</a></li>
+<li class="level-3"><a href="#translating">翻译文档</a></li>
+<li class="level-3"><a href="#outside-the-project">项目以外的更改</a></li>
+<li class="level-2"><a href="#typing">在文本框中输入</a></li>
+<li class="level-2"><a href="#history-lifetime">历史保留多久</a></li>
+<li class="level-2"><a href="#undo-commands">命令</a></li>
+</ul></nav>
+</div>
+<script src="../assets/guide.js" defer></script>
+</body>
+</html>

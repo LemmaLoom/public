@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>帮助与支持 · LemmaLoom 用户指南</title>
+<link rel="stylesheet" href="../assets/guide.css">
+<link rel="icon" type="image/png" href="../assets/logo.png">
+<script>var r=document.documentElement;r.setAttribute('data-theme','light');try{if(localStorage.getItem('guide-theme')==='dark'){r.setAttribute('data-theme','dark')}}catch(e){}</script>
+</head>
+<body>
+<header class="topbar">
+<button class="menu-toggle" aria-label="目录" aria-expanded="false">☰</button>
+<a class="brand" href="index.html"><span class="wordmark"><span class="lemma">Lemma</span>Loom</span><span class="guide-name">用户指南</span></a>
+<div class="search"><input type="search" id="search" placeholder="搜索" aria-label="搜索" autocomplete="off" data-empty="无结果"><div class="results" id="results" hidden></div></div>
+<nav class="languages" aria-label="Language"><a href="../en/help-and-support.html" lang="en">English</a><a href="../de/help-and-support.html" lang="de">Deutsch</a><a href="../zh-Hans/help-and-support.html" lang="zh-Hans" aria-current="true">简体中文</a></nav>
+<button class="theme-toggle" data-light="浅色" data-dark="深色" aria-label="外观"></button>
+<a class="pdf-link" href="https://github.com/LemmaLoom/public/raw/main/pdf/lemmaloom-guide-zh-Hans.pdf">PDF</a>
+</header>
+<div class="layout">
+<nav class="sidebar" aria-label="目录"><ol>
+<li class="unnumbered"><a href="quick-start.html">快速入门</a></li>
+<li><a href="introduction.html">简介</a></li>
+<li><a href="getting-started.html">开始使用</a></li>
+<li><a href="projects-and-documents.html">项目与文档</a></li>
+<li><a href="importing.html">导入资料</a></li>
+<li><a href="reading-and-editing.html">阅读与编辑</a></li>
+<li><a href="lenses.html">透镜</a></li>
+<li><a href="coding.html">编码</a></li>
+<li><a href="sets-tags-attributes.html">文档集、分组、标签和属性</a></li>
+<li><a href="translations.html">译文与分屏浏览</a></li>
+<li><a href="text-inspector.html">文本检查器</a></li>
+<li><a href="grammar-inspector.html">语法检查器</a></li>
+<li><a href="word-sketch.html">词汇速写</a></li>
+<li><a href="coding-analysis.html">编码分析</a></li>
+<li><a href="sketch-space.html">速写空间</a></li>
+<li><a href="queries-building.html">构建查询</a></li>
+<li><a href="queries-results.html">查询结果与统计</a></li>
+<li><a href="queries-patterns.html">查询模式与发现</a></li>
+<li><a href="queries-using-results.html">使用查询结果</a></li>
+<li><a href="dictionaries.html">词典</a></li>
+<li><a href="custom-analyzers.html">自定义分析器</a></li>
+<li><a href="analysis-and-indexing.html">分析与索引</a></li>
+<li><a href="exchange-and-export.html">交换与导出</a></li>
+<li><a href="undo.html">撤销与重做</a></li>
+<li><a href="settings.html">设置与外观</a></li>
+<li><a href="keyboard-shortcuts.html">键盘快捷键</a></li>
+<li class="current"><a href="help-and-support.html">帮助与支持</a></li>
+<li><a href="statistics-reference.html">统计量一览</a></li>
+<li class="unnumbered"><a href="glossary.html">术语表</a></li>
+<li class="unnumbered"><a href="thanks.html">感谢</a></li>
+</ol></nav>
+<main class="content">
+<article>
+<h1 id="help-and-support">帮助与支持</h1>
+<p>查阅术语、联系开发者和引用 LemmaLoom，各有一个专门的窗口。其中两个在<strong class="ui">帮助</strong>菜单中，另一个在 <strong class="ui">LemmaLoom</strong> 菜单中：</p>
+<div class="table-wrap"><table>
+<thead><tr><th>命令</th><th>打开的内容</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">帮助 ▸ 术语表</strong></td><td>LemmaLoom 中各种术语和标签的简短释义，附有搜索栏</td></tr>
+<tr><td><strong class="ui">帮助 ▸ 发送反馈</strong></td><td>用来撰写错误报告、提出功能建议或问题的窗口，写好的内容会在你的邮件程序中变成一封邮件</td></tr>
+<tr><td><strong class="ui">LemmaLoom ▸ 关于 LemmaLoom</strong></td><td>版本号和构建号、MLA 和 APA 格式的引文，以及 LemmaLoom 所含组件的许可证</td></tr>
+</tbody></table></div>
+<p>这三个命令都会在主窗口旁打开一个单独的窗口。如果窗口已经打开，再次选取该命令会激活现有的窗口。</p>
+<p>本章的示例都使用<a href="introduction.html">第 1 章“简介”</a>中<a href="introduction.html#example-project">示例项目</a>一节介绍的“气候辩论”项目。如果想亲自练习这些命令，请用<strong class="ui">文件 ▸ 导入 ▸ 示例项目</strong>导入这个项目。</p>
+<h2 id="help-menu">帮助菜单<a class="anchor" href="#help-menu" aria-hidden="true">#</a></h2>
+<p>macOS 会在<strong class="ui">帮助</strong>菜单的最上方加一个搜索栏，用来搜索 LemmaLoom 各个菜单中的命令名称。例如搜索 <code>活动</code>，<strong class="ui">活动</strong>就会出现在搜索结果的建议中。将鼠标指针悬停在这一项上，macOS 会打开<strong class="ui">窗口</strong>菜单，并指向该命令所在的位置。按 ⌘?（在美式键盘上为 ⇧⌘/）会打开<strong class="ui">帮助</strong>菜单中的这个搜索栏。</p>
+<figure class="shot" id="help-and-support-help-menu"><img class="shot-light" src="../figures/zh-Hans/light/help-and-support-help-menu.webp" alt="“帮助”菜单，macOS 的搜索栏位于“术语表”和“发送反馈”两个命令上方。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/help-and-support-help-menu.webp" alt="“帮助”菜单，macOS 的搜索栏位于“术语表”和“发送反馈”两个命令上方。" loading="lazy"><figcaption>“帮助”菜单，macOS 的搜索栏位于“术语表”和“发送反馈”两个命令上方。</figcaption></figure>
+<h2 id="glossary">术语表<a class="anchor" href="#glossary" aria-hidden="true">#</a></h2>
+<p>术语表解释质性分析中使用的词汇，如<em>编码</em>、<em>片段</em>和<em>备忘录</em>，也解释语法分析中使用的标记。例如，标记 <code>NNS</code> 标示复数名词，<code>nsubj</code> 标示作小句主语的名词。检查器中显示的统计量，以及状态栏和图示中的缩写，术语表中也都有解释。术语表可以一直开在项目旁边。</p>
+<p>术语表中的每个条目只简要说明标签表示什么。</p>
+<p>术语表对所有项目都一样，总是以界面语言显示。界面为中文时，名称和释义都是中文，按名称排序的类别也遵循中文的排序规则（见<a href="settings.html">第 24 章“设置与外观”</a>中的<a href="settings.html#interface-language">界面语言</a>）。<code>NNS</code>、<code>nsubj</code> 这类缩写不随界面语言改变，因为它们就是语法分析实际使用的标记。</p>
+<h3 id="opening-the-glossary">术语表窗口<a class="anchor" href="#opening-the-glossary" aria-hidden="true">#</a></h3>
+<p>术语表窗口的边栏中有一项<strong class="ui">全部</strong>，下面是另外十二项，即术语表的各个类别。每个类别旁显示它包含的术语数。右侧条目的上方是<strong class="ui">搜索</strong>栏。</p>
+<h3 id="finding-glossary-entries">查找条目<a class="anchor" href="#finding-glossary-entries" aria-hidden="true">#</a></h3>
+<ol>
+<li>选取<strong class="ui">帮助 ▸ 术语表</strong>。</li>
+<li>在边栏中点按<strong class="ui">全部</strong>，浏览所有类别；或者点按某个类别，只在其中查找。</li>
+<li>在<strong class="ui">搜索</strong>栏中输入一个词或一个标签，例如 <code>nsubj</code>。</li>
+</ol>
+<p>列表随着输入不断缩小。条目的名称、缩写或释义中只要含有你输入的内容，就会被找到。搜索不区分大小写，但区分变音符号，所以如果想找到释义中含有 <em>schläft</em> 的 <code>sb</code> 又不想输入 ä，可以搜索 <code>schl</code>。</p>
+<p>选中<strong class="ui">全部</strong>时，条目按类别分组，滚动时当前类别的名称显示在列表顶部。没有匹配结果的类别不显示。完全没有匹配结果时，列表显示<strong class="ui">无匹配项</strong>。边栏中的数目不随搜索变化。</p>
+<p>由于搜索也包括条目的释义，较短的搜索词可能找到意料之外的结果。选中<strong class="ui">全部</strong>并搜索 <code>主语</code>，会得到许多结果，分布在大多数类别中。其中有语法功能<strong class="ui">主语</strong>、表示主语的各种依存关系、小句的短语标记（释义为<em>主语加谓语</em>）、语法特征<strong class="ui">格</strong>，以及句型中使用的字母 S。点按另一个类别可以缩小列表，之前的搜索词仍然有效。选中<strong class="ui">依存关系</strong>并用同样的搜索词搜索，结果减少到七个。其中四个标有 EN ZH（<code>csubj</code>、<code>csubjpass</code>、<code>nsubj</code> 和 <code>nsubjpass</code>），三个标有 DE（<code>sb</code>、<code>sbp</code>，以及名称为<strong class="ui">形式主语es</strong>的 <code>ep</code>）。</p>
+<figure class="shot" id="help-and-support-glossary-search"><img class="shot-light" src="../figures/zh-Hans/light/help-and-support-glossary-search.webp" alt="术语表，选中了“全部”，“搜索”栏中输入了“主语”。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/help-and-support-glossary-search.webp" alt="术语表，选中了“全部”，“搜索”栏中输入了“主语”。" loading="lazy"><figcaption>术语表，选中了“全部”，“搜索”栏中输入了“主语”。</figcaption></figure>
+<h3 id="reading-glossary-entries">阅读条目<a class="anchor" href="#reading-glossary-entries" aria-hidden="true">#</a></h3>
+<p>一个条目最多由四部分组成：</p>
+<ul>
+<li>条目的缩写，用等宽字体显示，如 <code>nsubj</code>、<code>MDD</code> 或 <code>¶</code>。</li>
+<li>条目的名称，用粗体显示，如<strong class="ui">名词性主语</strong>。</li>
+<li>缩写和名称的右侧是一组语言缩写，表示该条目适用于哪些语言：EN 表示英语，DE 表示德语，ZH 表示中文。没有标明语言的条目适用于全部三种语言。</li>
+<li>最后，名称后面是用普通字体显示的释义。词性标记和依存关系的释义往往是一个例子。例如 <code>nsubj</code> 的释义是 <em>“she runs”中的 she</em>，意思是名词性主语 <em>she</em> 出现在小句 <em>she runs</em> 中。</li>
+</ul>
+<p>在<strong class="ui">形态学</strong>下，语法特征的每个取值先显示语法分析给出的原样字符串，如 <code>Number=Plur</code>，然后是描述它的语法术语<strong class="ui">复数</strong>。语法特征本身（<code>Number</code>）有自己的条目和释义，排在这些取值上方。</p>
+<p>有些特殊条目代表 LemmaLoom 自带的透镜会自动标注的内容。这类条目的缩写（没有缩写时则是名称）以该透镜的颜色和样式显示，方便你把这种颜色直接与阅读器中文本上高亮显示的概念联系起来。将鼠标指针悬停在带颜色的词上，可以看到该透镜的名称。如果你在设置的<strong class="ui">透镜</strong>面板中自定义了某个透镜标注项的颜色或样式，这里的颜色也会随之改变（见<a href="settings.html">第 24 章“设置与外观”</a>中的<a href="settings.html#lenses-pane">透镜面板</a>）。</p>
+<figure class="shot" id="help-and-support-glossary-lens-tooltip"><img class="shot-light" src="../figures/zh-Hans/light/help-and-support-glossary-lens-tooltip.webp" alt="选中“依存关系”的术语表，鼠标指针停在缩写 acl 上，悬停提示为“语法功能”。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/help-and-support-glossary-lens-tooltip.webp" alt="选中“依存关系”的术语表，鼠标指针停在缩写 acl 上，悬停提示为“语法功能”。" loading="lazy"><figcaption>选中“依存关系”的术语表，鼠标指针停在缩写 acl 上，悬停提示为“语法功能”。</figcaption></figure>
+<p>缩写、名称和释义都可以分别选中，然后按 ⌘C 拷贝。</p>
+<figure class="shot" id="help-and-support-glossary-dependencies"><img class="shot-light" src="../figures/zh-Hans/light/help-and-support-glossary-dependencies.webp" alt="术语表，选中了“依存关系”，“搜索”栏中输入了“主语”，列出七个条目及其适用的语言。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/help-and-support-glossary-dependencies.webp" alt="术语表，选中了“依存关系”，“搜索”栏中输入了“主语”，列出七个条目及其适用的语言。" loading="lazy"><figcaption>术语表，选中了“依存关系”，“搜索”栏中输入了“主语”，列出七个条目及其适用的语言。</figcaption></figure>
+<h2 id="send-feedback">发送反馈<a class="anchor" href="#send-feedback" aria-hidden="true">#</a></h2>
+<p><strong class="ui">帮助 ▸ 发送反馈</strong>会打开一个窗口，你可以在其中撰写错误报告，或者向开发者提出功能建议或问题。<strong class="ui">撰写邮件</strong>会把你写好的内容变成一封发往 <code>info@lemmaloom.app</code> 的邮件，在你的邮件程序中打开。</p>
+<h3 id="writing-feedback">撰写消息<a class="anchor" href="#writing-feedback" aria-hidden="true">#</a></h3>
+<ol>
+<li>选取<strong class="ui">帮助 ▸ 发送反馈</strong>。</li>
+<li>在窗口顶部点按消息的类型（<strong class="ui">错误报告</strong>、<strong class="ui">功能建议</strong>、<strong class="ui">问题</strong>或<strong class="ui">其他</strong>）。窗口打开时选中的是<strong class="ui">错误报告</strong>。</li>
+<li>在<strong class="ui">内容</strong>下方的框中输入你的消息。应该写些什么，见<a href="#reporting-problems">如何写好问题报告</a>。</li>
+<li>保持勾选<strong class="ui">附上系统信息</strong>，邮件中就会加上它下面那一行显示的信息；取消勾选则不加。</li>
+<li>点按<strong class="ui">撰写邮件</strong>。</li>
+<li>在邮件程序中附上截屏，然后发送邮件。</li>
+</ol>
+<p>点按<strong class="ui">撰写邮件</strong>或<strong class="ui">取消</strong>按钮后，窗口会关闭；再次打开时，窗口是空白的。如果不确定邮件程序的设置是否正常，请在点按<strong class="ui">撰写邮件</strong>之前先拷贝较长的消息（先按 ⌘A，再按 ⌘C）。</p>
+<p>消息为空或只有空白字符时，<strong class="ui">撰写邮件</strong>按钮不可用，悬停提示为<strong class="ui">内容为空</strong>。</p>
+<figure class="shot" id="help-and-support-feedback-window"><img class="shot-light" src="../figures/zh-Hans/light/help-and-support-feedback-window.webp" alt="“发送反馈”窗口，选中了“错误报告”，已输入一条关于“2024 热浪报告”的消息，并勾选了“附上系统信息”。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/help-and-support-feedback-window.webp" alt="“发送反馈”窗口，选中了“错误报告”，已输入一条关于“2024 热浪报告”的消息，并勾选了“附上系统信息”。" loading="lazy"><figcaption>“发送反馈”窗口，选中了“错误报告”，已输入一条关于“2024 热浪报告”的消息，并勾选了“附上系统信息”。</figcaption></figure>
+<h3 id="feedback-email">邮件的内容<a class="anchor" href="#feedback-email" aria-hidden="true">#</a></h3>
+<p>邮件主题标明这是哪一类邮件。</p>
+<div class="table-wrap"><table>
+<thead><tr><th>消息类型</th><th>邮件主题</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">错误报告</strong></td><td>LemmaLoom · Bug report</td></tr>
+<tr><td><strong class="ui">功能建议</strong></td><td>LemmaLoom · Feature request</td></tr>
+<tr><td><strong class="ui">问题</strong></td><td>LemmaLoom · Question</td></tr>
+<tr><td><strong class="ui">其他</strong></td><td>LemmaLoom · Feedback</td></tr>
+</tbody></table></div>
+<p>勾选<strong class="ui">附上系统信息</strong>会在消息下方加上一行分隔线（<code>--</code>）和四行信息：</p>
+<div class="table-wrap"><table>
+<thead><tr><th>行</th><th>示例</th><th>含义</th></tr></thead>
+<tbody>
+<tr><td>1</td><td><code>LemmaLoom 1.2 (1)</code></td><td>LemmaLoom 的版本，括号中是构建号</td></tr>
+<tr><td>2</td><td><code>macOS 版本27.0（版号27A200）</code></td><td>macOS 的版本</td></tr>
+<tr><td>3</td><td><code>arm64 · 8 GB</code></td><td>处理器类型（Apple 芯片为 <code>arm64</code>，Intel 为 <code>x86_64</code>）和 Mac 安装的内存</td></tr>
+<tr><td>4</td><td><code>zh-Hans</code></td><td>界面语言（<code>en</code>、<code>de</code> 或 <code>zh-Hans</code>）</td></tr>
+</tbody></table></div>
+<p>窗口中显示的是同样的信息，只是全部排在一行，用圆点隔开。取消勾选该复选框后，这一行会变淡。</p>
+<p>LemmaLoom 只添加分隔线和这几行，发送之前，你可以在草稿中删去其中任意一行。</p>
+<h3 id="feedback-without-mail">邮件程序没有打开时<a class="anchor" href="#feedback-without-mail" aria-hidden="true">#</a></h3>
+<p><strong class="ui">撰写邮件</strong>会在你电脑上的默认邮件程序中新建一封邮件。默认邮件程序在“邮件”中设置：选取<strong class="ui">邮件 ▸ 设置…</strong>，点按<strong class="ui">通用</strong>，然后在<strong class="ui">默认的电子邮件阅读程序</strong>菜单中选择。如果“邮件”是你的默认邮件程序，而它还没有添加账户，它会请你添加一个。</p>
+<p>如果你用网页邮箱收发邮件，请从<strong class="ui">发送反馈</strong>窗口中拷贝反馈的正文（先按 ⌘A，再按 ⌘C），在网页邮箱中新建一封空白邮件，然后把反馈粘贴进去。再把邮件发送到 <code>info@lemmaloom.app</code>，这个地址也可以从窗口左下角拷贝。系统信息那一行，请照窗口中的显示输入到邮件中。</p>
+<h2 id="reporting-problems">如何写好问题报告<a class="anchor" href="#reporting-problems" aria-hidden="true">#</a></h2>
+<p>一份很有帮助的错误报告会写明导致问题的详细步骤。</p>
+<h3 id="before-reporting">动笔之前<a class="anchor" href="#before-reporting" aria-hidden="true">#</a></h3>
+<p>简单检查一下，往往就能解决问题，或者找到方向：</p>
+<ul>
+<li>将鼠标指针悬停在不可用的按钮上。如果按钮位于 LemmaLoom 的窗口或对话框中，悬停提示会说明它目前为什么不可用（见<a href="introduction.html">第 1 章“简介”</a>中的<a href="introduction.html#conventions">体例约定</a>）。这通常是因为命令要等某件事完成后才能执行，例如为文档建立索引。</li>
+<li>如果某个文档建立索引失败，导航栏中该文档的名称旁会出现一个红色警告三角形。将鼠标指针悬停在三角形上可以看到问题所在，然后可以右键点按该文档，选取<strong class="ui">重试索引</strong>（见<a href="analysis-and-indexing.html">第 21 章“分析与索引”</a>中的<a href="analysis-and-indexing.html#indexing-failures">建立索引失败时</a>）。</li>
+<li>完全退出 LemmaLoom，重新打开，再试一次刚才的操作。</li>
+<li>在另一个文档上，或者在只含一个短文档的新项目中，执行完全相同的操作。如果问题只出现在这一个文档上，请在报告中说明。</li>
+<li>在 App Store 中查看<strong class="ui">更新</strong>，确认你用的是最新版本的 LemmaLoom。</li>
+</ul>
+<h3 id="report-contents">报告中应写些什么<a class="anchor" href="#report-contents" aria-hidden="true">#</a></h3>
+<ul>
+<li>首先，用一句话说明你当时想做什么。</li>
+<li>然后列出导致问题的操作步骤，每行一步。菜单、按钮和输入栏请使用 LemmaLoom 中的名称。</li>
+<li>说明你预期的结果和实际发生的情况。</li>
+<li>请提供错误消息的原文，能拷贝就拷贝，不能拷贝就照原样输入。</li>
+<li>说明问题是每次都出现、偶尔出现，还是只出现过一次。</li>
+<li>另外，请写明文档的类型（文本文件、PDF、网页或录音）、语言和大致长度，以及项目中有多少个文档。</li>
+<li>也请附上系统信息，勾选<strong class="ui">附上系统信息</strong>就会自动加上。</li>
+</ul>
+<p>要截取整个窗口，可以按 ⇧⌘4，再按空格键，然后点按该窗口，图片会自动存储到“桌面”文件夹中。按 ⇧⌘5 则会显示其他截屏选项。邮件在邮件程序中打开后，就可以把截屏附上。</p>
+<h3 id="example-report">报告示例<a class="anchor" href="#example-report" aria-hidden="true">#</a></h3>
+<p>假设“气候辩论”项目中的 PDF“2024 热浪报告”未能完成索引。一份有用的错误报告可以这样写：</p>
+<blockquote><p>“2024 热浪报告”是我的项目中的一个 PDF 文档，它的索引一直无法完成。边栏中它的状态图标是一个红色警告三角形，悬停提示为“此文档的索引失败。”</p>
+<p>我是用“文件 ▸ 导入 ▸ 文档”导入它的。语言是中文，共六页。在阅读器中，一切看起来都正常，只有那张显示各地区气温读数的表格变成了一个个数字，每个数字单独占一行。在“活动”窗口中点按“重试索引”，大约一分钟后又失败了。退出并重新启动 LemmaLoom 之后，结果没有变化。项目中其余 14 个文档都已成功完成索引。</p>
+<p>我预期这份报告会像项目中的其他文档一样完成索引。附件是阅读器中这张表格的截屏。</p>
+</blockquote>
+<p>消息下方是四行本机的系统信息。</p>
+<p>如果报告只写一句<em>索引不起作用</em>，可能要来回询问好几次，才能真正着手处理。这个示例则写明了已经试过哪些办法，以及其余文档都已成功完成索引。开发者由此可以判断，问题只出现在为这一个 PDF 文档建立索引的过程中。</p>
+<h3 id="crashes">LemmaLoom 意外退出时<a class="anchor" href="#crashes" aria-hidden="true">#</a></h3>
+<p>软件意外退出时，macOS 会显示一个崩溃报告窗口。窗口中有对所遇问题的描述，旁边有一个<strong class="ui">报告…</strong>按钮。用这个按钮生成的报告会发送给 Apple；只有当你在<strong class="ui">系统设置 ▸ 隐私与安全性 ▸ 分析与改进</strong>中打开了<strong class="ui">与App开发者共享</strong>选项时，报告才会转给开发者。</p>
+<p>你也可以自己发送报告：</p>
+<ol>
+<li>点按消息中的<strong class="ui">报告…</strong>。</li>
+<li>选中报告的文本并拷贝（⌘C）。</li>
+<li>重新打开 LemmaLoom，选取<strong class="ui">帮助 ▸ 发送反馈</strong>。</li>
+<li>把报告粘贴到消息框中。</li>
+<li>在报告上方补充几行，说明 LemmaLoom 退出前你正在做什么。崩溃报告能显示程序在哪个位置崩溃；你补充的几行则说明你当时在用哪个文档或哪个命令。</li>
+</ol>
+<p>如果 LemmaLoom 一启动就再次崩溃，请拷贝报告，用邮件发送到 <code>info@lemmaloom.app</code>。如果想附上 LemmaLoom 以前的崩溃报告，请打开“控制台”应用（位于“应用程序”文件夹的“实用工具”中），找到<strong class="ui">崩溃报告</strong>。</p>
+<h3 id="requests-and-questions">功能建议和提问<a class="anchor" href="#requests-and-questions" aria-hidden="true">#</a></h3>
+<p>提出功能建议时，请说明你的研究需求，而不是你设想的控件。请写明你处理的是什么材料，需要在材料中查找、计数或比较什么，以及打算如何使用得到的结果。如果你的建议依据的是文献中提到的某种方法，请附上文献出处。在软件工程领域，这称为用户故事（User Story），即从用户的角度出发、详细说明他们想做什么的叙述。开发者可以把用户故事转化为技术需求和开发计划，所以你不必操心任何技术细节。</p>
+<h2 id="about-lemmaloom">关于 LemmaLoom<a class="anchor" href="#about-lemmaloom" aria-hidden="true">#</a></h2>
+<p>要查看 LemmaLoom 的版本号、引文和所含组件的许可证，请选取 <strong class="ui">LemmaLoom ▸ 关于 LemmaLoom</strong>。窗口最上方是名称 LemmaLoom，后面是版本（如<strong class="ui">版本 1.2 (1)</strong>）。先显示的是版本号，与 App Store 上显示的一致。括号中的是<em>构建号</em>。</p>
+<p>接下来是开发者信息、版权信息和一行特别致谢。然后是<strong class="ui">打赏开发者</strong>，点按这个链接会打开一个窗口，你可以在其中通过 App Store 打赏。再往下是<strong class="ui">引用 LemmaLoom</strong>，按两种引文格式给出引文。<strong class="ui">许可证</strong>完整列出 LemmaLoom 使用的组件及其许可证。</p>
+<figure class="shot" id="help-and-support-about-window"><img class="shot-light" src="../figures/zh-Hans/light/help-and-support-about-window.webp" alt="“关于 LemmaLoom”窗口。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/help-and-support-about-window.webp" alt="“关于 LemmaLoom”窗口。" loading="lazy"><figcaption>“关于 LemmaLoom”窗口。</figcaption></figure>
+<h3 id="citing-lemmaloom">引用 LemmaLoom<a class="anchor" href="#citing-lemmaloom" aria-hidden="true">#</a></h3>
+<p><strong class="ui">引用 LemmaLoom</strong>会为你生成两种格式的引文。</p>
+<div class="table-wrap"><table>
+<thead><tr><th>格式</th><th>引文包含的内容</th></tr></thead>
+<tbody>
+<tr><td>MLA</td><td>开发者的姓名，姓在前；标题 LemmaLoom；版本；年份</td></tr>
+<tr><td>APA</td><td>开发者的姓和名字首字母；括号中的年份；标题，括号中是版本；以及说明 [Computer software]</td></tr>
+</tbody></table></div>
+<p>要拷贝引文，请点按引文旁边的按钮，它的图标是两张重叠的纸。也可以选中引文本身，按 ⌘C 拷贝所选文本。拷贝时，按钮会短暂显示一个对勾。</p>
+<p>引文中的年份取自 Mac 时钟上的当前年份。无论选择哪种界面语言，引文总是使用英文。</p>
+<h3 id="licenses">许可证<a class="anchor" href="#licenses" aria-hidden="true">#</a></h3>
+<p><strong class="ui">许可证</strong>列出 LemmaLoom 包含的程序库、模型、语言数据和字体。每个条目都有名称和说明，说明中写明许可协议，大多数条目还写明版权所有者。无论界面语言是什么，许可证的名称、说明和文本始终是英文。点按某个条目，会显示一份或多份许可证全文；再次点按则隐藏。许可证文本可以选中并拷贝。</p>
+<p>名称以 <em>(data)</em> 结尾的条目表示只使用了该项目的数据，没有使用代码，这些数据可能是训练好的模型，也可能是词形表。</p>
+<p>这些条目中还列出了转录模型、说话人分离模型和语法分析模型及其作者。</p>
+<figure class="shot" id="help-and-support-about-licenses"><img class="shot-light" src="../figures/zh-Hans/light/help-and-support-about-licenses.webp" alt="“关于”窗口中的“许可证”列表，其中一个条目已展开，显示它的许可证文本。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/help-and-support-about-licenses.webp" alt="“关于”窗口中的“许可证”列表，其中一个条目已展开，显示它的许可证文本。" loading="lazy"><figcaption>“关于”窗口中的“许可证”列表，其中一个条目已展开，显示它的许可证文本。</figcaption></figure>
+</article>
+<nav class="pager"><a class="previous" href="keyboard-shortcuts.html"><span>上一章</span>键盘快捷键</a><a class="next" href="statistics-reference.html"><span>下一章</span>统计量一览</a></nav>
+<footer class="site-footer">© 2026 Ryan S. Cooper. 保留所有权利。<br>本版本借助人工智能根据英文原版翻译而成，译文可能存在错误或不准确之处。如有疑问，请以英文版为准。</footer>
+</main>
+<nav class="page-toc" aria-label="本页内容"><p>本页内容</p><ul>
+<li class="level-2"><a href="#help-menu">帮助菜单</a></li>
+<li class="level-2"><a href="#glossary">术语表</a></li>
+<li class="level-3"><a href="#opening-the-glossary">术语表窗口</a></li>
+<li class="level-3"><a href="#finding-glossary-entries">查找条目</a></li>
+<li class="level-3"><a href="#reading-glossary-entries">阅读条目</a></li>
+<li class="level-2"><a href="#send-feedback">发送反馈</a></li>
+<li class="level-3"><a href="#writing-feedback">撰写消息</a></li>
+<li class="level-3"><a href="#feedback-email">邮件的内容</a></li>
+<li class="level-3"><a href="#feedback-without-mail">邮件程序没有打开时</a></li>
+<li class="level-2"><a href="#reporting-problems">如何写好问题报告</a></li>
+<li class="level-3"><a href="#before-reporting">动笔之前</a></li>
+<li class="level-3"><a href="#report-contents">报告中应写些什么</a></li>
+<li class="level-3"><a href="#example-report">报告示例</a></li>
+<li class="level-3"><a href="#crashes">LemmaLoom 意外退出时</a></li>
+<li class="level-3"><a href="#requests-and-questions">功能建议和提问</a></li>
+<li class="level-2"><a href="#about-lemmaloom">关于 LemmaLoom</a></li>
+<li class="level-3"><a href="#citing-lemmaloom">引用 LemmaLoom</a></li>
+<li class="level-3"><a href="#licenses">许可证</a></li>
+</ul></nav>
+</div>
+<script src="../assets/guide.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Settings and Appearance · LemmaLoom User Guide</title>
+<link rel="stylesheet" href="../assets/guide.css">
+<link rel="icon" type="image/png" href="../assets/logo.png">
+<script>var r=document.documentElement;r.setAttribute('data-theme','light');try{if(localStorage.getItem('guide-theme')==='dark'){r.setAttribute('data-theme','dark')}}catch(e){}</script>
+</head>
+<body>
+<header class="topbar">
+<button class="menu-toggle" aria-label="Contents" aria-expanded="false">☰</button>
+<a class="brand" href="index.html"><span class="wordmark"><span class="lemma">Lemma</span>Loom</span><span class="guide-name">User Guide</span></a>
+<div class="search"><input type="search" id="search" placeholder="Search" aria-label="Search" autocomplete="off" data-empty="No results"><div class="results" id="results" hidden></div></div>
+<nav class="languages" aria-label="Language"><a href="../en/settings.html" lang="en" aria-current="true">English</a><a href="../de/settings.html" lang="de">Deutsch</a><a href="../zh-Hans/settings.html" lang="zh-Hans">简体中文</a></nav>
+<button class="theme-toggle" data-light="Light" data-dark="Dark" aria-label="Theme"></button>
+<a class="pdf-link" href="https://github.com/LemmaLoom/public/raw/main/pdf/lemmaloom-guide-en.pdf">PDF</a>
+</header>
+<div class="layout">
+<nav class="sidebar" aria-label="Contents"><ol>
+<li class="unnumbered"><a href="quick-start.html">Quick Start</a></li>
+<li><a href="introduction.html">Introduction</a></li>
+<li><a href="getting-started.html">Getting Started</a></li>
+<li><a href="projects-and-documents.html">Projects and Documents</a></li>
+<li><a href="importing.html">Importing Material</a></li>
+<li><a href="reading-and-editing.html">Reading and Editing</a></li>
+<li><a href="lenses.html">Lenses</a></li>
+<li><a href="coding.html">Coding</a></li>
+<li><a href="sets-tags-attributes.html">Sets, Groups, Tags, and Attributes</a></li>
+<li><a href="translations.html">Translations and Split View</a></li>
+<li><a href="text-inspector.html">The Text Inspector</a></li>
+<li><a href="grammar-inspector.html">The Grammar Inspector</a></li>
+<li><a href="word-sketch.html">Word Sketch</a></li>
+<li><a href="coding-analysis.html">Analyzing Codes</a></li>
+<li><a href="sketch-space.html">Sketch Space</a></li>
+<li><a href="queries-building.html">Building a Query</a></li>
+<li><a href="queries-results.html">Query Results and Statistics</a></li>
+<li><a href="queries-patterns.html">Query Patterns and Discovery</a></li>
+<li><a href="queries-using-results.html">Using Query Results</a></li>
+<li><a href="dictionaries.html">Dictionaries</a></li>
+<li><a href="custom-analyzers.html">Custom Analyzers</a></li>
+<li><a href="analysis-and-indexing.html">Analysis and Indexing</a></li>
+<li><a href="exchange-and-export.html">Exchanging and Exporting</a></li>
+<li><a href="undo.html">Undo and Redo</a></li>
+<li class="current"><a href="settings.html">Settings and Appearance</a></li>
+<li><a href="keyboard-shortcuts.html">Keyboard Shortcuts</a></li>
+<li><a href="help-and-support.html">Help and Support</a></li>
+<li><a href="statistics-reference.html">Statistics at a Glance</a></li>
+<li class="unnumbered"><a href="glossary.html">Glossary</a></li>
+<li class="unnumbered"><a href="thanks.html">Thank You</a></li>
+</ol></nav>
+<main class="content">
+<article>
+<h1 id="settings">Settings and Appearance</h1>
+<p>The Settings refer to options that are applicable throughout the entire LemmaLoom application. This includes the theme, language of the interface, transcription model, personal exclusion patterns, reader presentation, and color and style of four lenses.</p>
+<p>However, the language of individual documents, lenses of a document, and excluded text in documents all fall outside of the scope of this definition.</p>
+<h2 id="settings-window">The Settings window<a class="anchor" href="#settings-window" aria-hidden="true">#</a></h2>
+<p>To access Settings, choose <strong class="ui">LemmaLoom ▸ Settings…</strong> or hit ⌘,.</p>
+<p>On the left sidebar of Settings are listed three panes, namely <strong class="ui">General</strong> (gear icon), <strong class="ui">Reader</strong> (book icon), and <strong class="ui">Lenses</strong> (icon of a circle on a square). The first time you access Settings after LemmaLoom launches, the <strong class="ui">General</strong> pane will appear.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Pane</th><th>Sections</th><th>What they set</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">General</strong></td><td><strong class="ui">Appearance</strong>, <strong class="ui">Language</strong>, <strong class="ui">Transcription</strong>, <strong class="ui">Exclusion Presets</strong></td><td>The theme, the interface language, the speech recognition model, and your own patterns for leaving text out of analysis</td></tr>
+<tr><td><strong class="ui">Reader</strong></td><td><strong class="ui">Typography</strong>, <strong class="ui">Page</strong>, <strong class="ui">Selection</strong>, <strong class="ui">Preview</strong></td><td>The reader’s font, text size, and layout, the paragraph and sentence numbers beside the text, and how selections and audio playback are shown</td></tr>
+<tr><td><strong class="ui">Lenses</strong></td><td><strong class="ui">Word class</strong>, <strong class="ui">Grammatical function</strong>, <strong class="ui">Phrase</strong>, <strong class="ui">Morphology</strong></td><td>The color and style of each aspect of these four lenses</td></tr>
+</tbody></table></div>
+<p>The changes you make to the settings take effect immediately in the Settings window and in every open document, except in the case of the interface language setting, which takes effect on your next launch of LemmaLoom.</p>
+<p>Resizing the window by dragging its edges helps you make space when you have a large pane, for example the <strong class="ui">Lenses</strong> pane. If the pane height exceeds that of the window, the extra part is scrollable.</p>
+<p>Settings changes take effect immediately (see <a href="undo.html">Chapter 23, Undo and Redo</a>). Reverting a change entails selecting its previous state or clicking a reset button, such as <strong class="ui">Reset All to Defaults</strong> at the top of the <strong class="ui">Reader</strong> and <strong class="ui">Lenses</strong> panes. For all other settings, this chapter gives the default values.</p>
+<figure class="shot" id="settings-general-pane"><img class="shot-light" src="../figures/en/light/settings-general-pane.webp" alt="The General pane of Settings." loading="lazy"><img class="shot-dark" src="../figures/en/dark/settings-general-pane.webp" alt="The General pane of Settings." loading="lazy"><figcaption>The General pane of Settings.</figcaption></figure>
+<h2 id="themes">Themes<a class="anchor" href="#themes" aria-hidden="true">#</a></h2>
+<p><em>Theme</em> refers to the set of colors used for the entire app interface. Theme controls whether your windows are light or dark, the colors of your window bars and side panels, the paper color and ink color of the reader, and many other things. Your <em>accent color</em>, which determines the color of active selections like the selected Settings sidebar pane or the <strong class="ui">Scroll with audio</strong> button while it is on, is determined by your theme as well.</p>
+<p>There are eleven themes available in LemmaLoom:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Theme</th><th>Light or dark</th><th>Colors</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">System</strong></td><td>follows macOS</td><td>the standard macOS colors, light or dark as macOS is set</td></tr>
+<tr><td><strong class="ui">Light</strong></td><td>light</td><td>the standard light macOS colors, even when macOS is dark</td></tr>
+<tr><td><strong class="ui">Dark</strong></td><td>dark</td><td>the standard dark macOS colors, even when macOS is light</td></tr>
+<tr><td><strong class="ui">Cream</strong></td><td>light</td><td>dark brown text on warm off-white, with a brown accent</td></tr>
+<tr><td><strong class="ui">Solarized Light</strong></td><td>light</td><td>gray-blue text on pale cream, beige bars, a blue accent</td></tr>
+<tr><td><strong class="ui">Solarized Dark</strong></td><td>dark</td><td>pale gray text on deep blue-green, a blue accent</td></tr>
+<tr><td><strong class="ui">High Contrast</strong></td><td>light</td><td>black text on white, black dividing lines, a deep blue accent</td></tr>
+<tr><td><strong class="ui">High Contrast Dark</strong></td><td>dark</td><td>white text on black, white dividing lines, a yellow accent</td></tr>
+<tr><td><strong class="ui">Protanopia</strong></td><td>follows macOS</td><td>the standard macOS colors, lens and code colors adjusted for red-blind vision, a blue accent</td></tr>
+<tr><td><strong class="ui">Deuteranopia</strong></td><td>follows macOS</td><td>the standard macOS colors, lens and code colors adjusted for green-blind vision, a blue accent</td></tr>
+<tr><td><strong class="ui">Tritanopia</strong></td><td>follows macOS</td><td>the standard macOS colors, lens and code colors adjusted for blue-blind vision, an orange-red accent</td></tr>
+</tbody></table></div>
+<p>The theme you start with is <strong class="ui">System</strong>, which automatically toggles between light and dark modes depending on the mode of macOS, including when the macOS appearance is set to <strong class="ui">Auto</strong>.</p>
+<p><strong class="ui">System</strong>, <strong class="ui">Light</strong>, and <strong class="ui">Dark</strong> use the accent color provided by macOS for LemmaLoom, which defaults to violet-blue but could be different depending on your settings at <strong class="ui">System Settings ▸ Appearance</strong>. All other themes always use their own accent.</p>
+<p>To change the theme:</p>
+<ol>
+<li>Choose <strong class="ui">LemmaLoom ▸ Settings…</strong> (⌘,) and click <strong class="ui">General</strong>.</li>
+<li>Under <strong class="ui">Appearance</strong>, open the <strong class="ui">Theme</strong> menu.</li>
+<li>Choose a theme.</li>
+</ol>
+<p>All windows change simultaneously, including the Settings window.</p>
+<p>Projectors fade light colors easily. With <strong class="ui">High Contrast</strong> selected on a projector display, the panels, lists, and dividers remain visible while the reader displays the same as in <strong class="ui">Light</strong>.</p>
+<figure class="shot" id="settings-theme-menu"><img class="shot-light" src="../figures/en/light/settings-theme-menu.webp" alt="The Theme menu open in the General pane." loading="lazy"><img class="shot-dark" src="../figures/en/dark/settings-theme-menu.webp" alt="The Theme menu open in the General pane." loading="lazy"><figcaption>The Theme menu open in the General pane.</figcaption></figure>
+<h3 id="window-tinting">What a theme changes<a class="anchor" href="#window-tinting" aria-hidden="true">#</a></h3>
+<p>A theme modifies the appearance of the following elements on every LemmaLoom window, including the <strong class="ui">Glossary</strong> and <strong class="ui">Analyzers</strong> windows:</p>
+<ul>
+<li>Elements rendered by macOS, such as scroll bars and text fields, are light or dark with the theme regardless of macOS settings.</li>
+<li>The window’s background and the band along its top assume the bar color according to the current theme. When using <strong class="ui">Cream</strong>, <strong class="ui">Solarized Light</strong>, and <strong class="ui">Solarized Dark</strong>, these colors will gradually transition between shades from top to bottom.</li>
+<li>Paper and text colors in the reader follow the theme, as listed under <a href="reading-and-editing.html#reader-themes">Reader colors</a> in <a href="reading-and-editing.html">Chapter 5, Reading and Editing</a>. In the reader, <strong class="ui">High Contrast</strong> looks the same as <strong class="ui">Light</strong>, and <strong class="ui">High Contrast Dark</strong> the same as <strong class="ui">Dark</strong>.</li>
+<li>Text selection highlight and the insertion point in text fields adopt either the accent color of the theme or, in <strong class="ui">System</strong>, <strong class="ui">Light</strong>, and <strong class="ui">Dark</strong>, the selection color of macOS.</li>
+<li>Headers of tables in the five themes with their own colors appear with the bar color, header lines assume the divider color of the theme, and rows alternate between two background shades.</li>
+<li>Dialogs, including <strong class="ui">Document Properties</strong> and <strong class="ui">Import Document</strong>, inherit paper and text colors from the current theme.</li>
+<li>The code editor within <strong class="ui">Window ▸ Analyzers</strong> changes its colors to correspond with the selected light/dark scheme according to the active theme.</li>
+<li>In full screen, the toolbar at the top of the screen displays with bar colors according to the active theme choice.</li>
+</ul>
+<figure class="shot" id="settings-solarized-dark"><img class="shot-light" src="../figures/en/light/settings-solarized-dark.webp" alt="The main window in the Solarized Dark theme, with “Running Out of Time” open and the Word class lens enabled." loading="lazy"><img class="shot-dark" src="../figures/en/dark/settings-solarized-dark.webp" alt="The main window in the Solarized Dark theme, with “Running Out of Time” open and the Word class lens enabled." loading="lazy"><figcaption>The main window in the Solarized Dark theme, with “Running Out of Time” open and the Word class lens enabled.</figcaption></figure>
+<h3 id="fixed-colors">Colors that stay the same<a class="anchor" href="#fixed-colors" aria-hidden="true">#</a></h3>
+<p>Your codes and dictionary categories keep their colors in every theme except <strong class="ui">Protanopia</strong>, <strong class="ui">Deuteranopia</strong>, and <strong class="ui">Tritanopia</strong>, which adjust them for display. So do the aspects of a lens whose color you changed in the <strong class="ui">Lenses</strong> pane.</p>
+<p>The default color palette of the lens aspects comes from macOS itself, using standard macOS colors that become a little bit brighter in dark themes. After selecting a color (whether it be changing an aspect’s color or choosing the color it already had), the choice remains constant. Resetting an aspect’s color from the <strong class="ui">Lenses</strong> pane makes it adjust again.</p>
+<p>When switching between light and dark themes, check that your own colors read well on both. For instance, a light yellow color readable against the background of <strong class="ui">Solarized Dark</strong> fades away into obscurity against the stark white background of <strong class="ui">High Contrast</strong>.</p>
+<h2 id="interface-language">The interface language<a class="anchor" href="#interface-language" aria-hidden="true">#</a></h2>
+<p>Menus, windows, and messages in LemmaLoom can be displayed in English, German, or Mainland Simplified Chinese. With <strong class="ui">System Default</strong>, the setting you start with, the system decides which one based on the priority listed under <strong class="ui">System Settings ▸ General ▸ Language &amp; Region</strong>. When none of these languages are found in that list, then LemmaLoom reverts to English.</p>
+<p>For selecting a language for the interface of LemmaLoom specifically, see below:</p>
+<ol>
+<li>Choose <strong class="ui">LemmaLoom ▸ Settings…</strong> (⌘,) and click <strong class="ui">General</strong>.</li>
+<li>Under <strong class="ui">Language</strong>, open the <strong class="ui">Interface language</strong> menu and choose <strong class="ui">English</strong>, <strong class="ui">Deutsch</strong>, or <strong class="ui">简体中文</strong>. <strong class="ui">System Default</strong> follows macOS again.</li>
+<li>Click <strong class="ui">Quit LemmaLoom</strong>, below the note <strong class="ui">Quit and reopen LemmaLoom for a language change to take effect.</strong></li>
+<li>Open LemmaLoom again.</li>
+</ol>
+<figure class="shot" id="settings-interface-restart"><img class="shot-light" src="../figures/en/light/settings-interface-restart.webp" alt="The Language section of the General pane with Deutsch chosen, the note about quitting and reopening, and Quit LemmaLoom." loading="lazy"><img class="shot-dark" src="../figures/en/dark/settings-interface-restart.webp" alt="The Language section of the General pane with Deutsch chosen, the note about quitting and reopening, and Quit LemmaLoom." loading="lazy"><figcaption>The Language section of the General pane with Deutsch chosen, the note about quitting and reopening, and Quit LemmaLoom.</figcaption></figure>
+<p>Each language is listed under its own name.</p>
+<p>The interface language refers to the language that the menus, label texts, messages, names of lenses and their aspects, <strong class="ui">Glossary</strong>, and sample texts shown in the preview of the <strong class="ui">Reader</strong> pane use. As each document is indexed based on the language it is written in, even if you have the German interface language set, the English documents of “Climate Debate” are still indexed as being English. How LemmaLoom determines the language of each document is covered in <a href="analysis-and-indexing.html#language-detection">How LemmaLoom decides the language</a> in <a href="analysis-and-indexing.html">Chapter 21, Analysis and Indexing</a>.</p>
+<p>If you choose an interface language in this menu, the <strong class="ui">Translate</strong> dialog also proposes translating a document into that language first. For example, with <strong class="ui">Deutsch</strong> chosen, it would suggest translating an English article entitled “Net Zero Will Cost You” into German (see <a href="translations.html#translate-sheet">The Translate dialog</a> in <a href="translations.html">Chapter 9, Translations and Split View</a>).</p>
+<p>It decides the example project language. With <strong class="ui">File ▸ Import ▸ Example Project</strong>, LemmaLoom gives you “Climate Debate” with the English interface language, “Klimadebatte” with German, and “气候辩论” with Chinese (see <a href="introduction.html#example-project">The example project</a> in <a href="introduction.html">Chapter 1, Introduction</a>). Any copy previously imported into LemmaLoom retains its language.</p>
+<h2 id="transcription-model">The transcription model<a class="anchor" href="#transcription-model" aria-hidden="true">#</a></h2>
+<p>Once you import an audio or video file, LemmaLoom automatically transcribes it for you using a speech recognition model (see <a href="importing.html#how-transcription-works">How transcription works</a> in <a href="importing.html">Chapter 4, Importing Material</a>). Choosing which model to use is done via the <strong class="ui">Model</strong> menu under <strong class="ui">Transcription</strong>:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Model</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">Apple Speech</strong></td><td>The setting you start with, and the fastest</td></tr>
+<tr><td><strong class="ui">Whisper Large v3 Turbo</strong></td><td>The faster of the two Whisper models</td></tr>
+<tr><td><strong class="ui">Whisper Large v3</strong></td><td>Slower, and sometimes a little more accurate on difficult recordings</td></tr>
+</tbody></table></div>
+<p>Whisper is used for Chinese recordings even if you choose <strong class="ui">Apple Speech</strong>, since Whisper quality is better.</p>
+<p>Switching which model is being used impacts the next recording imported. To test whether or not switching models would improve your results, try importing a short, difficult excerpt of audio using both models and comparing the transcripts side-by-side.</p>
+<h2 id="exclusion-presets">Exclusion presets<a class="anchor" href="#exclusion-presets" aria-hidden="true">#</a></h2>
+<p>When importing a document or modifying its <strong class="ui">Document Properties</strong>, you may choose to ignore certain text patterns so as to prevent any kind of grammar analysis from occurring within them. Such patterns may involve timestamps, speaker labels, and many more forms of text (see <a href="importing.html#exclude-from-analysis">Excluding text from indexing</a> in <a href="importing.html">Chapter 4, Importing Material</a>). These patterns are expressed through <em>regular expressions</em>, which are concise representations of a form of text, such as any word surrounded by square brackets. There are five default presets in the <strong class="ui">Presets</strong> menu beside the field for entering your pattern.</p>
+<p>An <em>exclusion preset</em> consists of a personally defined pattern, which is assigned its own name and stored inside the previously mentioned <strong class="ui">Presets</strong> menu.</p>
+<p>Suppose that you had several transcripts typed out of radio conversations where pauses, laughter, and inaudible statements were transcribed with <code>[pause]</code>, <code>[laughs]</code>, and <code>[inaudible]</code>, respectively (the notes should stay in the text, but are not actual speech). You could use these steps to create an exclusion preset for these three notes.</p>
+<ol>
+<li>Choose <strong class="ui">LemmaLoom ▸ Settings…</strong> (⌘,) and click <strong class="ui">General</strong>.</li>
+<li>Under <strong class="ui">Exclusion Presets</strong>, click <strong class="ui">Add Preset</strong>. A new row appears with two empty fields.</li>
+<li>In the <strong class="ui">Name</strong> field, type <code>Transcriber notes</code>. This is the name the <strong class="ui">Presets</strong> menu shows.</li>
+<li>In the <strong class="ui">Pattern</strong> field, type <code>\[(inaudible|laughs|pause)\]</code>.</li>
+</ol>
+<p>On the line below the field is a description of what the entered regular expression matches, e.g., <strong class="ui">Matches text like [inaudible]</strong>. If the regular expression provided does not allow LemmaLoom to generate a sample text string that would match it, the line will say <strong class="ui">Valid pattern</strong>. An invalid pattern will feature faulty syntax, for example an unmatched bracket. An invalid pattern returns a response saying <strong class="ui">Not a valid pattern</strong> in red font.</p>
+<p>Backslashes are used to match square brackets literally while the bars serve to provide alternatives within the parenthetical group. By inserting <code>|crosstalk</code> within the parentheses, you would match <code>[crosstalk]</code> as well. This particular pattern is case-sensitive and hence will only match <code>[laughs]</code> in lowercase.</p>
+<p>The preset saves itself as you type. It shows up in the <strong class="ui">Presets</strong> menu on the import dialogs (<strong class="ui">Import Document</strong>, or <strong class="ui">Import from Web</strong> for a web page) and in <strong class="ui">Document Properties</strong>, right after the five default presets with a line between the two sets.</p>
+<figure class="shot" id="settings-exclusion-presets"><img class="shot-light" src="../figures/en/light/settings-exclusion-presets.webp" alt="The Exclusion Presets section of the General pane, with the Transcriber notes preset." loading="lazy"><img class="shot-dark" src="../figures/en/dark/settings-exclusion-presets.webp" alt="The Exclusion Presets section of the General pane, with the Transcriber notes preset." loading="lazy"><figcaption>The Exclusion Presets section of the General pane, with the Transcriber notes preset.</figcaption></figure>
+<figure class="shot" id="settings-presets-menu"><img class="shot-light" src="../figures/en/light/settings-presets-menu.webp" alt="The Presets menu of the Import Document dialog, with the five default presets." loading="lazy"><img class="shot-dark" src="../figures/en/dark/settings-presets-menu.webp" alt="The Presets menu of the Import Document dialog, with the five default presets." loading="lazy"><figcaption>The Presets menu of the Import Document dialog, with the five default presets.</figcaption></figure>
+<p>If the name and pattern of the preset are entered, an entry is added to the <strong class="ui">Presets</strong> menu. If the name or pattern does not exist yet, the entry stays in Settings until it is completed or deleted.</p>
+<p>When selecting a preset from the <strong class="ui">Presets</strong> menu, the pattern for that preset is copied to the document. Any preset whose pattern has been copied to the document is disabled in the <strong class="ui">Presets</strong> menu; changing those patterns would require editing each document’s properties separately (<strong class="ui">Document Properties</strong>).</p>
+<p>Choosing a preset with an invalid pattern will result in indexing the whole document. Check the line under your pattern before choosing a preset.</p>
+<p>To delete a preset entry, click the little minus sign next to the entry (<strong class="ui">Remove preset</strong>). The entry disappears at once.</p>
+<h2 id="reader-pane">The Reader pane<a class="anchor" href="#reader-pane" aria-hidden="true">#</a></h2>
+<p>The <strong class="ui">Reader</strong> pane controls how the reader presents text. The first two sections of the pane are the <strong class="ui">Typography</strong> and <strong class="ui">Page</strong> sections, which contain the same options as the <strong class="ui">Font, gutter, and text size</strong> menu found in the title band of the reader (see <a href="reading-and-editing.html#title-band">The title band</a> in <a href="reading-and-editing.html">Chapter 5, Reading and Editing</a>). The <strong class="ui">View ▸ Larger Text</strong> (⌘+), <strong class="ui">Smaller Text</strong> (⌘-), and <strong class="ui">Reset Text Size</strong> (⌘0) commands affect the exact same text size, and a change in one place shows in the others.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Section</th><th>Row</th><th>Choices</th><th>Starts as</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">Typography</strong></td><td><strong class="ui">Font</strong></td><td><strong class="ui">System Serif</strong>, <strong class="ui">System Sans</strong>, <strong class="ui">System Rounded</strong>, <strong class="ui">System Mono</strong>, <strong class="ui">Georgia</strong>, <strong class="ui">Palatino</strong>, <strong class="ui">Baskerville</strong>, <strong class="ui">Times New Roman</strong>, <strong class="ui">Helvetica Neue</strong>, <strong class="ui">Avenir Next</strong>, <strong class="ui">Menlo</strong></td><td><strong class="ui">System Serif</strong></td></tr>
+<tr><td><strong class="ui">Typography</strong></td><td><strong class="ui">Text Size</strong></td><td>a slider from 70 to 200 percent, in steps of 10</td><td>100 percent</td></tr>
+<tr><td><strong class="ui">Page</strong></td><td><strong class="ui">Layout</strong></td><td><strong class="ui">Single Column</strong>, <strong class="ui">Two-Page Spread</strong></td><td><strong class="ui">Single Column</strong></td></tr>
+<tr><td><strong class="ui">Page</strong></td><td><strong class="ui">Gutter Numbering</strong></td><td><strong class="ui">Off</strong>, <strong class="ui">Paragraphs</strong>, <strong class="ui">Sentences</strong>, <strong class="ui">Both</strong></td><td><strong class="ui">Both</strong></td></tr>
+</tbody></table></div>
+<p>The <em>gutter</em> is the column that appears on the left side of your text, where the reader numbers the paragraphs and sentences of the document (see <a href="reading-and-editing.html#gutter">The gutter</a> in <a href="reading-and-editing.html">Chapter 5, Reading and Editing</a>). The curved arrow icon next to the text size percentage, <strong class="ui">Reset</strong>, resets the text to its default size of 100%. At 100%, the curved arrow is disabled, and hovering the mouse pointer over it shows <strong class="ui">Already default</strong>. To learn about fonts, sizes, layouts, and gutter numbers, see <a href="reading-and-editing.html#text-appearance">Changing how text is presented</a> in <a href="reading-and-editing.html">Chapter 5, Reading and Editing</a>.</p>
+<p>Click <strong class="ui">Reset All to Defaults</strong>, which is located at the top of the pane, to reset every row of the pane at once to its initial value.</p>
+<h3 id="selection-settings">Selection<a class="anchor" href="#selection-settings" aria-hidden="true">#</a></h3>
+<p>The <strong class="ui">Selection</strong> section determines how the reader displays your selections, as well as how it handles the rest of the text surrounding your selections.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Row</th><th>Choice</th><th>What you see</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">Selected Text</strong></td><td><strong class="ui">Solid block</strong></td><td>A rounded block in the text color, with the selected words in the paper color</td></tr>
+<tr><td></td><td><strong class="ui">Highlight</strong></td><td>A light tint behind the selected words</td></tr>
+<tr><td><strong class="ui">Head and Dependents</strong></td><td><strong class="ui">Arcs</strong></td><td>A curved line from the selected word to its head and to each dependent, with a small arrowhead at the dependent’s end</td></tr>
+<tr><td></td><td><strong class="ui">Lines</strong></td><td>The same connections drawn as square brackets above the text</td></tr>
+<tr><td></td><td><strong class="ui">Labels</strong></td><td>The name of each relation above the related word</td></tr>
+<tr><td></td><td><strong class="ui">Highlight</strong></td><td>The head tinted yellow and the dependents pale violet</td></tr>
+<tr><td></td><td><strong class="ui">Off</strong></td><td>The selection alone</td></tr>
+<tr><td><strong class="ui">Surrounding Text</strong></td><td><strong class="ui">Fade</strong></td><td>The rest of the document dimmed around the sentences that hold the selection</td></tr>
+<tr><td></td><td><strong class="ui">Light fade</strong></td><td>The same, dimmed less</td></tr>
+<tr><td></td><td><strong class="ui">Highlight sentence</strong></td><td>The sentence with the selected word tinted</td></tr>
+<tr><td></td><td><strong class="ui">Off</strong></td><td>The whole document as usual</td></tr>
+<tr><td><strong class="ui">Audio Playback</strong></td><td><strong class="ui">Spotlight</strong></td><td>Everything except the passage being played dimmed</td></tr>
+<tr><td></td><td><strong class="ui">Solid block</strong></td><td>The passage being played on a block of the accent color</td></tr>
+<tr><td></td><td><strong class="ui">Highlight</strong></td><td>The passage being played tinted lightly with the accent color</td></tr>
+</tbody></table></div>
+<p>The first option in every row is the default.</p>
+<figure class="shot" id="settings-surrounding-text-menu"><img class="shot-light" src="../figures/en/light/settings-surrounding-text-menu.webp" alt="The Reader pane with Arcs chosen under Head and Dependents and the Surrounding Text menu open." loading="lazy"><img class="shot-dark" src="../figures/en/dark/settings-surrounding-text-menu.webp" alt="The Reader pane with Arcs chosen under Head and Dependents and the Surrounding Text menu open." loading="lazy"><figcaption>The Reader pane with Arcs chosen under Head and Dependents and the Surrounding Text menu open.</figcaption></figure>
+<p><strong class="ui">Head and Dependents</strong> applies when a single word has been selected. <em>Head</em> refers to the word that the current word belongs to within the grammatical structure of the sentence; for example, it can be the verb whose subject the selected word is. The <em>dependents</em> of the word are all the words attached to it. More about relations between words and their classifications can be found in <a href="grammar-inspector.html">Chapter 11, The Grammar Inspector</a>. All arcs, lines, and labels are colored according to the <strong class="ui">Grammatical function</strong> lens defaults.</p>
+<p>In <strong class="ui">Preview</strong>, which can be seen at the bottom of the pane, the passage is displayed as <em>The old fox watched the quiet river.</em> and <em>fox</em> is selected. The word <em>watched</em> is the head of <em>fox</em> since <em>fox</em> is its subject. The dependents of <em>fox</em> are <em>The</em> and <em>old</em>. When <strong class="ui">Labels</strong> is chosen, the preview will show labels above <em>watched</em> (▲ <code>nsubj</code>, nominal subject), above <em>The</em> (<code>det</code>, determiner), and above <em>old</em> (<code>amod</code>, adjectival modifier). Labels represent the relationship between each word and <em>fox</em> in terms of grammatical functions, and the ▲ shows the head. German documents use other labels. For example, <code>nsubj</code> becomes <code>sb</code>.</p>
+<p>With <strong class="ui">Surrounding Text</strong>, you also control how a passage is shown when navigating to it, for example, via a query hit. If you pick <strong class="ui">Light fade</strong> or <strong class="ui">Fade</strong>, the surrounding text fades out; with <strong class="ui">Highlight sentence</strong> or <strong class="ui">Off</strong>, the passage gets highlighted in light yellow instead.</p>
+<p><strong class="ui">Audio Playback</strong> applies only when the reader follows a recording (<strong class="ui">Scroll with audio</strong> toggle on in the player bar; see <a href="reading-and-editing.html#following-transcript">Following the transcript</a> in <a href="reading-and-editing.html">Chapter 5, Reading and Editing</a>). Depending on the selected setting for <strong class="ui">Surrounding Text</strong>, <strong class="ui">Spotlight</strong> fades the rest of the text more or less. <strong class="ui">Light fade</strong> reduces the fading effect, and the other options fade as much as <strong class="ui">Fade</strong>.</p>
+<h3 id="reader-preview">The preview<a class="anchor" href="#reader-preview" aria-hidden="true">#</a></h3>
+<p>At the bottom of the pane is where you will see <strong class="ui">Preview</strong>, which shows you two brief snippets of text that have been styled according to your preferences (font, text size, and theme). The first snippet contains a selected word with its head and all its dependents. The second snippet contains the text as it looks when you play it. Both change as you change the rows above, and their text is in the interface language.</p>
+<figure class="shot" id="settings-reader-pane"><img class="shot-light" src="../figures/en/light/settings-reader-pane.webp" alt="The Reader pane with Labels chosen under Head and Dependents, and the preview below." loading="lazy"><img class="shot-dark" src="../figures/en/dark/settings-reader-pane.webp" alt="The Reader pane with Labels chosen under Head and Dependents, and the preview below." loading="lazy"><figcaption>The Reader pane with Labels chosen under Head and Dependents, and the preview below.</figcaption></figure>
+<h2 id="lenses-pane">The Lenses pane<a class="anchor" href="#lenses-pane" aria-hidden="true">#</a></h2>
+<p>A <em>lens</em> annotates your documents’ words, categorizing based on something like word class (refer back to <a href="lenses.html">Chapter 6, Lenses</a>). <em>Aspects</em> are categories of a particular lens, like <strong class="ui">Noun</strong> under <strong class="ui">Word class</strong>. In the <strong class="ui">Lenses</strong> pane, the colors and styles for each aspect for four built-in lenses are configured. This pane becomes helpful in cases where two aspects appear similar visually, or when working simultaneously with multiple lenses.</p>
+<p>There is a distinct section for each of the four lenses in the <strong class="ui">Lenses</strong> pane:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Section</th><th>Rows</th><th>Style at the start</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">Word class</strong></td><td><strong class="ui">Noun</strong>, <strong class="ui">Verb</strong>, <strong class="ui">Adjective</strong>, <strong class="ui">Adverb</strong>, <strong class="ui">Pronoun</strong>, <strong class="ui">Determiner</strong>, <strong class="ui">Preposition</strong>, <strong class="ui">Conjunction</strong>, <strong class="ui">Number</strong>, <strong class="ui">Interjection</strong></td><td><strong class="ui">Underline</strong></td></tr>
+<tr><td><strong class="ui">Grammatical function</strong></td><td><strong class="ui">Subject</strong>, <strong class="ui">Object</strong>, <strong class="ui">Predicative</strong>, <strong class="ui">Complement</strong>, <strong class="ui">Adjectival</strong>, <strong class="ui">Adverbial</strong>, <strong class="ui">Appositive</strong>, <strong class="ui">Agent</strong>, <strong class="ui">Conjunct</strong>, <strong class="ui">Connector</strong></td><td><strong class="ui">Underline</strong></td></tr>
+<tr><td><strong class="ui">Phrase</strong></td><td><strong class="ui">Noun phrase</strong>, <strong class="ui">Verb phrase</strong>, <strong class="ui">Prepositional phrase</strong>, <strong class="ui">Adjective phrase</strong>, <strong class="ui">Adverb phrase</strong>, <strong class="ui">Conjunction phrase</strong>, <strong class="ui">Interjection</strong>, <strong class="ui">Noun chunk</strong></td><td><strong class="ui">Highlight</strong></td></tr>
+<tr><td><strong class="ui">Morphology</strong></td><td>20 rows, each named after a feature and one of its values, from <strong class="ui">Tense: Past</strong> to <strong class="ui">Gender: Neuter</strong></td><td><strong class="ui">Highlight</strong></td></tr>
+</tbody></table></div>
+<p>The <strong class="ui">Morphology</strong> rows include <strong class="ui">Tense</strong>, <strong class="ui">Number</strong>, <strong class="ui">Degree</strong>, <strong class="ui">Verb form</strong>, <strong class="ui">Case</strong>, <strong class="ui">Mood</strong>, and <strong class="ui">Gender</strong>. <strong class="ui">Case</strong>, <strong class="ui">Mood</strong>, and <strong class="ui">Gender</strong> appear only in German documents, whereas the <strong class="ui">Morphology</strong> lens operates on both English and German documents. Words display only one morphological feature, which means that a German noun in the dative case displays just <strong class="ui">Case: Dative</strong>. See <a href="lenses.html#morphology">Morphology</a> in <a href="lenses.html">Chapter 6, Lenses</a> for more on this topic.</p>
+<p>In contrast, other built-in lenses, such as <strong class="ui">Modality</strong> and <strong class="ui">Cohesion</strong>, come with predetermined colors. However, dictionary, query, and analyzer lenses obtain their colors from their dictionaries, queries, and analyzers, respectively.</p>
+<p>The aspect name, style menu, and color well are provided in each row along with a reset button once the aspect has been modified. Four different styles, accompanied by their respective icons, can be selected using the style menu.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Style</th><th>How an annotated word looks</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">Highlight</strong></td><td>A pale band of the color behind the word</td></tr>
+<tr><td><strong class="ui">Underline</strong></td><td>A line in the color under the word</td></tr>
+<tr><td><strong class="ui">Text color</strong></td><td>The letters in the color</td></tr>
+<tr><td><strong class="ui">Bold</strong></td><td>The letters in bold and in the color</td></tr>
+</tbody></table></div>
+<p>It’s the style itself that dictates whether the color will appear prominently enough. In <strong class="ui">Highlight</strong>, you’ll get a subtle wash of the color over the background, while a lighter color won’t necessarily stand out much at all. In <strong class="ui">Text color</strong> and <strong class="ui">Bold</strong>, the actual text characters will adopt the full force of the color, requiring it to contrast sharply against your theme’s paper. See also <a href="lenses.html#lens-colors-and-styles">Lens colors and styles</a> in <a href="lenses.html">Chapter 6, Lenses</a>.</p>
+<h3 id="changing-a-key">Changing an aspect<a class="anchor" href="#changing-a-key" aria-hidden="true">#</a></h3>
+<p>The example project includes “Running Out of Time (German)”, which is the translation of “Running Out of Time” into German. It is useful for studying the dative case, which marks the indirect objects in German as well as the nouns following words like <em>mit</em>. Assuming you haven’t imported “Climate Debate” already, import it via <strong class="ui">File ▸ Import ▸ Example Project</strong>. Each of the cases begins as a pale highlight in the <strong class="ui">Morphology</strong> lens. To differentiate the datives, follow along:</p>
+<ol>
+<li>Choose <strong class="ui">LemmaLoom ▸ Settings…</strong> (⌘,) and click <strong class="ui">Lenses</strong>.</li>
+<li>Scroll down to the <strong class="ui">Morphology</strong> section and find the row <strong class="ui">Case: Dative</strong>.</li>
+<li>Open its style menu, which shows <strong class="ui">Highlight</strong>, and choose <strong class="ui">Bold</strong>.</li>
+<li>Click the color well (the color swatch) beside it. In the macOS color picker that opens, choose a dark red.</li>
+<li>Open “Running Out of Time (German)” and enable <strong class="ui">Morphology</strong> in the lens menu (see <a href="lenses.html#lens-menu">The lens menu</a> in <a href="lenses.html">Chapter 6, Lenses</a>).</li>
+</ol>
+<p>Datives are displayed in bold dark red now, whereas the rest of the cases retain their pale highlighting. Changes to <strong class="ui">Word class</strong>, <strong class="ui">Grammatical function</strong>, and <strong class="ui">Phrase</strong> aspects also apply to the <strong class="ui">Glossary</strong> (<strong class="ui">Help ▸ Glossary</strong>), as it displays each tag or term representing one of those aspects in that aspect’s coloration and style. The default coloration of the lenslets in the legend above your text remains unchanged, and therefore the <strong class="ui">Case: Dative</strong> lenslet retains its orange appearance. These exact same procedures apply to any aspect of the four lenses.</p>
+<figure class="shot" id="settings-lens-style-menu"><img class="shot-light" src="../figures/en/light/settings-lens-style-menu.webp" alt="The style menu for Case: Dative open in the Morphology section of the Lenses pane." loading="lazy"><img class="shot-dark" src="../figures/en/dark/settings-lens-style-menu.webp" alt="The style menu for Case: Dative open in the Morphology section of the Lenses pane." loading="lazy"><figcaption>The style menu for Case: Dative open in the Morphology section of the Lenses pane.</figcaption></figure>
+<h3 id="lens-defaults">Going back to the defaults<a class="anchor" href="#lens-defaults" aria-hidden="true">#</a></h3>
+<p>Your modified aspects will receive a reset button, a curving arrow at the end of their rows. Clicking on the button resets them back to default colors and styles.</p>
+<p><strong class="ui">Reset All to Defaults</strong>, which appears at the very top of the pane, resets all aspects in all four lenses. The reset is permanent.</p>
+<h2 id="where-settings-are-stored">Where settings are stored<a class="anchor" href="#where-settings-are-stored" aria-hidden="true">#</a></h2>
+<p>Any changes you make within the Settings window affect only the Mac that you are working on. The library, containing your projects (see <a href="getting-started.html#library">Where work is stored</a> in <a href="getting-started.html">Chapter 2, Getting Started</a>), will also retain your place within each project.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Setting</th><th>Kept</th></tr></thead>
+<tbody>
+<tr><td>Everything you choose in the Settings window</td><td>on the Mac</td></tr>
+<tr><td><strong class="ui">Scroll with audio</strong>, the size and position of the video, and whether it is collapsed</td><td>on the Mac</td></tr>
+<tr><td>The divider between two documents in split view, the dividers inside analysis panels (such as the one between a query’s builder and its results), and how word sketches are displayed</td><td>on the Mac</td></tr>
+<tr><td>Favorite projects, the project you had open, the tabs each project had open, and each document’s reading position, lenses, and inspector (whether it is shown, its width, and the active tab)</td><td>in the library</td></tr>
+</tbody></table></div>
+<p>Your projects, along with favorites, opened tabs, and reading positions, are all portable to another Mac with the library or restorable from an older backup copy. Settings, on the other hand, are per-Mac, and so you should personalize your choices on each Mac, including themes, fonts, and lens styles, if you want them to match.</p>
+<p>When your coworker views the contents of your LemmaLoom archive or REFI-QDA project, everything is seen using their own Mac’s settings, namely the document appearance based on themes, fonts, and lens styles (see <a href="exchange-and-export.html">Chapter 22, Exchanging and Exporting</a>).</p>
+</article>
+<nav class="pager"><a class="previous" href="undo.html"><span>Previous</span>Undo and Redo</a><a class="next" href="keyboard-shortcuts.html"><span>Next</span>Keyboard Shortcuts</a></nav>
+<footer class="site-footer">© 2026 Ryan S. Cooper. All rights reserved.</footer>
+</main>
+<nav class="page-toc" aria-label="On this page"><p>On this page</p><ul>
+<li class="level-2"><a href="#settings-window">The Settings window</a></li>
+<li class="level-2"><a href="#themes">Themes</a></li>
+<li class="level-3"><a href="#window-tinting">What a theme changes</a></li>
+<li class="level-3"><a href="#fixed-colors">Colors that stay the same</a></li>
+<li class="level-2"><a href="#interface-language">The interface language</a></li>
+<li class="level-2"><a href="#transcription-model">The transcription model</a></li>
+<li class="level-2"><a href="#exclusion-presets">Exclusion presets</a></li>
+<li class="level-2"><a href="#reader-pane">The Reader pane</a></li>
+<li class="level-3"><a href="#selection-settings">Selection</a></li>
+<li class="level-3"><a href="#reader-preview">The preview</a></li>
+<li class="level-2"><a href="#lenses-pane">The Lenses pane</a></li>
+<li class="level-3"><a href="#changing-a-key">Changing an aspect</a></li>
+<li class="level-3"><a href="#lens-defaults">Going back to the defaults</a></li>
+<li class="level-2"><a href="#where-settings-are-stored">Where settings are stored</a></li>
+</ul></nav>
+</div>
+<script src="../assets/guide.js" defer></script>
+</body>
+</html>

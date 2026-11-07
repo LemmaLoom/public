@@ -1,0 +1,536 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>自定义分析器 · LemmaLoom 用户指南</title>
+<link rel="stylesheet" href="../assets/guide.css">
+<link rel="icon" type="image/png" href="../assets/logo.png">
+<script>var r=document.documentElement;r.setAttribute('data-theme','light');try{if(localStorage.getItem('guide-theme')==='dark'){r.setAttribute('data-theme','dark')}}catch(e){}</script>
+</head>
+<body>
+<header class="topbar">
+<button class="menu-toggle" aria-label="目录" aria-expanded="false">☰</button>
+<a class="brand" href="index.html"><span class="wordmark"><span class="lemma">Lemma</span>Loom</span><span class="guide-name">用户指南</span></a>
+<div class="search"><input type="search" id="search" placeholder="搜索" aria-label="搜索" autocomplete="off" data-empty="无结果"><div class="results" id="results" hidden></div></div>
+<nav class="languages" aria-label="Language"><a href="../en/custom-analyzers.html" lang="en">English</a><a href="../de/custom-analyzers.html" lang="de">Deutsch</a><a href="../zh-Hans/custom-analyzers.html" lang="zh-Hans" aria-current="true">简体中文</a></nav>
+<button class="theme-toggle" data-light="浅色" data-dark="深色" aria-label="外观"></button>
+<a class="pdf-link" href="https://github.com/LemmaLoom/public/raw/main/pdf/lemmaloom-guide-zh-Hans.pdf">PDF</a>
+</header>
+<div class="layout">
+<nav class="sidebar" aria-label="目录"><ol>
+<li class="unnumbered"><a href="quick-start.html">快速入门</a></li>
+<li><a href="introduction.html">简介</a></li>
+<li><a href="getting-started.html">开始使用</a></li>
+<li><a href="projects-and-documents.html">项目与文档</a></li>
+<li><a href="importing.html">导入资料</a></li>
+<li><a href="reading-and-editing.html">阅读与编辑</a></li>
+<li><a href="lenses.html">透镜</a></li>
+<li><a href="coding.html">编码</a></li>
+<li><a href="sets-tags-attributes.html">文档集、分组、标签和属性</a></li>
+<li><a href="translations.html">译文与分屏浏览</a></li>
+<li><a href="text-inspector.html">文本检查器</a></li>
+<li><a href="grammar-inspector.html">语法检查器</a></li>
+<li><a href="word-sketch.html">词汇速写</a></li>
+<li><a href="coding-analysis.html">编码分析</a></li>
+<li><a href="sketch-space.html">速写空间</a></li>
+<li><a href="queries-building.html">构建查询</a></li>
+<li><a href="queries-results.html">查询结果与统计</a></li>
+<li><a href="queries-patterns.html">查询模式与发现</a></li>
+<li><a href="queries-using-results.html">使用查询结果</a></li>
+<li><a href="dictionaries.html">词典</a></li>
+<li class="current"><a href="custom-analyzers.html">自定义分析器</a></li>
+<li><a href="analysis-and-indexing.html">分析与索引</a></li>
+<li><a href="exchange-and-export.html">交换与导出</a></li>
+<li><a href="undo.html">撤销与重做</a></li>
+<li><a href="settings.html">设置与外观</a></li>
+<li><a href="keyboard-shortcuts.html">键盘快捷键</a></li>
+<li><a href="help-and-support.html">帮助与支持</a></li>
+<li><a href="statistics-reference.html">统计量一览</a></li>
+<li class="unnumbered"><a href="glossary.html">术语表</a></li>
+<li class="unnumbered"><a href="thanks.html">感谢</a></li>
+</ol></nav>
+<main class="content">
+<article>
+<h1 id="custom-analyzers">自定义分析器</h1>
+<p>自定义分析器是一段简短的 JavaScript 程序。它读取文档的语法分析，从中找出你需要的段落。你在<strong class="ui">窗口 ▸ 分析器</strong>中编写脚本，LemmaLoom 在为你所有项目中所选语言的文档建立索引时运行它。分析器找到的内容与各个文档关联存储。之后，你可以通过分析器的透镜查看这些发现，为它们自动编码，也可以在查询中统计和比较它们。</p>
+<p>有些问题取决于语法，而内置透镜又无法以你需要的形式回答，分析器就用于这类问题。只回答一个问题时，查询更快（见<a href="queries-building.html">第 15 章“构建查询”</a>）；一般来说，如果你要在文档（包括现有的文档和以后导入的文档）中反复查找同一种模式，并且既要在阅读器中看到标注，又要能统计结果，就值得编写一个分析器。</p>
+<p>本章以示例项目“气候辩论”为例，这个项目通过<strong class="ui">文件 ▸ 导入 ▸ 示例项目</strong>导入（见<a href="introduction.html">第 1 章“简介”</a>中的<a href="introduction.html#example-project">示例项目</a>）。具体来说，本章考察“气候”在小句中是充当语法主语（如“气候并没有等我们”），还是充当宾语（如“保护孩子们将要继承的气候”）。词典会找出“气候”这个词的每一次出现，不管它处在什么语境中；分析器则能根据语法分析中记录的功能，区分主语和宾语。示例分析器“气候角色”用一种颜色标注每个作主语的“气候”，用另一种颜色标注每个作宾语的“气候”。<a href="#first-analyzer">编写第一个分析器</a>详细介绍了如何自己编写这个分析器。</p>
+<p>分析器是 LemmaLoom 中唯一要求你具备编程技能的部分。脚本相对简短，也不复杂，但会用到变量、列表、循环、<code>if</code> 语句，以及用 <code>=&gt;</code> 语法定义的匿名函数。如果你从没写过程序，<a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps">MDN Web Docs 的免费 JavaScript 课程</a>会介绍这些基础知识。如果你对编程不感兴趣，可以构建一个查询来取得所需的数据，再把这个查询转换为分析器，由它自动生成脚本（见<a href="queries-using-results.html">第 18 章“使用查询结果”</a>中的<a href="queries-using-results.html#save-as-analyzer">把查询转换为分析器</a>）。生成的脚本也是很好的学习范例。</p>
+<h2 id="key-terms">关键术语<a class="anchor" href="#key-terms" aria-hidden="true">#</a></h2>
+<p>在 LemmaLoom 中，<em>分析器</em>是在建立索引时运行、为文档添加发现的程序。（关于 LemmaLoom 如何建立索引，详见<a href="analysis-and-indexing.html">第 21 章“分析与索引”</a>。）LemmaLoom 自带三个分析器，即<strong class="ui">衔接</strong>、<strong class="ui">元话语</strong>和<strong class="ui">修辞</strong>。<em>自定义分析器</em>可以由你自己编写，也可以由 LemmaLoom 根据你的查询自动生成。每个自定义分析器都属于你的资料库，所以都会在所有项目的文档上运行。</p>
+<p><em>脚本</em>用 JavaScript 编写，必须包含一个名为 <code>analyze</code> 的函数。LemmaLoom 会把文档的分析交给这个函数并执行它，你的分析器则必须把发现返回给 LemmaLoom。</p>
+<p><em>文档对象</em>是传入你的函数的 JavaScript 对象（这里的<em>对象</em>取编程上的意思，即一组带名称的字段，例如 <code>text</code> 和 <code>lemma</code>）。这个对象包含若干字段，分别表示文档的各个方面，包括语言、句子及其中的词符、短语、名词块，以及内置分析器的输出。</p>
+<p><em>词符</em>是单个的词形和标点符号。每个词符都带有它的词典形式（即<em>词元</em>）、词类标记、它与所依存的词（即它的<em>中心词</em>）之间的<em>依存关系</em>，以及数、时态等形态特征。</p>
+<p><em>发现</em>是分析器报告的一段文字，由同一句子中一串相邻的词符和这条发现的键组成。</p>
+<p><em>键</em>表示发现的种类，例如 <code>subject</code>、<code>object</code> 等。<em>图例</em>是你的键的集合，并为每个键指定显示时所用的标签、颜色和样式。分析器透镜的图例就由它生成。</p>
+<div class="table-wrap"><table>
+<thead><tr><th>位置</th><th>可以对自定义分析器做什么</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">窗口 ▸ 分析器</strong></td><td>编写、测试、存储、修改和删除分析器</td></tr>
+<tr><td><strong class="ui">导入文档</strong>对话框和<strong class="ui">文档信息</strong></td><td>选择分析器是否在某个文档上运行；再次运行它或移除它的输出</td></tr>
+<tr><td>阅读器的透镜菜单</td><td>在打开的文档中标注发现</td></tr>
+<tr><td><strong class="ui">文档 ▸ 自动编码…</strong></td><td>为发现编码</td></tr>
+<tr><td>查询</td><td>查找<strong class="ui">分析 · 发现</strong>，在规则中检验它们，并统计和比较它们</td></tr>
+</tbody></table></div>
+<h2 id="analyzers-window">分析器窗口<a class="anchor" href="#analyzers-window" aria-hidden="true">#</a></h2>
+<p>选取<strong class="ui">窗口 ▸ 分析器</strong>打开这个窗口。窗口分为三栏。</p>
+<ul>
+<li>左侧第一栏是你的分析器列表，按名称排序。每一行列出分析器运行的语言，例如 <code>de en</code>。点按列表下方的<strong class="ui">添加分析器</strong>按钮即可新建分析器。</li>
+<li>第二栏显示当前选中的分析器。顶部是<strong class="ui">名称</strong>、语言复选框<strong class="ui">英语</strong>、<strong class="ui">德语</strong>和<strong class="ui">中文</strong>，以及<strong class="ui">存储</strong>按钮。下面依次是<strong class="ui">图例</strong>、脚本编辑器和<strong class="ui">试一试</strong>，你可以在<strong class="ui">试一试</strong>中用几个句子测试分析器。</li>
+<li>第三栏是<strong class="ui">参考</strong>面板，列出辅助函数、具名常量和文档对象的成员。</li>
+</ul>
+<figure class="shot" id="custom-analyzers-window"><img class="shot-light" src="../figures/zh-Hans/light/custom-analyzers-window.webp" alt="已选中“气候角色”的分析器窗口，“试一试”下方的测试句中显示了它的发现。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/custom-analyzers-window.webp" alt="已选中“气候角色”的分析器窗口，“试一试”下方的测试句中显示了它的发现。" loading="lazy"><figcaption>已选中“气候角色”的分析器窗口，“试一试”下方的测试句中显示了它的发现。</figcaption></figure>
+<p>窗口打开时，中间一栏显示一个尚未存储的新分析器，它的示例脚本会找出所有名词。要修改已有的分析器，请在左侧列表中点按它。起初，<strong class="ui">试一试</strong>窗格只在这一栏底部占据很小的高度；测试时，向上拖动分隔线即可把它拉高。LemmaLoom 会记住这个高度，下次启动时沿用。</p>
+<p>编写脚本时，编辑器会为各行编号，用不同颜色显示脚本的各个部分，并提示名称。输入 <code>POS.</code> 之后，自动补全弹出菜单会列出所有词类；同样，输入 <code>LL.</code> 之后，弹出菜单会列出辅助函数。编辑器还会在你输入时给某些错误加下划线，例如引用了未定义的常量。要在脚本中插入断点，请点按相应行号左侧的空白处（见本章后文<a href="#breakpoints">断点与单步执行</a>）。</p>
+<figure class="shot" id="custom-analyzers-autocomplete"><img class="shot-light" src="../figures/zh-Hans/light/custom-analyzers-autocomplete.webp" alt="“分析器”窗口中的编辑器，在新的最后一行输入 POS. 之后，提示出各个词类。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/custom-analyzers-autocomplete.webp" alt="“分析器”窗口中的编辑器，在新的最后一行输入 POS. 之后，提示出各个词类。" loading="lazy"><figcaption>“分析器”窗口中的编辑器，在新的最后一行输入 POS. 之后，提示出各个词类。</figcaption></figure>
+<aside class="callout note"><p class="callout-title">注意</p><p>更改在存储之前只保留在窗口中。在列表中点按另一个分析器、点按<strong class="ui">添加分析器</strong>或关闭窗口，都会使未存储的更改丢失。</p>
+</aside>
+<h2 id="first-analyzer">编写第一个分析器<a class="anchor" href="#first-analyzer" aria-hidden="true">#</a></h2>
+<p>分析器“气候角色”只有两个键，<code>subject</code> 和 <code>object</code>。每个“气候”取哪个键，取决于这个词在句子结构中充当主语还是宾语。完整的脚本如下：</p>
+<pre><code>const CLIMATE = ['climate', 'klima', '气候'];
+function analyze(doc) {
+  const findings = [];
+  for (const sentence of doc.sentences) {
+    sentence.tokens.forEach((token, index) =&gt; {
+      if (CLIMATE.includes(token.lemma.toLowerCase())) {
+        const role = token.derived.function;
+        if (role === FUNCTION.SUBJECT) {
+          findings.push({ sentenceIndex: sentence.index, start: index, end: index + 1, key: 'subject' });
+        }
+        if (role === FUNCTION.OBJECT) {
+          findings.push({ sentenceIndex: sentence.index, start: index, end: index + 1, key: 'object' });
+        }
+      }
+    });
+  }
+  return findings;
+}
+</code></pre>
+<p>“气候辩论”中的文档大多是中文，“时间不多了 (英语)”则是英文，所以“气候角色”在这两种语言上运行。它的图例把两个键分别称为“气候作主语”和“气候作宾语”。</p>
+<p>要新建分析器：</p>
+<ol>
+<li>选取<strong class="ui">窗口 ▸ 分析器</strong>。如果中间一栏显示的是你已存储的分析器，请点按列表下方的<strong class="ui">添加分析器</strong>。</li>
+<li>在<strong class="ui">名称</strong>中输入名称。</li>
+<li>勾选分析器要处理的文档语言。<strong class="ui">英语</strong>一开始就已勾选。</li>
+<li>点按编辑器，按 ⌘A 选中示例脚本，然后输入或粘贴你的脚本来替换它。</li>
+<li>在<strong class="ui">图例</strong>中为每个键设置标签，LemmaLoom 会在这里列出它在脚本中找到的键（见本章后文<a href="#legend">键与图例</a>）。</li>
+<li>在<strong class="ui">试一试</strong>下测试脚本（见本章后文<a href="#try-it-out">用“试一试”测试</a>）。</li>
+<li>点按<strong class="ui">存储</strong>。</li>
+</ol>
+<p>测试“气候角色”时，最好用一个同时包含两种用法的句子，例如 <em>The climate is changing faster than our politics, so we must do more for the climate</em>（气候变化得比我们的政治还快，所以我们必须为气候多做一些）。在旁边的语言菜单中选取 <code>en</code> 后点按<strong class="ui">运行</strong>，第一个 <em>climate</em> 会以蓝色标为 <code>subject</code>，第二个以红色标为 <code>object</code>。</p>
+<p>存储之后，新分析器会加入列表，LemmaLoom 随即在后台对你所选语言的文档运行它。这些语言的每个文档的透镜菜单中会立即出现这个分析器；分析器在某个文档上运行完毕后，它的标注就会出现在那里。</p>
+<h3 id="reading-the-script">解读脚本<a class="anchor" href="#reading-the-script" aria-hidden="true">#</a></h3>
+<p>如果你熟悉 JavaScript，可以直接跳到下文的<a href="#document-object">分析器接收的文档</a>。请注意，下文提到的行号是代码粘贴进去后编辑器显示的行号。</p>
+<p>第 1 行（<code>const CLIMATE = …</code>）定义哪些词元算作“气候”。<code>const</code> 为一个值命名，方括号定义一个数组。英语 <em>climates</em> 的词元是 <em>climate</em>，德语 <em>Klimas</em>（如 <em>des Klimas</em>）的词元是 <em>Klima</em>。这个数组列出这个词的英语、德语和中文形式。请注意，德语词写成小写的 <code>klima</code>，因为第 6 行在匹配词元时会把每个词元转成小写。</p>
+<p>第 2 行（<code>function analyze(doc) {</code>）定义 LemmaLoom 要调用的函数，它有一个名为 <code>doc</code> 的参数。这个参数就是 LemmaLoom 传入的文档对象。第 3 行（<code>const findings = []</code>）声明一个数组变量 <code>findings</code>，用来存放发现。</p>
+<p>第 4 行（<code>for (const sentence of doc.sentences) {</code>）遍历文档的每个句子，每次都执行这个代码块中的操作。同样，第 5 行（<code>sentence.tokens.forEach(…)</code>）遍历当前句子中的词符。<code>(token, index) =&gt; { … }</code> 是一个匿名函数；<code>forEach</code> 每次调用它，传入当前词符和它在句中的位置（从 0 开始）作为参数。</p>
+<p>如果第 6 行（<code>if (CLIMATE.includes(…)) {</code>）的条件为真，也就是 <code>includes</code> 在列表 <code>CLIMATE</code> 中找到了词符的词元，这个 <code>if</code> 的花括号中的语句就会执行。</p>
+<p>第 7 行（<code>const role = token.derived.function;</code>）读取当前词符的语法功能值，也就是<strong class="ui">语法功能</strong>透镜显示的值。第 8 行（<code>role === FUNCTION.SUBJECT</code>）和第 11 行（<code>role === FUNCTION.OBJECT</code>）用 <code>===</code> 检验是否相等。两个操作数相等时，相等运算符返回真。这里，脚本检查词符的语法功能是 <code>FUNCTION.SUBJECT</code> 还是 <code>FUNCTION.OBJECT</code>（见本章后文<a href="#constants">常量</a>）。</p>
+<p>条件为真时，脚本在第 9 行和第 12 行（<code>findings.push(…)</code>）把表示发现的对象添加到数组 <code>findings</code> 中；注意对象用花括号括起来。每个对象有四个字段，分别表示来源句子、这段文字的起始位置（<code>start</code>，即当前词符的 <code>index</code>）、紧接在这段文字最后一个词符之后的位置（<code>end</code>，这里是 <code>index + 1</code>）以及键。因此，每条发现只对应一个词，它的起始位置和结束位置是两个相邻的数。</p>
+<p>最后，第 17 行（<code>return findings;</code>）把结果交还给 LemmaLoom。</p>
+<p><em>宾语</em>是语法功能中一个宽泛的类别，也包括介词的宾语。因此，这个脚本既会统计 <em>protect the climate</em> 这样的例子，也会统计 <em>do more for the climate</em>。被动句的主语，如 <em>the climate is affected by our emissions</em> 中的 <em>climate</em>，属于 <code>FUNCTION.SUBJECT</code> 这一语法功能类别，所以算作主语。如果要把被动句主语和宾语算在一起，可以把第 7 行改为 <code>const role = token.dep === DEP.NSUBJPASS ? FUNCTION.OBJECT : token.derived.function;</code>。借助 <code>?</code> 和 <code>:</code>，这一行根据词符是不是被动句主语，在 <code>FUNCTION.OBJECT</code> 和词符本身的功能之间选择。请记住，这种办法只在英语中完全适用；德语的语法分析给被动句主语的标注与主动句主语相同，中文的语法分析只给部分被字句的主语加上这个标签。</p>
+<p>这个脚本可以从语法上追踪任何一个词，例如“政府”或“产业”。把第 1 行中的词元换成你要追踪的词的小写形式即可。</p>
+<h2 id="document-object">分析器接收的文档<a class="anchor" href="#document-object" aria-hidden="true">#</a></h2>
+<p>函数 <code>analyze</code> 接收一个参数，下文称为 <code>doc</code>。这个参数有三个字段：</p>
+<div class="table-wrap"><table>
+<thead><tr><th>字段</th><th>内容</th></tr></thead>
+<tbody>
+<tr><td><code>doc.language</code></td><td>分析所用的语言，即 <code>&quot;en&quot;</code>、<code>&quot;de&quot;</code> 或 <code>&quot;zh&quot;</code></td></tr>
+<tr><td><code>doc.sentences</code></td><td>各个句子，按顺序排列</td></tr>
+<tr><td><code>doc.builtins</code></td><td>内置分析器<strong class="ui">衔接</strong>、<strong class="ui">元话语</strong>和<strong class="ui">修辞</strong>的结果</td></tr>
+</tbody></table></div>
+<p>分析器只能根据文档的分析返回结果。如果要把分析器的发现与你的编码实例、备忘录、链接、书签、属性、文档信息或其他自定义分析器的结果结合起来，请考虑为此构建一个查询（见本章后文<a href="#using-findings">使用发现</a>）。</p>
+<p>对于非常大的文档，LemmaLoom 会分段建立索引，每段文本最长半兆字节（约 80,000 个英语单词）。LemmaLoom 对每一段调用一次 <code>analyze</code> 函数，句子编号也重新从 0 开始。一般长度的文档作为一个整体建立索引。</p>
+<h3 id="sentences">句子<a class="anchor" href="#sentences" aria-hidden="true">#</a></h3>
+<p><code>doc.sentences</code> 中的每一项包含以下字段：</p>
+<div class="table-wrap"><table>
+<thead><tr><th>字段</th><th>内容</th></tr></thead>
+<tbody>
+<tr><td><code>index</code></td><td>句子的编号，从 0 开始。它也是句子在 <code>doc.sentences</code> 中的位置。</td></tr>
+<tr><td><code>text</code></td><td>句子的文本</td></tr>
+<tr><td><code>tokens</code></td><td>句子中的词符，按顺序排列</td></tr>
+<tr><td><code>root</code></td><td>句子根词符的位置，根通常是主要动词；句子没有句法分析时为 <code>-1</code></td></tr>
+<tr><td><code>constituents</code></td><td>句子中的短语（见<a href="#phrases-and-noun-chunks">短语与名词块</a>）</td></tr>
+<tr><td><code>nounChunks</code></td><td>句子中的名词块</td></tr>
+</tbody></table></div>
+<h3 id="tokens">词符<a class="anchor" href="#tokens" aria-hidden="true">#</a></h3>
+<p>词符在每个句子中从 0 开始编号，脚本中的位置指的都是词符的编号。词符可以是词，也可以是标点符号。每个词符包含以下字段：</p>
+<div class="table-wrap"><table>
+<thead><tr><th>字段</th><th>内容</th><th>示例</th></tr></thead>
+<tbody>
+<tr><td><code>text</code></td><td>词符在文本中的原样</td><td><code>targets</code></td></tr>
+<tr><td><code>whitespace</code></td><td>词符后面的空白</td><td><code>&quot; &quot;</code></td></tr>
+<tr><td><code>lemma</code></td><td>词典形式；中文与 <code>text</code> 相同</td><td><code>target</code></td></tr>
+<tr><td><code>pos</code></td><td>通用词类，各语言使用相同的代码</td><td><code>NOUN</code></td></tr>
+<tr><td><code>tag</code></td><td>该语言自身标记集中的细粒度标记</td><td><code>NNS</code></td></tr>
+<tr><td><code>dep</code></td><td>与中心词之间的依存关系</td><td><code>nsubjpass</code></td></tr>
+<tr><td><code>head</code></td><td>中心词的位置；根指向自身</td><td><code>4</code></td></tr>
+<tr><td><code>index</code></td><td>词符自身在句中的位置</td><td><code>2</code></td></tr>
+<tr><td><code>morph</code></td><td>形态特征；中文为空</td><td><code>{ Number: &quot;Plur&quot; }</code></td></tr>
+<tr><td><code>isStop</code></td><td>对 <em>the</em>、<em>of</em> 这类非常常见的词为 <code>true</code></td><td><code>false</code></td></tr>
+<tr><td><code>derived</code></td><td>LemmaLoom 根据上述字段得出的三个类别（见下一节）</td><td></td></tr>
+</tbody></table></div>
+<p>表中的示例分析基于句子 <em>The new targets were announced last year.</em>（新的目标已于去年公布）。这个句子的分析大致如下：</p>
+<div class="table-wrap"><table>
+<thead><tr><th>index</th><th>text</th><th>lemma</th><th>pos</th><th>tag</th><th>dep</th><th>head</th><th>derived.function</th></tr></thead>
+<tbody>
+<tr><td>0</td><td>The</td><td>the</td><td>DET</td><td>DT</td><td>det</td><td>2</td><td>adjectival</td></tr>
+<tr><td>1</td><td>new</td><td>new</td><td>ADJ</td><td>JJ</td><td>amod</td><td>2</td><td>adjectival</td></tr>
+<tr><td>2</td><td>targets</td><td>target</td><td>NOUN</td><td>NNS</td><td>nsubjpass</td><td>4</td><td>subject</td></tr>
+<tr><td>3</td><td>were</td><td>be</td><td>AUX</td><td>VBD</td><td>auxpass</td><td>4</td><td>connector</td></tr>
+<tr><td>4</td><td>announced</td><td>announce</td><td>VERB</td><td>VBN</td><td>ROOT</td><td>4</td><td>mainClause</td></tr>
+<tr><td>5</td><td>last</td><td>last</td><td>ADJ</td><td>JJ</td><td>amod</td><td>6</td><td>adjectival</td></tr>
+<tr><td>6</td><td>year</td><td>year</td><td>NOUN</td><td>NN</td><td>npadvmod</td><td>4</td><td>adverbial</td></tr>
+<tr><td>7</td><td>.</td><td>.</td><td>PUNCT</td><td>.</td><td>punct</td><td>4</td><td>unknown</td></tr>
+</tbody></table></div>
+<p>可以把 <code>head</code> 一列看作从每个词指向它所依存的词的箭头。<em>targets</em> 作为被动句主语，依存于位置 4 的 <em>announced</em>；<em>the</em> 和 <em>new</em> 则依存于 <em>targets</em>。<em>announced</em> 是根词，所以它的中心词就是它自己，<code>sentence.root</code> 为 4。</p>
+<p>标记和关系标签因语言而异。英语的标记遵循 Penn Treebank，关系标签是 <code>nsubj</code>、<code>dobj</code> 这样的英语依存关系。德语的标记遵循 STTS，关系标签遵循 TIGER，例如 <code>sb</code> 表示主语，<code>oa</code> 表示宾格宾语。中文的标记遵循 Chinese Treebank，关系标签是英语的关系标签加上 <code>aux:asp</code>、<code>nmod:assmod</code> 等中文标签。<code>pos</code> 字段和 <code>derived</code> 各字段的取值在三种语言中完全相同，所以只检验这些字段的脚本适用于所有语言。<strong class="ui">参考</strong>面板按名称列出了标记和标签（见本章后文<a href="#reference-panel">参考面板</a>）。</p>
+<h3 id="derived-categories">派生类别<a class="anchor" href="#derived-categories" aria-hidden="true">#</a></h3>
+<p><code>token.derived</code> 包含 LemmaLoom 为每个词符计算出的三个类别。每个类别对应一个透镜，在每种语言中含义都相同。</p>
+<div class="table-wrap"><table>
+<thead><tr><th>字段</th><th>透镜</th><th>取值</th></tr></thead>
+<tbody>
+<tr><td><code>derived.function</code></td><td><strong class="ui">语法功能</strong></td><td><code>subject</code>、<code>object</code>、<code>predicative</code>、<code>complement</code>、<code>adjectival</code>、<code>adverbial</code>、<code>appositive</code>、<code>agent</code>、<code>conjunct</code>、<code>connector</code>、<code>mainClause</code>、<code>unknown</code></td></tr>
+<tr><td><code>derived.posCategory</code></td><td><strong class="ui">词类</strong></td><td><code>noun</code>、<code>verb</code>、<code>adjective</code>、<code>adverb</code>、<code>pronoun</code>、<code>determiner</code>、<code>preposition</code>、<code>conjunction</code>、<code>number</code>、<code>interjection</code>、<code>other</code></td></tr>
+<tr><td><code>derived.phraseCategory</code></td><td><strong class="ui">短语</strong></td><td><code>nounPhrase</code>、<code>verbPhrase</code>、<code>prepPhrase</code>、<code>adjPhrase</code>、<code>advPhrase</code>、<code>conjPhrase</code>、<code>interjection</code>、<code>other</code>，或空字符串</td></tr>
+</tbody></table></div>
+<p>LemmaLoom 根据词符的依存关系推断它的功能。不过，对于几种关系，推断时还要考虑词符的中心词。如果中心词是名词、代词或数词，像 <code>advmod</code> 这样的修饰关系算作 <code>adjectival</code>，否则算作 <code>adverbial</code>。带子类型的关系（用冒号标出）按冒号前的部分归类，只有 <code>obl:agent</code> 例外，它算作 <code>agent</code>。根的功能是 <code>mainClause</code>，<code>unknown</code> 指其余所有关系，例如标点。</p>
+<p>短语类别是包含该词符的最小短语（小句除外）的类别。只属于小句一级短语的词符（例如句号），短语类别为空字符串。</p>
+<h3 id="phrases-and-noun-chunks">短语与名词块<a class="anchor" href="#phrases-and-noun-chunks" aria-hidden="true">#</a></h3>
+<p><code>sentence.constituents</code> 给出句子中各个短语组成的数组，依据的是<strong class="ui">短语</strong>透镜和句子图示中直观显示的短语结构树。每个短语包含其词符的起始位置和结束位置（<code>start</code> 和 <code>end</code>），以及短语标签的数组 <code>labels</code>，例如名词短语为 <code>['NP']</code>。如果几个短语覆盖的词符完全相同，它们会合为一个对象，标签按从外到内的嵌套顺序排列。</p>
+<p><code>sentence.nounChunks</code> 给出句子中的名词块。名词块是一个名词连同它前面从属于它的词，例如 <em>the new targets</em>。名词块包含起始位置和结束位置。</p>
+<p>对于 <em>The new targets were announced last year.</em>，这两个数组可能是这样的：</p>
+<pre><code>constituents: [
+  { start: 0, end: 8, labels: ['S'] },
+  { start: 0, end: 3, labels: ['NP'] },
+  { start: 3, end: 7, labels: ['VP'] },
+  { start: 4, end: 7, labels: ['VP'] },
+  { start: 5, end: 7, labels: ['NP'] },
+]
+nounChunks: [
+  { start: 0, end: 3 },
+]
+</code></pre>
+<p><code>S</code> 表示句子，<code>VP</code> 表示动词短语。<em>last year</em> 是名词短语，但不是名词块。在英语中，名词块只出现在充当主语、宾语或句中类似成分的名词或代词周围，而这里的 <em>year</em> 实际上是状语修饰语。两个列表都可能为空，例如只有一个词的回答。编写程序代码时，要考虑到这些情况。</p>
+<h3 id="builtin-results">内置分析器的结果<a class="anchor" href="#builtin-results" aria-hidden="true">#</a></h3>
+<p>你的自定义分析器最后在文档上运行。三个内置分析器先运行，并把结果放在 <code>doc.builtins</code> 中。即使你先前删除了某个内置分析器的结果，你的自定义分析器仍然可以使用这些结果。</p>
+<div class="table-wrap"><table>
+<thead><tr><th>字段</th><th>每一项包含</th></tr></thead>
+<tbody>
+<tr><td><code>doc.builtins.cohesion</code></td><td>每句一项，包含 <code>sentenceIndex</code>、<code>tie</code>（句子如何与前文衔接）、<code>theme</code> 和 <code>rheme</code>（分别是句子开头和句子重心所在的词符范围，形式为 <code>[start, end]</code>；句子没有相应部分时，该字段不存在）以及 <code>tieWord</code>（构成衔接的词）</td></tr>
+<tr><td><code>doc.builtins.metadiscourse</code></td><td>分析器找到的每个词一项，包含 <code>sentenceIndex</code>、<code>local</code>（词符的位置）以及 <code>category</code>（例如 <code>hedge</code>）</td></tr>
+<tr><td><code>doc.builtins.rhetoric</code></td><td>每个修辞手法一项，包含 <code>device</code>（例如 <code>passiveVoice</code>）、<code>sentenceIndex</code>、<code>range</code>（词符范围，形式为 <code>[start, end]</code>）以及 <code>note</code></td></tr>
+</tbody></table></div>
+<p><code>tie</code> 有七个取值（<code>opening</code>、<code>pronoun</code>、<code>possessive</code>、<code>demonstrative</code>、<code>repetition</code>、<code>zero</code> 和 <code>broken</code>）。<code>category</code> 有五个可能的取值（<code>hedge</code>、<code>booster</code>、<code>attitude</code>、<code>connective</code> 和 <code>engagement</code>）；此外，德语的 <code>category</code> 还可能是 <code>modalParticle</code>，中文的还可能是 <code>finalParticle</code>。最后，<code>device</code> 有十三个可能的取值，从 <code>passiveVoice</code> 到 <code>correlative</code>。<strong class="ui">参考</strong>面板列出了每个字段的所有可能取值，以及透镜中定义的名称。关于各个分析器分析什么，详见<a href="lenses.html">第 6 章“透镜”</a>。</p>
+<h3 id="helper-functions">辅助函数<a class="anchor" href="#helper-functions" aria-hidden="true">#</a></h3>
+<p><code>LL</code> 提供了几个函数，用来处理编写脚本时的常见操作。</p>
+<div class="table-wrap"><table>
+<thead><tr><th>函数</th><th>返回</th></tr></thead>
+<tbody>
+<tr><td><code>LL.isWord(token)</code></td><td>词符不是标点或 <code>$</code> 之类的符号时为 <code>true</code></td></tr>
+<tr><td><code>LL.isNominal(pos)</code></td><td>对 <code>NOUN</code>、<code>PROPN</code> 和 <code>PRON</code> 为 <code>true</code></td></tr>
+<tr><td><code>LL.isVerbal(pos)</code></td><td>对 <code>VERB</code> 和 <code>AUX</code> 为 <code>true</code></td></tr>
+<tr><td><code>LL.children(sentence, i)</code></td><td>以词符 <code>i</code> 为中心词的各个词符的位置</td></tr>
+<tr><td><code>LL.subtree(sentence, i)</code></td><td><code>{ start, end }</code>，即词符 <code>i</code> 周围由它和直接或间接依存于它的词符组成的连续范围</td></tr>
+<tr><td><code>LL.root(sentence)</code></td><td>句子根的位置，与 <code>sentence.root</code> 相同</td></tr>
+<tr><td><code>LL.text(sentence, start, end)</code></td><td>从 <code>start</code> 到 <code>end</code> 之前各词符的文本，连同其间的空白</td></tr>
+<tr><td><code>console.log(...)</code></td><td>在<strong class="ui">试一试</strong>下方写出一行；列表和对象会完整写出</td></tr>
+</tbody></table></div>
+<p>在示例句中，<code>LL.children(sentence, 4)</code> 返回数组 <code>[2, 3, 6, 7]</code>，即依存于 <em>announced</em> 的词符。调用 <code>LL.subtree(sentence, 2)</code> 会得到一个有两个字段的对象 <code>{ start: 0, end: 3 }</code>，它覆盖文本 <em>The new targets</em>；调用 <code>LL.text(sentence, 0, 3)</code> 则得到文本 <code>&quot;The new targets&quot;</code>。</p>
+<p><code>console.log</code> 调用只用于调试；分析器在你的文档上运行时，它的输出会被丢弃。</p>
+<h3 id="constants">常量<a class="anchor" href="#constants" aria-hidden="true">#</a></h3>
+<p>绝大多数字段存放的是 <code>NOUN</code>、<code>nsubjpass</code> 这样的简短代码。代码可以写成带引号的字符串，也可以写成具名常量；表达式 <code>token.pos === POS.NOUN</code> 与 <code>token.pos === 'NOUN'</code> 含义相同。请尽可能使用具名常量。编辑器会弹出具名常量的建议，并给拼错的常量加下划线。带引号的字符串则无论拼写是否正确，都会原样接受。运行时，像 <code>POS.NOUM</code> 这样拼错的常量求值为 <code>undefined</code>，脚本照常运行，所以下划线是唯一的提醒。</p>
+<div class="table-wrap"><table>
+<thead><tr><th>常量</th><th>对应的取值</th><th>示例</th></tr></thead>
+<tbody>
+<tr><td><code>POS</code></td><td><code>token.pos</code></td><td><code>POS.NOUN</code> 即 <code>'NOUN'</code></td></tr>
+<tr><td><code>TAG</code></td><td><code>token.tag</code>，三种语言都有</td><td><code>TAG.NNS</code> 即 <code>'NNS'</code></td></tr>
+<tr><td><code>DEP</code></td><td><code>token.dep</code>，三种语言都有</td><td><code>DEP.NSUBJPASS</code> 即 <code>'nsubjpass'</code></td></tr>
+<tr><td><code>PHRASE</code></td><td>成分的 <code>labels</code></td><td><code>PHRASE.NP</code> 即 <code>'NP'</code></td></tr>
+<tr><td><code>MORPH</code></td><td><code>token.morph</code> 中特征的名称</td><td><code>MORPH.TENSE</code> 即 <code>'Tense'</code></td></tr>
+<tr><td><code>FUNCTION</code></td><td><code>token.derived.function</code></td><td><code>FUNCTION.SUBJECT</code> 即 <code>'subject'</code></td></tr>
+<tr><td><code>CATEGORY</code></td><td><code>token.derived.posCategory</code></td><td><code>CATEGORY.NOUN</code> 即 <code>'noun'</code></td></tr>
+<tr><td><code>PHRASE_CATEGORY</code></td><td><code>token.derived.phraseCategory</code></td><td><code>PHRASE_CATEGORY.NOUN_PHRASE</code> 即 <code>'nounPhrase'</code></td></tr>
+<tr><td><code>COHESION</code></td><td><code>doc.builtins.cohesion</code> 中的 <code>tie</code></td><td><code>COHESION.REPETITION</code> 即 <code>'repetition'</code></td></tr>
+<tr><td><code>METADISCOURSE</code></td><td><code>doc.builtins.metadiscourse</code> 中的 <code>category</code></td><td><code>METADISCOURSE.HEDGE</code> 即 <code>'hedge'</code></td></tr>
+<tr><td><code>RHETORIC</code></td><td><code>doc.builtins.rhetoric</code> 中的 <code>device</code></td><td><code>RHETORIC.PASSIVE_VOICE</code> 即 <code>'passiveVoice'</code></td></tr>
+<tr><td><code>KEY</code></td><td>本分析器图例中的键</td><td><code>KEY.SUBJECT</code> 即 <code>'subject'</code></td></tr>
+</tbody></table></div>
+<p>LemmaLoom 中的常量名称就是大写的代码。如果代码中小写字母后面紧跟大写字母，就在两者之间加一个下划线，例如 <code>nounPhrase</code> 写作 <code>NOUN_PHRASE</code>，<code>mainClause</code> 写作 <code>MAIN_CLAUSE</code>。不能出现在名称中的非字母符号（例如冒号）都换成下划线。</p>
+<p><code>MORPH</code> 常量是特征代码的名称。特征的取值请写成字符串，例如 <code>token.morph[MORPH.TENSE] === 'Past'</code>，或者直接写成 <code>token.morph.Tense === 'Past'</code>。</p>
+<p>常量名称适用于大多数代码，但有四种情况不同：</p>
+<ul>
+<li><code>DEP.ROOT</code> 的值是 <code>'root'</code>，但分析中根的标签是 <code>ROOT</code>。要判断一个词符是不是根，请比较位置，如 <code>index === sentence.root</code>，或者使用 <code>'ROOT'</code>。</li>
+<li><code>MORPH</code> 常量下列出十个常见特征，即 Tense、Number、Person、Mood、VerbForm、Case、Degree、Aspect、Gender 和 PronType。<code>MORPH</code> 常量中没有的特征，请直接使用它的字符串形式，如 <code>token.morph.Definite === 'Def'</code>。</li>
+<li>只出现在中文中的短语标签，例如 <code>IP</code>、<code>DNP</code> 和 <code>LCP</code>，需要在名称外加引号。</li>
+<li>完全由标点构成的标记，例如英语的句号（<code>.</code>）和逗号（<code>,</code>）或德语的 <code>$,</code>，也需要加引号。</li>
+</ul>
+<p>不要使用已经属于常量、<code>LL</code> 或 <code>console</code> 的名称。脚本如果自己定义了 <code>const KEY</code>，运行时就会因出错而停止。</p>
+<h3 id="reference-panel">参考面板<a class="anchor" href="#reference-panel" aria-hidden="true">#</a></h3>
+<p>窗口右侧的<strong class="ui">参考</strong>面板列出文档对象的各个部分、辅助函数和常量。<strong class="ui">API</strong> 下列出 <code>doc.language</code>、<code>doc.sentences[i].tokens[j]</code>、<code>doc.builtins</code> 中的全部三个列表，以及各个辅助函数。每个组成部分的声明后面都注明它的值类型，例如 <code>String</code>、<code>Bool</code>。句子、词符和发现对象的所有字段，可以在本章的表格中查看。<strong class="ui">API</strong> 下面的各部分列出常量，每个常量都附有一个通俗的名称：</p>
+<ul>
+<li><strong class="ui">词类</strong>（<code>POS</code>）、<strong class="ui">细粒度标记</strong>（<code>TAG</code>）、<strong class="ui">依存关系</strong>（<code>DEP</code>）、<strong class="ui">成分标签</strong>（<code>PHRASE</code>）和<strong class="ui">形态特征</strong>（<code>MORPH</code>）；</li>
+<li><strong class="ui">语法功能</strong>（<code>FUNCTION</code>）、<strong class="ui">词类别</strong>（<code>CATEGORY</code>）和<strong class="ui">短语类别</strong>（<code>PHRASE_CATEGORY</code>）；</li>
+<li><strong class="ui">修辞手法</strong>（<code>RHETORIC</code>）、<strong class="ui">衔接手段</strong>（<code>COHESION</code>）和<strong class="ui">元话语类别</strong>（<code>METADISCOURSE</code>）。</li>
+</ul>
+<p>以上各部分默认都是收起的。点按某一部分的标题，即可展开或收起这一部分。在<strong class="ui">搜索</strong>中输入某一项的一部分文字，即可查找它。查找常量时，会比对它的名称、代码或通俗名称；查找 <strong class="ui">API</strong> 中的项时，会搜索 API 声明的原文。面板会把所有部分中匹配的项合并列出，或者显示<strong class="ui">无匹配项</strong>。点按任何一项，即可把它插入编辑器中光标所在的位置。</p>
+<figure class="shot" id="custom-analyzers-reference"><img class="shot-light" src="../figures/zh-Hans/light/custom-analyzers-reference.webp" alt="在“搜索”中输入 subject 后的参考面板。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/custom-analyzers-reference.webp" alt="在“搜索”中输入 subject 后的参考面板。" loading="lazy"><figcaption>在“搜索”中输入 subject 后的参考面板。</figcaption></figure>
+<h2 id="findings-and-legend">发现与图例<a class="anchor" href="#findings-and-legend" aria-hidden="true">#</a></h2>
+<h3 id="findings">发现<a class="anchor" href="#findings" aria-hidden="true">#</a></h3>
+<p><code>analyze</code> 必须返回一个列表，其中每个元素都是一条发现，包含以下字段：</p>
+<div class="table-wrap"><table>
+<thead><tr><th>字段</th><th>内容</th></tr></thead>
+<tbody>
+<tr><td><code>sentenceIndex</code></td><td>句子的 <code>index</code></td></tr>
+<tr><td><code>start</code></td><td>这段文字第一个词符的位置</td></tr>
+<tr><td><code>end</code></td><td>紧接在最后一个词符之后的位置</td></tr>
+<tr><td><code>key</code></td><td>图例中的某个键</td></tr>
+<tr><td><code>note</code></td><td>一段你自己写的简短文本；可选</td></tr>
+</tbody></table></div>
+<p>以 <em>The new targets were announced</em> 为例，第一个词符在位置 0，最后一个在位置 4，所以这条发现取 <code>start: 0</code> 和 <code>end: 5</code>。因此，词符数总是等于 <code>end - start</code>，这里是 5。</p>
+<p>一条发现只能位于一个句子之内。发现可以相互重叠，因此一个词符可以带有多个键；这时阅读器会在它上面呈现所有这些键的样式。</p>
+<p>注释字段供查询使用。你可以在查询中用字段<strong class="ui">注释</strong>检验它们（见本章后文<a href="#using-findings">使用发现</a>）。</p>
+<h3 id="legend">键与图例<a class="anchor" href="#legend" aria-hidden="true">#</a></h3>
+<p>发现用到的每个键，在图例中都必须有对应的一行。编辑器上方的<strong class="ui">图例</strong>窗格为每个键显示一行，包含以下几部分：</p>
+<ul>
+<li><strong class="ui">键</strong>显示脚本中写的键。</li>
+<li><strong class="ui">标签</strong>是透镜图例中显示的名称，查询也使用它。标签最初就是键名本身。</li>
+<li>颜色池设定这个键的发现所用的颜色。新键会从八种颜色中依次取色。</li>
+<li>样式菜单设定阅读器的呈现方式，选项有<strong class="ui">高亮</strong>、<strong class="ui">下划线</strong>、<strong class="ui">文本颜色</strong>和<strong class="ui">粗体</strong>。新添加的键最初选择的是<strong class="ui">高亮</strong>。</li>
+</ul>
+<p>你编写脚本时，脚本中每个用引号写出的键（<code>key: '...'</code>）都会在图例中生成一行，顺序与它们在脚本中出现的顺序相同。从脚本中删除一个键，图例中相应的行也会删除。如果修改了键名，原来那一行就会删除，换成一个新行，以修改后的键为标签，并使用默认颜色。因此，最好在确定键名之后再设置颜色和标签。</p>
+<p>你可以随时修改任何一行，包括它的标签、颜色和样式。存储之后，对图例行所做的修改会显示在启用了该透镜的每个文档中。</p>
+<h3 id="computed-keys">由脚本计算出的键<a class="anchor" href="#computed-keys" aria-hidden="true">#</a></h3>
+<p>键也可以根据分析本身生成。用下面这一行替换分析器“气候角色”中的两条 <code>if</code> 语句及其中的 <code>push</code> 语句，语法功能就会成为键：</p>
+<pre><code>findings.push({ sentenceIndex: sentence.index, start: index, end: index + 1, key: token.derived.function });
+</code></pre>
+<p>作主语的“气候”得到键 <code>subject</code>，作宾语的“气候”得到 <code>object</code>，<em>climate policy</em>（气候政策）的第一部分得到 <code>adjectival</code>，依此类推，涵盖本章前文<a href="#derived-categories">派生类别</a>中列出的全部十二个取值。</p>
+<p>这些键通过试运行进入图例。点按<strong class="ui">存储</strong>时，LemmaLoom 会在一个由三个词组成的示例句（英语为 <em>Cats sleep soundly</em>）上运行脚本，并自动添加运行中产生的键。这些行会保留各自的标签和颜色；脚本不再产生的键会在下次存储时移除。</p>
+<p>试运行没有产生的键（如本例中的键）需要手动添加：</p>
+<ol>
+<li>点按图例下方的<strong class="ui">添加键</strong>。</li>
+<li>在新行的<strong class="ui">键</strong>栏中输入键，写法要与脚本产生的完全一致（例如 <code>adjectival</code>）。</li>
+<li>填写<strong class="ui">标签</strong>，并设置颜色和样式。</li>
+</ol>
+<p>你添加的行末尾有一个减号按钮，用来移除这一行；无论脚本中写了什么，这一行都会保留在图例中。存储时，LemmaLoom 会略去<strong class="ui">键</strong>为空的行；两行的键相同时，只保留第一行。</p>
+<figure class="shot" id="custom-analyzers-legend-pane"><img class="shot-light" src="../figures/zh-Hans/light/custom-analyzers-legend-pane.webp" alt="“气候角色”的“图例”窗格，用“添加键”新增了一行，样式菜单已打开。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/custom-analyzers-legend-pane.webp" alt="“气候角色”的“图例”窗格，用“添加键”新增了一行，样式菜单已打开。" loading="lazy"><figcaption>“气候角色”的“图例”窗格，用“添加键”新增了一行，样式菜单已打开。</figcaption></figure>
+<aside class="callout note"><p class="callout-title">注意</p><p>如果你的脚本在某个文档中产生了图例中没有的键，分析器就会失败，LemmaLoom 会丢弃它在这个文档中的全部发现。<strong class="ui">试一试</strong>也会同样失败。因此，请把脚本可能产生的所有键都添加到图例中。</p>
+</aside>
+<p>图例中有某个键，<code>KEY</code> 中就有对应的常量。图例中列有键 <code>subject</code> 时，你可以写 <code>key: KEY.SUBJECT</code>。如果你只以 <code>KEY</code> 常量的形式写出某个键，就需要用<strong class="ui">添加键</strong>添加它。以数字开头的键（如 <code>1st</code>），或包含 a 到 z 以外字母的键（如 <code>über</code> 或 <code>主语</code>），要用引号括起来。</p>
+<h2 id="languages">支持的语言<a class="anchor" href="#languages" aria-hidden="true">#</a></h2>
+<p>复选框<strong class="ui">英语</strong>、<strong class="ui">德语</strong>和<strong class="ui">中文</strong>决定分析器在哪些文档上运行。LemmaLoom 为这三种语言的文档建立索引。只有所选语言的文档，才会在透镜菜单中提供这个分析器，并在<strong class="ui">文档信息</strong>中显示它。至少要选择一种语言。</p>
+<p>请确保你的脚本适用于所选的语言。“气候角色”适用于全部三种语言，不过“气候辩论”只需要中文和英语。“气候角色”的列表包含英语、德语和中文的词元，检验的是 <code>token.derived.function</code>，这个字段在所有语言中取值都相同。检验 <code>token.tag</code> 或 <code>token.dep</code> 的脚本只适用于其标签所属的语言。一个脚本可以借助 <code>doc.language</code> 处理多种语言：</p>
+<pre><code>let subjectLabel = 'nsubj';
+if (doc.language === 'de') {
+  subjectLabel = 'sb';
+}
+</code></pre>
+<p>即使考虑到派生字段，每种语言的分析在细节上也会有所不同，所以请测试你选择的每种语言。在英语中，<em>do more for the climate</em> 会产生一条发现，因为分析把 <em>climate</em> 视为介词 <em>for</em> 的宾语。而在德语中，介词短语 <em>für das Klima</em> 中的名词通常标为 <code>nk</code>（名词短语的一部分），因而算作 <code>adjectival</code>，这个句子就不会产生发现。</p>
+<p>要测试另一种语言，请在<strong class="ui">试一试</strong>下的语言菜单中选取它，再输入用这种语言写的句子。菜单中只能选择你勾选的语言，并以代码列出：<code>en</code> 表示英语，<code>de</code> 表示德语，<code>zh</code> 表示中文。</p>
+<p>存储时，LemmaLoom 会从已取消勾选的语言的文档中删除这个分析器的发现，并在新勾选的语言的文档上运行它。</p>
+<h2 id="try-it-out">用“试一试”测试<a class="anchor" href="#try-it-out" aria-hidden="true">#</a></h2>
+<p><strong class="ui">试一试</strong>在你输入的文本上运行编辑器中当前的脚本，无论脚本是否已存储。编写时请经常使用<strong class="ui">试一试</strong>，并加入结构与最初例句不同的句子，因为分析器必须应对你的文档中的每一种句子结构。</p>
+<ol>
+<li>在<strong class="ui">试一试</strong>下的文本框中输入一个或多个句子。</li>
+<li>在文本框旁边的菜单中选取文本的语言。</li>
+<li>点按<strong class="ui">运行</strong>。</li>
+</ol>
+<p>LemmaLoom 用与文档相同的方法对你的文本进行语法分析，然后运行内置分析器，再运行你的脚本。你的文本会出现在文本框下方，发现按图例中指定的颜色和样式标注出来。对某种语言第一次运行之前，LemmaLoom 可能需要几秒钟为这种语言准备语法分析。文本框为空时，<strong class="ui">运行</strong>已停用（<strong class="ui">未输入文本</strong>）；运行期间，按钮的位置会显示一个旋转图标。</p>
+<figure class="shot" id="custom-analyzers-try-it-out"><img class="shot-light" src="../figures/zh-Hans/light/custom-analyzers-try-it-out.webp" alt="运行之后的“试一试”，第一个 climate 被识别为主语，第二个被识别为宾语。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/custom-analyzers-try-it-out.webp" alt="运行之后的“试一试”，第一个 climate 被识别为主语，第二个被识别为宾语。" loading="lazy"><figcaption>运行之后的“试一试”，第一个 climate 被识别为主语，第二个被识别为宾语。</figcaption></figure>
+<p>标注文本的下方有一个小控制台，显示脚本用 <code>console.log</code> 写出的所有内容，每次调用占一行，每行前面都有 ›。脚本什么也没找到时，控制台显示<strong class="ui">0 个结果</strong>。如果想知道分析如何解读某个句子，可以把相应的值写出来。把下面这一行放在遍历句子的循环中，它会写出每个词符及其依存关系：</p>
+<pre><code>console.log(sentence.tokens.map((token) =&gt; token.text + '/' + token.dep));
+</code></pre>
+<p>对于 <em>The new targets were announced last year.</em>，它写出 <code>[&quot;The/det&quot;,&quot;new/amod&quot;,&quot;targets/nsubjpass&quot;,&quot;were/auxpass&quot;,&quot;announced/ROOT&quot;,&quot;last/amod&quot;,&quot;year/npadvmod&quot;,&quot;./punct&quot;]</code>。</p>
+<p>只要窗口开着，测试文本就会保留在文本框中，即使切换分析器也是如此，所以你可以在同一段文本上运行多个分析器。</p>
+<h3 id="errors">出现错误时<a class="anchor" href="#errors" aria-hidden="true">#</a></h3>
+<p>如果运行失败，LemmaLoom 会停止执行你的脚本，在编辑器下方以红色显示错误信息；如果错误出在某一行，还会在编辑器中给这一行加下划线。发现本身有任何错误时，编辑器会给第 1 行加下划线。</p>
+<figure class="shot" id="custom-analyzers-error"><img class="shot-light" src="../figures/zh-Hans/light/custom-analyzers-error.webp" alt="第 6 行写成 token.lema 而不是 token.lemma 时，点按“运行”后出现的错误。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/custom-analyzers-error.webp" alt="第 6 行写成 token.lema 而不是 token.lemma 时，点按“运行”后出现的错误。" loading="lazy"><figcaption>第 6 行写成 token.lema 而不是 token.lemma 时，点按“运行”后出现的错误。</figcaption></figure>
+<div class="table-wrap"><table>
+<thead><tr><th>信息</th><th>含义</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">The script must define a function named analyze(doc).</strong></td><td>没有名为 <code>analyze</code> 的函数，可能是因为函数名拼错了。</td></tr>
+<tr><td><strong class="ui">analyze(doc) must return an array of findings.</strong></td><td>函数没有返回任何内容，或者返回的不是列表。请检查 <code>return</code> 这一行。</td></tr>
+<tr><td><strong class="ui">Finding 3 must have sentenceIndex, start, end, and key.</strong></td><td>某条发现缺少四个字段之一，某个字段名拼错了，或者某个值的类型不对（位置不是数字，或者键不是文本）。像 <code>KEY.SUBJCT</code> 这样拼错的常量没有值，所以也会导致这条信息。发现从 0 开始计数，所以这里指的是第四条。</td></tr>
+<tr><td><strong class="ui">Finding 3: sentenceIndex 12 is out of range.</strong></td><td>没有这个编号的句子。</td></tr>
+<tr><td><strong class="ui">Finding 3: token range 4..4 is out of range for sentence 0.</strong></td><td><code>end</code> 不大于 <code>start</code>，<code>start</code> 小于 0，或者 <code>end</code> 超出了句子末尾。</td></tr>
+<tr><td><strong class="ui">Finding 3: key “objekt” is not in the legend.</strong></td><td>这个键在图例中没有对应的行。请改正脚本，或者用<strong class="ui">添加键</strong>添加这个键。</td></tr>
+<tr><td>以 <strong class="ui">TypeError</strong>、<strong class="ui">ReferenceError</strong> 或 <strong class="ui">SyntaxError</strong> 开头的信息</td><td>JavaScript 本身的错误。编辑器会给相应的行加下划线。</td></tr>
+</tbody></table></div>
+<p><strong class="ui">TypeError</strong> 常常表示某个字段名拼错了。假设“气候角色”的第 6 行写的是 <code>token.lema.toLowerCase()</code>，而不是 <code>token.lemma.toLowerCase()</code>。这个错误会让运行在第 6 行因 <strong class="ui">TypeError</strong> 而停止，因为 <code>token.lema</code> 不存在，也就无法转成小写。</p>
+<p>陷入无限循环的脚本会一直执行下去。在<strong class="ui">试一试</strong>下，旋转的圆圈会一直占据<strong class="ui">运行</strong>的位置。<strong class="ui">存储</strong>按钮也会执行脚本，所以也可能造成同样的问题。由于退出会丢失未存储的修改，你需要先用 ⌘A 选中整个脚本，再用 ⌘C 拷贝它。然后退出 LemmaLoom（⌘Q），重新打开，再把脚本粘贴回去。陷入无限循环的脚本通常含有一个条件永远不会变为假的 <code>while</code> 循环。如果脚本中有遍历列表的 <code>for … of</code> 或 <code>forEach</code> 以外的循环，请在存储之前先用一小段文本测试它。</p>
+<aside class="callout tip"><p class="callout-title">提示</p><p>在编辑器中按 F1 可以打开它的命令面板。跳转到某一行、在脚本中查找或替换文本、把若干行注释掉（变成脚本会跳过的注释）等命令都在这里。注释掉若干行特别有助于找出脚本中出问题的部分。</p>
+</aside>
+<h2 id="breakpoints">断点与单步执行<a class="anchor" href="#breakpoints" aria-hidden="true">#</a></h2>
+<p>如果标注出的文本不符合预期，你可以在测试运行中途暂停执行，查看脚本中变量的当前状态。</p>
+<ol>
+<li>点按编辑器中行号左侧的空白处，或点按行号本身。出现一个红点，表示这一行设有<em>断点</em>。再点按一次即可移除。</li>
+<li>点按<strong class="ui">试一试</strong>下的<strong class="ui">运行</strong>。</li>
+</ol>
+<p>脚本会在即将执行带断点的那一行时暂停。这一行会高亮显示，测试文本下方的一个框中会显示它的行号（例如 <strong class="ui">● L7</strong>），以及脚本中各个变量的当前值。此外，把鼠标指针悬停在脚本编辑器中的某个变量上，也会显示它的值。</p>
+<figure class="shot" id="custom-analyzers-breakpoint"><img class="shot-light" src="../figures/zh-Hans/light/custom-analyzers-breakpoint.webp" alt="“气候角色”停在第 7 行的断点处，测试文本下方显示 doc、sentence、token、findings 和 index 的值。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/custom-analyzers-breakpoint.webp" alt="“气候角色”停在第 7 行的断点处，测试文本下方显示 doc、sentence、token、findings 和 index 的值。" loading="lazy"><figcaption>“气候角色”停在第 7 行的断点处，测试文本下方显示 doc、sentence、token、findings 和 index 的值。</figcaption></figure>
+<p>这时，三个按钮取代了<strong class="ui">运行</strong>：</p>
+<ul>
+<li>播放按钮会越过当前断点，继续运行到下一个断点或运行结束。</li>
+<li>弯箭头会前进到下一个开始一条语句的行，包括进入循环语句和交给 <code>forEach</code> 的函数。因此，单步执行“气候角色”会依次经过每个词符。</li>
+<li>方块会提前结束运行。</li>
+</ul>
+<p>LemmaLoom 只显示 <code>doc</code>、<code>sentence</code>、<code>token</code>、<code>findings</code>、<code>finding</code>、<code>marker</code>、<code>span</code>、<code>clause</code>、<code>i</code> 和 <code>index</code> 这些变量，而且只在它们当前存在于脚本中时才显示。本章的示例尽可能使用这些名称。其他变量，例如“气候角色”中的 <code>role</code>，可以用 <code>console.log</code> 写出来。较长的值会被截断。列表显示为它的长度（<code>Array(3)</code>），文本在前 80 个字符之后截断，对象在 120 个字符之后截断。</p>
+<p>以“气候角色”和本章前文介绍的测试句为例，在第 7 行（<code>const role = …</code>）设置断点后，执行会在第一个 <em>climate</em> 处暂停，此时 <code>index</code> 为 1，<code>findings</code> 为 <code>Array(0)</code>。点按播放按钮后，执行在第二个 <em>climate</em> 处暂停，此时 <code>index</code> 为 16，<code>findings</code> 为 <code>Array(1)</code>，因为第一个 <em>climate</em> 的发现已在两次暂停之间添加进去。</p>
+<p>断点只会让脚本停在开始一条语句的行上。因此，设在只有右花括号和右圆括号的行上（例如“气候角色”中的 <code>}</code> 或 <code>});</code>）、以 <code>else</code> 开头的行上或上一条语句的接续行上的断点会被跳过。对于少数几种代码排版，LemmaLoom 只能从一个断点跟到下一个断点；在另外少数几种排版下，脚本会一直执行到底，不在任何断点处停下。断点只能在<strong class="ui">试一试</strong>中使用。</p>
+<h2 id="saving">存储、修改和删除<a class="anchor" href="#saving" aria-hidden="true">#</a></h2>
+<h3 id="saving-an-analyzer">存储分析器<a class="anchor" href="#saving-an-analyzer" aria-hidden="true">#</a></h3>
+<p>要存储分析器，请点按中间一栏顶部的<strong class="ui">存储</strong>，或者在编辑<strong class="ui">名称</strong>或某个<strong class="ui">标签</strong>栏时按下 Return 键。<strong class="ui">名称</strong>为空（<strong class="ui">名称为空</strong>）或没有勾选任何语言（<strong class="ui">未选择语言</strong>）时，<strong class="ui">存储</strong>已停用。</p>
+<p>存储分析器之前，LemmaLoom 会检查它的脚本。LemmaLoom 先提取图例的键，再针对每种所选语言，在一个由三个词组成的示例句上运行你的脚本（<em>Cats sleep soundly</em>、<em>Katzen schlafen gern</em> 和“猫 喜欢 睡觉”）。这些示例句的短语、名词块、形态特征和内置分析器结果都是空的，所以这项检查也能发现脚本在处理空列表时出现的问题。脚本有问题时，LemmaLoom 会在脚本编辑器下方告诉你（见本章前文<a href="#errors">出现错误时</a>）。另有两条信息只在存储时显示。<strong class="ui">The script is empty.</strong> 表示编辑器中没有写任何脚本，<strong class="ui">No keys found in the script.</strong> 表示图例表格为空。</p>
+<p>接着，LemmaLoom 把检查过的脚本应用到你所选语言的所有文档上。导航栏和<strong class="ui">窗口 ▸ 活动</strong>（⌥⌘0）中会显示进度环。所需时间取决于你有多少文档，以及你的 Mac 的性能。</p>
+<h3 id="changing">修改分析器<a class="anchor" href="#changing" aria-hidden="true">#</a></h3>
+<p>在列表中选择一个分析器，修改它，然后点按<strong class="ui">存储</strong>。根据修改的性质，结果会有所不同：</p>
+<ul>
+<li>如果修改的是名称、标签、颜色或样式，修改会立即在启用了它的透镜的所有地方生效。</li>
+<li>如果修改的是分析器脚本本身、它所用的语言，或者它用于分析的键，LemmaLoom 会在它指定语言的所有文档上重新运行整个分析器，包括你刚勾选的语言。在分析器处理到某个文档之前，这个文档的<strong class="ui">文档信息</strong>中该分析器的行显示<strong class="ui">已过期</strong>。</li>
+</ul>
+<p>新建、修改和删除分析器，都是分析器窗口撤销历史中的条目。分析器窗口处于活动状态时，选取<strong class="ui">编辑 ▸ 撤销编辑分析器</strong>之类的命令，就会回到分析器的上一个版本。在你再次从列表中选择这个分析器之前，中间一栏仍然显示你存储的内容；如果在此之前存储，就会再次存储较新的版本。关于各个窗口中的撤销，详见<a href="undo.html">第 23 章“撤销与重做”</a>中的<a href="undo.html#windows">步骤属于哪个窗口</a>。</p>
+<h3 id="deleting">删除分析器<a class="anchor" href="#deleting" aria-hidden="true">#</a></h3>
+<p>要删除分析器，请在列表中右键点按它，然后选取<strong class="ui">删除分析器</strong>。你也可以先选择这个分析器，再选取<strong class="ui">编辑 ▸ 删除分析器</strong>（⌘⌫）。这个快捷键在列表获得焦点时有效，选择分析器之后就是如此。LemmaLoom 会立即删除这个分析器。</p>
+<p>分析器由所有项目共享，所以删除后它会立即从所有项目中消失。它的透镜在所有已打开的文档中停用，LemmaLoom 也会从所有文档中移除它的发现。<strong class="ui">编辑 ▸ 撤销删除分析器</strong>（⌘Z）会恢复它并重新运行。如果你只是不想让分析器在某些文档上运行，请为这些文档停用它（见本章后文<a href="#per-document">按文档设置分析器</a>）。</p>
+<h2 id="when-analyzers-run">分析器何时执行<a class="anchor" href="#when-analyzers-run" aria-hidden="true">#</a></h2>
+<p>自定义分析器在建立索引的最后阶段，即在每个文档的语法分析和三个内置分析器之后，在你的文档上执行。适用于文档语言的每个自定义分析器，只要在这个文档上处于启用状态，就会依次执行。它的发现与文档本身一起存储，可以通过透镜、<strong class="ui">自动编码…</strong>和查询访问。</p>
+<p>在以下情况下，你的分析器会在文档上执行：</p>
+<ul>
+<li>初次建立索引时，即导入项目之后或通过<strong class="ui">立即建立索引</strong>；</li>
+<li>之后重新建立索引时，例如更改了文档的文本或语言设置之后；</li>
+<li>存储新分析器时，或者存储对分析器脚本、所选语言或键的修改时；</li>
+<li>在文档的<strong class="ui">文档信息</strong>中点按<strong class="ui">运行</strong>时。</li>
+</ul>
+<p>修改现有的分析器之后，LemmaLoom 通常会沿用之前对文档进行的语法分析，只重新执行各个分析器，而不是一切从头再来。尽管如此，分析器仍要处理它所适用语言的每个文档。脚本写得效率低下，就会拖慢所有文档的处理。更糟的是，脚本如果陷入无限循环，就会一直运行下去，直到你退出 LemmaLoom。遇到这种情况，请先在<strong class="ui">窗口 ▸ 分析器</strong>中改正或删除出问题的分析器，再退出并重新打开 LemmaLoom。</p>
+<p>脚本可能在某个文档上执行出错。也许这个文档包含某种词语或句法组合，而编写脚本时的测试句里没有出现过。LemmaLoom 会丢弃该分析器在这个文档上的发现，并在<strong class="ui">文档信息</strong>中把它标为<strong class="ui">未运行</strong>或<strong class="ui">已过期</strong>。你可以在那里点按<strong class="ui">运行</strong>重试。如果问题依旧，分析器脚本再次失败，LemmaLoom 会在<strong class="ui">文档信息</strong>中把它标为<strong class="ui">失败</strong>，鼠标指针悬停时显示错误信息。要找出确切的问题，请把可疑的句子放进<strong class="ui">试一试</strong>，在那里运行脚本。</p>
+<figure class="shot" id="custom-analyzers-failed"><img class="shot-light" src="../figures/zh-Hans/light/custom-analyzers-failed.webp" alt="“时间不多了”的“文档信息”中“索引”部分的“分析器”列表，“气候角色”标记为“失败”，将鼠标指针悬停时显示其错误信息。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/custom-analyzers-failed.webp" alt="“时间不多了”的“文档信息”中“索引”部分的“分析器”列表，“气候角色”标记为“失败”，将鼠标指针悬停时显示其错误信息。" loading="lazy"><figcaption>“时间不多了”的“文档信息”中“索引”部分的“分析器”列表，“气候角色”标记为“失败”，将鼠标指针悬停时显示其错误信息。</figcaption></figure>
+<h2 id="per-document">按文档设置分析器<a class="anchor" href="#per-document" aria-hidden="true">#</a></h2>
+<p>分析器会在其所支持语言的每个文档上运行，除非你为某个文档停用了它。不适合某个文档的分析器，你可以在导入这个文档时停用，也可以之后随时停用。<a href="analysis-and-indexing.html">第 21 章“分析与索引”</a>中的<a href="analysis-and-indexing.html#document-analyzers">为文档选择分析器</a>介绍了如何为文档选择分析器。</p>
+<p>导入文档时，你可以在<strong class="ui">导入文档</strong>对话框（网页则为<strong class="ui">从网页导入</strong>对话框）中使用<strong class="ui">分析器</strong>列表。列表先显示内置分析器，再按名称顺序显示你的分析器。列表中的每一项都有一个复选框，取消勾选就能阻止这个分析器在该文档上执行。<strong class="ui">语言</strong>设为<strong class="ui">自动</strong>时，列表显示所有分析器；选择了某种语言时，只显示适用于这种语言的分析器。此外，<strong class="ui">为语法分析建立索引</strong>未勾选时，这个列表会停用。详见<a href="importing.html">第 4 章“导入资料”</a>中的<a href="importing.html#import-indexing-options">分析器与建立索引</a>。</p>
+<p>对于已在项目中的文档，<strong class="ui">分析器</strong>列表位于<strong class="ui">文档信息</strong>中：</p>
+<ol>
+<li>在导航栏中右键点按文档，选取<strong class="ui">信息</strong>。</li>
+<li>在<strong class="ui">索引</strong>部分找到<strong class="ui">分析器</strong>列表。</li>
+</ol>
+<p>适用于该文档语言的每个分析器都有自己的一行，显示它是<strong class="ui">完成</strong>、<strong class="ui">已过期</strong>、<strong class="ui">未运行</strong>、<strong class="ui">运行中</strong>还是<strong class="ui">失败</strong>。</p>
+<ul>
+<li>要从文档中移除某个分析器的发现，让它不再在这个文档上运行，请点按它的废纸篓按钮，即<strong class="ui">移除输出</strong>。分析器在这个文档上运行过之后，这个按钮才会出现。</li>
+<li>要执行<strong class="ui">未运行</strong>、<strong class="ui">已过期</strong>或已从文档中移除的分析器，请点按<strong class="ui">运行</strong>；这样也会在这个文档上重新启用已移除的分析器。</li>
+</ul>
+<p>文档尚未建立索引（<strong class="ui">尚未索引</strong>）或已为文档关闭索引（<strong class="ui">索引已关闭</strong>）时，<strong class="ui">运行</strong>已停用。移除和执行都会立即生效。</p>
+<p>移除分析器和执行已移除的分析器，都是主窗口撤销历史中的操作；<strong class="ui">编辑 ▸ 撤销移除输出</strong>会恢复并重新运行这个分析器。</p>
+<figure class="shot" id="custom-analyzers-document-properties"><img class="shot-light" src="../figures/zh-Hans/light/custom-analyzers-document-properties.webp" alt="“时间不多了”的文档信息中“索引”部分的“分析器”列表。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/custom-analyzers-document-properties.webp" alt="“时间不多了”的文档信息中“索引”部分的“分析器”列表。" loading="lazy"><figcaption>“时间不多了”的文档信息中“索引”部分的“分析器”列表。</figcaption></figure>
+<p>从某个文档中移除分析器后，它就不再出现在这个文档的透镜菜单中，<strong class="ui">自动编码…</strong>和涉及它的查询也会跳过这个文档。如果你之后修改了在某个文档上停用的分析器，它在那里仍然保持停用，所以新版本只在启用了它的文档上运行。</p>
+<h2 id="using-findings">使用发现<a class="anchor" href="#using-findings" aria-hidden="true">#</a></h2>
+<h3 id="findings-in-the-reader">在阅读器中<a class="anchor" href="#findings-in-the-reader" aria-hidden="true">#</a></h3>
+<p>你可以在透镜菜单中逐个开关分析器，直接在阅读器中查看它们对发现的标注。要启用某个分析器的标注，请打开标题栏右侧的透镜菜单，你的分析器在这里归为一组。透镜显示标注，它的图例显示标签名称。<strong class="ui">清除分析器</strong>会立即停用所有分析器透镜。关于开关单个键，以及用<strong class="ui">仅显示透镜标注的句子</strong>只查看带标注的句子，详见<a href="lenses.html">第 6 章“透镜”</a>中的<a href="lenses.html#analyzer-lenses">分析器透镜</a>。</p>
+<figure class="shot" id="custom-analyzers-lens"><img class="shot-light" src="../figures/zh-Hans/light/custom-analyzers-lens.webp" alt="启用了“气候角色”透镜的“时间不多了”。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/custom-analyzers-lens.webp" alt="启用了“气候角色”透镜的“时间不多了”。" loading="lazy"><figcaption>启用了“气候角色”透镜的“时间不多了”。</figcaption></figure>
+<h3 id="coding-findings">为发现编码<a class="anchor" href="#coding-findings" aria-hidden="true">#</a></h3>
+<p>启用分析器的透镜后，你就可以使用<strong class="ui">文档 ▸ 自动编码…</strong>（⇧⌘A），为这个分析器的发现编码。范围可以是当前打开的文档、一个文档集，甚至整个项目。发现中的每个键都成为<strong class="ui">自动编码</strong>对话框中的一行。每一行以相应的标签命名，可以归入已有的编码（例如在“气候辩论”中，把“气候作宾语”这一行归入“责任”），也可以变成新的编码（例如用“气候角色”的两行新建两个编码）。对于文档集或项目，LemmaLoom 会对其中所有与分析器语言相同、已建立索引并启用了该分析器的文档执行同样的操作。请注意，语法分析的每个错误也会变成一条编码实例。关于这个对话框，详见<a href="coding.html">第 7 章“编码”</a>。</p>
+<h3 id="findings-in-queries">在查询中<a class="anchor" href="#findings-in-queries" aria-hidden="true">#</a></h3>
+<p>查找<strong class="ui">分析 · 发现</strong>的查询会搜索各个分析器找到的内容，包括 LemmaLoom 自带的分析器和你创建的自定义分析器。有三个字段专门与发现有关。<strong class="ui">分析器</strong>检验发现是由哪个分析器找到的，<strong class="ui">发现</strong>检验记录发现时所用的键（按标签列出），<strong class="ui">注释</strong>检验发现的注释。查询中的其他检验也都适用，包括发现所带的编码，以及它所在文档的属性。查找<strong class="ui">资料库 · 分析器</strong>的查询则列出分析器本身，可以检验它们的<strong class="ui">名称</strong>、<strong class="ui">语言</strong>和<strong class="ui">图例键</strong>（见<a href="queries-building.html">第 15 章“构建查询”</a>中的<a href="queries-building.html#query-units">选择要查找的内容</a>）。</p>
+<p>在“气候辩论”中，每个文档都有一个名为“立场”的属性，取值为“行动派”“怀疑派”或“中立”。因此，按键和“立场”统计分析器“气候角色”的发现，就能看出行动派和怀疑派呈现气候这一话题的方式是否有差异。处理你自己的材料时，请选择能把你的文档区分开来的属性来分组。</p>
+<p>要按组统计分析器的发现：</p>
+<ol>
+<li>打开项目的<strong class="ui">查询</strong>视图。</li>
+<li>在<strong class="ui">查找</strong>中选取<strong class="ui">分析 · 发现</strong>。</li>
+<li>在<strong class="ui">条件</strong>中点按<strong class="ui">添加</strong>，然后选取<strong class="ui">添加规则</strong>。</li>
+<li>在新规则的字段菜单中，从<strong class="ui">发现</strong>部分选取<strong class="ui">分析器</strong>。</li>
+<li>比较方式保持为<strong class="ui">是以下任一</strong>，并选择这个分析器作为规则的值。</li>
+<li>在<strong class="ui">显示</strong>中选取<strong class="ui">数量</strong>。</li>
+<li>点按<strong class="ui">分组依据</strong>，在新行的字段菜单中选取<strong class="ui">发现</strong>。</li>
+<li>再次点按<strong class="ui">分组依据</strong>，在第二行的字段菜单中选取属性，例如<strong class="ui">属性 ▸ 立场</strong>。</li>
+<li>在显示<strong class="ui">命中</strong>的菜单中选取<strong class="ui">每万词</strong>。</li>
+</ol>
+<p>对于“气候辩论”中的“气候角色”，最终会得到一张表，列出“立场”每个取值下的主语和宾语。各组的文本量不同，所以你得到的实际上是一张比率表。这里的比率是指在每组文档的文本中，每 10,000 词出现多少条发现（见<a href="queries-results.html">第 16 章“查询结果与统计”</a>中的<a href="queries-results.html#measures">度量</a>）。例如，假设行动派的文档共有 4,000 词，其中有 3 条“气候作宾语”（这里取整数只为举例），比率就是 <span class="math math-inline" role="math" aria-label="3 / 4{,}000 \times 10{,}000 = 7.5" style="vertical-align:-0.270em"><svg aria-hidden="true" focusable="false" fill="currentColor" style="height:1.080em"  version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'   viewBox='0 -7.47198 98.519525 9.96264'>
+<defs>
+<path id='m1-g0-2' d='M3.875467-2.769614L1.882939-4.752179C1.763387-4.871731 1.743462-4.891656 1.663761-4.891656C1.564134-4.891656 1.464508-4.801993 1.464508-4.692403C1.464508-4.622665 1.484433-4.60274 1.594022-4.493151L3.58655-2.49066L1.594022-.488169C1.484433-.37858 1.464508-.358655 1.464508-.288917C1.464508-.179328 1.564134-.089664 1.663761-.089664C1.743462-.089664 1.763387-.109589 1.882939-.229141L3.865504-2.211706L5.927771-.14944C5.947696-.139477 6.017435-.089664 6.07721-.089664C6.196762-.089664 6.276463-.179328 6.276463-.288917C6.276463-.308842 6.276463-.348692 6.246575-.398506C6.236613-.418431 4.652553-1.982565 4.154421-2.49066L5.977584-4.313823C6.027397-4.373599 6.176837-4.503113 6.22665-4.562889C6.236613-4.582814 6.276463-4.622665 6.276463-4.692403C6.276463-4.801993 6.196762-4.891656 6.07721-4.891656C5.997509-4.891656 5.957659-4.851806 5.84807-4.742217L3.875467-2.769614Z'/>
+<path id='m1-g2-58' d='M1.912827-.52802C1.912827-.816936 1.673724-1.05604 1.384807-1.05604S.856787-.816936 .856787-.52802S1.09589 0 1.384807 0S1.912827-.239103 1.912827-.52802Z'/>
+<path id='m1-g2-59' d='M2.022416-.009963C2.022416-.667497 1.77335-1.05604 1.384807-1.05604C1.05604-1.05604 .856787-.806974 .856787-.52802C.856787-.259029 1.05604 0 1.384807 0C1.504359 0 1.633873-.039851 1.733499-.129514C1.763387-.14944 1.77335-.159402 1.783313-.159402S1.803238-.14944 1.803238-.009963C1.803238 .727273 1.454545 1.325031 1.125778 1.653798C1.016189 1.763387 1.016189 1.783313 1.016189 1.8132C1.016189 1.882939 1.066002 1.92279 1.115816 1.92279C1.225405 1.92279 2.022416 1.155666 2.022416-.009963Z'/>
+<path id='m1-g2-61' d='M4.373599-7.0934C4.423412-7.222914 4.423412-7.262765 4.423412-7.272727C4.423412-7.382316 4.333748-7.47198 4.224159-7.47198C4.154421-7.47198 4.084682-7.442092 4.054795-7.382316L.597758 2.11208C.547945 2.241594 .547945 2.281445 .547945 2.291407C.547945 2.400996 .637609 2.49066 .747198 2.49066C.876712 2.49066 .9066 2.420922 .966376 2.251557L4.373599-7.0934Z'/>
+<path id='m1-g4-48' d='M4.582814-3.188045C4.582814-3.985056 4.533001-4.782067 4.184309-5.519303C3.726027-6.475716 2.909091-6.635118 2.49066-6.635118C1.892902-6.635118 1.165629-6.37609 .757161-5.449564C.438356-4.762142 .388543-3.985056 .388543-3.188045C.388543-2.440847 .428394-1.544209 .836862-.787049C1.265255 .019925 1.992528 .219178 2.480697 .219178C3.01868 .219178 3.775841 .009963 4.214197-.936488C4.533001-1.62391 4.582814-2.400996 4.582814-3.188045ZM2.480697 0C2.092154 0 1.504359-.249066 1.325031-1.205479C1.215442-1.803238 1.215442-2.719801 1.215442-3.307597C1.215442-3.945205 1.215442-4.60274 1.295143-5.140722C1.484433-6.326276 2.231631-6.41594 2.480697-6.41594C2.809465-6.41594 3.466999-6.236613 3.656289-5.250311C3.755915-4.692403 3.755915-3.935243 3.755915-3.307597C3.755915-2.560399 3.755915-1.882939 3.646326-1.24533C3.496887-.298879 2.929016 0 2.480697 0Z'/>
+<path id='m1-g4-49' d='M2.929016-6.37609C2.929016-6.615193 2.929016-6.635118 2.699875-6.635118C2.082192-5.997509 1.205479-5.997509 .886675-5.997509V-5.688667C1.085928-5.688667 1.673724-5.688667 2.191781-5.947696V-.787049C2.191781-.428394 2.161893-.308842 1.265255-.308842H.946451V0C1.295143-.029888 2.161893-.029888 2.560399-.029888S3.825654-.029888 4.174346 0V-.308842H3.855542C2.958904-.308842 2.929016-.418431 2.929016-.787049V-6.37609Z'/>
+<path id='m1-g4-51' d='M2.889166-3.506849C3.706102-3.775841 4.283935-4.473225 4.283935-5.260274C4.283935-6.07721 3.407223-6.635118 2.450809-6.635118C1.444583-6.635118 .687422-6.03736 .687422-5.280199C.687422-4.951432 .9066-4.762142 1.195517-4.762142C1.504359-4.762142 1.703611-4.98132 1.703611-5.270237C1.703611-5.768369 1.235367-5.768369 1.085928-5.768369C1.39477-6.256538 2.052304-6.386052 2.410959-6.386052C2.819427-6.386052 3.367372-6.166874 3.367372-5.270237C3.367372-5.150685 3.347447-4.572852 3.088418-4.134496C2.789539-3.656289 2.450809-3.626401 2.201743-3.616438C2.122042-3.606476 1.882939-3.58655 1.8132-3.58655C1.733499-3.576588 1.663761-3.566625 1.663761-3.466999C1.663761-3.35741 1.733499-3.35741 1.902864-3.35741H2.34122C3.158157-3.35741 3.526775-2.67995 3.526775-1.703611C3.526775-.348692 2.839352-.059776 2.400996-.059776C1.972603-.059776 1.225405-.229141 .876712-.816936C1.225405-.767123 1.534247-.986301 1.534247-1.364882C1.534247-1.723537 1.265255-1.92279 .976339-1.92279C.737235-1.92279 .418431-1.783313 .418431-1.344956C.418431-.438356 1.344956 .219178 2.430884 .219178C3.646326 .219178 4.552927-.687422 4.552927-1.703611C4.552927-2.520548 3.92528-3.297634 2.889166-3.506849Z'/>
+<path id='m1-g4-52' d='M2.929016-1.643836V-.777086C2.929016-.418431 2.909091-.308842 2.171856-.308842H1.96264V0C2.371108-.029888 2.889166-.029888 3.307597-.029888S4.254047-.029888 4.662516 0V-.308842H4.4533C3.716065-.308842 3.696139-.418431 3.696139-.777086V-1.643836H4.692403V-1.952677H3.696139V-6.485679C3.696139-6.684932 3.696139-6.744707 3.536737-6.744707C3.447073-6.744707 3.417186-6.744707 3.337484-6.625156L.278954-1.952677V-1.643836H2.929016ZM2.988792-1.952677H.557908L2.988792-5.668742V-1.952677Z'/>
+<path id='m1-g4-53' d='M4.473225-2.002491C4.473225-3.188045 3.656289-4.184309 2.580324-4.184309C2.102117-4.184309 1.673724-4.024907 1.315068-3.676214V-5.618929C1.514321-5.559153 1.843088-5.489415 2.161893-5.489415C3.387298-5.489415 4.084682-6.396015 4.084682-6.525529C4.084682-6.585305 4.054795-6.635118 3.985056-6.635118C3.975093-6.635118 3.955168-6.635118 3.905355-6.60523C3.706102-6.515567 3.217933-6.316314 2.550436-6.316314C2.15193-6.316314 1.693649-6.386052 1.225405-6.595268C1.145704-6.625156 1.125778-6.625156 1.105853-6.625156C1.006227-6.625156 1.006227-6.545455 1.006227-6.386052V-3.437111C1.006227-3.257783 1.006227-3.178082 1.145704-3.178082C1.215442-3.178082 1.235367-3.20797 1.275218-3.267746C1.384807-3.427148 1.753425-3.965131 2.560399-3.965131C3.078456-3.965131 3.327522-3.506849 3.407223-3.327522C3.566625-2.958904 3.58655-2.570361 3.58655-2.072229C3.58655-1.723537 3.58655-1.125778 3.347447-.707347C3.108344-.318804 2.739726-.059776 2.281445-.059776C1.554172-.059776 .986301-.587796 .816936-1.175592C.846824-1.165629 .876712-1.155666 .986301-1.155666C1.315068-1.155666 1.484433-1.404732 1.484433-1.643836S1.315068-2.132005 .986301-2.132005C.846824-2.132005 .498132-2.062267 .498132-1.603985C.498132-.747198 1.185554 .219178 2.30137 .219178C3.457036 .219178 4.473225-.737235 4.473225-2.002491Z'/>
+<path id='m1-g4-55' d='M4.742217-6.067248C4.83188-6.1868 4.83188-6.206725 4.83188-6.41594H2.410959C1.195517-6.41594 1.175592-6.545455 1.135741-6.734745H.886675L.557908-4.682441H.806974C.836862-4.841843 .926526-5.469489 1.05604-5.589041C1.125778-5.648817 1.902864-5.648817 2.032379-5.648817H4.094645C3.985056-5.489415 3.198007-4.403487 2.978829-4.07472C2.082192-2.729763 1.753425-1.344956 1.753425-.328767C1.753425-.229141 1.753425 .219178 2.211706 .219178S2.669988-.229141 2.669988-.328767V-.836862C2.669988-1.384807 2.699875-1.932752 2.779577-2.470735C2.819427-2.699875 2.958904-3.556663 3.39726-4.174346L4.742217-6.067248Z'/>
+<path id='m1-g4-61' d='M6.844334-3.257783C6.993773-3.257783 7.183064-3.257783 7.183064-3.457036S6.993773-3.656289 6.854296-3.656289H.886675C.747198-3.656289 .557908-3.656289 .557908-3.457036S.747198-3.257783 .896638-3.257783H6.844334ZM6.854296-1.325031C6.993773-1.325031 7.183064-1.325031 7.183064-1.524284S6.993773-1.723537 6.844334-1.723537H.896638C.747198-1.723537 .557908-1.723537 .557908-1.524284S.747198-1.325031 .886675-1.325031H6.854296Z'/>
+</defs>
+<g id='m1-page134'>
+<use x='0' y='0' xlink:href='#m1-g4-51'/>
+<use x='4.981339' y='0' xlink:href='#m1-g2-61'/>
+<use x='9.962678' y='0' xlink:href='#m1-g4-52'/>
+<use x='14.944017' y='0' xlink:href='#m1-g2-59'/>
+<use x='17.711426' y='0' xlink:href='#m1-g4-48'/>
+<use x='22.692765' y='0' xlink:href='#m1-g4-48'/>
+<use x='27.674104' y='0' xlink:href='#m1-g4-48'/>
+<use x='34.869309' y='0' xlink:href='#m1-g0-2'/>
+<use x='44.831922' y='0' xlink:href='#m1-g4-49'/>
+<use x='49.813261' y='0' xlink:href='#m1-g4-48'/>
+<use x='54.7946' y='0' xlink:href='#m1-g2-59'/>
+<use x='57.562009' y='0' xlink:href='#m1-g4-48'/>
+<use x='62.543348' y='0' xlink:href='#m1-g4-48'/>
+<use x='67.524687' y='0' xlink:href='#m1-g4-48'/>
+<use x='75.273358' y='0' xlink:href='#m1-g4-61'/>
+<use x='85.789438' y='0' xlink:href='#m1-g4-55'/>
+<use x='90.770777' y='0' xlink:href='#m1-g2-58'/>
+<use x='93.538186' y='0' xlink:href='#m1-g4-53'/>
+</g>
+</svg></span>。</p>
+<figure class="shot" id="custom-analyzers-findings-query"><img class="shot-light" src="../figures/zh-Hans/light/custom-analyzers-findings-query.webp" alt="“气候辩论”项目中的查询，按发现和“立场”统计“气候角色”的发现，比率为每 10,000 词。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/custom-analyzers-findings-query.webp" alt="“气候辩论”项目中的查询，按发现和“立场”统计“气候角色”的发现，比率为每 10,000 词。" loading="lazy"><figcaption>“气候辩论”项目中的查询，按发现和“立场”统计“气候角色”的发现，比率为每 10,000 词。</figcaption></figure>
+<p>如<a href="queries-results.html">第 16 章“查询结果与统计”</a>中的<a href="queries-results.html#compare">比较各组</a>所述，如果要检验各组之间是否存在显著差异，请在<strong class="ui">显示</strong>中选取<strong class="ui">比较</strong>，然后从<strong class="ui">分组依据</strong>中删除<strong class="ui">发现</strong>这一行，只保留“立场”，最后添加规则<strong class="ui">发现</strong> <strong class="ui">是以下任一</strong>“气候作宾语”。三篇中立的文档“2024 热浪报告”“碳税之争”和“电台辩论”作为单独的一组参加比较。</p>
+<h3 id="analyzers-in-archives">在归档中<a class="anchor" href="#analyzers-in-archives" aria-hidden="true">#</a></h3>
+<p>LemmaLoom 归档（<code>.llz</code>）包含归档中的文档所存发现对应的分析器，以及这些发现本身。归档还包含归档中已存储查询所用到的分析器，以及由这些查询转换而来的分析器。导入归档时，如果某个分析器与你资料库中已有的分析器同名但并无关联，它会作为另一个分析器导入，与已有的分析器并列。详见<a href="exchange-and-export.html">第 22 章“交换与导出”</a>。</p>
+<h2 id="generated-analyzers">由查询生成的分析器<a class="anchor" href="#generated-analyzers" aria-hidden="true">#</a></h2>
+<p>在查询的<strong class="ui">存储</strong>菜单中选取<strong class="ui">存储为分析器…</strong>，即可把查询存储为分析器。查询必须查找词、模式匹配、句子、短语或名词块，并且只检验它们的词和语法，否则无法转换为分析器。新生成的分析器会和其他分析器一起出现在<strong class="ui">窗口 ▸ 分析器</strong>中，所以和其他分析器一样，你可以查看它的脚本，用<strong class="ui">试一试</strong>测试运行，也可以直接修改它。生成分析器时所用的键，就是查询中的类别；查询没有类别时，只有一个键 <code>hit</code>，标签为<strong class="ui">匹配</strong>。这些键在图例中显示为带<strong class="ui">键</strong>栏和减号按钮的行，与用<strong class="ui">添加键</strong>添加的行相同。</p>
+<p>新生成的分析器会<em>链接</em>到它所来自的已存储查询。如果这个查询修改后再次存储，列表中该分析器的名称旁边就会显示<strong class="ui">已过期</strong>。更新方法如下：</p>
+<ol>
+<li>在列表中点按这个分析器。</li>
+<li>点按<strong class="ui">存储</strong>左边的<strong class="ui">更新分析器</strong>。</li>
+</ol>
+<p>LemmaLoom 根据已存储的查询写出新脚本时，会保留分析器的名称和语言，但替换它的脚本和图例，所以你对分析器的标签、颜色和样式所做的任何修改都会被新生成的分析器覆盖。检查新脚本找到的内容是否与查询相同，这一步只在使用<strong class="ui">存储为分析器…</strong>时进行。如果新写出的脚本有错误，错误会显示在编辑器下方。如果已存储的查询在当前状态下无法转换为分析器，<strong class="ui">更新分析器</strong>会停用，并说明无法更新的原因；<strong class="ui">编辑 ▸ 撤销更新分析器</strong>会把分析器恢复到更新之前的状态。</p>
+<p>编辑并存储脚本后，已存储查询与分析器之间的链接就会解除，此后这个分析器算作你自己的分析器。只修改名称、语言或图例则会保留链接。关于处理由查询生成的分析器的更多方法，见<a href="queries-using-results.html">第 18 章“使用查询结果”</a>中的<a href="queries-using-results.html#out-of-date">让分析器与查询保持同步</a>。</p>
+</article>
+<nav class="pager"><a class="previous" href="dictionaries.html"><span>上一章</span>词典</a><a class="next" href="analysis-and-indexing.html"><span>下一章</span>分析与索引</a></nav>
+<footer class="site-footer">© 2026 Ryan S. Cooper. 保留所有权利。<br>本版本借助人工智能根据英文原版翻译而成，译文可能存在错误或不准确之处。如有疑问，请以英文版为准。</footer>
+</main>
+<nav class="page-toc" aria-label="本页内容"><p>本页内容</p><ul>
+<li class="level-2"><a href="#key-terms">关键术语</a></li>
+<li class="level-2"><a href="#analyzers-window">分析器窗口</a></li>
+<li class="level-2"><a href="#first-analyzer">编写第一个分析器</a></li>
+<li class="level-3"><a href="#reading-the-script">解读脚本</a></li>
+<li class="level-2"><a href="#document-object">分析器接收的文档</a></li>
+<li class="level-3"><a href="#sentences">句子</a></li>
+<li class="level-3"><a href="#tokens">词符</a></li>
+<li class="level-3"><a href="#derived-categories">派生类别</a></li>
+<li class="level-3"><a href="#phrases-and-noun-chunks">短语与名词块</a></li>
+<li class="level-3"><a href="#builtin-results">内置分析器的结果</a></li>
+<li class="level-3"><a href="#helper-functions">辅助函数</a></li>
+<li class="level-3"><a href="#constants">常量</a></li>
+<li class="level-3"><a href="#reference-panel">参考面板</a></li>
+<li class="level-2"><a href="#findings-and-legend">发现与图例</a></li>
+<li class="level-3"><a href="#findings">发现</a></li>
+<li class="level-3"><a href="#legend">键与图例</a></li>
+<li class="level-3"><a href="#computed-keys">由脚本计算出的键</a></li>
+<li class="level-2"><a href="#languages">支持的语言</a></li>
+<li class="level-2"><a href="#try-it-out">用“试一试”测试</a></li>
+<li class="level-3"><a href="#errors">出现错误时</a></li>
+<li class="level-2"><a href="#breakpoints">断点与单步执行</a></li>
+<li class="level-2"><a href="#saving">存储、修改和删除</a></li>
+<li class="level-3"><a href="#saving-an-analyzer">存储分析器</a></li>
+<li class="level-3"><a href="#changing">修改分析器</a></li>
+<li class="level-3"><a href="#deleting">删除分析器</a></li>
+<li class="level-2"><a href="#when-analyzers-run">分析器何时执行</a></li>
+<li class="level-2"><a href="#per-document">按文档设置分析器</a></li>
+<li class="level-2"><a href="#using-findings">使用发现</a></li>
+<li class="level-3"><a href="#findings-in-the-reader">在阅读器中</a></li>
+<li class="level-3"><a href="#coding-findings">为发现编码</a></li>
+<li class="level-3"><a href="#findings-in-queries">在查询中</a></li>
+<li class="level-3"><a href="#analyzers-in-archives">在归档中</a></li>
+<li class="level-2"><a href="#generated-analyzers">由查询生成的分析器</a></li>
+</ul></nav>
+</div>
+<script src="../assets/guide.js" defer></script>
+</body>
+</html>

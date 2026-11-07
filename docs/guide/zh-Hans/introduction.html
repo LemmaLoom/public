@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>简介 · LemmaLoom 用户指南</title>
+<link rel="stylesheet" href="../assets/guide.css">
+<link rel="icon" type="image/png" href="../assets/logo.png">
+<script>var r=document.documentElement;r.setAttribute('data-theme','light');try{if(localStorage.getItem('guide-theme')==='dark'){r.setAttribute('data-theme','dark')}}catch(e){}</script>
+</head>
+<body>
+<header class="topbar">
+<button class="menu-toggle" aria-label="目录" aria-expanded="false">☰</button>
+<a class="brand" href="index.html"><span class="wordmark"><span class="lemma">Lemma</span>Loom</span><span class="guide-name">用户指南</span></a>
+<div class="search"><input type="search" id="search" placeholder="搜索" aria-label="搜索" autocomplete="off" data-empty="无结果"><div class="results" id="results" hidden></div></div>
+<nav class="languages" aria-label="Language"><a href="../en/introduction.html" lang="en">English</a><a href="../de/introduction.html" lang="de">Deutsch</a><a href="../zh-Hans/introduction.html" lang="zh-Hans" aria-current="true">简体中文</a></nav>
+<button class="theme-toggle" data-light="浅色" data-dark="深色" aria-label="外观"></button>
+<a class="pdf-link" href="https://github.com/LemmaLoom/public/raw/main/pdf/lemmaloom-guide-zh-Hans.pdf">PDF</a>
+</header>
+<div class="layout">
+<nav class="sidebar" aria-label="目录"><ol>
+<li class="unnumbered"><a href="quick-start.html">快速入门</a></li>
+<li class="current"><a href="introduction.html">简介</a></li>
+<li><a href="getting-started.html">开始使用</a></li>
+<li><a href="projects-and-documents.html">项目与文档</a></li>
+<li><a href="importing.html">导入资料</a></li>
+<li><a href="reading-and-editing.html">阅读与编辑</a></li>
+<li><a href="lenses.html">透镜</a></li>
+<li><a href="coding.html">编码</a></li>
+<li><a href="sets-tags-attributes.html">文档集、分组、标签和属性</a></li>
+<li><a href="translations.html">译文与分屏浏览</a></li>
+<li><a href="text-inspector.html">文本检查器</a></li>
+<li><a href="grammar-inspector.html">语法检查器</a></li>
+<li><a href="word-sketch.html">词汇速写</a></li>
+<li><a href="coding-analysis.html">编码分析</a></li>
+<li><a href="sketch-space.html">速写空间</a></li>
+<li><a href="queries-building.html">构建查询</a></li>
+<li><a href="queries-results.html">查询结果与统计</a></li>
+<li><a href="queries-patterns.html">查询模式与发现</a></li>
+<li><a href="queries-using-results.html">使用查询结果</a></li>
+<li><a href="dictionaries.html">词典</a></li>
+<li><a href="custom-analyzers.html">自定义分析器</a></li>
+<li><a href="analysis-and-indexing.html">分析与索引</a></li>
+<li><a href="exchange-and-export.html">交换与导出</a></li>
+<li><a href="undo.html">撤销与重做</a></li>
+<li><a href="settings.html">设置与外观</a></li>
+<li><a href="keyboard-shortcuts.html">键盘快捷键</a></li>
+<li><a href="help-and-support.html">帮助与支持</a></li>
+<li><a href="statistics-reference.html">统计量一览</a></li>
+<li class="unnumbered"><a href="glossary.html">术语表</a></li>
+<li class="unnumbered"><a href="thanks.html">感谢</a></li>
+</ol></nav>
+<main class="content">
+<article>
+<h1 id="introduction">简介</h1>
+<p>LemmaLoom 是一款质性数据分析应用，同时也能识别语法。你可以像在其他任何质性数据分析类应用中那样为段落编码；不同的是，在 LemmaLoom 中，你还可以对照整个文档所用的语法来考察这些编码实例。假设你为暗含“不确定性”的段落编了码，接下来就可以在文档中查询这些编码实例里出现的某些语法模式，例如模糊限制语和情态动词的用法。</p>
+<h2 id="who-it-is-for">LemmaLoom 是什么<a class="anchor" href="#who-it-is-for" aria-hidden="true">#</a></h2>
+<p>LemmaLoom 可以处理任何类型的文本。无论你手头是论文、评论文章、新闻报道、调查问卷、访谈还是文学作品，LemmaLoom 都能读入。不过，支持的格式只有几种。可以导入的有纯文本文件、PDF、网络文章（通过 URL）以及音频和视频文件。音频和视频文件还会由语音转文字模型转写成文本；此外，说话人分离模型会自动为转写文本中的不同说话人编码。</p>
+<h2 id="main-window">主窗口<a class="anchor" href="#main-window" aria-hidden="true">#</a></h2>
+<p>主窗口分为三栏。<a href="getting-started.html">第 2 章“开始使用”</a>中的<a href="getting-started.html#main-window">认识主窗口</a>一节详细介绍了窗口中的每个部分。</p>
+<figure class="shot" id="introduction-main-window"><img class="shot-light" src="../figures/zh-Hans/light/introduction-main-window.webp" alt="阅读器中打开的评论文章“时间不多了”，左侧是导航栏，右侧是检查器的“编码”标签页。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/introduction-main-window.webp" alt="阅读器中打开的评论文章“时间不多了”，左侧是导航栏，右侧是检查器的“编码”标签页。" loading="lazy"><figcaption>阅读器中打开的评论文章“时间不多了”，左侧是导航栏，右侧是检查器的“编码”标签页。</figcaption></figure>
+<p>LemmaLoom 左侧的<em>导航栏</em>列出你的所有项目。导航栏中<strong class="ui">项目</strong>下面是当前项目的<em>项目视图栏</em>，全部十个视图都在这里，其中包括<strong class="ui">编码本</strong>、<strong class="ui">编码矩阵</strong>和<strong class="ui">查询</strong>。每个视图都在阅读器的一个标签页中打开。视图栏下方是项目的文档集、分组、文档，以及这些文档的标签。</p>
+<p><em>阅读器</em>位于主窗口的中间。每个文档和每个视图都有自己的标签页。阅读器顶部横贯着<em>标题栏</em>，上面有透镜菜单，以及用于查找文本、更改字体和文字大小的按钮。标题栏的右侧是<strong class="ui">编辑</strong>，用于把阅读器切换到编辑模式。在阅读器中选中文本后，阅读器底部会弹出<em>选区栏</em>。你可以在这里点按<strong class="ui">书签</strong>、<strong class="ui">编码</strong>、<strong class="ui">备忘录</strong>和<strong class="ui">链接</strong>；如果项目使用了词典，<strong class="ui">添加到词典</strong>也在这里。</p>
+<p>LemmaLoom 右侧是<em>检查器</em>，其中包含与当前标签页中的文档有关的一切。它有四个标签页：<strong class="ui">文本</strong>、<strong class="ui">语法</strong>、<strong class="ui">编码</strong>和<strong class="ui">多重模式</strong>，其中<strong class="ui">多重模式</strong>包含<strong class="ui">速写空间</strong>和针对该文档的查询构建器。也可以通过<strong class="ui">显示 ▸ 检查器</strong>（⌥⌘1 至 ⌥⌘4）切换到这些标签页。每个标签页又分为若干部分，称为<em>分面</em>；标签页顶部的一排按钮用来切换你正在查看的分面。</p>
+<h2 id="kinds-of-work">工作类型<a class="anchor" href="#kinds-of-work" aria-hidden="true">#</a></h2>
+<p>如果本章中有你不熟悉的术语，可以跳到<a href="#key-terms">基本术语</a>一节查看。</p>
+<h3 id="qualitative-coding">质性编码<a class="anchor" href="#qualitative-coding" aria-hidden="true">#</a></h3>
+<p>编码是指给段落加上称为编码的标签，凡是与某个编码相关的段落，都可以加上这个编码。编码可以涉及主题、情感或技术，也可以是一个问题，你想让它是什么都可以。编码通常是为了帮助你回答关于原始材料的具体问题而设计的，所以不妨从你的问题出发，找出文本的哪些方面可能有助于你以质性或量化的方式回答这些问题。随应用附带的<a href="#example-project">示例项目</a>“气候辩论”中有“紧迫性”“科学”和“情绪”等编码；你可以看到这些编码如何应用于项目中的各个文档，以及它们如何帮助回答这些文档在呈现气候信息上有何不同。通常，你会在项目的<strong class="ui">编码本</strong>中建立编码（在导航栏中点按<strong class="ui">项目</strong>下的<strong class="ui">编码本</strong>），然后在通读文本时应用它们；不过，编码也可以在阅读过程中随手创建，也就是 in vivo 编码。要为一个段落编码，请在阅读器中选中它，然后点按底部选区栏中的<strong class="ui">编码</strong>。你可以从编码本中选一个编码，也可以像上面说的那样新建一个编码。</p>
+<figure class="shot" id="introduction-code-palette"><img class="shot-light" src="../figures/zh-Hans/light/introduction-code-palette.webp" alt="用选区栏中“编码”按钮弹出的列表，为“时间不多了”中选中的段落编码。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/introduction-code-palette.webp" alt="用选区栏中“编码”按钮弹出的列表，为“时间不多了”中选中的段落编码。" loading="lazy"><figcaption>用选区栏中“编码”按钮弹出的列表，为“时间不多了”中选中的段落编码。</figcaption></figure>
+<p>备忘录、链接和书签与编码相似，添加方式也相同，但各有不同的用途。本章后文的<a href="#terms-coding">编码与编码实例</a>分别介绍了它们，并说明何时该选用哪一种。LemmaLoom 还可以借助本指南后文介绍的其他一些工具，替你自动为段落编码（<strong class="ui">自动编码…</strong>）；词典、查询和分析器等工具都可以用来自动为文本中的特定模式编码。</p>
+<p>项目和文档集都有三张编码实例报表。<strong class="ui">编码统计</strong>列出每个编码出现的次数；<strong class="ui">编码矩阵</strong>以交互方式把编码与文档或某个属性的特定值交叉对照；<strong class="ui">关系</strong>以交互视图显示哪些编码一同出现在相同的文本段落中。打开任一文档的检查器<strong class="ui">编码</strong>标签页，可以看到同类信息，但只针对当前文档，另外还有<strong class="ui">画像</strong>，显示每个编码落在文本中的什么位置。</p>
+<p>凡是支持 REFI-QDA 标准（用于交换质性数据分析项目的标准）的软件，都可以与 LemmaLoom 交换项目。要把这样的项目导入 LemmaLoom，请选取<strong class="ui">文件 ▸ 导入 ▸ REFI-QDA 项目</strong>；要把项目从 LemmaLoom 导出到其他应用，请选取<strong class="ui">文件 ▸ 导出 ▸ REFI-QDA 项目</strong>。单独的编码本也可以用同样的方式交换，使用这两个菜单中的 <strong class="ui">REFI-QDA 编码本</strong>即可。要把整个项目移到另一台 Mac 上，请用<strong class="ui">文件 ▸ 导出 ▸ LemmaLoom 项目</strong>导出；项目中的一切都会随之导出，包括索引和媒体文件。要在另一台 Mac 上恢复导出的项目归档，请使用<strong class="ui">文件 ▸ 导入 ▸ LemmaLoom 归档</strong>。两种交换方式的详细说明见<a href="exchange-and-export.html">第 22 章“交换与导出”</a>。</p>
+<h3 id="linguistic-analysis">语言分析<a class="anchor" href="#linguistic-analysis" aria-hidden="true">#</a></h3>
+<p>导入英语、德语或中文文档时，LemmaLoom 会为它们建立索引。建立索引时，LemmaLoom 会确定文本中每个词的词典形式和词性，识别各个词在句子中起什么作用，以及一个词与同一句中其他词的关系。这些信息被“索引”到数据库中，供 LemmaLoom 其余的语法工具以及查询、分析器等功能使用。LemmaLoom 默认会对已建立索引的数据进行一些内置分析，你可以通过透镜或语法检查器把结果直观地呈现出来（见<a href="lenses.html">第 6 章“透镜”</a>、<a href="grammar-inspector.html">第 11 章“语法检查器”</a>）；其中包括衔接、元话语和修辞方面的分析结果（本章后文的<a href="#terms-analysis">分析工具</a>解释了这些术语）。</p>
+<p>在阅读器中，透镜会为文本设置样式，帮助你辨认并直观地看到透镜所关注的内容出现在文档的哪些位置。例如，<strong class="ui">词类</strong>透镜按每个词所属的类别（词性）为文档中的所有词着色。有许多内置透镜可供使用，帮助你找出文本中特定的语法模式、形式或功能。你也可以借助查询和分析器开发自己的透镜（见<a href="queries-using-results.html">第 18 章“使用查询结果”</a>、<a href="custom-analyzers.html">第 20 章“自定义分析器”</a>）。另一个帮助你从文本中提取语法信息的地方是检查器（阅读器右侧的面板）。检查器的各个标签页对文档进行不同类型的分析，帮助你理解文档的内容，以及这些内容在语法上起什么作用。</p>
+<p>词汇速写针对一个词，按语法关系把与它一起出现的所有词分类整理。以<em>气候</em>为主语的动词、修饰<em>夏天</em>的形容词就是这样的例子。</p>
+<p>查询是针对文档提出的、可以度量的问题。你可以构建查询来查找特定的词、短语或模式，考察这些内容与编码实例之间的关系，或者获取文本的总体统计数据。一个查询可以涵盖单个文档、一个文档集或整个项目。查询甚至可以跨项目做一些分析，不过这方面的功能较为有限。你提出的问题属于哪种类型，决定了结果以什么形式呈现。例如，如果你的查询只是“找出所有使用了情态动词的短语”，你会得到所有这些短语的列表；如果查询是“统计所有使用了情态动词的短语”，输出就只是一个数值。输出类型不同，你在 LemmaLoom 中能对结果做的事情也不同（见<a href="queries-results.html">第 16 章“查询结果与统计”</a>和<a href="queries-using-results.html">第 18 章“使用查询结果”</a>）。</p>
+<figure class="shot" id="introduction-structure"><img class="shot-light" src="../figures/zh-Hans/light/introduction-structure.webp" alt="“语法”标签页的“结构”分面中，“时间不多了”里的一个句子，其中的词通过依存关系相连，并组合成短语。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/introduction-structure.webp" alt="“语法”标签页的“结构”分面中，“时间不多了”里的一个句子，其中的词通过依存关系相连，并组合成短语。" loading="lazy"><figcaption>“语法”标签页的“结构”分面中，“时间不多了”里的一个句子，其中的词通过依存关系相连，并组合成短语。</figcaption></figure>
+<h3 id="mixed-methods">混合方法<a class="anchor" href="#mixed-methods" aria-hidden="true">#</a></h3>
+<p>编码、属性和语法分析都在同一个项目中。一个问题或一个查询可以涉及项目中这些方面的任何内容。以“气候辩论”的<strong class="ui">编码矩阵</strong>为例，按属性“立场”对列分组后，它会显示每个编码在行动派的文本、怀疑派的文本和中立来源中各应用了多少次。在这里，你可以把编码实例和属性结合起来，直观地看到不同编码在另一个方面（如某个属性值）上的应用情况。</p>
+<p>查询可以统计语料中与词典词条匹配的次数，并按其他某个筛选条件（如属性）比较这些匹配出现的频率。以“气候辩论”项目为例，一个查询可以借助词典“模糊限制语”，考察属性值为“行动派”或“怀疑派”的文档中每 10,000 词各有多少处匹配。这类查询得出的是<em>比率</em>。在这个例子里，比率就是找到的模糊限制语数量除以总词数，再乘以 10,000。一篇 600 词的专栏中有 6 个模糊限制语（数字取整，为便于说明而虚构），结果就是 <span class="math math-inline" role="math" aria-label="6 / 600 \times 10{,}000" style="vertical-align:-0.270em"><svg aria-hidden="true" focusable="false" fill="currentColor" style="height:1.080em"  version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'   viewBox='0 -7.47198 64.757278 9.96264'>
+<defs>
+<path id='m1-g0-2' d='M3.875467-2.769614L1.882939-4.752179C1.763387-4.871731 1.743462-4.891656 1.663761-4.891656C1.564134-4.891656 1.464508-4.801993 1.464508-4.692403C1.464508-4.622665 1.484433-4.60274 1.594022-4.493151L3.58655-2.49066L1.594022-.488169C1.484433-.37858 1.464508-.358655 1.464508-.288917C1.464508-.179328 1.564134-.089664 1.663761-.089664C1.743462-.089664 1.763387-.109589 1.882939-.229141L3.865504-2.211706L5.927771-.14944C5.947696-.139477 6.017435-.089664 6.07721-.089664C6.196762-.089664 6.276463-.179328 6.276463-.288917C6.276463-.308842 6.276463-.348692 6.246575-.398506C6.236613-.418431 4.652553-1.982565 4.154421-2.49066L5.977584-4.313823C6.027397-4.373599 6.176837-4.503113 6.22665-4.562889C6.236613-4.582814 6.276463-4.622665 6.276463-4.692403C6.276463-4.801993 6.196762-4.891656 6.07721-4.891656C5.997509-4.891656 5.957659-4.851806 5.84807-4.742217L3.875467-2.769614Z'/>
+<path id='m1-g1-59' d='M2.022416-.009963C2.022416-.667497 1.77335-1.05604 1.384807-1.05604C1.05604-1.05604 .856787-.806974 .856787-.52802C.856787-.259029 1.05604 0 1.384807 0C1.504359 0 1.633873-.039851 1.733499-.129514C1.763387-.14944 1.77335-.159402 1.783313-.159402S1.803238-.14944 1.803238-.009963C1.803238 .727273 1.454545 1.325031 1.125778 1.653798C1.016189 1.763387 1.016189 1.783313 1.016189 1.8132C1.016189 1.882939 1.066002 1.92279 1.115816 1.92279C1.225405 1.92279 2.022416 1.155666 2.022416-.009963Z'/>
+<path id='m1-g1-61' d='M4.373599-7.0934C4.423412-7.222914 4.423412-7.262765 4.423412-7.272727C4.423412-7.382316 4.333748-7.47198 4.224159-7.47198C4.154421-7.47198 4.084682-7.442092 4.054795-7.382316L.597758 2.11208C.547945 2.241594 .547945 2.281445 .547945 2.291407C.547945 2.400996 .637609 2.49066 .747198 2.49066C.876712 2.49066 .9066 2.420922 .966376 2.251557L4.373599-7.0934Z'/>
+<path id='m1-g3-48' d='M4.582814-3.188045C4.582814-3.985056 4.533001-4.782067 4.184309-5.519303C3.726027-6.475716 2.909091-6.635118 2.49066-6.635118C1.892902-6.635118 1.165629-6.37609 .757161-5.449564C.438356-4.762142 .388543-3.985056 .388543-3.188045C.388543-2.440847 .428394-1.544209 .836862-.787049C1.265255 .019925 1.992528 .219178 2.480697 .219178C3.01868 .219178 3.775841 .009963 4.214197-.936488C4.533001-1.62391 4.582814-2.400996 4.582814-3.188045ZM2.480697 0C2.092154 0 1.504359-.249066 1.325031-1.205479C1.215442-1.803238 1.215442-2.719801 1.215442-3.307597C1.215442-3.945205 1.215442-4.60274 1.295143-5.140722C1.484433-6.326276 2.231631-6.41594 2.480697-6.41594C2.809465-6.41594 3.466999-6.236613 3.656289-5.250311C3.755915-4.692403 3.755915-3.935243 3.755915-3.307597C3.755915-2.560399 3.755915-1.882939 3.646326-1.24533C3.496887-.298879 2.929016 0 2.480697 0Z'/>
+<path id='m1-g3-49' d='M2.929016-6.37609C2.929016-6.615193 2.929016-6.635118 2.699875-6.635118C2.082192-5.997509 1.205479-5.997509 .886675-5.997509V-5.688667C1.085928-5.688667 1.673724-5.688667 2.191781-5.947696V-.787049C2.191781-.428394 2.161893-.308842 1.265255-.308842H.946451V0C1.295143-.029888 2.161893-.029888 2.560399-.029888S3.825654-.029888 4.174346 0V-.308842H3.855542C2.958904-.308842 2.929016-.418431 2.929016-.787049V-6.37609Z'/>
+<path id='m1-g3-54' d='M1.315068-3.267746V-3.506849C1.315068-6.027397 2.550436-6.386052 3.058531-6.386052C3.297634-6.386052 3.716065-6.326276 3.935243-5.987547C3.785803-5.987547 3.387298-5.987547 3.387298-5.539228C3.387298-5.230386 3.626401-5.080946 3.845579-5.080946C4.004981-5.080946 4.303861-5.17061 4.303861-5.559153C4.303861-6.156912 3.865504-6.635118 3.038605-6.635118C1.763387-6.635118 .418431-5.349938 .418431-3.148194C.418431-.488169 1.574097 .219178 2.500623 .219178C3.606476 .219178 4.552927-.71731 4.552927-2.032379C4.552927-3.297634 3.666252-4.254047 2.560399-4.254047C1.882939-4.254047 1.514321-3.745953 1.315068-3.267746ZM2.500623-.059776C1.872976-.059776 1.574097-.657534 1.514321-.806974C1.334994-1.275218 1.334994-2.072229 1.334994-2.251557C1.334994-3.028643 1.653798-4.024907 2.550436-4.024907C2.709838-4.024907 3.16812-4.024907 3.476961-3.407223C3.656289-3.038605 3.656289-2.530511 3.656289-2.042341C3.656289-1.564134 3.656289-1.066002 3.486924-.707347C3.188045-.109589 2.729763-.059776 2.500623-.059776Z'/>
+</defs>
+<g id='m1-page1'>
+<use x='0' y='0' xlink:href='#m1-g3-54'/>
+<use x='4.981339' y='0' xlink:href='#m1-g1-61'/>
+<use x='9.962678' y='0' xlink:href='#m1-g3-54'/>
+<use x='14.944017' y='0' xlink:href='#m1-g3-48'/>
+<use x='19.925356' y='0' xlink:href='#m1-g3-48'/>
+<use x='27.120561' y='0' xlink:href='#m1-g0-2'/>
+<use x='37.083175' y='0' xlink:href='#m1-g3-49'/>
+<use x='42.064514' y='0' xlink:href='#m1-g3-48'/>
+<use x='47.045853' y='0' xlink:href='#m1-g1-59'/>
+<use x='49.813261' y='0' xlink:href='#m1-g3-48'/>
+<use x='54.7946' y='0' xlink:href='#m1-g3-48'/>
+<use x='59.775939' y='0' xlink:href='#m1-g3-48'/>
+</g>
+</svg></span>，即每 10,000 词 100 个模糊限制语。项目一级的查询构建器中有许多模板，可以作为不同类型查询和结果的起点。</p>
+<p><strong class="ui">速写空间</strong>是一种可视化工具，帮助你了解语法搭配对象在文档其他方面（如编码或属性）上的分布。例如，你可以比较在属性为行动派的文档和属性为怀疑派的文档中，分别有哪些动词以<em>气候</em>为主语。这有助于直观地看出某几组文档中某种现象出现的频率是否不同。要了解差异有多大，可以把查询显示为<strong class="ui">比较</strong>。</p>
+<figure class="shot" id="introduction-code-matrix"><img class="shot-light" src="../figures/zh-Hans/light/introduction-code-matrix.webp" alt="按属性“立场”分组的“编码矩阵”，分别统计了行动派、怀疑派和中立文本中的编码实例。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/introduction-code-matrix.webp" alt="按属性“立场”分组的“编码矩阵”，分别统计了行动派、怀疑派和中立文本中的编码实例。" loading="lazy"><figcaption>按属性“立场”分组的“编码矩阵”，分别统计了行动派、怀疑派和中立文本中的编码实例。</figcaption></figure>
+<p>如果查询结果输出的是文档中的段落，你可以看到这些段落出自哪里，并直接跳转到这些段落。<a href="queries-results.html">第 16 章“查询结果与统计”</a>全面介绍了如何解读查询结果。</p>
+<h2 id="key-terms">基本术语<a class="anchor" href="#key-terms" aria-hidden="true">#</a></h2>
+<p>通过<strong class="ui">帮助 ▸ 术语表</strong>打开的术语表收录了下面大多数术语的定义，也收录了 LemmaLoom 中使用的语法标记的定义，包括词性标记和依存关系。你可以在术语表的<strong class="ui">搜索</strong>栏中输入要查找的内容，也可以在边栏的类别列表中选择一个类别浏览。术语表可以一直开在工作窗口旁边。</p>
+<figure class="shot" id="introduction-glossary"><img class="shot-light" src="../figures/zh-Hans/light/introduction-glossary.webp" alt="从“帮助”菜单打开的术语表，当前显示“概念”类别。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/introduction-glossary.webp" alt="从“帮助”菜单打开的术语表，当前显示“概念”类别。" loading="lazy"><figcaption>从“帮助”菜单打开的术语表，当前显示“概念”类别。</figcaption></figure>
+<h3 id="terms-projects-documents">项目、文档和译文<a class="anchor" href="#terms-projects-documents" aria-hidden="true">#</a></h3>
+<p>在 LemmaLoom 中，每个<em>项目</em>存放一项研究，也就是这项研究的文档，以及分析这些文档所涉及的一切。你创建的所有编码实例、编码、备忘录、文档集、属性、已存储的查询和词典都属于这个项目。项目之间相互独立，只有三样东西是共用的。自定义分析器和标签在全局范围内共用，你为所有项目存储的查询也是如此。详见<a href="projects-and-documents.html">第 3 章“项目与文档”</a>中的<a href="projects-and-documents.html#working-across-projects">跨项目工作</a>。</p>
+<p><em>文档</em>指项目中的单份文本。文档可能来自纯文本文件或 PDF，也可能直接取自网站或网络文章。音频和视频文件同样可以作为文档，导入时会为你转写。Word 文件需要先存储为纯文本或 PDF 再导入。详见<a href="importing.html">第 4 章“导入资料”</a>中的<a href="importing.html#text-files">文本文件</a>。每个文档都带有元数据，如名称和语言、作者、日期、出版者和 DOI；这些元数据在<strong class="ui">文档信息</strong>中编辑。要打开<strong class="ui">文档信息</strong>，请使用导航栏中该文档的快捷菜单：按住 Control 键点按文档名称，然后从菜单中选取<strong class="ui">信息</strong>。本章后文的<a href="#conventions">体例约定</a>介绍了快捷菜单。</p>
+<p>把录音作为文档导入时，其<em>转写文本</em>的每一段都有一个时间戳；如果检测到不止一个声音，每一段还关联着一位说话人。“电台辩论”就是一段已转写的音频录音，有三位不同的说话人，即“主持人”“活动人士”和“怀疑论者”。</p>
+<p><em>译文</em>是文档的另一种语言版本。要生成译文，请在文档的快捷菜单中选取<strong class="ui">翻译</strong>。导航栏会把译文列在其原文下方。译文以原文的名称命名，并在括号中附上译入的语言，例如“时间不多了 (英语)”。原文和译文会（尽可能紧密地）对齐，因此你在其中一方添加的编码实例或备忘录，会出现在另一方的对应位置。链接和书签也以同样的方式同步。在文档集或项目范围内统计和搜索时，除非明确另作选择，否则只使用原文。要纳入译文，请把查询的<strong class="ui">语料</strong>设为<strong class="ui">译文</strong>或<strong class="ui">两者</strong>。对于词汇速写，请选择一种译文语言作为它的<strong class="ui">语料</strong>。<a href="translations.html">第 9 章“译文与分屏浏览”</a>更详细地介绍了译文的用法。</p>
+<h3 id="terms-organizing">整理文档<a class="anchor" href="#terms-organizing" aria-hidden="true">#</a></h3>
+<figure class="shot" id="introduction-navigator"><img class="shot-light" src="../figures/zh-Hans/light/introduction-navigator.webp" alt="导航栏中的“气候辩论”，从项目视图栏往下依次是文档集和智能文档集、“纸媒”和“网络”两个分组，以及文档标签。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/introduction-navigator.webp" alt="导航栏中的“气候辩论”，从项目视图栏往下依次是文档集和智能文档集、“纸媒”和“网络”两个分组，以及文档标签。" loading="lazy"><figcaption>导航栏中的“气候辩论”，从项目视图栏往下依次是文档集和智能文档集、“纸媒”和“网络”两个分组，以及文档标签。</figcaption></figure>
+<p><em>分组</em>就像文件夹，供你整理文档。一个文档只能属于一个分组，或者不属于任何分组。与文档集不同，分组不是语义单位，主要用来整理文档列表。要分析某个分组中的文档，可以建立一个带有<strong class="ui">分组</strong>条件的智能文档集，或者改用文档集。在“气候辩论”项目中，可以看到有些文档在分组里，有些则不在。</p>
+<p><em>文档集</em>是项目中一组有名称的文档。通常，你会用文档集告诉 LemmaLoom 一项分析应该包含哪些文档。多个文档集可以相互重叠，一个文档可以同时属于多个文档集。在导航栏中点按一个文档集即可打开它；它包含与项目视图栏相同的十个视图，只是范围限于其中的文档。“气候辩论”有两个文档集：“行动派”和“怀疑派”。</p>
+<p><em>智能文档集</em>通过条件自动确定其成员。LemmaLoom 会动态跟踪各文档是否满足文档集的条件。条件可以检查属性、标签或分组。此外，条件还可以检查文档的格式、语言，或者标题、日期等元数据。例如，智能文档集“广泛传播”只有一个条件：“读者数”<strong class="ui">至少为</strong> 100,000。</p>
+<p><em>标签</em>是可以自由命名的标识，项目和文档都可以加标签。编码、链接和备忘录也可以加标签。标签可以用来筛选列表或选择文档。你的所有项目共用同一份标签列表。通过<strong class="ui">窗口 ▸ 标签</strong>可以打开标签列表，每个标签旁都显示带有该标签的条目数。标签名称不区分大小写，因此“Viral”和“viral”是同一个标签。此外，项目文档上的每个标签都相当于一个文档集，显示在导航栏的<strong class="ui">标签</strong>部分。“气候辩论”中有几个文档带有“评论”和“热门”标签。</p>
+<p><em>属性</em>记录每个文档的一项事实信息，例如文本所持的立场和发表日期。每个属性都必须有名称和类型。可用的类型有<strong class="ui">文本</strong>、<strong class="ui">整数</strong>、<strong class="ui">小数</strong>、<strong class="ui">布尔值</strong>（是或否）、<strong class="ui">日期</strong>和<strong class="ui">选择器</strong>（从固定列表中选一个值）。要为属性填写数据，可以通过项目的快捷菜单打开<strong class="ui">属性</strong>。这会打开<strong class="ui">属性</strong>窗口，其中的表格每个文档占一行，每个属性占一列。点按<strong class="ui">添加属性</strong>可以新建属性，并为所有文档填写它的值。你也可以在单个文档的<strong class="ui">文档信息</strong>中填写该文档的属性值。“气候辩论”有四个属性：</p>
+<div class="table-wrap"><table>
+<thead><tr><th>属性</th><th>类型</th><th>值</th></tr></thead>
+<tbody>
+<tr><td>立场</td><td>选择器</td><td>行动派、怀疑派或中立</td></tr>
+<tr><td>读者数</td><td>整数</td><td>一个整数</td></tr>
+<tr><td>发表日期</td><td>日期</td><td>一个日期</td></tr>
+<tr><td>媒体</td><td>文本</td><td>任意文本</td></tr>
+</tbody></table></div>
+<figure class="shot" id="introduction-attributes-window"><img class="shot-light" src="../figures/zh-Hans/light/introduction-attributes-window.webp" alt="“气候辩论”的“属性”窗口，已勾选六份文本，并打开了“设置值”菜单。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/introduction-attributes-window.webp" alt="“气候辩论”的“属性”窗口，已勾选六份文本，并打开了“设置值”菜单。" loading="lazy"><figcaption>“气候辩论”的“属性”窗口，已勾选六份文本，并打开了“设置值”菜单。</figcaption></figure>
+<p>智能文档集的条件可以检查属性。属性可以用来为<strong class="ui">编码矩阵</strong>的列分组。你还可以按属性拆分查询的输出，对不同组的结果进行比较。<a href="sets-tags-attributes.html">第 8 章“文档集、分组、标签和属性”</a>详细介绍了标签、文档集、分组和属性。关于编码上的属性，请参阅下文的<a href="#terms-coding">编码与编码实例</a>。</p>
+<h3 id="terms-coding">编码与编码实例<a class="anchor" href="#terms-coding" aria-hidden="true">#</a></h3>
+<p>在 LemmaLoom 中，编码是指把文档中的段落归到称为<em>编码</em>的主题标签下。编码可以代表文档中的任何主题、想法、问题、话题等；放在另一个编码下面的编码就成为<em>子编码</em>。例如，“气候辩论”中的“临界点”和“时间节点”都是“紧迫性”的子编码。编码在阅读器中的外观，由为每个编码选择的颜色和格式样式决定（格式样式有<strong class="ui">高亮</strong>、<strong class="ui">下划线</strong>和<strong class="ui">方框</strong>）。可以设置编码的描述、标签和属性，以及它的<em>适用范围</em>，即整个<strong class="ui">项目</strong>、单个<strong class="ui">文档集</strong>或单个<strong class="ui">文档</strong>。通常，你会在<em>编码本</em>（导航栏中<strong class="ui">项目</strong>下的<strong class="ui">编码本</strong>）中定义编码；这个列表显示所定义的每个编码的描述和总使用次数。要筛选或比较一部分编码，可以把它们放进<em>编码集</em>。“气候辩论”有一个编码集“论点”。</p>
+<figure class="shot" id="introduction-edit-code-dialog"><img class="shot-light" src="../figures/zh-Hans/light/introduction-edit-code-dialog.webp" alt="“紧迫性”的“编辑编码”对话框，显示格式、适用范围和说明。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/introduction-edit-code-dialog.webp" alt="“紧迫性”的“编辑编码”对话框，显示格式、适用范围和说明。" loading="lazy"><figcaption>“紧迫性”的“编辑编码”对话框，显示格式、适用范围和说明。</figcaption></figure>
+<p>每次把一个编码赋给一个段落，就产生一个<em>编码实例</em>，这个段落称为该编码实例的<em>片段</em>，也可以叫<em>编码片段</em>。一个编码片段只包含一个段落和一个编码；因此，一个同时编码为“成本”和“责任”的段落算作两个独立的编码实例。编码实例可以相互重叠，也可以相互嵌套。如果编码带有属性，属性值与每个编码实例单独关联，而不是与编码关联。假设你有一个代表情绪的编码，它带有一个表示情绪强烈程度的属性；把这个编码应用到不同段落时，你会为每个编码实例分别指定一个强度等级。</p>
+<p>备忘录、链接和书签与编码实例有许多相似之处，添加方式也相似（选中段落，然后点按选区栏中相应的按钮）；不过，它们的功能各不相同。添加<em>备忘录</em>可以为选中的段落写下评论。选中所需的段落，然后点按<strong class="ui">备忘录</strong>。备忘录也可以归入编码（称为<em>已编码备忘录</em>），并带有该编码的标签；它们还有自己的一套该编码的属性值，查询可以把它们与该编码的编码实例一起统计。创建<em>链接</em>可以把段落相互连接起来，无论它们在同一个文档中还是在不同文档中；这项功能帮助你记住哪些段落彼此相关（相互矛盾的段落、相互回应的段落等）。先选中一个段落并点按<strong class="ui">链接</strong>，再选中另一个段落并点按<strong class="ui">完成链接</strong>。链接从前一个段落指向后一个段落。你可以用自己的话为链接的两端指定一种关系，还可以添加评论和标签。<em>书签</em>只用来记下你以后想再回来看的段落；选中一个段落并点按<strong class="ui">书签</strong>，还可以为书签添加评论和颜色。加了书签的段落可以在阅读器的<strong class="ui">书签</strong>透镜和检查器的<strong class="ui">文本</strong>标签页中查看。</p>
+<figure class="shot" id="introduction-pending-link"><img class="shot-light" src="../figures/zh-Hans/light/introduction-pending-link.webp" alt="“时间不多了”中点按“链接”之后的选区栏，已选中一段文字，“完成链接”已就绪。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/introduction-pending-link.webp" alt="“时间不多了”中点按“链接”之后的选区栏，已选中一段文字，“完成链接”已就绪。" loading="lazy"><figcaption>“时间不多了”中点按“链接”之后的选区栏，已选中一段文字，“完成链接”已就绪。</figcaption></figure>
+<h3 id="terms-analysis">分析工具<a class="anchor" href="#terms-analysis" aria-hidden="true">#</a></h3>
+<p>把文档添加到项目时，LemmaLoom 会通过分析其语法为它<em>建立索引</em>。也就是说，文本被切分成句子和<em>词符</em>，词符即单个的词和标点符号。然后，LemmaLoom 为每个词确定词元、词性和语法特征。<em>词元</em>指每个词的词典形式；因此，<em>ran</em> 和 <em>running</em> 的词元都是 <em>run</em>。除了为单个词建立索引，LemmaLoom 还会记录句子中词与词之间的关系，以及它们组成的短语。大型文本和长录音可能需要较长时间来处理或转写，具体取决于你的 Mac 的计算能力。建立索引期间，导航栏中文档旁边会出现一个进度环，显示当前进度。“活动”窗口可以通过<strong class="ui">窗口 ▸ 活动</strong>（⌥⌘0）打开，其中显示所有正在进行的任务。导入文档时不一定要立即建立索引；导入时可以关闭<strong class="ui">为语法分析建立索引</strong>，之后再用<strong class="ui">文档信息</strong>中的<strong class="ui">立即建立索引</strong>选项建立索引。</p>
+<p><em>透镜</em>负责为文本设置样式或添加标注，突出显示某些类别在文档中出现的位置，无论是词类、编码还是你需要的其他内容。透镜在透镜菜单中选择，这个菜单是标题栏右端控件中的第一个。可以同时选择多个透镜。有些透镜呈现语法分析的结果，如<strong class="ui">词类</strong>、<strong class="ui">情态</strong>和<strong class="ui">否定</strong>；其他透镜，如<strong class="ui">编码</strong>和<strong class="ui">书签</strong>，则呈现你借助自己建立的工具完成的工作。第一次打开文档时，<strong class="ui">编码</strong>和<strong class="ui">书签</strong>已经启用。每个词典、每个自定义分析器以及每个存储为透镜的查询，都会作为一个独立的透镜添加到透镜菜单中。如果文档尚未建立索引，透镜菜单会保持停用状态。</p>
+<figure class="shot" id="introduction-lens-menu"><img class="shot-light" src="../figures/zh-Hans/light/introduction-lens-menu.webp" alt="“时间不多了”的透镜菜单，除“书签”和“编码”外还启用了“情态”，词典“模糊限制语”和已存储的查询“紧迫性话题”位于菜单靠下的位置。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/introduction-lens-menu.webp" alt="“时间不多了”的透镜菜单，除“书签”和“编码”外还启用了“情态”，词典“模糊限制语”和已存储的查询“紧迫性话题”位于菜单靠下的位置。" loading="lazy"><figcaption>“时间不多了”的透镜菜单，除“书签”和“编码”外还启用了“情态”，词典“模糊限制语”和已存储的查询“紧迫性话题”位于菜单靠下的位置。</figcaption></figure>
+<p><em>分析器</em>是一种模块，在建立索引时为文档添加分析结果。LemmaLoom 内置了三个分析器。<strong class="ui">衔接</strong>追踪每个句子与前文的联系，<strong class="ui">元话语</strong>标注引导读者或听众的词语（如模糊限制语和增强语），<strong class="ui">修辞</strong>识别被动语态、排比等文体特征。你可以在<strong class="ui">窗口 ▸ 分析器</strong>中用 JavaScript 编写脚本，创建自己的分析器；<em>自定义分析器</em>在每个项目中都可以使用。分析器添加的结果可以显示为透镜，也可以用查询搜索。导入文档时，你可以选择运行哪些分析器；对于已有的文档，也可以在<strong class="ui">文档信息</strong>中运行或移除某个分析器。</p>
+<p><em>查询</em>搜索你的文档，按指定的条件返回包含所关注内容的结果。构建查询时，你在查询构建器中使用条件：有些条件规定搜索的内容（如词、句子、编码实例或文档），另一些条件则规定搜索的条件和结果的呈现形式（如<strong class="ui">列表</strong>、<strong class="ui">数量</strong>，要比较几组时则用<strong class="ui">比较</strong>）。根据搜索范围的不同，查询可以在<strong class="ui">窗口 ▸ 查询</strong>（跨项目）、项目或文档集的<strong class="ui">查询</strong>视图，或者检查器的<strong class="ui">多重模式</strong>标签页（单个文档）中构建。已存储的查询可以属于文档、文档集、项目或所有项目，并且可以用作透镜、智能文档集，甚至自定义分析器；此外，LemmaLoom 还可以根据查询自动编码。不过，并非一切都要从零开始构建：你可以使用一系列现成的查询，即<em>模板</em>，凡是能构建查询的地方，都可以在<strong class="ui">模板</strong>下找到它们，例如<strong class="ui">索引行</strong>、<strong class="ui">关键词</strong>和<strong class="ui">按属性统计编码实例</strong>。“气候辩论”项目中有两个已存储的查询：存储为透镜的“紧迫性话题”，以及属于文档集“行动派”的“关键词：行动派”。</p>
+<figure class="shot" id="introduction-queries-recipes"><img class="shot-light" src="../figures/zh-Hans/light/introduction-queries-recipes.webp" alt="“气候辩论”的“查询”视图，左栏为模板，已载入存储的查询“紧迫性话题”。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/introduction-queries-recipes.webp" alt="“气候辩论”的“查询”视图，左栏为模板，已载入存储的查询“紧迫性话题”。" loading="lazy"><figcaption>“气候辩论”的“查询”视图，左栏为模板，已载入存储的查询“紧迫性话题”。</figcaption></figure>
+<p><em>词典</em>把词条归入有名称的类别，让你可以在文档中找到这些词，并按类别生成统计数据。任何词典也都可以显示为透镜。每个项目的词典保存在它的<strong class="ui">词典</strong>视图中；要把选中的文字作为词条加入词典，请使用选区栏中的<strong class="ui">添加到词典</strong>（在这里可以选择词典和类别）。例如，“气候辩论”项目有一个名为“模糊限制语”的词典，其中有两个类别：</p>
+<div class="table-wrap"><table>
+<thead><tr><th>类别</th><th>词条</th></tr></thead>
+<tbody>
+<tr><td>近似语</td><td>大约、左右、大致、差不多、将近、几乎、或多或少</td></tr>
+<tr><td>缓和语</td><td>我觉得、也许、或许、大概、似乎、恐怕、我猜、要我说、说不准</td></tr>
+</tbody></table></div>
+<h2 id="example-project">示例项目<a class="anchor" href="#example-project" aria-hidden="true">#</a></h2>
+<p>本指南中的大多数示例、图示和截图都来自同一个项目“气候辩论”。这个虚构的数据集包含评论文章、专栏以及其他类型的文本，都是在一场关于气候变化的公开辩论中发表的。LemmaLoom 随附这个示例项目，你导入“气候辩论”后，就可以自己重现本指南中提到的每个步骤。选取<strong class="ui">文件 ▸ 导入 ▸ 示例项目</strong>，即可把“气候辩论”导入你的 LemmaLoom 资料库并设为当前项目，其中的文档已经建立好索引。</p>
+<div class="table-wrap"><table>
+<thead><tr><th>条目</th><th>“气候辩论”中的内容</th></tr></thead>
+<tbody>
+<tr><td>文档</td><td>共 15 个。其中 11 个是纯文本文档，包括评论文章、专栏、博客文章和一篇演讲，活动人士撰写的有“时间不多了”“来自气候罢课的信”“我们为什么封路”“农民不是敌人”“一位市长的承诺”和“希望要靠行动”，怀疑论者撰写的有“模型总是失准”“净零代价高昂”“不必恐慌”“转型谁来买单”和“科学从无定论”。“2024 热浪报告”，一份 PDF；“碳税之争”，一个网页；“电台辩论”，一段附有转写文本的音频录音；以及“时间不多了 (英语)”，“时间不多了”的英文译本</td></tr>
+<tr><td>分组</td><td>“纸媒”“网络”</td></tr>
+<tr><td>文档集</td><td>“行动派”（活动人士撰写的六篇文本）、“怀疑派”（怀疑论者撰写的五篇文本）</td></tr>
+<tr><td>智能文档集</td><td>“广泛传播”，条件为“读者数”<strong class="ui">至少为</strong> 100,000</td></tr>
+<tr><td>标签</td><td>“评论”“热门”</td></tr>
+<tr><td>属性</td><td>“立场”“读者数”“发表日期”“媒体”</td></tr>
+<tr><td>编码</td><td>“紧迫性”（子编码为“临界点”和“时间节点”）、“科学”（子编码为“不确定性”）、“成本”、“责任”和“情绪”（子编码为“恐惧”和“希望”）；“电台辩论”另有“说话人”（子编码为“主持人”“活动人士”和“怀疑论者”）</td></tr>
+<tr><td>编码集</td><td>“论点”</td></tr>
+<tr><td>词典</td><td>“模糊限制语”，类别为“近似语”和“缓和语”</td></tr>
+<tr><td>已存储的查询</td><td>“紧迫性话题”（存储为透镜）、“关键词：行动派”（属于文档集“行动派”）</td></tr>
+</tbody></table></div>
+<h2 id="guide-organisation">本指南的结构<a class="anchor" href="#guide-organisation" aria-hidden="true">#</a></h2>
+<p>各章开头通常先讨论本章所依赖的概念，然后介绍操作步骤，最后是细节。如果你刚开始使用 LemmaLoom，可以先读<a href="quick-start.html">快速入门</a>，它会带你一次完成第一个项目。接下来是<a href="getting-started.html">第 2 章“开始使用”</a>。这一章介绍 LemmaLoom 的主窗口，以及 LemmaLoom 如何组织工作区，涉及项目、导入文档、编码等主题。从这里开始，你可以根据自己的兴趣自由选择要读的章节。例如，如果你的工作涉及大量编码，可以看看<a href="coding.html">第 7 章“编码”</a>和<a href="sets-tags-attributes.html">第 8 章“文档集、分组、标签和属性”</a>。如果关注的是语法和词语计数，请接着阅读<a href="lenses.html">第 6 章“透镜”</a>、<a href="grammar-inspector.html">第 11 章“语法检查器”</a>以及有关查询的几章。</p>
+<div class="table-wrap"><table>
+<thead><tr><th>章节</th><th>内容</th></tr></thead>
+<tbody>
+<tr><td><a href="getting-started.html">开始使用</a></td><td>第一次启动、主窗口、项目、导入、编码和第一次分析</td></tr>
+<tr><td><a href="projects-and-documents.html">项目与文档</a></td><td>项目、文档、导航栏、文档信息和跨项目工作</td></tr>
+<tr><td><a href="importing.html">导入资料</a></td><td>文本文件、PDF、网页、录音和属性值</td></tr>
+<tr><td><a href="reading-and-editing.html">阅读与编辑</a></td><td>阅读器、查找和选择文本，以及编辑文档</td></tr>
+<tr><td><a href="lenses.html">透镜</a></td><td>每个透镜及其标注的内容</td></tr>
+<tr><td><a href="coding.html">编码</a></td><td>编码、编码实例、备忘录、链接、书签和自动编码</td></tr>
+<tr><td><a href="sets-tags-attributes.html">文档集、分组、标签和属性</a></td><td>为分析划分项目</td></tr>
+<tr><td><a href="translations.html">译文与分屏浏览</a></td><td>翻译文档，以及并排阅读两个文档</td></tr>
+<tr><td><a href="text-inspector.html">文本检查器</a></td><td>单个文档的计数、可读性和词汇指标</td></tr>
+<tr><td><a href="grammar-inspector.html">语法检查器</a></td><td>单个文档中的句子图示、搭配词和语篇</td></tr>
+<tr><td><a href="word-sketch.html">词汇速写</a></td><td>一个词的语法搭配对象及其评分方式</td></tr>
+<tr><td><a href="coding-analysis.html">编码分析</a></td><td>编码实例的表格、矩阵和图表，以及共现指标</td></tr>
+<tr><td><a href="sketch-space.html">速写空间</a></td><td>按编码或属性值比较同一个词的搭配对象</td></tr>
+<tr><td><a href="queries-building.html">构建查询</a></td><td>查询构建器、它的条件以及查询的存放位置</td></tr>
+<tr><td><a href="queries-results.html">查询结果与统计</a></td><td>每种结果显示方式及其报告的统计量</td></tr>
+<tr><td><a href="queries-patterns.html">查询模式与发现</a></td><td>语法模式，以及查找与已编码段落相似的段落</td></tr>
+<tr><td><a href="queries-using-results.html">使用查询结果</a></td><td>把查询转换为透镜、分析器或智能文档集，以及对命中结果进行操作</td></tr>
+<tr><td><a href="dictionaries.html">词典</a></td><td>词条类别、匹配方式和词典透镜</td></tr>
+<tr><td><a href="custom-analyzers.html">自定义分析器</a></td><td>用 JavaScript 编写自己的分析器</td></tr>
+<tr><td><a href="analysis-and-indexing.html">分析与索引</a></td><td>建立索引为每种语言生成哪些结果，以及如何控制索引</td></tr>
+<tr><td><a href="exchange-and-export.html">交换与导出</a></td><td>REFI-QDA 交换、LemmaLoom 归档和其他导出方式</td></tr>
+<tr><td><a href="undo.html">撤销与重做</a></td><td>哪些操作可以撤销</td></tr>
+<tr><td><a href="settings.html">设置与外观</a></td><td>主题、阅读器设置、透镜样式和界面语言</td></tr>
+<tr><td><a href="keyboard-shortcuts.html">键盘快捷键</a></td><td>所有键盘快捷键</td></tr>
+<tr><td><a href="help-and-support.html">帮助与支持</a></td><td>术语表、反馈以及如何报告问题</td></tr>
+<tr><td><a href="statistics-reference.html">统计量一览</a></td><td>所有统计量汇总在一张表中</td></tr>
+</tbody></table></div>
+<h2 id="conventions">体例约定<a class="anchor" href="#conventions" aria-hidden="true">#</a></h2>
+<p>凡是以粗体显示的术语，无论是菜单名称、界面文字还是其他元素，如<strong class="ui">编码</strong>、<strong class="ui">词汇速写</strong>或<strong class="ui">自动编码…</strong>，都与 LemmaLoom 中显示的文字完全一致。如果你读的是本指南的德文版或中文版，这些术语分别对应德文界面或中文界面中的文字。</p>
+<p>菜单命令采用路径表示法：菜单名称在前，后面是操作，中间用 ▸ 分隔。选取<strong class="ui">文件 ▸ 导入 ▸ 网页</strong>就是打开<strong class="ui">文件</strong>菜单，移到<strong class="ui">导入</strong>，然后选取<strong class="ui">网页</strong>。LemmaLoom 的应用程序菜单始终是 <strong class="ui">LemmaLoom</strong>，设置则位于 <strong class="ui">LemmaLoom ▸ 设置…</strong>。每当你点按名称以省略号（…）结尾的菜单项时，都会先打开一个对话框或窗口，让你在执行任何操作之前设置选项。</p>
+<p>LemmaLoom 中的许多对象都有<em>快捷菜单</em>。根据你使用的输入设备，可以用辅助点按或按住 Control 键点按来打开快捷菜单。在导航栏中，文档的快捷菜单可以让你<strong class="ui">翻译</strong>文档、修改其<strong class="ui">信息</strong>，或者<strong class="ui">删除文档</strong>等。</p>
+<p>以下是 macOS 在键盘快捷键中表示修饰键的符号：</p>
+<div class="table-wrap"><table>
+<thead><tr><th>符号</th><th>按键</th></tr></thead>
+<tbody>
+<tr><td>⌘</td><td>Command 键</td></tr>
+<tr><td>⇧</td><td>Shift 键</td></tr>
+<tr><td>⌥</td><td>Option 键</td></tr>
+<tr><td>⌃</td><td>Control 键</td></tr>
+</tbody></table></div>
+<p>按 ⇧⌘C 的意思是按住 Shift 键和 Command 键，再按 C 键。凡是有快捷键的命令，后面都会在括号中给出快捷键，如<strong class="ui">文档 ▸ 编码</strong>（⇧⌘C）。键盘快捷键列表见<a href="keyboard-shortcuts.html">第 25 章“键盘快捷键”</a>。</p>
+<p>斜体表示术语在此处定义，也用于直接引自所分析文档的词语，如<em>气候</em>和<em>也许</em>。需要原样输入的文字以等宽字体显示，文件名和扩展名（如 <code>.qdpx</code>）也是如此；“气候辩论”项目中的示例名称，如文档集“行动派”和编码“时间节点”，放在引号中。</p>
+<p>如果控件已停用，说明它与当前情境无关，或者暂时不能使用。要了解窗口或对话框中某个按钮或选项为什么已停用，请将鼠标指针悬停在它上面。</p>
+<h2 id="system-requirements">系统要求<a class="anchor" href="#system-requirements" aria-hidden="true">#</a></h2>
+<p>LemmaLoom 需要 macOS 26.6 或更高版本。</p>
+<p>应用包含语法分析和使用 Whisper 模型转写所需的全部组件。默认模型 <strong class="ui">Apple 语音识别</strong>使用 macOS 的语音组件；如果你的 Mac 上尚未安装这些组件，LemmaLoom 会下载它们。翻译取决于 macOS 中已安装的翻译语言。第一次在两种语言之间翻译时，macOS 可能会提示你安装这两种语言。</p>
+<h2 id="languages">支持的语言<a class="anchor" href="#languages" aria-hidden="true">#</a></h2>
+<h3 id="interface-language">界面语言<a class="anchor" href="#interface-language" aria-hidden="true">#</a></h3>
+<p>LemmaLoom 的界面语言可以是英语、德语或中国大陆简体中文，应用中的菜单、窗口和提示信息都会使用这种语言。默认情况下，LemmaLoom 会参照<strong class="ui">系统设置 ▸ 通用 ▸ 语言与地区</strong>中的首选语言顺序，使用这三种语言中排位最高的一种。如果语言与地区设置中这三种语言都没有列出，应用则使用英语。</p>
+<p>LemmaLoom 也可以使用自己的界面语言，不受系统所选语言的影响：</p>
+<ol>
+<li>选取 <strong class="ui">LemmaLoom ▸ 设置…</strong>（⌘,）。</li>
+<li>点按<strong class="ui">通用</strong>。</li>
+<li>在<strong class="ui">语言</strong>下的<strong class="ui">界面语言</strong>菜单中，选择 <strong class="ui">English</strong>、<strong class="ui">Deutsch</strong> 或<strong class="ui">简体中文</strong>。选择<strong class="ui">系统默认</strong>则恢复跟随 macOS。</li>
+<li>点按<strong class="ui">退出 LemmaLoom</strong>，然后重新打开 LemmaLoom。</li>
+</ol>
+<figure class="shot" id="introduction-interface-language"><img class="shot-light" src="../figures/zh-Hans/light/introduction-interface-language.webp" alt="“设置”的“通用”面板，“界面语言”菜单已展开。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/introduction-interface-language.webp" alt="“设置”的“通用”面板，“界面语言”菜单已展开。" loading="lazy"><figcaption>“设置”的“通用”面板，“界面语言”菜单已展开。</figcaption></figure>
+<h3 id="analysis-languages">文档语言<a class="anchor" href="#analysis-languages" aria-hidden="true">#</a></h3>
+<p><strong class="ui">导入文档</strong>对话框中有一个<strong class="ui">语言</strong>菜单，选择<strong class="ui">自动</strong>时，LemmaLoom 会自动判断文档的语言。你也可以手动设置为<strong class="ui">英语</strong>、<strong class="ui">德语</strong>或<strong class="ui">中文</strong>。你随时可以在文档信息中更改语言，更改后文档会按新语言重新建立索引。</p>
+<p>对于支持的这三种语言，都会进行完整的语法分析，包括三个内置分析器。本章前文的<a href="#terms-analysis">分析工具</a>介绍了语法分析。不过，有几个透镜取决于具体的语言：</p>
+<div class="table-wrap"><table>
+<thead><tr><th>透镜</th><th>英语</th><th>德语</th><th>中文</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">词类</strong>、<strong class="ui">语法功能</strong>、<strong class="ui">短语</strong></td><td>是</td><td>是</td><td>是</td></tr>
+<tr><td><strong class="ui">情态</strong>、<strong class="ui">否定</strong>、<strong class="ui">连接词</strong></td><td>是</td><td>是</td><td>是</td></tr>
+<tr><td><strong class="ui">衔接</strong>、<strong class="ui">元话语</strong>、<strong class="ui">修辞</strong></td><td>是</td><td>是</td><td>是</td></tr>
+<tr><td><strong class="ui">形态学</strong></td><td>是</td><td>是</td><td>否</td></tr>
+<tr><td><strong class="ui">句场</strong></td><td>否</td><td>是</td><td>否</td></tr>
+<tr><td><strong class="ui">句式</strong>、<strong class="ui">助词</strong></td><td>否</td><td>否</td><td>是</td></tr>
+</tbody></table></div>
+<p><strong class="ui">衔接</strong>、<strong class="ui">元话语</strong>和<strong class="ui">修辞</strong>透镜都依赖各自对应的分析器。只有当分析器在文档上运行过之后，它的透镜才会出现在透镜菜单中。如果你在导入时停用了某个分析器，或者之后在<strong class="ui">文档信息</strong>中移除了它，相应的透镜就会从透镜菜单中消失。</p>
+<p><strong class="ui">形态学</strong>透镜提供时态、数、级（<em>big</em>、<em>bigger</em>、<em>biggest</em>）和动词形式等语法标注。在德语中，它还会标注格、语气和性。由于汉语的词不会因这些语法特征而发生屈折变化，<strong class="ui">形态学</strong>透镜只适用于英语和德语文档。<strong class="ui">句场</strong>标注德语中动词的两个部分（<strong class="ui">左句框</strong>、<strong class="ui">右句框</strong>），还标注位于它们之前、之间和之后的场（<strong class="ui">前场</strong>、<strong class="ui">中场</strong>、<strong class="ui">后场</strong>），这些场统称为拓扑场。<strong class="ui">句式</strong>标注汉语中常见的句式（如“把”字句和“被”字句），<strong class="ui">助词</strong>则标注汉语中的体助词、结构助词和量词。</p>
+<p>你也可以把其他语言的文档作为文本文档导入。这些文档可以阅读、搜索和编码，可以写备忘录，可以链接，也可以加书签。导航栏中每个文档旁边都会显示语言代码，例如 EN、DE 和 ZH。其他语言的代码旁会带一个问号。将鼠标指针悬停在问号上，会显示<strong class="ui">该语言不支持索引</strong>。这些文档无法使用任何依赖索引的功能，包括透镜菜单、<strong class="ui">语法</strong>标签页、词汇速写，以及关于词和句子的查询。不过，仍然可以对它们进行关于编码实例、备忘录或文档总体情况的查询。</p>
+<p>录音是个例外。LemmaLoom 只能把语音转写为英语、德语或中文文本，具体取决于录音的前 30 秒与哪种语言最为匹配。转写出的中文文本一律使用简体字。详见<a href="importing.html">第 4 章“导入资料”</a>中的<a href="importing.html#how-transcription-works">转录的工作方式</a>。</p>
+<p>要分析其他语言文档的语法，可以先翻译它。英语、德语或中文的译文与其他可建立索引的文档获得同等地位。为文档所在的文档集制作查询或词汇速写时，选择译文作为<strong class="ui">语料</strong>即可。</p>
+</article>
+<nav class="pager"><a class="previous" href="quick-start.html"><span>上一章</span>快速入门</a><a class="next" href="getting-started.html"><span>下一章</span>开始使用</a></nav>
+<footer class="site-footer">© 2026 Ryan S. Cooper. 保留所有权利。<br>本版本借助人工智能根据英文原版翻译而成，译文可能存在错误或不准确之处。如有疑问，请以英文版为准。</footer>
+</main>
+<nav class="page-toc" aria-label="本页内容"><p>本页内容</p><ul>
+<li class="level-2"><a href="#who-it-is-for">LemmaLoom 是什么</a></li>
+<li class="level-2"><a href="#main-window">主窗口</a></li>
+<li class="level-2"><a href="#kinds-of-work">工作类型</a></li>
+<li class="level-3"><a href="#qualitative-coding">质性编码</a></li>
+<li class="level-3"><a href="#linguistic-analysis">语言分析</a></li>
+<li class="level-3"><a href="#mixed-methods">混合方法</a></li>
+<li class="level-2"><a href="#key-terms">基本术语</a></li>
+<li class="level-3"><a href="#terms-projects-documents">项目、文档和译文</a></li>
+<li class="level-3"><a href="#terms-organizing">整理文档</a></li>
+<li class="level-3"><a href="#terms-coding">编码与编码实例</a></li>
+<li class="level-3"><a href="#terms-analysis">分析工具</a></li>
+<li class="level-2"><a href="#example-project">示例项目</a></li>
+<li class="level-2"><a href="#guide-organisation">本指南的结构</a></li>
+<li class="level-2"><a href="#conventions">体例约定</a></li>
+<li class="level-2"><a href="#system-requirements">系统要求</a></li>
+<li class="level-2"><a href="#languages">支持的语言</a></li>
+<li class="level-3"><a href="#interface-language">界面语言</a></li>
+<li class="level-3"><a href="#analysis-languages">文档语言</a></li>
+</ul></nav>
+</div>
+<script src="../assets/guide.js" defer></script>
+</body>
+</html>

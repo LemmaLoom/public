@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quick Start · LemmaLoom User Guide</title>
+<link rel="stylesheet" href="../assets/guide.css">
+<link rel="icon" type="image/png" href="../assets/logo.png">
+<script>var r=document.documentElement;r.setAttribute('data-theme','light');try{if(localStorage.getItem('guide-theme')==='dark'){r.setAttribute('data-theme','dark')}}catch(e){}</script>
+</head>
+<body>
+<header class="topbar">
+<button class="menu-toggle" aria-label="Contents" aria-expanded="false">☰</button>
+<a class="brand" href="index.html"><span class="wordmark"><span class="lemma">Lemma</span>Loom</span><span class="guide-name">User Guide</span></a>
+<div class="search"><input type="search" id="search" placeholder="Search" aria-label="Search" autocomplete="off" data-empty="No results"><div class="results" id="results" hidden></div></div>
+<nav class="languages" aria-label="Language"><a href="../en/quick-start.html" lang="en" aria-current="true">English</a><a href="../de/quick-start.html" lang="de">Deutsch</a><a href="../zh-Hans/quick-start.html" lang="zh-Hans">简体中文</a></nav>
+<button class="theme-toggle" data-light="Light" data-dark="Dark" aria-label="Theme"></button>
+<a class="pdf-link" href="https://github.com/LemmaLoom/public/raw/main/pdf/lemmaloom-guide-en.pdf">PDF</a>
+</header>
+<div class="layout">
+<nav class="sidebar" aria-label="Contents"><ol>
+<li class="current unnumbered"><a href="quick-start.html">Quick Start</a></li>
+<li><a href="introduction.html">Introduction</a></li>
+<li><a href="getting-started.html">Getting Started</a></li>
+<li><a href="projects-and-documents.html">Projects and Documents</a></li>
+<li><a href="importing.html">Importing Material</a></li>
+<li><a href="reading-and-editing.html">Reading and Editing</a></li>
+<li><a href="lenses.html">Lenses</a></li>
+<li><a href="coding.html">Coding</a></li>
+<li><a href="sets-tags-attributes.html">Sets, Groups, Tags, and Attributes</a></li>
+<li><a href="translations.html">Translations and Split View</a></li>
+<li><a href="text-inspector.html">The Text Inspector</a></li>
+<li><a href="grammar-inspector.html">The Grammar Inspector</a></li>
+<li><a href="word-sketch.html">Word Sketch</a></li>
+<li><a href="coding-analysis.html">Analyzing Codes</a></li>
+<li><a href="sketch-space.html">Sketch Space</a></li>
+<li><a href="queries-building.html">Building a Query</a></li>
+<li><a href="queries-results.html">Query Results and Statistics</a></li>
+<li><a href="queries-patterns.html">Query Patterns and Discovery</a></li>
+<li><a href="queries-using-results.html">Using Query Results</a></li>
+<li><a href="dictionaries.html">Dictionaries</a></li>
+<li><a href="custom-analyzers.html">Custom Analyzers</a></li>
+<li><a href="analysis-and-indexing.html">Analysis and Indexing</a></li>
+<li><a href="exchange-and-export.html">Exchanging and Exporting</a></li>
+<li><a href="undo.html">Undo and Redo</a></li>
+<li><a href="settings.html">Settings and Appearance</a></li>
+<li><a href="keyboard-shortcuts.html">Keyboard Shortcuts</a></li>
+<li><a href="help-and-support.html">Help and Support</a></li>
+<li><a href="statistics-reference.html">Statistics at a Glance</a></li>
+<li class="unnumbered"><a href="glossary.html">Glossary</a></li>
+<li class="unnumbered"><a href="thanks.html">Thank You</a></li>
+</ol></nav>
+<main class="content">
+<article>
+<h1 id="quick-start">Quick Start</h1>
+<p>LemmaLoom is a macOS application for qualitative and grammar analysis of text. You can use it to code passages in documents and interrogate those codes against the document’s grammar. You can, of course, use LemmaLoom just as a coding tool, or just as a grammar analysis tool as well. The mixing of qualitative and grammar analysis, however, will allow you to ask questions about your documents that might otherwise be more difficult to ask with qualitative data analysis tools that are not grammar-aware.</p>
+<p>LemmaLoom includes an example project called “Climate Debate” that you can import to explore the different tools and features available in the application. Much of the user guide, and the entirety of this Quick Start chapter, uses the “Climate Debate” project as a contextual theme for examples and explanations. The “Climate Debate” project is composed of fictional op-eds, columns, a speech, and other media, such as a report and a recorded radio debate. Any resemblance to real persons or publications is coincidental, and the content, being fictional, is not representative of any opinions or meant in any way as persuasive material.</p>
+<p>In this chapter you build the beginnings of “Climate Debate” from scratch. You begin from eleven invented texts of various kinds (op-eds, a speech, blog posts, and columns). Of these, six are written by climate activists, and five are written by climate skeptics. The figures throughout this guide show the finished project. Follow along with this guide by importing the example project via <strong class="ui">File ▸ Import ▸ Example Project</strong>. When imported, the language of the example project will depend on which interface language you are using in LemmaLoom. This could be English, German, or Mainland Simplified Chinese. Refer to <a href="introduction.html#languages">Supported languages</a> in <a href="introduction.html">Chapter 1, Introduction</a>. In the example project, the attribute, sets, and codes from the first few steps are already created. Therefore, when working with the example project, skip to <a href="#read-with-a-lens">Read with a lens</a>. Skip <a href="#create-codes">Create codes</a> when you reach it.</p>
+<p>In this guide, you may opt to import your own set of texts instead. The details on what kind of files you can import are covered in <a href="importing.html">Chapter 4, Importing Material</a>. Substitute your own materials if desired whenever the instructions mention specific documents, stances, or passages in “Climate Debate”.</p>
+<h2 id="main-window">The main window<a class="anchor" href="#main-window" aria-hidden="true">#</a></h2>
+<p>When you first launch LemmaLoom, there will be one window displayed with three columns. You may read all about the interface in <a href="getting-started.html#main-window">A tour of the main window</a> in <a href="getting-started.html">Chapter 2, Getting Started</a>. Currently, your navigation sidebar on the left is empty, while your inspector tab icons on the right are disabled. Your middle column displays the title <strong class="ui">LemmaLoom</strong> with the buttons <strong class="ui">New Project</strong> and <strong class="ui">Example Project</strong>.</p>
+<p>Here it is with a project loaded and a document open:</p>
+<figure class="shot" id="quick-start-main-window"><img class="shot-light" src="../figures/en/light/quick-start-main-window.webp" alt="“Running Out of Time” in the reader, its statistics in the Text tab of the inspector" loading="lazy"><img class="shot-dark" src="../figures/en/dark/quick-start-main-window.webp" alt="“Running Out of Time” in the reader, its statistics in the Text tab of the inspector" loading="lazy"><figcaption>“Running Out of Time” in the reader, its statistics in the Text tab of the inspector</figcaption></figure>
+<p>Projects appear in the <em>navigation sidebar</em> on the left. <a href="projects-and-documents.html">Chapter 3, Projects and Documents</a> describes project structure in more detail. Under <strong class="ui">Project</strong> in the navigation sidebar, you can find ten detail views of the overall project, such as <strong class="ui">Codebook</strong>, <strong class="ui">Code Matrix</strong>, and <strong class="ui">Queries</strong>. Further down in the navigation sidebar come sets, documents, and tags (see <a href="sets-tags-attributes.html">Chapter 8, Sets, Groups, Tags, and Attributes</a>). You may search the active project for documents via <strong class="ui">Edit ▸ Find Document</strong> (⇧⌘F); alternatively, you can type the name of a document you are looking for directly into <strong class="ui">Search Documents</strong> at the top of the navigation sidebar.</p>
+<p>Documents and detail views are opened in tabs inside the <em>reader</em> in the middle of the window. Across the top of the reader lies the <em>title band</em> containing the lens menu, as well as functions for searching and manipulating text, and for changing how the text and reader look. <a href="reading-and-editing.html">Chapter 5, Reading and Editing</a> details these various options and functions. The <em>inspector</em> on the right displays information on the document in the active tab. The inspector is divided into four tabs (<strong class="ui">Text</strong>, <strong class="ui">Grammar</strong>, <strong class="ui">Coding</strong>, and <strong class="ui">Multimode</strong>) accessible via buttons at the top right corner of the inspector. <a href="text-inspector.html">Chapter 10, The Text Inspector</a>, <a href="grammar-inspector.html">Chapter 11, The Grammar Inspector</a>, <a href="coding-analysis.html">Chapter 13, Analyzing Codes</a>, and <a href="sketch-space.html">Chapter 14, Sketch Space</a> provide descriptions of what these four tabs display.</p>
+<p>A button will be disabled either because it isn’t relevant to the active document or tab, or because it is not available for use yet (lenses require the document’s indexing process to finish first, for example). Hovering the mouse pointer over any disabled button provides the reason for it being disabled, such as <strong class="ui">Lenses become available when indexing completes</strong>.</p>
+<h2 id="create-the-project">Create the project<a class="anchor" href="#create-the-project" aria-hidden="true">#</a></h2>
+<p>Everything for one study goes into a <em>project</em>. A project is the topmost container in LemmaLoom. It holds the documents and the data you compile as you work on them. That data includes codes, memos, bookmarks, sets, and queries. Generally, you want to keep all relevant material for a study in a single project. LemmaLoom has limited capabilities for cross-project analysis, though queries can be performed across projects. <a href="projects-and-documents.html#working-across-projects">Working across projects</a> in <a href="projects-and-documents.html">Chapter 3, Projects and Documents</a> explains how such queries work.</p>
+<p><em>Attributes</em> store factual information about your documents. An attribute could be, for example, the stance an author holds, the publishing date, where you found it, etc. You can define attributes when first creating a project or at any other time after. More details about how to work with attributes can be found in <a href="sets-tags-attributes.html#attributes">Attributes</a> in <a href="sets-tags-attributes.html">Chapter 8, Sets, Groups, Tags, and Attributes</a>. For following along in the “Climate Debate” project, all you need is the “Stance” attribute, for comparing activists with skeptics later in this chapter.</p>
+<ol>
+<li>Choose <strong class="ui">File ▸ New Project</strong> (⇧⌘N).</li>
+<li>In <strong class="ui">Name</strong>, type <code>Climate Debate</code>.</li>
+<li>Under <strong class="ui">Attributes</strong>, click <strong class="ui">Add Attribute</strong>.</li>
+<li>In the new row, type <code>Stance</code> in the name field.</li>
+<li>In the menu beside it, choose <strong class="ui">Picker</strong>. A picker accepts only the values you list. That keeps the spelling of each value the same from one document to the next.</li>
+<li>In the field that appears, type <code>Activist, Skeptic, Neutral</code>. “Neutral” is for documents that report on the debate without taking a side.</li>
+<li>Click <strong class="ui">Create</strong>.</li>
+</ol>
+<figure class="shot" id="quick-start-new-project"><img class="shot-light" src="../figures/en/light/quick-start-new-project.webp" alt="Setting up “Climate Debate” with the attribute “Stance” and its three choices" loading="lazy"><img class="shot-dark" src="../figures/en/dark/quick-start-new-project.webp" alt="Setting up “Climate Debate” with the attribute “Stance” and its three choices" loading="lazy"><figcaption>Setting up “Climate Debate” with the attribute “Stance” and its three choices</figcaption></figure>
+<p>Your new project will appear in <strong class="ui">Projects</strong> in the navigation sidebar with its title in bold face. Titles in bold indicate the <em>active project</em>; everything below the list of projects in the navigation sidebar is only relevant to the active project.</p>
+<h2 id="import-the-texts">Import the texts<a class="anchor" href="#import-the-texts" aria-hidden="true">#</a></h2>
+<ol>
+<li>Choose <strong class="ui">File ▸ Import ▸ Documents</strong> (⇧⌘I).</li>
+<li>Select the eleven texts. To select several files, hold down ⌘ as you click.</li>
+<li>Click <strong class="ui">Open</strong>.</li>
+<li>The <strong class="ui">Import Document</strong> dialog opens for the first file, with <strong class="ui">1 of 11</strong> at its top right. Check the <strong class="ui">Name</strong> (LemmaLoom takes it from the file name), and leave the other fields as they are.</li>
+<li>Click <strong class="ui">Import</strong>.</li>
+<li>The dialog opens again for each of the remaining files. Click <strong class="ui">Import</strong> each time, or <strong class="ui">Skip</strong> to leave a file out.</li>
+</ol>
+<figure class="shot" id="quick-start-import-document"><img class="shot-light" src="../figures/en/light/quick-start-import-document.webp" alt="The Import Document dialog for “A Mayor's Promise”, the first of the eleven texts, with 1 of 11 at its top right" loading="lazy"><img class="shot-dark" src="../figures/en/dark/quick-start-import-document.webp" alt="The Import Document dialog for “A Mayor's Promise”, the first of the eleven texts, with 1 of 11 at its top right" loading="lazy"><figcaption>The Import Document dialog for “A Mayor’s Promise”, the first of the eleven texts, with 1 of 11 at its top right</figcaption></figure>
+<p>LemmaLoom lists the texts under <strong class="ui">Documents</strong> and starts indexing them in the background. Indexing first splits each text into sentences and words. Then each word gets its dictionary form; this form is called its <em>lemma</em>. It also works which noun is the object of which verb and every other way the words of a sentence depend on one another. <a href="analysis-and-indexing.html">Chapter 21, Analysis and Indexing</a> describes indexing in more detail. All documents in “Climate Debate” have been pre-indexed for your convenience. Large documents or media files may take longer to fully index. The hardware capabilities of your computer also play a role in how quickly documents are indexed. LemmaLoom uses hardware acceleration where it is available.</p>
+<p>If a document is being indexed, the title will have a gray coloration, along with a small progress ring to the right of it. When the ring disappears, the document has been successfully indexed. If you wish to view all documents currently being indexed, choose <strong class="ui">Window ▸ Activity</strong> (⌥⌘0).</p>
+<p>The <strong class="ui">Import Document</strong> dialog allows you to designate dates, groups, tags, and languages for each document, as outlined in <a href="importing.html#import-options">The Import Document dialog</a> in <a href="importing.html">Chapter 4, Importing Material</a>. That chapter also explains how to import PDFs, web pages, and audio and video recordings.</p>
+<h3 id="record-roles">Record each text’s stance<a class="anchor" href="#record-roles" aria-hidden="true">#</a></h3>
+<p>“Stance” could also have been specified per-document on the <strong class="ui">Import Document</strong> dialog. With eleven documents, specifying the value using the <strong class="ui">Attributes</strong> window requires significantly less effort than doing it individually. The <strong class="ui">Attributes</strong> window allows setting values in bulk.</p>
+<ol>
+<li>Right-click “Climate Debate” under <strong class="ui">Projects</strong> and choose <strong class="ui">Attributes</strong>, or choose <strong class="ui">Project ▸ Attributes</strong>. The window lists every document in the project.</li>
+<li>Select the checkboxes beside the six activist texts (“Running Out of Time”, “Letter from the Climate Strike”, “Why We Block the Roads”, “Farmers Are Not the Enemy”, “A Mayor’s Promise”, and “Hope Takes Work”).</li>
+<li>The row with <strong class="ui">Search</strong> now shows <strong class="ui">6 documents selected</strong>. Beside it, choose <strong class="ui">Set Value ▸ Stance</strong>.</li>
+<li>In the <strong class="ui">Set Value</strong> dialog, choose “Activist” and click <strong class="ui">Apply</strong>.</li>
+<li>Deselect the activists’ checkboxes, then select those of the five skeptic texts (“The Models Keep Missing”, “Net Zero Will Cost You”, “Let’s Not Panic”, “Who Pays for the Transition”, and “Science Is Never Settled”).</li>
+<li>Choose <strong class="ui">Set Value ▸ Stance</strong> again, choose “Skeptic”, and click <strong class="ui">Apply</strong>.</li>
+<li>Close the <strong class="ui">Attributes</strong> window.</li>
+</ol>
+<figure class="shot" id="quick-start-attributes-window"><img class="shot-light" src="../figures/en/light/quick-start-attributes-window.webp" alt="The Attributes window for “Climate Debate” with the six activist texts checked and Set Value open on “Stance”" loading="lazy"><img class="shot-dark" src="../figures/en/dark/quick-start-attributes-window.webp" alt="The Attributes window for “Climate Debate” with the six activist texts checked and Set Value open on “Stance”" loading="lazy"><figcaption>The Attributes window for “Climate Debate” with the six activist texts checked and Set Value open on “Stance”</figcaption></figure>
+<p>Alternatively, the active document’s values may be updated using <strong class="ui">Details</strong> on the <strong class="ui">Text</strong> tab in the inspector. This will modify one document at a time. In the <strong class="ui">Attributes</strong> window, performing a search will restrict which rows get affected by the <strong class="ui">Set Value</strong> action. See <a href="sets-tags-attributes.html#bulk-values">Setting one value for many documents</a> in <a href="sets-tags-attributes.html">Chapter 8, Sets, Groups, Tags, and Attributes</a> for further information.</p>
+<h3 id="make-two-sets">Make two sets<a class="anchor" href="#make-two-sets" aria-hidden="true">#</a></h3>
+<p>The keyword list later in this chapter allows you to compare the contents of activist documents versus skeptic documents. This means each party has to have their own <em>set</em>, a collection of documents under a name.</p>
+<ol>
+<li>Under <strong class="ui">Documents</strong>, click “Running Out of Time”, then hold down ⌘ and click each of the other five activist texts.</li>
+<li>Right-click one of the selected documents and choose <strong class="ui">Add to Set ▸ New Set from Documents</strong>.</li>
+<li>The new set appears under <strong class="ui">Sets</strong> with its name ready for editing. Type <code>Activists</code> and press Return.</li>
+<li>Select the five skeptic texts the same way and make a set called <code>Skeptics</code>.</li>
+</ol>
+<figure class="shot" id="quick-start-add-to-set-menu"><img class="shot-light" src="../figures/en/light/quick-start-add-to-set-menu.webp" alt="The shortcut menu over six selected texts under Documents, with Add to Set open and New Set from Documents at its end" loading="lazy"><img class="shot-dark" src="../figures/en/dark/quick-start-add-to-set-menu.webp" alt="The shortcut menu over six selected texts under Documents, with Add to Set open and New Set from Documents at its end" loading="lazy"><figcaption>The shortcut menu over six selected texts under Documents, with Add to Set open and New Set from Documents at its end</figcaption></figure>
+<p>“Wide Reach” in the example project contains all documents where “Readership” is greater than or equal to 100,000 people. This set is determined by a rule and is called a <em>smart set</em>. See <a href="sets-tags-attributes.html#smart-sets">Smart sets</a> in <a href="sets-tags-attributes.html">Chapter 8, Sets, Groups, Tags, and Attributes</a>.</p>
+<h2 id="read-with-a-lens">Read with a lens<a class="anchor" href="#read-with-a-lens" aria-hidden="true">#</a></h2>
+<p>Clicking “Running Out of Time” in <strong class="ui">Documents</strong> will open it for viewing. The example project has stored it inside the group “Print”. On the left margin of the reader, there are two columns numbering the paragraphs and sentences of your document. Along the right edge of the reader is the document overview, which is a colored scroll bar indicating the current location within your document and its composition in relation to the active lenses (codes, for example). Hovering the mouse pointer over the document overview will also give you a preview of the text at that specific location.</p>
+<p>The appearance of content inside the reader is controlled by <em>lenses</em>. Each lens styles text according to a characteristic property of it. More information on this topic is provided in <a href="lenses.html">Chapter 6, Lenses</a>, where all available lenses and their annotations are described in depth. When you initially view a document, <strong class="ui">Codes</strong> and <strong class="ui">Bookmarks</strong> lenses are already turned on; hence, the lens menu reads <strong class="ui">2 Lenses</strong>. Those two lenses draw your existing annotations onto the text. To activate a lens based on grammar analysis, for instance, follow the instructions below:</p>
+<ol>
+<li>Click <strong class="ui">2 Lenses</strong> in the title band.</li>
+<li>Choose <strong class="ui">Modality</strong>.</li>
+</ol>
+<figure class="shot" id="quick-start-modality"><img class="shot-light" src="../figures/en/light/quick-start-modality.webp" alt="The Modality lens on “Running Out of Time”, with its legend above the text" loading="lazy"><img class="shot-dark" src="../figures/en/dark/quick-start-modality.webp" alt="The Modality lens on “Running Out of Time”, with its legend above the text" loading="lazy"><figcaption>The Modality lens on “Running Out of Time”, with its legend above the text</figcaption></figure>
+<p><strong class="ui">Modality</strong> annotates words that talk about ability, necessity, obligation, possibility, and volition. For instance, in “Running Out of Time”, <em>might</em> in “nothing we might spend on prevention” is annotated with <strong class="ui">Possibility</strong>, while <em>can</em> in “No one can say exactly where each threshold lies” is annotated with <strong class="ui">Ability</strong>. Above the text sits a row of colored aspect lenslets that represent the <em>legend</em> of the lens. By clicking any one of the lenslets, you disable the selected aspect and remove its annotations from the document. Another click restores both the aspect and its annotations in the document.</p>
+<p>To the right of the lens menu is a button whose tooltip says <strong class="ui">Show only the sentences a lens annotates</strong>. By clicking this button, you shrink the document to show sentences that contain annotations made by active lenses only; click again to expand the document fully.</p>
+<h2 id="create-codes">Create codes<a class="anchor" href="#create-codes" aria-hidden="true">#</a></h2>
+<p>You give passages about some topic or aspect a <em>code</em> that you define yourself (“Urgency”, for example). All of a project’s codes together make up its <em>codebook</em>. You can think of your codebook as a collection of adjectives or ideas you use to describe or highlight details in your project. Your codes can then be used to help you answer questions you might have about the documents in your project. Usually, you will start with some questions you want to ask about your documents, and from there create the codes that you think would help you answer those questions.</p>
+<p>The following procedure adds a code called “Urgency” and its subcode, “Deadlines”.</p>
+<ol>
+<li>Under <strong class="ui">Project</strong> in the navigation sidebar, click <strong class="ui">Codebook</strong>. It opens in a tab.</li>
+<li>Click <strong class="ui">Add Code</strong> at the bottom of the code list.</li>
+<li>In the <strong class="ui">New Code</strong> dialog, type <code>Urgency</code> in <strong class="ui">Name</strong>.</li>
+<li>Under <strong class="ui">Color</strong>, click a color.</li>
+<li>Click <strong class="ui">Save</strong>.</li>
+<li>Right-click “Urgency” in the list and choose <strong class="ui">Add Subcode</strong>.</li>
+<li>In the <strong class="ui">New Code</strong> dialog, type <code>Deadlines</code> in <strong class="ui">Name</strong>, choose a color, and click <strong class="ui">Save</strong>.</li>
+</ol>
+<figure class="shot" id="quick-start-new-code-dialog"><img class="shot-light" src="../figures/en/light/quick-start-new-code-dialog.webp" alt="The New Code dialog over the Codebook of “Climate Debate”, with “Urgency” typed in Name" loading="lazy"><img class="shot-dark" src="../figures/en/dark/quick-start-new-code-dialog.webp" alt="The New Code dialog over the Codebook of “Climate Debate”, with “Urgency” typed in Name" loading="lazy"><figcaption>The New Code dialog over the Codebook of “Climate Debate”, with “Urgency” typed in Name</figcaption></figure>
+<figure class="shot" id="quick-start-add-subcode-menu"><img class="shot-light" src="../figures/en/light/quick-start-add-subcode-menu.webp" alt="The shortcut menu on “Urgency” in the Codebook, with Add Subcode at its top" loading="lazy"><img class="shot-dark" src="../figures/en/dark/quick-start-add-subcode-menu.webp" alt="The shortcut menu on “Urgency” in the Codebook, with Add Subcode at its top" loading="lazy"><figcaption>The shortcut menu on “Urgency” in the Codebook, with Add Subcode at its top</figcaption></figure>
+<p>Subcodes enable the creation of hierarchies between related codes. This may be helpful if your study has many similar codes that you want to be logically grouped together.</p>
+<h2 id="code-passages">Code passages<a class="anchor" href="#code-passages" aria-hidden="true">#</a></h2>
+<ol>
+<li>Click the tab of “Running Out of Time”.</li>
+<li>Select a passage, for example, “A deadline that falls after everyone in office has retired is not a deadline at all.”</li>
+<li>In the bar that appears at the bottom of the reader, click <strong class="ui">Code</strong>.</li>
+<li>In the list of codes, click “Deadlines”.</li>
+</ol>
+<figure class="shot" id="quick-start-code-palette"><img class="shot-light" src="../figures/en/light/quick-start-code-palette.webp" alt="Picking a code for a sentence of “Running Out of Time” from the bar at the bottom of the reader" loading="lazy"><img class="shot-dark" src="../figures/en/dark/quick-start-code-palette.webp" alt="Picking a code for a sentence of “Running Out of Time” from the bar at the bottom of the reader" loading="lazy"><figcaption>Picking a code for a sentence of “Running Out of Time” from the bar at the bottom of the reader</figcaption></figure>
+<p>Your passage has been given the color of “Deadlines”. In addition, a bar of the same color appears to the left of the passage. You can still continue browsing the codes available from the list that is currently open, apply a second code to the passage, or hit the Escape key to close the code list. If the codebook contains many codes, you may simply enter the start of a code’s name to locate the one you want. In the event you enter a name no existing code matches, the list provides an option labeled <strong class="ui">Add Code “…”</strong>, which allows you to create and apply the code simultaneously.</p>
+<p>Clicking the number adjacent to the paragraph selects everything contained within the paragraph itself without having to manually select the text. <strong class="ui">Document ▸ Code</strong> (⇧⌘C) invokes the very same list of codes. <strong class="ui">Edit ▸ Undo Apply Code</strong> (⌘Z) revokes the most recent application of a code made to any passage. To remove a code later, select the passage again, after which you’ll notice there is a check mark in the list beside codes already assigned; unchecking one removes that code.</p>
+<p>You should code a few more passages per text, because the upcoming examples require codings to count and visualize. <a href="coding.html">Coding</a> provides additional context regarding how memos, links, and bookmarks work. That chapter also covers auto code for coding several passages at once.</p>
+<h2 id="code-matrix">Compare activists and skeptics<a class="anchor" href="#code-matrix" aria-hidden="true">#</a></h2>
+<p>The <strong class="ui">Code Matrix</strong> is in tabular form. It contains columns for every document, and rows for each code you’ve made and used. Each individual cell within the matrix gives the total number of passages carrying its row’s code within its column’s document. Grouping the Code Matrix by an attribute will turn that matrix into a comparison between groups of documents.</p>
+<ol>
+<li>Under <strong class="ui">Project</strong>, click <strong class="ui">Code Matrix</strong>.</li>
+<li>In the menu showing <strong class="ui">Documents</strong>, choose <strong class="ui">Attribute</strong>.</li>
+<li>In the menu that appears beside it, choose “Stance”.</li>
+<li>In the row of buttons below, click <strong class="ui">Documents</strong>.</li>
+<li>In the switch beside it, click <strong class="ui">%</strong>.</li>
+</ol>
+<figure class="shot" id="quick-start-code-matrix"><img class="shot-light" src="../figures/en/light/quick-start-code-matrix.webp" alt="Each code's share of the activist, skeptic, and neutral documents in “Climate Debate”, with the Code Matrix grouped by “Stance”" loading="lazy"><img class="shot-dark" src="../figures/en/dark/quick-start-code-matrix.webp" alt="Each code's share of the activist, skeptic, and neutral documents in “Climate Debate”, with the Code Matrix grouped by “Stance”" loading="lazy"><figcaption>Each code’s share of the activist, skeptic, and neutral documents in “Climate Debate”, with the Code Matrix grouped by “Stance”</figcaption></figure>
+<p>With <strong class="ui">%</strong> chosen, each cell represents the percent of a particular group’s documents where a code occurs at least once in those documents. Selecting a code within the table displays those same values for each group as a bar chart above the table. The “Climate Debate” project has the “Uncertainty” code occur in only one of the six activist texts; thus, the activists’ cell has 16.7%. Of the five skeptic texts, four contain at least one passage with the “Uncertainty” code; hence, the skeptics’ cell has 80.0%. Additionally, note that the table for the “Climate Debate” example project has a “Neutral” column since there are documents representing a neutral stance on climate change included in it. These documents consist of the heat wave report, the news article, and the radio debate.</p>
+<p><strong class="ui">Codings</strong> represents the number of coded passages while <strong class="ui">Coverage</strong> represents the measure in characters of how much of the text is annotated with a code. Whichever metric you choose, the last columns of the table test the groups against each other, with each test assessing whether or not chance alone could explain the difference between the groups in the share of documents containing each code. The current project includes eleven documents divided into two groups, “Activist” and “Skeptic”. With two groups in the comparison, the table tests them against each other using Fisher’s exact test with a reported p-value (<strong class="ui">p (Fisher)</strong>). The “Climate Debate” example project, however, has three groups. Hence, the table applies the chi-square test to test the differences and provides a statistic (<strong class="ui">χ² (df = 2)</strong>) and the associated probability (<strong class="ui">p</strong>).</p>
+<p>Consider the case where stance makes absolutely no difference. Then, the <em>p-value</em> for a code indicates the probability of finding the observed difference, or a larger one, purely by chance alone, i.e., without any real differences in stance. When the p-value is less than 0.05, then chance alone produces that difference fewer than once in twenty trials. Accordingly, the results with significance are printed with darker colors and an asterisk (*) next to their corresponding p-values. With the <strong class="ui">Significant Only</strong> option active, the table retains only the codes with significant differences. The strength of these differences is measured using the <strong class="ui">Cramér’s V</strong> metric from 0 to 1 (no difference to maximum difference). Consider the darker test values as justification for reviewing the corresponding passages more carefully.</p>
+<p><strong class="ui">Code Stats</strong> lives directly above <strong class="ui">Code Matrix</strong> within the sidebar. Each row in the table is a unique code you have used; it shows how many passages and documents, and what percentage of total characters, are covered by each code. <a href="coding-analysis.html">Chapter 13, Analyzing Codes</a> discusses both views further, with an example of the tests.</p>
+<h2 id="word-sketch">Sketch a word<a class="anchor" href="#word-sketch" aria-hidden="true">#</a></h2>
+<p>A <em>word sketch</em> demonstrates what other words a particular word combines with grammatically. Those words are classified based on <em>relations</em>. Relation refers to the grammatical connection between the two words. All relations are described in <a href="word-sketch.html">Chapter 12, Word Sketch</a>. The verbs that take a certain word as their object comprise one relation type, for instance. Adjectives describing that word constitute another relation type.</p>
+<ol>
+<li>Under <strong class="ui">Project</strong>, click <strong class="ui">Word Sketch</strong>.</li>
+<li>In the <strong class="ui">Word</strong> field, type <code>climate</code> and press Return.</li>
+<li>If another mode is chosen, click <strong class="ui">Grammar</strong> in the bar at the top of the tab.</li>
+</ol>
+<figure class="shot" id="quick-start-word-sketch"><img class="shot-light" src="../figures/en/light/quick-start-word-sketch.webp" alt="The partners of climate across “Climate Debate”, drawn as a map" loading="lazy"><img class="shot-dark" src="../figures/en/dark/quick-start-word-sketch.webp" alt="The partners of climate across “Climate Debate”, drawn as a map" loading="lazy"><figcaption>The partners of climate across “Climate Debate”, drawn as a map</figcaption></figure>
+<p>In the map, <em>climate</em> occupies the central position, while its partners are positioned according to their relations. Each color represents one type of relation. <em>Change</em> lies under <strong class="ui">Subject of</strong> because in “the climate is changing”, <em>climate</em> is its subject. <em>Crisis</em> is one of the words listed under <strong class="ui">In compounds with</strong>, as in “the climate crisis”. In a relation, the size of the font representing a partner increases with the strength of the partnership.</p>
+<p>The measure used in assessing the strength of the partnerships is known as the <em>logDice</em> score, whose calculations are covered in <a href="word-sketch.html#logdice">logDice</a>. The logDice score signifies how much of the two words’ use is accounted for by their occurrences as a pair. Consider the score to be a mathematical expression of collocations. The logDice score ranges up to 14, the maximum for words that co-occur exclusively. Each point below 14 halves that share. Hover the mouse pointer over any partner to view the logDice score beside f; here, f stands for frequency. This value signifies how many times the two words were seen together.</p>
+<p>You may activate a sketch for any partner, including <em>crisis</em>, by clicking the word. To return to <em>climate</em>, click on it in the line above the sketch or press ⌘[. To see the sentences behind a particular partner, click <strong class="ui">List</strong> above the sketch and subsequently select a row with your chosen partner. LemmaLoom navigates you directly to the first sentence linking both words in question. Click the <strong class="ui">Word Sketch</strong> tab to return, then click the same row again to continue looking at other sentences involving both.</p>
+<h2 id="keywords">Find the activists’ keywords<a class="anchor" href="#keywords" aria-hidden="true">#</a></h2>
+<p>Certain words tend to appear significantly more frequently within a set compared to another. Other words will appear significantly less frequently. A <em>keyword list</em> will highlight the difference between the frequencies of occurrence in both directions. Compare the keywords of “Activists” against “Skeptics”.</p>
+<ol>
+<li>Click “Activists” under <strong class="ui">Sets</strong> in the navigation sidebar. The set opens in a tab.</li>
+<li>In the row of buttons at the top of the tab, click <strong class="ui">Queries</strong>. In a narrow window the row is a menu. Choose <strong class="ui">Queries</strong> from it.</li>
+<li>In the column on the left, under <strong class="ui">Recipes</strong>, click <strong class="ui">Keywords</strong>.</li>
+<li>The query <em>builder</em> is to the right of the column. It is made of boxes called <em>conditions</em>. <a href="queries-building.html">Chapter 15, Building a Query</a> describes both. In the <strong class="ui">Show</strong> condition, set the menu showing <strong class="ui">Rest of Project</strong> to <strong class="ui">Set</strong>.</li>
+<li>In the menu that appears below it, choose “Skeptics”.</li>
+</ol>
+<figure class="shot" id="quick-start-keywords"><img class="shot-light" src="../figures/en/light/quick-start-keywords.webp" alt="Keywords of “Activists” against “Skeptics”" loading="lazy"><img class="shot-dark" src="../figures/en/dark/quick-start-keywords.webp" alt="Keywords of “Activists” against “Skeptics”" loading="lazy"><figcaption>Keywords of “Activists” against “Skeptics”</figcaption></figure>
+<p>Leave the menu showing <strong class="ui">Lemma</strong> unchanged, so that <em>cost</em> and <em>costs</em> become <em>cost</em>. Leave the menu showing <strong class="ui">LL ≥ 3.84</strong> unchanged. The abbreviation LL stands for the <strong class="ui">Log-Likelihood</strong> score. By chance alone, a score greater than or equal to 3.84 occurs only about once out of every twenty trials. Any word with a lower score is omitted from the result list.</p>
+<p>The result will display underneath the builder, and is updated as you alter the parameters. On a larger project, run the query manually by clicking on the triangle icon above the builder, or pressing ⌘R.</p>
+<p><strong class="ui">Positive Keywords</strong> lists words used more frequently by the activists compared to the skeptics. <strong class="ui">Negative Keywords</strong> lists those used less frequently by them. In this comparison, “Activists” serves as the <em>target</em>, while “Skeptics” serves as the <em>reference</em>. The line above the tables tells you how many total words were considered in each set, respectively labeled <strong class="ui">Target Words</strong> and <strong class="ui">Reference Words</strong>. In the table, a word’s count in the “Activists” set appears in <strong class="ui">Count</strong>, whereas the same in the “Skeptics” set appears in <strong class="ui">Reference</strong>.</p>
+<p>Both lists are ranked according to <strong class="ui">Log-Likelihood</strong>. Near the top of either list are words whose differences are least likely to be due purely to chance. <strong class="ui">Log Ratio</strong> indicates the degree of difference taking into consideration the overall sizes of the two sets. The value 1 indicates usage twice as often, 2 indicates four times, 3 eight times, and so forth, doubling with each further step. For negative keywords, the ratio falls below zero, indicating usage half as often at −1. <a href="queries-results.html#keywords">Keywords</a> in <a href="queries-results.html">Chapter 16, Query Results and Statistics</a> calculates both scores step by step.</p>
+<p>Keyword lists reveal to you distinctive words; however, they tell you nothing about why they stand out. Analyze the contexts surrounding the listed words in passages.</p>
+<p>To save the keyword query:</p>
+<ol>
+<li>In the bar above the builder, click the button with a square and an arrow pointing into it. Its tooltip reads <strong class="ui">Save</strong>.</li>
+<li>Choose <strong class="ui">Save</strong>.</li>
+<li>In the <strong class="ui">Save Query</strong> dialog, replace the text in <strong class="ui">Name</strong> with <code>Keywords: Activists</code>. Leave <strong class="ui">Available In</strong> at <strong class="ui">Set</strong>.</li>
+<li>Click <strong class="ui">Save</strong>.</li>
+</ol>
+<figure class="shot" id="quick-start-save-query-dialog"><img class="shot-light" src="../figures/en/light/quick-start-save-query-dialog.webp" alt="The Save Query dialog for the keywords of “Activists”, with the name “Keywords: Activists” and Available In at Set" loading="lazy"><img class="shot-dark" src="../figures/en/dark/quick-start-save-query-dialog.webp" alt="The Save Query dialog for the keywords of “Activists”, with the name “Keywords: Activists” and Available In at Set" loading="lazy"><figcaption>The Save Query dialog for the keywords of “Activists”, with the name “Keywords: Activists” and Available In at Set</figcaption></figure>
+<p>The saved query will appear under <strong class="ui">Set</strong> at the top of the left column whenever you access the queries in the “Activists” set. Clicking on this item restores the keyword list that you saw earlier. In the example project, there is already a saved query here.</p>
+<h2 id="export">Export a table<a class="anchor" href="#export" aria-hidden="true">#</a></h2>
+<p>Keyword lists may be exported as comma-separated values (.csv) files for use with spreadsheet applications.</p>
+<ol>
+<li>In the bar above the results, click the export button, a square with an arrow pointing up. Its tooltip reads <strong class="ui">Export</strong>.</li>
+<li>Choose <strong class="ui">CSV</strong>.</li>
+<li>Choose a folder and click <strong class="ui">Save</strong>.</li>
+</ol>
+<figure class="shot" id="quick-start-export-menu"><img class="shot-light" src="../figures/en/light/quick-start-export-menu.webp" alt="The Export menu above the keyword results of “Activists”" loading="lazy"><img class="shot-dark" src="../figures/en/dark/quick-start-export-menu.webp" alt="The Export menu above the keyword results of “Activists”" loading="lazy"><figcaption>The Export menu above the keyword results of “Activists”</figcaption></figure>
+<p>Each line contains a keyword paired alongside its counts, scores, and whether it was marked positive or negative. The format here is Comma-Separated Values (CSV), a simple text-based spreadsheet format which many applications including spreadsheets and statistical software packages support. The other items under <strong class="ui">Export</strong> in this same menu export results as images (<strong class="ui">PNG</strong> and <strong class="ui">PDF</strong>), Markdown files (<strong class="ui">Markdown</strong> format combines the results file with metadata regarding the query used), or copy the result to your clipboard (<strong class="ui">Copy</strong>).</p>
+<p>Most table and graph displays offer an export option, just as this one does. <a href="exchange-and-export.html#tables-and-charts">Exporting tables and charts</a> in <a href="exchange-and-export.html">Chapter 22, Exchanging and Exporting</a> provides greater detail on what each export menu does, along with where it appears.</p>
+<p>To review concordances for any particular keyword, click <strong class="ui">Concordance</strong> below <strong class="ui">Recipes</strong> in the left column. The concordance feature allows you to explore each instance of the word along with its immediate context within the surrounding text. This topic is discussed further in <a href="queries-results.html#concordance">Concordance</a> in <a href="queries-results.html">Chapter 16, Query Results and Statistics</a>; <a href="queries-patterns.html#recipes">Recipes</a> in <a href="queries-patterns.html">Chapter 17, Query Patterns and Discovery</a> explains how to choose the word.</p>
+<h2 id="where-next">Where to go next<a class="anchor" href="#where-next" aria-hidden="true">#</a></h2>
+<p><strong class="ui">Help ▸ Glossary</strong> opens a glossary window with short explanations for LemmaLoom terminology. You may leave it up while working with your documents for quick referencing of any abbreviations or technical terms you might not know.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>To</th><th>Read</th></tr></thead>
+<tbody>
+<tr><td>Learn every part of the window, and where your work is kept</td><td><a href="getting-started.html">Getting Started</a></td></tr>
+<tr><td>Import PDF files, web pages, and recordings</td><td><a href="importing.html">Importing Material</a></td></tr>
+<tr><td>Find, select, and edit text in the reader</td><td><a href="reading-and-editing.html">Reading and Editing</a></td></tr>
+<tr><td>See what each lens annotates</td><td><a href="lenses.html">Lenses</a></td></tr>
+<tr><td>Write memos, link passages, and code automatically</td><td><a href="coding.html">Coding</a></td></tr>
+<tr><td>Divide a project by stance, outlet, or date</td><td><a href="sets-tags-attributes.html">Sets, Groups, Tags, and Attributes</a></td></tr>
+<tr><td>Translate a text and read it beside the original</td><td><a href="translations.html">Translations and Split View</a></td></tr>
+<tr><td>Count, chart, and test your codes</td><td><a href="coding-analysis.html">Analyzing Codes</a></td></tr>
+<tr><td>Study the grammatical partners of a word</td><td><a href="word-sketch.html">Word Sketch</a> and <a href="sketch-space.html">Sketch Space</a></td></tr>
+<tr><td>Search for words, phrases, and grammatical patterns</td><td><a href="queries-building.html">Building a Query</a> and <a href="queries-patterns.html">Query Patterns and Discovery</a></td></tr>
+<tr><td>Understand a score or a test before you report it</td><td><a href="queries-results.html">Query Results and Statistics</a> and <a href="statistics-reference.html">Statistics at a Glance</a></td></tr>
+<tr><td>Analyze material across several projects</td><td><a href="projects-and-documents.html#working-across-projects">Working across projects</a> in <a href="projects-and-documents.html">Chapter 3, Projects and Documents</a></td></tr>
+<tr><td>Keep lists of words, such as hedges, and count them</td><td><a href="dictionaries.html">Dictionaries</a></td></tr>
+<tr><td>Share a project or move it to another Mac</td><td><a href="exchange-and-export.html">Exchanging and Exporting</a></td></tr>
+<tr><td>Find a keyboard shortcut</td><td><a href="keyboard-shortcuts.html">Keyboard Shortcuts</a></td></tr>
+</tbody></table></div>
+</article>
+<nav class="pager"><a class="next" href="introduction.html"><span>Next</span>Introduction</a></nav>
+<footer class="site-footer">© 2026 Ryan S. Cooper. All rights reserved.</footer>
+</main>
+<nav class="page-toc" aria-label="On this page"><p>On this page</p><ul>
+<li class="level-2"><a href="#main-window">The main window</a></li>
+<li class="level-2"><a href="#create-the-project">Create the project</a></li>
+<li class="level-2"><a href="#import-the-texts">Import the texts</a></li>
+<li class="level-3"><a href="#record-roles">Record each text’s stance</a></li>
+<li class="level-3"><a href="#make-two-sets">Make two sets</a></li>
+<li class="level-2"><a href="#read-with-a-lens">Read with a lens</a></li>
+<li class="level-2"><a href="#create-codes">Create codes</a></li>
+<li class="level-2"><a href="#code-passages">Code passages</a></li>
+<li class="level-2"><a href="#code-matrix">Compare activists and skeptics</a></li>
+<li class="level-2"><a href="#word-sketch">Sketch a word</a></li>
+<li class="level-2"><a href="#keywords">Find the activists’ keywords</a></li>
+<li class="level-2"><a href="#export">Export a table</a></li>
+<li class="level-2"><a href="#where-next">Where to go next</a></li>
+</ul></nav>
+</div>
+<script src="../assets/guide.js" defer></script>
+</body>
+</html>

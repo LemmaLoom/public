@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>键盘快捷键 · LemmaLoom 用户指南</title>
+<link rel="stylesheet" href="../assets/guide.css">
+<link rel="icon" type="image/png" href="../assets/logo.png">
+<script>var r=document.documentElement;r.setAttribute('data-theme','light');try{if(localStorage.getItem('guide-theme')==='dark'){r.setAttribute('data-theme','dark')}}catch(e){}</script>
+</head>
+<body>
+<header class="topbar">
+<button class="menu-toggle" aria-label="目录" aria-expanded="false">☰</button>
+<a class="brand" href="index.html"><span class="wordmark"><span class="lemma">Lemma</span>Loom</span><span class="guide-name">用户指南</span></a>
+<div class="search"><input type="search" id="search" placeholder="搜索" aria-label="搜索" autocomplete="off" data-empty="无结果"><div class="results" id="results" hidden></div></div>
+<nav class="languages" aria-label="Language"><a href="../en/keyboard-shortcuts.html" lang="en">English</a><a href="../de/keyboard-shortcuts.html" lang="de">Deutsch</a><a href="../zh-Hans/keyboard-shortcuts.html" lang="zh-Hans" aria-current="true">简体中文</a></nav>
+<button class="theme-toggle" data-light="浅色" data-dark="深色" aria-label="外观"></button>
+<a class="pdf-link" href="https://github.com/LemmaLoom/public/raw/main/pdf/lemmaloom-guide-zh-Hans.pdf">PDF</a>
+</header>
+<div class="layout">
+<nav class="sidebar" aria-label="目录"><ol>
+<li class="unnumbered"><a href="quick-start.html">快速入门</a></li>
+<li><a href="introduction.html">简介</a></li>
+<li><a href="getting-started.html">开始使用</a></li>
+<li><a href="projects-and-documents.html">项目与文档</a></li>
+<li><a href="importing.html">导入资料</a></li>
+<li><a href="reading-and-editing.html">阅读与编辑</a></li>
+<li><a href="lenses.html">透镜</a></li>
+<li><a href="coding.html">编码</a></li>
+<li><a href="sets-tags-attributes.html">文档集、分组、标签和属性</a></li>
+<li><a href="translations.html">译文与分屏浏览</a></li>
+<li><a href="text-inspector.html">文本检查器</a></li>
+<li><a href="grammar-inspector.html">语法检查器</a></li>
+<li><a href="word-sketch.html">词汇速写</a></li>
+<li><a href="coding-analysis.html">编码分析</a></li>
+<li><a href="sketch-space.html">速写空间</a></li>
+<li><a href="queries-building.html">构建查询</a></li>
+<li><a href="queries-results.html">查询结果与统计</a></li>
+<li><a href="queries-patterns.html">查询模式与发现</a></li>
+<li><a href="queries-using-results.html">使用查询结果</a></li>
+<li><a href="dictionaries.html">词典</a></li>
+<li><a href="custom-analyzers.html">自定义分析器</a></li>
+<li><a href="analysis-and-indexing.html">分析与索引</a></li>
+<li><a href="exchange-and-export.html">交换与导出</a></li>
+<li><a href="undo.html">撤销与重做</a></li>
+<li><a href="settings.html">设置与外观</a></li>
+<li class="current"><a href="keyboard-shortcuts.html">键盘快捷键</a></li>
+<li><a href="help-and-support.html">帮助与支持</a></li>
+<li><a href="statistics-reference.html">统计量一览</a></li>
+<li class="unnumbered"><a href="glossary.html">术语表</a></li>
+<li class="unnumbered"><a href="thanks.html">感谢</a></li>
+</ol></nav>
+<main class="content">
+<article>
+<h1 id="keyboard-shortcuts">键盘快捷键</h1>
+<p>下面各表按菜单分别列出 LemmaLoom 的所有键盘快捷键，并注明每个快捷键具体在哪里起作用。</p>
+<p>菜单中所用修饰键符号的说明见<a href="introduction.html">第 1 章“简介”</a>中的<a href="introduction.html#conventions">体例约定</a>。⌘ 指 Command 键，⇧ 指 Shift 键，⌥ 指 Option 键，⌃ 指 Control 键。本章列出的快捷键以美式键盘布局为准。如果你使用其他键盘布局，macOS 可能会把 ⇧⌘[ 这类快捷键改为你的键盘上现有的按键，菜单中也会相应显示改动后的按键。</p>
+<h2 id="how-shortcuts-work">快捷键的工作方式<a class="anchor" href="#how-shortcuts-work" aria-hidden="true">#</a></h2>
+<p>LemmaLoom 中的每个快捷键都对应菜单栏中的一个命令，菜单会在命令旁边显示执行它所需的按键。Esc 键、Return 键、方向键和 Delete 键（⌫）是例外，它们作用于窗口中你当前正在使用的部分（见本章后文的<a href="#esc-and-return">Esc 键、Return 键和方向键</a>）。有些操作除了按键之外，还需要你点按或滚动某个对象（见本章后文的<a href="#modifier-clicks">按住修饰键点按</a>）。此外，分析器窗口中的脚本编辑器也有自己的一套编辑快捷键（见<a href="custom-analyzers.html">第 20 章“自定义分析器”</a>）。</p>
+<p>快捷键总是作用于当前窗口。主窗口是当前窗口时，针对文档的命令作用于当前标签页中的文档。在分屏浏览中，操作会影响你最后点按的那个窗格，也就是<em>当前窗格</em>（见<a href="translations.html">第 9 章“译文与分屏浏览”</a>中的<a href="translations.html#active-pane">当前窗格</a>）。</p>
+<p>只有当菜单中的命令可用时，它的快捷键才有效。例如，在阅读器中选中一个词或一段文字之前，<strong class="ui">文档 ▸ 编码</strong>（⇧⌘C）会一直不可用。下面各表的最后一列写明了每个命令需要什么条件。</p>
+<p>有几个命令的名称会随情况改变，按键却保持不变。此外，有些组合键在不同的窗口中有不同的作用：</p>
+<ul>
+<li>⇧⌘B 是<strong class="ui">书签</strong>；选区与某个书签重叠时，则是<strong class="ui">移除书签</strong>。</li>
+<li>⇧⌘L 是<strong class="ui">链接</strong>；开始建立链接之后，则是<strong class="ui">完成链接</strong>。</li>
+<li>⇧⌘A 是<strong class="ui">自动编码…</strong>，除非已启用的透镜中有不止一个可以自动为段落编码。启用了多个这样的透镜时，这组按键对应以这些透镜命名的命令中的第一个，例如<strong class="ui">使用模糊限制语自动编码…</strong>。</li>
+<li>播放录音时，⇧⌘P 在<strong class="ui">播放</strong>和<strong class="ui">暂停</strong>之间切换。</li>
+<li>在主窗口中有标签页打开时，⌘W 关闭标签页（<strong class="ui">关闭标签页</strong>）。在其他情况下，⌘W 对应的是<strong class="ui">关闭</strong>。</li>
+<li>在导航栏中选中项目、文档集、分组或文档时，⌘⌫ 会删除它们（<strong class="ui">删除项目</strong>、<strong class="ui">删除文档集</strong>、<strong class="ui">删除分组</strong>或<strong class="ui">删除文档</strong>）。选中了多个文档时，它会同时删除所有选中的文档。在分析器窗口中，焦点在列表上时，⌘⌫ 从列表中删除分析器（<strong class="ui">删除分析器</strong>）。</li>
+<li>⌘+、⌘- 和 ⌘0 分别增大、减小和重置文字大小（<strong class="ui">增大文字</strong>、<strong class="ui">减小文字</strong>、<strong class="ui">重置文字大小</strong>），但在图示窗口中，它们分别用来放大、缩小和恢复实际大小（<strong class="ui">放大</strong>、<strong class="ui">缩小</strong>、<strong class="ui">实际大小</strong>）。</li>
+<li>⌃⌘F 是<strong class="ui">进入全屏幕</strong>；在全屏幕模式下，则是<strong class="ui">退出全屏幕</strong>。</li>
+</ul>
+<p>编辑文档文本时，<strong class="ui">存储</strong>（⌘Return）和<strong class="ui">取消</strong>（⌘.）取代<strong class="ui">编辑</strong>（⇧⌘E）。建立链接的过程中，<strong class="ui">完成链接</strong>下方会出现<strong class="ui">取消链接</strong>（⌥⇧⌘L）。</p>
+<h3 id="shortcuts-by-window">各窗口中的快捷键<a class="anchor" href="#shortcuts-by-window" aria-hidden="true">#</a></h3>
+<p>LemmaLoom 有一个主窗口和多个较小的窗口，它们共用同一个菜单栏。不过，菜单中的大多数命令需要主窗口或某个打开的文档提供上下文，所以其他窗口是当前窗口时，这些命令不可用，直到你点按主窗口为止。有些较小的窗口还提供额外的命令。</p>
+<div class="table-wrap"><table>
+<thead><tr><th>当前窗口</th><th>可用的快捷键</th></tr></thead>
+<tbody>
+<tr><td>主窗口</td><td>全部可用（前提是它们所作用的对象已经打开），属于图示窗口和分析器窗口的快捷键除外</td></tr>
+<tr><td>单独窗口中的文档（选取<strong class="ui">窗口 ▸ 在新窗口中打开</strong>，或者右键点按文档的标签页并选取<strong class="ui">在新窗口中打开</strong>）</td><td><strong class="ui">文档</strong>菜单；<strong class="ui">查找</strong>、<strong class="ui">查找下一个</strong>和<strong class="ui">查找上一个</strong>；<strong class="ui">显示/隐藏检查器</strong>和检查器的四个标签页；<strong class="ui">增大文字</strong>、<strong class="ui">减小文字</strong>和<strong class="ui">重置文字大小</strong>；检查器显示查询时的<strong class="ui">运行查询</strong>；检查器显示词汇速写时<strong class="ui">显示 ▸ 词汇速写</strong>下的命令；<strong class="ui">关闭</strong>（⌘W）</td></tr>
+<tr><td>词汇速写窗口</td><td><strong class="ui">显示 ▸ 词汇速写</strong>下的命令；<strong class="ui">关闭</strong>（⌘W）</td></tr>
+<tr><td>图示窗口</td><td><strong class="ui">放大</strong>、<strong class="ui">缩小</strong>和<strong class="ui">实际大小</strong>；<strong class="ui">关闭</strong>（⌘W）</td></tr>
+<tr><td>编码本窗口</td><td>其<strong class="ui">查询</strong>视图中的<strong class="ui">运行查询</strong>，以及其<strong class="ui">词汇速写</strong>视图中<strong class="ui">显示 ▸ 词汇速写</strong>下的命令；<strong class="ui">关闭</strong>（⌘W）</td></tr>
+<tr><td>查询窗口</td><td><strong class="ui">运行查询</strong>（⌘R）；<strong class="ui">关闭</strong>（⌘W）</td></tr>
+<tr><td>分析器窗口</td><td>焦点在列表上时的<strong class="ui">删除分析器</strong>（⌘⌫）；<strong class="ui">关闭</strong>（⌘W）</td></tr>
+<tr><td>其他任何窗口，例如标签、属性、活动、术语表或设置窗口</td><td><strong class="ui">关闭</strong>（⌘W）</td></tr>
+</tbody></table></div>
+<p>有几个菜单项的快捷键无论焦点在哪个窗口中都有效，即<strong class="ui">文件 ▸ 新建窗口</strong>（⌘N）、<strong class="ui">LemmaLoom ▸ 设置…</strong>（⌘,）、<strong class="ui">窗口 ▸ 活动</strong>（⌥⌘0）、<strong class="ui">窗口 ▸ 最小化</strong>（⌘M）、<strong class="ui">编辑 ▸ 撤销</strong>（⌘Z）和<strong class="ui">编辑 ▸ 重做</strong>（⇧⌘Z）。macOS 的常用快捷键也照常有效，例如<strong class="ui">拷贝</strong>（⌘C）和<strong class="ui">退出LemmaLoom</strong>（⌘Q）。<strong class="ui">显示 ▸ 进入全屏幕</strong>在主窗口、查询窗口和结果窗口中有效。</p>
+<h2 id="shortcuts-by-menu">按菜单排列的快捷键<a class="anchor" href="#shortcuts-by-menu" aria-hidden="true">#</a></h2>
+<p>下面各表按菜单栏从左到右的顺序排列。每张表按顺序列出该菜单中 LemmaLoom 的全部命令。</p>
+<h3 id="lemmaloom-menu">LemmaLoom<a class="anchor" href="#lemmaloom-menu" aria-hidden="true">#</a></h3>
+<div class="table-wrap"><table>
+<thead><tr><th>命令</th><th>快捷键</th><th>适用场合</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">LemmaLoom ▸ 关于 LemmaLoom</strong></td><td>无</td><td>任何窗口。见<a href="help-and-support.html">第 26 章“帮助与支持”</a>中的<a href="help-and-support.html#about-lemmaloom">关于 LemmaLoom</a>。</td></tr>
+<tr><td><strong class="ui">LemmaLoom ▸ 设置…</strong></td><td>⌘,</td><td>任何窗口。打开设置窗口；如果它已经打开，则切换到它。见<a href="settings.html">第 24 章“设置与外观”</a>。</td></tr>
+<tr><td><strong class="ui">LemmaLoom ▸ 隐藏LemmaLoom</strong></td><td>⌘H</td><td>任何窗口。点按程序坞中的 LemmaLoom，可以重新显示它的窗口。</td></tr>
+<tr><td><strong class="ui">LemmaLoom ▸ 隐藏其他</strong></td><td>⌥⌘H</td><td>任何窗口。隐藏其他应用程序的窗口。</td></tr>
+<tr><td><strong class="ui">LemmaLoom ▸ 退出LemmaLoom</strong></td><td>⌘Q</td><td>任何窗口</td></tr>
+</tbody></table></div>
+<p>退出时撤销历史随之清除，因为撤销历史只在 LemmaLoom 运行期间保留（见<a href="undo.html">第 23 章“撤销与重做”</a>中的<a href="undo.html#history-lifetime">历史保留多久</a>）。关闭最后一个打开的窗口时，LemmaLoom 也会退出，例如在没有其他窗口打开时用 ⇧⌘W 关闭主窗口。</p>
+<h3 id="file-menu">文件<a class="anchor" href="#file-menu" aria-hidden="true">#</a></h3>
+<div class="table-wrap"><table>
+<thead><tr><th>命令</th><th>快捷键</th><th>适用场合</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">文件 ▸ 新建窗口</strong></td><td>⌘N</td><td>任何窗口。再打开一个主窗口。</td></tr>
+<tr><td><strong class="ui">文件 ▸ 新建项目</strong></td><td>⇧⌘N</td><td>主窗口</td></tr>
+<tr><td><strong class="ui">文件 ▸ 新建分组</strong></td><td>⌥⌘N</td><td>主窗口，有当前项目时。新分组出现在导航栏中，可以直接输入它的名称。</td></tr>
+<tr><td><strong class="ui">文件 ▸ 导入 ▸ 文档</strong></td><td>⇧⌘I</td><td>主窗口，有当前项目时。打开文件对话框，用于选择文本、PDF、音频和视频文件。</td></tr>
+<tr><td><strong class="ui">文件 ▸ 导入 ▸ 网页</strong></td><td>⌥⇧⌘I</td><td>主窗口，有当前项目时。打开用于输入网址的对话框。</td></tr>
+<tr><td><strong class="ui">文件 ▸ 导入 ▸ REFI-QDA 项目</strong>、<strong class="ui">REFI-QDA 编码本</strong>和 <strong class="ui">LemmaLoom 归档</strong></td><td>无</td><td>主窗口。<strong class="ui">REFI-QDA 编码本</strong>需要有当前项目。见<a href="exchange-and-export.html">第 22 章“交换与导出”</a>。</td></tr>
+<tr><td><strong class="ui">文件 ▸ 导入 ▸ 示例项目</strong></td><td>无</td><td>主窗口。以界面所用的语言把“气候辩论”添加为一个新项目。见<a href="introduction.html">第 1 章“简介”</a>中的<a href="introduction.html#example-project">示例项目</a>。</td></tr>
+<tr><td><strong class="ui">文件 ▸ 导出 ▸ REFI-QDA 项目</strong>、<strong class="ui">REFI-QDA 编码本</strong>和 <strong class="ui">LemmaLoom 项目</strong></td><td>无</td><td>主窗口，有当前项目时</td></tr>
+<tr><td><strong class="ui">文件 ▸ 导出 ▸ LemmaLoom 文档</strong></td><td>无</td><td>主窗口，在导航栏中选中了文档，或者阅读器中有当前文档时。见<a href="exchange-and-export.html">第 22 章“交换与导出”</a>中的<a href="exchange-and-export.html#exporting-documents">导出文档</a>。</td></tr>
+<tr><td><strong class="ui">文件 ▸ 导出 ▸ LemmaLoom 文档集</strong></td><td>无</td><td>主窗口，在导航栏中选中了文档集，或者文档集在当前标签页中打开时。见<a href="exchange-and-export.html">第 22 章“交换与导出”</a>中的<a href="exchange-and-export.html#exporting-set">导出文档集</a>。</td></tr>
+<tr><td><strong class="ui">文件 ▸ 关闭标签页</strong></td><td>⌘W</td><td>主窗口，有标签页打开时。如果分屏浏览的右侧窗格是当前窗格，则关闭分屏浏览。</td></tr>
+<tr><td><strong class="ui">文件 ▸ 关闭窗口</strong></td><td>⇧⌘W</td><td>主窗口，有标签页打开时</td></tr>
+<tr><td><strong class="ui">文件 ▸ 关闭</strong></td><td>⌘W</td><td>其他所有窗口，以及没有打开标签页的主窗口。关闭窗口。</td></tr>
+</tbody></table></div>
+<p>另一项导入或导出操作正在进行时，除<strong class="ui">导入 ▸ 文档</strong>和<strong class="ui">导入 ▸ 网页</strong>以外的所有导入和导出命令都不可用。</p>
+<p>关闭一个标签页之后哪个标签页会成为当前标签页，见<a href="projects-and-documents.html">第 3 章“项目与文档”</a>中的<a href="projects-and-documents.html#closing-tabs">关闭标签页</a>。</p>
+<figure class="shot" id="keyboard-shortcuts-file-menu"><img class="shot-light" src="../figures/zh-Hans/light/keyboard-shortcuts-file-menu.webp" alt="“文件”菜单，“导入”子菜单已展开。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/keyboard-shortcuts-file-menu.webp" alt="“文件”菜单，“导入”子菜单已展开。" loading="lazy"><figcaption>“文件”菜单，“导入”子菜单已展开。</figcaption></figure>
+<h3 id="edit-menu">编辑<a class="anchor" href="#edit-menu" aria-hidden="true">#</a></h3>
+<div class="table-wrap"><table>
+<thead><tr><th>命令</th><th>快捷键</th><th>适用场合</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">编辑 ▸ 撤销</strong></td><td>⌘Z</td><td>任何有步骤可撤销的窗口。命令名称会写明是哪一步，例如<strong class="ui">撤销应用编码</strong>。</td></tr>
+<tr><td><strong class="ui">编辑 ▸ 重做</strong></td><td>⇧⌘Z</td><td>撤销之后，直到你做出新的更改为止</td></tr>
+<tr><td><strong class="ui">编辑 ▸ 剪切</strong>、<strong class="ui">拷贝</strong>、<strong class="ui">粘贴</strong></td><td>⌘X、⌘C、⌘V</td><td>文本框。<strong class="ui">拷贝</strong>也可以拷贝阅读器中选中的文本。</td></tr>
+<tr><td><strong class="ui">编辑 ▸ 全选</strong></td><td>⌘A</td><td>文本框，以及在文档文本中点按过之后的阅读器。在阅读器中，它会选中整个文档，并显示选区栏。</td></tr>
+<tr><td><strong class="ui">编辑 ▸ 移到类别</strong></td><td>无</td><td>在<strong class="ui">词典</strong>视图中选中了某个类别中的词条时。把这些词条移到你选择的类别中。见<a href="dictionaries.html">第 19 章“词典”</a>中的<a href="dictionaries.html#adding-terms">添加和移除词条</a>。</td></tr>
+<tr><td><strong class="ui">编辑 ▸ 删除分析器</strong></td><td>⌘⌫</td><td>分析器窗口，选中了一个分析器时。焦点在列表上时快捷键才有效，点按某个分析器之后焦点就在列表上。见<a href="custom-analyzers.html">第 20 章“自定义分析器”</a>中的<a href="custom-analyzers.html#deleting">删除分析器</a>。</td></tr>
+<tr><td><strong class="ui">编辑 ▸ 查找</strong></td><td>⌘F</td><td>当前文档的文本已载入时，编辑文本期间除外。打开搜索栏。再按一次会关闭搜索栏并清除搜索。</td></tr>
+<tr><td><strong class="ui">编辑 ▸ 查找下一个</strong></td><td>⌘G</td><td>搜索栏中有匹配项时。到达最后一个匹配项之后，会回到第一个。</td></tr>
+<tr><td><strong class="ui">编辑 ▸ 查找上一个</strong></td><td>⇧⌘G</td><td>搜索栏中有匹配项时。从第一个匹配项再往前，会转到最后一个。</td></tr>
+<tr><td><strong class="ui">编辑 ▸ 查找文档</strong></td><td>⇧⌘F</td><td>主窗口，有当前项目时。把光标放到导航栏顶部的<strong class="ui">搜索文档</strong>栏中；如果导航栏处于隐藏状态，则先显示导航栏。见<a href="projects-and-documents.html">第 3 章“项目与文档”</a>中的<a href="projects-and-documents.html#navigator">导航栏</a>。</td></tr>
+<tr><td><strong class="ui">编辑 ▸ 从所选内容查询</strong></td><td>无</td><td>阅读器中选中了词语时，编辑文本期间除外。见<a href="queries-patterns.html">第 17 章“查询模式与发现”</a>中的<a href="queries-patterns.html#query-from-selection">从所选内容查询</a>。</td></tr>
+<tr><td><strong class="ui">编辑 ▸ 新建查询</strong></td><td>无</td><td>凡是显示查询的地方。用一个空查询取代当前查询。</td></tr>
+<tr><td><strong class="ui">编辑 ▸ 运行查询</strong></td><td>⌘R</td><td>当前窗口显示查询时。如果查询有错误而无法运行（例如模式无效），则不可用。</td></tr>
+</tbody></table></div>
+<p>每个窗口各有独立的撤销历史，⌘Z 只作用于当前窗口的历史。光标位于文本框中时，⌘Z 撤销的则是你在这个文本框中的输入。这两种操作的详细说明见<a href="undo.html">第 23 章“撤销与重做”</a>。</p>
+<p><strong class="ui">运行查询</strong>会立即运行当前窗口中显示的查询。窗口会在以下位置之一显示查询：</p>
+<ul>
+<li>检查器<strong class="ui">多重模式</strong>标签页的<strong class="ui">查询</strong>分面中（标签页下方的那一排就是各个分面，见<a href="getting-started.html">第 2 章“开始使用”</a>中的<a href="getting-started.html#inspector">检查器</a>）；</li>
+<li>文档集、标签或项目的<strong class="ui">查询</strong>视图中，主窗口和编码本窗口都是如此；</li>
+<li>查询窗口中（选取<strong class="ui">窗口 ▸ 查询</strong>）。</li>
+</ul>
+<p>文档中的查询在你每次修改之后都会自动运行。在文档集或项目中，如果文档合计约有 300,000 个词符（词和标点符号一起计算）或更多，而查询需要读取它们的文本，查询就会等你发出指令，并显示<strong class="ui">运行查询</strong>按钮。用 ⌘R 运行它最快（见<a href="queries-building.html">第 15 章“构建查询”</a>中的<a href="queries-building.html#running-queries">运行查询</a>）。</p>
+<p><strong class="ui">新建查询</strong>沿用当前查询的单位，也就是它所查找的对象类型（见<a href="queries-building.html">第 15 章“构建查询”</a>中的<a href="queries-building.html#query-units">选择要查找的内容</a>）。这个命令会清除到目前为止所有尚未存储的更改。你可以用<strong class="ui">编辑 ▸ 撤销</strong>撤回这次清除。</p>
+<figure class="shot" id="keyboard-shortcuts-edit-menu"><img class="shot-light" src="../figures/zh-Hans/light/keyboard-shortcuts-edit-menu.webp" alt="“编辑”菜单。“时间不多了”中选中了一段文字，检查器中打开了查询“紧迫性话题”。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/keyboard-shortcuts-edit-menu.webp" alt="“编辑”菜单。“时间不多了”中选中了一段文字，检查器中打开了查询“紧迫性话题”。" loading="lazy"><figcaption>“编辑”菜单。“时间不多了”中选中了一段文字，检查器中打开了查询“紧迫性话题”。</figcaption></figure>
+<h3 id="view-menu">显示<a class="anchor" href="#view-menu" aria-hidden="true">#</a></h3>
+<div class="table-wrap"><table>
+<thead><tr><th>命令</th><th>快捷键</th><th>适用场合</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">显示 ▸ 显示/隐藏导航栏</strong></td><td>⌃⌘S</td><td>主窗口</td></tr>
+<tr><td><strong class="ui">显示 ▸ 显示/隐藏检查器</strong></td><td>⌃⌘I</td><td>主窗口和文档的单独窗口。在主窗口中，当前标签页是文档集、标签或项目视图栏中的视图时，这个命令不可用。每个文档都会记住它的检查器是否显示。</td></tr>
+<tr><td><strong class="ui">显示 ▸ 检查器 ▸ 文本</strong></td><td>⌥⌘1</td><td>有当前文档时，无论在主窗口中还是在文档自己的窗口中</td></tr>
+<tr><td><strong class="ui">显示 ▸ 检查器 ▸ 语法</strong></td><td>⌥⌘2</td><td>同<strong class="ui">文本</strong></td></tr>
+<tr><td><strong class="ui">显示 ▸ 检查器 ▸ 编码</strong></td><td>⌥⌘3</td><td>同<strong class="ui">文本</strong></td></tr>
+<tr><td><strong class="ui">显示 ▸ 检查器 ▸ 多重模式</strong></td><td>⌥⌘4</td><td>同<strong class="ui">文本</strong></td></tr>
+<tr><td><strong class="ui">显示 ▸ 增大文字</strong></td><td>⌘+</td><td>有当前文档时，无论在主窗口中还是在文档自己的窗口中。最大 200%。</td></tr>
+<tr><td><strong class="ui">显示 ▸ 减小文字</strong></td><td>⌘-</td><td>同<strong class="ui">增大文字</strong>。最小 70%。</td></tr>
+<tr><td><strong class="ui">显示 ▸ 重置文字大小</strong></td><td>⌘0</td><td>同<strong class="ui">增大文字</strong>，文字大小不是 100% 时</td></tr>
+<tr><td><strong class="ui">显示 ▸ 放大</strong></td><td>⌘+</td><td>图示窗口。见<a href="grammar-inspector.html">第 11 章“语法检查器”</a>中的<a href="grammar-inspector.html#diagram-window">图示窗口</a>。</td></tr>
+<tr><td><strong class="ui">显示 ▸ 缩小</strong></td><td>⌘-</td><td>图示窗口</td></tr>
+<tr><td><strong class="ui">显示 ▸ 实际大小</strong></td><td>⌘0</td><td>图示窗口，图示不是实际大小时</td></tr>
+<tr><td><strong class="ui">显示 ▸ 缩放以适应</strong></td><td>无</td><td>图示窗口</td></tr>
+<tr><td><strong class="ui">显示 ▸ 同步滚动</strong></td><td>⌥⌘L</td><td>主窗口，在分屏浏览中显示同一文档的两种语言版本时。开启时命令旁显示勾号。见<a href="translations.html">第 9 章“译文与分屏浏览”</a>中的<a href="translations.html#scroll-together">同步滚动</a>。</td></tr>
+<tr><td><strong class="ui">显示 ▸ 词汇速写 ▸ 后退</strong></td><td>⌘[</td><td>在<strong class="ui">词汇速写</strong>视图和窗口中，以及检查器的词汇速写中，历史记录里有更早的词时。见<a href="word-sketch.html">第 12 章“词汇速写”</a>中的<a href="word-sketch.html#history">后退与前进</a>。</td></tr>
+<tr><td><strong class="ui">显示 ▸ 词汇速写 ▸ 前进</strong></td><td>⌘]</td><td>同<strong class="ui">后退</strong>，在你后退之后</td></tr>
+<tr><td><strong class="ui">显示 ▸ 词汇速写 ▸ 聚焦词语输入框</strong></td><td>⌘L</td><td>在<strong class="ui">词汇速写</strong>视图和窗口中，以及检查器的词汇速写中。把光标放到<strong class="ui">词</strong>栏中。</td></tr>
+<tr><td><strong class="ui">显示 ▸ 词汇速写 ▸ 语法</strong>、<strong class="ui">编码</strong>和<strong class="ui">多重模式</strong></td><td>⌘1、⌘2、⌘3</td><td>在<strong class="ui">词汇速写</strong>视图和窗口中，以及检查器的词汇速写中。切换到相应的模式，当前模式旁显示勾号。</td></tr>
+<tr><td><strong class="ui">显示 ▸ 进入全屏幕</strong></td><td>⌃⌘F</td><td>主窗口、查询窗口和结果窗口。菜单可能把按键显示为 fn F（地球仪键加 F），两种按法都有效。见<a href="reading-and-editing.html">第 5 章“阅读与编辑”</a>中的<a href="reading-and-editing.html#full-screen">全屏幕阅读器</a>。</td></tr>
+</tbody></table></div>
+<p>检查器没有显示时，⌥⌘1 到 ⌥⌘4 会先显示检查器，再切换到相应的标签页。如果当前标签页是文档集、标签或项目视图栏中的视图（例如<strong class="ui">编码本</strong>），检查器会自动关闭，<strong class="ui">显示/隐藏检查器</strong>以及 ⌥⌘1 到 ⌥⌘4 都会不可用。关于项目视图栏的更多信息，见<a href="getting-started.html">第 2 章“开始使用”</a>中的<a href="getting-started.html#project-shelf">项目视图栏</a>。</p>
+<p><strong class="ui">增大文字</strong>、<strong class="ui">减小文字</strong>和<strong class="ui">重置文字大小</strong>以 10% 为一级，更改所有文档的文字大小。它们与设置中的<strong class="ui">文字大小</strong>滑块调整的是同一项设置（见<a href="reading-and-editing.html">第 5 章“阅读与编辑”</a>中的<a href="reading-and-editing.html#text-size">文字大小</a>）；不过在图示窗口中，⌘+、⌘- 和 ⌘0 用来放大、缩小和还原图示。在美式键盘上，无论是<strong class="ui">增大文字</strong>还是<strong class="ui">放大</strong>，⌘+ 都相当于按 ⇧⌘=。</p>
+<p><strong class="ui">显示 ▸ 词汇速写</strong>下的命令作用于项目的<strong class="ui">词汇速写</strong>视图、文档集或标签的<strong class="ui">词汇速写</strong>视图、词汇速写窗口本身，以及检查器中的词汇速写。在检查器中，各个模式对应不同的速写。例如，选择<strong class="ui">语法</strong>模式时，你会看到检查器<strong class="ui">语法</strong>标签页中的<strong class="ui">词汇速写</strong>；选择<strong class="ui">编码</strong>会调出<strong class="ui">编码</strong>标签页中的<strong class="ui">编码速写</strong>；选择<strong class="ui">多重模式</strong>则显示<strong class="ui">多重模式</strong>标签页中的<strong class="ui">速写空间</strong>。三者用同一条历史记录保存你的词汇速写，所以切换时所查看的词保持不变。</p>
+<p>菜单顶部的<strong class="ui">显示标签页栏</strong>和<strong class="ui">显示所有标签页</strong>直接来自 macOS，用于把窗口合并成标签页。</p>
+<figure class="shot" id="keyboard-shortcuts-view-menu"><img class="shot-light" src="../figures/zh-Hans/light/keyboard-shortcuts-view-menu.webp" alt="“显示”菜单，“检查器”子菜单已展开。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/keyboard-shortcuts-view-menu.webp" alt="“显示”菜单，“检查器”子菜单已展开。" loading="lazy"><figcaption>“显示”菜单，“检查器”子菜单已展开。</figcaption></figure>
+<h3 id="project-menu">项目<a class="anchor" href="#project-menu" aria-hidden="true">#</a></h3>
+<p>这个菜单中的大多数命令作用于你在导航栏中选中的对象，因此要在主窗口中使用。不过，与编码有关的命令作用于任何窗口中<strong class="ui">编码本</strong>视图或<strong class="ui">编码</strong>分面里选中的编码。详细说明见<a href="projects-and-documents.html">第 3 章“项目与文档”</a>、<a href="sets-tags-attributes.html">第 8 章“文档集、分组、标签和属性”</a>以及<a href="coding.html">第 7 章“编码”</a>中的<a href="coding.html#organizing-codes">整理编码</a>。</p>
+<div class="table-wrap"><table>
+<thead><tr><th>命令</th><th>快捷键</th><th>适用场合</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">项目 ▸ 新建文档集</strong>和<strong class="ui">新建智能文档集</strong></td><td>无</td><td>主窗口，有当前项目时</td></tr>
+<tr><td><strong class="ui">项目 ▸ 编辑智能文档集</strong></td><td>无</td><td>主窗口，在导航栏中选中了智能文档集，或者智能文档集在当前标签页中打开时</td></tr>
+<tr><td><strong class="ui">项目 ▸ 添加编码</strong></td><td>无</td><td>主窗口，有当前项目时</td></tr>
+<tr><td><strong class="ui">项目 ▸ 添加子编码</strong>、<strong class="ui">移到</strong>、<strong class="ui">合并到</strong>、<strong class="ui">添加到编码集</strong>和<strong class="ui">删除编码</strong></td><td>无</td><td>在<strong class="ui">编码本</strong>视图或<strong class="ui">编码</strong>分面中选中了一个编码时</td></tr>
+<tr><td><strong class="ui">项目 ▸ 重命名</strong>和<strong class="ui">信息</strong></td><td>无</td><td>主窗口，在导航栏中选中了一个文档时</td></tr>
+<tr><td><strong class="ui">项目 ▸ 移到分组</strong>和<strong class="ui">添加到文档集</strong></td><td>无</td><td>主窗口，在导航栏中选中了文档时</td></tr>
+<tr><td><strong class="ui">项目 ▸ 从文档集中移除</strong></td><td>无</td><td>主窗口，在导航栏中选中了同一个文档集下的一个或多个文档时，前提是它不是智能文档集</td></tr>
+<tr><td><strong class="ui">项目 ▸ 翻译</strong></td><td>无</td><td>主窗口，在导航栏中选中了原文，或者原文是阅读器中的当前文档时</td></tr>
+<tr><td><strong class="ui">项目 ▸ 删除项目</strong>、<strong class="ui">删除文档集</strong>、<strong class="ui">删除分组</strong>或<strong class="ui">删除文档</strong></td><td>⌘⌫</td><td>主窗口，在导航栏中点按了项目、文档集或分组之后，或者在<strong class="ui">文档</strong>下选中了文档之后。命令以它要删除的对象命名。</td></tr>
+<tr><td><strong class="ui">项目 ▸ 属性</strong></td><td>无</td><td>主窗口，有当前项目时。打开属性窗口。</td></tr>
+<tr><td><strong class="ui">项目 ▸ 打开</strong></td><td>无</td><td>主窗口，有当前项目时。列出项目视图栏的十个视图，并在标签页中打开你选择的那一个。</td></tr>
+</tbody></table></div>
+<p>删除文档和项目之前需要你确认。文档集和分组则会立即删除，可以用<strong class="ui">编辑 ▸ 撤销</strong>（⌘Z）恢复。</p>
+<figure class="shot" id="keyboard-shortcuts-project-menu"><img class="shot-light" src="../figures/zh-Hans/light/keyboard-shortcuts-project-menu.webp" alt="选中“气候辩论”编码本中的编码“时间节点”时的“项目”菜单。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/keyboard-shortcuts-project-menu.webp" alt="选中“气候辩论”编码本中的编码“时间节点”时的“项目”菜单。" loading="lazy"><figcaption>选中“气候辩论”编码本中的编码“时间节点”时的“项目”菜单。</figcaption></figure>
+<h3 id="document-menu">文档<a class="anchor" href="#document-menu" aria-hidden="true">#</a></h3>
+<p>这些命令作用于当前窗格中的文档，或者在自己的窗口中打开的文档。</p>
+<div class="table-wrap"><table>
+<thead><tr><th>命令</th><th>快捷键</th><th>适用场合</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">文档 ▸ 编辑</strong></td><td>⇧⌘E</td><td>文档的文本载入之后。把阅读器变成文本编辑器。</td></tr>
+<tr><td><strong class="ui">文档 ▸ 存储</strong></td><td>⌘Return</td><td>编辑时。存储文本，LemmaLoom 随后为它重新建立索引。</td></tr>
+<tr><td><strong class="ui">文档 ▸ 取消</strong></td><td>⌘.</td><td>编辑时。丢弃自你选取<strong class="ui">编辑</strong>以来输入的所有内容。</td></tr>
+<tr><td><strong class="ui">文档 ▸ 编码</strong></td><td>⇧⌘C</td><td>选中了一个词或一段文字时，编辑文本期间除外。打开编码面板，也就是可应用于选区的编码列表。</td></tr>
+<tr><td><strong class="ui">文档 ▸ 实境编码</strong></td><td>⇧⌘V</td><td>同<strong class="ui">编码</strong>。用一个以所选词语命名的编码为选区编码；如果还没有这个名称的编码，则新建一个。见<a href="coding.html">第 7 章“编码”</a>中的<a href="coding.html#coding-a-passage">为一段文字编码</a>。</td></tr>
+<tr><td><strong class="ui">文档 ▸ 自动编码…</strong></td><td>⇧⌘A</td><td>在透镜菜单中启用了词典透镜、查询透镜或分析器透镜时（见<a href="lenses.html">第 6 章“透镜”</a>）。启用了其中不止一个时，菜单为每个透镜各提供一个以透镜命名的命令，例如<strong class="ui">使用模糊限制语自动编码…</strong>，⇧⌘A 对应第一个。见<a href="coding.html">第 7 章“编码”</a>中的<a href="coding.html#auto-coding">自动为段落编码</a>。</td></tr>
+<tr><td><strong class="ui">文档 ▸ 备忘录</strong></td><td>⇧⌘M</td><td>同<strong class="ui">编码</strong>。为选区打开<strong class="ui">新建备忘录</strong>对话框。</td></tr>
+<tr><td><strong class="ui">文档 ▸ 书签</strong></td><td>⇧⌘B</td><td>同<strong class="ui">编码</strong>。打开<strong class="ui">新建书签</strong>对话框。如果选区与某个书签重叠，命令变为<strong class="ui">移除书签</strong>，并立即移除这个书签；按 ⌘Z 可以恢复它。</td></tr>
+<tr><td><strong class="ui">文档 ▸ 链接</strong></td><td>⇧⌘L</td><td>同<strong class="ui">编码</strong>。从选区开始建立链接，命令随后变为<strong class="ui">完成链接</strong>。选中另一段文字（在本文档或其他文档中），再按一次 ⇧⌘L，即可打开<strong class="ui">新建链接</strong>对话框。</td></tr>
+<tr><td><strong class="ui">文档 ▸ 取消链接</strong></td><td>⌥⇧⌘L</td><td>建立链接的过程中，无论有没有选区。放弃你已经开始的链接。</td></tr>
+<tr><td><strong class="ui">文档 ▸ 播放</strong></td><td>⇧⌘P</td><td>音频和视频文档。录音播放时，命令变为<strong class="ui">暂停</strong>。</td></tr>
+</tbody></table></div>
+<p>LemmaLoom 存储你的更改期间，<strong class="ui">编辑</strong>、<strong class="ui">存储</strong>和<strong class="ui">取消</strong>命令不可用。</p>
+<p>应用编码、创建备忘录、添加书签和建立链接的详细说明见<a href="coding.html">第 7 章“编码”</a>。编辑文本和播放录音的说明见<a href="reading-and-editing.html">第 5 章“阅读与编辑”</a>。</p>
+<figure class="shot" id="keyboard-shortcuts-document-menu"><img class="shot-light" src="../figures/zh-Hans/light/keyboard-shortcuts-document-menu.webp" alt="“时间不多了”中选中了一段文字时的“文档”菜单。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/keyboard-shortcuts-document-menu.webp" alt="“时间不多了”中选中了一段文字时的“文档”菜单。" loading="lazy"><figcaption>“时间不多了”中选中了一段文字时的“文档”菜单。</figcaption></figure>
+<h3 id="window-menu">窗口<a class="anchor" href="#window-menu" aria-hidden="true">#</a></h3>
+<div class="table-wrap"><table>
+<thead><tr><th>命令</th><th>快捷键</th><th>适用场合</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">窗口 ▸ 最小化</strong></td><td>⌘M</td><td>当前窗口</td></tr>
+<tr><td><strong class="ui">窗口 ▸ 显示上一个标签页</strong></td><td>⇧⌘[</td><td>主窗口，至少打开了两个标签页时。从第一个标签页再往前，会转到最后一个。</td></tr>
+<tr><td><strong class="ui">窗口 ▸ 显示下一个标签页</strong></td><td>⇧⌘]</td><td>主窗口，至少打开了两个标签页时。到达最后一个标签页之后，会回到第一个。</td></tr>
+<tr><td><strong class="ui">窗口 ▸ 在新窗口中打开</strong></td><td>无</td><td>主窗口。在单独的窗口中打开当前窗格中的文档，或者当前标签页中的视图。在文档集或标签的标签页中，只有<strong class="ui">词汇速写</strong>和<strong class="ui">查询</strong>视图可以在单独的窗口中打开。见<a href="reading-and-editing.html">第 5 章“阅读与编辑”</a>中的<a href="reading-and-editing.html#document-window">在单独的窗口中打开文档</a>。</td></tr>
+<tr><td><strong class="ui">窗口 ▸ 在分屏浏览中打开</strong></td><td>无</td><td>主窗口，有当前文档时。列出可以放在它旁边的已打开文档。见<a href="translations.html">第 9 章“译文与分屏浏览”</a>中的<a href="translations.html#opening-split-view">并排打开两个文档</a>。</td></tr>
+<tr><td><strong class="ui">窗口 ▸ 在原文旁边打开</strong></td><td>无</td><td>主窗口，在导航栏中选中了译文，或者译文是阅读器中的当前文档时</td></tr>
+<tr><td><strong class="ui">窗口 ▸ 并排打开</strong></td><td>无</td><td>主窗口，在导航栏中选中了两个文档时</td></tr>
+<tr><td><strong class="ui">窗口 ▸ 关闭分屏浏览</strong></td><td>无</td><td>主窗口，在分屏浏览中</td></tr>
+<tr><td><strong class="ui">窗口 ▸ 活动</strong></td><td>⌥⌘0</td><td>任何窗口。打开活动窗口；如果它已经打开，则切换到它。见<a href="importing.html">第 4 章“导入资料”</a>中的<a href="importing.html#activity-window">活动窗口</a>。</td></tr>
+<tr><td><strong class="ui">窗口 ▸ 分析器</strong></td><td>无</td><td>任何窗口。见<a href="custom-analyzers.html">第 20 章“自定义分析器”</a>。</td></tr>
+<tr><td><strong class="ui">窗口 ▸ 编码本</strong></td><td>无</td><td>任何窗口，有当前项目时。见<a href="coding.html">第 7 章“编码”</a>中的<a href="coding.html#codebook-view">“编码本”视图</a>。</td></tr>
+<tr><td><strong class="ui">窗口 ▸ 标签</strong></td><td>无</td><td>任何窗口。见<a href="projects-and-documents.html">第 3 章“项目与文档”</a>中的<a href="projects-and-documents.html#tags-window">标签窗口</a>。</td></tr>
+<tr><td><strong class="ui">窗口 ▸ 查询</strong></td><td>无</td><td>任何窗口。见<a href="queries-building.html">第 15 章“构建查询”</a>中的<a href="queries-building.html#queries-window">查询窗口</a>。</td></tr>
+</tbody></table></div>
+<p>这里的标签页指阅读器上方的标签页，即打开的文档、文档集、标签和项目视图栏中的视图。如果你正在使用分屏浏览，切换到任何一个标签页都会使左侧窗格成为当前窗格。</p>
+<p>在菜单靠下的位置，macOS 另外提供了两个同样名为<strong class="ui">显示上一个标签页</strong>和<strong class="ui">显示下一个标签页</strong>的选项，它们用于在合并的窗口之间切换。要切换阅读器上方的标签页，则需要使用 ⇧⌘[ 和 ⇧⌘]。菜单最底部列出 LemmaLoom 已打开的窗口。</p>
+<figure class="shot" id="keyboard-shortcuts-window-menu"><img class="shot-light" src="../figures/zh-Hans/light/keyboard-shortcuts-window-menu.webp" alt="主窗口的标签页中打开着两个文档时的“窗口”菜单。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/keyboard-shortcuts-window-menu.webp" alt="主窗口的标签页中打开着两个文档时的“窗口”菜单。" loading="lazy"><figcaption>主窗口的标签页中打开着两个文档时的“窗口”菜单。</figcaption></figure>
+<h3 id="help-menu">帮助<a class="anchor" href="#help-menu" aria-hidden="true">#</a></h3>
+<div class="table-wrap"><table>
+<thead><tr><th>命令</th><th>快捷键</th><th>适用场合</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">帮助 ▸ 术语表</strong></td><td>无</td><td>任何窗口。见<a href="help-and-support.html">第 26 章“帮助与支持”</a>中的<a href="help-and-support.html#glossary">术语表</a>。</td></tr>
+<tr><td><strong class="ui">帮助 ▸ 发送反馈</strong></td><td>无</td><td>任何窗口。见<a href="help-and-support.html">第 26 章“帮助与支持”</a>中的<a href="help-and-support.html#send-feedback">发送反馈</a>。</td></tr>
+</tbody></table></div>
+<aside class="callout tip"><p class="callout-title">提示</p><p>macOS 在<strong class="ui">帮助</strong>菜单顶部提供了一个搜索栏。按下 ⇧⌘/ 即可打开<strong class="ui">帮助</strong>菜单，并把插入点放在搜索栏中。输入命令名称的一部分（例如 <code>滚动</code>）之后，将鼠标指针悬停在任何一个结果上，就能看到这个命令位于哪个菜单中，以及它的快捷键是什么。</p>
+</aside>
+<h2 id="buttons-and-shortcuts">带快捷键的按钮<a class="anchor" href="#buttons-and-shortcuts" aria-hidden="true">#</a></h2>
+<p>许多按钮的作用与某个菜单命令相同，快捷键也相同。这些按钮大多位于阅读区顶部的<a href="reading-and-editing.html#title-band">标题栏</a>中，或者标题栏下方的搜索栏中。有些按钮会在你选择文本之后出现在<a href="reading-and-editing.html#selection-bar">选区栏</a>中，还有一些位于音频或视频文档的<a href="reading-and-editing.html#player-bar">播放栏</a>中。<a href="reading-and-editing.html">第 5 章“阅读与编辑”</a>详细介绍了每一个按钮。</p>
+<figure class="shot" id="keyboard-shortcuts-buttons"><img class="shot-light" src="../figures/zh-Hans/light/keyboard-shortcuts-buttons.webp" alt="“时间不多了”及其译文并排显示的主窗口，左窗格中选中了一段文字。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/keyboard-shortcuts-buttons.webp" alt="“时间不多了”及其译文并排显示的主窗口，左窗格中选中了一段文字。" loading="lazy"><figcaption>“时间不多了”及其译文并排显示的主窗口，左窗格中选中了一段文字。</figcaption></figure>
+<div class="table-wrap"><table>
+<thead><tr><th>按钮</th><th>位置</th><th>等同于</th><th>快捷键</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">显示/隐藏导航栏</strong></td><td>窗口工具栏的左端</td><td><strong class="ui">显示 ▸ 显示/隐藏导航栏</strong></td><td>⌃⌘S</td></tr>
+<tr><td><strong class="ui">显示/隐藏检查器</strong></td><td>窗口工具栏的右端</td><td><strong class="ui">显示 ▸ 显示/隐藏检查器</strong></td><td>⌃⌘I</td></tr>
+<tr><td>标签页上的 ×（<strong class="ui">关闭标签页</strong>）</td><td>标签页所在的那一排</td><td><strong class="ui">文件 ▸ 关闭标签页</strong>，作用于当前标签页</td><td>⌘W</td></tr>
+<tr><td>右侧窗格标签页上的 ×（<strong class="ui">关闭分屏浏览</strong>）</td><td>分屏浏览中右侧窗格的顶部</td><td><strong class="ui">文件 ▸ 关闭标签页</strong>，右侧窗格为当前窗格时</td><td>⌘W</td></tr>
+<tr><td>锁形按钮（<strong class="ui">同步滚动</strong>）</td><td>并排显示两种语言版本时，右侧窗格的顶部</td><td><strong class="ui">显示 ▸ 同步滚动</strong></td><td>⌥⌘L</td></tr>
+<tr><td><strong class="ui">在文档中查找</strong>（放大镜）</td><td>标题栏</td><td><strong class="ui">编辑 ▸ 查找</strong></td><td>⌘F</td></tr>
+<tr><td><strong class="ui">增大文字</strong>、<strong class="ui">减小文字</strong>、<strong class="ui">重置文字大小</strong></td><td>标题栏中的<strong class="ui">字体、边栏与文字大小</strong>菜单</td><td><strong class="ui">显示</strong>菜单中的同名命令</td><td>⌘+、⌘-、⌘0</td></tr>
+<tr><td><strong class="ui">编辑</strong></td><td>标题栏</td><td><strong class="ui">文档 ▸ 编辑</strong></td><td>⇧⌘E</td></tr>
+<tr><td><strong class="ui">存储</strong>和<strong class="ui">取消</strong></td><td>标题栏，编辑时</td><td><strong class="ui">文档 ▸ 存储</strong>和<strong class="ui">文档 ▸ 取消</strong></td><td>⌘Return 和 ⌘.</td></tr>
+<tr><td><strong class="ui">下一个匹配项</strong>和<strong class="ui">上一个匹配项</strong>（向下和向上的箭头）</td><td>搜索栏</td><td><strong class="ui">编辑 ▸ 查找下一个</strong>和<strong class="ui">编辑 ▸ 查找上一个</strong></td><td>⌘G 和 ⇧⌘G</td></tr>
+<tr><td><strong class="ui">关闭搜索栏</strong>（×）</td><td>搜索栏</td><td>搜索栏打开时的<strong class="ui">编辑 ▸ 查找</strong></td><td>⌘F 或 Esc</td></tr>
+<tr><td><strong class="ui">书签</strong>或<strong class="ui">移除书签</strong></td><td>选区栏</td><td><strong class="ui">文档 ▸ 书签</strong></td><td>⇧⌘B</td></tr>
+<tr><td><strong class="ui">编码</strong></td><td>选区栏</td><td><strong class="ui">文档 ▸ 编码</strong></td><td>⇧⌘C</td></tr>
+<tr><td><strong class="ui">实境编码“…”</strong></td><td>编码面板的最后一项</td><td><strong class="ui">文档 ▸ 实境编码</strong></td><td>⇧⌘V</td></tr>
+<tr><td><strong class="ui">备忘录</strong></td><td>选区栏</td><td><strong class="ui">文档 ▸ 备忘录</strong></td><td>⇧⌘M</td></tr>
+<tr><td><strong class="ui">链接</strong>或<strong class="ui">完成链接</strong></td><td>选区栏</td><td><strong class="ui">文档 ▸ 链接</strong></td><td>⇧⌘L</td></tr>
+<tr><td><strong class="ui">取消待定链接</strong>（带斜线的链接图标）</td><td>选区栏，建立链接的过程中</td><td><strong class="ui">文档 ▸ 取消链接</strong></td><td>⌥⇧⌘L</td></tr>
+<tr><td><strong class="ui">清除所选</strong>（×）</td><td>选区栏</td><td>没有对应的菜单命令</td><td>Esc</td></tr>
+<tr><td><strong class="ui">播放</strong>或<strong class="ui">暂停</strong></td><td>播放栏</td><td><strong class="ui">文档 ▸ 播放</strong></td><td>⇧⌘P</td></tr>
+<tr><td><strong class="ui">运行查询</strong>（三角形）</td><td>查询上方的栏</td><td><strong class="ui">编辑 ▸ 运行查询</strong></td><td>⌘R</td></tr>
+<tr><td><strong class="ui">后退</strong>和<strong class="ui">前进</strong>（箭头）</td><td>词汇速写上方的栏</td><td><strong class="ui">显示 ▸ 词汇速写 ▸ 后退</strong>和<strong class="ui">前进</strong></td><td>⌘[ 和 ⌘]</td></tr>
+<tr><td><strong class="ui">语法</strong>、<strong class="ui">编码</strong>和<strong class="ui">多重模式</strong></td><td><strong class="ui">词汇速写</strong>视图和窗口中的模式控件</td><td><strong class="ui">显示 ▸ 词汇速写</strong>下的同名命令</td><td>⌘1、⌘2、⌘3</td></tr>
+<tr><td><strong class="ui">放大</strong>和<strong class="ui">缩小</strong>（放大镜）</td><td>图示窗口的缩放栏</td><td><strong class="ui">显示 ▸ 放大</strong>和<strong class="ui">显示 ▸ 缩小</strong></td><td>⌘+ 和 ⌘-</td></tr>
+</tbody></table></div>
+<p>在全屏幕模式下，标题栏中的工具会移到窗口的工具栏中（见<a href="reading-and-editing.html">第 5 章“阅读与编辑”</a>中的<a href="reading-and-editing.html#full-screen">全屏幕阅读器</a>）。它们的快捷键同样有效，文字菜单在那里名为<strong class="ui">阅读器设置</strong>。</p>
+<h2 id="esc-and-return">Esc 键、Return 键和方向键<a class="anchor" href="#esc-and-return" aria-hidden="true">#</a></h2>
+<p>Esc 键、Return 键和方向键在菜单之外起作用，具体作用取决于你所在的位置。</p>
+<p>Esc 键用来关闭或清除你正在操作的内容：</p>
+<ul>
+<li>在阅读器中，Esc 键清除选区，但不影响待定的链接。如果你改变主意，不想建立链接了，可以选取<strong class="ui">文档 ▸ 取消链接</strong>（⌥⇧⌘L）。</li>
+<li>在搜索栏中，Esc 键关闭搜索栏，并清除当前的搜索。</li>
+<li>在编码面板中按 Esc 键会关闭面板，选区仍然保留。</li>
+<li>在<strong class="ui">搜索文档</strong>栏和导航栏中，Esc 键都会清除搜索结果，并显示所有文档。</li>
+<li>在带有<strong class="ui">取消</strong>按钮的对话框中，Esc 键相当于点按这个按钮。</li>
+<li>最后，如果你在重命名项目、文档、文档集、分组或标签时按下 Esc 键，原来的名称会保留下来。</li>
+</ul>
+<p>在分屏浏览中，在阅读器里按 Esc 键只影响当前窗格。</p>
+<p>Return 键用来确认输入、应用选择，或者打开你选中的对象：</p>
+<ul>
+<li>在搜索栏中按 Return 键，会转到搜索内容的下一个匹配项（与 ⌘G 相同）；而在<strong class="ui">搜索文档</strong>栏中按 Return 键，会打开找到的第一个文档。</li>
+<li>在导航栏中，点按文档或在文档上按 Return 键，也可以打开文档。</li>
+<li>在其他列表中，例如<strong class="ui">编码本</strong>、<strong class="ui">编码实例</strong>、<strong class="ui">备忘录</strong>和<strong class="ui">链接</strong>视图或标签窗口，点按会选中一项，连按两次或按 Return 键则会打开它。</li>
+<li>在编码面板中，Return 键应用高亮显示的项（在<strong class="ui">搜索编码</strong>中输入文字之后，高亮会移到剩下的第一项）。如果选区已经带有高亮显示的编码，Return 键会将它移除。</li>
+<li>在对话框中，如果光标不在任何输入栏中，或者位于本身不处理 Return 键的单行输入栏中，按 Return 键相当于点按高亮显示的按钮，例如<strong class="ui">存储</strong>或<strong class="ui">自动编码</strong>；下面几项中的输入栏即使位于对话框中，也会自己处理 Return 键。</li>
+<li>重命名时（包括在<strong class="ui">词典</strong>视图中重命名词典），按 Return 键或点按别处都会确认你输入的更改。</li>
+<li>在<strong class="ui">添加标签</strong>栏中，Return 键和英文逗号都用来分隔标签。</li>
+<li>在查询文本规则和词典类别的<strong class="ui">添加词条</strong>栏中，按 Return 键会添加词条。在查询中，这些输入栏可以接受用英文逗号分隔的多个词条。</li>
+<li>在属性名称栏中输入新属性的名称之后，按 Return 键即可添加这个属性。</li>
+<li>在<strong class="ui">导入文档</strong>或<strong class="ui">文档信息</strong>对话框中，按 Return 键会把输入的模式添加到<strong class="ui">从索引中排除</strong>下。</li>
+<li>在词汇速写、编码速写和速写空间的<strong class="ui">词</strong>栏中，按 Return 键会显示所输入词语的速写。</li>
+<li>最后，在分析器窗口中，在<strong class="ui">名称</strong>栏或某个<strong class="ui">标签</strong>栏中输入时，按 Return 键相当于点按<strong class="ui">存储</strong>。</li>
+</ul>
+<p>↑ 和 ↓ 键用来在导航栏和编码面板中移动：</p>
+<ul>
+<li>在导航栏中，↑ 和 ↓ 键在各行之间移动，之后按 Return 键即可打开新选中的文档。</li>
+<li>在<strong class="ui">搜索文档</strong>栏中按 ↓ 键，会选中结果中的第一个文档，并进入列表。</li>
+<li>在编码面板中，↑ 和 ↓ 键依次高亮显示面板中的各项，包括末尾的<strong class="ui">添加编码“…”</strong>和<strong class="ui">实境编码“…”</strong>。</li>
+</ul>
+<p>在<strong class="ui">词典</strong>视图中某个类别的表格里，按 Delete 键（⌫）会移除选中的词条。</p>
+<aside class="callout note"><p class="callout-title">注意</p><p><strong class="ui">自动编码</strong>运行期间，对话框中高亮显示的按钮是<strong class="ui">停止</strong>，所以按 Return 键会停止运行。在此之前应用的编码实例都会保留，可以用<strong class="ui">编辑 ▸ 撤销自动编码</strong>（⌘Z）撤销。</p>
+</aside>
+<h2 id="modifier-clicks">按住修饰键点按<a class="anchor" href="#modifier-clicks" aria-hidden="true">#</a></h2>
+<p>有几个操作需要把按键与鼠标或触控板配合使用。</p>
+<div class="table-wrap"><table>
+<thead><tr><th>按键</th><th>位置</th><th>作用</th></tr></thead>
+<tbody>
+<tr><td>按住 ⌘ 点按</td><td>导航栏<strong class="ui">文档</strong>部分中的文档</td><td>把这个文档加入所选文档，或者再把它移出</td></tr>
+<tr><td>按住 ⇧ 点按</td><td>导航栏<strong class="ui">文档</strong>部分中的文档</td><td>选中从这个文档到你上一次点按的文档之间的所有文档</td></tr>
+<tr><td>按住 ⌘ 滚动</td><td>词汇速写、编码速写或速写空间中的速写图谱</td><td>以鼠标指针为中心放大或缩小。直接滚动则会移动放大后的图谱。</td></tr>
+</tbody></table></div>
+<p>选中多个文档之后，右键点按其中任何一个，即可使用作用于所有选中文档的操作（见<a href="projects-and-documents.html">第 3 章“项目与文档”</a>中的<a href="projects-and-documents.html#selecting-documents">选择多个文档</a>）。缩放功能的详细说明见<a href="word-sketch.html">第 12 章“词汇速写”</a>中的<a href="word-sketch.html#the-map">图谱</a>。</p>
+<h2 id="shortcuts-by-key">按按键排列的全部快捷键<a class="anchor" href="#shortcuts-by-key" aria-hidden="true">#</a></h2>
+<p>下表列出 LemmaLoom 菜单中的所有快捷键，先按修饰键、再按按键排列。如果你想弄清自己不小心触发了哪个命令，或者想知道打算指定的按键是否已被占用，这张表会派上用场。</p>
+<div class="table-wrap"><table>
+<thead><tr><th>按键</th><th>命令</th></tr></thead>
+<tbody>
+<tr><td>⌘,</td><td><strong class="ui">LemmaLoom ▸ 设置…</strong></td></tr>
+<tr><td>⌘.</td><td><strong class="ui">文档 ▸ 取消</strong></td></tr>
+<tr><td>⌘+</td><td><strong class="ui">显示 ▸ 增大文字</strong>；在图示窗口中是<strong class="ui">显示 ▸ 放大</strong></td></tr>
+<tr><td>⌘-</td><td><strong class="ui">显示 ▸ 减小文字</strong>；在图示窗口中是<strong class="ui">显示 ▸ 缩小</strong></td></tr>
+<tr><td>⌘[</td><td><strong class="ui">显示 ▸ 词汇速写 ▸ 后退</strong></td></tr>
+<tr><td>⌘]</td><td><strong class="ui">显示 ▸ 词汇速写 ▸ 前进</strong></td></tr>
+<tr><td>⌘0</td><td><strong class="ui">显示 ▸ 重置文字大小</strong>；在图示窗口中是<strong class="ui">显示 ▸ 实际大小</strong></td></tr>
+<tr><td>⌘1 到 ⌘3</td><td><strong class="ui">显示 ▸ 词汇速写 ▸ 语法</strong>、<strong class="ui">编码</strong>和<strong class="ui">多重模式</strong></td></tr>
+<tr><td>⌘A</td><td><strong class="ui">编辑 ▸ 全选</strong></td></tr>
+<tr><td>⌘C</td><td><strong class="ui">编辑 ▸ 拷贝</strong></td></tr>
+<tr><td>⌘F</td><td><strong class="ui">编辑 ▸ 查找</strong></td></tr>
+<tr><td>⌘G</td><td><strong class="ui">编辑 ▸ 查找下一个</strong></td></tr>
+<tr><td>⌘H</td><td><strong class="ui">LemmaLoom ▸ 隐藏LemmaLoom</strong></td></tr>
+<tr><td>⌘L</td><td><strong class="ui">显示 ▸ 词汇速写 ▸ 聚焦词语输入框</strong></td></tr>
+<tr><td>⌘M</td><td><strong class="ui">窗口 ▸ 最小化</strong></td></tr>
+<tr><td>⌘N</td><td><strong class="ui">文件 ▸ 新建窗口</strong></td></tr>
+<tr><td>⌘Q</td><td><strong class="ui">LemmaLoom ▸ 退出LemmaLoom</strong></td></tr>
+<tr><td>⌘R</td><td><strong class="ui">编辑 ▸ 运行查询</strong></td></tr>
+<tr><td>⌘V</td><td><strong class="ui">编辑 ▸ 粘贴</strong></td></tr>
+<tr><td>⌘W</td><td><strong class="ui">文件 ▸ 关闭标签页</strong>或<strong class="ui">文件 ▸ 关闭</strong></td></tr>
+<tr><td>⌘X</td><td><strong class="ui">编辑 ▸ 剪切</strong></td></tr>
+<tr><td>⌘Z</td><td><strong class="ui">编辑 ▸ 撤销</strong></td></tr>
+<tr><td>⌘Return</td><td><strong class="ui">文档 ▸ 存储</strong></td></tr>
+<tr><td>⌘⌫</td><td><strong class="ui">项目 ▸ 删除项目</strong>、<strong class="ui">删除文档集</strong>、<strong class="ui">删除分组</strong>或<strong class="ui">删除文档</strong>；在分析器窗口中是<strong class="ui">编辑 ▸ 删除分析器</strong></td></tr>
+<tr><td>⇧⌘/</td><td><strong class="ui">帮助</strong>菜单的搜索栏</td></tr>
+<tr><td>⇧⌘[</td><td><strong class="ui">窗口 ▸ 显示上一个标签页</strong></td></tr>
+<tr><td>⇧⌘\</td><td><strong class="ui">显示 ▸ 显示所有标签页</strong></td></tr>
+<tr><td>⇧⌘]</td><td><strong class="ui">窗口 ▸ 显示下一个标签页</strong></td></tr>
+<tr><td>⇧⌘A</td><td><strong class="ui">文档 ▸ 自动编码…</strong></td></tr>
+<tr><td>⇧⌘B</td><td><strong class="ui">文档 ▸ 书签</strong>或<strong class="ui">移除书签</strong></td></tr>
+<tr><td>⇧⌘C</td><td><strong class="ui">文档 ▸ 编码</strong></td></tr>
+<tr><td>⇧⌘E</td><td><strong class="ui">文档 ▸ 编辑</strong></td></tr>
+<tr><td>⇧⌘F</td><td><strong class="ui">编辑 ▸ 查找文档</strong></td></tr>
+<tr><td>⇧⌘G</td><td><strong class="ui">编辑 ▸ 查找上一个</strong></td></tr>
+<tr><td>⇧⌘I</td><td><strong class="ui">文件 ▸ 导入 ▸ 文档</strong></td></tr>
+<tr><td>⇧⌘L</td><td><strong class="ui">文档 ▸ 链接</strong>或<strong class="ui">完成链接</strong></td></tr>
+<tr><td>⇧⌘M</td><td><strong class="ui">文档 ▸ 备忘录</strong></td></tr>
+<tr><td>⇧⌘N</td><td><strong class="ui">文件 ▸ 新建项目</strong></td></tr>
+<tr><td>⇧⌘P</td><td><strong class="ui">文档 ▸ 播放</strong>或<strong class="ui">暂停</strong></td></tr>
+<tr><td>⇧⌘V</td><td><strong class="ui">文档 ▸ 实境编码</strong></td></tr>
+<tr><td>⇧⌘W</td><td><strong class="ui">文件 ▸ 关闭窗口</strong></td></tr>
+<tr><td>⇧⌘Z</td><td><strong class="ui">编辑 ▸ 重做</strong></td></tr>
+<tr><td>⌥⌘0</td><td><strong class="ui">窗口 ▸ 活动</strong></td></tr>
+<tr><td>⌥⌘1 到 ⌥⌘4</td><td><strong class="ui">显示 ▸ 检查器 ▸ 文本</strong>、<strong class="ui">语法</strong>、<strong class="ui">编码</strong>和<strong class="ui">多重模式</strong></td></tr>
+<tr><td>⌥⌘H</td><td><strong class="ui">LemmaLoom ▸ 隐藏其他</strong></td></tr>
+<tr><td>⌥⌘L</td><td><strong class="ui">显示 ▸ 同步滚动</strong></td></tr>
+<tr><td>⌥⌘N</td><td><strong class="ui">文件 ▸ 新建分组</strong></td></tr>
+<tr><td>⌥⇧⌘I</td><td><strong class="ui">文件 ▸ 导入 ▸ 网页</strong></td></tr>
+<tr><td>⌥⇧⌘L</td><td><strong class="ui">文档 ▸ 取消链接</strong></td></tr>
+<tr><td>⌃⌘F</td><td><strong class="ui">显示 ▸ 进入全屏幕</strong>或<strong class="ui">退出全屏幕</strong></td></tr>
+<tr><td>⌃⌘I</td><td><strong class="ui">显示 ▸ 显示/隐藏检查器</strong></td></tr>
+<tr><td>⌃⌘S</td><td><strong class="ui">显示 ▸ 显示/隐藏导航栏</strong></td></tr>
+<tr><td>⌃Tab</td><td><strong class="ui">窗口 ▸ 显示下一个标签页</strong>（合并的窗口）</td></tr>
+<tr><td>⌃⇧Tab</td><td><strong class="ui">窗口 ▸ 显示上一个标签页</strong>（合并的窗口）</td></tr>
+<tr><td>fn E</td><td><strong class="ui">编辑 ▸ 表情与符号</strong></td></tr>
+<tr><td>⌃fn C</td><td><strong class="ui">窗口 ▸ 居中</strong></td></tr>
+<tr><td>⌃fn F</td><td><strong class="ui">窗口 ▸ 填充</strong></td></tr>
+</tbody></table></div>
+<h2 id="keyboard-example">用键盘编码<a class="anchor" href="#keyboard-example" aria-hidden="true">#</a></h2>
+<p>选择一段文字需要用鼠标或触控板，但前后的几乎所有操作都可以用键盘完成。假设你正在“气候辩论”中查找谈到期限的段落，“时间不多了”和“来自气候罢课的信”已在标签页中打开，当前标签页是“时间不多了”。如果想跟着操作，可以用<strong class="ui">文件 ▸ 导入 ▸ 示例项目</strong>导入示例项目。</p>
+<ol>
+<li>按下 ⌥⌘3。检查器显示<strong class="ui">编码</strong>标签页。</li>
+<li>按下 ⌘F，输入 <code>退休</code>。阅读器转到唯一的匹配项，它位于讲领导人所承诺日期的那一段中。</li>
+<li>按下 Esc 键，关闭搜索栏。</li>
+<li>选中句子<em>一个在所有现任官员都退休之后才到期的期限，根本算不上期限。</em></li>
+<li>按下 ⇧⌘C。编码面板打开，光标位于<strong class="ui">搜索编码</strong>中。</li>
+<li>输入 <code>时间</code>。列表中只剩下“时间节点”这一个编码。</li>
+<li>按下 Return 键。“时间节点”带上勾号，面板保持打开。</li>
+<li>按下 Esc 键，关闭面板。这段文字仍处于选中状态。</li>
+<li>按下 ⇧⌘M。<strong class="ui">新建备忘录</strong>对话框打开。</li>
+<li>点按<strong class="ui">备忘录</strong>栏，输入一条笔记，例如 <code>这些目标都定在提出者退休之后；可对照“来自气候罢课的信”。</code></li>
+<li>点按<strong class="ui">存储</strong>。</li>
+<li>按下 ⇧⌘]，转到“来自气候罢课的信”。</li>
+</ol>
+<p>如果把编码应用到了错误的段落，关闭面板后按 ⌘Z 即可。<strong class="ui">编辑 ▸ 撤销应用编码</strong>会撤回这个编码实例。面板仍然打开时，再按一次 Return 键会移除“时间节点”。</p>
+<figure class="shot" id="keyboard-shortcuts-code-palette"><img class="shot-light" src="../figures/zh-Hans/light/keyboard-shortcuts-code-palette.webp" alt="在“时间不多了”中按 ⇧⌘C 打开的编码面板，搜索栏中输入了“时间”，列表中只剩下“时间节点”。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/keyboard-shortcuts-code-palette.webp" alt="在“时间不多了”中按 ⇧⌘C 打开的编码面板，搜索栏中输入了“时间”，列表中只剩下“时间节点”。" loading="lazy"><figcaption>在“时间不多了”中按 ⇧⌘C 打开的编码面板，搜索栏中输入了“时间”，列表中只剩下“时间节点”。</figcaption></figure>
+<h2 id="custom-shortcuts">添加自定义键盘快捷键<a class="anchor" href="#custom-shortcuts" aria-hidden="true">#</a></h2>
+<p>在 macOS 中，可以为任何应用程序中的任何菜单命令指定快捷键。这样，你就能快速执行经常使用的命令，例如<strong class="ui">编辑 ▸ 从所选内容查询</strong>和<strong class="ui">项目 ▸ 添加编码</strong>。你也可以按自己的习惯重新指定已有的快捷键。</p>
+<ol>
+<li>打开<strong class="ui">系统设置</strong>，点按<strong class="ui">键盘</strong>。</li>
+<li>点按<strong class="ui">键盘快捷键…</strong>。</li>
+<li>点按左侧列表中的 <strong class="ui">App快捷键</strong>。</li>
+<li>点按添加按钮（+）。</li>
+<li>选择 LemmaLoom 作为应用程序。</li>
+<li>在菜单标题中，按菜单上显示的样子原样输入命令名称，例如 <code>从所选内容查询</code>。</li>
+<li>点按快捷键栏，按下尚未被占用的按键（见本章前文的<a href="#shortcuts-by-key">按按键排列的全部快捷键</a>），例如 ⌃⌥⌘Q。</li>
+<li>点按<strong class="ui">完成</strong>。</li>
+</ol>
+<p>为名称中带省略号的命令（例如<strong class="ui">自动编码…</strong>）指定按键时，省略号要作为单个字符输入。在美式键盘上，这意味着同时按 Option 键和分号键，而不是输入三个句点或中文输入法中的“……”。有些命令在应用程序的菜单中出现两次（例如<strong class="ui">导入</strong>和<strong class="ui">导出</strong>下都有 <strong class="ui">REFI-QDA 项目</strong>）。遇到这种情况，需要输入命令的完整路径，各级菜单之间用 <code>-&gt;</code> 分隔，例如 <code>文件-&gt;导出-&gt;REFI-QDA 项目</code>。</p>
+<p>存储之后，快捷键会显示在 LemmaLoom 的菜单中这个命令的旁边。如果没有显示，请退出 LemmaLoom 并重新打开。</p>
+<p>macOS 根据菜单项的名称识别命令。因此，你输入的名称应当与应用程序当前所用语言中的菜单项名称一致。更改语言之后，需要按新的命令名称重新设置快捷键，例如英文界面中的 <strong class="ui">Query from Selection</strong>。出于同样的原因，会改名的命令只有在显示为你所输入的名称时，才会响应你的快捷键。同时启用了多个可以自动编码的透镜时，为<strong class="ui">自动编码…</strong>指定的按键会失效，因为这时菜单提供的是<strong class="ui">使用模糊限制语自动编码…</strong>之类的命令。</p>
+</article>
+<nav class="pager"><a class="previous" href="settings.html"><span>上一章</span>设置与外观</a><a class="next" href="help-and-support.html"><span>下一章</span>帮助与支持</a></nav>
+<footer class="site-footer">© 2026 Ryan S. Cooper. 保留所有权利。<br>本版本借助人工智能根据英文原版翻译而成，译文可能存在错误或不准确之处。如有疑问，请以英文版为准。</footer>
+</main>
+<nav class="page-toc" aria-label="本页内容"><p>本页内容</p><ul>
+<li class="level-2"><a href="#how-shortcuts-work">快捷键的工作方式</a></li>
+<li class="level-3"><a href="#shortcuts-by-window">各窗口中的快捷键</a></li>
+<li class="level-2"><a href="#shortcuts-by-menu">按菜单排列的快捷键</a></li>
+<li class="level-3"><a href="#lemmaloom-menu">LemmaLoom</a></li>
+<li class="level-3"><a href="#file-menu">文件</a></li>
+<li class="level-3"><a href="#edit-menu">编辑</a></li>
+<li class="level-3"><a href="#view-menu">显示</a></li>
+<li class="level-3"><a href="#project-menu">项目</a></li>
+<li class="level-3"><a href="#document-menu">文档</a></li>
+<li class="level-3"><a href="#window-menu">窗口</a></li>
+<li class="level-3"><a href="#help-menu">帮助</a></li>
+<li class="level-2"><a href="#buttons-and-shortcuts">带快捷键的按钮</a></li>
+<li class="level-2"><a href="#esc-and-return">Esc 键、Return 键和方向键</a></li>
+<li class="level-2"><a href="#modifier-clicks">按住修饰键点按</a></li>
+<li class="level-2"><a href="#shortcuts-by-key">按按键排列的全部快捷键</a></li>
+<li class="level-2"><a href="#keyboard-example">用键盘编码</a></li>
+<li class="level-2"><a href="#custom-shortcuts">添加自定义键盘快捷键</a></li>
+</ul></nav>
+</div>
+<script src="../assets/guide.js" defer></script>
+</body>
+</html>

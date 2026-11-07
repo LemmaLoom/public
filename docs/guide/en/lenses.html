@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lenses · LemmaLoom User Guide</title>
+<link rel="stylesheet" href="../assets/guide.css">
+<link rel="icon" type="image/png" href="../assets/logo.png">
+<script>var r=document.documentElement;r.setAttribute('data-theme','light');try{if(localStorage.getItem('guide-theme')==='dark'){r.setAttribute('data-theme','dark')}}catch(e){}</script>
+</head>
+<body>
+<header class="topbar">
+<button class="menu-toggle" aria-label="Contents" aria-expanded="false">☰</button>
+<a class="brand" href="index.html"><span class="wordmark"><span class="lemma">Lemma</span>Loom</span><span class="guide-name">User Guide</span></a>
+<div class="search"><input type="search" id="search" placeholder="Search" aria-label="Search" autocomplete="off" data-empty="No results"><div class="results" id="results" hidden></div></div>
+<nav class="languages" aria-label="Language"><a href="../en/lenses.html" lang="en" aria-current="true">English</a><a href="../de/lenses.html" lang="de">Deutsch</a><a href="../zh-Hans/lenses.html" lang="zh-Hans">简体中文</a></nav>
+<button class="theme-toggle" data-light="Light" data-dark="Dark" aria-label="Theme"></button>
+<a class="pdf-link" href="https://github.com/LemmaLoom/public/raw/main/pdf/lemmaloom-guide-en.pdf">PDF</a>
+</header>
+<div class="layout">
+<nav class="sidebar" aria-label="Contents"><ol>
+<li class="unnumbered"><a href="quick-start.html">Quick Start</a></li>
+<li><a href="introduction.html">Introduction</a></li>
+<li><a href="getting-started.html">Getting Started</a></li>
+<li><a href="projects-and-documents.html">Projects and Documents</a></li>
+<li><a href="importing.html">Importing Material</a></li>
+<li><a href="reading-and-editing.html">Reading and Editing</a></li>
+<li class="current"><a href="lenses.html">Lenses</a></li>
+<li><a href="coding.html">Coding</a></li>
+<li><a href="sets-tags-attributes.html">Sets, Groups, Tags, and Attributes</a></li>
+<li><a href="translations.html">Translations and Split View</a></li>
+<li><a href="text-inspector.html">The Text Inspector</a></li>
+<li><a href="grammar-inspector.html">The Grammar Inspector</a></li>
+<li><a href="word-sketch.html">Word Sketch</a></li>
+<li><a href="coding-analysis.html">Analyzing Codes</a></li>
+<li><a href="sketch-space.html">Sketch Space</a></li>
+<li><a href="queries-building.html">Building a Query</a></li>
+<li><a href="queries-results.html">Query Results and Statistics</a></li>
+<li><a href="queries-patterns.html">Query Patterns and Discovery</a></li>
+<li><a href="queries-using-results.html">Using Query Results</a></li>
+<li><a href="dictionaries.html">Dictionaries</a></li>
+<li><a href="custom-analyzers.html">Custom Analyzers</a></li>
+<li><a href="analysis-and-indexing.html">Analysis and Indexing</a></li>
+<li><a href="exchange-and-export.html">Exchanging and Exporting</a></li>
+<li><a href="undo.html">Undo and Redo</a></li>
+<li><a href="settings.html">Settings and Appearance</a></li>
+<li><a href="keyboard-shortcuts.html">Keyboard Shortcuts</a></li>
+<li><a href="help-and-support.html">Help and Support</a></li>
+<li><a href="statistics-reference.html">Statistics at a Glance</a></li>
+<li class="unnumbered"><a href="glossary.html">Glossary</a></li>
+<li class="unnumbered"><a href="thanks.html">Thank You</a></li>
+</ol></nav>
+<main class="content">
+<article>
+<h1 id="lenses">Lenses</h1>
+<p>A <em>lens</em> annotates words in the reader according to their category. Examples of categories would be parts of speech and codes. The <strong class="ui">Word class</strong> lens, for instance, underlines all nouns in blue and all verbs in red, whereas the <strong class="ui">Codes</strong> lens renders your codings in the respective code’s color.</p>
+<p>Lenses assist you in spotting patterns in texts as you read them. When you enable <strong class="ui">Negation</strong> in the op-ed “Running Out of Time”, for instance, all instances of <em>not</em>, <em>never</em>, and <em>nobody</em>, along with whatever they negate in the sentence, become visually obvious to you. Similarly, enabling a dictionary of hedges as a lens can reveal where the author softens a claim. Typically, you will use lenses to identify passages relevant to your question and then conduct a close reading of them prior to coding and counting. All examples used in this chapter were taken from “Climate Debate”, the example project of this guide, which <strong class="ui">File ▸ Import ▸ Example Project</strong> adds to your library (see <a href="introduction.html#example-project">The example project</a> in <a href="introduction.html">Chapter 1, Introduction</a>).</p>
+<h2 id="lenses-at-a-glance">Lenses at a glance<a class="anchor" href="#lenses-at-a-glance" aria-hidden="true">#</a></h2>
+<p>Every category annotated by a lens is an <em>aspect</em> of the lens. Some examples include <strong class="ui">Noun</strong> in <strong class="ui">Word class</strong> or <strong class="ui">Obligation</strong> in <strong class="ui">Modality</strong>. There are only certain aspects that have colors in common; all other aspects have a unique color associated with them. Above the text, most lenses show a <em>legend</em>, which is made up of colored lenslets that represent aspects. You use the legend to determine what each color means and to enable or disable individual aspects of the lens. <a href="#legend">Reading a lens</a> later in this chapter provides further detail.</p>
+<p>There are five different types of lenses offered by LemmaLoom:</p>
+<ul>
+<li><em>Built-in lenses</em> ranging from <strong class="ui">Word class</strong> to <strong class="ui">Rhetoric</strong> render the grammar analysis performed on the document during indexing (see <a href="analysis-and-indexing.html">Chapter 21, Analysis and Indexing</a>).</li>
+<li>The <strong class="ui">Codes</strong> and <strong class="ui">Bookmarks</strong> lenses render your annotations made on the document.</li>
+<li>Dictionaries have their own lenses, <em>dictionary lenses</em>, which annotate their terms. Each category has its own color (see <a href="dictionaries.html">Chapter 19, Dictionaries</a>).</li>
+<li><em>Query lenses</em> render the hits of a saved query (see <a href="queries-using-results.html">Chapter 18, Using Query Results</a>).</li>
+<li><em>Analyzer lenses</em> represent findings made via one of your own analyzers (see <a href="custom-analyzers.html">Chapter 20, Custom Analyzers</a>).</li>
+</ul>
+<p>Built-in lenses are helpful to understand the wording and grammatical structure of texts and apply to any indexed document in LemmaLoom.</p>
+<p>To view a document without any lens, select <strong class="ui">Clear All</strong> in the lens menu.</p>
+<p>Each currently open document stores its own lenses. If two documents are viewed side by side (see <a href="reading-and-editing.html#split-view">Reading two documents side by side</a> in <a href="reading-and-editing.html">Chapter 5, Reading and Editing</a>), for instance, you can view “Running Out of Time” with <strong class="ui">Modality</strong> and the column “The Models Keep Missing” with <strong class="ui">Cohesion</strong> at the same time. Documents opened for the first time have the <strong class="ui">Codes</strong> and <strong class="ui">Bookmarks</strong> lenses enabled. For any document left open, LemmaLoom keeps track of enabled lenses and disabled aspects, and restores them upon opening the project again. Enabling or disabling a lens or aspect, or collapsing a document, takes effect immediately, while reversing these actions requires doing the opposite (see <a href="undo.html#outside-the-project">Changes outside the project</a> in <a href="undo.html">Chapter 23, Undo and Redo</a>).</p>
+<p>The lens menu is disabled until indexing completes. Additionally, the menu remains disabled for documents in languages other than English, German, and Chinese, although codings and bookmarks will still be displayed in them. Importing without indexing will also result in the menu staying disabled until indexing finishes (see <a href="analysis-and-indexing.html#turning-indexing-off">Importing without indexing</a> in <a href="analysis-and-indexing.html">Chapter 21, Analysis and Indexing</a>).</p>
+<h2 id="lens-menu">The lens menu<a class="anchor" href="#lens-menu" aria-hidden="true">#</a></h2>
+<p>The lens menu is the first of the tools at the right end of the title band, appearing before the magnifying glass and the <strong class="ui">Font, gutter, and text size</strong> menu (see <a href="reading-and-editing.html#title-band">The title band</a> in <a href="reading-and-editing.html">Chapter 5, Reading and Editing</a>). The label of the menu tells you whether lenses are enabled, how many lenses are enabled, and which:</p>
+<ul>
+<li><strong class="ui">Lens</strong> when none is enabled;</li>
+<li>the lens’s name, e.g., <strong class="ui">Modality</strong> or <strong class="ui">Hedges</strong>, when one is enabled;</li>
+<li>the number of lenses, e.g., <strong class="ui">2 Lenses</strong>, when multiple lenses are enabled.</li>
+</ul>
+<p>When you hover the mouse pointer over the menu, you can see the names of the lenses that are currently enabled. Prior to indexing finishing, you’ll get a tooltip that reads <strong class="ui">Lenses become available when indexing completes</strong>. When editing a document’s text, both the lens menu and the legends will disappear from view.</p>
+<p>“Running Out of Time” currently has three lenses enabled simultaneously in the figure below (<strong class="ui">Modality</strong>, <strong class="ui">Bookmarks</strong>, and <strong class="ui">Codes</strong>), hence <strong class="ui">3 Lenses</strong> in the menu. Coding of both “Tipping Points” and “Deadlines” appears along the margin and within the text itself. After <strong class="ui">Bookmarks</strong> and <strong class="ui">Codes</strong> come two additional lenses in the menu that belong to “Climate Debate” (“Hedges”, the project dictionary, and “Urgency Talk”, a query lens).</p>
+<figure class="shot" id="lenses-menu"><img class="shot-light" src="../figures/en/light/lenses-menu.webp" alt="The lens menu for “Running Out of Time”, with Modality, Bookmarks, and Codes enabled, and the dictionary “Hedges” and the query lens “Urgency Talk” listed below them." loading="lazy"><img class="shot-dark" src="../figures/en/dark/lenses-menu.webp" alt="The lens menu for “Running Out of Time”, with Modality, Bookmarks, and Codes enabled, and the dictionary “Hedges” and the query lens “Urgency Talk” listed below them." loading="lazy"><figcaption>The lens menu for “Running Out of Time”, with Modality, Bookmarks, and Codes enabled, and the dictionary “Hedges” and the query lens “Urgency Talk” listed below them.</figcaption></figure>
+<p>The menu contains a maximum of three groups, separated by lines:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Group</th><th>What it contains</th></tr></thead>
+<tbody>
+<tr><td>Built-in lenses</td><td>The built-in lenses available for the document’s language, in the order of the table under <a href="#built-in-lenses">Built-in lenses</a> later in this chapter, followed by <strong class="ui">Clear Lenses</strong></td></tr>
+<tr><td>Analyzers</td><td>Your own analyzers for the document’s language, followed by <strong class="ui">Clear Analyzers</strong>. The group appears only when there is at least one such analyzer.</td></tr>
+<tr><td>Annotations</td><td><strong class="ui">Bookmarks</strong> and <strong class="ui">Codes</strong>, then the project’s dictionaries in alphabetical order, then any query lenses, then the <strong class="ui">Auto Code…</strong> items, and last <strong class="ui">Clear Annotations</strong></td></tr>
+</tbody></table></div>
+<p>The <strong class="ui">Clear All</strong> item is located above the groups.</p>
+<p>To toggle a lens on or off:</p>
+<ol>
+<li>Open the document in the reader.</li>
+<li>Click the lens menu in the title band.</li>
+<li>Choose a lens. A checkmark appears beside it in the menu, and for most lenses a legend appears above the text.</li>
+<li>To add another lens, open the menu again and choose it. The menu closes after each choice.</li>
+<li>To disable a lens, choose it again.</li>
+</ol>
+<p>The four <strong class="ui">Clear</strong> items will disable multiple lenses simultaneously:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Item</th><th>What it disables</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">Clear All</strong></td><td>Every lens, <strong class="ui">Codes</strong> and <strong class="ui">Bookmarks</strong> included</td></tr>
+<tr><td><strong class="ui">Clear Lenses</strong></td><td>The built-in lenses in the first group, and any query lenses</td></tr>
+<tr><td><strong class="ui">Clear Analyzers</strong></td><td>Every analyzer lens</td></tr>
+<tr><td><strong class="ui">Clear Annotations</strong></td><td><strong class="ui">Codes</strong>, <strong class="ui">Bookmarks</strong>, dictionary lenses, and query lenses</td></tr>
+</tbody></table></div>
+<p>If an item is disabled, then none of the lenses it would disable have been turned on. You may turn off the built-in lenses to stop their coloring from being displayed, while still reading with your codings, by clicking <strong class="ui">Clear Lenses</strong>.</p>
+<aside class="callout note"><p class="callout-title">Note</p><p>The <strong class="ui">Clear All</strong> and <strong class="ui">Clear Annotations</strong> commands remove your codings and bookmarks from view. To view them again, select <strong class="ui">Codes</strong> or <strong class="ui">Bookmarks</strong>.</p>
+</aside>
+<p>The <strong class="ui">Auto Code…</strong> item codes the passages annotated by a dictionary, query, or analyzer lens (see <a href="coding.html#auto-code-from-lens">Auto-coding from a lens</a> in <a href="coding.html">Chapter 7, Coding</a>). You’ll find this item visible only when at least one such lens is enabled. If you’ve got multiple such lenses enabled, you get this item repeated for every lens you have enabled; for example, <strong class="ui">Auto Code with Hedges…</strong>.</p>
+<figure class="shot" id="lenses-hedges-menu"><img class="shot-light" src="../figures/en/light/lenses-hedges-menu.webp" alt="The lens menu for “Radio Debate” with “Hedges” and “Urgency Talk” enabled, with an Auto Code item for each of them." loading="lazy"><img class="shot-dark" src="../figures/en/dark/lenses-hedges-menu.webp" alt="The lens menu for “Radio Debate” with “Hedges” and “Urgency Talk” enabled, with an Auto Code item for each of them." loading="lazy"><figcaption>The lens menu for “Radio Debate” with “Hedges” and “Urgency Talk” enabled, with an Auto Code item for each of them.</figcaption></figure>
+<p>If you have the application opened up in full screen mode, the title band is hidden and the lens menu is relocated to your toolbar at the very top of your screen. There you have the same items, and the collapse button talked about later in this chapter becomes <strong class="ui">Collapse to Matches</strong>, whereas <strong class="ui">Expand Document</strong> is shown during the time the current document remains collapsed. During the time the indexing hasn’t completed yet, you see the disabled menu’s tooltip <strong class="ui">Not indexed yet</strong> (see <a href="reading-and-editing.html#full-screen">The full-screen reader</a> in <a href="reading-and-editing.html">Chapter 5, Reading and Editing</a>).</p>
+<p>When viewing two documents simultaneously side-by-side, your title band tools affect the currently active document pane. To switch active panes, click inside the other document pane.</p>
+<h2 id="legend">Reading a lens<a class="anchor" href="#legend" aria-hidden="true">#</a></h2>
+<p>For most lenses, a legend appears above your text as soon as you enable the lens. This legend includes the lens’s title written out in capitals followed by its aspects, displayed as colored lenslets in the aspects’ respective colors. Clicking a lenslet will disable the aspect of the lens while clicking it again enables the aspect, causing its annotations within your document to disappear and reappear respectively. A disabled lenslet appears faded. Your legends will display themselves according to the sequence of activation of your lenses.</p>
+<p>Most lenslets include a small square in the aspect’s color. However, the lenslets representing aspects that a lens underlines by default, such as <strong class="ui">New ending (stress)</strong> in <strong class="ui">Cohesion</strong>, show a short colored bar instead.</p>
+<h3 id="visible-keys">Choosing which aspects are enabled<a class="anchor" href="#visible-keys" aria-hidden="true">#</a></h3>
+<p>Enabling a lens enables all of its aspects. Usually, you will narrow a lens so that only certain colors are displayed when you know you wish to ask questions about one or two of them specifically. It could be that you wish to study only the verbs, or perhaps only where the author states obligation.</p>
+<ul>
+<li><strong class="ui">None</strong> disables all aspects, while <strong class="ui">All</strong> enables all aspects. <strong class="ui">All</strong> stays disabled while all aspects are enabled, and <strong class="ui">None</strong> stays disabled while none are.</li>
+<li>Right-clicking a lenslet brings up a shortcut menu. <strong class="ui">Enable only this</strong> enables only this aspect. <strong class="ui">Disable</strong> or <strong class="ui">Enable</strong> toggles the aspect, while <strong class="ui">Enable all</strong> enables all aspects again.</li>
+</ul>
+<p>Disabling aspects causes their words to appear faint. Any annotations made by other lenses override the fading effects caused by disabling aspects.</p>
+<p>The following figure shows the <strong class="ui">Modality</strong> legend of “Running Out of Time” with the shortcut menu of the <strong class="ui">Obligation</strong> lenslet displayed. Selecting <strong class="ui">Enable only this</strong> will show only the words expressing obligation, like <em>should</em> in “That should not reassure anybody.”</p>
+<figure class="shot" id="lenses-legend-menu"><img class="shot-light" src="../figures/en/light/lenses-legend-menu.webp" alt="The Modality legend of “Running Out of Time” with the menu of the Obligation lenslet open." loading="lazy"><img class="shot-dark" src="../figures/en/dark/lenses-legend-menu.webp" alt="The Modality legend of “Running Out of Time” with the menu of the Obligation lenslet open." loading="lazy"><figcaption>The Modality legend of “Running Out of Time” with the menu of the Obligation lenslet open.</figcaption></figure>
+<p>For keeping only a particular aspect of the lens:</p>
+<ol>
+<li>Enable the lens.</li>
+<li>In the legend, right-click the aspect’s lenslet and choose <strong class="ui">Enable only this</strong>.</li>
+<li>To enable every aspect again, click <strong class="ui">All</strong>.</li>
+</ol>
+<p>Collapsing a document to annotated sentences means that the only thing left will be sentences containing annotations from an enabled aspect (for further explanation see <a href="#collapse">Showing only annotated sentences</a> in a later section of this chapter). Since the rows of the <strong class="ui">Auto Code</strong> dialog contain only the aspects which are enabled, any disabled aspects will be skipped in the auto code procedure.</p>
+<p>You can also enable three lenses from the <strong class="ui">Grammar</strong> tab of the inspector. Open a category within its <strong class="ui">Discourse</strong> facet, under <strong class="ui">Cohesion</strong>, <strong class="ui">Metadiscourse</strong>, or <strong class="ui">Rhetoric</strong>, and click <strong class="ui">Highlight in text</strong>. LemmaLoom enables the lens if needed and filters it to display the contents of the selected category. Clicking the link again reverts all aspects to normal visibility (see <a href="grammar-inspector.html#discourse-highlight">Highlighting a category</a> in <a href="grammar-inspector.html">Chapter 11, The Grammar Inspector</a>).</p>
+<h2 id="combining-lenses">Combining lenses<a class="anchor" href="#combining-lenses" aria-hidden="true">#</a></h2>
+<p>Annotations of the same word from two different lenses with identical annotation styles show both annotation colors together. Highlights become gradient blends with the top of the highlight rendered in the first lens color, and the bottom rendered in the second. Similarly, underline annotations become gradient blends where the left side of the underline is in the first annotation color, and the right side in the second. Finally, text color annotations are also gradient blends where each letter transitions from the first annotation color at the top to the second annotation color on the bottom side.</p>
+<p>It’s advisable to pair lenses in ways that maximize readability, with one lens highlighting and the other underlining. By default, <strong class="ui">Word class</strong> and <strong class="ui">Grammatical function</strong> lenses use the underline annotation style while most others highlight words. Therefore, <strong class="ui">Modality</strong> should pair with <strong class="ui">Word class</strong> and not with <strong class="ui">Phrase</strong>, because <strong class="ui">Phrase</strong> highlights most words in your document, hiding the highlights of other lenses. Additionally, four of the lenses can have their annotation styles changed in Settings to make room for a third lens (see <a href="#lens-colors-and-styles">Lens colors and styles</a> later in this chapter).</p>
+<figure class="shot" id="lenses-combined"><img class="shot-light" src="../figures/en/light/lenses-combined.webp" alt="“Running Out of Time” with Modality and Word class enabled together, each with its own legend above the text." loading="lazy"><img class="shot-dark" src="../figures/en/dark/lenses-combined.webp" alt="“Running Out of Time” with Modality and Word class enabled together, each with its own legend above the text." loading="lazy"><figcaption>“Running Out of Time” with Modality and Word class enabled together, each with its own legend above the text.</figcaption></figure>
+<p>The document overview, the narrow vertical strip located at the right edge of the reader, displays the colors of the enabled lenses. This proves useful in cases where you’re dealing with very large documents because the document overview allows you to quickly locate clusters of annotations and move around the document using clicks (see <a href="reading-and-editing.html#minimap">The document overview</a> in <a href="reading-and-editing.html">Chapter 5, Reading and Editing</a>).</p>
+<h2 id="collapse">Showing only annotated sentences<a class="anchor" href="#collapse" aria-hidden="true">#</a></h2>
+<p>Lenses can also be used to collapse the document to the sentences that they annotate. You could thus read all of the sentences referring to requirements, or all coded passages, consecutively. Collapse proves especially useful in cases where you have a large document to deal with, or when comparing multiple instances of similar sentences before coding them.</p>
+<p>You initiate document collapse via the <em>collapse button</em>. It is located immediately to the right of the lens menu and displays just an icon (a rectangle flanked by two arrows) that turns tinted while the document is collapsed. This button displays itself whenever any of the built-in, dictionary, query, or analyzer lenses are enabled, or whenever <strong class="ui">Codes</strong> or <strong class="ui">Bookmarks</strong> is turned on and the document has codings or bookmarks.</p>
+<p>While the document is collapsed, sentences remain visible if annotated with any lens currently enabled. That means that a built-in, dictionary, query, or analyzer lens will retain sentences containing one or several words carrying one of the aspects marked as enabled; while for <strong class="ui">Codes</strong> and <strong class="ui">Bookmarks</strong>, a sentence remains when a coding or bookmark, respectively, overlaps it.</p>
+<p>Should there be any omitted sentences between two retained ones, a line of three spaced dots will indicate such omission. Sentences before the first retained one and beyond the last are excluded from the view without dots.</p>
+<p>Take the example below wherein “Running Out of Time” features only the <strong class="ui">Modality</strong> lens enabled, with every aspect except <strong class="ui">Necessity</strong> disabled. Only three sentences were left after collapsing, two with <em>must</em> and one with <em>need</em>. Yet the latter, <em>We do not need another report</em>, denies a necessity rather than proposing one.</p>
+<figure class="shot" id="lenses-collapsed"><img class="shot-light" src="../figures/en/light/lenses-collapsed.webp" alt="“Running Out of Time” collapsed to the sentences that the Modality lens annotates as Necessity." loading="lazy"><img class="shot-dark" src="../figures/en/dark/lenses-collapsed.webp" alt="“Running Out of Time” collapsed to the sentences that the Modality lens annotates as Necessity." loading="lazy"><figcaption>“Running Out of Time” collapsed to the sentences that the Modality lens annotates as Necessity.</figcaption></figure>
+<p>For a lens to show you only annotated sentences:</p>
+<ol>
+<li>Enable the lens, and disable the aspects you do not need in its legend.</li>
+<li>If you do not want coded and bookmarked sentences kept as well, disable <strong class="ui">Codes</strong> and <strong class="ui">Bookmarks</strong>. <strong class="ui">Clear Annotations</strong> disables both and keeps the built-in lenses enabled, though it also disables dictionary and query lenses.</li>
+<li>Click the collapse button.</li>
+<li>To read the whole document again, click the collapse button once more. Its tooltip now reads <strong class="ui">Show the whole document again</strong>.</li>
+</ol>
+<p>When a document is collapsed, changes in lenses and aspects are immediately reflected in the document. When there are no sentences left, the entire document is revealed. Initiating an edit or opening <strong class="ui">Find</strong> (⌘F) does the same.</p>
+<p>Codings, bookmarks, and memos added in the collapsed document will persist at their place in the full text.</p>
+<h2 id="built-in-lenses">Built-in lenses<a class="anchor" href="#built-in-lenses" aria-hidden="true">#</a></h2>
+<p>The built-in lenses provide the analysis of the document’s grammar. This includes its words, the word class and morphology of those words, the relationships between them, and the phrases which are made from those words. Incorrectly performed grammar analyses will show up in the lenses as well. Most of the analyses are performed accurately in edited writing; however, they are less accurate on spoken language, which contains repetitions, interruptions, and incomplete sentences. It is advisable to first find potential passages via the lens, and review a sample of those passages before making claims about their frequency.</p>
+<p>Certain lenses, including <strong class="ui">Modality</strong>, <strong class="ui">Connectives</strong>, and <strong class="ui">Metadiscourse</strong> lenses, use short word lists rather than grammar. These annotate an occurrence of a listed word whenever it fits within its proper grammatical word class, whatever it means in context.</p>
+<p>Which built-in lenses are available within LemmaLoom depends on the language of the analyzed document:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Lens</th><th>English</th><th>German</th><th>Chinese</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">Word class</strong></td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+<tr><td><strong class="ui">Grammatical function</strong></td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+<tr><td><strong class="ui">Phrase</strong></td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+<tr><td><strong class="ui">Morphology</strong></td><td>Yes</td><td>Yes</td><td>No</td></tr>
+<tr><td><strong class="ui">Modality</strong></td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+<tr><td><strong class="ui">Negation</strong></td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+<tr><td><strong class="ui">Connectives</strong></td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+<tr><td><strong class="ui">Sentence fields</strong></td><td>No</td><td>Yes</td><td>No</td></tr>
+<tr><td><strong class="ui">Constructions</strong></td><td>No</td><td>No</td><td>Yes</td></tr>
+<tr><td><strong class="ui">Particles</strong></td><td>No</td><td>No</td><td>Yes</td></tr>
+<tr><td><strong class="ui">Cohesion</strong></td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+<tr><td><strong class="ui">Metadiscourse</strong></td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+<tr><td><strong class="ui">Rhetoric</strong></td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+</tbody></table></div>
+<p><strong class="ui">Cohesion</strong>, <strong class="ui">Metadiscourse</strong>, and <strong class="ui">Rhetoric</strong> all come from analyses carried out via analyzers during indexing. You can find which analyzers were used on your document in <strong class="ui">Document Properties</strong> under <strong class="ui">Indexing</strong> (right-click your document in the navigation sidebar, then choose <strong class="ui">Properties</strong>). Should you remove any of their output there, then their corresponding lens will vanish from the lens menu for your document; clicking <strong class="ui">Run</strong> will bring it back (see <a href="analysis-and-indexing.html#removing-analyzer-output">Removing an analyzer’s output</a> in <a href="analysis-and-indexing.html">Chapter 21, Analysis and Indexing</a>).</p>
+<h3 id="word-class">Word class<a class="anchor" href="#word-class" aria-hidden="true">#</a></h3>
+<p><strong class="ui">Word class</strong> underlines every word in the document according to its part of speech. The legend consists of ten aspect lenslets, and includes <strong class="ui">Noun</strong>, <strong class="ui">Verb</strong>, <strong class="ui">Adjective</strong>, <strong class="ui">Adverb</strong>, <strong class="ui">Pronoun</strong>, <strong class="ui">Determiner</strong>, <strong class="ui">Preposition</strong>, <strong class="ui">Conjunction</strong>, <strong class="ui">Number</strong>, and <strong class="ui">Interjection</strong>. This lens offers you a quick glimpse into the structure of your texts by looking at how much weight a text puts on certain word classes; for example, official reports often rely heavily on nouns. By keeping just the <strong class="ui">Adjective</strong> aspect on, you will get a visualization of what kinds of adjectives writers use to evaluate.</p>
+<p>When taking apart <em>The fuel tax rarely spares a rural family</em> in the <strong class="ui">Word class</strong> lens, <em>fuel</em>, <em>tax</em>, and <em>family</em> are underlined as nouns, <em>spares</em> as a verb, <em>rarely</em> as an adverb, <em>rural</em> as an adjective, and <em>The</em> and <em>a</em> as determiners.</p>
+<p>The figure below shows the opening of “Running Out of Time”, the story of one hot night, with <strong class="ui">Word class</strong> enabled.</p>
+<figure class="shot" id="lenses-word-class"><img class="shot-light" src="../figures/en/light/lenses-word-class.webp" alt="Word class in “Running Out of Time”, with the legend above the text." loading="lazy"><img class="shot-dark" src="../figures/en/dark/lenses-word-class.webp" alt="Word class in “Running Out of Time”, with the legend above the text." loading="lazy"><figcaption>Word class in “Running Out of Time”, with the legend above the text.</figcaption></figure>
+<p>The classes are wide categories, and a few of them contain words beyond what they seem to categorize at first glance:</p>
+<ul>
+<li><strong class="ui">Verb</strong> contains auxiliary verbs and modals like <em>have</em>, <em>be</em>, <em>can</em>, and <em>should</em>.</li>
+<li><strong class="ui">Pronoun</strong>, in English, includes possessive pronouns such as <em>my</em> and <em>their</em>, as well as <em>there</em> in <em>there is</em>. Possessive pronouns in German, such as <em>mein</em> and <em>ihr</em>, fall under <strong class="ui">Determiner</strong>.</li>
+<li>Particles, including English <em>to</em> in <em>to work</em>, <em>up</em> in <em>pick up</em>, and the possessive <em>’s</em>; German <em>zu</em> and <em>nicht</em>; and Chinese 的 and 了 all belong to the class <strong class="ui">Preposition</strong>.</li>
+<li>In English, <strong class="ui">Preposition</strong> covers subordinating conjunctions such as <em>because</em>, <em>if</em>, and <em>that</em> (<em>I think that</em>). These are labeled like prepositions in English analyses and categorized as <strong class="ui">Conjunction</strong> in German and Chinese.</li>
+</ul>
+<p>Any word that does not fit into the ten classes, such as foreign words, receives a gray underline.</p>
+<h3 id="grammatical-function">Grammatical function<a class="anchor" href="#grammatical-function" aria-hidden="true">#</a></h3>
+<p><strong class="ui">Grammatical function</strong> underlines each word according to its role within the sentence structure. The lens will indicate who or what performs actions within texts, e.g., whether the climate is the subject of a verb, as in <em>the climate changes</em>, or its object, as in <em>protect the climate</em>.</p>
+<p>All words besides the main verb are linked to one other word, their <em>head</em>, within a sentence structure. For example, in <em>a rural family</em>, the term <em>rural</em> is linked to <em>family</em>. Each word is colored according to its own relation to its head. Within a phrase structure, therefore, the main word shows the phrase’s job, and the terms that function as modifiers to it will be colored as either <strong class="ui">Adjectival</strong> or <strong class="ui">Adverbial</strong>.</p>
+<p>In <em>The fuel tax rarely spares a rural family</em>:</p>
+<ul>
+<li><em>tax</em> is marked <strong class="ui">Subject</strong>, while <em>The</em> and <em>fuel</em> are colored as <strong class="ui">Adjectival</strong>;</li>
+<li><em>rarely</em> is colored <strong class="ui">Adverbial</strong>;</li>
+<li><em>family</em> is marked <strong class="ui">Object</strong>, and both <em>a</em> and <em>rural</em> are colored <strong class="ui">Adjectival</strong>;</li>
+<li>finally, the main verb <em>spares</em> is left uncolored.</li>
+</ul>
+<figure class="shot" id="lenses-grammatical-function"><img class="shot-light" src="../figures/en/light/lenses-grammatical-function.webp" alt="“Running Out of Time” with the Grammatical function lens enabled and its legend above the text." loading="lazy"><img class="shot-dark" src="../figures/en/dark/lenses-grammatical-function.webp" alt="“Running Out of Time” with the Grammatical function lens enabled and its legend above the text." loading="lazy"><figcaption>“Running Out of Time” with the Grammatical function lens enabled and its legend above the text.</figcaption></figure>
+<p>There are ten aspect lenslets within the legend:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Aspect</th><th>What it annotates</th><th>Example</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">Subject</strong></td><td>The subject of a verb, including <em>it</em> and <em>there</em> used as empty subjects</td><td><em>students</em> in <em>two students fainted</em></td></tr>
+<tr><td><strong class="ui">Object</strong></td><td>The object of a verb or of a preposition</td><td><em>petitions</em> in <em>signed more petitions</em>; <em>road</em> in <em>on a road</em></td></tr>
+<tr><td><strong class="ui">Predicative</strong></td><td>A word that completes a linking verb such as <em>be</em> or <em>seem</em></td><td><em>expensive</em> in <em>floods are expensive</em></td></tr>
+<tr><td><strong class="ui">Complement</strong></td><td>The verb of a clause that completes another verb</td><td><em>share</em> in <em>the country has to share the bill</em></td></tr>
+<tr><td><strong class="ui">Adjectival</strong></td><td>A word that modifies a noun, such as an article, adjective, possessive, number, noun used as a modifier, or preposition attached to a noun</td><td><em>rural</em> in <em>a rural family</em>; <em>of</em> in <em>the end of the decade</em></td></tr>
+<tr><td><strong class="ui">Adverbial</strong></td><td>A word that modifies a verb, adjective, or adverb, including prepositions attached to a verb, adverbial clauses, and <em>not</em></td><td><em>rarely</em>; <em>after</em> in <em>voted after midnight</em></td></tr>
+<tr><td><strong class="ui">Appositive</strong></td><td>A noun phrase that renames the one beside it</td><td><em>carrier</em> in <em>one of my regulars, a retired mail carrier</em></td></tr>
+<tr><td><strong class="ui">Agent</strong></td><td>The <em>by</em> that introduces the doer of a passive verb</td><td><em>by</em> in <em>filtered by fear</em></td></tr>
+<tr><td><strong class="ui">Conjunct</strong></td><td>The second and later members of a coordination</td><td><em>skeptics</em> in <em>activists and skeptics</em></td></tr>
+<tr><td><strong class="ui">Connector</strong></td><td>Small linking words, such as conjunctions, subordinators, auxiliary verbs, and particles</td><td><em>and</em>; <em>because</em>; <em>have</em> in <em>have warned</em></td></tr>
+</tbody></table></div>
+<p>There are separate analyses for German and Chinese, with their own sets of relations. LemmaLoom sorts both into the same ten functions, and thus the colors represent nearly the same roles within each language. With the German analysis, though, the <em>von</em> phrase of a passive construction receives the label passive subject; thus, in <em>von der Regierung beschlossen</em>, <em>von</em> becomes colored as <strong class="ui">Subject</strong>. If a word does not correspond to any of the ten functions, for instance the sentence’s main verb, then no color will be applied.</p>
+<h3 id="phrase">Phrase<a class="anchor" href="#phrase" aria-hidden="true">#</a></h3>
+<p><strong class="ui">Phrase</strong> highlights words according to the smallest phrase that contains them. Noun phrases in official prose such as “Heat Wave Report 2024” stand out easily due to how long they usually are, allowing you to contrast these noun phrases with those of a speech.</p>
+<figure class="shot" id="lenses-phrase"><img class="shot-light" src="../figures/en/light/lenses-phrase.webp" alt="“Heat Wave Report 2024” with the Phrase lens enabled, showing noun phrases and noun chunks." loading="lazy"><img class="shot-dark" src="../figures/en/dark/lenses-phrase.webp" alt="“Heat Wave Report 2024” with the Phrase lens enabled, showing noun phrases and noun chunks." loading="lazy"><figcaption>“Heat Wave Report 2024” with the Phrase lens enabled, showing noun phrases and noun chunks.</figcaption></figure>
+<p>In the legend, each type of phrase receives an aspect lenslet, namely <strong class="ui">Noun phrase</strong>, <strong class="ui">Verb phrase</strong>, <strong class="ui">Prepositional phrase</strong>, <strong class="ui">Adjective phrase</strong>, <strong class="ui">Adverb phrase</strong>, <strong class="ui">Conjunction phrase</strong> (<em>as well as</em>, <em>rather than</em>), and <strong class="ui">Interjection</strong>. Words whose smallest phrase is of another type (e.g., <em>up</em> in <em>pick up</em>) receive gray highlighting.</p>
+<p>Another aspect, <strong class="ui">Noun chunk</strong>, marks the nucleus of a noun phrase as a block. This means a noun or pronoun functioning as a subject or object in addition to the preceding words that form part of the same noun phrase. For instance, in <em>We wrote to the city council after the flood</em>, the three noun chunks are <em>We</em>, <em>the city council</em>, and <em>the flood</em>. Consequently, words that lie within a noun chunk receive two highlights, which blend into each other (see <a href="#combining-lenses">Combining lenses</a> earlier in this chapter). You can toggle off the <strong class="ui">Noun chunk</strong> aspect in the legend to observe phrases alone, or keep only <strong class="ui">Noun chunk</strong> to observe the chunks.</p>
+<h3 id="morphology">Morphology<a class="anchor" href="#morphology" aria-hidden="true">#</a></h3>
+<p><strong class="ui">Morphology</strong> color-codes every word according to one of its grammatical features, which include tense, number, degree, verb form, and, in German, case, mood, and gender. Aspect lenslets name a feature, followed by one value of that feature, such as <strong class="ui">Tense: Past</strong> or <strong class="ui">Number: Plural</strong>. With the lens enabled, you would be able to trace a change of tenses, such as how “Running Out of Time” transitions from telling a story about one hot night into the present tense. This change often marks a transition in a text from anecdote into argument.</p>
+<figure class="shot" id="lenses-morphology"><img class="shot-light" src="../figures/en/light/lenses-morphology.webp" alt="“Running Out of Time” with the Morphology lens enabled, where the text moves from past tense into present tense." loading="lazy"><img class="shot-dark" src="../figures/en/dark/lenses-morphology.webp" alt="“Running Out of Time” with the Morphology lens enabled, where the text moves from past tense into present tense." loading="lazy"><figcaption>“Running Out of Time” with the Morphology lens enabled, where the text moves from past tense into present tense.</figcaption></figure>
+<p>Every word may express several features simultaneously. For example, the German noun <em>Aktivistinnen</em> expresses case, number, and gender. With the lens enabled, each word only receives the first available feature from this list:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Language</th><th>Order</th></tr></thead>
+<tbody>
+<tr><td>English</td><td>Tense, Number, Degree, Verb form</td></tr>
+<tr><td>German</td><td>Case, Mood, Tense, Verb form, Degree, Number, Gender</td></tr>
+</tbody></table></div>
+<p>Verbs in English usually indicate their tense; nouns and pronouns indicate their number; and adjectives indicate their degree (positive <em>hot</em>, comparative <em>hotter</em>, superlative <em>hottest</em>). Past participles such as <em>warmed</em> in <em>has warmed</em> are marked with <strong class="ui">Tense: Past</strong> since tense takes precedence. Base forms such as <em>act</em> in <em>to act</em> are marked with <strong class="ui">Verb form: Infinitive</strong>.</p>
+<p>Pairs of aspects sometimes share a color in LemmaLoom. Aspects such as <strong class="ui">Tense: Present</strong> and <strong class="ui">Verb form: Infinitive</strong> in English share the same teal color, making <em>acts</em> and <em>to act</em> look alike; in German, <strong class="ui">Case: Genitive</strong> shares the purple of <strong class="ui">Tense: Past</strong>. If you need to tell them apart, change the color of either aspect under Settings. The <a href="#lens-colors-and-styles">Lens colors and styles</a> section later in this chapter covers lens color and style customization further.</p>
+<p>Nouns, articles, adjectives, and pronouns in German indicate their cases. When a verb is in <strong class="ui">Mood: Subjunctive</strong> or <strong class="ui">Mood: Imperative</strong>, it indicates its mood. All other finite verbs indicate their tense; infinitives and participles indicate their verb form (<strong class="ui">Verb form: Infinitive</strong>, <strong class="ui">Verb form: Participle</strong>). Thus, with all aspects enabled, <strong class="ui">Number</strong> and <strong class="ui">Gender</strong> are limited exclusively to words lacking any case in German.</p>
+<h3 id="modality">Modality<a class="anchor" href="#modality" aria-hidden="true">#</a></h3>
+<p>The <strong class="ui">Modality</strong> lens highlights words that express possibility, necessity, and volition within the texts. Through it, you are able to observe how much certainty there is within a document. For instance, you may compare how often activist and skeptical writings say that something must happen, and how often that it might. <strong class="ui">Modality</strong> works from lists of words which are matched according to dictionary forms. Each word in a list is annotated only as a verb, auxiliary, or adverb (in English also as an adjective, for <em>able</em>).</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Aspect</th><th>English</th><th>German</th><th>Chinese</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">Ability</strong></td><td>can, could, able</td><td>können</td><td>能, 会, 可以, 能够</td></tr>
+<tr><td><strong class="ui">Possibility</strong></td><td>may, might, perhaps, maybe, possibly</td><td>mögen, dürfen, vielleicht, möglicherweise, eventuell</td><td>可能, 也许, 或许, 大概, 恐怕, 兴许</td></tr>
+<tr><td><strong class="ui">Necessity</strong></td><td>must, need</td><td>müssen</td><td>必须, 需要, 务必, 必得</td></tr>
+<tr><td><strong class="ui">Obligation</strong></td><td>should, ought, shall</td><td>sollen</td><td>应该, 应当, 该, 理应</td></tr>
+<tr><td><strong class="ui">Volition</strong></td><td>will, would, want, wish, intend</td><td>wollen, möchten</td><td>要, 想, 愿意, 打算, 希望</td></tr>
+<tr><td><strong class="ui">Subjunctive</strong></td><td></td><td>any other verb in the subjunctive, such as <em>hätte</em> or <em>wäre</em></td><td></td></tr>
+</tbody></table></div>
+<p>The <strong class="ui">Subjunctive</strong> aspect is unique to German alone. When a German modal verb is in the subjunctive mood, like <em>könnte</em> for example, it retains the aspect of its modal verb, which would be <strong class="ui">Ability</strong>.</p>
+<p>The lists match words irrespective of meaning. In the quote <em>In 2050 she will be thirty-five</em> from “Running Out of Time”, the word <em>will</em>, a plain future, carries the aspect of <strong class="ui">Volition</strong>.</p>
+<h3 id="negation">Negation<a class="anchor" href="#negation" aria-hidden="true">#</a></h3>
+<p><strong class="ui">Negation</strong> highlights the negating word(s) as <strong class="ui">Negator</strong> and underlines the scope they operate on within the sentence as <strong class="ui">Negation scope</strong>. The lens detects denials, and the places where writers refute a particular stance, as in “not a slow decline we can manage at our leisure” in “Running Out of Time”.</p>
+<p>Negators are words such as <em>not</em>, <em>n’t</em>, <em>never</em>, <em>no</em>, <em>nobody</em>, <em>nothing</em>, <em>none</em>, <em>neither</em>, <em>nor</em>, and <em>nowhere</em> in English, along with any other word tagged as negation via the English analysis. In German, the negators include <em>nicht</em>, <em>kein</em>, <em>nie</em>, <em>niemals</em>, <em>niemand</em>, <em>nichts</em>, <em>weder</em>, and <em>noch</em>. However, the word <em>noch</em> is annotated regardless of its meaning; therefore, <em>wir haben noch Zeit</em> (we still have time) would receive annotation too. Chinese negators include 不, 没, 没有, 别, 无, and 未 among others.</p>
+<p>The negation scope consists of the word the negator is attached to plus everything grammatically dependent on it. If the negator modifies the main verb, which is the case with most uses of <em>not</em>, then nearly the whole clause would become the scope. An example of such a case would be <em>We do not need another report</em>, in “Running Out of Time”. <em>Not</em> would be highlighted as the negator while all other words, including <em>We</em> and <em>do</em>, would be underlined as scope. In <em>No minister wanted the carbon tax</em>, <em>No</em> is attached to <em>minister</em>, so only <em>minister</em> is underlined.</p>
+<figure class="shot" id="lenses-negation"><img class="shot-light" src="../figures/en/light/lenses-negation.webp" alt="The sentence “We do not need another report” in “Running Out of Time” with the Negation lens enabled." loading="lazy"><img class="shot-dark" src="../figures/en/dark/lenses-negation.webp" alt="The sentence “We do not need another report” in “Running Out of Time” with the Negation lens enabled." loading="lazy"><figcaption>The sentence “We do not need another report” in “Running Out of Time” with the Negation lens enabled.</figcaption></figure>
+<h3 id="connectives">Connectives<a class="anchor" href="#connectives" aria-hidden="true">#</a></h3>
+<p><strong class="ui">Connectives</strong> classifies connecting words according to their meaning, which may include causation (e.g., <em>because</em>) or opposition (e.g., <em>but</em>). The lens allows you to map the logic of your documents, such as determining where reasons were provided and where points were conceded. Working from word lists, <strong class="ui">Connectives</strong> specifically focuses on finding where connecting words function as conjunctions/adverbs.</p>
+<figure class="shot" id="lenses-connectives"><img class="shot-light" src="../figures/en/light/lenses-connectives.webp" alt="“Net Zero Will Cost You” with the Connectives lens enabled and its legend above the text." loading="lazy"><img class="shot-dark" src="../figures/en/dark/lenses-connectives.webp" alt="“Net Zero Will Cost You” with the Connectives lens enabled and its legend above the text." loading="lazy"><figcaption>“Net Zero Will Cost You” with the Connectives lens enabled and its legend above the text.</figcaption></figure>
+<div class="table-wrap"><table>
+<thead><tr><th>Aspect</th><th>English</th><th>German</th><th>Chinese</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">Additive</strong></td><td>and, also, moreover, furthermore, besides, likewise, similarly</td><td>und, auch, außerdem, zudem, ferner</td><td>而且, 并且, 此外, 另外, 以及</td></tr>
+<tr><td><strong class="ui">Adversative</strong></td><td>but, however, yet, nevertheless, instead, whereas, rather</td><td>aber, jedoch, allerdings, hingegen, sondern</td><td>但是, 但, 然而, 不过, 可是, 却</td></tr>
+<tr><td><strong class="ui">Causal</strong></td><td>because, therefore, thus, hence, consequently, since, so</td><td>weil, denn, daher, deshalb, folglich, da, also</td><td>因为, 由于, 所以, 因此, 于是</td></tr>
+<tr><td><strong class="ui">Temporal</strong></td><td>then, meanwhile, afterwards, before, after, finally, next, when, while</td><td>dann, danach, bevor, nachdem, schließlich, während, als</td><td>然后, 接着, 随后, 之后, 最后, 首先</td></tr>
+<tr><td><strong class="ui">Conditional</strong></td><td>if, unless, otherwise, provided</td><td>wenn, falls, sofern, sonst</td><td>如果, 要是, 假如, 只要, 除非, 否则</td></tr>
+<tr><td><strong class="ui">Concessive</strong></td><td>although, though, albeit</td><td>obwohl, obgleich, dennoch, trotzdem</td><td>虽然, 尽管, 即使, 哪怕</td></tr>
+</tbody></table></div>
+<p>The table provides just a sample; the list for most aspects is slightly longer. In speeches and debates, <strong class="ui">Additive</strong> annotates almost every usage of <em>and</em>, so disabling it is recommended if it crowds out the other aspects.</p>
+<p>The <strong class="ui">Temporal</strong> aspect applies to <em>before</em> in <em>before the money runs out</em> because it connects two clauses but not in <em>before an election</em> since it is used there as a preposition. Among conjunctions and adverbs, all of the words listed retain their particular aspect no matter how they are used. <em>So</em> in <em>so hot</em> becomes <strong class="ui">Causal</strong> even when there is no cause being discussed, and the word <em>since</em> remains <strong class="ui">Causal</strong> even in <em>since the flood reached her street</em>; <em>while</em> is <strong class="ui">Temporal</strong> even when it means <em>whereas</em>. Additionally, the German word <em>da</em> (meaning <em>there</em>, frequent in speech) becomes <strong class="ui">Causal</strong> regardless of meaning.</p>
+<p>The <strong class="ui">Metadiscourse</strong> lens contains its own specific <strong class="ui">Connective</strong> aspect, which annotates, whatever the relation, only the linking adverbs a speaker uses to steer the listener, such as <em>however</em> and <em>therefore</em> (see <a href="#metadiscourse">Metadiscourse</a> later in this chapter).</p>
+<h3 id="sentence-fields">Sentence fields (German)<a class="anchor" href="#sentence-fields" aria-hidden="true">#</a></h3>
+<p><strong class="ui">Sentence fields</strong> displays the word order of a German sentence in accordance with the field model employed by German grammar. Finite verbs, those conjugated to agree with the sentence subject, constitute the left bracket (<strong class="ui">Linke Klammer</strong>). Participles, infinitives, and separable prefixes of verbs typically occur at the end of the clause in the right bracket (<strong class="ui">Rechte Klammer</strong>). Any elements preceding the left bracket constitute the <strong class="ui">Vorfeld</strong>, while elements appearing between both brackets make up the <strong class="ui">Mittelfeld</strong>; anything following the right bracket belongs to the <strong class="ui">Nachfeld</strong>. This lens becomes handy during studies analyzing which elements German authors lead off their sentences with because the Vorfeld usually contains topics or information stressed by writers.</p>
+<p>Below is an example sentence containing all five fields:</p>
+<p><em>Meine Nachbarin hat gestern bis drei Uhr draußen gesessen, weil ihre Wohnung unerträglich heiß war.</em></p>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Words</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">Vorfeld</strong></td><td>Meine Nachbarin</td></tr>
+<tr><td><strong class="ui">Linke Klammer</strong></td><td>hat</td></tr>
+<tr><td><strong class="ui">Mittelfeld</strong></td><td>gestern bis drei Uhr draußen</td></tr>
+<tr><td><strong class="ui">Rechte Klammer</strong></td><td>gesessen</td></tr>
+<tr><td><strong class="ui">Nachfeld</strong></td><td>weil ihre Wohnung unerträglich heiß war</td></tr>
+</tbody></table></div>
+<p>If the sentence has no right bracket, like <em>Wir streiken heute vor dem Rathaus</em>, <strong class="ui">Mittelfeld</strong> encompasses anything following the finite verb. Separable prefixes, like <em>an</em> in <em>Der Streik fängt um acht an</em>, act as right brackets.</p>
+<p>The lens sees sentences as single clauses and regards the first occurrence of a finite verb as the left bracket. If the sentence starts with a subordinate clause, such as <em>Weil es so heiß war, bin ich nach Hause gegangen</em>, then the fields come out wrong; the first finite verb is actually <em>war</em>, which means <em>war</em> is the left bracket. Consequently, the main verb, <em>bin</em>, becomes part of the Mittelfeld. Determining the right bracket follows the same method where the last participle, infinitive, or separable prefix forms the right bracket; in the case of <em>Wir haben versucht, die Abgeordneten zu überzeugen</em>, the right bracket is <em>überzeugen</em> and <em>versucht</em> belongs to the Mittelfeld, while the sentence has no Nachfeld. If a sentence lacks a finite verb, then LemmaLoom leaves it uncolored. Punctuation marks stay uncolored too.</p>
+<p>The following figure shows part of “Running Out of Time (German)”, the translated text from the op-ed article “Running Out of Time” in the project “Climate Debate”. Here, the opening line of the German translation begins with <em>Um Mitternacht an diesem heißen Sommertag zeigte</em>, making <em>Um Mitternacht an diesem heißen Sommertag</em> the Vorfeld, <em>zeigte</em> the left bracket, and the separable prefix <em>an</em> at its end the right bracket.</p>
+<figure class="shot" id="lenses-sentence-fields"><img class="shot-light" src="../figures/en/light/lenses-sentence-fields.webp" alt="Sentence fields in “Running Out of Time (German)”." loading="lazy"><img class="shot-dark" src="../figures/en/dark/lenses-sentence-fields.webp" alt="Sentence fields in “Running Out of Time (German)”." loading="lazy"><figcaption>Sentence fields in “Running Out of Time (German)”.</figcaption></figure>
+<h3 id="chinese-lenses">Constructions and Particles (Chinese)<a class="anchor" href="#chinese-lenses" aria-hidden="true">#</a></h3>
+<p>Two lenses are available for analyzing Chinese documents only. They allow you to understand your text better if your study concerns how events are framed, including actors acting upon objects in 把 sentences and actions performed upon somebody in 被 sentences.</p>
+<p><strong class="ui">Constructions</strong> highlights the typical keywords found within four sentence constructions:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Aspect</th><th>What it annotates</th><th>Example</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">把 disposal</strong></td><td>把, which brings the object before the verb</td><td>他们把太阳能板装在屋顶上。</td></tr>
+<tr><td><strong class="ui">被 passive</strong></td><td>被 and the other passive markers the analysis recognizes</td><td>铁轨被高温晒弯了。</td></tr>
+<tr><td><strong class="ui">是…的 focus</strong></td><td>是 and the sentence-final 的 when they frame a sentence</td><td>我是去年开始参加罢课的。</td></tr>
+<tr><td><strong class="ui">Existential 有</strong></td><td>有 (and 没有) used as a verb</td><td>广场上有两百个学生。</td></tr>
+</tbody></table></div>
+<p>The analysis tags both possessive 有, as seen in 我有时间, and existential 有 with the same tag; thus, <strong class="ui">Constructions</strong> will annotate it.</p>
+<figure class="shot" id="lenses-chinese"><img class="shot-light" src="../figures/en/light/lenses-chinese.webp" alt="The Chinese text “时间不多了” with the Constructions lens enabled, marking 被 passives and 没有." loading="lazy"><img class="shot-dark" src="../figures/en/dark/lenses-chinese.webp" alt="The Chinese text “时间不多了” with the Constructions lens enabled, marking 被 passives and 没有." loading="lazy"><figcaption>The Chinese text “时间不多了” with the Constructions lens enabled, marking 被 passives and 没有.</figcaption></figure>
+<p><strong class="ui">Particles</strong> highlights grammatical particles and classifiers:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Aspect</th><th>What it annotates</th><th>Example</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">了 perfective</strong></td><td>了 as a perfective particle after a verb</td><td>我们签了请愿书</td></tr>
+<tr><td><strong class="ui">着 durative</strong></td><td>着 after a verb</td><td>她举着牌子</td></tr>
+<tr><td><strong class="ui">过 experiential</strong></td><td>过 after a verb</td><td>我去过那个农场</td></tr>
+<tr><td><strong class="ui">的 attributive</strong></td><td>的 linking a modifier to a noun</td><td>我的女儿; 种大麦的农民</td></tr>
+<tr><td><strong class="ui">地 adverbial</strong></td><td>地 linking a modifier to a verb</td><td>慢慢地走</td></tr>
+<tr><td><strong class="ui">得 complement</strong></td><td>得 introducing a complement of degree or result</td><td>涨得很快</td></tr>
+<tr><td><strong class="ui">Classifier</strong></td><td>measure words</td><td>个 in 两百个学生</td></tr>
+</tbody></table></div>
+<p>Sentence-final 了, which the analysis treats as a modal particle, has been excluded here. The <strong class="ui">Metadiscourse</strong> lens labels it as a <strong class="ui">Final particle</strong>.</p>
+<h3 id="cohesion">Cohesion<a class="anchor" href="#cohesion" aria-hidden="true">#</a></h3>
+<p><strong class="ui">Cohesion</strong> shows how each sentence relates back to what had been said previously in the document. This is based on the premise that each sentence usually begins with what has been established beforehand (<em>theme</em>), while ending with new information. According to text linguistics, texts become easier to understand when each theme connects back to a previous sentence.</p>
+<p>The lens discovers each sentence’s theme and highlights it according to its relation with preceding sentences. In the English language, the theme consists of the complete subject phrase of the main verb in the sentence. For German, the theme is the <strong class="ui">Vorfeld</strong>, or else the complete subject phrase when there is no Vorfeld. In Chinese, the theme is the topic, or the complete subject phrase when the analysis finds no topic.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Aspect</th><th>When it is used</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">Opening</strong></td><td>The first sentence of the document, which has nothing to tie back to</td></tr>
+<tr><td><strong class="ui">Pronoun tie</strong></td><td>The theme contains a third-person pronoun such as <em>she</em>, <em>it</em>, or <em>they</em></td></tr>
+<tr><td><strong class="ui">Possessive tie</strong></td><td>The theme contains a third-person possessive such as <em>his</em>, <em>its</em>, or <em>their</em>. <em>Her</em> counts as a <strong class="ui">Pronoun tie</strong>, because the pronoun test comes first.</td></tr>
+<tr><td><strong class="ui">Demonstrative tie</strong></td><td>The theme contains <em>this</em>, <em>that</em>, <em>these</em>, <em>those</em>, or <em>such</em></td></tr>
+<tr><td><strong class="ui">Repeated word</strong></td><td>A noun, pronoun, number, or adjective in the theme has the same dictionary form as a noun, pronoun, number, verb, or adjective in one of the two sentences before</td></tr>
+<tr><td><strong class="ui">Zero anaphora</strong></td><td>Chinese only. The main verb has no subject, so the sentence continues the topic of the one before (<em>anaphora</em> is a reference back to something already mentioned). Its lenslet appears in the legend of every document.</td></tr>
+<tr><td><strong class="ui">New topic</strong></td><td>None of the above. The theme brings in something new, or the sentence has no theme at all.</td></tr>
+</tbody></table></div>
+<p>The tests are performed in the order they are listed in the table above, with the first passing test resulting in the assignment of its aspect. While both <strong class="ui">Pronoun tie</strong> and <strong class="ui">Repeated word</strong> aspects appear in green coloration, they are differentiated in the <strong class="ui">Cohesion</strong> section under the <strong class="ui">Discourse</strong> facet.</p>
+<p>All sentences that lack a subject (commands, fragmentary sentences such as <em>Net zero by 2050.</em>) lack themes and therefore belong to <strong class="ui">New topic</strong> (typically <strong class="ui">Zero anaphora</strong> in Chinese), with only their ending underlined.</p>
+<p>Finally, <strong class="ui">New ending (stress)</strong> is underlined in every sentence. It refers to the smallest phrase containing the last word of a sentence, unless the phrase exceeds six words; then, it refers to the last word alone.</p>
+<p>See the sample below:</p>
+<ol>
+<li><em>Our village had four buses a day.</em> (<strong class="ui">Opening</strong>)</li>
+<li><em>They ran to the market town and back.</em> (<strong class="ui">Pronoun tie</strong>)</li>
+<li><em>Their timetable was cut twice in two years.</em> (<strong class="ui">Possessive tie</strong>)</li>
+<li><em>The town now pays for an electric minibus.</em> (<strong class="ui">Repeated word</strong>, since <em>town</em> repeats sentence 2)</li>
+<li><em>Fuel prices keep climbing.</em> (<strong class="ui">New topic</strong>)</li>
+</ol>
+<p>A run of <strong class="ui">New topic</strong> sentences may indicate jumps made by the audience without aid; however, the lens measures ties crudely. The lens identifies pronouns based on their morphological form. Ties involve solely repetitions of the same words; therefore, related terms like <em>village</em> and <em>town</em> would be considered new words by this measure. Pronouns qualify as repetitions too. When consecutive sentences start with the pronoun <em>we</em> repeatedly, for example in “Letter from the Climate Strike”, multiple themes appear under the category of <strong class="ui">Repeated word</strong>.</p>
+<p>In the figure below, the news article “Carbon Tax Debate” presents various perspectives one group at a time. Sentences introducing a new group like “Rural members on both sides”, “Some”, and “Others” begin with a <strong class="ui">New topic</strong> according to this criterion. Since a quote attributed to a backbencher includes a pronoun in the quote itself (<em>They</em>), the measure detects this instance as a <strong class="ui">Pronoun tie</strong>.</p>
+<figure class="shot" id="lenses-cohesion"><img class="shot-light" src="../figures/en/light/lenses-cohesion.webp" alt="Cohesion in the news article “Carbon Tax Debate”, with the theme of each sentence highlighted and its end underlined." loading="lazy"><img class="shot-dark" src="../figures/en/dark/lenses-cohesion.webp" alt="Cohesion in the news article “Carbon Tax Debate”, with the theme of each sentence highlighted and its end underlined." loading="lazy"><figcaption>Cohesion in the news article “Carbon Tax Debate”, with the theme of each sentence highlighted and its end underlined.</figcaption></figure>
+<p>In the <strong class="ui">Cohesion</strong> section of the <strong class="ui">Discourse</strong> facet in the <strong class="ui">Grammar</strong> tab of the inspector, there is a list of all ties in every sentence of your document (even those with no theme; see <a href="grammar-inspector.html#discourse-cohesion">Cohesion</a> in <a href="grammar-inspector.html">Chapter 11, The Grammar Inspector</a>).</p>
+<h3 id="metadiscourse">Metadiscourse<a class="anchor" href="#metadiscourse" aria-hidden="true">#</a></h3>
+<p>There are many words which allow speakers to comment on what they say and speak directly to their listeners. Some examples would be words like <em>perhaps</em>, <em>obviously</em>, and <em>you</em>. All these can be highlighted via the <strong class="ui">Metadiscourse</strong> lens, which allows for an examination of the author’s stance based on hedging, bolstering, and addressing. The lens uses lexical lists and determines the word class of every word analyzed.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Aspect</th><th>What it annotates</th><th>English examples</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">Hedge</strong></td><td>Softens a claim</td><td>perhaps, probably, roughly, may, might, could, seem, suggest, often, usually</td></tr>
+<tr><td><strong class="ui">Booster</strong></td><td>Closes down doubt</td><td>clearly, obviously, certainly, indeed, always, never, demonstrate</td></tr>
+<tr><td><strong class="ui">Attitude marker</strong></td><td>States the speaker’s feeling about what is said</td><td>fortunately, unfortunately, surprisingly, sadly, hopefully</td></tr>
+<tr><td><strong class="ui">Connective</strong></td><td>Steers between ideas</td><td>however, therefore, thus, nevertheless, meanwhile, instead; <em>also</em>, <em>so</em>, <em>then</em>, and <em>finally</em> at the start of a sentence</td></tr>
+<tr><td><strong class="ui">Engagement</strong></td><td>Addresses or includes the listener</td><td>you, your, we, us, our, let; imperatives such as <em>consider</em>, <em>imagine</em>, and <em>note</em></td></tr>
+<tr><td><strong class="ui">Modal particle</strong></td><td>German only. Particles that tone a sentence toward the listener.</td><td>ja, doch, eben, halt, mal, schon</td></tr>
+<tr><td><strong class="ui">Final particle</strong></td><td>Chinese only. Particles at the end of a sentence.</td><td>吗, 呢, 吧, 啊</td></tr>
+</tbody></table></div>
+<p>German and Chinese have separate lists. In German, <em>Sie</em> used as the polite <em>you</em> outside of the start of a sentence counts as <strong class="ui">Engagement</strong>.</p>
+<p>In public speeches and open letters where the author frequently uses the pronouns <em>we</em> and <em>you</em>, there are numerous instances of <strong class="ui">Engagement</strong> which overwhelm the visualization. If necessary, you may disable <strong class="ui">Engagement</strong> in the legend so as to view the other aspects clearly.</p>
+<figure class="shot" id="lenses-metadiscourse"><img class="shot-light" src="../figures/en/light/lenses-metadiscourse.webp" alt="“A Mayor's Promise” with the Metadiscourse lens enabled, showing Engagement and a Hedge." loading="lazy"><img class="shot-dark" src="../figures/en/dark/lenses-metadiscourse.webp" alt="“A Mayor's Promise” with the Metadiscourse lens enabled, showing Engagement and a Hedge." loading="lazy"><figcaption>“A Mayor’s Promise” with the Metadiscourse lens enabled, showing Engagement and a Hedge.</figcaption></figure>
+<h3 id="rhetoric">Rhetoric<a class="anchor" href="#rhetoric" aria-hidden="true">#</a></h3>
+<p><strong class="ui">Rhetoric</strong> calls attention to stylistic devices such as the passive voice and parallelism, which authors use consciously. The use of <strong class="ui">Rhetoric</strong> will be the most effective on pre-written texts such as op-ed pieces and the speech titled “A Mayor’s Promise”, allowing you to analyze how the persuasive pieces for each side were constructed. Most devices will be highlighted, whereas <strong class="ui">Nominalization</strong>, <strong class="ui">Power word</strong>, and <strong class="ui">Anaphora</strong> will be underlined. <strong class="ui">Passive voice</strong> and <strong class="ui">Correlative pair</strong> will both get a purple highlight.</p>
+<figure class="shot" id="lenses-rhetoric"><img class="shot-light" src="../figures/en/light/lenses-rhetoric.webp" alt="“A Mayor's Promise” with the Rhetoric lens enabled and its legend above the text." loading="lazy"><img class="shot-dark" src="../figures/en/dark/lenses-rhetoric.webp" alt="“A Mayor's Promise” with the Rhetoric lens enabled and its legend above the text." loading="lazy"><figcaption>“A Mayor’s Promise” with the Rhetoric lens enabled and its legend above the text.</figcaption></figure>
+<p>The table organizes the devices in testing order:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Aspect</th><th>What it annotates</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">Passive voice</strong></td><td>A passive verb group, as in <em>the schools were closed</em></td></tr>
+<tr><td><strong class="ui">Nominalization</strong></td><td>A noun made from a verb or adjective. In English, a noun of seven letters or more ending in <em>-tion</em>, <em>-sion</em>, <em>-ment</em>, <em>-ness</em>, <em>-ity</em>, <em>-ance</em>, <em>-ence</em>, or <em>-ism</em> (<em>decision</em>, <em>payment</em>); in German, endings such as <em>-ung</em>, <em>-heit</em>, and <em>-keit</em></td></tr>
+<tr><td><strong class="ui">Fronted opener</strong></td><td>Words placed before the subject at the start of a sentence, such as an adverbial or a participle phrase (<em>After the flood, the council…</em>)</td></tr>
+<tr><td><strong class="ui">Parallelism</strong></td><td>Three or more coordinated items, or two coordinated clauses that each have a subject (<em>we marched and they watched</em>)</td></tr>
+<tr><td><strong class="ui">Periodic sentence</strong></td><td>A sentence of at least twelve words with at least 55 percent of them before its main verb (in a sentence of 20 words, at least 11). In German, a sentence whose Mittelfeld holds eight words or more before the right bracket closes it</td></tr>
+<tr><td><strong class="ui">Question / command</strong></td><td>A whole question or imperative sentence</td></tr>
+<tr><td><strong class="ui">Focus construction</strong></td><td>Sentences reshaped to put one element in the spotlight, such as <em>there is…</em>, <em>what we need is…</em>, and <em>it was the farmers who…</em></td></tr>
+<tr><td><strong class="ui">Absolute phrase</strong></td><td>A noun with a participle, standing apart from the clause (<em>the vote taken, we went home</em>)</td></tr>
+<tr><td><strong class="ui">Appositive</strong></td><td>A noun phrase that renames the one beside it</td></tr>
+<tr><td><strong class="ui">Power word</strong></td><td>A superlative, an intensified adjective or adverb (<em>extremely hot</em>), or a stressing adverb such as <em>only</em>, <em>never</em>, or <em>even</em></td></tr>
+<tr><td><strong class="ui">Correlative pair</strong></td><td>Paired conjunctions such as <em>both … and</em>, <em>either … or</em>, and <em>neither … nor</em></td></tr>
+<tr><td><strong class="ui">Cohesion check</strong></td><td>The theme of a sentence of six words or more that the <strong class="ui">Cohesion</strong> lens counts as a <strong class="ui">New topic</strong></td></tr>
+<tr><td><strong class="ui">Anaphora</strong></td><td>The first two words of consecutive sentences that open with the same word, other than <em>the</em>, <em>a</em>, <em>an</em>, <em>and</em>, <em>but</em>, <em>so</em>, and <em>then</em>. This is the rhetorical figure, unrelated to <strong class="ui">Zero anaphora</strong> in <strong class="ui">Cohesion</strong>.</td></tr>
+</tbody></table></div>
+<p>Every word annotation displays one rhetoric device from the table, the first in the table’s order whose test applies to it. Since <strong class="ui">Question / command</strong> affects the entire sentence while <strong class="ui">Periodic sentence</strong> affects everything preceding the sentence’s main verb, these two have precedence over other devices lower in the table. First-person pronouns like <em>I</em> and <em>we</em> count as openers, hence <strong class="ui">Anaphora</strong> will tag plenty of beginnings of sentences in “Why We Block the Roads”.</p>
+<p>German and Chinese have their own versions of most tests. For instance, <strong class="ui">Fronted opener</strong> marks a Vorfeld that does not hold the subject in German, while in Chinese it will highlight a fronted topic. <strong class="ui">Absolute phrase</strong> is detected only in English documents, while <strong class="ui">Periodic sentence</strong> is detected in both English and German. Lenslets pertaining to all devices, including these two, will display in the legend of each document.</p>
+<p>The <strong class="ui">Rhetoric</strong> section under the <strong class="ui">Discourse</strong> facet in the <strong class="ui">Grammar</strong> tab of the inspector contains a list of all identified rhetoric devices with brief explanations of why they were tagged. The list includes any findings concealed within the body of the text; namely, those which were tagged with a disabled aspect or whose words show earlier devices (see <a href="grammar-inspector.html#discourse-rhetoric">Rhetoric</a> in <a href="grammar-inspector.html">Chapter 11, The Grammar Inspector</a>).</p>
+<h2 id="codes-and-bookmarks">Codes and Bookmarks<a class="anchor" href="#codes-and-bookmarks" aria-hidden="true">#</a></h2>
+<p><strong class="ui">Codes</strong> visualizes all coded passages in the document in the format and color of the particular code itself (choose <strong class="ui">Highlight</strong>, <strong class="ui">Underline</strong>, or <strong class="ui">Boxed</strong> from <strong class="ui">Format</strong> during creation and editing of codes; see <a href="coding.html#code-fields">The fields of a code</a> in <a href="coding.html">Chapter 7, Coding</a>). It draws colored bars next to each coding in the gutter to the left side of your text as well. Disabling <strong class="ui">Codes</strong> hides these visualizations. When coding, keep <strong class="ui">Codes</strong> enabled. Once you’re done coding, however, disable <strong class="ui">Codes</strong> when you want to read your text without seeing all your coding.</p>
+<p><strong class="ui">Bookmarks</strong> will highlight every passage marked with a bookmark in the bookmark’s color, and draw that bookmark both in the gutter and document overview.</p>
+<p>Both memos and links will be visible regardless of which lenses you may have enabled, as codings are while <strong class="ui">Codes</strong> is enabled.</p>
+<h2 id="dictionary-lenses">Dictionary lenses<a class="anchor" href="#dictionary-lenses" aria-hidden="true">#</a></h2>
+<p>Dictionaries appear in the lens menu, under their own names, in the annotations group. A dictionary lens highlights the terms of each of its categories using the specified category colors, and its legend contains a single aspect lenslet per category. The “Climate Debate” project includes one dictionary, “Hedges”, containing two categories, <strong class="ui">Approximators</strong> and <strong class="ui">Shields</strong>. When “Hedges” is enabled, its legend will include these two lenslets. Consider <em>It seems to me the burden falls on just about everyone</em> from “Radio Debate”; <em>It seems</em> is highlighted as a shield and <em>just about</em> as an approximator. A dictionary lens is useful if your study uses its own categorizations of particular words. Some examples include hedges, blaming language, or terms within a specific policy field.</p>
+<figure class="shot" id="lenses-dictionary"><img class="shot-light" src="../figures/en/light/lenses-dictionary.webp" alt="“Radio Debate” with the dictionary “Hedges” enabled, with Approximators and Shields in the legend." loading="lazy"><img class="shot-dark" src="../figures/en/dark/lenses-dictionary.webp" alt="“Radio Debate” with the dictionary “Hedges” enabled, with Approximators and Shields in the legend." loading="lazy"><figcaption>“Radio Debate” with the dictionary “Hedges” enabled, with Approximators and Shields in the legend.</figcaption></figure>
+<p>Dictionary matching matches a term as a whole word and does not take capitalization or accent marks into account, but matches Chinese terms anywhere they appear (see <a href="dictionaries.html#matching-rules">How terms are matched</a> in <a href="dictionaries.html">Chapter 19, Dictionaries</a>). Each form must be entered separately as separate terms. For example, if you wish for both <em>model</em> and <em>models</em> to match, then they should each be added as terms. Dictionary matching does not consider grammar. <em>About</em> in <em>Here’s the thing about panic</em>, from “Let’s Not Panic”, is highlighted as an approximator despite being a preposition. Enabling the lens causes the legend to appear immediately, whereas highlighting will happen only after the terms are matched. Editing your dictionary when the lens is enabled causes annotations to be updated accordingly.</p>
+<p>Unlike the predetermined set of hedges available in the pre-built <strong class="ui">Hedge</strong> list of <strong class="ui">Metadiscourse</strong>, dictionaries contain user-defined terms and categorizations. Rules, however, such as a part of speech, may be added using a query lens.</p>
+<h2 id="query-lenses">Query lenses<a class="anchor" href="#query-lenses" aria-hidden="true">#</a></h2>
+<p>You can save a query lens from any query which finds passages within the text. Open the <strong class="ui">Save</strong> menu (the box with the arrow pointing down, in the query header) and click on <strong class="ui">Save as Lens…</strong> (see <a href="queries-using-results.html#save-as-lens">Saving a query as a lens</a> in <a href="queries-using-results.html">Chapter 18, Using Query Results</a>). The “Climate Debate” project has a saved query lens called “Urgency Talk” which highlights sentences containing the words <em>urgent</em>, <em>urgency</em>, <em>crisis</em>, <em>emergency</em>, or <em>deadline</em> if they overlap passages with the code “Urgency”. A query lens is suitable for answering any questions involving the combination of rules, for instance the presence of words combined with the word’s grammatical features, or codings combined with words. The availability of a query lens in documents relies upon the <strong class="ui">Available In</strong> choice made when the query was saved:</p>
+<ul>
+<li>a query saved for <strong class="ui">All Projects</strong> or for the <strong class="ui">Project</strong> appears in every document of the project;</li>
+<li>a query saved for a <strong class="ui">Set</strong> appears in the documents of that set and in their translations;</li>
+<li>a query saved for a <strong class="ui">Document</strong> appears in that document only.</li>
+</ul>
+<p>“Urgency Talk” has been saved for the <strong class="ui">Project</strong>, and is thus available for annotation in each document in the “Climate Debate” project.</p>
+<figure class="shot" id="lenses-query"><img class="shot-light" src="../figures/en/light/lenses-query.webp" alt="“Running Out of Time” with the query lens “Urgency Talk” enabled, with its legend above the text." loading="lazy"><img class="shot-dark" src="../figures/en/dark/lenses-query.webp" alt="“Running Out of Time” with the query lens “Urgency Talk” enabled, with its legend above the text." loading="lazy"><figcaption>“Running Out of Time” with the query lens “Urgency Talk” enabled, with its legend above the text.</figcaption></figure>
+<p>A query lens marks up the hits from its parent query. When there are no categories involved in a query lens, its legend displays one lenslet whose name corresponds to the query; all hits are highlighted. If the query lens contains categories, each category is an aspect, and has its own distinct color and style (<strong class="ui">Highlight</strong> or <strong class="ui">Underline</strong>, as set in the query’s <strong class="ui">Categories</strong> condition). With <strong class="ui">Color By</strong>, each unique value in the hits gets its own aspect, up to sixteen total. The first eight of these values are highlighted; the next eight get underlined in the same eight colors (see <a href="queries-building.html#query-categories">Categories and Color By</a> in <a href="queries-building.html">Chapter 15, Building a Query</a>). Each query lens displays its legend with lenslets showing squares.</p>
+<p>When codings or bookmarks in the document change, the query lenses run again, so a query that looks for coded passages stays current as you code. To remove a query lens from its place in the lens menu, access the <strong class="ui">Save</strong> menu of the query and click on <strong class="ui">Remove Lens</strong>. See the conditions required to transform a query into a lens in <a href="queries-using-results.html#lens-requirements">Which queries can be lenses</a> in <a href="queries-using-results.html">Chapter 18, Using Query Results</a>.</p>
+<h2 id="analyzer-lenses">Analyzer lenses<a class="anchor" href="#analyzer-lenses" aria-hidden="true">#</a></h2>
+<p>Analyzers you define through <strong class="ui">Window ▸ Analyzers</strong> find spans of text and assign them keys. The keys in the analyzer’s legend define aspects of its lens. All your analyzers are found as the second group in the lens menu under their individual names, and only available in documents where the languages match those the analyzer can process. Only spans assigned a key within the analyzer’s legend will show up in your lens, colored and styled (<strong class="ui">Highlight</strong>, <strong class="ui">Underline</strong>, <strong class="ui">Text color</strong>, or <strong class="ui">Bold</strong>) according to that particular key’s definition in the legend. Essentially, an analyzer is needed whenever you seek out a pattern repeatedly across your documents and none of the existing lenses, dictionaries, or queries capture it.</p>
+<figure class="shot" id="lenses-analyzer"><img class="shot-light" src="../figures/en/light/lenses-analyzer.webp" alt="“Running Out of Time” with the analyzer lens “Climate Roles” enabled, with the Analyzers group open in the lens menu." loading="lazy"><img class="shot-dark" src="../figures/en/dark/lenses-analyzer.webp" alt="“Running Out of Time” with the analyzer lens “Climate Roles” enabled, with the Analyzers group open in the lens menu." loading="lazy"><figcaption>“Running Out of Time” with the analyzer lens “Climate Roles” enabled, with the Analyzers group open in the lens menu.</figcaption></figure>
+<p>Skipping an analyzer for a document or removing its output within <strong class="ui">Document Properties</strong> will cause its lens to disappear from the lens menu of that document (see <a href="custom-analyzers.html#per-document">Analyzers for each document</a> in <a href="custom-analyzers.html">Chapter 20, Custom Analyzers</a>). For additional detail on writing analyzers and execution timing, please refer to <a href="custom-analyzers.html">Chapter 20, Custom Analyzers</a>.</p>
+<h2 id="lens-colors-and-styles">Lens colors and styles<a class="anchor" href="#lens-colors-and-styles" aria-hidden="true">#</a></h2>
+<p>Four of the lenses (<strong class="ui">Word class</strong>, <strong class="ui">Grammatical function</strong>, <strong class="ui">Phrase</strong>, and <strong class="ui">Morphology</strong>) are customizable with regard to their color and style. Your customizations will affect the appearance of the lens regardless of which document within which project you’re looking at. All other built-in lenses have preset colors. Lenses generated by dictionaries, queries, and analyzers derive their colors based on the categories and keys of those objects. Adjust colors whenever two aspects become visually indistinct to you, or whenever you need to overlay extra lenses beyond their default styles’ capabilities.</p>
+<p>Each aspect may appear as one of four styles:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Style</th><th>How the word looks</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">Highlight</strong></td><td>A pale band of color behind the word</td></tr>
+<tr><td><strong class="ui">Underline</strong></td><td>A colored line under the word</td></tr>
+<tr><td><strong class="ui">Text color</strong></td><td>The letters in the color</td></tr>
+<tr><td><strong class="ui">Bold</strong></td><td>The letters in bold and in the color</td></tr>
+</tbody></table></div>
+<p><strong class="ui">Word class</strong> and <strong class="ui">Grammatical function</strong> lenses underline by default. The <strong class="ui">Phrase</strong> and <strong class="ui">Morphology</strong> lenses highlight instead.</p>
+<p>The figure below demonstrates the Settings window’s <strong class="ui">Lenses</strong> pane with rows for each aspect of <strong class="ui">Word class</strong> and <strong class="ui">Grammatical function</strong> lenses, each set to <strong class="ui">Underline</strong>.</p>
+<figure class="shot" id="lenses-settings"><img class="shot-light" src="../figures/en/light/lenses-settings.webp" alt="The Lenses pane of Settings, showing the Word class and Grammatical function sections." loading="lazy"><img class="shot-dark" src="../figures/en/dark/lenses-settings.webp" alt="The Lenses pane of Settings, showing the Word class and Grammatical function sections." loading="lazy"><figcaption>The Lenses pane of Settings, showing the Word class and Grammatical function sections.</figcaption></figure>
+<p>To modify the appearance of an aspect:</p>
+<ol>
+<li>Choose <strong class="ui">LemmaLoom ▸ Settings…</strong> (⌘,) and click <strong class="ui">Lenses</strong>.</li>
+<li>Find the lens’s section and the aspect’s row, such as <strong class="ui">Noun</strong> under <strong class="ui">Word class</strong>.</li>
+<li>Choose a style from the menu in that row, which shows the current style, such as <strong class="ui">Underline</strong>.</li>
+<li>Click the color well beside it and choose a color.</li>
+</ol>
+<p>Open documents update immediately when you make a change. In <strong class="ui">Help ▸ Glossary</strong>, tags and terms representing an aspect, like NN for <strong class="ui">Noun</strong>, are colored and styled in accordance with that aspect’s color and style settings. Lenslets in the legend display the default colors and shapes of aspects, and therefore after a modification the lenslet and its words in the text differ. Each modified aspect receives a reset button, shown at the end of its row as a curved arrow with a tooltip like <strong class="ui">Reset Noun</strong>. Clicking on it resets the aspect to its defaults. At the very top of the pane, the <strong class="ui">Reset All to Defaults</strong> button resets all aspects of all four lenses simultaneously (see <a href="settings.html#lenses-pane">The Lenses pane</a> in <a href="settings.html">Chapter 24, Settings and Appearance</a>).</p>
+<aside class="callout tip"><p class="callout-title">Tip</p><p>When you want to view three lenses simultaneously, style each one differently. Style all ten aspects of <strong class="ui">Word class</strong> as <strong class="ui">Text color</strong>, then combine this lens with <strong class="ui">Grammatical function</strong>, which underlines, and <strong class="ui">Modality</strong>, which highlights.</p>
+</aside>
+</article>
+<nav class="pager"><a class="previous" href="reading-and-editing.html"><span>Previous</span>Reading and Editing</a><a class="next" href="coding.html"><span>Next</span>Coding</a></nav>
+<footer class="site-footer">© 2026 Ryan S. Cooper. All rights reserved.</footer>
+</main>
+<nav class="page-toc" aria-label="On this page"><p>On this page</p><ul>
+<li class="level-2"><a href="#lenses-at-a-glance">Lenses at a glance</a></li>
+<li class="level-2"><a href="#lens-menu">The lens menu</a></li>
+<li class="level-2"><a href="#legend">Reading a lens</a></li>
+<li class="level-3"><a href="#visible-keys">Choosing which aspects are enabled</a></li>
+<li class="level-2"><a href="#combining-lenses">Combining lenses</a></li>
+<li class="level-2"><a href="#collapse">Showing only annotated sentences</a></li>
+<li class="level-2"><a href="#built-in-lenses">Built-in lenses</a></li>
+<li class="level-3"><a href="#word-class">Word class</a></li>
+<li class="level-3"><a href="#grammatical-function">Grammatical function</a></li>
+<li class="level-3"><a href="#phrase">Phrase</a></li>
+<li class="level-3"><a href="#morphology">Morphology</a></li>
+<li class="level-3"><a href="#modality">Modality</a></li>
+<li class="level-3"><a href="#negation">Negation</a></li>
+<li class="level-3"><a href="#connectives">Connectives</a></li>
+<li class="level-3"><a href="#sentence-fields">Sentence fields (German)</a></li>
+<li class="level-3"><a href="#chinese-lenses">Constructions and Particles (Chinese)</a></li>
+<li class="level-3"><a href="#cohesion">Cohesion</a></li>
+<li class="level-3"><a href="#metadiscourse">Metadiscourse</a></li>
+<li class="level-3"><a href="#rhetoric">Rhetoric</a></li>
+<li class="level-2"><a href="#codes-and-bookmarks">Codes and Bookmarks</a></li>
+<li class="level-2"><a href="#dictionary-lenses">Dictionary lenses</a></li>
+<li class="level-2"><a href="#query-lenses">Query lenses</a></li>
+<li class="level-2"><a href="#analyzer-lenses">Analyzer lenses</a></li>
+<li class="level-2"><a href="#lens-colors-and-styles">Lens colors and styles</a></li>
+</ul></nav>
+</div>
+<script src="../assets/guide.js" defer></script>
+</body>
+</html>

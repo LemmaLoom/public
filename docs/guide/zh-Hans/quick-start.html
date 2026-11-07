@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>快速入门 · LemmaLoom 用户指南</title>
+<link rel="stylesheet" href="../assets/guide.css">
+<link rel="icon" type="image/png" href="../assets/logo.png">
+<script>var r=document.documentElement;r.setAttribute('data-theme','light');try{if(localStorage.getItem('guide-theme')==='dark'){r.setAttribute('data-theme','dark')}}catch(e){}</script>
+</head>
+<body>
+<header class="topbar">
+<button class="menu-toggle" aria-label="目录" aria-expanded="false">☰</button>
+<a class="brand" href="index.html"><span class="wordmark"><span class="lemma">Lemma</span>Loom</span><span class="guide-name">用户指南</span></a>
+<div class="search"><input type="search" id="search" placeholder="搜索" aria-label="搜索" autocomplete="off" data-empty="无结果"><div class="results" id="results" hidden></div></div>
+<nav class="languages" aria-label="Language"><a href="../en/quick-start.html" lang="en">English</a><a href="../de/quick-start.html" lang="de">Deutsch</a><a href="../zh-Hans/quick-start.html" lang="zh-Hans" aria-current="true">简体中文</a></nav>
+<button class="theme-toggle" data-light="浅色" data-dark="深色" aria-label="外观"></button>
+<a class="pdf-link" href="https://github.com/LemmaLoom/public/raw/main/pdf/lemmaloom-guide-zh-Hans.pdf">PDF</a>
+</header>
+<div class="layout">
+<nav class="sidebar" aria-label="目录"><ol>
+<li class="current unnumbered"><a href="quick-start.html">快速入门</a></li>
+<li><a href="introduction.html">简介</a></li>
+<li><a href="getting-started.html">开始使用</a></li>
+<li><a href="projects-and-documents.html">项目与文档</a></li>
+<li><a href="importing.html">导入资料</a></li>
+<li><a href="reading-and-editing.html">阅读与编辑</a></li>
+<li><a href="lenses.html">透镜</a></li>
+<li><a href="coding.html">编码</a></li>
+<li><a href="sets-tags-attributes.html">文档集、分组、标签和属性</a></li>
+<li><a href="translations.html">译文与分屏浏览</a></li>
+<li><a href="text-inspector.html">文本检查器</a></li>
+<li><a href="grammar-inspector.html">语法检查器</a></li>
+<li><a href="word-sketch.html">词汇速写</a></li>
+<li><a href="coding-analysis.html">编码分析</a></li>
+<li><a href="sketch-space.html">速写空间</a></li>
+<li><a href="queries-building.html">构建查询</a></li>
+<li><a href="queries-results.html">查询结果与统计</a></li>
+<li><a href="queries-patterns.html">查询模式与发现</a></li>
+<li><a href="queries-using-results.html">使用查询结果</a></li>
+<li><a href="dictionaries.html">词典</a></li>
+<li><a href="custom-analyzers.html">自定义分析器</a></li>
+<li><a href="analysis-and-indexing.html">分析与索引</a></li>
+<li><a href="exchange-and-export.html">交换与导出</a></li>
+<li><a href="undo.html">撤销与重做</a></li>
+<li><a href="settings.html">设置与外观</a></li>
+<li><a href="keyboard-shortcuts.html">键盘快捷键</a></li>
+<li><a href="help-and-support.html">帮助与支持</a></li>
+<li><a href="statistics-reference.html">统计量一览</a></li>
+<li class="unnumbered"><a href="glossary.html">术语表</a></li>
+<li class="unnumbered"><a href="thanks.html">感谢</a></li>
+</ol></nav>
+<main class="content">
+<article>
+<h1 id="quick-start">快速入门</h1>
+<p>LemmaLoom 是一款 macOS 应用，用于对文本进行质性分析和语法分析。你可以用它为文档中的文字编码，再结合文档的语法来审视这些编码。当然，你也可以只把 LemmaLoom 当作编码工具，或者只把它当作语法分析工具来用。不过，把质性分析和语法分析结合起来，你就能向自己的文档提出一些问题，而这些问题在不考虑语法的质性数据分析工具中可能较难提出。</p>
+<p>LemmaLoom 附带一个名为“气候辩论”的示例项目，你可以导入它，借此了解应用中的各种工具和功能。本用户指南的大部分内容，以及快速入门这一整章，都以“气候辩论”项目为背景来举例和讲解。“气候辩论”项目由虚构的评论文章、专栏文章、演讲和其他媒体内容组成，例如一份报告和一段录制下来的电台辩论。如与真实人物或出版物雷同，纯属巧合。这些内容既然是虚构的，便不代表任何观点，也无意以任何方式说服读者。</p>
+<p>在本章中，你将从零开始搭建“气候辩论”的雏形。起点是十一篇各种类型的虚构文本（评论文章、演讲、博客文章和专栏文章）。其中六篇出自气候活动人士之手，五篇出自气候怀疑论者之手。本指南中的插图展示的都是已完成的项目。你可以通过<strong class="ui">文件 ▸ 导入 ▸ 示例项目</strong>导入示例项目，跟着本指南操作。导入的示例项目使用哪种语言，取决于你在 LemmaLoom 中使用的界面语言，可能是英语、德语或简体中文（中国大陆）。请参阅<a href="introduction.html">第 1 章“简介”</a>中的<a href="introduction.html#languages">支持的语言</a>。示例项目中已经建好了前几个步骤中的属性、文档集和编码。因此，使用示例项目时，请直接跳到<a href="#read-with-a-lens">用透镜阅读</a>。读到<a href="#create-codes">创建编码</a>时，也请跳过这一节。</p>
+<p>在本指南中，你也可以改为导入自己的一组文本。能导入哪些类型的文件，<a href="importing.html">第 4 章“导入资料”</a>有详细介绍。凡是步骤中提到“气候辩论”里的具体文档、立场或文字片段，都可以按需换成你自己的材料。</p>
+<h2 id="main-window">主窗口<a class="anchor" href="#main-window" aria-hidden="true">#</a></h2>
+<p>第一次启动 LemmaLoom 时，屏幕上会显示一个分为三栏的窗口。关于界面的全部内容，可以阅读<a href="getting-started.html">第 2 章“开始使用”</a>中的<a href="getting-started.html#main-window">认识主窗口</a>。此时，左侧的导航栏是空的，右侧检查器的各个标签页图标已停用。中间一栏显示标题 <strong class="ui">LemmaLoom</strong> 以及<strong class="ui">新建项目</strong>和<strong class="ui">示例项目</strong>两个按钮。</p>
+<p>打开项目和文档以后，窗口是这个样子：</p>
+<figure class="shot" id="quick-start-main-window"><img class="shot-light" src="../figures/zh-Hans/light/quick-start-main-window.webp" alt="阅读器中的“时间不多了”，检查器的“文本”标签页中是它的统计数据。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/quick-start-main-window.webp" alt="阅读器中的“时间不多了”，检查器的“文本”标签页中是它的统计数据。" loading="lazy"><figcaption>阅读器中的“时间不多了”，检查器的“文本”标签页中是它的统计数据。</figcaption></figure>
+<p>项目显示在左侧的<em>导航栏</em>中。<a href="projects-and-documents.html">第 3 章“项目与文档”</a>更详细地介绍了项目的结构。在导航栏的<strong class="ui">项目</strong>下，有十个涵盖整个项目的详细视图，例如<strong class="ui">编码本</strong>、<strong class="ui">编码矩阵</strong>和<strong class="ui">查询</strong>。导航栏再往下依次是文档集、文档和标签（见<a href="sets-tags-attributes.html">第 8 章“文档集、分组、标签和属性”</a>）。你可以通过<strong class="ui">编辑 ▸ 查找文档</strong>（⇧⌘F）在当前项目中查找文档；也可以直接在导航栏顶部的<strong class="ui">搜索文档</strong>中输入想找的文档名称。</p>
+<p>文档和详细视图以标签页的形式在窗口中间的<em>阅读器</em>里打开。阅读器顶部横贯着<em>标题栏</em>，其中有透镜菜单，以及用来查找和处理文本、调整文本和阅读器外观的功能。<a href="reading-and-editing.html">第 5 章“阅读与编辑”</a>详细介绍了这些选项和功能。右侧的<em>检查器</em>显示当前标签页中文档的信息。检查器分为四个标签页（<strong class="ui">文本</strong>、<strong class="ui">语法</strong>、<strong class="ui">编码</strong>和<strong class="ui">多重模式</strong>），可以通过检查器右上角的按钮切换。<a href="text-inspector.html">第 10 章“文本检查器”</a>、<a href="grammar-inspector.html">第 11 章“语法检查器”</a>、<a href="coding-analysis.html">第 13 章“编码分析”</a>和<a href="sketch-space.html">第 14 章“速写空间”</a>说明了这四个标签页显示的内容。</p>
+<p>按钮已停用，要么是因为它与当前文档或标签页无关，要么是因为它暂时还不能使用（例如，透镜要等文档的索引过程完成后才能使用）。将鼠标指针悬停在任何已停用的按钮上，就能看到它被停用的原因，例如<strong class="ui">索引完成后即可使用透镜</strong>。</p>
+<h2 id="create-the-project">创建项目<a class="anchor" href="#create-the-project" aria-hidden="true">#</a></h2>
+<p>一项研究的所有内容都放在一个<em>项目</em>中。项目是 LemmaLoom 中最上层的容器，其中保存着文档，以及你在处理这些文档时积累的数据。这些数据包括编码、备忘录、书签、文档集和查询。一般来说，一项研究的所有相关材料最好都放在同一个项目中。LemmaLoom 的跨项目分析能力有限，不过查询可以跨项目执行。<a href="projects-and-documents.html">第 3 章“项目与文档”</a>中的<a href="projects-and-documents.html#working-across-projects">跨项目工作</a>一节说明了这类查询的工作方式。</p>
+<p><em>属性</em>记录关于文档的事实信息。属性可以是作者持有的立场、发表日期、你在哪里找到这份文档等等。你可以在创建项目时定义属性，也可以在之后的任何时候定义。关于如何使用属性，详见<a href="sets-tags-attributes.html">第 8 章“文档集、分组、标签和属性”</a>中的<a href="sets-tags-attributes.html#attributes">属性</a>。要跟着“气候辩论”项目一步步操作，你只需要属性“立场”，以便在本章后面比较行动派和怀疑派。</p>
+<ol>
+<li>选取<strong class="ui">文件 ▸ 新建项目</strong>（⇧⌘N）。</li>
+<li>在<strong class="ui">名称</strong>中输入 <code>气候辩论</code>。</li>
+<li>在<strong class="ui">属性</strong>下点按<strong class="ui">添加属性</strong>。</li>
+<li>在新出现的这一行的名称栏中输入 <code>立场</code>。</li>
+<li>在旁边的菜单中选取<strong class="ui">选择器</strong>。选择器只接受你列出的值。这样，每个值的写法在不同文档之间就能保持一致。</li>
+<li>在随即出现的栏中输入 <code>行动派, 怀疑派, 中立</code>。“中立”用于报道这场辩论而不站在任何一方的文档。</li>
+<li>点按<strong class="ui">创建</strong>。</li>
+</ol>
+<figure class="shot" id="quick-start-new-project"><img class="shot-light" src="../figures/zh-Hans/light/quick-start-new-project.webp" alt="为“气候辩论”设置属性“立场”及其三个选项。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/quick-start-new-project.webp" alt="为“气候辩论”设置属性“立场”及其三个选项。" loading="lazy"><figcaption>为“气候辩论”设置属性“立场”及其三个选项。</figcaption></figure>
+<p>新项目会出现在导航栏的<strong class="ui">项目</strong>下，标题以粗体显示。粗体标题表示<em>当前项目</em>；导航栏中项目列表下方的所有内容都只与当前项目有关。</p>
+<h2 id="import-the-texts">导入文本<a class="anchor" href="#import-the-texts" aria-hidden="true">#</a></h2>
+<ol>
+<li>选取<strong class="ui">文件 ▸ 导入 ▸ 文档</strong>（⇧⌘I）。</li>
+<li>选择这十一份文本。要选择多个文件，请按住 ⌘ 键再点按。</li>
+<li>点按<strong class="ui">打开</strong>。</li>
+<li><strong class="ui">导入文档</strong>对话框随即为第一个文件打开，右上角显示 <strong class="ui">1 / 11</strong>。检查<strong class="ui">名称</strong>（LemmaLoom 根据文件名填写），其他栏目保持原样。</li>
+<li>点按<strong class="ui">导入</strong>。</li>
+<li>对其余每个文件，对话框都会再打开一次。每次都点按<strong class="ui">导入</strong>；不想导入某个文件时，点按<strong class="ui">跳过</strong>。</li>
+</ol>
+<figure class="shot" id="quick-start-import-document"><img class="shot-light" src="../figures/zh-Hans/light/quick-start-import-document.webp" alt="“导入文档”对话框，正在导入十一份文本中的第一份“不必恐慌”，右上角显示 1 / 11" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/quick-start-import-document.webp" alt="“导入文档”对话框，正在导入十一份文本中的第一份“不必恐慌”，右上角显示 1 / 11" loading="lazy"><figcaption>“导入文档”对话框，正在导入十一份文本中的第一份“不必恐慌”，右上角显示 1 / 11</figcaption></figure>
+<p>LemmaLoom 把这些文本列在<strong class="ui">文档</strong>下，并开始在后台为它们建立索引。建立索引时，LemmaLoom 先把每份文本切分成句子和词，然后为每个词找出它的词典形式，这种形式称为<em>词元</em>。LemmaLoom 还会确定哪个名词是哪个动词的宾语，以及句中词与词之间的其他各种依存关系。<a href="analysis-and-indexing.html">第 21 章“分析与索引”</a>更详细地介绍了建立索引的过程。为方便起见，“气候辩论”中的所有文档都已预先建立索引。大型文档或媒体文件可能需要更长时间才能完成索引。电脑的硬件性能也会影响建立索引的速度。在硬件支持的情况下，LemmaLoom 会使用硬件加速。</p>
+<p>文档正在建立索引时，标题显示为灰色，右边还有一个小小的进度环。进度环消失后，文档就已成功建立索引。如果想查看当前正在建立索引的所有文档，请选取<strong class="ui">窗口 ▸ 活动</strong>（⌥⌘0）。</p>
+<p>在<strong class="ui">导入文档</strong>对话框中，可以为每个文档指定日期、分组、标签和语言，详见<a href="importing.html">第 4 章“导入资料”</a>中的<a href="importing.html#import-options">“导入文档”对话框</a>。那一章还说明了如何导入 PDF 文件、网页，以及录音和录像。</p>
+<h3 id="record-roles">记录每份文本的立场<a class="anchor" href="#record-roles" aria-hidden="true">#</a></h3>
+<p>“立场”本来也可以在<strong class="ui">导入文档</strong>对话框中逐个文档指定。不过对于十一份文档来说，用<strong class="ui">属性</strong>窗口指定这个值，要比逐一指定省力得多。<strong class="ui">属性</strong>窗口可以批量设置值。</p>
+<ol>
+<li>在<strong class="ui">项目</strong>下右键点按“气候辩论”，选取<strong class="ui">属性</strong>；或者选取<strong class="ui">项目 ▸ 属性</strong>。窗口会列出项目中的每个文档。</li>
+<li>勾选六篇行动派文本旁边的复选框（“时间不多了”“来自气候罢课的信”“我们为什么封路”“农民不是敌人”“一位市长的承诺”和“希望要靠行动”）。</li>
+<li><strong class="ui">搜索</strong>所在的那一行这时显示<strong class="ui">已选择 6 个文档</strong>。在它旁边选取<strong class="ui">设置值 ▸ 立场</strong>。</li>
+<li>在<strong class="ui">设置值</strong>对话框中选择“行动派”，然后点按<strong class="ui">应用</strong>。</li>
+<li>取消勾选行动派文本的复选框，再勾选五篇怀疑派文本的复选框（“模型总是失准”“净零代价高昂”“不必恐慌”“转型谁来买单”和“科学从无定论”）。</li>
+<li>再次选取<strong class="ui">设置值 ▸ 立场</strong>，选择“怀疑派”，然后点按<strong class="ui">应用</strong>。</li>
+<li>关闭<strong class="ui">属性</strong>窗口。</li>
+</ol>
+<figure class="shot" id="quick-start-attributes-window"><img class="shot-light" src="../figures/zh-Hans/light/quick-start-attributes-window.webp" alt="“气候辩论”的“属性”窗口，已勾选六份行动派文本，并在“立场”上打开了“设置值”" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/quick-start-attributes-window.webp" alt="“气候辩论”的“属性”窗口，已勾选六份行动派文本，并在“立场”上打开了“设置值”" loading="lazy"><figcaption>“气候辩论”的“属性”窗口，已勾选六份行动派文本，并在“立场”上打开了“设置值”</figcaption></figure>
+<p>你也可以在检查器<strong class="ui">文本</strong>标签页的<strong class="ui">详细信息</strong>中更新当前文档的值。这种方式一次只修改一个文档。在<strong class="ui">属性</strong>窗口中进行搜索，可以限定<strong class="ui">设置值</strong>操作会影响哪些行。详见<a href="sets-tags-attributes.html">第 8 章“文档集、分组、标签和属性”</a>中的<a href="sets-tags-attributes.html#bulk-values">为多个文档设置同一个值</a>。</p>
+<h3 id="make-two-sets">建立两个文档集<a class="anchor" href="#make-two-sets" aria-hidden="true">#</a></h3>
+<p>借助本章后面的关键词列表，你可以比较行动派文档和怀疑派文档的内容。这就需要双方各有自己的<em>文档集</em>，也就是归在同一个名称下的一组文档。</p>
+<ol>
+<li>在<strong class="ui">文档</strong>下点按“时间不多了”，然后按住 ⌘ 键，依次点按其余五篇行动派文本。</li>
+<li>右键点按其中一个选中的文档，选取<strong class="ui">添加到文档集 ▸ 从所选文档新建文档集</strong>。</li>
+<li>新的文档集出现在<strong class="ui">文档集</strong>下，名称处于可编辑状态。输入 <code>行动派</code>，然后按下 Return 键。</li>
+<li>用同样的方法选中五篇怀疑派文本，建立一个名为 <code>怀疑派</code> 的文档集。</li>
+</ol>
+<figure class="shot" id="quick-start-add-to-set-menu"><img class="shot-light" src="../figures/zh-Hans/light/quick-start-add-to-set-menu.webp" alt="“文档”下已选中六份文本，显示快捷菜单，其中“添加到文档集”已展开，末尾是“从所选文档新建文档集”" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/quick-start-add-to-set-menu.webp" alt="“文档”下已选中六份文本，显示快捷菜单，其中“添加到文档集”已展开，末尾是“从所选文档新建文档集”" loading="lazy"><figcaption>“文档”下已选中六份文本，显示快捷菜单，其中“添加到文档集”已展开，末尾是“从所选文档新建文档集”</figcaption></figure>
+<p>示例项目中的“广泛传播”包含“读者数”大于或等于 100,000 人的所有文档。这个文档集由规则决定，称为<em>智能文档集</em>。见<a href="sets-tags-attributes.html">第 8 章“文档集、分组、标签和属性”</a>中的<a href="sets-tags-attributes.html#smart-sets">智能文档集</a>。</p>
+<h2 id="read-with-a-lens">用透镜阅读<a class="anchor" href="#read-with-a-lens" aria-hidden="true">#</a></h2>
+<p>在<strong class="ui">文档</strong>下点按“时间不多了”，就会打开它供你阅读。示例项目把它放在“纸媒”分组中。阅读器的左边距有两列数字，分别为文档中的段落和句子编号。阅读器右边缘是文档概览。它是一条彩色的滚动条，标示你在文档中的当前位置，以及从已启用的透镜（例如编码）来看文档内容的分布。将鼠标指针悬停在文档概览上，同样可以预览该位置的文字。</p>
+<p>阅读器中内容的呈现方式由<em>透镜</em>控制。每个透镜按文本的某种特征为文本设置样式。<a href="lenses.html">第 6 章“透镜”</a>对此有更多介绍，其中详细说明了所有可用的透镜及其标注。第一次查看文档时，<strong class="ui">编码</strong>和<strong class="ui">书签</strong>两个透镜已经启用，因此透镜菜单显示 <strong class="ui">2 个透镜</strong>。这两个透镜把你已有的标注呈现在文本上。例如，要启用一个基于语法分析的透镜，请按以下步骤操作：</p>
+<ol>
+<li>点按标题栏中的 <strong class="ui">2 个透镜</strong>。</li>
+<li>选取<strong class="ui">情态</strong>。</li>
+</ol>
+<figure class="shot" id="quick-start-modality"><img class="shot-light" src="../figures/zh-Hans/light/quick-start-modality.webp" alt="启用了情态透镜的“时间不多了”，文本上方是它的图例。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/quick-start-modality.webp" alt="启用了情态透镜的“时间不多了”，文本上方是它的图例。" loading="lazy"><figcaption>启用了情态透镜的“时间不多了”，文本上方是它的图例。</figcaption></figure>
+<p><strong class="ui">情态</strong>标注表示能力、必要、义务、可能和意愿的词。例如，在“时间不多了”中，“我们在预防上可能投入的任何开支”里的<em>可能</em>被标注为<strong class="ui">可能</strong>，而“没有人能确切说出每一个阈值在哪里”里的<em>能</em>被标注为<strong class="ui">能力</strong>。文本上方有一行代表各个标注项的彩色图例项，它们构成这个透镜的<em>图例</em>。点按其中任意一个图例项，对应的标注项就会停用，它的标注也会从文档中移除。再点按一次，就会恢复这个标注项及其在文档中的标注。</p>
+<p>透镜菜单右边有一个按钮，它的悬停提示为<strong class="ui">仅显示透镜标注的句子</strong>。点按这个按钮，文档就会收缩，只显示含有已启用透镜所作标注的句子；再点按一次，即可展开全文。</p>
+<h2 id="create-codes">创建编码<a class="anchor" href="#create-codes" aria-hidden="true">#</a></h2>
+<p>你可以为涉及某个话题或方面的文字赋予一个自己定义的<em>编码</em>（例如“紧迫性”）。一个项目的全部编码构成它的<em>编码本</em>。你可以把编码本看作一组形容词或想法，用来描述或突出项目中的细节。之后，你可以借助这些编码来回答你对项目中的文档可能提出的问题。通常，你会先想好要向文档提出哪些问题，再据此创建你认为有助于回答这些问题的编码。</p>
+<p>下面的步骤会添加一个名为“紧迫性”的编码及其子编码“时间节点”。</p>
+<ol>
+<li>在导航栏的<strong class="ui">项目</strong>下点按<strong class="ui">编码本</strong>。它会在一个标签页中打开。</li>
+<li>点按编码列表底部的<strong class="ui">添加编码</strong>。</li>
+<li>在<strong class="ui">新建编码</strong>对话框的<strong class="ui">名称</strong>中输入 <code>紧迫性</code>。</li>
+<li>在<strong class="ui">颜色</strong>下点按一种颜色。</li>
+<li>点按<strong class="ui">存储</strong>。</li>
+<li>在列表中右键点按“紧迫性”，选取<strong class="ui">添加子编码</strong>。</li>
+<li>在<strong class="ui">新建编码</strong>对话框的<strong class="ui">名称</strong>中输入 <code>时间节点</code>，选择一种颜色，然后点按<strong class="ui">存储</strong>。</li>
+</ol>
+<figure class="shot" id="quick-start-new-code-dialog"><img class="shot-light" src="../figures/zh-Hans/light/quick-start-new-code-dialog.webp" alt="“气候辩论”编码本上方的“新建编码”对话框，名称中已输入“紧迫性”" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/quick-start-new-code-dialog.webp" alt="“气候辩论”编码本上方的“新建编码”对话框，名称中已输入“紧迫性”" loading="lazy"><figcaption>“气候辩论”编码本上方的“新建编码”对话框，名称中已输入“紧迫性”</figcaption></figure>
+<figure class="shot" id="quick-start-add-subcode-menu"><img class="shot-light" src="../figures/zh-Hans/light/quick-start-add-subcode-menu.webp" alt="编码本中“紧迫性”上的快捷菜单，顶部是“添加子编码”" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/quick-start-add-subcode-menu.webp" alt="编码本中“紧迫性”上的快捷菜单，顶部是“添加子编码”" loading="lazy"><figcaption>编码本中“紧迫性”上的快捷菜单，顶部是“添加子编码”</figcaption></figure>
+<p>子编码可以在相关的编码之间建立层级。如果你的研究中有许多相近的编码，希望按逻辑归在一起，这会很有帮助。</p>
+<h2 id="code-passages">为文字编码<a class="anchor" href="#code-passages" aria-hidden="true">#</a></h2>
+<ol>
+<li>点按“时间不多了”的标签页。</li>
+<li>选中一段文字，例如“一个在所有现任官员都退休之后才到期的期限，根本算不上期限。”</li>
+<li>在阅读器底部出现的栏中点按<strong class="ui">编码</strong>。</li>
+<li>在编码列表中点按“时间节点”。</li>
+</ol>
+<figure class="shot" id="quick-start-code-palette"><img class="shot-light" src="../figures/zh-Hans/light/quick-start-code-palette.webp" alt="从阅读器底部的栏中为“时间不多了”中的一个句子选择编码。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/quick-start-code-palette.webp" alt="从阅读器底部的栏中为“时间不多了”中的一个句子选择编码。" loading="lazy"><figcaption>从阅读器底部的栏中为“时间不多了”中的一个句子选择编码。</figcaption></figure>
+<p>这段文字随即显示为“时间节点”的颜色。此外，文字左侧还会出现一条同色的竖条。你可以继续浏览当前打开的列表中的编码，再为这段文字应用第二个编码，或者按下 Esc 键关闭编码列表。如果编码本中有很多编码，输入编码名称的开头几个字就能找到想要的那一个。如果输入的名称与现有的任何编码都不匹配，列表会提供一个名为<strong class="ui">添加编码“…”</strong>的选项，可以一步创建并应用这个编码。</p>
+<p>点按段落旁边的编号，无须手动选择文字，就能选中整个段落。<strong class="ui">文档 ▸ 编码</strong>（⇧⌘C）会打开同一个编码列表。<strong class="ui">编辑 ▸ 撤销应用编码</strong>（⌘Z）会撤回最近一次为任意文字所做的编码。以后要移除某个编码，可以再次选中这段文字，这时你会看到列表中已分配的编码旁边带有勾号；取消勾选即可移除这个编码。</p>
+<p>你应该在每份文本中再为几段文字编码，因为接下来的示例需要有编码，才能统计和可视化。<a href="coding.html">编码</a>一章进一步介绍了备忘录、链接和书签的用法。那一章还介绍了自动编码，用于一次为多段文字编码。</p>
+<h2 id="code-matrix">比较行动派和怀疑派<a class="anchor" href="#code-matrix" aria-hidden="true">#</a></h2>
+<p><strong class="ui">编码矩阵</strong>是一张表格。每个文档占一列，你创建并使用过的每个编码占一行。矩阵中的每个单元格给出该列的文档中带有该行编码的文字片段总数。按某个属性给编码矩阵分组，矩阵就变成了各组文档之间的比较。</p>
+<ol>
+<li>在<strong class="ui">项目</strong>下点按<strong class="ui">编码矩阵</strong>。</li>
+<li>在显示<strong class="ui">文档</strong>的菜单中选取<strong class="ui">属性</strong>。</li>
+<li>在旁边出现的菜单中选取“立场”。</li>
+<li>在下方那排按钮中点按<strong class="ui">文档</strong>。</li>
+<li>在旁边的切换控件中点按 <strong class="ui">%</strong>。</li>
+</ol>
+<figure class="shot" id="quick-start-code-matrix"><img class="shot-light" src="../figures/zh-Hans/light/quick-start-code-matrix.webp" alt="按“立场”分组的编码矩阵，显示“气候辩论”中每个编码在行动派、怀疑派和中立文档中所占的比例。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/quick-start-code-matrix.webp" alt="按“立场”分组的编码矩阵，显示“气候辩论”中每个编码在行动派、怀疑派和中立文档中所占的比例。" loading="lazy"><figcaption>按“立场”分组的编码矩阵，显示“气候辩论”中每个编码在行动派、怀疑派和中立文档中所占的比例。</figcaption></figure>
+<p>选中 <strong class="ui">%</strong> 后，每个单元格表示某一组文档中至少出现过一次某个编码的文档所占的百分比。在表格中选中一个编码，表格上方会以条形图显示各组的这些数值。在“气候辩论”项目中，“不确定性”编码只出现在六篇行动派文本中的一篇里，因此行动派的单元格显示 16.7%。五篇怀疑派文本中，有四篇至少含有一段带“不确定性”编码的文字，因此怀疑派的单元格显示 80.0%。另外请注意，“气候辩论”示例项目的表格中有一列“中立”，因为其中包含对气候变化持中立立场的文档。这些文档是热浪报告、新闻报道和电台辩论。</p>
+<p><strong class="ui">编码实例</strong>表示编码片段的数量，<strong class="ui">覆盖率</strong>则按字符计算文本中有多少内容带有编码标注。无论选择哪种度量，表格最后几列都会对各组进行相互检验。每项检验评估的是，各组在含有某个编码的文档比例上的差异能否单凭偶然来解释。当前项目包含十一份文档，分为“行动派”和“怀疑派”两组。比较中只有两组时，表格用 Fisher 精确检验对它们进行检验，并给出 p 值（<strong class="ui">p（Fisher 精确检验）</strong>）。不过，“气候辩论”示例项目有三组。因此，表格改用卡方检验来检验差异，并给出统计量（<strong class="ui">χ²（自由度 = 2）</strong>）和相应的概率（<strong class="ui">p</strong>）。</p>
+<p>假设立场完全不起作用。那么，一个编码的 <em>p 值</em>表示的就是，在立场并未造成任何真实差异的情况下，单凭偶然得到观察到的差异或更大差异的概率。p 值小于 0.05 时，单凭偶然产生这样的差异，二十次试验中还不到一次。因此，显著的结果会以更深的颜色显示，相应的 p 值旁边还会加一个星号（*）。启用<strong class="ui">仅显著项</strong>后，表格只保留差异显著的编码。这些差异的强度用<strong class="ui">克莱姆 V 系数</strong>来衡量，范围从 0 到 1（从没有差异到最大差异）。请把颜色较深的检验值当作更仔细地查看相应文字的理由。</p>
+<p>在导航栏中，<strong class="ui">编码统计</strong>就位于<strong class="ui">编码矩阵</strong>的正上方。表格中的每一行是你用过的一个编码，显示每个编码覆盖了多少文字片段和多少文档，以及占全部字符的百分比。<a href="coding-analysis.html">第 13 章“编码分析”</a>进一步讨论了这两个视图，并附有检验的示例。</p>
+<h2 id="word-sketch">为一个词做词汇速写<a class="anchor" href="#word-sketch" aria-hidden="true">#</a></h2>
+<p><em>词汇速写</em>展示一个词在语法上与哪些其他词组合。这些词按<em>关系</em>分类。关系指的是两个词之间的语法联系。<a href="word-sketch.html">第 12 章“词汇速写”</a>介绍了所有关系。例如，以某个词为宾语的动词构成一种关系，修饰这个词的形容词则构成另一种关系。</p>
+<ol>
+<li>在<strong class="ui">项目</strong>下点按<strong class="ui">词汇速写</strong>。</li>
+<li>在<strong class="ui">词</strong>栏中输入 <code>气候</code>，然后按下 Return 键。</li>
+<li>如果当前选中的是其他模式，请点按标签页顶部栏中的<strong class="ui">语法</strong>。</li>
+</ol>
+<figure class="shot" id="quick-start-word-sketch"><img class="shot-light" src="../figures/zh-Hans/light/quick-start-word-sketch.webp" alt="“气候辩论”全部文档中气候一词的搭配成分，以图谱形式呈现。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/quick-start-word-sketch.webp" alt="“气候辩论”全部文档中气候一词的搭配成分，以图谱形式呈现。" loading="lazy"><figcaption>“气候辩论”全部文档中<em>气候</em>一词的搭配成分，以图谱形式呈现。</figcaption></figure>
+<p>在图谱中，<em>气候</em>位于中心，它的搭配成分按关系排布在周围。每种颜色代表一种关系。<em>变化</em>位于<strong class="ui">作主语于</strong>下，因为在“气候在变化”中，<em>气候</em>是它的主语。<em>危机</em>是<strong class="ui">构成复合词</strong>下列出的词之一，如“气候危机”。在同一种关系中，搭配成分的字号越大，表示它与中心词的联系越强。</p>
+<p>衡量这种联系强弱的指标称为 <em>logDice</em> 得分，计算方法见<a href="word-sketch.html#logdice">logDice</a>一节。logDice 得分表示，在这两个词的全部用法中，有多大份额来自它们作为一对出现的情况。可以把这个得分看作搭配的一种数学表达。logDice 得分最高为 14，即两个词只与彼此一起出现时的值。比 14 每低 1 分，这个份额就减半。将鼠标指针悬停在任意一个搭配成分上，可以看到 logDice 得分及其旁边的 f；这里的 f 代表频次。这个值表示这两个词一起出现的次数。</p>
+<p>点按任意一个搭配成分（例如<em>危机</em>），就会转而显示这个词的速写。要回到<em>气候</em>，请在速写上方那一行中点按它，或者按下 ⌘[。要查看某个搭配成分背后的句子，请点按速写上方的<strong class="ui">列表</strong>，然后选中这个搭配成分所在的行。LemmaLoom 会直接带你转到把这两个词联系起来的第一个句子。点按<strong class="ui">词汇速写</strong>标签页即可返回；再点按同一行，就能继续查看同时含有这两个词的其他句子。</p>
+<h2 id="keywords">找出行动派的关键词<a class="anchor" href="#keywords" aria-hidden="true">#</a></h2>
+<p>有些词在一个文档集中出现的频率往往明显高于另一个文档集，另一些词出现的频率则明显较低。<em>关键词列表</em>会在这两个方向上突出显示出现频率的差异。请比较“行动派”与“怀疑派”的关键词。</p>
+<ol>
+<li>在导航栏的<strong class="ui">文档集</strong>下点按“行动派”。这个文档集会在一个标签页中打开。</li>
+<li>在标签页顶部的那排按钮中点按<strong class="ui">查询</strong>。窗口较窄时，这排按钮会变成一个菜单，请从中选取<strong class="ui">查询</strong>。</li>
+<li>在左侧一栏的<strong class="ui">模板</strong>下点按<strong class="ui">关键词</strong>。</li>
+<li>这一栏的右侧是查询<em>构建器</em>。它由一个个称为<em>条件</em>的方框组成。<a href="queries-building.html">第 15 章“构建查询”</a>对两者都有介绍。在<strong class="ui">显示</strong>条件中，把显示<strong class="ui">项目其余部分</strong>的菜单设为<strong class="ui">文档集</strong>。</li>
+<li>在下方出现的菜单中选取“怀疑派”。</li>
+</ol>
+<figure class="shot" id="quick-start-keywords"><img class="shot-light" src="../figures/zh-Hans/light/quick-start-keywords.webp" alt="“行动派”与“怀疑派”比较得出的关键词。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/quick-start-keywords.webp" alt="“行动派”与“怀疑派”比较得出的关键词。" loading="lazy"><figcaption>“行动派”与“怀疑派”比较得出的关键词。</figcaption></figure>
+<p>让显示<strong class="ui">词元</strong>的菜单保持不变，这样英文中的 <em>cost</em> 和 <em>costs</em> 都会算作 <em>cost</em>。显示 <strong class="ui">LL ≥ 3.84</strong> 的菜单也保持不变。缩写 LL 代表<strong class="ui">对数似然</strong>得分。单凭偶然，得分大于或等于 3.84 的情况大约每二十次试验中只出现一次。得分较低的词都会从结果列表中略去。</p>
+<p>结果显示在构建器下方，并随着你修改参数而更新。在较大的项目中，请点按构建器上方的三角形图标，或者按下 ⌘R，手动运行查询。</p>
+<p><strong class="ui">正关键词</strong>列出行动派比怀疑派用得更多的词，<strong class="ui">负关键词</strong>列出他们用得更少的词。在这次比较中，“行动派”是<em>目标语料</em>，“怀疑派”是<em>参考语料</em>。表格上方的一行告诉你每个文档集中一共统计了多少个词，分别标为<strong class="ui">目标语料词数</strong>和<strong class="ui">参考语料词数</strong>。在表格中，一个词在“行动派”文档集中出现的次数显示在<strong class="ui">数量</strong>中，在“怀疑派”文档集中出现的次数则显示在<strong class="ui">参考</strong>中。</p>
+<p>两个列表都按<strong class="ui">对数似然</strong>排序。排在任一列表前列的，是差异最不可能纯属偶然的词。<strong class="ui">对数比</strong>表示差异的程度，计算时已考虑两个文档集的总体大小。值为 1 表示使用频率是对方的两倍，2 表示四倍，3 表示八倍，依此类推，每多 1 就再翻一番。负关键词的比值小于零，−1 表示使用频率只有对方的一半。<a href="queries-results.html">第 16 章“查询结果与统计”</a>中的<a href="queries-results.html#keywords">关键词</a>一节一步步演示了这两个得分的计算。</p>
+<p>关键词列表能让你看到哪些词与众不同，却无法告诉你它们为什么突出。请分析这些词在文字中出现的上下文。</p>
+<p>要存储这个关键词查询，请按以下步骤操作：</p>
+<ol>
+<li>在构建器上方的栏中，点按带有一个方框和一个指向框内箭头的按钮。它的悬停提示为<strong class="ui">存储</strong>。</li>
+<li>选取<strong class="ui">存储</strong>。</li>
+<li>在<strong class="ui">存储查询</strong>对话框中，把<strong class="ui">名称</strong>中的文字换成 <code>关键词：行动派</code>。<strong class="ui">可用范围</strong>保持为<strong class="ui">文档集</strong>。</li>
+<li>点按<strong class="ui">存储</strong>。</li>
+</ol>
+<figure class="shot" id="quick-start-save-query-dialog"><img class="shot-light" src="../figures/zh-Hans/light/quick-start-save-query-dialog.webp" alt="“行动派”关键词的“存储查询”对话框，名称为“关键词：行动派”，可用范围为“文档集”" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/quick-start-save-query-dialog.webp" alt="“行动派”关键词的“存储查询”对话框，名称为“关键词：行动派”，可用范围为“文档集”" loading="lazy"><figcaption>“行动派”关键词的“存储查询”对话框，名称为“关键词：行动派”，可用范围为“文档集”</figcaption></figure>
+<p>此后，每当你打开“行动派”文档集中的查询，存储的查询都会出现在左侧一栏顶部的<strong class="ui">文档集</strong>下。点按这一项，就会恢复你之前看到的关键词列表。示例项目中，这里已经有一个存储的查询。</p>
+<h2 id="export">导出表格<a class="anchor" href="#export" aria-hidden="true">#</a></h2>
+<p>关键词列表可以导出为逗号分隔值（.csv）文件，供电子表格应用使用。</p>
+<ol>
+<li>在结果上方的栏中点按导出按钮，它是一个方框加一个向上的箭头。它的悬停提示为<strong class="ui">导出</strong>。</li>
+<li>选取 <strong class="ui">CSV</strong>。</li>
+<li>选择一个文件夹，然后点按<strong class="ui">保存</strong>。</li>
+</ol>
+<figure class="shot" id="quick-start-export-menu"><img class="shot-light" src="../figures/zh-Hans/light/quick-start-export-menu.webp" alt="“行动派”关键词结果上方的“导出”菜单" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/quick-start-export-menu.webp" alt="“行动派”关键词结果上方的“导出”菜单" loading="lazy"><figcaption>“行动派”关键词结果上方的“导出”菜单</figcaption></figure>
+<p>文件中每一行包含一个关键词，以及它的次数和得分，并注明它是正关键词还是负关键词。这里的格式是逗号分隔值（CSV），这是一种简单的纯文本表格格式，许多应用都支持它，包括电子表格和统计软件。同一个菜单中<strong class="ui">导出</strong>下的其他菜单项可以把结果导出为图片（<strong class="ui">PNG</strong> 和 <strong class="ui">PDF</strong>）或 Markdown 文件（<strong class="ui">Markdown</strong> 格式把结果文件与所用查询的元数据合在一起），也可以把结果拷贝到剪贴板（<strong class="ui">拷贝</strong>）。</p>
+<p>大多数表格和图表都像这里一样提供导出选项。<a href="exchange-and-export.html">第 22 章“交换与导出”</a>中的<a href="exchange-and-export.html#tables-and-charts">导出表格和图表</a>一节更详细地介绍了各个导出菜单的作用，以及它们出现在哪里。</p>
+<p>要查看某个关键词的索引行，请点按左侧一栏<strong class="ui">模板</strong>下的<strong class="ui">索引行</strong>。借助索引行功能，你可以逐一查看这个词的每一次出现，以及它在周围文本中紧邻的上下文。<a href="queries-results.html">第 16 章“查询结果与统计”</a>中的<a href="queries-results.html#concordance">索引行</a>一节进一步讨论了这个话题；<a href="queries-patterns.html">第 17 章“查询模式与发现”</a>中的<a href="queries-patterns.html#recipes">模板</a>一节说明了如何选择要查看的词。</p>
+<h2 id="where-next">接下来读什么<a class="anchor" href="#where-next" aria-hidden="true">#</a></h2>
+<p><strong class="ui">帮助 ▸ 术语表</strong>会打开一个术语表窗口，其中有 LemmaLoom 术语的简短解释。处理文档时，你可以让它一直开着，随时查阅不熟悉的缩写或专业术语。</p>
+<div class="table-wrap"><table>
+<thead><tr><th>要做的事</th><th>请阅读</th></tr></thead>
+<tbody>
+<tr><td>了解窗口的每个部分，以及你的工作保存在哪里</td><td><a href="getting-started.html">开始使用</a></td></tr>
+<tr><td>导入 PDF 文件、网页和录音</td><td><a href="importing.html">导入资料</a></td></tr>
+<tr><td>在阅读器中查找、选择和编辑文本</td><td><a href="reading-and-editing.html">阅读与编辑</a></td></tr>
+<tr><td>了解每个透镜标注什么</td><td><a href="lenses.html">透镜</a></td></tr>
+<tr><td>撰写备忘录、链接文字片段、进行自动编码</td><td><a href="coding.html">编码</a></td></tr>
+<tr><td>按立场、媒体或日期划分项目</td><td><a href="sets-tags-attributes.html">文档集、分组、标签和属性</a></td></tr>
+<tr><td>翻译一份文本，并与原文对照阅读</td><td><a href="translations.html">译文与分屏浏览</a></td></tr>
+<tr><td>统计编码、绘制图表并进行检验</td><td><a href="coding-analysis.html">编码分析</a></td></tr>
+<tr><td>研究一个词在语法上的搭配成分</td><td><a href="word-sketch.html">词汇速写</a>和<a href="sketch-space.html">速写空间</a></td></tr>
+<tr><td>查找词、短语和语法模式</td><td><a href="queries-building.html">构建查询</a>和<a href="queries-patterns.html">查询模式与发现</a></td></tr>
+<tr><td>在报告一个得分或检验之前先弄懂它</td><td><a href="queries-results.html">查询结果与统计</a>和<a href="statistics-reference.html">统计量一览</a></td></tr>
+<tr><td>跨多个项目分析材料</td><td><a href="projects-and-documents.html">第 3 章“项目与文档”</a>中的<a href="projects-and-documents.html#working-across-projects">跨项目工作</a></td></tr>
+<tr><td>建立词表（例如模糊限制语），并统计其中的词</td><td><a href="dictionaries.html">词典</a></td></tr>
+<tr><td>共享项目，或把它转移到另一台 Mac</td><td><a href="exchange-and-export.html">交换与导出</a></td></tr>
+<tr><td>查找键盘快捷键</td><td><a href="keyboard-shortcuts.html">键盘快捷键</a></td></tr>
+</tbody></table></div>
+</article>
+<nav class="pager"><a class="next" href="introduction.html"><span>下一章</span>简介</a></nav>
+<footer class="site-footer">© 2026 Ryan S. Cooper. 保留所有权利。<br>本版本借助人工智能根据英文原版翻译而成，译文可能存在错误或不准确之处。如有疑问，请以英文版为准。</footer>
+</main>
+<nav class="page-toc" aria-label="本页内容"><p>本页内容</p><ul>
+<li class="level-2"><a href="#main-window">主窗口</a></li>
+<li class="level-2"><a href="#create-the-project">创建项目</a></li>
+<li class="level-2"><a href="#import-the-texts">导入文本</a></li>
+<li class="level-3"><a href="#record-roles">记录每份文本的立场</a></li>
+<li class="level-3"><a href="#make-two-sets">建立两个文档集</a></li>
+<li class="level-2"><a href="#read-with-a-lens">用透镜阅读</a></li>
+<li class="level-2"><a href="#create-codes">创建编码</a></li>
+<li class="level-2"><a href="#code-passages">为文字编码</a></li>
+<li class="level-2"><a href="#code-matrix">比较行动派和怀疑派</a></li>
+<li class="level-2"><a href="#word-sketch">为一个词做词汇速写</a></li>
+<li class="level-2"><a href="#keywords">找出行动派的关键词</a></li>
+<li class="level-2"><a href="#export">导出表格</a></li>
+<li class="level-2"><a href="#where-next">接下来读什么</a></li>
+</ul></nav>
+</div>
+<script src="../assets/guide.js" defer></script>
+</body>
+</html>

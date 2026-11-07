@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>设置与外观 · LemmaLoom 用户指南</title>
+<link rel="stylesheet" href="../assets/guide.css">
+<link rel="icon" type="image/png" href="../assets/logo.png">
+<script>var r=document.documentElement;r.setAttribute('data-theme','light');try{if(localStorage.getItem('guide-theme')==='dark'){r.setAttribute('data-theme','dark')}}catch(e){}</script>
+</head>
+<body>
+<header class="topbar">
+<button class="menu-toggle" aria-label="目录" aria-expanded="false">☰</button>
+<a class="brand" href="index.html"><span class="wordmark"><span class="lemma">Lemma</span>Loom</span><span class="guide-name">用户指南</span></a>
+<div class="search"><input type="search" id="search" placeholder="搜索" aria-label="搜索" autocomplete="off" data-empty="无结果"><div class="results" id="results" hidden></div></div>
+<nav class="languages" aria-label="Language"><a href="../en/settings.html" lang="en">English</a><a href="../de/settings.html" lang="de">Deutsch</a><a href="../zh-Hans/settings.html" lang="zh-Hans" aria-current="true">简体中文</a></nav>
+<button class="theme-toggle" data-light="浅色" data-dark="深色" aria-label="外观"></button>
+<a class="pdf-link" href="https://github.com/LemmaLoom/public/raw/main/pdf/lemmaloom-guide-zh-Hans.pdf">PDF</a>
+</header>
+<div class="layout">
+<nav class="sidebar" aria-label="目录"><ol>
+<li class="unnumbered"><a href="quick-start.html">快速入门</a></li>
+<li><a href="introduction.html">简介</a></li>
+<li><a href="getting-started.html">开始使用</a></li>
+<li><a href="projects-and-documents.html">项目与文档</a></li>
+<li><a href="importing.html">导入资料</a></li>
+<li><a href="reading-and-editing.html">阅读与编辑</a></li>
+<li><a href="lenses.html">透镜</a></li>
+<li><a href="coding.html">编码</a></li>
+<li><a href="sets-tags-attributes.html">文档集、分组、标签和属性</a></li>
+<li><a href="translations.html">译文与分屏浏览</a></li>
+<li><a href="text-inspector.html">文本检查器</a></li>
+<li><a href="grammar-inspector.html">语法检查器</a></li>
+<li><a href="word-sketch.html">词汇速写</a></li>
+<li><a href="coding-analysis.html">编码分析</a></li>
+<li><a href="sketch-space.html">速写空间</a></li>
+<li><a href="queries-building.html">构建查询</a></li>
+<li><a href="queries-results.html">查询结果与统计</a></li>
+<li><a href="queries-patterns.html">查询模式与发现</a></li>
+<li><a href="queries-using-results.html">使用查询结果</a></li>
+<li><a href="dictionaries.html">词典</a></li>
+<li><a href="custom-analyzers.html">自定义分析器</a></li>
+<li><a href="analysis-and-indexing.html">分析与索引</a></li>
+<li><a href="exchange-and-export.html">交换与导出</a></li>
+<li><a href="undo.html">撤销与重做</a></li>
+<li class="current"><a href="settings.html">设置与外观</a></li>
+<li><a href="keyboard-shortcuts.html">键盘快捷键</a></li>
+<li><a href="help-and-support.html">帮助与支持</a></li>
+<li><a href="statistics-reference.html">统计量一览</a></li>
+<li class="unnumbered"><a href="glossary.html">术语表</a></li>
+<li class="unnumbered"><a href="thanks.html">感谢</a></li>
+</ol></nav>
+<main class="content">
+<article>
+<h1 id="settings">设置与外观</h1>
+<p>设置是作用于整个 LemmaLoom 应用的选项，包括主题、界面语言、转录模型、你自己的排除模式、阅读器的显示方式，以及四个透镜的颜色和样式。</p>
+<p>单个文档的语言、文档的透镜和文档中排除的文本则不在此列。</p>
+<h2 id="settings-window">设置窗口<a class="anchor" href="#settings-window" aria-hidden="true">#</a></h2>
+<p>要打开设置，请选取 <strong class="ui">LemmaLoom ▸ 设置…</strong>，也可以按 ⌘, 键。</p>
+<p>设置窗口左侧的边栏列出三个面板：<strong class="ui">通用</strong>（齿轮图标）、<strong class="ui">阅读器</strong>（书本图标）和<strong class="ui">透镜</strong>（方形上叠一个圆形的图标）。LemmaLoom 每次启动后第一次打开设置时，显示的是<strong class="ui">通用</strong>面板。</p>
+<div class="table-wrap"><table>
+<thead><tr><th>面板</th><th>部分</th><th>设置内容</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">通用</strong></td><td><strong class="ui">外观</strong>、<strong class="ui">语言</strong>、<strong class="ui">转录</strong>、<strong class="ui">排除预设</strong></td><td>主题、界面语言、语音识别模型，以及你自己设定的、让分析跳过某些文本的模式</td></tr>
+<tr><td><strong class="ui">阅读器</strong></td><td><strong class="ui">排印</strong>、<strong class="ui">页面</strong>、<strong class="ui">选择</strong>、<strong class="ui">预览</strong></td><td>阅读器的字体、文字大小和版式，文本旁边的段落编号和句子编号，以及选区和音频播放的显示方式</td></tr>
+<tr><td><strong class="ui">透镜</strong></td><td><strong class="ui">词类</strong>、<strong class="ui">语法功能</strong>、<strong class="ui">短语</strong>、<strong class="ui">形态学</strong></td><td>这四个透镜中每个标注项的颜色和样式</td></tr>
+</tbody></table></div>
+<p>你对设置所做的更改会立即在设置窗口和所有打开的文档中生效。界面语言是例外，要到下次启动 LemmaLoom 时才生效。</p>
+<p>面板较大时，例如<strong class="ui">透镜</strong>面板，可以拖动窗口边缘调整窗口大小，腾出更多空间。面板比窗口高时，超出的部分可以滚动查看。</p>
+<p>设置的更改会立即生效（见<a href="undo.html">第 23 章“撤销与重做”</a>）。要撤回一项更改，请重新选择它原来的值，或者点按重置按钮，例如<strong class="ui">阅读器</strong>和<strong class="ui">透镜</strong>面板顶部的<strong class="ui">全部重置为默认</strong>。对于其他设置，本章都给出了默认值。</p>
+<figure class="shot" id="settings-general-pane"><img class="shot-light" src="../figures/zh-Hans/light/settings-general-pane.webp" alt="设置窗口的通用面板。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/settings-general-pane.webp" alt="设置窗口的通用面板。" loading="lazy"><figcaption>设置窗口的通用面板。</figcaption></figure>
+<h2 id="themes">主题<a class="anchor" href="#themes" aria-hidden="true">#</a></h2>
+<p><em>主题</em>是整个应用界面所用的一套颜色。主题决定窗口是浅色还是深色、窗口各栏和侧边面板的颜色、阅读器的背景色和文字颜色，以及其他许多地方的颜色。<em>强调色</em>同样由主题决定，它是当前选中或启用的项目所用的颜色，例如设置边栏中选中的面板，或者处于打开状态的<strong class="ui">随音频滚动</strong>按钮。</p>
+<p>LemmaLoom 提供十一个主题：</p>
+<div class="table-wrap"><table>
+<thead><tr><th>主题</th><th>浅色或深色</th><th>配色</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">系统</strong></td><td>跟随 macOS</td><td>macOS 的标准颜色，浅色或深色取决于 macOS 的设置</td></tr>
+<tr><td><strong class="ui">浅色</strong></td><td>浅色</td><td>macOS 的标准浅色配色，macOS 为深色时也不变</td></tr>
+<tr><td><strong class="ui">深色</strong></td><td>深色</td><td>macOS 的标准深色配色，macOS 为浅色时也不变</td></tr>
+<tr><td><strong class="ui">奶油色</strong></td><td>浅色</td><td>暖调米白底上的深棕色文字，棕色强调色</td></tr>
+<tr><td><strong class="ui">Solarized 浅色</strong></td><td>浅色</td><td>淡奶油色底上的灰蓝色文字，米色的栏，蓝色强调色</td></tr>
+<tr><td><strong class="ui">Solarized 深色</strong></td><td>深色</td><td>深蓝绿色底上的淡灰色文字，蓝色强调色</td></tr>
+<tr><td><strong class="ui">高对比度</strong></td><td>浅色</td><td>白底黑字，黑色分隔线，深蓝色强调色</td></tr>
+<tr><td><strong class="ui">高对比度深色</strong></td><td>深色</td><td>黑底白字，白色分隔线，黄色强调色</td></tr>
+<tr><td><strong class="ui">红色盲</strong></td><td>跟随 macOS</td><td>macOS 的标准颜色，透镜和编码的颜色针对红色盲调整，蓝色强调色</td></tr>
+<tr><td><strong class="ui">绿色盲</strong></td><td>跟随 macOS</td><td>macOS 的标准颜色，透镜和编码的颜色针对绿色盲调整，蓝色强调色</td></tr>
+<tr><td><strong class="ui">蓝色盲</strong></td><td>跟随 macOS</td><td>macOS 的标准颜色，透镜和编码的颜色针对蓝色盲调整，橙红色强调色</td></tr>
+</tbody></table></div>
+<p>初始主题是<strong class="ui">系统</strong>。它随 macOS 的模式在浅色和深色之间自动切换，macOS 的外观设为<strong class="ui">自动</strong>时也是如此。</p>
+<p><strong class="ui">系统</strong>、<strong class="ui">浅色</strong>和<strong class="ui">深色</strong>使用 macOS 为 LemmaLoom 提供的强调色。这个颜色默认是紫蓝色，但可能因你在<strong class="ui">系统设置 ▸ 外观</strong>中的设置而不同。其他主题始终使用各自的强调色。</p>
+<p>更改主题的步骤如下：</p>
+<ol>
+<li>选取 <strong class="ui">LemmaLoom ▸ 设置…</strong>（⌘,），然后点按<strong class="ui">通用</strong>。</li>
+<li>在<strong class="ui">外观</strong>下打开<strong class="ui">主题</strong>菜单。</li>
+<li>选择一个主题。</li>
+</ol>
+<p>所有窗口会同时改变，设置窗口也不例外。</p>
+<p>投影仪容易把浅淡的颜色投得发白。在投影仪上显示时选择<strong class="ui">高对比度</strong>，面板、列表和分隔线仍然清晰可见，阅读器的显示则与<strong class="ui">浅色</strong>相同。</p>
+<figure class="shot" id="settings-theme-menu"><img class="shot-light" src="../figures/zh-Hans/light/settings-theme-menu.webp" alt="通用面板中打开的主题菜单。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/settings-theme-menu.webp" alt="通用面板中打开的主题菜单。" loading="lazy"><figcaption>通用面板中打开的主题菜单。</figcaption></figure>
+<h3 id="window-tinting">主题改变哪些地方<a class="anchor" href="#window-tinting" aria-hidden="true">#</a></h3>
+<p>在每个 LemmaLoom 窗口（包括<strong class="ui">术语表</strong>和<strong class="ui">分析器</strong>窗口）中，主题都会改变以下元素的外观：</p>
+<ul>
+<li>由 macOS 绘制的元素，例如滚动条和文本框，随主题呈浅色或深色，与 macOS 的设置无关。</li>
+<li>窗口的背景和顶部的横条采用当前主题的栏颜色。使用<strong class="ui">奶油色</strong>、<strong class="ui">Solarized 浅色</strong>和<strong class="ui">Solarized 深色</strong>时，这些颜色从上到下逐渐过渡。</li>
+<li>阅读器的背景色和文字颜色跟随主题，具体见<a href="reading-and-editing.html">第 5 章“阅读与编辑”</a>中的<a href="reading-and-editing.html#reader-themes">阅读器颜色</a>。在阅读器中，<strong class="ui">高对比度</strong>与<strong class="ui">浅色</strong>相同，<strong class="ui">高对比度深色</strong>与<strong class="ui">深色</strong>相同。</li>
+<li>文本框中选中文字的高亮和插入点采用主题的强调色；在<strong class="ui">系统</strong>、<strong class="ui">浅色</strong>和<strong class="ui">深色</strong>中，则采用 macOS 的选区颜色。</li>
+<li>在五个自带配色的主题中，表格的表头采用栏颜色，表头的线条采用主题的分隔线颜色，各行背景在两种色调之间交替。</li>
+<li>对话框（包括<strong class="ui">文档信息</strong>和<strong class="ui">导入文档</strong>）采用当前主题的背景色和文字颜色。</li>
+<li><strong class="ui">窗口 ▸ 分析器</strong>中的代码编辑器随当前主题切换浅色或深色配色。</li>
+<li>全屏幕时，屏幕顶部的工具栏采用当前主题的栏颜色。</li>
+</ul>
+<figure class="shot" id="settings-solarized-dark"><img class="shot-light" src="../figures/zh-Hans/light/settings-solarized-dark.webp" alt="Solarized 深色主题下的主窗口，打开了“时间不多了”，并启用了词类透镜。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/settings-solarized-dark.webp" alt="Solarized 深色主题下的主窗口，打开了“时间不多了”，并启用了词类透镜。" loading="lazy"><figcaption>Solarized 深色主题下的主窗口，打开了“时间不多了”，并启用了词类透镜。</figcaption></figure>
+<h3 id="fixed-colors">不随主题改变的颜色<a class="anchor" href="#fixed-colors" aria-hidden="true">#</a></h3>
+<p>除<strong class="ui">红色盲</strong>、<strong class="ui">绿色盲</strong>和<strong class="ui">蓝色盲</strong>主题会为显示调整编码和词典类别的颜色外，编码和词典类别在每个主题中都保持各自的颜色。你在<strong class="ui">透镜</strong>面板中改过颜色的透镜标注项也是如此。</p>
+<p>透镜标注项的默认颜色来自 macOS，是 macOS 的标准颜色，在深色主题中会稍微调亮一些。你为标注项选定颜色之后（无论是换了一种颜色，还是选了它原来的颜色），这个颜色就固定不变。在<strong class="ui">透镜</strong>面板中重置这个标注项的颜色后，它才会重新随主题调整。</p>
+<p>在浅色和深色主题之间切换时，请检查你自己的颜色在两种主题下是否都清晰可读。例如，一种淡黄色在 <strong class="ui">Solarized 深色</strong>的背景上清晰可读，到了<strong class="ui">高对比度</strong>的纯白背景上却几乎看不见。</p>
+<h2 id="interface-language">界面语言<a class="anchor" href="#interface-language" aria-hidden="true">#</a></h2>
+<p>LemmaLoom 的菜单、窗口和提示信息可以用英语、德语或中国大陆简体中文显示。初始设置是<strong class="ui">系统默认</strong>，由系统根据<strong class="ui">系统设置 ▸ 通用 ▸ 语言与地区</strong>中列出的优先顺序决定使用哪一种。如果这个列表中没有这三种语言，LemmaLoom 就使用英语。</p>
+<p>要单独为 LemmaLoom 选择界面语言，请按以下步骤操作：</p>
+<ol>
+<li>选取 <strong class="ui">LemmaLoom ▸ 设置…</strong>（⌘,），然后点按<strong class="ui">通用</strong>。</li>
+<li>在<strong class="ui">语言</strong>下打开<strong class="ui">界面语言</strong>菜单，选择 <strong class="ui">English</strong>、<strong class="ui">Deutsch</strong> 或<strong class="ui">简体中文</strong>。选择<strong class="ui">系统默认</strong>则重新跟随 macOS。</li>
+<li>点按<strong class="ui">退出 LemmaLoom</strong>。它上方的提示写着<strong class="ui">退出并重新打开 LemmaLoom 后，语言更改才会生效。</strong></li>
+<li>重新打开 LemmaLoom。</li>
+</ol>
+<figure class="shot" id="settings-interface-restart"><img class="shot-light" src="../figures/zh-Hans/light/settings-interface-restart.webp" alt="“通用”面板的“语言”部分，已选择 English，下方有关于退出并重新打开的提示和“退出 LemmaLoom”。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/settings-interface-restart.webp" alt="“通用”面板的“语言”部分，已选择 English，下方有关于退出并重新打开的提示和“退出 LemmaLoom”。" loading="lazy"><figcaption>“通用”面板的“语言”部分，已选择 English，下方有关于退出并重新打开的提示和“退出 LemmaLoom”。</figcaption></figure>
+<p>每种语言都以它自己的名称列出。</p>
+<p>界面语言是菜单、标签文字、提示信息、透镜及其标注项的名称、<strong class="ui">术语表</strong>，以及<strong class="ui">阅读器</strong>面板预览中的示例文本所用的语言。每个文档都按它本身的语言建立索引，所以即使界面语言设为英语，“气候辩论”中的中文文档仍然按中文建立索引。LemmaLoom 如何确定每个文档的语言，见<a href="analysis-and-indexing.html">第 21 章“分析与索引”</a>中的<a href="analysis-and-indexing.html#language-detection">LemmaLoom 如何确定语言</a>。</p>
+<p>如果在这个菜单中选择了一种界面语言，<strong class="ui">翻译</strong>对话框还会首先建议把文档译成这种语言。例如，选择 <strong class="ui">English</strong> 时，它会建议把中文评论文章“净零代价高昂”译成英语（见<a href="translations.html">第 9 章“译文与分屏浏览”</a>中的<a href="translations.html#translate-sheet">“翻译”对话框</a>）。</p>
+<p>示例项目的语言也由界面语言决定。选取<strong class="ui">文件 ▸ 导入 ▸ 示例项目</strong>时，英语界面下导入的是“Climate Debate”，德语界面下是“Klimadebatte”，中文界面下是“气候辩论”（见<a href="introduction.html">第 1 章“简介”</a>中的<a href="introduction.html#example-project">示例项目</a>）。之前已经导入 LemmaLoom 的副本保留原来的语言。</p>
+<h2 id="transcription-model">转录模型<a class="anchor" href="#transcription-model" aria-hidden="true">#</a></h2>
+<p>导入音频或视频文件后，LemmaLoom 会用语音识别模型自动转录其中的语音（见<a href="importing.html">第 4 章“导入资料”</a>中的<a href="importing.html#how-transcription-works">转录的工作方式</a>）。可以在<strong class="ui">转录</strong>下的<strong class="ui">模型</strong>菜单中选择使用哪个模型：</p>
+<div class="table-wrap"><table>
+<thead><tr><th>模型</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">Apple 语音识别</strong></td><td>初始设置，速度最快</td></tr>
+<tr><td><strong class="ui">Whisper Large v3 Turbo</strong></td><td>两个 Whisper 模型中较快的一个</td></tr>
+<tr><td><strong class="ui">Whisper Large v3</strong></td><td>较慢，处理难以听清的录音时有时略准确一些</td></tr>
+</tbody></table></div>
+<p>中文录音即使选择了 <strong class="ui">Apple 语音识别</strong>，也会使用 Whisper 转写，因为 Whisper 转写中文的质量更好。</p>
+<p>更换模型只影响之后导入的录音。要检验换一个模型能否改善结果，可以截取一小段难以听清的音频，用两个模型各导入一次，再并排比较两份转写文本。</p>
+<h2 id="exclusion-presets">排除预设<a class="anchor" href="#exclusion-presets" aria-hidden="true">#</a></h2>
+<p>导入文档时，或者修改文档的<strong class="ui">文档信息</strong>时，你可以让 LemmaLoom 忽略符合某些模式的文本，使语法分析完全不处理这些文本。这类模式可以是时间戳、说话人标签以及许多其他形式的文本（见<a href="importing.html">第 4 章“导入资料”</a>中的<a href="importing.html#exclude-from-analysis">从索引中排除文本</a>）。这些模式用<em>正则表达式</em>表示。正则表达式是对某一类文本的简洁描述，例如“方括号中的任意一个词”。输入模式的栏旁边有一个<strong class="ui">预设</strong>菜单，其中有五个默认预设。</p>
+<p><em>排除预设</em>是你自己定义的模式，有自己的名称，保存在上面提到的<strong class="ui">预设</strong>菜单中。</p>
+<p>假设你有几份电台对话的人工转写稿，其中的停顿、笑声和听不清的话分别记作 <code>[pause]</code>、<code>[laughs]</code> 和 <code>[inaudible]</code>（这些注释应当留在文本中，但并不是实际说出的话）。你可以按以下步骤为这三种注释建立排除预设。</p>
+<ol>
+<li>选取 <strong class="ui">LemmaLoom ▸ 设置…</strong>（⌘,），然后点按<strong class="ui">通用</strong>。</li>
+<li>在<strong class="ui">排除预设</strong>下点按<strong class="ui">添加预设</strong>。这时会出现新的一行，其中有两个空白栏。</li>
+<li>在<strong class="ui">名称</strong>栏中输入 <code>转录注释</code>。<strong class="ui">预设</strong>菜单中显示的就是这个名称。</li>
+<li>在<strong class="ui">模式</strong>栏中输入 <code>\[(inaudible|laughs|pause)\]</code>。</li>
+</ol>
+<p>栏下方的一行说明输入的正则表达式能匹配什么，例如<strong class="ui">匹配诸如[inaudible]的文本</strong>。如果 LemmaLoom 无法根据这个正则表达式生成一段能被它匹配的示例文本，这一行会显示<strong class="ui">有效模式</strong>。无效模式含有语法错误，例如括号不成对。遇到无效模式时，这一行会以红色字体显示<strong class="ui">无效模式</strong>。</p>
+<p>反斜杠让方括号按字面匹配，竖线则在圆括号组内分隔各个备选项。在圆括号内加上 <code>|crosstalk</code>，就能同时匹配 <code>[crosstalk]</code>。这个模式区分大小写，因此只匹配小写的 <code>[laughs]</code>。</p>
+<p>预设会在你输入时自动保存。它会出现在导入对话框（<strong class="ui">导入文档</strong>，网页则是<strong class="ui">从网页导入</strong>）和<strong class="ui">文档信息</strong>的<strong class="ui">预设</strong>菜单中，紧接在五个默认预设之后，两组之间有一条分隔线。</p>
+<figure class="shot" id="settings-exclusion-presets"><img class="shot-light" src="../figures/zh-Hans/light/settings-exclusion-presets.webp" alt="通用面板的排除预设部分，其中有“转录注释”预设。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/settings-exclusion-presets.webp" alt="通用面板的排除预设部分，其中有“转录注释”预设。" loading="lazy"><figcaption>通用面板的排除预设部分，其中有“转录注释”预设。</figcaption></figure>
+<figure class="shot" id="settings-presets-menu"><img class="shot-light" src="../figures/zh-Hans/light/settings-presets-menu.webp" alt="导入文档对话框中的“预设”菜单，其中有五个默认预设。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/settings-presets-menu.webp" alt="导入文档对话框中的“预设”菜单，其中有五个默认预设。" loading="lazy"><figcaption>导入文档对话框中的“预设”菜单，其中有五个默认预设。</figcaption></figure>
+<p>预设的名称和模式都填好后，<strong class="ui">预设</strong>菜单中就会添加一项。如果名称或模式还空着，这一项只留在设置中，直到你把它填完或删除。</p>
+<p>从<strong class="ui">预设</strong>菜单中选取预设时，它的模式会复制到文档中。模式已经复制到文档中的预设，在<strong class="ui">预设</strong>菜单中不可用。要更改这些模式，需要在每个文档的<strong class="ui">文档信息</strong>中分别编辑。</p>
+<p>选取模式无效的预设，会导致整个文档都建立索引。选取预设之前，请先查看模式下方的那一行。</p>
+<p>要删除预设，请点按它旁边的小减号按钮（<strong class="ui">移除预设</strong>）。这一项会立即消失。</p>
+<h2 id="reader-pane">阅读器面板<a class="anchor" href="#reader-pane" aria-hidden="true">#</a></h2>
+<p><strong class="ui">阅读器</strong>面板控制阅读器如何呈现文本。面板的前两个部分是<strong class="ui">排印</strong>和<strong class="ui">页面</strong>，其中的选项与阅读器标题栏中的<strong class="ui">字体、边栏与文字大小</strong>菜单相同（见<a href="reading-and-editing.html">第 5 章“阅读与编辑”</a>中的<a href="reading-and-editing.html#title-band">标题栏</a>）。<strong class="ui">显示 ▸ 增大文字</strong>（⌘+）、<strong class="ui">减小文字</strong>（⌘-）和<strong class="ui">重置文字大小</strong>（⌘0）这几个命令调整的也是同一个文字大小，在一处更改，其他几处也会随之改变。</p>
+<div class="table-wrap"><table>
+<thead><tr><th>部分</th><th>行</th><th>选项</th><th>初始值</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">排印</strong></td><td><strong class="ui">字体</strong></td><td><strong class="ui">System Serif</strong>、<strong class="ui">System Sans</strong>、<strong class="ui">System Rounded</strong>、<strong class="ui">System Mono</strong>、<strong class="ui">Georgia</strong>、<strong class="ui">Palatino</strong>、<strong class="ui">Baskerville</strong>、<strong class="ui">Times New Roman</strong>、<strong class="ui">Helvetica Neue</strong>、<strong class="ui">Avenir Next</strong>、<strong class="ui">Menlo</strong></td><td><strong class="ui">System Serif</strong></td></tr>
+<tr><td><strong class="ui">排印</strong></td><td><strong class="ui">文字大小</strong></td><td>从 70% 到 200% 的滑块，每级 10%</td><td>100%</td></tr>
+<tr><td><strong class="ui">页面</strong></td><td><strong class="ui">版式</strong></td><td><strong class="ui">单栏</strong>、<strong class="ui">双页跨页</strong></td><td><strong class="ui">单栏</strong></td></tr>
+<tr><td><strong class="ui">页面</strong></td><td><strong class="ui">页边编号</strong></td><td><strong class="ui">关闭</strong>、<strong class="ui">段落</strong>、<strong class="ui">句子</strong>、<strong class="ui">两者</strong></td><td><strong class="ui">两者</strong></td></tr>
+</tbody></table></div>
+<p><em>页边栏</em>是文本左侧的一栏，阅读器在这里为文档的段落和句子编号（见<a href="reading-and-editing.html">第 5 章“阅读与编辑”</a>中的<a href="reading-and-editing.html#gutter">页边栏</a>）。文字大小百分比旁边的弯箭头图标是<strong class="ui">重置</strong>，它把文字恢复为默认的 100%。文字大小为 100% 时，弯箭头不可用，将鼠标指针悬停在上面会显示<strong class="ui">已是默认值</strong>。关于字体、文字大小、版式和页边编号，详见<a href="reading-and-editing.html">第 5 章“阅读与编辑”</a>中的<a href="reading-and-editing.html#text-appearance">更改文本的呈现方式</a>。</p>
+<p>点按面板顶部的<strong class="ui">全部重置为默认</strong>，可以一次把面板中的所有行恢复为初始值。</p>
+<h3 id="selection-settings">选择<a class="anchor" href="#selection-settings" aria-hidden="true">#</a></h3>
+<p><strong class="ui">选择</strong>部分决定阅读器如何显示你选中的内容，以及如何处理选区周围的其余文本。</p>
+<div class="table-wrap"><table>
+<thead><tr><th>行</th><th>选项</th><th>显示效果</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">所选文本</strong></td><td><strong class="ui">实心块</strong></td><td>文字颜色的圆角色块，所选的词改用背景色显示</td></tr>
+<tr><td></td><td><strong class="ui">高亮</strong></td><td>所选的词后面衬一层浅色</td></tr>
+<tr><td><strong class="ui">中心词和依存词</strong></td><td><strong class="ui">弧线</strong></td><td>从所选的词分别连到它的中心词和每个依存词的曲线，依存词一端带有小箭头</td></tr>
+<tr><td></td><td><strong class="ui">连线</strong></td><td>同样的连接，画成文本上方的方括号</td></tr>
+<tr><td></td><td><strong class="ui">标签</strong></td><td>在每个相关的词上方显示关系的名称</td></tr>
+<tr><td></td><td><strong class="ui">高亮</strong></td><td>中心词加黄色底色，依存词加淡紫色底色</td></tr>
+<tr><td></td><td><strong class="ui">关闭</strong></td><td>只显示选区本身</td></tr>
+<tr><td><strong class="ui">周围文本</strong></td><td><strong class="ui">淡化</strong></td><td>包含选区的句子之外，文档的其余部分都变暗</td></tr>
+<tr><td></td><td><strong class="ui">轻度淡化</strong></td><td>同上，但变暗的程度较轻</td></tr>
+<tr><td></td><td><strong class="ui">高亮句子</strong></td><td>所选的词所在的句子加上底色</td></tr>
+<tr><td></td><td><strong class="ui">关闭</strong></td><td>整个文档照常显示</td></tr>
+<tr><td><strong class="ui">音频播放</strong></td><td><strong class="ui">聚光</strong></td><td>除正在播放的段落外，其余全部变暗</td></tr>
+<tr><td></td><td><strong class="ui">实心块</strong></td><td>正在播放的段落衬在强调色的色块上</td></tr>
+<tr><td></td><td><strong class="ui">高亮</strong></td><td>正在播放的段落衬一层浅浅的强调色</td></tr>
+</tbody></table></div>
+<p>每一行的第一个选项是默认设置。</p>
+<figure class="shot" id="settings-surrounding-text-menu"><img class="shot-light" src="../figures/zh-Hans/light/settings-surrounding-text-menu.webp" alt="“阅读器”面板，“中心词和依存词”下选择了“弧线”，“周围文本”菜单已打开。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/settings-surrounding-text-menu.webp" alt="“阅读器”面板，“中心词和依存词”下选择了“弧线”，“周围文本”菜单已打开。" loading="lazy"><figcaption>“阅读器”面板，“中心词和依存词”下选择了“弧线”，“周围文本”菜单已打开。</figcaption></figure>
+<p><strong class="ui">中心词和依存词</strong>在你选中单个词时起作用。<em>中心词</em>是当前这个词在句子语法结构中所从属的词，例如以所选词为主语的动词。一个词的<em>依存词</em>是所有依附于它的词。词与词之间的关系及其分类，详见<a href="grammar-inspector.html">第 11 章“语法检查器”</a>。所有弧线、连线和标签都按<strong class="ui">语法功能</strong>透镜的默认颜色着色。</p>
+<p>面板底部的<strong class="ui">预览</strong>显示的是<em>老狐狸望着平静的河水。</em>这句话，其中<em>狐狸</em>已选中。<em>狐狸</em>是<em>望</em>的主语，所以<em>望</em>是<em>狐狸</em>的中心词。<em>狐狸</em>的依存词是<em>老</em>。选择<strong class="ui">标签</strong>时，预览会在<em>望</em>的上方显示 ▲ <code>nsubj</code>（名词性主语），在<em>老</em>的上方显示 <code>amod</code>（形容词修饰语）。标签表示每个词与<em>狐狸</em>之间的语法功能关系，▲ 表示中心词。德语文档使用另一套标签，例如 <code>nsubj</code> 变为 <code>sb</code>。</p>
+<p><strong class="ui">周围文本</strong>还决定你跳转到某段文字时它如何显示，例如从查询命中跳转过去时。选择<strong class="ui">轻度淡化</strong>或<strong class="ui">淡化</strong>时，周围的文本会变淡；选择<strong class="ui">高亮句子</strong>或<strong class="ui">关闭</strong>时，这段文字则改为以浅黄色高亮。</p>
+<p><strong class="ui">音频播放</strong>只在阅读器跟随录音时起作用，也就是播放栏中的<strong class="ui">随音频滚动</strong>处于打开状态时（见<a href="reading-and-editing.html">第 5 章“阅读与编辑”</a>中的<a href="reading-and-editing.html#following-transcript">跟随转写文本</a>）。<strong class="ui">聚光</strong>让其余文本变淡的程度取决于<strong class="ui">周围文本</strong>的设置。选择<strong class="ui">轻度淡化</strong>时变淡得少一些，选择其他选项时与<strong class="ui">淡化</strong>的程度相同。</p>
+<h3 id="reader-preview">预览<a class="anchor" href="#reader-preview" aria-hidden="true">#</a></h3>
+<p>面板底部是<strong class="ui">预览</strong>，它按你的偏好（字体、文字大小和主题）显示两段简短的文本。第一段包含一个选中的词，以及它的中心词和所有依存词。第二段显示文本在播放时的样子。你更改上方各行时，两段文本都会随之变化；它们的文字使用界面语言。</p>
+<figure class="shot" id="settings-reader-pane"><img class="shot-light" src="../figures/zh-Hans/light/settings-reader-pane.webp" alt="阅读器面板，“中心词和依存词”设为“标签”，下方是预览。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/settings-reader-pane.webp" alt="阅读器面板，“中心词和依存词”设为“标签”，下方是预览。" loading="lazy"><figcaption>阅读器面板，“中心词和依存词”设为“标签”，下方是预览。</figcaption></figure>
+<h2 id="lenses-pane">透镜面板<a class="anchor" href="#lenses-pane" aria-hidden="true">#</a></h2>
+<p><em>透镜</em>按某种分类标注文档中的词，例如按词类分类（见<a href="lenses.html">第 6 章“透镜”</a>）。<em>标注项</em>是一个透镜中的各个类别，例如<strong class="ui">词类</strong>中的<strong class="ui">名词</strong>。<strong class="ui">透镜</strong>面板用来设置四个内置透镜中每个标注项的颜色和样式。如果两个标注项看起来很相似，或者你要同时使用多个透镜，这个面板就很有用。</p>
+<p><strong class="ui">透镜</strong>面板为这四个透镜各设一个部分：</p>
+<div class="table-wrap"><table>
+<thead><tr><th>部分</th><th>行</th><th>初始样式</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">词类</strong></td><td><strong class="ui">名词</strong>、<strong class="ui">动词</strong>、<strong class="ui">形容词</strong>、<strong class="ui">副词</strong>、<strong class="ui">代词</strong>、<strong class="ui">限定词</strong>、<strong class="ui">介词</strong>、<strong class="ui">连词</strong>、<strong class="ui">数词</strong>、<strong class="ui">感叹词</strong></td><td><strong class="ui">下划线</strong></td></tr>
+<tr><td><strong class="ui">语法功能</strong></td><td><strong class="ui">主语</strong>、<strong class="ui">宾语</strong>、<strong class="ui">表语</strong>、<strong class="ui">补语</strong>、<strong class="ui">定语</strong>、<strong class="ui">状语</strong>、<strong class="ui">同位语</strong>、<strong class="ui">施事</strong>、<strong class="ui">并列项</strong>、<strong class="ui">连接词</strong></td><td><strong class="ui">下划线</strong></td></tr>
+<tr><td><strong class="ui">短语</strong></td><td><strong class="ui">名词短语</strong>、<strong class="ui">动词短语</strong>、<strong class="ui">介词短语</strong>、<strong class="ui">形容词短语</strong>、<strong class="ui">副词短语</strong>、<strong class="ui">连词短语</strong>、<strong class="ui">感叹词</strong>、<strong class="ui">名词组块</strong></td><td><strong class="ui">高亮</strong></td></tr>
+<tr><td><strong class="ui">形态学</strong></td><td>20 行，每行以一项特征及其一个取值命名，从<strong class="ui">时态：过去时</strong>到<strong class="ui">性：中性</strong></td><td><strong class="ui">高亮</strong></td></tr>
+</tbody></table></div>
+<p><strong class="ui">形态学</strong>的各行涉及<strong class="ui">时态</strong>、<strong class="ui">数</strong>、<strong class="ui">级</strong>、<strong class="ui">动词形式</strong>、<strong class="ui">格</strong>、<strong class="ui">语气</strong>和<strong class="ui">性</strong>。<strong class="ui">形态学</strong>透镜适用于英语和德语文档，但<strong class="ui">格</strong>、<strong class="ui">语气</strong>和<strong class="ui">性</strong>只出现在德语文档中。每个词只显示一项形态特征，因此处于与格的德语名词只显示<strong class="ui">格：与格</strong>。更多内容见<a href="lenses.html">第 6 章“透镜”</a>中的<a href="lenses.html#morphology">形态学</a>。</p>
+<p>相比之下，其他内置透镜（例如<strong class="ui">情态</strong>和<strong class="ui">衔接</strong>）使用预先设定的颜色。词典透镜、查询透镜和分析器透镜的颜色则分别来自对应的词典、查询和分析器。</p>
+<p>每一行都有标注项的名称、样式菜单和颜色池；标注项被修改后，行中还会出现一个重置按钮。样式菜单提供四种样式，每种都带有相应的图标。</p>
+<div class="table-wrap"><table>
+<thead><tr><th>样式</th><th>标注的词的外观</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">高亮</strong></td><td>词的后面衬一条该颜色的浅色色带</td></tr>
+<tr><td><strong class="ui">下划线</strong></td><td>词的下面有一条该颜色的线</td></tr>
+<tr><td><strong class="ui">文本颜色</strong></td><td>文字显示为该颜色</td></tr>
+<tr><td><strong class="ui">粗体</strong></td><td>文字以该颜色的粗体显示</td></tr>
+</tbody></table></div>
+<p>颜色是否足够醒目，取决于样式本身。<strong class="ui">高亮</strong>只在背景上铺一层淡淡的颜色，较浅的颜色未必看得出来。<strong class="ui">文本颜色</strong>和<strong class="ui">粗体</strong>直接用这种颜色显示文字本身，因此这种颜色需要与主题的背景色形成鲜明对比。另见<a href="lenses.html">第 6 章“透镜”</a>中的<a href="lenses.html#lens-colors-and-styles">透镜的颜色与样式</a>。</p>
+<h3 id="changing-a-key">更改标注项<a class="anchor" href="#changing-a-key" aria-hidden="true">#</a></h3>
+<p>示例项目中有“时间不多了 (英语)”，即“时间不多了”的英文译本。它适合用来观察过去时，也就是英语中 <em>was</em>、<em>told</em> 这类表示过去的动词形式。如果还没有导入“气候辩论”，请通过<strong class="ui">文件 ▸ 导入 ▸ 示例项目</strong>导入。在<strong class="ui">形态学</strong>透镜中，每一项特征起初都显示为浅色高亮。要让过去时与其他特征区分开，请按以下步骤操作：</p>
+<ol>
+<li>选取 <strong class="ui">LemmaLoom ▸ 设置…</strong>（⌘,），然后点按<strong class="ui">透镜</strong>。</li>
+<li>向下滚动到<strong class="ui">形态学</strong>部分，找到<strong class="ui">时态：过去时</strong>这一行。</li>
+<li>打开它的样式菜单（当前显示<strong class="ui">高亮</strong>），选取<strong class="ui">粗体</strong>。</li>
+<li>点按旁边的颜色池（那个色块）。在打开的 macOS 颜色选取器中，选择一种深红色。</li>
+<li>打开“时间不多了 (英语)”，在透镜菜单中启用<strong class="ui">形态学</strong>（见<a href="lenses.html">第 6 章“透镜”</a>中的<a href="lenses.html#lens-menu">透镜菜单</a>）。</li>
+</ol>
+<p>现在，过去时的词显示为深红色粗体，其他特征仍是浅色高亮。对<strong class="ui">词类</strong>、<strong class="ui">语法功能</strong>和<strong class="ui">短语</strong>标注项的更改同样适用于<strong class="ui">术语表</strong>（<strong class="ui">帮助 ▸ 术语表</strong>），因为术语表中代表这些标注项的每个标记或术语，都以该标注项的颜色和样式显示。文本上方的图例项保持默认颜色不变，所以<strong class="ui">时态：过去时</strong>图例项仍是紫色。这四个透镜的任何标注项都可以按同样的步骤更改。</p>
+<figure class="shot" id="settings-lens-style-menu"><img class="shot-light" src="../figures/zh-Hans/light/settings-lens-style-menu.webp" alt="透镜面板的形态学部分中，“格：与格”的样式菜单已打开。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/settings-lens-style-menu.webp" alt="透镜面板的形态学部分中，“格：与格”的样式菜单已打开。" loading="lazy"><figcaption>透镜面板的形态学部分中，“格：与格”的样式菜单已打开。</figcaption></figure>
+<h3 id="lens-defaults">恢复默认设置<a class="anchor" href="#lens-defaults" aria-hidden="true">#</a></h3>
+<p>修改过的标注项在行末会出现一个重置按钮，形状是一个弯箭头。点按这个按钮，标注项就会恢复默认的颜色和样式。</p>
+<p>面板最上方的<strong class="ui">全部重置为默认</strong>会重置全部四个透镜的所有标注项。这项重置是永久性的。</p>
+<h2 id="where-settings-are-stored">设置保存在哪里<a class="anchor" href="#where-settings-are-stored" aria-hidden="true">#</a></h2>
+<p>你在设置窗口中所做的任何更改，只作用于你正在使用的这台 Mac。保存项目的资料库（见<a href="getting-started.html">第 2 章“开始使用”</a>中的<a href="getting-started.html#library">工作保存在哪里</a>）还会记住你在每个项目中的位置。</p>
+<div class="table-wrap"><table>
+<thead><tr><th>设置</th><th>保存位置</th></tr></thead>
+<tbody>
+<tr><td>你在设置窗口中所做的一切选择</td><td>这台 Mac 上</td></tr>
+<tr><td><strong class="ui">随音频滚动</strong>、视频的大小和位置，以及视频是否折叠</td><td>这台 Mac 上</td></tr>
+<tr><td>分屏浏览中两个文档之间的分隔条、分析面板内部的分隔条（例如查询构建器与结果之间的那一条），以及词汇速写的显示方式</td><td>这台 Mac 上</td></tr>
+<tr><td>收藏的项目、你打开的项目、每个项目打开的标签页，以及每个文档的阅读位置、透镜和检查器（是否显示、宽度以及当前标签页）</td><td>资料库中</td></tr>
+</tbody></table></div>
+<p>你的项目，连同收藏、打开的标签页和阅读位置，都可以随资料库转移到另一台 Mac 上，也可以从较早的备份副本中恢复。设置则是每台 Mac 各自独立的，所以如果希望各台 Mac 一致，就需要在每台 Mac 上分别选择主题、字体和透镜样式等设置。</p>
+<p>同事查看你的 LemmaLoom 归档或 REFI-QDA 项目时，所有内容都按对方 Mac 上的设置显示，也就是说，文档的外观取决于对方的主题、字体和透镜样式（见<a href="exchange-and-export.html">第 22 章“交换与导出”</a>）。</p>
+</article>
+<nav class="pager"><a class="previous" href="undo.html"><span>上一章</span>撤销与重做</a><a class="next" href="keyboard-shortcuts.html"><span>下一章</span>键盘快捷键</a></nav>
+<footer class="site-footer">© 2026 Ryan S. Cooper. 保留所有权利。<br>本版本借助人工智能根据英文原版翻译而成，译文可能存在错误或不准确之处。如有疑问，请以英文版为准。</footer>
+</main>
+<nav class="page-toc" aria-label="本页内容"><p>本页内容</p><ul>
+<li class="level-2"><a href="#settings-window">设置窗口</a></li>
+<li class="level-2"><a href="#themes">主题</a></li>
+<li class="level-3"><a href="#window-tinting">主题改变哪些地方</a></li>
+<li class="level-3"><a href="#fixed-colors">不随主题改变的颜色</a></li>
+<li class="level-2"><a href="#interface-language">界面语言</a></li>
+<li class="level-2"><a href="#transcription-model">转录模型</a></li>
+<li class="level-2"><a href="#exclusion-presets">排除预设</a></li>
+<li class="level-2"><a href="#reader-pane">阅读器面板</a></li>
+<li class="level-3"><a href="#selection-settings">选择</a></li>
+<li class="level-3"><a href="#reader-preview">预览</a></li>
+<li class="level-2"><a href="#lenses-pane">透镜面板</a></li>
+<li class="level-3"><a href="#changing-a-key">更改标注项</a></li>
+<li class="level-3"><a href="#lens-defaults">恢复默认设置</a></li>
+<li class="level-2"><a href="#where-settings-are-stored">设置保存在哪里</a></li>
+</ul></nav>
+</div>
+<script src="../assets/guide.js" defer></script>
+</body>
+</html>

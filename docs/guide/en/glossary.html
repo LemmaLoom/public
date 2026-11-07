@@ -1,0 +1,720 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glossary · LemmaLoom User Guide</title>
+<link rel="stylesheet" href="../assets/guide.css">
+<link rel="icon" type="image/png" href="../assets/logo.png">
+<script>var r=document.documentElement;r.setAttribute('data-theme','light');try{if(localStorage.getItem('guide-theme')==='dark'){r.setAttribute('data-theme','dark')}}catch(e){}</script>
+</head>
+<body>
+<header class="topbar">
+<button class="menu-toggle" aria-label="Contents" aria-expanded="false">☰</button>
+<a class="brand" href="index.html"><span class="wordmark"><span class="lemma">Lemma</span>Loom</span><span class="guide-name">User Guide</span></a>
+<div class="search"><input type="search" id="search" placeholder="Search" aria-label="Search" autocomplete="off" data-empty="No results"><div class="results" id="results" hidden></div></div>
+<nav class="languages" aria-label="Language"><a href="../en/glossary.html" lang="en" aria-current="true">English</a><a href="../de/glossary.html" lang="de">Deutsch</a><a href="../zh-Hans/glossary.html" lang="zh-Hans">简体中文</a></nav>
+<button class="theme-toggle" data-light="Light" data-dark="Dark" aria-label="Theme"></button>
+<a class="pdf-link" href="https://github.com/LemmaLoom/public/raw/main/pdf/lemmaloom-guide-en.pdf">PDF</a>
+</header>
+<div class="layout">
+<nav class="sidebar" aria-label="Contents"><ol>
+<li class="unnumbered"><a href="quick-start.html">Quick Start</a></li>
+<li><a href="introduction.html">Introduction</a></li>
+<li><a href="getting-started.html">Getting Started</a></li>
+<li><a href="projects-and-documents.html">Projects and Documents</a></li>
+<li><a href="importing.html">Importing Material</a></li>
+<li><a href="reading-and-editing.html">Reading and Editing</a></li>
+<li><a href="lenses.html">Lenses</a></li>
+<li><a href="coding.html">Coding</a></li>
+<li><a href="sets-tags-attributes.html">Sets, Groups, Tags, and Attributes</a></li>
+<li><a href="translations.html">Translations and Split View</a></li>
+<li><a href="text-inspector.html">The Text Inspector</a></li>
+<li><a href="grammar-inspector.html">The Grammar Inspector</a></li>
+<li><a href="word-sketch.html">Word Sketch</a></li>
+<li><a href="coding-analysis.html">Analyzing Codes</a></li>
+<li><a href="sketch-space.html">Sketch Space</a></li>
+<li><a href="queries-building.html">Building a Query</a></li>
+<li><a href="queries-results.html">Query Results and Statistics</a></li>
+<li><a href="queries-patterns.html">Query Patterns and Discovery</a></li>
+<li><a href="queries-using-results.html">Using Query Results</a></li>
+<li><a href="dictionaries.html">Dictionaries</a></li>
+<li><a href="custom-analyzers.html">Custom Analyzers</a></li>
+<li><a href="analysis-and-indexing.html">Analysis and Indexing</a></li>
+<li><a href="exchange-and-export.html">Exchanging and Exporting</a></li>
+<li><a href="undo.html">Undo and Redo</a></li>
+<li><a href="settings.html">Settings and Appearance</a></li>
+<li><a href="keyboard-shortcuts.html">Keyboard Shortcuts</a></li>
+<li><a href="help-and-support.html">Help and Support</a></li>
+<li><a href="statistics-reference.html">Statistics at a Glance</a></li>
+<li class="current unnumbered"><a href="glossary.html">Glossary</a></li>
+<li class="unnumbered"><a href="thanks.html">Thank You</a></li>
+</ol></nav>
+<main class="content">
+<article>
+<h1 id="glossary">Glossary</h1>
+<p>These are the definitions shown in <strong class="ui">Help ▸ Glossary</strong>, grouped as in the app.</p>
+<h2 id="concepts">Concepts<a class="anchor" href="#concepts" aria-hidden="true">#</a></h2>
+<p><strong class="ui">Analyzer</strong>: A module that runs during indexing and adds findings, such as cohesion or rhetoric, to a document.</p>
+<p><strong class="ui">Anatomy</strong>: A bar showing how a sentence’s words divide among its clause slots, such as subject, verb, and objects.</p>
+<p><strong class="ui">Attribute</strong>: Attributes describe your documents; for example author, wave, or rating.</p>
+<p><strong class="ui">Bookmark</strong>: A marked passage to return to, with an optional comment.</p>
+<p><strong class="ui">Code</strong>: A label for a theme or idea that you apply to passages of text.</p>
+<p><strong class="ui">Code format</strong>: How coded text is drawn in the reader: highlighted, underlined, or boxed.</p>
+<p><strong class="ui">Code Matrix</strong>: A table of how often each code is applied in each document.</p>
+<p><strong class="ui">Code scope</strong>: Whether a code belongs to the whole project, to one document set, or to one document.</p>
+<p><strong class="ui">Code set</strong>: A named collection of codes for filtering and comparing.</p>
+<p><strong class="ui">Code Stats</strong>: Frequencies and coverage of codes across a scope.</p>
+<p><strong class="ui">Code System</strong>: The hierarchy of all codes in a project.</p>
+<p><strong class="ui">Codebook</strong>: The codes of a project with their descriptions and how they are used across a scope.</p>
+<p><strong class="ui">Coded memo</strong>: A memo attached to a passage and assigned to a code, whose attributes and tags it inherits.</p>
+<p><strong class="ui">Codeline</strong>: Codes present in each sentence, top to bottom.</p>
+<p><strong class="ui">Coding</strong>: One application of a code to a passage of text.</p>
+<p><strong class="ui">Constituency</strong>: Phrase structure: how words group into nested phrases.</p>
+<p><strong class="ui">Custom analyzer</strong>: An analyzer written in JavaScript.</p>
+<p><strong class="ui">Dependency</strong>: A grammatical relation between a word and the word it depends on, its head.</p>
+<p><strong class="ui">Dictionary</strong>: Categories of terms counted across the documents of a project.</p>
+<p><strong class="ui">Document</strong>: A text, web page, PDF, or transcribed recording in a project.</p>
+<p><strong class="ui">Document set</strong>: A named collection of documents that can serve as the scope of an analysis; a document can be in many sets.</p>
+<p><strong class="ui">Exclude from indexing</strong>: Matching text is skipped by indexing, but stays visible in the reader and can still be coded.</p>
+<p><strong class="ui">Form × Function</strong>: A matrix of which forms, such as noun phrases or clauses, do which grammatical jobs.</p>
+<p><strong class="ui">Group</strong>: A folder in the navigator for organizing documents; a document belongs to at most one group.</p>
+<p><strong class="ui">Indexing</strong>: The grammar analysis of a document: sentences, tokens, parts of speech, dependencies, and phrase structure.</p>
+<p><strong class="ui">Lemma</strong>: The dictionary form of a word, such as run for ran and running.</p>
+<p><strong class="ui">Lens</strong>: A layer that colors or annotates the text in the reader by a grammatical or analytic category.</p>
+<p><strong class="ui">Link</strong>: A connection between two passages, with an optional relation and comment.</p>
+<p><strong class="ui">Memo</strong>: A note attached to a passage, a document, a code, or the project.</p>
+<p><strong class="ui">Mosaic</strong>: Code colors in reading order, sized by segment length.</p>
+<p><strong class="ui">Portrait</strong>: A visual overview of where codes appear in a document.</p>
+<p><strong class="ui">Project</strong>: A collection of documents with its own codes, sets, attributes, and dictionaries.</p>
+<p><strong class="ui">REFI-QDA Codebook</strong> <code>.qdc</code>: A standard file format for exchanging code systems between qualitative analysis programs.</p>
+<p><strong class="ui">REFI-QDA Project</strong> <code>.qdpx</code>: A standard file format for exchanging whole projects between qualitative analysis programs.</p>
+<p><strong class="ui">Relations</strong>: A table of how often codes overlap in the same passages.</p>
+<p><strong class="ui">Segment</strong>: The passage of text that a coding covers.</p>
+<p><strong class="ui">Subcode</strong>: A code nested under another code.</p>
+<p><strong class="ui">Tag</strong>: A free-form label for organizing projects, documents, codes, memos, and links.</p>
+<p><strong class="ui">Token</strong>: A single word or punctuation mark as the parser segments the text.</p>
+<p><strong class="ui">Transcript</strong>: The text of a recording, with each passage linked to its time in the media.</p>
+<h2 id="reader">Reader and lenses<a class="anchor" href="#reader" aria-hidden="true">#</a></h2>
+<p><strong class="ui">Bookmarks</strong>: Shows bookmarked passages.</p>
+<p><strong class="ui">Codes</strong>: Shows coded segments in their code colors and formats.</p>
+<p><strong class="ui">Cohesion</strong>: Shows how each sentence ties back to what came before.</p>
+<p><strong class="ui">Connectives</strong>: Annotates words that link ideas, grouped by the relation they express.</p>
+<p><strong class="ui">Constructions</strong>: Annotates characteristic Chinese constructions such as 把 and 被. <em>(Chinese)</em></p>
+<p><strong class="ui">Grammatical function</strong>: Colors words by the job they do in the sentence, such as subject or object.</p>
+<p><strong class="ui">Metadiscourse</strong>: Annotates words with which writers guide readers, such as hedges and boosters.</p>
+<p><strong class="ui">Modality</strong>: Annotates expressions of ability, possibility, necessity, obligation, and volition.</p>
+<p><strong class="ui">Morphology</strong>: Annotates grammatical features such as tense, number, and case. <em>(English, German)</em></p>
+<p><strong class="ui">Negation</strong>: Annotates negators and the part of the sentence they negate.</p>
+<p><strong class="ui">Particles</strong>: Annotates Chinese aspect particles, structural particles, and classifiers. <em>(Chinese)</em></p>
+<p><strong class="ui">Phrase</strong>: Annotates phrases such as noun phrases and prepositional phrases.</p>
+<p><strong class="ui">Rhetoric</strong>: Annotates rhetorical devices found by the Rhetoric analyzer.</p>
+<p><strong class="ui">Sentence fields</strong>: Annotates the topological fields of German sentences. <em>(German)</em></p>
+<p><strong class="ui">Word class</strong>: Colors each word by its part of speech.</p>
+<h2 id="grammar">Grammar<a class="anchor" href="#grammar" aria-hidden="true">#</a></h2>
+<p><strong class="ui">Ability</strong>: Modal meaning of being able to do something.</p>
+<p><strong class="ui">Additive</strong>: A connective that adds information to what came before.</p>
+<p><strong class="ui">Adjectival</strong> <code>Adj'l</code>: A word or phrase that modifies a noun, doing an adjective’s job.</p>
+<p><strong class="ui">Adverbial</strong> <code>Adv'l</code>: A word, phrase, or clause that modifies a verb, adjective, or clause, telling how, when, where, or why.</p>
+<p><strong class="ui">Adversative</strong>: A connective that signals contrast or opposition.</p>
+<p><strong class="ui">Agent</strong>: In a passive clause, the doer of the action, usually introduced by by.</p>
+<p><strong class="ui">Appositive</strong> <code>Appos</code>: A noun phrase next to another that renames it, as in my friend, a teacher.</p>
+<p><strong class="ui">Be + adverbial</strong> <code>S · be · ADV</code>: “Be” linking the subject to a place or time. <em>(English)</em></p>
+<p><strong class="ui">Be + complement</strong> <code>S · be · SC</code>: “Be” linking the subject to a noun or adjective that renames or describes it. <em>(English)</em></p>
+<p><strong class="ui">Causal</strong>: A connective that signals cause, reason, or result.</p>
+<p><strong class="ui">Classifier</strong>: A measure word required between a number or demonstrative and a noun. <em>(Chinese)</em></p>
+<p><strong class="ui">Complement</strong> <code>Comp</code>: A phrase or clause that a word needs to complete its meaning, such as the clause after decide.</p>
+<p><strong class="ui">Complex transitive</strong> <code>S · V · DO · OC</code>: A direct object plus a complement that describes it. <em>(English)</em></p>
+<p><strong class="ui">Concessive</strong>: A connective that concedes a point without giving up the main claim.</p>
+<p><strong class="ui">Conditional</strong>: A connective that introduces a condition.</p>
+<p><strong class="ui">Conjunct</strong> <code>Conj</code>: An element joined by coordination to another of the same kind, such as dogs in cats and dogs.</p>
+<p><strong class="ui">Connector</strong>: A word that links clauses or phrases, such as a conjunction or a relative pronoun.</p>
+<p><strong class="ui">Ditransitive</strong> <code>S · V · IO · DO</code>: A verb with both an indirect and a direct object (give, send, tell...). <em>(English)</em></p>
+<p><strong class="ui">Existential 有</strong>: 有 used to state that something exists or is present somewhere. <em>(Chinese)</em></p>
+<p><strong class="ui">Fragment</strong> <code>—</code>: Not a complete independent clause. <em>(English)</em></p>
+<p><strong class="ui">Imperative</strong> <code>(You) · V</code>: A command, with the subject “you” understood. <em>(English)</em></p>
+<p><strong class="ui">Intransitive</strong> <code>S · V</code>: A verb with no object; the action stays with the subject. <em>(English)</em></p>
+<p><strong class="ui">Linke Klammer</strong>: The left bracket of the German sentence frame: the finite verb in main clauses, the subordinating conjunction in subordinate clauses. <em>(German)</em></p>
+<p><strong class="ui">Linking</strong> <code>S · LV · SC</code>: A linking verb (seem, become, taste...) joining the subject to a complement that describes it. <em>(English)</em></p>
+<p><strong class="ui">Main clause</strong>: The independent clause a sentence is built around; its verb is the root of the dependency tree.</p>
+<p><strong class="ui">Mittelfeld</strong>: The field between the two brackets, holding objects, adverbials, and often the subject. <em>(German)</em></p>
+<p><strong class="ui">Nachfeld</strong>: The position after the right bracket, often holding extraposed clauses. <em>(German)</em></p>
+<p><strong class="ui">Necessity</strong>: Modal meaning of something being necessary or certain.</p>
+<p><strong class="ui">Negation scope</strong>: The stretch of the sentence that a negation applies to.</p>
+<p><strong class="ui">Negator</strong>: A word that negates, such as not, never, or no.</p>
+<p><strong class="ui">Object</strong> <code>Obj</code>: A noun phrase that completes a verb or preposition, typically the one affected by the action.</p>
+<p><strong class="ui">Obligation</strong>: Modal meaning of a duty or requirement placed on someone.</p>
+<p><strong class="ui">Possibility</strong>: Modal meaning of something being possible or likely.</p>
+<p><strong class="ui">Predicative</strong> <code>Pred</code>: A phrase after a linking verb that describes or identifies the subject, as in she is a doctor.</p>
+<p><strong class="ui">Question</strong> <code>?</code>: A direct question. <em>(English)</em></p>
+<p><strong class="ui">Rechte Klammer</strong>: The right bracket: non-finite verbs, separated verb particles, or the finite verb in subordinate clauses. <em>(German)</em></p>
+<p><strong class="ui">Subject</strong> <code>Subj</code>: The constituent a clause is about; usually it agrees with the verb and performs the action.</p>
+<p><strong class="ui">Subjunctive</strong>: The German verb mood (Konjunktiv) for reported speech, hypotheses, and polite requests. <em>(German)</em></p>
+<p><strong class="ui">Temporal</strong>: A connective that orders events in time.</p>
+<p><strong class="ui">Transitive</strong> <code>S · V · DO</code>: A verb acting on a direct object. <em>(English)</em></p>
+<p><strong class="ui">Volition</strong>: Modal meaning of wanting or intending.</p>
+<p><strong class="ui">Vorfeld</strong>: The position before the finite verb in a German main clause; it holds one constituent, often the topic. <em>(German)</em></p>
+<p><strong class="ui">了 perfective</strong>: Aspect particle marking a completed action. <em>(Chinese)</em></p>
+<p><strong class="ui">地 adverbial</strong>: Particle linking an adverbial modifier to its verb. <em>(Chinese)</em></p>
+<p><strong class="ui">得 complement</strong>: Particle introducing a complement of degree or result after a verb. <em>(Chinese)</em></p>
+<p><strong class="ui">把 disposal</strong>: The 把 construction moves the object before the verb to show what is done to it. <em>(Chinese)</em></p>
+<p><strong class="ui">是…的 focus</strong>: The 是…的 frame highlights the time, place, or manner of a past event. <em>(Chinese)</em></p>
+<p><strong class="ui">的 attributive</strong>: Particle linking a modifier to the noun it describes. <em>(Chinese)</em></p>
+<p><strong class="ui">着 durative</strong>: Aspect particle marking an ongoing action or a resulting state. <em>(Chinese)</em></p>
+<p><strong class="ui">被 passive</strong>: The 被 construction marks a passive, with the affected participant as subject. <em>(Chinese)</em></p>
+<p><strong class="ui">过 experiential</strong>: Aspect particle marking that something has been experienced at least once. <em>(Chinese)</em></p>
+<h2 id="parts-of-speech">Part-of-speech tags<a class="anchor" href="#parts-of-speech" aria-hidden="true">#</a></h2>
+<p><strong class="ui">Adjective</strong> <code>ADJ</code>: describes a noun; big, old, green</p>
+<p><strong class="ui">Adposition</strong> <code>ADP</code>: a preposition; in, to, during</p>
+<p><strong class="ui">Adverb</strong> <code>ADV</code>: modifies a verb or adjective; very, well, quickly</p>
+<p><strong class="ui">Auxiliary</strong> <code>AUX</code>: a helping verb; is, has, will, should</p>
+<p><strong class="ui">Coordinating conjunction</strong> <code>CCONJ</code>: joins equal parts; and, or, but</p>
+<p><strong class="ui">Determiner</strong> <code>DET</code>: introduces a noun; a, the, this</p>
+<p><strong class="ui">Interjection</strong> <code>INTJ</code>: an exclamation; oh, wow, ouch</p>
+<p><strong class="ui">Noun</strong> <code>NOUN</code>: a person, place, thing, or idea; house, time</p>
+<p><strong class="ui">Numeral</strong> <code>NUM</code>: a number; one, 2017, 3.5</p>
+<p><strong class="ui">Particle</strong> <code>PART</code>: a small function word; not, the to before a verb</p>
+<p><strong class="ui">Pronoun</strong> <code>PRON</code>: stands in for a noun; I, you, it, who</p>
+<p><strong class="ui">Proper noun</strong> <code>PROPN</code>: a name; Mary, London, NATO</p>
+<p><strong class="ui">Punctuation</strong> <code>PUNCT</code>: periods, commas, brackets</p>
+<p><strong class="ui">Subordinating conjunction</strong> <code>SCONJ</code>: opens a dependent clause; if, while, that</p>
+<p><strong class="ui">Whitespace</strong> <code>SPACE</code>: spacing the parser kept</p>
+<p><strong class="ui">Symbol</strong> <code>SYM</code>: a character such as %, $, or =</p>
+<p><strong class="ui">Verb</strong> <code>VERB</code>: an action or state; run, eat, seem</p>
+<p><strong class="ui">Other</strong> <code>X</code>: material the parser could not classify</p>
+<p><strong class="ui">Email / URL</strong> <code>ADD</code>: an address such as example.com <em>(English)</em></p>
+<p><strong class="ui">Affix</strong> <code>AFX</code>: a prefix split from its word; pre in pre approved <em>(English)</em></p>
+<p><strong class="ui">Coordinating conjunction</strong> <code>CC</code>: and, but, or <em>(English)</em></p>
+<p><strong class="ui">Cardinal number</strong> <code>CD</code>: one, two, 3 <em>(English)</em></p>
+<p><strong class="ui">Determiner</strong> <code>DT</code>: the, a, these <em>(English)</em></p>
+<p><strong class="ui">Existential “there”</strong> <code>EX</code>: there in there is a problem <em>(English)</em></p>
+<p><strong class="ui">Foreign word</strong> <code>FW</code>: a word from another language <em>(English)</em></p>
+<p><strong class="ui">Hyphen</strong> <code>HYPH</code> <em>(English)</em></p>
+<p><strong class="ui">Preposition / subordinating conj.</strong> <code>IN</code>: in, of, because <em>(English)</em></p>
+<p><strong class="ui">Adjective</strong> <code>JJ</code>: green, quiet <em>(English)</em></p>
+<p><strong class="ui">Adjective, comparative</strong> <code>JJR</code>: greener, quieter <em>(English)</em></p>
+<p><strong class="ui">Adjective, superlative</strong> <code>JJS</code>: greenest, quietest <em>(English)</em></p>
+<p><strong class="ui">List item marker</strong> <code>LS</code>: 1., a) <em>(English)</em></p>
+<p><strong class="ui">Modal verb</strong> <code>MD</code>: can, must, should <em>(English)</em></p>
+<p><strong class="ui">Non-final punctuation</strong> <code>NFP</code>: an ellipsis or decorative mark <em>(English)</em></p>
+<p><strong class="ui">Noun, singular</strong> <code>NN</code>: table, honesty <em>(English)</em></p>
+<p><strong class="ui">Proper noun, singular</strong> <code>NNP</code>: John, Paris <em>(English)</em></p>
+<p><strong class="ui">Proper noun, plural</strong> <code>NNPS</code>: Vikings, Alps <em>(English)</em></p>
+<p><strong class="ui">Noun, plural</strong> <code>NNS</code>: tables <em>(English)</em></p>
+<p><strong class="ui">Predeterminer</strong> <code>PDT</code>: all in all the boys <em>(English)</em></p>
+<p><strong class="ui">Possessive ending</strong> <code>POS</code>: the ’s in Mary’s <em>(English)</em></p>
+<p><strong class="ui">Personal pronoun</strong> <code>PRP</code>: I, he, it <em>(English)</em></p>
+<p><strong class="ui">Possessive pronoun</strong> <code>PRP$</code>: my, his, their <em>(English)</em></p>
+<p><strong class="ui">Adverb</strong> <code>RB</code>: quickly, never <em>(English)</em></p>
+<p><strong class="ui">Adverb, comparative</strong> <code>RBR</code>: faster, sooner <em>(English)</em></p>
+<p><strong class="ui">Adverb, superlative</strong> <code>RBS</code>: fastest, soonest <em>(English)</em></p>
+<p><strong class="ui">Particle</strong> <code>RP</code>: up in give up <em>(English)</em></p>
+<p><strong class="ui">Symbol</strong> <code>SYM</code>: a character such as % or = <em>(English)</em></p>
+<p><strong class="ui">“to”</strong> <code>TO</code>: the word to itself <em>(English)</em></p>
+<p><strong class="ui">Interjection</strong> <code>UH</code>: uh, wow, oh <em>(English)</em></p>
+<p><strong class="ui">Verb, base form</strong> <code>VB</code>: take <em>(English)</em></p>
+<p><strong class="ui">Verb, past tense</strong> <code>VBD</code>: took <em>(English)</em></p>
+<p><strong class="ui">Verb, gerund / present participle</strong> <code>VBG</code>: taking <em>(English)</em></p>
+<p><strong class="ui">Verb, past participle</strong> <code>VBN</code>: taken <em>(English)</em></p>
+<p><strong class="ui">Verb, non-3rd person singular present</strong> <code>VBP</code>: take in they take <em>(English)</em></p>
+<p><strong class="ui">Verb, 3rd person singular present</strong> <code>VBZ</code>: takes in she takes <em>(English)</em></p>
+<p><strong class="ui">Wh-determiner</strong> <code>WDT</code>: which, that <em>(English)</em></p>
+<p><strong class="ui">Wh-pronoun</strong> <code>WP</code>: who, what <em>(English)</em></p>
+<p><strong class="ui">Possessive wh-pronoun</strong> <code>WP$</code>: whose <em>(English)</em></p>
+<p><strong class="ui">Wh-adverb</strong> <code>WRB</code>: where, when, how <em>(English)</em></p>
+<p><strong class="ui">Unknown</strong> <code>XX</code> <em>(English)</em></p>
+<p><strong class="ui">Sentence punctuation</strong> <code>.</code>: period, question mark, exclamation mark <em>(English)</em></p>
+<p><strong class="ui">Comma</strong> <code>,</code> <em>(English)</em></p>
+<p><strong class="ui">Colon / ellipsis</strong> <code>:</code> <em>(English)</em></p>
+<p><strong class="ui">Opening quotation</strong> `` <em>(English)</em></p>
+<p><strong class="ui">Closing quotation</strong> <code>''</code> <em>(English)</em></p>
+<p><strong class="ui">Left bracket</strong> <code>-LRB-</code> <em>(English)</em></p>
+<p><strong class="ui">Right bracket</strong> <code>-RRB-</code> <em>(English)</em></p>
+<p><strong class="ui">Adjective, attributive</strong> <code>ADJA</code>: der alte Mann <em>(German)</em></p>
+<p><strong class="ui">Adjective, predicative or adverbial</strong> <code>ADJD</code>: er ist alt; sie singt gut <em>(German)</em></p>
+<p><strong class="ui">Adverb</strong> <code>ADV</code>: schon, bald, gern <em>(German)</em></p>
+<p><strong class="ui">Preposition</strong> <code>APPR</code>: in, auf, mit <em>(German)</em></p>
+<p><strong class="ui">Preposition with article</strong> <code>APPRART</code>: im, zur, am <em>(German)</em></p>
+<p><strong class="ui">Postposition</strong> <code>APPO</code>: der Einfachheit halber <em>(German)</em></p>
+<p><strong class="ui">Circumposition, right part</strong> <code>APZR</code>: von jetzt an <em>(German)</em></p>
+<p><strong class="ui">Article</strong> <code>ART</code>: der, die, das, ein <em>(German)</em></p>
+<p><strong class="ui">Cardinal number</strong> <code>CARD</code>: zwei, 1994 <em>(German)</em></p>
+<p><strong class="ui">Foreign material</strong> <code>FM</code>: a word from another language <em>(German)</em></p>
+<p><strong class="ui">Interjection</strong> <code>ITJ</code>: ach, oh, na <em>(German)</em></p>
+<p><strong class="ui">Subordinating conjunction with zu-infinitive</strong> <code>KOUI</code>: um, ohne, statt <em>(German)</em></p>
+<p><strong class="ui">Subordinating conjunction with clause</strong> <code>KOUS</code>: weil, dass, obwohl <em>(German)</em></p>
+<p><strong class="ui">Coordinating conjunction</strong> <code>KON</code>: und, oder, aber <em>(German)</em></p>
+<p><strong class="ui">Comparative conjunction</strong> <code>KOKOM</code>: als, wie <em>(German)</em></p>
+<p><strong class="ui">Noun, common</strong> <code>NN</code>: Tisch, Herr, Reise <em>(German)</em></p>
+<p><strong class="ui">Proper noun</strong> <code>NE</code>: Hans, Hamburg <em>(German)</em></p>
+<p><strong class="ui">Demonstrative pronoun, substituting</strong> <code>PDS</code>: dieser, jener <em>(German)</em></p>
+<p><strong class="ui">Demonstrative pronoun, attributive</strong> <code>PDAT</code>: jener Mensch <em>(German)</em></p>
+<p><strong class="ui">Indefinite pronoun, substituting</strong> <code>PIS</code>: keiner, viele, niemand <em>(German)</em></p>
+<p><strong class="ui">Indefinite pronoun, attributive</strong> <code>PIAT</code>: kein Mensch, irgendein Glas <em>(German)</em></p>
+<p><strong class="ui">Indefinite pronoun with determiner</strong> <code>PIDAT</code>: die beiden Brüder <em>(German)</em></p>
+<p><strong class="ui">Personal pronoun</strong> <code>PPER</code>: ich, er, ihm, mich <em>(German)</em></p>
+<p><strong class="ui">Possessive pronoun, substituting</strong> <code>PPOSS</code>: meins, deiner <em>(German)</em></p>
+<p><strong class="ui">Possessive pronoun, attributive</strong> <code>PPOSAT</code>: mein Buch, deine Mutter <em>(German)</em></p>
+<p><strong class="ui">Relative pronoun, substituting</strong> <code>PRELS</code>: der Hund, der bellt <em>(German)</em></p>
+<p><strong class="ui">Relative pronoun, attributive</strong> <code>PRELAT</code>: der Mann, dessen Hund bellt <em>(German)</em></p>
+<p><strong class="ui">Reflexive pronoun</strong> <code>PRF</code>: sich, mich, dir <em>(German)</em></p>
+<p><strong class="ui">Interrogative pronoun, substituting</strong> <code>PWS</code>: wer, was <em>(German)</em></p>
+<p><strong class="ui">Interrogative pronoun, attributive</strong> <code>PWAT</code>: welche Farbe, wessen Hut <em>(German)</em></p>
+<p><strong class="ui">Interrogative or relative adverb</strong> <code>PWAV</code>: warum, wo, wann <em>(German)</em></p>
+<p><strong class="ui">Pronominal adverb</strong> <code>PROAV</code>: dafür, dabei, deswegen <em>(German)</em></p>
+<p><strong class="ui">zu before infinitive</strong> <code>PTKZU</code>: zu gehen <em>(German)</em></p>
+<p><strong class="ui">Negation particle</strong> <code>PTKNEG</code>: nicht <em>(German)</em></p>
+<p><strong class="ui">Separated verb prefix</strong> <code>PTKVZ</code>: er kommt an <em>(German)</em></p>
+<p><strong class="ui">Answer particle</strong> <code>PTKANT</code>: ja, nein, danke <em>(German)</em></p>
+<p><strong class="ui">Particle with adjective or adverb</strong> <code>PTKA</code>: am schönsten, zu schnell <em>(German)</em></p>
+<p><strong class="ui">Truncated word, first part</strong> <code>TRUNC</code>: An- und Abreise <em>(German)</em></p>
+<p><strong class="ui">Verb, finite</strong> <code>VVFIN</code>: du gehst, wir kommen <em>(German)</em></p>
+<p><strong class="ui">Verb, imperative</strong> <code>VVIMP</code>: komm! <em>(German)</em></p>
+<p><strong class="ui">Verb, infinitive</strong> <code>VVINF</code>: gehen, ankommen <em>(German)</em></p>
+<p><strong class="ui">Verb, infinitive with zu</strong> <code>VVIZU</code>: anzukommen, loszulassen <em>(German)</em></p>
+<p><strong class="ui">Verb, past participle</strong> <code>VVPP</code>: gegangen, angekommen <em>(German)</em></p>
+<p><strong class="ui">Auxiliary, finite</strong> <code>VAFIN</code>: ist, haben, wird <em>(German)</em></p>
+<p><strong class="ui">Auxiliary, imperative</strong> <code>VAIMP</code>: sei ruhig! <em>(German)</em></p>
+<p><strong class="ui">Auxiliary, infinitive</strong> <code>VAINF</code>: werden, sein <em>(German)</em></p>
+<p><strong class="ui">Auxiliary, past participle</strong> <code>VAPP</code>: gewesen, geworden <em>(German)</em></p>
+<p><strong class="ui">Modal verb, finite</strong> <code>VMFIN</code>: kann, sollte, dürfen <em>(German)</em></p>
+<p><strong class="ui">Modal verb, infinitive</strong> <code>VMINF</code>: können, wollen <em>(German)</em></p>
+<p><strong class="ui">Modal verb, past participle</strong> <code>VMPP</code>: er hat gekonnt <em>(German)</em></p>
+<p><strong class="ui">Non-word</strong> <code>XY</code>: letters or symbols that are not a word; H2O <em>(German)</em></p>
+<p><strong class="ui">Sentence punctuation</strong> <code>$.</code>: period, question mark, exclamation mark <em>(German)</em></p>
+<p><strong class="ui">Comma</strong> <code>$,</code> <em>(German)</em></p>
+<p><strong class="ui">Other punctuation</strong> <code>$LRB</code>: brackets, quotes, dashes <em>(German)</em></p>
+<p><strong class="ui">Noun, common</strong> <code>NN</code>: 书, 时间 <em>(Chinese)</em></p>
+<p><strong class="ui">Proper noun</strong> <code>NR</code>: 北京, 王先生 <em>(Chinese)</em></p>
+<p><strong class="ui">Temporal noun</strong> <code>NT</code>: 昨天, 现在 <em>(Chinese)</em></p>
+<p><strong class="ui">Pronoun</strong> <code>PN</code>: 我, 他, 这 <em>(Chinese)</em></p>
+<p><strong class="ui">Verb</strong> <code>VV</code>: 跑, 解释, 想 <em>(Chinese)</em></p>
+<p><strong class="ui">Copula</strong> <code>VC</code>: 是 <em>(Chinese)</em></p>
+<p><strong class="ui">Existential verb</strong> <code>VE</code>: 有, 没有 <em>(Chinese)</em></p>
+<p><strong class="ui">Predicative adjective</strong> <code>VA</code>: 高, 温暖 as the predicate <em>(Chinese)</em></p>
+<p><strong class="ui">Adjective, attributive</strong> <code>JJ</code>: 新 in 新书 <em>(Chinese)</em></p>
+<p><strong class="ui">Adverb</strong> <code>AD</code>: 很, 都, 也 <em>(Chinese)</em></p>
+<p><strong class="ui">Preposition</strong> <code>P</code>: 在, 向, 从 <em>(Chinese)</em></p>
+<p><strong class="ui">Localizer</strong> <code>LC</code>: 上, 里, 中 after a noun <em>(Chinese)</em></p>
+<p><strong class="ui">Measure word</strong> <code>M</code>: 个, 本, 张 <em>(Chinese)</em></p>
+<p><strong class="ui">Cardinal number</strong> <code>CD</code>: 一, 三, 100 <em>(Chinese)</em></p>
+<p><strong class="ui">Ordinal number</strong> <code>OD</code>: 第一 <em>(Chinese)</em></p>
+<p><strong class="ui">Determiner</strong> <code>DT</code>: 这, 那, 每 <em>(Chinese)</em></p>
+<p><strong class="ui">Coordinating conjunction</strong> <code>CC</code>: 和, 或者 <em>(Chinese)</em></p>
+<p><strong class="ui">Subordinating conjunction</strong> <code>CS</code>: 虽然, 因为 <em>(Chinese)</em></p>
+<p><strong class="ui">的, nominalizer</strong> <code>DEC</code>: 的 turning a clause into a modifier <em>(Chinese)</em></p>
+<p><strong class="ui">的, associative</strong> <code>DEG</code>: 的 linking possessor and noun <em>(Chinese)</em></p>
+<p><strong class="ui">得, resultative</strong> <code>DER</code>: 得 introducing a result or degree <em>(Chinese)</em></p>
+<p><strong class="ui">地, manner</strong> <code>DEV</code>: 地 turning a phrase into an adverbial <em>(Chinese)</em></p>
+<p><strong class="ui">Aspect particle</strong> <code>AS</code>: 了, 着, 过 <em>(Chinese)</em></p>
+<p><strong class="ui">Sentence-final particle</strong> <code>SP</code>: 吗, 吧, 呢 <em>(Chinese)</em></p>
+<p><strong class="ui">Et cetera</strong> <code>ETC</code>: 等, 等等 <em>(Chinese)</em></p>
+<p><strong class="ui">Other particle</strong> <code>MSP</code>: 所, 以, 来 <em>(Chinese)</em></p>
+<p><strong class="ui">把 construction</strong> <code>BA</code>: 把 fronting the object <em>(Chinese)</em></p>
+<p><strong class="ui">被, long passive</strong> <code>LB</code>: 被 with the agent named <em>(Chinese)</em></p>
+<p><strong class="ui">被, short passive</strong> <code>SB</code>: 被 with no agent named <em>(Chinese)</em></p>
+<p><strong class="ui">Punctuation</strong> <code>PU</code>: 。，、！？ <em>(Chinese)</em></p>
+<p><strong class="ui">Foreign word</strong> <code>FW</code>: a word from another language <em>(Chinese)</em></p>
+<p><strong class="ui">Interjection</strong> <code>IJ</code>: 啊, 哦 <em>(Chinese)</em></p>
+<p><strong class="ui">Onomatopoeia</strong> <code>ON</code>: 哗哗, 砰 <em>(Chinese)</em></p>
+<p><strong class="ui">Other</strong> <code>X</code>: material the parser could not classify <em>(Chinese)</em></p>
+<h2 id="dependencies">Dependency relations<a class="anchor" href="#dependencies" aria-hidden="true">#</a></h2>
+<p><strong class="ui">Clausal modifier of noun</strong> <code>acl</code>: a clause that describes a noun <em>(English, Chinese)</em></p>
+<p><strong class="ui">Adjectival complement</strong> <code>acomp</code>: happy in she seems happy <em>(English, Chinese)</em></p>
+<p><strong class="ui">Adverbial clause modifier</strong> <code>advcl</code>: because it rained <em>(English, Chinese)</em></p>
+<p><strong class="ui">Adverbial modifier</strong> <code>advmod</code>: very, quickly <em>(English, Chinese)</em></p>
+<p><strong class="ui">Agent</strong> <code>agent</code>: the doer in a passive; by the committee <em>(English, Chinese)</em></p>
+<p><strong class="ui">Adjectival modifier</strong> <code>amod</code>: red in red car <em>(English, Chinese)</em></p>
+<p><strong class="ui">Appositional modifier</strong> <code>appos</code>: Sam in my friend Sam <em>(English, Chinese)</em></p>
+<p><strong class="ui">Attribute</strong> <code>attr</code>: a teacher in she is a teacher <em>(English, Chinese)</em></p>
+<p><strong class="ui">Auxiliary</strong> <code>aux</code>: has in has gone <em>(English, Chinese)</em></p>
+<p><strong class="ui">Passive auxiliary</strong> <code>auxpass</code>: was in was taken <em>(English, Chinese)</em></p>
+<p><strong class="ui">Case marker</strong> <code>case</code>: the possessive ’s <em>(English, Chinese)</em></p>
+<p><strong class="ui">Coordinating conjunction</strong> <code>cc</code>: and, but, or <em>(English, Chinese)</em></p>
+<p><strong class="ui">Clausal complement</strong> <code>ccomp</code>: that he left in said that he left <em>(English, Chinese)</em></p>
+<p><strong class="ui">Compound</strong> <code>compound</code>: ice in ice cream <em>(English, Chinese)</em></p>
+<p><strong class="ui">Conjunct</strong> <code>conj</code>: butter in bread and butter <em>(English, Chinese)</em></p>
+<p><strong class="ui">Clausal subject</strong> <code>csubj</code>: what she said in what she said matters <em>(English, Chinese)</em></p>
+<p><strong class="ui">Clausal passive subject</strong> <code>csubjpass</code>: a clause serving as a passive subject <em>(English, Chinese)</em></p>
+<p><strong class="ui">Dative</strong> <code>dative</code>: him in gave him the keys <em>(English, Chinese)</em></p>
+<p><strong class="ui">Unclassified dependent</strong> <code>dep</code>: a link the parser could not label <em>(English, Chinese)</em></p>
+<p><strong class="ui">Determiner</strong> <code>det</code>: the, a, this <em>(English, Chinese)</em></p>
+<p><strong class="ui">Direct object</strong> <code>dobj</code>: the ball in kicked the ball <em>(English, Chinese)</em></p>
+<p><strong class="ui">Expletive</strong> <code>expl</code>: there in there is a problem <em>(English, Chinese)</em></p>
+<p><strong class="ui">Interjection</strong> <code>intj</code>: oh, well <em>(English, Chinese)</em></p>
+<p><strong class="ui">Indirect object</strong> <code>iobj</code>: the recipient of the action <em>(English, Chinese)</em></p>
+<p><strong class="ui">Marker</strong> <code>mark</code>: that or because opening a clause <em>(English, Chinese)</em></p>
+<p><strong class="ui">Meta modifier</strong> <code>meta</code>: stray material such as a byline <em>(English, Chinese)</em></p>
+<p><strong class="ui">Negation modifier</strong> <code>neg</code>: not, never <em>(English, Chinese)</em></p>
+<p><strong class="ui">Nominal modifier</strong> <code>nmod</code>: a noun modifying another noun <em>(English, Chinese)</em></p>
+<p><strong class="ui">Noun phrase as adverbial modifier</strong> <code>npadvmod</code>: last week in arrived last week <em>(English, Chinese)</em></p>
+<p><strong class="ui">Nominal subject</strong> <code>nsubj</code>: she in she runs <em>(English, Chinese)</em></p>
+<p><strong class="ui">Passive nominal subject</strong> <code>nsubjpass</code>: the report in the report was filed <em>(English, Chinese)</em></p>
+<p><strong class="ui">Numeric modifier</strong> <code>nummod</code>: three in three cats <em>(English, Chinese)</em></p>
+<p><strong class="ui">Object</strong> <code>obj</code>: the thing the verb acts on <em>(English, Chinese)</em></p>
+<p><strong class="ui">Object predicate</strong> <code>oprd</code>: green in painted it green <em>(English, Chinese)</em></p>
+<p><strong class="ui">Parataxis</strong> <code>parataxis</code>: clauses set side by side; he said, I agree <em>(English, Chinese)</em></p>
+<p><strong class="ui">Complement of preposition</strong> <code>pcomp</code>: a clause completing a preposition <em>(English, Chinese)</em></p>
+<p><strong class="ui">Object of preposition</strong> <code>pobj</code>: town in in town <em>(English, Chinese)</em></p>
+<p><strong class="ui">Possession modifier</strong> <code>poss</code>: her in her book <em>(English, Chinese)</em></p>
+<p><strong class="ui">Pre-correlative conjunction</strong> <code>preconj</code>: either, both <em>(English, Chinese)</em></p>
+<p><strong class="ui">Predeterminer</strong> <code>predet</code>: all in all the boys <em>(English, Chinese)</em></p>
+<p><strong class="ui">Prepositional modifier</strong> <code>prep</code>: in, of, with <em>(English, Chinese)</em></p>
+<p><strong class="ui">Particle</strong> <code>prt</code>: up in give up <em>(English, Chinese)</em></p>
+<p><strong class="ui">Punctuation</strong> <code>punct</code> <em>(English, Chinese)</em></p>
+<p><strong class="ui">Modifier of quantifier</strong> <code>quantmod</code>: about in about ten <em>(English, Chinese)</em></p>
+<p><strong class="ui">Relative clause modifier</strong> <code>relcl</code>: that I read in the book that I read <em>(English, Chinese)</em></p>
+<p><strong class="ui">Root of the sentence</strong> <code>root</code>: usually the main verb <em>(English, Chinese)</em></p>
+<p><strong class="ui">Open clausal complement</strong> <code>xcomp</code>: to leave in wants to leave <em>(English, Chinese)</em></p>
+<p><strong class="ui">Subject</strong> <code>sb</code>: die Katze in die Katze schläft <em>(German)</em></p>
+<p><strong class="ui">Passivized subject</strong> <code>sbp</code>: the by-phrase of a passive; von der Jury <em>(German)</em></p>
+<p><strong class="ui">Accusative object</strong> <code>oa</code>: den Ball in wirft den Ball <em>(German)</em></p>
+<p><strong class="ui">Second accusative object</strong> <code>oa2</code>: a second direct object <em>(German)</em></p>
+<p><strong class="ui">Genitive object</strong> <code>og</code>: an object in the genitive case <em>(German)</em></p>
+<p><strong class="ui">Dative object</strong> <code>da</code>: ihm in gibt ihm das Buch <em>(German)</em></p>
+<p><strong class="ui">Prepositional object</strong> <code>op</code>: auf ihn in wartet auf ihn <em>(German)</em></p>
+<p><strong class="ui">Clausal object</strong> <code>oc</code>: a clause or infinitive completing the verb <em>(German)</em></p>
+<p><strong class="ui">Predicate</strong> <code>pd</code>: alt in er ist alt <em>(German)</em></p>
+<p><strong class="ui">Modifier</strong> <code>mo</code>: an adverbial or prepositional modifier <em>(German)</em></p>
+<p><strong class="ui">Negation</strong> <code>ng</code>: nicht <em>(German)</em></p>
+<p><strong class="ui">Noun kernel element</strong> <code>nk</code>: an article or adjective inside a noun phrase <em>(German)</em></p>
+<p><strong class="ui">Genitive attribute</strong> <code>ag</code>: des Mannes in der Hut des Mannes <em>(German)</em></p>
+<p><strong class="ui">Phrasal genitive</strong> <code>pg</code>: a von-phrase standing in for a genitive <em>(German)</em></p>
+<p><strong class="ui">Postnominal modifier</strong> <code>mnr</code>: a prepositional phrase after its noun <em>(German)</em></p>
+<p><strong class="ui">Relative clause</strong> <code>rc</code>: der bellt in der Hund, der bellt <em>(German)</em></p>
+<p><strong class="ui">Apposition</strong> <code>app</code>: Hans in mein Freund Hans <em>(German)</em></p>
+<p><strong class="ui">Conjunct</strong> <code>cj</code>: a member of a coordination <em>(German)</em></p>
+<p><strong class="ui">Coordinating conjunction</strong> <code>cd</code>: und, oder <em>(German)</em></p>
+<p><strong class="ui">Complementizer</strong> <code>cp</code>: dass, weil opening a clause <em>(German)</em></p>
+<p><strong class="ui">Junctor</strong> <code>ju</code>: a clause-linking word such as denn <em>(German)</em></p>
+<p><strong class="ui">Morphological particle</strong> <code>pm</code>: zu before an infinitive <em>(German)</em></p>
+<p><strong class="ui">Separable verb prefix</strong> <code>svp</code>: an in er kommt an <em>(German)</em></p>
+<p><strong class="ui">Expletive es</strong> <code>ep</code>: es in es regnet <em>(German)</em></p>
+<p><strong class="ui">Placeholder</strong> <code>ph</code>: a stand-in element the clause fills later <em>(German)</em></p>
+<p><strong class="ui">Repeated element</strong> <code>re</code>: material taken up again <em>(German)</em></p>
+<p><strong class="ui">Reported speech</strong> <code>rs</code>: a quoted clause <em>(German)</em></p>
+<p><strong class="ui">Unit component</strong> <code>uc</code>: part of a multi-word unit <em>(German)</em></p>
+<p><strong class="ui">Vocative</strong> <code>vo</code>: a direct address; Hans, komm her <em>(German)</em></p>
+<p><strong class="ui">Parenthetical</strong> <code>par</code>: an aside set off from the clause <em>(German)</em></p>
+<p><strong class="ui">Proper noun component</strong> <code>pnc</code>: part of a multi-word name <em>(German)</em></p>
+<p><strong class="ui">Numerical component</strong> <code>nmc</code>: 3,2 in 3,2 Millionen <em>(German)</em></p>
+<p><strong class="ui">Adpositional case marker</strong> <code>ac</code>: the preposition heading its phrase <em>(German)</em></p>
+<p><strong class="ui">Adjective component</strong> <code>adc</code>: part of a complex adjective <em>(German)</em></p>
+<p><strong class="ui">Measure argument</strong> <code>ams</code>: zwei Meter in zwei Meter hoch <em>(German)</em></p>
+<p><strong class="ui">Adverbial phrase component</strong> <code>avc</code>: part of a complex adverbial <em>(German)</em></p>
+<p><strong class="ui">Comparative conjunction</strong> <code>cm</code>: als, wie in a comparison <em>(German)</em></p>
+<p><strong class="ui">Comparative complement</strong> <code>cc</code>: dreißig in mehr als dreißig <em>(German)</em></p>
+<p><strong class="ui">Collocational verb construction</strong> <code>cvc</code>: a light-verb noun; in Frage stellen <em>(German)</em></p>
+<p><strong class="ui">Discourse marker</strong> <code>dm</code>: also, na ja <em>(German)</em></p>
+<p><strong class="ui">Aspect marker</strong> <code>aux:asp</code>: 了, 着, 过 on the verb <em>(Chinese)</em></p>
+<p><strong class="ui">Modal auxiliary</strong> <code>aux:modal</code>: 能, 会, 应该 <em>(Chinese)</em></p>
+<p><strong class="ui">Classifier marker</strong> <code>mark:clf</code>: the measure word after a number <em>(Chinese)</em></p>
+<p><strong class="ui">Noun compound</strong> <code>compound:nn</code>: 语法 in 语法规则 <em>(Chinese)</em></p>
+<p><strong class="ui">Verb compound</strong> <code>compound:vc</code>: a resultative or directional verb pair <em>(Chinese)</em></p>
+<p><strong class="ui">Temporal modifier</strong> <code>nmod:tmod</code>: 昨天 setting the time <em>(Chinese)</em></p>
+<p><strong class="ui">Prepositional modifier</strong> <code>nmod:prep</code>: the noun of a prepositional phrase, attached to the verb; 台阶 in 在台阶上坐着 <em>(Chinese)</em></p>
+<p><strong class="ui">Associative modifier</strong> <code>nmod:assmod</code>: an X-的 phrase before a noun <em>(Chinese)</em></p>
+<p><strong class="ui">Topic</strong> <code>nmod:topic</code>: a fronted noun the clause is about <em>(Chinese)</em></p>
+<p><strong class="ui">Possessive modifier</strong> <code>nmod:poss</code>: 我的 in 我的书 <em>(Chinese)</em></p>
+<p><strong class="ui">Patient of 把 or 被</strong> <code>obl:patient</code>: the affected noun in a 把 or 被 clause <em>(Chinese)</em></p>
+<p><strong class="ui">Agent of 被</strong> <code>obl:agent</code>: the doer named after 被 <em>(Chinese)</em></p>
+<p><strong class="ui">Locative adverbial</strong> <code>advmod:loc</code>: a place phrase modifying the verb <em>(Chinese)</em></p>
+<p><strong class="ui">地-phrase adverbial</strong> <code>advmod:dvp</code>: an X-地 phrase before the verb <em>(Chinese)</em></p>
+<p><strong class="ui">的 marker</strong> <code>case:dec</code>: 的 closing a modifier <em>(Chinese)</em></p>
+<p><strong class="ui">Copula</strong> <code>cop</code>: 是 in 他是老师 <em>(Chinese)</em></p>
+<p><strong class="ui">Discourse particle</strong> <code>discourse</code>: 吗, 吧, 呢 at the end of a sentence <em>(Chinese)</em></p>
+<p><strong class="ui">Resultative complement</strong> <code>advmod:rcomp</code>: 到 in 找到 <em>(Chinese)</em></p>
+<p><strong class="ui">Quantity modifier</strong> <code>nmod:range</code>: an amount after the verb; 一半 in 减少一半 <em>(Chinese)</em></p>
+<p><strong class="ui">把 marker</strong> <code>aux:ba</code>: 把 in 把门关上 <em>(Chinese)</em></p>
+<p><strong class="ui">Particle modifier</strong> <code>aux:prtmod</code>: 所 in 所说的话 <em>(Chinese)</em></p>
+<p><strong class="ui">Localizer clause</strong> <code>advcl:loc</code>: a clause closed by 以后 or 时 <em>(Chinese)</em></p>
+<p><strong class="ui">List closer</strong> <code>etc</code>: 等 ending a list <em>(Chinese)</em></p>
+<p><strong class="ui">Proper noun component</strong> <code>name</code>: part of a multi-word name <em>(Chinese)</em></p>
+<h2 id="phrases">Phrase labels<a class="anchor" href="#phrases" aria-hidden="true">#</a></h2>
+<p><strong class="ui">Adjective phrase</strong> <code>ADJP</code>: very tall <em>(English)</em></p>
+<p><strong class="ui">Adverb phrase</strong> <code>ADVP</code>: quite slowly <em>(English)</em></p>
+<p><strong class="ui">Conjunction phrase</strong> <code>CONJP</code>: as well as <em>(English)</em></p>
+<p><strong class="ui">Fragment</strong> <code>FRAG</code>: an incomplete sentence <em>(English)</em></p>
+<p><strong class="ui">Interjection</strong> <code>INTJ</code>: oh, wow <em>(English)</em></p>
+<p><strong class="ui">List marker</strong> <code>LST</code>: 1., a) <em>(English)</em></p>
+<p><strong class="ui">Not a constituent</strong> <code>NAC</code>: groups words inside a noun phrase <em>(English)</em></p>
+<p><strong class="ui">Nominal modifier</strong> <code>NML</code>: nouns grouped to modify another noun <em>(English)</em></p>
+<p><strong class="ui">Noun phrase</strong> <code>NP</code>: the old house <em>(English)</em></p>
+<p><strong class="ui">Nominal head</strong> <code>NX</code>: the head part of a complex noun phrase <em>(English)</em></p>
+<p><strong class="ui">Prepositional phrase</strong> <code>PP</code>: in the garden <em>(English)</em></p>
+<p><strong class="ui">Parenthetical</strong> <code>PRN</code>: an aside set off from the clause <em>(English)</em></p>
+<p><strong class="ui">Particle</strong> <code>PRT</code>: up in give up <em>(English)</em></p>
+<p><strong class="ui">Quantifier phrase</strong> <code>QP</code>: about ten <em>(English)</em></p>
+<p><strong class="ui">Reduced relative clause</strong> <code>RRC</code>: seen yesterday in the man seen yesterday <em>(English)</em></p>
+<p><strong class="ui">Clause</strong> <code>S</code>: a subject plus its predicate <em>(English)</em></p>
+<p><strong class="ui">Subordinate clause</strong> <code>SBAR</code>: because it rained <em>(English)</em></p>
+<p><strong class="ui">Wh-question</strong> <code>SBARQ</code>: where did she go <em>(English)</em></p>
+<p><strong class="ui">Inverted clause</strong> <code>SINV</code>: never have I seen <em>(English)</em></p>
+<p><strong class="ui">Yes/no question</strong> <code>SQ</code>: did she go <em>(English)</em></p>
+<p><strong class="ui">Unlike coordinated phrase</strong> <code>UCP</code>: unlike parts joined by a conjunction <em>(English)</em></p>
+<p><strong class="ui">Verb phrase</strong> <code>VP</code>: ate an apple <em>(English)</em></p>
+<p><strong class="ui">Wh-adjective phrase</strong> <code>WHADJP</code>: how tall <em>(English)</em></p>
+<p><strong class="ui">Wh-adverb phrase</strong> <code>WHADVP</code>: how quickly <em>(English)</em></p>
+<p><strong class="ui">Wh-noun phrase</strong> <code>WHNP</code>: which book <em>(English)</em></p>
+<p><strong class="ui">Wh-prepositional phrase</strong> <code>WHPP</code>: in which case <em>(English)</em></p>
+<p><strong class="ui">Unknown</strong> <code>X</code> <em>(English)</em></p>
+<p><strong class="ui">Clause</strong> <code>S</code>: a subject plus its predicate <em>(German)</em></p>
+<p><strong class="ui">Coordinated clauses</strong> <code>CS</code>: clauses joined by und or oder <em>(German)</em></p>
+<p><strong class="ui">Noun phrase</strong> <code>NP</code>: das alte Haus <em>(German)</em></p>
+<p><strong class="ui">Coordinated noun phrases</strong> <code>CNP</code>: Brot und Butter <em>(German)</em></p>
+<p><strong class="ui">Prepositional phrase</strong> <code>PP</code>: im Garten <em>(German)</em></p>
+<p><strong class="ui">Coordinated prepositional phrases</strong> <code>CPP</code>: im Haus und im Garten <em>(German)</em></p>
+<p><strong class="ui">Adjective phrase</strong> <code>AP</code>: sehr alt <em>(German)</em></p>
+<p><strong class="ui">Coordinated adjective phrases</strong> <code>CAP</code>: alt und müde <em>(German)</em></p>
+<p><strong class="ui">Adverb phrase</strong> <code>AVP</code>: ziemlich schnell <em>(German)</em></p>
+<p><strong class="ui">Coordinated adverb phrases</strong> <code>CAVP</code>: hier und dort <em>(German)</em></p>
+<p><strong class="ui">Verb phrase, non-finite</strong> <code>VP</code>: an infinitive or participle group <em>(German)</em></p>
+<p><strong class="ui">Coordinated verb phrases</strong> <code>CVP</code>: non-finite verb groups joined <em>(German)</em></p>
+<p><strong class="ui">zu-infinitive</strong> <code>VZ</code>: zu gehen <em>(German)</em></p>
+<p><strong class="ui">Coordinated zu-infinitives</strong> <code>CVZ</code>: zu kommen und zu gehen <em>(German)</em></p>
+<p><strong class="ui">Coordination</strong> <code>CO</code>: unlike parts joined by a conjunction <em>(German)</em></p>
+<p><strong class="ui">Multi-word proper noun</strong> <code>PN</code>: Johann Wolfgang von Goethe <em>(German)</em></p>
+<p><strong class="ui">Multi-token number</strong> <code>NM</code>: zwei Millionen <em>(German)</em></p>
+<p><strong class="ui">Superlative phrase with am</strong> <code>AA</code>: am schönsten <em>(German)</em></p>
+<p><strong class="ui">Chunk</strong> <code>CH</code>: foreign or unanalyzed material <em>(German)</em></p>
+<p><strong class="ui">Idiosyncratic unit</strong> <code>ISU</code>: a fixed expression <em>(German)</em></p>
+<p><strong class="ui">Discourse-level constituent</strong> <code>DL</code>: material above the clause <em>(German)</em></p>
+<p><strong class="ui">Coordinated adpositions</strong> <code>CAC</code>: vor und nach <em>(German)</em></p>
+<p><strong class="ui">Coordinated complementizers</strong> <code>CCP</code>: ob und wann <em>(German)</em></p>
+<p><strong class="ui">Multi-token adjective</strong> <code>MTA</code>: New Yorker <em>(German)</em></p>
+<p><strong class="ui">Clause</strong> <code>IP</code>: a subject plus its predicate <em>(Chinese)</em></p>
+<p><strong class="ui">Clause with complementizer</strong> <code>CP</code>: a 的- or 吗-closed clause <em>(Chinese)</em></p>
+<p><strong class="ui">Noun phrase</strong> <code>NP</code>: 那座老房子 <em>(Chinese)</em></p>
+<p><strong class="ui">Prepositional phrase</strong> <code>PP</code>: 在花园里 <em>(Chinese)</em></p>
+<p><strong class="ui">Adjective phrase</strong> <code>ADJP</code>: 大型, 主要 <em>(Chinese)</em></p>
+<p><strong class="ui">Adverb phrase</strong> <code>ADVP</code>: 非常, 已经 <em>(Chinese)</em></p>
+<p><strong class="ui">Verb phrase</strong> <code>VP</code>: 吃了一个苹果 <em>(Chinese)</em></p>
+<p><strong class="ui">的-phrase</strong> <code>DNP</code>: X 的 modifying a noun <em>(Chinese)</em></p>
+<p><strong class="ui">地-phrase</strong> <code>DVP</code>: X 地 modifying a verb <em>(Chinese)</em></p>
+<p><strong class="ui">Localizer phrase</strong> <code>LCP</code>: 桌子上, 房间里 <em>(Chinese)</em></p>
+<p><strong class="ui">Classifier phrase</strong> <code>CLP</code>: a measure word and what it counts <em>(Chinese)</em></p>
+<p><strong class="ui">Quantifier phrase</strong> <code>QP</code>: 大约十个 <em>(Chinese)</em></p>
+<p><strong class="ui">Determiner phrase</strong> <code>DP</code>: 这本, 每个 <em>(Chinese)</em></p>
+<p><strong class="ui">Coordinated verb compound</strong> <code>VCD</code>: verbs acting as one; 调查研究 <em>(Chinese)</em></p>
+<p><strong class="ui">Verb-resultative compound</strong> <code>VRD</code>: verb plus result; 打破 <em>(Chinese)</em></p>
+<p><strong class="ui">Serial verb construction</strong> <code>VSB</code>: one verb chained onto another <em>(Chinese)</em></p>
+<p><strong class="ui">Verb-copula compound</strong> <code>VCP</code>: a verb fused with 是 <em>(Chinese)</em></p>
+<p><strong class="ui">V-not-V question</strong> <code>VNV</code>: 去不去, 是不是 <em>(Chinese)</em></p>
+<p><strong class="ui">Potential verb form</strong> <code>VPT</code>: verb with 得 or 不 inside; 看得见 <em>(Chinese)</em></p>
+<p><strong class="ui">List marker</strong> <code>LST</code>: （一）, 1. <em>(Chinese)</em></p>
+<p><strong class="ui">Parenthetical</strong> <code>PRN</code>: （包括香港） <em>(Chinese)</em></p>
+<p><strong class="ui">Fragment</strong> <code>FRAG</code>: 新华社北京电 <em>(Chinese)</em></p>
+<p><strong class="ui">Unlike coordinated phrase</strong> <code>UCP</code>: 安全和稳定 <em>(Chinese)</em></p>
+<p><strong class="ui">Interjection</strong> <code>INTJ</code>: 啊, 哎呀 <em>(Chinese)</em></p>
+<h2 id="morphology">Morphology<a class="anchor" href="#morphology" aria-hidden="true">#</a></h2>
+<p><strong class="ui">Tense</strong>: when the action happens; past or present <em>(English, German)</em></p>
+<p><strong class="ui">Grammatical number</strong> <code>Number</code>: singular or plural <em>(English, German)</em></p>
+<p><strong class="ui">Person</strong>: 1st (I), 2nd (you), or 3rd (she) person <em>(English, German)</em></p>
+<p><strong class="ui">Mood</strong>: statement (indicative), command (imperative), or subjunctive <em>(English, German)</em></p>
+<p><strong class="ui">Verb form</strong> <code>VerbForm</code>: finite, infinitive, participle, or gerund <em>(English, German)</em></p>
+<p><strong class="ui">Case</strong>: subject form (nominative), object forms (accusative, dative), or possessive form (genitive) <em>(English, German)</em></p>
+<p><strong class="ui">Degree of comparison</strong> <code>Degree</code>: positive, comparative, or superlative <em>(English, German)</em></p>
+<p><strong class="ui">Aspect</strong>: ongoing (progressive) or completed (perfect) <em>(English, German)</em></p>
+<p><strong class="ui">Gender</strong>: masculine, feminine, or neuter <em>(English, German)</em></p>
+<p><strong class="ui">Pronoun type</strong> <code>PronType</code>: personal, demonstrative, interrogative, relative <em>(English, German)</em></p>
+<p><strong class="ui">Definiteness</strong> <code>Definite</code>: definite (the) or indefinite (a) <em>(English, German)</em></p>
+<p><strong class="ui">Polarity</strong>: negation; not, never <em>(English, German)</em></p>
+<p><strong class="ui">Possessive</strong> <code>Poss</code>: possessive words; my, their <em>(English, German)</em></p>
+<p><strong class="ui">Reflexive</strong> <code>Reflex</code>: reflexive pronouns; herself, themselves <em>(English, German)</em></p>
+<p><strong class="ui">Number type</strong> <code>NumType</code>: cardinal (three), ordinal (third), or multiplicative (once) <em>(English, German)</em></p>
+<p><strong class="ui">Punctuation type</strong> <code>PunctType</code>: period, comma, quotation mark, bracket, or dash <em>(English, German)</em></p>
+<p><strong class="ui">Conjunction type</strong> <code>ConjType</code>: coordinating conjunctions; and, or, but <em>(English, German)</em></p>
+<p><strong class="ui">Perfect</strong> <code>Aspect=Perf</code> <em>(English, German)</em></p>
+<p><strong class="ui">Progressive</strong> <code>Aspect=Prog</code> <em>(English, German)</em></p>
+<p><strong class="ui">Accusative</strong> <code>Case=Acc</code> <em>(English, German)</em></p>
+<p><strong class="ui">Dative</strong> <code>Case=Dat</code> <em>(English, German)</em></p>
+<p><strong class="ui">Genitive</strong> <code>Case=Gen</code> <em>(English, German)</em></p>
+<p><strong class="ui">Nominative</strong> <code>Case=Nom</code> <em>(English, German)</em></p>
+<p><strong class="ui">Coordinating</strong> <code>ConjType=Cmp</code> <em>(English, German)</em></p>
+<p><strong class="ui">Definite</strong> <code>Definite=Def</code> <em>(English, German)</em></p>
+<p><strong class="ui">Indefinite</strong> <code>Definite=Ind</code> <em>(English, German)</em></p>
+<p><strong class="ui">Comparative</strong> <code>Degree=Cmp</code> <em>(English, German)</em></p>
+<p><strong class="ui">Positive</strong> <code>Degree=Pos</code> <em>(English, German)</em></p>
+<p><strong class="ui">Superlative</strong> <code>Degree=Sup</code> <em>(English, German)</em></p>
+<p><strong class="ui">Feminine</strong> <code>Gender=Fem</code> <em>(English, German)</em></p>
+<p><strong class="ui">Masculine</strong> <code>Gender=Masc</code> <em>(English, German)</em></p>
+<p><strong class="ui">Neuter</strong> <code>Gender=Neut</code> <em>(English, German)</em></p>
+<p><strong class="ui">Imperative</strong> <code>Mood=Imp</code> <em>(English, German)</em></p>
+<p><strong class="ui">Indicative</strong> <code>Mood=Ind</code> <em>(English, German)</em></p>
+<p><strong class="ui">Subjunctive</strong> <code>Mood=Sub</code> <em>(English, German)</em></p>
+<p><strong class="ui">Cardinal</strong> <code>NumType=Card</code> <em>(English, German)</em></p>
+<p><strong class="ui">Multiplicative</strong> <code>NumType=Mult</code> <em>(English, German)</em></p>
+<p><strong class="ui">Ordinal</strong> <code>NumType=Ord</code> <em>(English, German)</em></p>
+<p><strong class="ui">Plural</strong> <code>Number=Plur</code> <em>(English, German)</em></p>
+<p><strong class="ui">Singular</strong> <code>Number=Sing</code> <em>(English, German)</em></p>
+<p><strong class="ui">1st person</strong> <code>Person=1</code> <em>(English, German)</em></p>
+<p><strong class="ui">2nd person</strong> <code>Person=2</code> <em>(English, German)</em></p>
+<p><strong class="ui">3rd person</strong> <code>Person=3</code> <em>(English, German)</em></p>
+<p><strong class="ui">Negative</strong> <code>Polarity=Neg</code> <em>(English, German)</em></p>
+<p><strong class="ui">Possessive</strong> <code>Poss=Yes</code> <em>(English, German)</em></p>
+<p><strong class="ui">Article</strong> <code>PronType=Art</code> <em>(English, German)</em></p>
+<p><strong class="ui">Demonstrative</strong> <code>PronType=Dem</code> <em>(English, German)</em></p>
+<p><strong class="ui">Indefinite</strong> <code>PronType=Ind</code> <em>(English, German)</em></p>
+<p><strong class="ui">Interrogative</strong> <code>PronType=Int</code> <em>(English, German)</em></p>
+<p><strong class="ui">Personal</strong> <code>PronType=Prs</code> <em>(English, German)</em></p>
+<p><strong class="ui">Relative</strong> <code>PronType=Rel</code> <em>(English, German)</em></p>
+<p><strong class="ui">Bracket</strong> <code>PunctType=Brck</code> <em>(English, German)</em></p>
+<p><strong class="ui">Comma</strong> <code>PunctType=Comm</code> <em>(English, German)</em></p>
+<p><strong class="ui">Dash</strong> <code>PunctType=Dash</code> <em>(English, German)</em></p>
+<p><strong class="ui">Period</strong> <code>PunctType=Peri</code> <em>(English, German)</em></p>
+<p><strong class="ui">Quotation mark</strong> <code>PunctType=Quot</code> <em>(English, German)</em></p>
+<p><strong class="ui">Reflexive</strong> <code>Reflex=Yes</code> <em>(English, German)</em></p>
+<p><strong class="ui">Past</strong> <code>Tense=Past</code> <em>(English, German)</em></p>
+<p><strong class="ui">Present</strong> <code>Tense=Pres</code> <em>(English, German)</em></p>
+<p><strong class="ui">Finite</strong> <code>VerbForm=Fin</code> <em>(English, German)</em></p>
+<p><strong class="ui">Gerund</strong> <code>VerbForm=Ger</code> <em>(English, German)</em></p>
+<p><strong class="ui">Infinitive</strong> <code>VerbForm=Inf</code> <em>(English, German)</em></p>
+<p><strong class="ui">Participle</strong> <code>VerbForm=Part</code> <em>(English, German)</em></p>
+<h2 id="statistics">Text statistics<a class="anchor" href="#statistics" aria-hidden="true">#</a></h2>
+<p><strong class="ui">Automated Readability Index</strong> <code>ARI</code>: Grade estimate from characters per word and words per sentence. <em>(English)</em></p>
+<p><strong class="ui">Avg. sentence length</strong>: The average number of words per sentence.</p>
+<p><strong class="ui">Avg. tree depth</strong>: Average depth of the deepest dependency chain per sentence.</p>
+<p><strong class="ui">Avg. word length</strong>: The average number of letters per word, or characters per word in Chinese.</p>
+<p><strong class="ui">Characters</strong>: The number of characters in the text.</p>
+<p><strong class="ui">Characters per sentence</strong>: The average number of characters per sentence; a length measure suited to Chinese. <em>(Chinese)</em></p>
+<p><strong class="ui">Clauses per sentence</strong>: Average number of clause constituents per sentence.</p>
+<p><strong class="ui">Co-occurrence</strong>: Two codes applied to overlapping passages of the same document.</p>
+<p><strong class="ui">Coleman-Liau</strong>: Grade estimate from letters and sentences per 100 words; no syllable counting. <em>(English)</em></p>
+<p><strong class="ui">Coverage</strong>: The share of a text’s characters covered by a code, counting overlapping segments once.</p>
+<p><strong class="ui">Dialogue share</strong>: The share of words inside quotation marks; estimated from quote pairing.</p>
+<p><strong class="ui">Embedded clause share</strong>: The share of clauses nested inside another clause.</p>
+<p><strong class="ui">Flesch Reading Ease</strong>: 0–100 scale; higher is easier. 60–70 reads as plain English. Syllables are estimated. <em>(English)</em></p>
+<p><strong class="ui">Flesch-Amstad</strong>: The German adaptation of Flesch Reading Ease; higher is easier. Syllables are estimated. <em>(German)</em></p>
+<p><strong class="ui">Flesch-Kincaid Grade</strong>: US school grade needed to read the text comfortably. Syllables are estimated. <em>(English)</em></p>
+<p><strong class="ui">Gunning Fog</strong>: Years of schooling needed; counts long sentences and words of three or more syllables. Syllables are estimated. <em>(English)</em></p>
+<p><strong class="ui">Hapax ratio</strong>: The share of unique words that occur exactly once.</p>
+<p><strong class="ui">Läsbarhetsindex</strong> <code>LIX</code>: Sentence length plus the share of words over six letters; 40 is average difficulty. <em>(English, German)</em></p>
+<p><strong class="ui">Lexical density</strong>: The share of content words (not the, of, is); higher reads as denser.</p>
+<p><strong class="ui">Mean dependency distance</strong> <code>MDD</code>: Average distance between a word and its syntactic head; larger distances are harder to process.</p>
+<p><strong class="ui">Moving-average type-token ratio</strong> <code>MATTR</code>: Type-token ratio averaged over a moving 100-word window, so it compares across texts of different lengths.</p>
+<p><strong class="ui">Paragraphs</strong>: The number of paragraphs, divided at blank lines when the text has any, and otherwise at every line break.</p>
+<p><strong class="ui">Particle density</strong>: Particles such as 的, 了, and 着 per 100 words. <em>(Chinese)</em></p>
+<p><strong class="ui">Passive sentences</strong>: The share of sentences containing a passive construction.</p>
+<p><strong class="ui">Questions and exclamations</strong>: The share of sentences that end in a question mark or exclamation mark.</p>
+<p><strong class="ui">Sentences</strong>: The number of sentences the parser found.</p>
+<p><strong class="ui">Sentences per paragraph</strong>: The average number of sentences in each paragraph.</p>
+<p><strong class="ui">Simple Measure of Gobbledygook</strong> <code>SMOG</code>: Grade estimate from the number of words with three or more syllables per sentence, normalized to 30 sentences. Syllables are estimated. <em>(English)</em></p>
+<p><strong class="ui">Stopword share</strong>: The share of function words like the, of, and is.</p>
+<p><strong class="ui">Type-token ratio</strong> <code>TTR</code>: Unique words divided by total words; higher means more varied vocabulary.</p>
+<p><strong class="ui">Unique words</strong>: The number of distinct lemmas (types).</p>
+<p><strong class="ui">Wiener Sachtextformel</strong>: German school-grade estimate from syllables, sentence length, and word length. Syllables are estimated. <em>(German)</em></p>
+<p><strong class="ui">Words</strong>: The number of word tokens, not counting punctuation and spaces.</p>
+<h2 id="measures">Association measures<a class="anchor" href="#measures" aria-hidden="true">#</a></h2>
+<p><strong class="ui">Chi-square test</strong> <code>χ²</code>: Tests whether the share of documents with a code differs between three or more groups more than chance would explain; documents without a value are left out.</p>
+<p><strong class="ui">Cramér’s V</strong> <code>V</code>: The strength of the difference the chi-square test measures, from 0 (no difference) to 1.</p>
+<p><strong class="ui">Cubed mutual information</strong> <code>MI3</code>: A variant of mutual information that cubes the observed count, reducing its bias toward rare pairs.</p>
+<p><strong class="ui">Dice coefficient</strong> <code>Dice</code>: Twice the co-occurrence count divided by the sum of the partner’s frequency and the node’s total (the words in its windows for collocates, or its pairings in that relation for word sketches); ranges from 0 to 1.</p>
+<p><strong class="ui">Expected</strong>: The number of co-occurrences to expect if the two words were independent.</p>
+<p><strong class="ui">Fisher exact test</strong>: A significance test for small counts, used to find characteristic relations in Sketch Space and to compare two groups in the Code Matrix.</p>
+<p><strong class="ui">Frequency</strong> <code>f</code>: How often two words occur together: within the window in <strong class="ui">Collocates</strong>, or linked in the relation in a word sketch.</p>
+<p><strong class="ui">Log-likelihood</strong> <code>LL</code>: A significance statistic (G²) comparing observed with expected co-occurrence; higher means stronger evidence of association.</p>
+<p><strong class="ui">logDice</strong>: 14 plus the base-2 logarithm of the Dice coefficient; its maximum is 14 and it compares well across corpora of different sizes.</p>
+<p><strong class="ui">Mutual information</strong> <code>MI</code>: The base-2 logarithm of observed over expected co-occurrence: how much more often two words meet than by chance.</p>
+<p><strong class="ui">p-value</strong> <code>p</code>: The probability of an association at least this strong arising by chance; smaller values are stronger evidence.</p>
+<p><strong class="ui">Phi coefficient</strong> <code>φ</code>: The strength of association between two codes, from 0 to 1, computed from how their passages overlap.</p>
+<p><strong class="ui">t-score</strong>: Observed minus expected co-occurrence, divided by the square root of the observed count; favors frequent, dependable pairs.</p>
+<p><strong class="ui">z-score</strong>: Observed minus expected co-occurrence, divided by the square root of the expected count.</p>
+<h2 id="sketches">Word sketches<a class="anchor" href="#sketches" aria-hidden="true">#</a></h2>
+<p><strong class="ui">Adjective modifiers</strong>: Adjectives that modify the sketched noun.</p>
+<p><strong class="ui">Adverb modifiers</strong>: Adverbs that modify the sketched word.</p>
+<p><strong class="ui">Characteristic relation</strong> <code>*</code>: A relation that a code or group of documents uses significantly more often than the rest of the scope (one-sided Fisher exact test, p &lt; .05).</p>
+<p><strong class="ui">Code Sketch</strong>: A word sketch whose partners are grouped by the codes that cover them.</p>
+<p><strong class="ui">Collocate</strong>: A word that occurs near another word more often than chance would predict.</p>
+<p><strong class="ui">Complement of</strong>: Words that the sketched word completes.</p>
+<p><strong class="ui">Complements</strong>: Words or clauses that complete the sketched word.</p>
+<p><strong class="ui">Coordinated with</strong>: Words joined to the sketched word by and, or, and similar conjunctions.</p>
+<p><strong class="ui">In compounds with</strong>: Words that form compounds with the sketched word.</p>
+<p><strong class="ui">Modifiers</strong>: In Sketch Space, all modifying relations combined: <strong class="ui">Adjective modifiers</strong>, <strong class="ui">Adverb modifiers</strong>, and <strong class="ui">Modifies</strong>.</p>
+<p><strong class="ui">Modifies</strong>: Words that the sketched word modifies.</p>
+<p><strong class="ui">Object of</strong>: Verbs that take the sketched noun as their object.</p>
+<p><strong class="ui">Objects</strong>: Nouns that act as the object of the sketched verb.</p>
+<p><strong class="ui">Prepositional phrases</strong>: Prepositional phrases attached to the sketched word, grouped by preposition.</p>
+<p><strong class="ui">Sketch Space</strong>: A comparison of a word’s grammatical partners across codes or groups of documents, marking the relations that are characteristic of each.</p>
+<p><strong class="ui">Subject of</strong>: Verbs that take the sketched noun as their subject.</p>
+<p><strong class="ui">Subjects</strong>: Nouns that act as the subject of the sketched verb.</p>
+<p><strong class="ui">Word Sketch</strong>: A one-page summary of a word’s grammatical partners, grouped by relation and ranked by logDice.</p>
+<h2 id="discourse">Discourse<a class="anchor" href="#discourse" aria-hidden="true">#</a></h2>
+<p><strong class="ui">Absolute phrase</strong>: A noun + participle standing apart from the main clause, zooming in on one detail. <em>(English)</em></p>
+<p><strong class="ui">Anaphora</strong>: Consecutive sentences opening with the same words, building rhythm and insistence through repetition.</p>
+<p><strong class="ui">Appositive</strong>: A noun phrase set beside another to rename it, adding information without spending a whole clause.</p>
+<p><strong class="ui">Attitude marker</strong>: Signals the writer’s stance toward the content (unfortunately, remarkably).</p>
+<p><strong class="ui">Booster</strong>: Closes down doubt; commits the writer fully (clearly, certainly).</p>
+<p><strong class="ui">Cohesion check</strong>: The known to new contract; each sentence should open on familiar ground.</p>
+<p><strong class="ui">Connective</strong>: Steers the reader between ideas (however, therefore, meanwhile).</p>
+<p><strong class="ui">Correlative pair</strong>: Paired conjunctions that throw extra weight onto the joined elements.</p>
+<p><strong class="ui">Demonstrative tie</strong>: The theme points back with a demonstrative, such as this or these.</p>
+<p><strong class="ui">Engagement</strong>: Pulls the reader in directly (you, we, consider, imagine).</p>
+<p><strong class="ui">Final particle</strong>: Sentence-final stance marker (吗, 呢, 吧, 啊). <em>(Chinese)</em></p>
+<p><strong class="ui">Focus construction</strong>: there-transformations, what-clefts, and it-clefts that reshape the sentence to drop new information into the stress position.</p>
+<p><strong class="ui">Fronted opener</strong>: Opens with an adverbial or participial phrase instead of the subject, setting the scene before the actor arrives.</p>
+<p><strong class="ui">Hedge</strong>: Softens a claim; opens space for doubt (perhaps, may, suggests).</p>
+<p><strong class="ui">Modal particle</strong>: Tones the utterance toward the listener (ja, doch, eben, halt). <em>(German)</em></p>
+<p><strong class="ui">New topic</strong>: The theme does not tie back to the two sentences before, or the sentence has no theme at all; a possible break in cohesion.</p>
+<p><strong class="ui">Nominalization</strong>: An action packaged as a noun (decide -&gt; decision). Hides who is doing what and stacks abstractions; unpack to recover a live verb.</p>
+<p><strong class="ui">Opening</strong>: The first sentence of the document, which has nothing earlier to tie back to.</p>
+<p><strong class="ui">Parallelism</strong>: Coordinated elements built to the same grammatical shape (a tricolon, a balanced pair) so the form carries the meaning.</p>
+<p><strong class="ui">Passive voice</strong>: The doer slips out of subject position, foregrounding the receiver.</p>
+<p><strong class="ui">Periodic sentence</strong>: The main verb arrives late, after stacked modifiers, holding the reader in suspension until the clause resolves. <em>(English, German)</em></p>
+<p><strong class="ui">Possessive tie</strong>: The theme refers back with a possessive, such as its or their.</p>
+<p><strong class="ui">Power word</strong>: A superlative or intensified word that seizes the stress and turns a fact into an arguable claim.</p>
+<p><strong class="ui">Pronoun tie</strong>: The sentence’s theme refers back with a pronoun to something already mentioned.</p>
+<p><strong class="ui">Question / command</strong>: A shift out of plain statement; a question that pulls the reader in, an imperative that addresses them directly.</p>
+<p><strong class="ui">Repeated word</strong>: The theme repeats a content word from the previous sentences.</p>
+<p><strong class="ui">Zero anaphora</strong>: The subject is left out and understood from the previous sentence; common in Chinese. <em>(Chinese)</em></p>
+<h2 id="symbols">Abbreviations and symbols<a class="anchor" href="#symbols" aria-hidden="true">#</a></h2>
+<p><strong class="ui">Adverbial</strong> <code>ADV</code>: In sentence patterns, a required adverbial such as a place or time after be. <em>(English)</em></p>
+<p><strong class="ui">American Psychological Association</strong> <code>APA</code>: A citation style.</p>
+<p><strong class="ui">Chinese Treebank</strong> <code>CTB</code>: The Chinese scheme used for fine-grained tags and phrase labels. <em>(Chinese)</em></p>
+<p><strong class="ui">Collocation window</strong> <code>± n</code>: How many token positions on each side of a word, within its sentence, count as nearby when finding collocates.</p>
+<p><strong class="ui">Comma-separated values</strong> <code>CSV</code>: A plain-text table format that spreadsheets open.</p>
+<p><strong class="ui">Digital Object Identifier</strong> <code>DOI</code>: A permanent identifier for a publication.</p>
+<p><strong class="ui">Direct object</strong> <code>DO</code>: In sentence patterns, the noun phrase directly affected by the verb. <em>(English)</em></p>
+<p><strong class="ui">Form of be</strong> <code>be</code>: In sentence patterns, any form of the verb be. <em>(English)</em></p>
+<p><strong class="ui">Implied subject</strong> <code>(You)</code>: In sentence patterns, the unstated subject of a command. <em>(English)</em></p>
+<p><strong class="ui">Indirect object</strong> <code>IO</code>: In sentence patterns, the recipient or beneficiary of the action. <em>(English)</em></p>
+<p><strong class="ui">Linking verb</strong> <code>LV</code>: In sentence patterns, a verb such as seem or become that links the subject to a description. <em>(English)</em></p>
+<p><strong class="ui">Modern Language Association</strong> <code>MLA</code>: A citation style.</p>
+<p><strong class="ui">Object complement</strong> <code>OC</code>: In sentence patterns, a phrase that describes the object, as in they elected her president. <em>(English)</em></p>
+<p><strong class="ui">Paragraph</strong> <code>¶</code>: Paragraph number, as shown in the reader’s status bar and locators.</p>
+<p><strong class="ui">Penn Treebank</strong> <code>PTB</code>: The fine-grained English tagset and phrase labels. <em>(English)</em></p>
+<p><strong class="ui">Portable Document Format</strong> <code>PDF</code>: A document format; exported graphics are vector PDFs, and PDFs can be imported as documents.</p>
+<p><strong class="ui">Portable Network Graphics</strong> <code>PNG</code>: A bitmap image format used for exported graphics.</p>
+<p><strong class="ui">Qualitative data analysis</strong> <code>QDA</code>: Analysis of non-numerical material such as texts and recordings, usually by coding passages.</p>
+<p><strong class="ui">Regular expression</strong> <code>regex</code>: A text pattern; used to exclude matching text from indexing and to match text in queries.</p>
+<p><strong class="ui">Root</strong> <code>ROOT</code>: The head of the whole sentence in a dependency tree.</p>
+<p><strong class="ui">Sentence</strong> <code>S</code>: Sentence number, as shown in the reader’s status bar.</p>
+<p><strong class="ui">Stuttgart-Tübingen Tagset</strong> <code>STTS</code>: The fine-grained German tagset. <em>(German)</em></p>
+<p><strong class="ui">Subject</strong> <code>S</code>: In sentence patterns, the subject. <em>(English)</em></p>
+<p><strong class="ui">Subject complement</strong> <code>SC</code>: In sentence patterns, a phrase after be or a linking verb that describes the subject. <em>(English)</em></p>
+<p><strong class="ui">TIGER</strong>: The German treebank scheme used for dependency and phrase labels. <em>(German)</em></p>
+<p><strong class="ui">Token</strong> <code>T</code>: Token number within the sentence, as shown in the reader’s status bar.</p>
+<p><strong class="ui">Universal part-of-speech tags</strong> <code>UPOS</code>: The part-of-speech tags of Universal Dependencies, the same for every language.</p>
+<p><strong class="ui">Verb</strong> <code>V</code>: In sentence patterns, the main verb. <em>(English)</em></p>
+<p><strong class="ui">Web address</strong> <code>URL</code>: The address of a web page.</p>
+</article>
+<nav class="pager"><a class="previous" href="statistics-reference.html"><span>Previous</span>Statistics at a Glance</a><a class="next" href="thanks.html"><span>Next</span>Thank You</a></nav>
+<footer class="site-footer">© 2026 Ryan S. Cooper. All rights reserved.</footer>
+</main>
+<nav class="page-toc" aria-label="On this page"><p>On this page</p><ul>
+<li class="level-2"><a href="#concepts">Concepts</a></li>
+<li class="level-2"><a href="#reader">Reader and lenses</a></li>
+<li class="level-2"><a href="#grammar">Grammar</a></li>
+<li class="level-2"><a href="#parts-of-speech">Part-of-speech tags</a></li>
+<li class="level-2"><a href="#dependencies">Dependency relations</a></li>
+<li class="level-2"><a href="#phrases">Phrase labels</a></li>
+<li class="level-2"><a href="#morphology">Morphology</a></li>
+<li class="level-2"><a href="#statistics">Text statistics</a></li>
+<li class="level-2"><a href="#measures">Association measures</a></li>
+<li class="level-2"><a href="#sketches">Word sketches</a></li>
+<li class="level-2"><a href="#discourse">Discourse</a></li>
+<li class="level-2"><a href="#symbols">Abbreviations and symbols</a></li>
+</ul></nav>
+</div>
+<script src="../assets/guide.js" defer></script>
+</body>
+</html>

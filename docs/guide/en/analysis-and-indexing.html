@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Analysis and Indexing · LemmaLoom User Guide</title>
+<link rel="stylesheet" href="../assets/guide.css">
+<link rel="icon" type="image/png" href="../assets/logo.png">
+<script>var r=document.documentElement;r.setAttribute('data-theme','light');try{if(localStorage.getItem('guide-theme')==='dark'){r.setAttribute('data-theme','dark')}}catch(e){}</script>
+</head>
+<body>
+<header class="topbar">
+<button class="menu-toggle" aria-label="Contents" aria-expanded="false">☰</button>
+<a class="brand" href="index.html"><span class="wordmark"><span class="lemma">Lemma</span>Loom</span><span class="guide-name">User Guide</span></a>
+<div class="search"><input type="search" id="search" placeholder="Search" aria-label="Search" autocomplete="off" data-empty="No results"><div class="results" id="results" hidden></div></div>
+<nav class="languages" aria-label="Language"><a href="../en/analysis-and-indexing.html" lang="en" aria-current="true">English</a><a href="../de/analysis-and-indexing.html" lang="de">Deutsch</a><a href="../zh-Hans/analysis-and-indexing.html" lang="zh-Hans">简体中文</a></nav>
+<button class="theme-toggle" data-light="Light" data-dark="Dark" aria-label="Theme"></button>
+<a class="pdf-link" href="https://github.com/LemmaLoom/public/raw/main/pdf/lemmaloom-guide-en.pdf">PDF</a>
+</header>
+<div class="layout">
+<nav class="sidebar" aria-label="Contents"><ol>
+<li class="unnumbered"><a href="quick-start.html">Quick Start</a></li>
+<li><a href="introduction.html">Introduction</a></li>
+<li><a href="getting-started.html">Getting Started</a></li>
+<li><a href="projects-and-documents.html">Projects and Documents</a></li>
+<li><a href="importing.html">Importing Material</a></li>
+<li><a href="reading-and-editing.html">Reading and Editing</a></li>
+<li><a href="lenses.html">Lenses</a></li>
+<li><a href="coding.html">Coding</a></li>
+<li><a href="sets-tags-attributes.html">Sets, Groups, Tags, and Attributes</a></li>
+<li><a href="translations.html">Translations and Split View</a></li>
+<li><a href="text-inspector.html">The Text Inspector</a></li>
+<li><a href="grammar-inspector.html">The Grammar Inspector</a></li>
+<li><a href="word-sketch.html">Word Sketch</a></li>
+<li><a href="coding-analysis.html">Analyzing Codes</a></li>
+<li><a href="sketch-space.html">Sketch Space</a></li>
+<li><a href="queries-building.html">Building a Query</a></li>
+<li><a href="queries-results.html">Query Results and Statistics</a></li>
+<li><a href="queries-patterns.html">Query Patterns and Discovery</a></li>
+<li><a href="queries-using-results.html">Using Query Results</a></li>
+<li><a href="dictionaries.html">Dictionaries</a></li>
+<li><a href="custom-analyzers.html">Custom Analyzers</a></li>
+<li class="current"><a href="analysis-and-indexing.html">Analysis and Indexing</a></li>
+<li><a href="exchange-and-export.html">Exchanging and Exporting</a></li>
+<li><a href="undo.html">Undo and Redo</a></li>
+<li><a href="settings.html">Settings and Appearance</a></li>
+<li><a href="keyboard-shortcuts.html">Keyboard Shortcuts</a></li>
+<li><a href="help-and-support.html">Help and Support</a></li>
+<li><a href="statistics-reference.html">Statistics at a Glance</a></li>
+<li class="unnumbered"><a href="glossary.html">Glossary</a></li>
+<li class="unnumbered"><a href="thanks.html">Thank You</a></li>
+</ol></nav>
+<main class="content">
+<article>
+<h1 id="analysis-and-indexing">Analysis and Indexing</h1>
+<p>As LemmaLoom receives a document into your project, it automatically processes the document by indexing it, provided that your document is in English, German, or Chinese, unless you choose otherwise as you import it. The indexing process parses your text into sentences and words, determines the dictionary form and word class of each word, and computes the syntax structure between all the words of each sentence. Lenses, the <strong class="ui">Grammar</strong> tab in the inspector, word sketches, keyword lists, and most word-based queries rely on indexing results. While LemmaLoom is processing your documents, you are free to read and code them in the reader without waiting.</p>
+<p>Indexing time depends on how long your documents are and on your Mac’s hardware. “Climate Debate”, the example project, comes pre-indexed.</p>
+<p>For the rest of this chapter, <em>indexing</em> is used for describing the process performed by LemmaLoom, following the naming convention used by its status messages (<strong class="ui">Indexing</strong>, <strong class="ui">Indexed</strong>, <strong class="ui">Waiting to be indexed</strong>). As well, indexing results are referred to as grammar analysis (or simply <em>the analysis</em>).</p>
+<h2 id="analysis-terms">Key terms<a class="anchor" href="#analysis-terms" aria-hidden="true">#</a></h2>
+<p>This analysis breaks a text apart at various levels. Terms such as token and lemma will crop up frequently in this user guide, and <strong class="ui">Help ▸ Glossary</strong> has definitions of the main ones.</p>
+<ul>
+<li><em>Tokens</em> refer to individual words or punctuation marks. Each period separating sentences is its own token.</li>
+<li><em>Lemmas</em> represent dictionary forms of words. Thus <em>warning</em> is the lemma of <em>warnings</em>, <em>be</em> is the lemma of <em>was</em>, and <em>gehen</em> the lemma of <em>ging</em>.</li>
+<li>The <em>word class</em>, or part of speech, refers to whether a token is a noun, verb, adjective, etcetera. All three languages share the same universal word classes, such as NOUN, VERB, and ADJ.</li>
+<li><em>Tags</em> refer to more detailed parts of speech restricted to a specific language. English <em>warnings</em> is the plural noun NNS. German <em>Klima</em> is the noun NN.</li>
+<li><em>Morphology</em> tracks the grammatical properties of word forms. It includes information about tense, number, and case.</li>
+<li>A <em>dependency</em> pairs a token with another token, known as its <em>head</em>. Dependencies also describe the relationship. In <em>the most urgent steps</em>, both tokens <em>the</em> and <em>urgent</em> have dependencies linking them to <em>steps</em>. Each sentence has one token that depends on no other word. This word is called a <em>root</em>, usually the main verb.</li>
+<li><em>Phrase structure</em> (or <em>constituency</em>) organizes tokens into hierarchies, such as noun phrases contained in verb phrases within clause structures.</li>
+<li>A <em>noun chunk</em> represents a noun, along with preceding tokens that modify the noun. Examples include noun chunks such as <em>the most urgent steps</em>, or pronouns such as <em>we</em> when they act as subjects or objects of verbs.</li>
+<li><em>Stopwords</em> represent highly frequent words containing minimal significance themselves, for instance, <em>the</em>, <em>and</em>, or <em>was</em>.</li>
+<li>Finally, an <em>analyzer</em> executes once grammar analysis has been completed, annotating passages of one kind, such as ties between sentences or rhetorical devices. The passages annotated by an analyzer become its <em>findings</em>.</li>
+</ul>
+<h2 id="analysis-steps">What happens during indexing<a class="anchor" href="#analysis-steps" aria-hidden="true">#</a></h2>
+<p>Document indexing entails the following sequence of actions:</p>
+<ol>
+<li>LemmaLoom settles the document’s language, which decides the models it uses.</li>
+<li>Text that matches the document’s <strong class="ui">Exclude from indexing</strong> patterns is blanked out, so indexing skips it.</li>
+<li>The text is divided into tokens and sentences. Chinese, which is written without spaces between words, is first divided into words.</li>
+<li>Each token gets its word class, tag, and lemma, and in English and German its morphology.</li>
+<li>LemmaLoom works out the dependencies between the words of each sentence.</li>
+<li>It works out the phrase structure of each sentence.</li>
+<li>It finds the noun chunks and the stopwords.</li>
+<li>The built-in analyzers <strong class="ui">Cohesion</strong>, <strong class="ui">Metadiscourse</strong>, and <strong class="ui">Rhetoric</strong> run, and so do any analyzers you have written yourself.</li>
+<li>Everything is saved with the document.</li>
+<li>Once the whole document has been indexed, LemmaLoom computes its statistics. A long document is indexed in parts (see <a href="#after-an-edit">After an edit</a> later in this chapter).</li>
+</ol>
+<p>During indexing, progress stages and percentages are displayed in the reader’s status bar, in the <strong class="ui">Activity</strong> window, and via tooltips of the badges in the navigation sidebar. Initially, you see <strong class="ui">Analyzing</strong> until around 5% of the document has been processed, followed by <strong class="ui">Parsing structure</strong> until about 97%, and finally <strong class="ui">Saving</strong>. Percentages indicate how much of the text content has been indexed in the document; parsing of the phrase structure takes most of the time during indexing.</p>
+<h3 id="example-sentence">An example sentence<a class="anchor" href="#example-sentence" aria-hidden="true">#</a></h3>
+<p>The op-ed entitled “Running Out of Time” in the example project poses a question about what needs to occur now. It answers its own question with the sentence <em>The most urgent steps are not mysterious.</em> Its analysis appears below:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Token</th><th>Lemma</th><th>Word class</th><th>Tag</th><th>Dependency</th><th>Head</th></tr></thead>
+<tbody>
+<tr><td>The</td><td>the</td><td>DET</td><td>DT</td><td>det</td><td>steps</td></tr>
+<tr><td>most</td><td>most</td><td>ADV</td><td>RBS</td><td>advmod</td><td>urgent</td></tr>
+<tr><td>urgent</td><td>urgent</td><td>ADJ</td><td>JJ</td><td>amod</td><td>steps</td></tr>
+<tr><td>steps</td><td>step</td><td>NOUN</td><td>NNS</td><td>nsubj</td><td>are</td></tr>
+<tr><td>are</td><td>be</td><td>AUX</td><td>VBP</td><td>ROOT</td><td>none</td></tr>
+<tr><td>not</td><td>not</td><td>PART</td><td>RB</td><td>neg</td><td>are</td></tr>
+<tr><td>mysterious</td><td>mysterious</td><td>ADJ</td><td>JJ</td><td>acomp</td><td>are</td></tr>
+<tr><td>.</td><td>.</td><td>PUNCT</td><td>.</td><td>punct</td><td>are</td></tr>
+</tbody></table></div>
+<p>LemmaLoom employs two distinct encoding systems for the tagging of words in texts. In the word classes scheme, for instance, DET refers to a determiner, ADV to an adverb, ADJ to an adjective, AUX to an auxiliary verb, PART to a particle, and PUNCT to a punctuation mark. In the tags scheme, however, DT corresponds to a determiner, RBS to a superlative adverb, JJ to an adjective, VBP to a present-tense verb, and RB to an adverb. These two schemes categorize words differently; thus, while <em>not</em> falls under particles in the former, it belongs to adverbs in the latter. On the other hand, dependencies encode grammatical relationships between words rather than properties; for example, det signifies a determiner, advmod a modifying adverb, amod an adjective describing a noun, acomp an adjective complementing a verb, and punct a punctuation mark. The <strong class="ui">Grammar</strong> tab provides expanded forms for all these abbreviations, such as <strong class="ui">Noun, plural</strong> for NNS, and <strong class="ui">Help ▸ Glossary</strong> lists all grammatical codes (including morphological features).</p>
+<p>Consider the following points regarding these annotations:</p>
+<ul>
+<li><em>Not</em> is a token of its own, and the <strong class="ui">Negation</strong> lens annotates it. Contractions become two tokens; hence, <em>cannot</em>, which appears later in the same paragraph, becomes <em>can</em> and <em>not</em>, and <em>don’t</em> becomes <em>do</em> and <em>n’t</em>. Furthermore, the <strong class="ui">Negation</strong> lens annotates <em>n’t</em> just as it annotates <em>not</em>.</li>
+<li>The lemma for <em>steps</em> is <em>step</em>; therefore, queries or word sketches based on the lemma <em>step</em> retrieve both <em>step</em> and <em>steps</em>. Likewise, the lemma for <em>are</em> is <em>be</em>.</li>
+<li>Word class merely tells you that <em>steps</em> is a noun. On the other hand, the tag NNS informs you that <em>steps</em> is plural. In addition, the morphological annotation reveals the same piece of information in the form of <strong class="ui">Grammatical number Plural</strong>, which you may view in the <strong class="ui">Grammar</strong> tab.</li>
+<li>Dependencies reveal which words take on what roles in the sentence. <em>Steps</em> is the subject (nsubj) of <em>are</em>, <em>mysterious</em> specifies the characteristics of the subject (acomp), and <em>not</em> negates the action expressed by <em>are</em> (neg). <em>Are</em> is the root of the sentence; therefore, it has no head. <em>Are</em> is the only verb here, although its word class is AUX.</li>
+</ul>
+<p>The phrase structure categorizes the same words differently. <em>The most urgent steps</em> constitutes a noun phrase (NP); it includes an adjective phrase (ADJP), <em>most urgent</em>. <em>Are not mysterious</em> is a verb phrase (VP), containing an ADJP, <em>mysterious</em>. Finally, NP and VP are the two main parts of the clause (S).</p>
+<p>Only one noun chunk exists here, <em>the most urgent steps</em>. A noun chunk ends with its noun or pronoun; hence, it can be shorter than the NP enclosing it. In <em>the thermometer outside my kitchen window</em> from the beginning of the op-ed article, the noun chunks are <em>the thermometer</em> and <em>my kitchen window</em>, whereas the phrase structure considers the whole string one NP.</p>
+<p>Four of eight tokens here are stopwords (<em>The</em>, <em>most</em>, <em>are</em>, and <em>not</em>).</p>
+<p>If you wish to know how indexing annotated a word, click the word in the reader. Then navigate to the <strong class="ui">Grammar</strong> tab in the inspector; the <strong class="ui">Grammar</strong> facet displays a word’s lemma (if it differs from the word itself), <strong class="ui">Part of speech</strong>, and <strong class="ui">Tag</strong>. Moreover, it displays the word’s dependency relationship under <strong class="ui">FUNCTION</strong>, its head, and its morphological annotations under <strong class="ui">MORPHOLOGY</strong>. In case you imported “Climate Debate” using <strong class="ui">File ▸ Import ▸ Example Project</strong> (refer to <a href="introduction.html#example-project">The example project</a> in <a href="introduction.html">Chapter 1, Introduction</a>), you can examine whether the above information matches the annotation of <em>steps</em> in “Running Out of Time”. For more on this view and on the diagrams of dependencies and phrase structure, see <a href="grammar-inspector.html">Chapter 11, The Grammar Inspector</a>.</p>
+<figure class="shot" id="analysis-and-indexing-word-card"><img class="shot-light" src="../figures/en/light/analysis-and-indexing-word-card.webp" alt="The Grammar tab describing the word steps, selected in “Running Out of Time”." loading="lazy"><img class="shot-dark" src="../figures/en/dark/analysis-and-indexing-word-card.webp" alt="The Grammar tab describing the word steps, selected in “Running Out of Time”." loading="lazy"><figcaption>The Grammar tab describing the word steps, selected in “Running Out of Time”.</figcaption></figure>
+<h3 id="analysis-models">The sources of the analysis<a class="anchor" href="#analysis-models" aria-hidden="true">#</a></h3>
+<p>The analysis stems from statistical models, i.e., machine learning models built on vast amounts of text data for choosing the most probable analyses of every word or sentence within a document. Separate models exist for each of the three languages, and all come with LemmaLoom. Under <strong class="ui">LemmaLoom ▸ About LemmaLoom</strong> is a list of LemmaLoom’s licenses; the <strong class="ui">Licenses</strong> section shows you the authors and license details of the included models (see <a href="help-and-support.html#licenses">Licenses</a> in <a href="help-and-support.html">Chapter 26, Help and Support</a>).</p>
+<p>These models will get things wrong sometimes. They were trained mostly on written texts. Thus, analyses become less reliable in transcription-based documents, dialects, or text damaged by PDF extraction. Chinese analysis makes more errors compared to English and German analysis because the models need to locate Chinese words prior to analyzing them.</p>
+<h3 id="built-in-analyzers">The built-in analyzers<a class="anchor" href="#built-in-analyzers" aria-hidden="true">#</a></h3>
+<p>Three analyzers come with LemmaLoom and process documents in all three languages:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Analyzer</th><th>What it annotates</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">Cohesion</strong></td><td>How each sentence ties back to what came before, through a pronoun, a possessive, a demonstrative such as <em>this</em>, a repeated word, or, in Chinese, an omitted subject. A sentence with none of these opens a new topic.</td></tr>
+<tr><td><strong class="ui">Metadiscourse</strong></td><td>Words a speaker or writer uses to guide the listener or reader, namely hedges (<em>perhaps</em>), boosters (<em>clearly</em>), attitude markers (<em>unfortunately</em>), connectives (<em>however</em>), and engagement markers (<em>you</em>, <em>consider</em>). German adds modal particles such as <em>ja</em> and <em>doch</em>, and Chinese adds sentence-final particles such as 吗 and 吧.</td></tr>
+<tr><td><strong class="ui">Rhetoric</strong></td><td>Rhetorical devices such as passive voice, nominalization (an action turned into a noun, <em>decision</em> for <em>decide</em>), parallelism, fronted openers (a phrase before the subject), periodic sentences (the main verb held back to the end), questions and commands, and sentences that open with the same words.</td></tr>
+</tbody></table></div>
+<p>The built-in analyzers provide an easy entry point for posing questions related to how a particular piece of writing is constructed. For instance, they can show how often a writer uses hedge constructions, or where the speaker begins discussing something else entirely. The results generated by these analyzers will then show up in lenses of matching names (see <a href="lenses.html">Chapter 6, Lenses</a>) as well as the <strong class="ui">Discourse</strong> facet of the <strong class="ui">Grammar</strong> tab (see <a href="grammar-inspector.html">Chapter 11, The Grammar Inspector</a>). Queries which return <strong class="ui">Findings</strong> (see <a href="queries-building.html">Chapter 15, Building a Query</a>) can also reference these analyzers. Custom analyzers that you develop from <strong class="ui">Window ▸ Analyzers</strong> run alongside the built-in ones, on documents in the specified languages (see <a href="custom-analyzers.html">Chapter 20, Custom Analyzers</a>).</p>
+<h3 id="statistics-and-counts">Statistics and counts<a class="anchor" href="#statistics-and-counts" aria-hidden="true">#</a></h3>
+<p>Once LemmaLoom finishes indexing a document, it counts its sentences and tokens. The <strong class="ui">Text</strong> tab within the document’s inspector lists the document’s sentence count and performs analyses of word counts, readability, and vocabulary statistics (see <a href="text-inspector.html">Chapter 10, The Text Inspector</a>). Until the first piece of the document is indexed, the <strong class="ui">Text</strong> tab shows <strong class="ui">Statistics become available when indexing completes</strong>.</p>
+<p>There are essentially two counts in LemmaLoom:</p>
+<ul>
+<li>In a <em>token</em> count, all punctuation marks and symbols are included. When creating a condition in a smart set or a rule in a query, selecting the <strong class="ui">Tokens</strong> field gives results based on token count. Similarly, the reader’s status bar displays a token count labeled as <strong class="ui">words</strong>.</li>
+<li><em>Word</em> count disregards punctuation and symbols while counting all numbers and numerals in addition to regular words. The <strong class="ui">Text</strong> tab uses word count, as well as the <strong class="ui">Per 10,000 Words</strong> measure used in queries (see <a href="queries-results.html#measures">Measures</a> in <a href="queries-results.html">Chapter 16, Query Results and Statistics</a>).</li>
+</ul>
+<p>The sample sentence from “Running Out of Time” has 8 tokens (7 words plus the period). Contractions, like <em>don’t</em>, comprise two words (<em>do</em> and <em>n’t</em>), whereas numerals like <em>2050</em> form single words. In Chinese texts, LemmaLoom counts individual words according to its indexing process.</p>
+<p>Prior to indexing, both the <strong class="ui">Tokens</strong> and <strong class="ui">Sentences</strong> counts of a document return 0 in any queries and smart sets. Furthermore, for documents stored in other languages (such as French), the counts always remain 0. Hence, a smart set of documents with fewer than 1,000 <strong class="ui">Tokens</strong> also includes all non-indexed documents. Once edits occur on existing documents, the two counts retain their last known figures until indexing completes. The <strong class="ui">Characters</strong> field comes directly from the document’s content and gets calculated immediately. For sorting or comparisons of lengths between documents pending indexing, you should select <strong class="ui">Characters</strong> instead.</p>
+<h3 id="excluded-text">Text excluded from analysis<a class="anchor" href="#excluded-text" aria-hidden="true">#</a></h3>
+<p>Patterns under <strong class="ui">Exclude from indexing</strong> in either the import dialog or <strong class="ui">Document Properties</strong> will prevent matching texts from being analyzed (see <a href="importing.html#exclude-from-analysis">Excluding text from indexing</a> in <a href="importing.html">Chapter 4, Importing Material</a>). These texts include timestamps, speaker labels, headers, footers, etc. LemmaLoom blanks out each matched passage before indexing the text, so these items stay out of word counts, keyword lists, word sketches, and the built-in lenses.</p>
+<p>You will be able to view excluded text in the reader and apply codes, while the search bar searches it. A query for <strong class="ui">Text Matches</strong> will also search it if the first menu of its text row is set to the default setting of <strong class="ui">Text</strong>. This occurs since the query reads the text itself. In the event you change this menu to <strong class="ui">Word</strong>, <strong class="ui">Word Form</strong>, or <strong class="ui">Lemma</strong>, the query compares tokens instead, so it skips excluded text.</p>
+<h2 id="languages">What each language supports<a class="anchor" href="#languages" aria-hidden="true">#</a></h2>
+<p>All three languages receive tokenization, sentence splitting, word class detection, tagging, lemmatization, dependency parsing, phrase structure, noun chunking, stopword identification, and all three built-in analyzers. Differences arise in the specifics:</p>
+<div class="table-wrap"><table>
+<thead><tr><th></th><th>English</th><th>German</th><th>Chinese</th></tr></thead>
+<tbody>
+<tr><td>Dividing the text into words</td><td>At spaces and punctuation; <em>don’t</em> becomes <em>do</em> and <em>n’t</em></td><td>At spaces and punctuation</td><td>By a model that finds the words, since they are not separated by spaces</td></tr>
+<tr><td>Tags</td><td>Penn Treebank</td><td>STTS (Stuttgart-Tübingen tagset)</td><td>Penn Chinese Treebank</td></tr>
+<tr><td>Dependency labels</td><td>English labels such as nsubj and dobj</td><td>TIGER labels such as sb (subject) and oa (accusative object, the direct object)</td><td>The English labels, plus Chinese ones such as aux:asp for aspect markers like 了</td></tr>
+<tr><td>Phrase labels</td><td>Penn Treebank, such as NP and PP</td><td>TIGER, such as NP and PP</td><td>Penn Chinese Treebank</td></tr>
+<tr><td><strong class="ui">Morphology</strong> lens</td><td><strong class="ui">Tense</strong>, <strong class="ui">Number</strong>, <strong class="ui">Degree</strong> (comparative, superlative), <strong class="ui">Verb form</strong></td><td>The same, plus <strong class="ui">Case</strong>, <strong class="ui">Mood</strong>, and <strong class="ui">Gender</strong></td><td>Not offered</td></tr>
+<tr><td><strong class="ui">Metadiscourse</strong> categories</td><td>Five</td><td>The five, plus <strong class="ui">Modal particle</strong></td><td>The five, plus <strong class="ui">Final particle</strong></td></tr>
+<tr><td><strong class="ui">Rhetoric</strong> devices</td><td>All thirteen</td><td>All but <strong class="ui">Absolute phrase</strong></td><td>All but <strong class="ui">Periodic sentence</strong> and <strong class="ui">Absolute phrase</strong></td></tr>
+<tr><td>Lenses for this language only</td><td>None</td><td><strong class="ui">Sentence fields</strong> (see <a href="lenses.html#sentence-fields">Sentence fields (German)</a> in <a href="lenses.html">Chapter 6, Lenses</a>)</td><td><strong class="ui">Constructions</strong> and <strong class="ui">Particles</strong> (see <a href="lenses.html#chinese-lenses">Constructions and Particles (Chinese)</a> in <a href="lenses.html">Chapter 6, Lenses</a>)</td></tr>
+</tbody></table></div>
+<p>Penn Treebank, Penn Chinese Treebank, STTS, and TIGER are standard annotation schemes, which the models were trained on.</p>
+<figure class="shot" id="analysis-and-indexing-german-word"><img class="shot-light" src="../figures/en/light/analysis-and-indexing-german-word.webp" alt="The Grammar tab describing Klima in “Running Out of Time (German)”, with its features under Morphology." loading="lazy"><img class="shot-dark" src="../figures/en/dark/analysis-and-indexing-german-word.webp" alt="The Grammar tab describing Klima in “Running Out of Time (German)”, with its features under Morphology." loading="lazy"><figcaption>The Grammar tab describing Klima in “Running Out of Time (German)”, with its features under Morphology.</figcaption></figure>
+<p>Chinese words have a single form, and hence, the lemma of a Chinese word is always the word itself.</p>
+<p>The stopwords discovered through the process of indexing go into the <strong class="ui">Stopword share</strong> in the <strong class="ui">Text</strong> tab and the <strong class="ui">Stopword</strong> field of words when querying; the <strong class="ui">Collocates</strong> facet of the <strong class="ui">Grammar</strong> tab ignores stopwords. The stopwords lists are internal lists provided by LemmaLoom; LemmaLoom comes pre-packaged with 162 stopwords in English, 211 stopwords in German, and 153 stopwords in Chinese. If a token’s form or lemma matches an item on one of the lists, regardless of capitalization, it becomes a stopword. Since the stopword lists are fixed, you may define your own rules when querying to leave out other words.</p>
+<p><strong class="ui">Help ▸ Glossary</strong> gives detailed descriptions of every tag, dependency label, and phrase label in use by LemmaLoom. Pick a term category from <strong class="ui">Help ▸ Glossary</strong>’s sidebar (such as <strong class="ui">Part-of-speech tags</strong>, <strong class="ui">Dependency relations</strong>, <strong class="ui">Phrase labels</strong>, or <strong class="ui">Morphology</strong>), then search using the <strong class="ui">Search</strong> field above the glossary list. An item labeled EN, DE, or ZH is defined specifically for English, German, and Chinese respectively; otherwise, all three languages use that definition. Any part-of-speech tag, dependency label, or phrase label highlighted with colors in lenses appears in <strong class="ui">Help ▸ Glossary</strong> in matching colors too. Hover the mouse pointer over one of them to know which lens uses that tag, dependency label, or phrase label.</p>
+<figure class="shot" id="analysis-and-indexing-glossary-tags"><img class="shot-light" src="../figures/en/light/analysis-and-indexing-glossary-tags.webp" alt="The part-of-speech tags in the Glossary after a search for “proper noun”, with the languages each tag belongs to." loading="lazy"><img class="shot-dark" src="../figures/en/dark/analysis-and-indexing-glossary-tags.webp" alt="The part-of-speech tags in the Glossary after a search for “proper noun”, with the languages each tag belongs to." loading="lazy"><figcaption>The part-of-speech tags in the Glossary after a search for “proper noun”, with the languages each tag belongs to.</figcaption></figure>
+<h3 id="language-detection">How LemmaLoom decides the language<a class="anchor" href="#language-detection" aria-hidden="true">#</a></h3>
+<p><strong class="ui">Language</strong>, set in the import dialog or in <strong class="ui">Document Properties</strong>, determines what models will be used to index the document. In the navigation sidebar, after the document’s name, <strong class="ui">Language</strong> appears as a short code such as EN, DE, or ZH; hover the mouse pointer over the code on the navigation sidebar to view its full name.</p>
+<p>Set <strong class="ui">Language</strong> to <strong class="ui">Automatic</strong>, and LemmaLoom will recognize the language from the first 4,096 characters of the text in the document. With a recording, LemmaLoom will recognize its language based off the transcription language when available; otherwise, it reads the text in the document. LemmaLoom does this both on import and each time you set <strong class="ui">Language</strong> back to <strong class="ui">Automatic</strong> and save. Documents inside a project imported in REFI-QDA format will have their languages recognized the same way.</p>
+<p>Sometimes, LemmaLoom may mistake one of the three supported languages for another. Therefore, it may use the wrong models to analyze documents after importing them into LemmaLoom. After a large import, check the language codes in the sidebar. Choose the language yourself when the beginning of a document is not representative of the whole document, or when LemmaLoom has misidentified the language. An example scenario may arise where LemmaLoom tells you <strong class="ui">No grammar analysis for Spanish</strong> for an English-language blog post; set <strong class="ui">Language</strong> to <strong class="ui">English</strong> within <strong class="ui">Document Properties</strong> and press <strong class="ui">Save</strong>.</p>
+<p>Each document will always be indexed using one language across the entirety of the document. Text segments written in another language, e.g., quotations in foreign languages, will still be analyzed according to the models of the main language and yield unreliable results.</p>
+<p>Translations will have their languages determined by their target languages. Hence, “Running Out of Time (German)” will be analyzed based on the German models. They are indexed with all analyzers for the language, and <strong class="ui">Exclude from indexing</strong> starts blank, whatever the original uses; you may adjust any setting in <strong class="ui">Document Properties</strong>.</p>
+<h3 id="other-languages">Other languages<a class="anchor" href="#other-languages" aria-hidden="true">#</a></h3>
+<p>LemmaLoom supports importing a document written in any other language (French, Spanish, etc.) as text alone. The badge on the navigation sidebar for the document is a question mark, and hovering the mouse pointer over it produces <strong class="ui">Language not supported for indexing</strong>. In the reader, the status bar at the bottom will tell you <strong class="ui">No grammar analysis for French</strong>, where French stands for whatever the unsupported language is. You may continue reading, searching, editing, and coding documents despite lack of language support, and use them in every view that works without the analysis (see <a href="#what-needs-analysis">What is available without the analysis</a> later in this chapter).</p>
+<h2 id="following-the-analysis">Following indexing<a class="anchor" href="#following-the-analysis" aria-hidden="true">#</a></h2>
+<p>Indexing occurs on all of your projects regardless of which one you currently have opened. LemmaLoom indexes up to three documents simultaneously or up to three sections of one document at once; everything else is indexed in order. Should you quit LemmaLoom prematurely while indexing, then the remaining indexing process is resumed whenever you start LemmaLoom back up again.</p>
+<p>The models associated with a language get loaded into RAM upon needing to analyze the first document within that language, and around a minute and a half after the last document is done, they’re unloaded from memory.</p>
+<h3 id="navigator-status">In the sidebar<a class="anchor" href="#navigator-status" aria-hidden="true">#</a></h3>
+<p>A small badge after a document’s name and language code in the navigation sidebar shows its index status. Hover your mouse pointer on top of the badge to reveal the status label. These statuses are also available in smart sets and queries via the <strong class="ui">Index Status</strong> field.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Badge</th><th><strong class="ui">Index Status</strong></th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td>No badge</td><td><strong class="ui">Indexed</strong></td><td>The document has been indexed.</td></tr>
+<tr><td>Progress ring; the name is gray</td><td><strong class="ui">Indexing</strong></td><td>The document is being indexed. The tooltip shows the stage and the percentage, such as <strong class="ui">Parsing structure 35%</strong>.</td></tr>
+<tr><td>Progress ring or spinner</td><td><strong class="ui">Running Analyzer</strong></td><td>An analyzer you started with <strong class="ui">Run</strong> in <strong class="ui">Document Properties</strong> is running on the document. The tooltip reads, for example, <strong class="ui">Running Cohesion</strong>.</td></tr>
+<tr><td>Dotted circle</td><td><strong class="ui">Not Indexed</strong></td><td>The document waits in the queue (<strong class="ui">Waiting to be indexed</strong>).</td></tr>
+<tr><td>Pause sign</td><td><strong class="ui">Skipped</strong></td><td><strong class="ui">Indexing is off</strong> for this document, because it was imported without indexing (see <a href="#turning-indexing-off">Importing without indexing</a> below).</td></tr>
+<tr><td>Question mark</td><td><strong class="ui">Unsupported</strong></td><td>The document is in another language (<strong class="ui">Language not supported for indexing</strong>).</td></tr>
+<tr><td>Red warning triangle</td><td><strong class="ui">Failed</strong></td><td>Indexing failed. The tooltip gives the reason (see <a href="#indexing-failures">When indexing fails</a> below).</td></tr>
+</tbody></table></div>
+<figure class="shot" id="analysis-and-indexing-navigator"><img class="shot-light" src="../figures/en/light/analysis-and-indexing-navigator.webp" alt="The sidebar during indexing. The skeptic texts in “Print” are being indexed, those in “Online” wait, and “Heat Wave Report 2024”, imported without indexing, shows the pause sign." loading="lazy"><img class="shot-dark" src="../figures/en/dark/analysis-and-indexing-navigator.webp" alt="The sidebar during indexing. The skeptic texts in “Print” are being indexed, those in “Online” wait, and “Heat Wave Report 2024”, imported without indexing, shows the pause sign." loading="lazy"><figcaption>The sidebar during indexing. The skeptic texts in “Print” are being indexed, those in “Online” wait, and “Heat Wave Report 2024”, imported without indexing, shows the pause sign.</figcaption></figure>
+<h3 id="reader-status">In the reader<a class="anchor" href="#reader-status" aria-hidden="true">#</a></h3>
+<p>Document counts, including paragraph, sentence, and token counts of a document, are displayed at the far right side of the status bar of the reader. The counts displayed depend on the items displayed in the gutter (see <a href="reading-and-editing.html#status-bar">The status bar</a> in <a href="reading-and-editing.html">Chapter 5, Reading and Editing</a>). For instance, the status bar shows <strong class="ui">10 ¶ · 65 S · 1,029 words</strong> for “Running Out of Time”. Until indexing finishes, and while you run an analyzer with <strong class="ui">Run</strong>, the status bar instead displays one of these:</p>
+<ul>
+<li>Stage and percentage completed, e.g., <strong class="ui">Parsing structure 35%</strong> accompanied by a progress ring;</li>
+<li><strong class="ui">Indexing</strong> with a spinner icon while waiting for its turn (<strong class="ui">Waiting to be indexed</strong> in the sidebar);</li>
+<li><strong class="ui">Running</strong> with an analyzer name followed by percentage completed when the document size is large, e.g., <strong class="ui">Running Rhetoric</strong>;</li>
+<li><strong class="ui">Indexing is off</strong> with an <strong class="ui">Index Now</strong> link for a document added without indexing;</li>
+<li><strong class="ui">No grammar analysis for</strong> followed by the language;</li>
+<li>Failure reason followed by a <strong class="ui">Retry Indexing</strong> link for the document failing indexing.</li>
+</ul>
+<figure class="shot" id="analysis-and-indexing-status-paused"><img class="shot-light" src="../figures/en/light/analysis-and-indexing-status-paused.webp" alt="The status bar of “Heat Wave Report 2024”, imported without indexing." loading="lazy"><img class="shot-dark" src="../figures/en/dark/analysis-and-indexing-status-paused.webp" alt="The status bar of “Heat Wave Report 2024”, imported without indexing." loading="lazy"><figcaption>The status bar of “Heat Wave Report 2024”, imported without indexing.</figcaption></figure>
+<p>Other components in the reader also await indexing (refer to <a href="reading-and-editing.html#before-analysis">Before indexing has finished</a> in <a href="reading-and-editing.html">Chapter 5, Reading and Editing</a>).</p>
+<h3 id="activity-window">In the Activity window<a class="anchor" href="#activity-window" aria-hidden="true">#</a></h3>
+<p><strong class="ui">Window ▸ Activity</strong> (⌥⌘0) displays the activity performed behind the scenes in all projects (refer to <a href="importing.html#activity-window">The Activity window</a> in <a href="importing.html">Chapter 4, Importing Material</a>). The following sections of the <strong class="ui">Activity</strong> window describe the indexing activities:</p>
+<ul>
+<li><strong class="ui">Indexing</strong> displays the list of documents undergoing indexing activity, along with their stage and progress in percentages, and the documents currently being analyzed with a specific analyzer, e.g., <strong class="ui">Running Metadiscourse 40%</strong>.</li>
+<li><strong class="ui">Failed</strong> shows the list of the documents that had their indexing fail, along with the reason for the failure, and a link named <strong class="ui">Retry Indexing</strong> for attempting the operation again.</li>
+<li>Lastly, <strong class="ui">Waiting</strong> provides the list of documents waiting for their turn in the queue, marked with the status of <strong class="ui">Waiting to be indexed</strong>.</li>
+</ul>
+<p>All rows indicate the name of their associated projects, so the <strong class="ui">Activity</strong> window is the place to follow indexing in projects other than the active one.</p>
+<h3 id="index-status-field">Finding documents by their index status<a class="anchor" href="#index-status-field" aria-hidden="true">#</a></h3>
+<p>The members of a smart set will update automatically as documents finish indexing. A smart set can therefore show which documents are not ready yet following an import containing many documents. Create a smart set as follows:</p>
+<ol>
+<li>Choose <strong class="ui">Project ▸ New Smart Set</strong>, or click <strong class="ui">New Smart Set</strong> at the end of the <strong class="ui">Sets</strong> section in the sidebar.</li>
+<li>In the dialog that opens, give the set a name.</li>
+<li>In the condition row, choose <strong class="ui">Index Status</strong> in the menu showing <strong class="ui">Attribute</strong> or <strong class="ui">Tags</strong>.</li>
+<li>Choose <strong class="ui">is none of</strong> in the menu showing <strong class="ui">is any of</strong>.</li>
+<li>Open the value menu, which reads <strong class="ui">None</strong>, and select <strong class="ui">Indexed</strong>.</li>
+<li>Click <strong class="ui">Save</strong>.</li>
+</ol>
+<p>As you make changes to your criteria, the number beneath the conditions will inform you how many documents are in your set. Your set can also contain documents that are in other languages, as well as, briefly, documents with an analyzer running via <strong class="ui">Run</strong> on them. Should you wish to see only the documents requiring your attention, select <strong class="ui">is any of</strong> with <strong class="ui">Failed</strong>, <strong class="ui">Skipped</strong>, and <strong class="ui">Unsupported</strong> instead.</p>
+<figure class="shot" id="analysis-and-indexing-smart-set"><img class="shot-light" src="../figures/en/light/analysis-and-indexing-smart-set.webp" alt="A smart set of the documents whose indexing has not finished." loading="lazy"><img class="shot-dark" src="../figures/en/dark/analysis-and-indexing-smart-set.webp" alt="A smart set of the documents whose indexing has not finished." loading="lazy"><figcaption>A smart set of the documents whose indexing has not finished.</figcaption></figure>
+<p>The <strong class="ui">Index Status</strong> field is part of the <strong class="ui">Documents</strong> unit in queries. Both smart sets and queries also feature the <strong class="ui">Indexing Skipped</strong> field, indicating whether or not a document was imported without indexing and is still waiting for <strong class="ui">Index Now</strong>. To read more about smart sets, refer to <a href="sets-tags-attributes.html">Chapter 8, Sets, Groups, Tags, and Attributes</a>.</p>
+<h2 id="indexing-failures">When indexing fails<a class="anchor" href="#indexing-failures" aria-hidden="true">#</a></h2>
+<p>Should the indexing fail on any document, a warning icon in the form of a red triangle will replace the badge next to the document in the sidebar. The document will also move to the <strong class="ui">Failed</strong> section inside the <strong class="ui">Activity</strong> window. The failure’s cause will appear when hovering the mouse pointer over this icon, within the document’s shortcut menu inside the sidebar, or in the reader’s status bar. When there isn’t anything specific enough to say, the reason for the failure reads <strong class="ui">Indexing this document failed.</strong></p>
+<p>There is also always an option to retry the indexing process, <strong class="ui">Retry Indexing</strong>, available in these places:</p>
+<ul>
+<li>from the document’s shortcut menu within the sidebar;</li>
+<li>from the reader’s status bar; or,</li>
+<li>from the document’s row in the <strong class="ui">Failed</strong> section inside the <strong class="ui">Activity</strong> window.</li>
+</ul>
+<p>LemmaLoom then indexes portions of the document which lack analysis and reruns its analyzers. LemmaLoom attempts retrying automatically upon startup, and, once it has waited long enough, again the next time it indexes any document. These waiting times double with each failure, starting at one minute until hitting one hour.</p>
+<p>After multiple failures occur on the same document, check its <strong class="ui">Language</strong> property under <strong class="ui">Document Properties</strong>. Within the reader itself, locate portions of text which aren’t actual text (e.g., random characters caused by a corrupted PDF file), and fix or exclude such portions. Should nothing else work, feel free to report issues via <strong class="ui">Help ▸ Send Feedback</strong> (see <a href="help-and-support.html">Chapter 26, Help and Support</a>).</p>
+<h2 id="turning-indexing-off">Importing without indexing<a class="anchor" href="#turning-indexing-off" aria-hidden="true">#</a></h2>
+<p>You may choose to bring in a document and leave it unindexed and have it indexed later. Some instances that warrant importing documents unindexed could be a large number of documents where you need to keep your Mac free now; a PDF where the extracted text must first be corrected before being indexed; and documents which will only ever be needed for reading and coding purposes.</p>
+<p>How to import documents without indexing them:</p>
+<ol>
+<li>Import the document as usual (see <a href="importing.html">Chapter 4, Importing Material</a>).</li>
+<li>In the <strong class="ui">Indexing</strong> part of the <strong class="ui">Import Document</strong> or <strong class="ui">Import from Web</strong> dialog, deselect <strong class="ui">Index for grammar analysis</strong>. The <strong class="ui">Analyzers</strong> list below it is disabled.</li>
+<li>Click <strong class="ui">Import</strong>.</li>
+</ol>
+<p>A dialog appears once for each file imported, with the checkbox checked at first on each dialog. You can uncheck it on each dialog to import multiple files without indexing.</p>
+<p>Such a document won’t be added to the queue even if its contents change later. Its lens menu remains disabled while the status on the <strong class="ui">Grammar</strong> tab states <strong class="ui">Grammar becomes available when indexing completes</strong>.</p>
+<p>For indexing this document, click on <strong class="ui">Index Now</strong> in the reader’s status bar, or go ahead to <strong class="ui">Document Properties</strong> and hit <strong class="ui">Index Now</strong>. Access <strong class="ui">Document Properties</strong> through selecting the document in the sidebar and choosing <strong class="ui">Project ▸ Properties</strong>, or right-clicking the document itself and hitting <strong class="ui">Properties</strong>. There, <strong class="ui">Index Now</strong> sits at the top of the <strong class="ui">Indexing</strong> part, beside <strong class="ui">Indexing is off</strong>. This button acts immediately.</p>
+<figure class="shot" id="analysis-and-indexing-index-now"><img class="shot-light" src="../figures/en/light/analysis-and-indexing-index-now.webp" alt="The Indexing part of Document Properties for “Heat Wave Report 2024”, imported without indexing, with Index Now beside Indexing is off." loading="lazy"><img class="shot-dark" src="../figures/en/dark/analysis-and-indexing-index-now.webp" alt="The Indexing part of Document Properties for “Heat Wave Report 2024”, imported without indexing, with Index Now beside Indexing is off." loading="lazy"><figcaption>The Indexing part of Document Properties for “Heat Wave Report 2024”, imported without indexing, with Index Now beside Indexing is off.</figcaption></figure>
+<p>Afterwards, your document will enter the queue for processing. If <strong class="ui">Index Now</strong> is mistakenly clicked on, you may use <strong class="ui">Edit ▸ Undo Index Now</strong> (⌘Z) to revert it back to the previous status <strong class="ui">Indexing is off</strong>. If indexing has already finished by then, the document keeps its analysis.</p>
+<aside class="callout note"><p class="callout-title">Note</p><p>Preventing indexing is only possible at import, or after importing the document, by undoing the <strong class="ui">Index Now</strong> action.</p>
+</aside>
+<h2 id="document-analyzers">Choosing analyzers for a document<a class="anchor" href="#document-analyzers" aria-hidden="true">#</a></h2>
+<p>All analyzers working on the language of a particular document will run on it during indexing. There is always an option to exclude an analyzer from processing on individual documents either while importing a document or at any time afterward via deleting the findings generated by the analyzer from <strong class="ui">Document Properties</strong>. It might be appropriate to exclude an analyzer from a document whenever said analyzer does not suit the content. <strong class="ui">Rhetoric</strong>, for instance, identifies devices like nominalization and periodic sentences; however, since these are characteristic of written prose, you might wish to exclude it from analyzing “Radio Debate”, a recording transcript. Whenever it is excluded from analyzing all transcripts, a project-wide query for <strong class="ui">Findings</strong> counts rhetorical devices in the written documents only.</p>
+<p>Here is what happens when you choose to exclude an analyzer from processing on a document:</p>
+<ul>
+<li>All findings by the analyzer on this particular document will be removed;</li>
+<li>The lens for this analyzer will disappear from the document’s lens menu;</li>
+<li>In the <strong class="ui">Discourse</strong> facet of the <strong class="ui">Grammar</strong> tab, you’ll find indications like <strong class="ui">No Rhetorical Devices</strong> for the document;</li>
+<li>When applying an analyzer you created yourself to auto code documents, <strong class="ui">Auto Code…</strong> skips over any documents that the analyzer was excluded from previously.</li>
+</ul>
+<h3 id="analyzers-at-import">Choosing analyzers at import<a class="anchor" href="#analyzers-at-import" aria-hidden="true">#</a></h3>
+<p>Analyzers are listed with checkboxes under <strong class="ui">Analyzers</strong> in the <strong class="ui">Indexing</strong> part of the import dialog. The built-in analyzers appear first, followed by yours alphabetically. When the value of <strong class="ui">Language</strong> is <strong class="ui">Automatic</strong>, all analyzers will appear on the list; otherwise, only those capable of processing documents in the chosen language will show. Initially, everything will be checked by default; uncheck those you do not wish to include for this document.</p>
+<h3 id="analyzer-list">The analyzer list in Document Properties<a class="anchor" href="#analyzer-list" aria-hidden="true">#</a></h3>
+<p>For viewing or editing the analyzers associated with an existing document within your project, follow this procedure:</p>
+<ol>
+<li>Select the document in the sidebar and choose <strong class="ui">Project ▸ Properties</strong>, or right-click it and choose <strong class="ui">Properties</strong>.</li>
+<li>Scroll down to the <strong class="ui">Indexing</strong> part. <strong class="ui">Analyzers</strong> lists the analyzers that handle the document’s language. For a document in another language, it lists them all, with <strong class="ui">Run</strong> disabled.</li>
+</ol>
+<p>Each row shows the state of the analyzer:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>State</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">Done</strong></td><td>The analyzer has run on the whole document with its current version. An analyzer that ran and found nothing is <strong class="ui">Done</strong> too.</td></tr>
+<tr><td><strong class="ui">Out of Date</strong></td><td>The analyzer has run on part of the document, or with an earlier version. This is usually brief, because LemmaLoom brings it up to date by itself (see <a href="#analyzer-reruns">When analyzers are executed again</a> below).</td></tr>
+<tr><td><strong class="ui">Not Run</strong></td><td>The analyzer has not run on this document, because it was left out, because the document has not been indexed yet, or because the analyzer stopped with an error during indexing.</td></tr>
+<tr><td><strong class="ui">Running</strong></td><td>The analyzer is running now. In a long document, a progress ring shows how far along it is.</td></tr>
+<tr><td><strong class="ui">Failed</strong></td><td>The analyzer stopped with an error after you clicked <strong class="ui">Run</strong>. Hover the mouse pointer over <strong class="ui">Failed</strong> to read the error.</td></tr>
+</tbody></table></div>
+<figure class="shot" id="analysis-and-indexing-properties-analyzers"><img class="shot-light" src="../figures/en/light/analysis-and-indexing-properties-analyzers.webp" alt="The analyzers of “Radio Debate” in Document Properties, with Rhetoric left out." loading="lazy"><img class="shot-dark" src="../figures/en/dark/analysis-and-indexing-properties-analyzers.webp" alt="The analyzers of “Radio Debate” in Document Properties, with Rhetoric left out." loading="lazy"><figcaption>The analyzers of “Radio Debate” in Document Properties, with Rhetoric left out.</figcaption></figure>
+<p>Clicking <strong class="ui">Run</strong> links or the trash button in this list will take effect immediately regardless of whether you click <strong class="ui">Cancel</strong> afterward.</p>
+<h3 id="removing-analyzer-output">Removing an analyzer’s output<a class="anchor" href="#removing-analyzer-output" aria-hidden="true">#</a></h3>
+<p>If you remove an analyzer’s output, LemmaLoom removes the findings and leaves the analyzer out of the document from then on.</p>
+<ol>
+<li>Open <strong class="ui">Document Properties</strong> for the document and scroll to <strong class="ui">Indexing</strong>.</li>
+<li>In the analyzer’s row, click the trash button. Hovering the mouse pointer over it shows <strong class="ui">Remove Output</strong>. The button appears only for analyzers that are <strong class="ui">Done</strong> or <strong class="ui">Out of Date</strong>.</li>
+</ol>
+<p>The row now changes to <strong class="ui">Not Run</strong>. When the document gets reindexed (perhaps due to editing), the analyzer remains removed. You may undo the removal with <strong class="ui">Edit ▸ Undo Remove Output</strong> (⌘Z) to restore and rerun the analyzer. Should you wish to run it again in the future, click <strong class="ui">Run</strong> on the same row.</p>
+<h3 id="running-an-analyzer">Running an analyzer<a class="anchor" href="#running-an-analyzer" aria-hidden="true">#</a></h3>
+<ol>
+<li>Open <strong class="ui">Document Properties</strong> for the document and scroll to <strong class="ui">Indexing</strong>.</li>
+<li>In the analyzer’s row, click <strong class="ui">Run</strong>. The link appears for analyzers that are not <strong class="ui">Done</strong>.</li>
+</ol>
+<p>If your document lacked the analyzer, it is added back, and the analyzer runs immediately on the existing analysis. As it analyzes, its row displays as <strong class="ui">Running</strong>, with the sidebar badge and the reader’s status bar indicating such, as well as the <strong class="ui">Activity</strong> window, e.g., <strong class="ui">Running Rhetoric</strong>. Should the document originally lack the analyzer, choosing <strong class="ui">Edit ▸ Undo Run</strong> (⌘Z) leaves it out again and removes the results of the run.</p>
+<p><strong class="ui">Run</strong> remains disabled until indexing is complete, and for a document imported without indexing. Hovering your mouse pointer over it reveals <strong class="ui">Not indexed yet</strong> or <strong class="ui">Indexing is off</strong> accordingly.</p>
+<p>Should one of your own analyzers display <strong class="ui">Not Run</strong> in a fully indexed document despite never being left out, chances are that the analyzer failed during indexing due to some error. Clicking <strong class="ui">Run</strong> lets you attempt running it again. An unsuccessful run causes the analyzer to be listed as <strong class="ui">Failed</strong>. Hovering your mouse pointer over <strong class="ui">Failed</strong> provides you with the error message associated with the failure. The error can then be tracked down via <strong class="ui">Window ▸ Analyzers</strong> (see <a href="custom-analyzers.html">Chapter 20, Custom Analyzers</a>).</p>
+<h3 id="analyzer-reruns">When analyzers are executed again<a class="anchor" href="#analyzer-reruns" aria-hidden="true">#</a></h3>
+<p><strong class="ui">Run</strong> isn’t usually necessary because LemmaLoom re-runs the analyzers automatically. The two triggers for automatic re-running are when your document is indexed once again (see <a href="#reanalysis">Indexing a document again</a>) and when you remove/add any of your own analyzers through <strong class="ui">Window ▸ Analyzers</strong>, update its code or its languages, or modify its legend keys.</p>
+<p>In the second case, LemmaLoom re-runs the analyzer across all projects, on every document in its languages, excluding any document whose previous results you deleted. Only the analyzers re-run, so this is much faster than full indexing. Meanwhile, since all affected documents count as <strong class="ui">Indexing</strong> during this time, their names gray out in the sidebar with a progress ring while the row of the analyzer in <strong class="ui">Document Properties</strong> may display <strong class="ui">Out of Date</strong> until completed.</p>
+<p>When an analyzer’s row displays <strong class="ui">Out of Date</strong> under <strong class="ui">Window ▸ Analyzers</strong>, it signifies something else. This <strong class="ui">Out of Date</strong> label indicates the analyzer comes from a modified query. Save the analyzer again from the altered query (see <a href="queries-using-results.html">Chapter 18, Using Query Results</a>) to fix this issue.</p>
+<h2 id="what-needs-analysis">What is available without the analysis<a class="anchor" href="#what-needs-analysis" aria-hidden="true">#</a></h2>
+<p>Many features of LemmaLoom rely solely on the text content and your annotations, so these features work in every document, indexed or not:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Area</th><th>Works without the analysis</th></tr></thead>
+<tbody>
+<tr><td>Reader</td><td>Reading, the search bar, selecting passages, editing the text, and playing recordings</td></tr>
+<tr><td>Annotations</td><td>Coding, memos, links, and bookmarks; coded passages and bookmarks are shown in the text</td></tr>
+<tr><td>Inspector</td><td>In the <strong class="ui">Coding</strong> tab, <strong class="ui">Codes</strong>, <strong class="ui">Codings</strong>, <strong class="ui">Links</strong>, <strong class="ui">Code Stats</strong>, and the <strong class="ui">Mosaic</strong> of <strong class="ui">Portrait</strong>; in the <strong class="ui">Text</strong> tab, <strong class="ui">Details</strong> (attributes and tags) and <strong class="ui">Bookmarks</strong></td></tr>
+<tr><td>Project and sets</td><td><strong class="ui">Codebook</strong>, <strong class="ui">Codings</strong>, <strong class="ui">Memos</strong>, <strong class="ui">Links</strong>, <strong class="ui">Code Stats</strong>, <strong class="ui">Code Matrix</strong>, and <strong class="ui">Relations</strong></td></tr>
+<tr><td>Dictionaries</td><td>The counts in the <strong class="ui">Dictionaries</strong> section; <strong class="ui">Auto Code…</strong> with a dictionary lens, which also codes the documents of a set or project that are not yet indexed</td></tr>
+<tr><td>Queries</td><td>The units <strong class="ui">Paragraphs</strong>, <strong class="ui">Text Matches</strong>, <strong class="ui">Codings</strong>, <strong class="ui">Memos</strong>, <strong class="ui">Bookmarks</strong>, <strong class="ui">Links</strong>, <strong class="ui">Speaker Turns</strong>, and <strong class="ui">Alignments</strong>, and the library units such as <strong class="ui">Documents</strong> and <strong class="ui">Codes</strong></td></tr>
+<tr><td>Other</td><td>Translating, sets and smart sets, attributes, tags, and exporting and exchanging projects</td></tr>
+</tbody></table></div>
+<p>These features require the analysis:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Area</th><th>Needs the analysis</th></tr></thead>
+<tbody>
+<tr><td>Reader</td><td>Clicking to select a word, sentence numbers in the gutter, counts in the status bar, and clicking a word in a transcript to move the player there</td></tr>
+<tr><td>Lenses</td><td>The lens menu, for every lens; until indexing has finished, it is disabled, with the tooltip <strong class="ui">Lenses become available when indexing completes</strong></td></tr>
+<tr><td>Inspector</td><td>The statistics in the <strong class="ui">Text</strong> tab; the whole <strong class="ui">Grammar</strong> tab; <strong class="ui">Code Sketch</strong> and the <strong class="ui">Codeline</strong> of <strong class="ui">Portrait</strong> in the <strong class="ui">Coding</strong> tab; <strong class="ui">Sketch Space</strong> in the <strong class="ui">Multimode</strong> tab</td></tr>
+<tr><td>Word sketches</td><td>Word sketches for a document, a set, or the project</td></tr>
+<tr><td>Queries</td><td>The units <strong class="ui">Words</strong>, <strong class="ui">Pattern Matches</strong>, <strong class="ui">Sentences</strong>, <strong class="ui">Phrases</strong>, <strong class="ui">Noun Chunks</strong>, and <strong class="ui">Findings</strong>; <strong class="ui">Collocates</strong> and <strong class="ui">Keywords</strong>; the <strong class="ui">Per 10,000 Words</strong> measure, which takes its word counts from the analysis</td></tr>
+<tr><td>Auto coding</td><td><strong class="ui">Auto Code…</strong> with one of your own analyzers’ lenses, which skips documents not yet indexed</td></tr>
+<tr><td>Smart sets</td><td>The <strong class="ui">Tokens</strong> and <strong class="ui">Sentences</strong> fields</td></tr>
+</tbody></table></div>
+<p>Whenever such a view encompasses multiple documents, it omits the documents that haven’t been indexed and informs you of how many it included. A query will similarly provide you a document count alongside your hit count in the results bar (see <a href="queries-results.html#coverage-chip">Documents left out</a> in <a href="queries-results.html">Chapter 16, Query Results and Statistics</a>). <strong class="ui">5 of 6</strong> documents were searched, for instance, since one out of the six documents included in the “Activists” set is not indexed yet. A word sketch of a set or project will give you something like <strong class="ui">13 of 14 documents indexed</strong>.</p>
+<p>Documents will only be omitted when using a unit that requires the analysis (see the table above). If you use a unit that doesn’t require analysis, however, such as <strong class="ui">Paragraphs</strong>, all the documents will be included in your query. For documents not indexed, a text row whose first menu is set to <strong class="ui">Word</strong>, <strong class="ui">Word Form</strong>, or <strong class="ui">Lemma</strong> searches the text as <strong class="ui">Text</strong> does until indexing is done. <strong class="ui">Query from Selection</strong> makes a plain text search there (see <a href="queries-patterns.html">Chapter 17, Query Patterns and Discovery</a>).</p>
+<h2 id="reanalysis">Indexing a document again<a class="anchor" href="#reanalysis" aria-hidden="true">#</a></h2>
+<p>The analysis of a document in LemmaLoom remains valid until something it depends on changes. These changes send it back to the queue:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Change</th><th>What LemmaLoom does</th></tr></thead>
+<tbody>
+<tr><td>You edit the text and click <strong class="ui">Save</strong></td><td>Indexes the document again; in a long document, usually only the part you changed</td></tr>
+<tr><td><strong class="ui">Edit ▸ Undo Edit Text</strong></td><td>The same, for the restored text</td></tr>
+<tr><td>You change <strong class="ui">Language</strong> in <strong class="ui">Document Properties</strong> and save</td><td>Indexes the whole document in the new language</td></tr>
+<tr><td>You change <strong class="ui">Exclude from indexing</strong> in <strong class="ui">Document Properties</strong> and save</td><td>Indexes the whole document again</td></tr>
+<tr><td><strong class="ui">Edit ▸ Undo Delete Document</strong></td><td>Indexes the restored document, because its analysis was deleted with it</td></tr>
+<tr><td>You add, change, or delete one of your own analyzers</td><td>Reruns only the analyzers, on every document in that analyzer’s languages</td></tr>
+<tr><td><strong class="ui">Edit ▸ Undo Remove Output</strong></td><td>Reruns the analyzers of that document</td></tr>
+<tr><td>A new version of LemmaLoom changes how documents are indexed</td><td>Indexes every document again, in the background, the first time you open the new version</td></tr>
+</tbody></table></div>
+<h3 id="after-an-edit">After an edit<a class="anchor" href="#after-an-edit" aria-hidden="true">#</a></h3>
+<p>Saving edits immediately updates the text shown in the reader with your changes, and <strong class="ui">Saving</strong> will appear over it until your new analysis is complete (see <a href="reading-and-editing.html#after-saving">What saving does</a> in <a href="reading-and-editing.html">Chapter 5, Reading and Editing</a>). All of your codings, memos, links, and bookmarks travel with the text they are attached to before re-indexing starts.</p>
+<p>How much needs re-indexing depends on the size of the document. A document that does not exceed around 80,000 words in English is indexed in full as one piece, while a larger document is split up into multiple pieces at paragraph breaks. Any edit triggers the re-indexing of the piece containing the edit, meaning that, for most articles and speeches, edits trigger the indexing of the whole document. However, if editing occurred in long books or reports, then the unedited pieces usually keep their analysis, so the new analysis is ready much sooner. Significant insertions or deletions could push a paragraph forward into the next piece, thus triggering re-indexing of the pieces after it.</p>
+<p>Generally speaking, it is a better practice to fix mistakes or make larger revisions prior to indexing; for example, you should import a PDF without indexing it yet if you are going to revise a lengthy document extensively (see <a href="#turning-indexing-off">Importing without indexing</a> earlier in this chapter).</p>
+<h3 id="archives-and-exchange">Archives and exchange files<a class="anchor" href="#archives-and-exchange" aria-hidden="true">#</a></h3>
+<p>A LemmaLoom archive (<code>.llz</code>) contains the analyses performed on its documents. When importing documents from an archive, you can use these analyses at once. If the archive was made by a version of LemmaLoom that indexes documents differently, its documents are indexed again.</p>
+<p>Imported documents keep the analyzer findings stored in the archive, too. Under <strong class="ui">Document Properties</strong> in any imported document, any of your analyzers that are not recognized by the archive’s own library appear as <strong class="ui">Not Run</strong>; <strong class="ui">Run</strong> starts analyzing these documents accordingly. Any analyzer that was not present in your own library and comes from the archive is added to your library. Documents previously residing in your library can be analyzed by it only when next indexed, or manually via clicking <strong class="ui">Run</strong>.</p>
+<p>A REFI-QDA project (<code>.qdpx</code>) stores its text documents, and indexing takes place just like it would for new documents. Refer to <a href="exchange-and-export.html">Chapter 22, Exchanging and Exporting</a> for additional information on these two file formats.</p>
+</article>
+<nav class="pager"><a class="previous" href="custom-analyzers.html"><span>Previous</span>Custom Analyzers</a><a class="next" href="exchange-and-export.html"><span>Next</span>Exchanging and Exporting</a></nav>
+<footer class="site-footer">© 2026 Ryan S. Cooper. All rights reserved.</footer>
+</main>
+<nav class="page-toc" aria-label="On this page"><p>On this page</p><ul>
+<li class="level-2"><a href="#analysis-terms">Key terms</a></li>
+<li class="level-2"><a href="#analysis-steps">What happens during indexing</a></li>
+<li class="level-3"><a href="#example-sentence">An example sentence</a></li>
+<li class="level-3"><a href="#analysis-models">The sources of the analysis</a></li>
+<li class="level-3"><a href="#built-in-analyzers">The built-in analyzers</a></li>
+<li class="level-3"><a href="#statistics-and-counts">Statistics and counts</a></li>
+<li class="level-3"><a href="#excluded-text">Text excluded from analysis</a></li>
+<li class="level-2"><a href="#languages">What each language supports</a></li>
+<li class="level-3"><a href="#language-detection">How LemmaLoom decides the language</a></li>
+<li class="level-3"><a href="#other-languages">Other languages</a></li>
+<li class="level-2"><a href="#following-the-analysis">Following indexing</a></li>
+<li class="level-3"><a href="#navigator-status">In the sidebar</a></li>
+<li class="level-3"><a href="#reader-status">In the reader</a></li>
+<li class="level-3"><a href="#activity-window">In the Activity window</a></li>
+<li class="level-3"><a href="#index-status-field">Finding documents by their index status</a></li>
+<li class="level-2"><a href="#indexing-failures">When indexing fails</a></li>
+<li class="level-2"><a href="#turning-indexing-off">Importing without indexing</a></li>
+<li class="level-2"><a href="#document-analyzers">Choosing analyzers for a document</a></li>
+<li class="level-3"><a href="#analyzers-at-import">Choosing analyzers at import</a></li>
+<li class="level-3"><a href="#analyzer-list">The analyzer list in Document Properties</a></li>
+<li class="level-3"><a href="#removing-analyzer-output">Removing an analyzer’s output</a></li>
+<li class="level-3"><a href="#running-an-analyzer">Running an analyzer</a></li>
+<li class="level-3"><a href="#analyzer-reruns">When analyzers are executed again</a></li>
+<li class="level-2"><a href="#what-needs-analysis">What is available without the analysis</a></li>
+<li class="level-2"><a href="#reanalysis">Indexing a document again</a></li>
+<li class="level-3"><a href="#after-an-edit">After an edit</a></li>
+<li class="level-3"><a href="#archives-and-exchange">Archives and exchange files</a></li>
+</ul></nav>
+</div>
+<script src="../assets/guide.js" defer></script>
+</body>
+</html>

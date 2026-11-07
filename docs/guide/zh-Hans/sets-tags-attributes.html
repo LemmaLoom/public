@@ -1,0 +1,510 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>文档集、分组、标签和属性 · LemmaLoom 用户指南</title>
+<link rel="stylesheet" href="../assets/guide.css">
+<link rel="icon" type="image/png" href="../assets/logo.png">
+<script>var r=document.documentElement;r.setAttribute('data-theme','light');try{if(localStorage.getItem('guide-theme')==='dark'){r.setAttribute('data-theme','dark')}}catch(e){}</script>
+</head>
+<body>
+<header class="topbar">
+<button class="menu-toggle" aria-label="目录" aria-expanded="false">☰</button>
+<a class="brand" href="index.html"><span class="wordmark"><span class="lemma">Lemma</span>Loom</span><span class="guide-name">用户指南</span></a>
+<div class="search"><input type="search" id="search" placeholder="搜索" aria-label="搜索" autocomplete="off" data-empty="无结果"><div class="results" id="results" hidden></div></div>
+<nav class="languages" aria-label="Language"><a href="../en/sets-tags-attributes.html" lang="en">English</a><a href="../de/sets-tags-attributes.html" lang="de">Deutsch</a><a href="../zh-Hans/sets-tags-attributes.html" lang="zh-Hans" aria-current="true">简体中文</a></nav>
+<button class="theme-toggle" data-light="浅色" data-dark="深色" aria-label="外观"></button>
+<a class="pdf-link" href="https://github.com/LemmaLoom/public/raw/main/pdf/lemmaloom-guide-zh-Hans.pdf">PDF</a>
+</header>
+<div class="layout">
+<nav class="sidebar" aria-label="目录"><ol>
+<li class="unnumbered"><a href="quick-start.html">快速入门</a></li>
+<li><a href="introduction.html">简介</a></li>
+<li><a href="getting-started.html">开始使用</a></li>
+<li><a href="projects-and-documents.html">项目与文档</a></li>
+<li><a href="importing.html">导入资料</a></li>
+<li><a href="reading-and-editing.html">阅读与编辑</a></li>
+<li><a href="lenses.html">透镜</a></li>
+<li><a href="coding.html">编码</a></li>
+<li class="current"><a href="sets-tags-attributes.html">文档集、分组、标签和属性</a></li>
+<li><a href="translations.html">译文与分屏浏览</a></li>
+<li><a href="text-inspector.html">文本检查器</a></li>
+<li><a href="grammar-inspector.html">语法检查器</a></li>
+<li><a href="word-sketch.html">词汇速写</a></li>
+<li><a href="coding-analysis.html">编码分析</a></li>
+<li><a href="sketch-space.html">速写空间</a></li>
+<li><a href="queries-building.html">构建查询</a></li>
+<li><a href="queries-results.html">查询结果与统计</a></li>
+<li><a href="queries-patterns.html">查询模式与发现</a></li>
+<li><a href="queries-using-results.html">使用查询结果</a></li>
+<li><a href="dictionaries.html">词典</a></li>
+<li><a href="custom-analyzers.html">自定义分析器</a></li>
+<li><a href="analysis-and-indexing.html">分析与索引</a></li>
+<li><a href="exchange-and-export.html">交换与导出</a></li>
+<li><a href="undo.html">撤销与重做</a></li>
+<li><a href="settings.html">设置与外观</a></li>
+<li><a href="keyboard-shortcuts.html">键盘快捷键</a></li>
+<li><a href="help-and-support.html">帮助与支持</a></li>
+<li><a href="statistics-reference.html">统计量一览</a></li>
+<li class="unnumbered"><a href="glossary.html">术语表</a></li>
+<li class="unnumbered"><a href="thanks.html">感谢</a></li>
+</ol></nav>
+<main class="content">
+<article>
+<h1 id="sets-tags-attributes">文档集、分组、标签和属性</h1>
+<p>典型的研究会比较项目中的两个部分，例如行动派的文本与怀疑派的文本，或者一家媒体与其余所有媒体。LemmaLoom 提供了多种方式来描述这两个部分。属性存储与每个文档有关的事实信息。文档集和智能文档集是有名称的文档集合，可以作为一项分析的对象；分组在导航栏中整理文档列表；最后，标签是完全自由填写的名称，可以加在你所有项目的文档上。</p>
+<p>对文档集、智能文档集、标签和属性所做的更改，都可以用<strong class="ui">编辑 ▸ 撤销</strong>（⌘Z）撤销。菜单项会准确写明要撤销的是什么，例如<strong class="ui">撤销新建文档集</strong>或<strong class="ui">撤销设置值</strong>。详细说明请参阅<a href="undo.html">第 23 章“撤销与重做”</a>。</p>
+<h2 id="key-terms">关键术语<a class="anchor" href="#key-terms" aria-hidden="true">#</a></h2>
+<ul>
+<li><em>文档集</em>是有名称的文档集合，其中的文档由你手动添加。一个文档可以属于任意多个文档集。文档集可以用作分析的<em>范围</em>，即一项分析任务所分析的文档。</li>
+<li><em>智能文档集</em>是由条件决定其中文档的文档集。只要成员所依据的内容有变化，LemmaLoom 就会相应地重新计算智能文档集的成员。</li>
+<li><em>条件</em>检验文档某一项特征的值，由一个字段、一种比较方式和（通常还有）一个值组成。例如，条件可以检验“读者数”是否<strong class="ui">至少为</strong> 100,000。</li>
+<li><em>分组</em>是导航栏<strong class="ui">文档</strong>部分中的文件夹。与文档集不同，每个文档最多属于一个分组。</li>
+<li><em>标签</em>是描述文档某些方面的简短名称，可以自由填写，例如“评论”或“热门”。标签在你的所有项目中通用。</li>
+<li><em>属性</em>是关于项目中每个文档的事实，例如“立场”或“发表日期”，只需为项目定义一次。项目中的每个文档都可以有自己的属性<em>值</em>。</li>
+<li><em>原文</em>文档指不是译文的文档。文档集总是由原文组成。凡是涉及文档集、标签或整个项目的分析任务，都读取原文，除非你要求读取译文。</li>
+</ul>
+<h2 id="choosing">该用哪一种<a class="anchor" href="#choosing" aria-hidden="true">#</a></h2>
+<div class="table-wrap"><table>
+<thead><tr><th></th><th>文档集</th><th>智能文档集</th><th>分组</th><th>标签</th><th>属性</th></tr></thead>
+<tbody>
+<tr><td>文档何时加入</td><td>你添加它时</td><td>它符合条件时</td><td>你把它移入时</td><td>你输入标签时</td><td>你填写值时</td></tr>
+<tr><td>每个文档</td><td>任意多个文档集</td><td>任意多个智能文档集</td><td>最多一个分组</td><td>任意多个标签</td><td>每个属性一个值</td></tr>
+<tr><td>归属</td><td>项目</td><td>项目</td><td>项目</td><td>项目（名称由所有项目共用）</td><td>项目</td></tr>
+<tr><td>在标签页中打开并显示项目视图</td><td>是</td><td>是</td><td>否</td><td>是</td><td>否</td></tr>
+</tbody></table></div>
+<p>上面哪一种适合你，取决于你之后想用这些文档做什么。</p>
+<ul>
+<li>属性存储你关心的任何事实值，以后可以据此比较和筛选文档。常见的例子有文本所持的立场、刊登的媒体、发表日期等。</li>
+<li>如果收集文档时没有具体的标准，可以选用文档集。分析必须只涵盖你选出的那部分文档时，适合用文档集。分析手动挑选的文档时，文档集很方便，例如准备细读的文本，或者要与同事讨论的文本。</li>
+<li>如果属性值、标签或其他特征已经说明了哪些文档属于一类，就适合用智能文档集。你添加文本或更正某个值时，它会自行更新。</li>
+<li>与文档集不同，分组只是在导航栏中整理文档，例如按材料的种类或来源归类。</li>
+<li>标签是不带值的自由名称。如果你在几个项目中以同样的方式使用某个名称，就适合用标签。每个标签都能像文档集一样，在标签页中打开带有它的文档。</li>
+</ul>
+<p>“气候辩论”项目中的文档以多种方式组织。行动派和怀疑派的文本分别组成名为“行动派”和“怀疑派”的文档集。有几篇文章加了“评论”和“热门”标签。文档还按发表的媒介分在“纸媒”和“网络”两个分组中。</p>
+<p>借助“气候辩论”中的属性（例如“立场”），可以分析行动派文本与怀疑派文本在编码实例上的差异。智能文档集“广泛传播”则按“读者数”较高这一预设标准自动更新。</p>
+<h2 id="example-values">本章的示例<a class="anchor" href="#example-values" aria-hidden="true">#</a></h2>
+<p>本章的示例使用本指南的示例项目“气候辩论”（见<a href="introduction.html">第 1 章“简介”</a>中的<a href="introduction.html#example-project">示例项目</a>）。这个示例项目已经建立索引，包含 14 个原文文档，它们的值、分组和标签如下：</p>
+<div class="table-wrap"><table>
+<thead><tr><th>文档</th><th>立场</th><th>读者数</th><th>发表日期</th><th>媒体</th><th>分组</th><th>标签</th></tr></thead>
+<tbody>
+<tr><td>时间不多了</td><td>行动派</td><td>412,000</td><td>2024-08-21</td><td>北方先驱报</td><td>纸媒</td><td>评论</td></tr>
+<tr><td>来自气候罢课的信</td><td>行动派</td><td>186,000</td><td>2024-09-02</td><td>绿线博客</td><td>网络</td><td>热门</td></tr>
+<tr><td>我们为什么封路</td><td>行动派</td><td>41,000</td><td>2023-11-14</td><td>绿线博客</td><td>网络</td><td></td></tr>
+<tr><td>农民不是敌人</td><td>行动派</td><td>23,000</td><td>2024-08-09</td><td>农田与牧场</td><td>纸媒</td><td></td></tr>
+<tr><td>一位市长的承诺</td><td>行动派</td><td>8,500</td><td>2024-10-08</td><td>市政厅通讯</td><td>网络</td><td></td></tr>
+<tr><td>希望要靠行动</td><td>行动派</td><td>72,000</td><td>2023-12-02</td><td>每周纪事</td><td>纸媒</td><td></td></tr>
+<tr><td>模型总是失准</td><td>怀疑派</td><td>96,000</td><td>2024-03-12</td><td>每周纪事</td><td>纸媒</td><td></td></tr>
+<tr><td>净零代价高昂</td><td>怀疑派</td><td>398,000</td><td>2024-10-22</td><td>北方先驱报</td><td>纸媒</td><td>评论</td></tr>
+<tr><td>不必恐慌</td><td>怀疑派</td><td>254,000</td><td>2024-09-26</td><td>直言网</td><td>网络</td><td>热门</td></tr>
+<tr><td>转型谁来买单</td><td>怀疑派</td><td>57,000</td><td>2024-11-05</td><td>直言网</td><td>网络</td><td>评论</td></tr>
+<tr><td>科学从无定论</td><td>怀疑派</td><td>68,000</td><td>2024-06-18</td><td>每周纪事</td><td>纸媒</td><td></td></tr>
+<tr><td>2024 热浪报告</td><td>中立</td><td>3,100</td><td>2024-09-16</td><td>国家气象气候局</td><td></td><td></td></tr>
+<tr><td>碳税之争</td><td>中立</td><td>875,000</td><td>2024-09-19</td><td>北方先驱报</td><td></td><td></td></tr>
+<tr><td>电台辩论</td><td>中立</td><td>310,000</td><td>2024-09-17</td><td>北线电台</td><td>网络</td><td></td></tr>
+</tbody></table></div>
+<p>“2024 热浪报告”和“碳税之争”不属于任何分组，也没有标签。“时间不多了 (英语)”是项目中的第十五个文档；它是译文，所以与原文“时间不多了”共用属性值、分组和标签。文档集“行动派”包含“立场”为“行动派”的六个文档，“怀疑派”则包含“立场”为“怀疑派”的五个文档。最后，智能文档集“广泛传播”包含“读者数”至少为 100,000 的文档。“电台辩论”的录音长 4 分 58 秒。</p>
+<h2 id="sets">文档集<a class="anchor" href="#sets" aria-hidden="true">#</a></h2>
+<p>文档集决定分析哪些文档。在“气候辩论”中，“行动派”和“怀疑派”各自由一方的文本组成。文档集“行动派”中有一个关键词查询，它把这个文档集中各文档的用词与文档集“怀疑派”中的用词进行对比。关键词列表把一个文档集与另一个文档集或项目中的其余所有内容进行对比。如果你的研究要比较几类文本，就应当为每一类建一个文档集。</p>
+<p>导航栏的<strong class="ui">文档集</strong>部分按添加的先后列出项目中的文档集和智能文档集，每个旁边都显示其中的文档数量。手动建立的文档集带有堆叠图标，智能文档集带有筛选图标。点按文档集旁边的展开三角形，可以列出其中的文档。点按其中一个文档即可打开它。</p>
+<figure class="shot" id="sets-tags-attributes-sets-section"><img class="shot-light" src="../figures/zh-Hans/light/sets-tags-attributes-sets-section.webp" alt="导航栏的文档集部分，“行动派”已展开，智能文档集“广泛传播”带有筛选图标。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/sets-tags-attributes-sets-section.webp" alt="导航栏的文档集部分，“行动派”已展开，智能文档集“广泛传播”带有筛选图标。" loading="lazy"><figcaption>导航栏的文档集部分，“行动派”已展开，智能文档集“广泛传播”带有筛选图标。</figcaption></figure>
+<h3 id="making-a-set">新建文档集<a class="anchor" href="#making-a-set" aria-hidden="true">#</a></h3>
+<p>从预先选中的文档新建文档集最快。下图中，导航栏里已经选中了“气候辩论”中行动派一方的六篇文本，它们的快捷菜单中展开了<strong class="ui">添加到文档集</strong>。子菜单中的“行动派”已停用，因为它已经包含全部六个文档。</p>
+<figure class="shot" id="sets-tags-attributes-add-to-set"><img class="shot-light" src="../figures/zh-Hans/light/sets-tags-attributes-add-to-set.webp" alt="导航栏中选中了六篇行动派文本，它们的快捷菜单中展开了“添加到文档集”。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/sets-tags-attributes-add-to-set.webp" alt="导航栏中选中了六篇行动派文本，它们的快捷菜单中展开了“添加到文档集”。" loading="lazy"><figcaption>导航栏中选中了六篇行动派文本，它们的快捷菜单中展开了“添加到文档集”。</figcaption></figure>
+<p>要把选中的文档变成一个文档集：</p>
+<ol>
+<li>在<strong class="ui">文档</strong>部分中选中这些文档（按住 ⌘ 键或 ⇧ 键点按，可以选择多个）。</li>
+<li>右键点按其中一个选中的文档，选取<strong class="ui">添加到文档集 ▸ 从所选文档新建文档集</strong>。</li>
+<li>输入文档集的名称，然后按下 Return 键。</li>
+</ol>
+<p>在大型项目中，可以在导航栏顶部的<strong class="ui">搜索文档</strong>栏中输入名称的一部分，再从结果列表中选中需要的文档。<strong class="ui">项目 ▸ 添加到文档集</strong>提供的命令与快捷菜单中的相同。</p>
+<p>如果想用单个文档新建文档集，请右键点按该文档，然后选取<strong class="ui">文档集 ▸ 从文档新建文档集</strong>。在你重命名之前，新文档集保留占位名称“从文档新建文档集”。</p>
+<p>你也可以先建一个空的文档集，以后再随时添加文档。为此，请点按<strong class="ui">文档集</strong>部分底部的<strong class="ui">新建文档集</strong>，或选取<strong class="ui">项目 ▸ 新建文档集</strong>。输入名称，然后按下 Return 键确认；按下 Esc 键则保留占位名称“新建文档集”。</p>
+<p>你还可以用某个查询命中的文档来建立文档集。在查询的<strong class="ui">操作</strong>菜单中选取<strong class="ui">从命中创建文档集</strong>，新文档集以该查询命名（见<a href="queries-using-results.html">第 18 章“使用查询结果”</a>中的<a href="queries-using-results.html#create-set-from-hits">从命中创建文档集</a>）。</p>
+<h3 id="adding-and-removing">添加和移除文档<a class="anchor" href="#adding-and-removing" aria-hidden="true">#</a></h3>
+<p>要把一个文档加入文档集，请在<strong class="ui">文档</strong>部分中选中它，右键点按打开快捷菜单，选取<strong class="ui">文档集</strong>，再选取要加入的文档集。要添加多个文档，请先选中它们，然后右键点按其中一个，选取<strong class="ui">添加到文档集</strong>，再选取要放入的文档集。已经包含全部所选文档的文档集已停用。菜单中只列出普通文档集，因为智能文档集的内容由它的条件决定。</p>
+<figure class="shot" id="sets-tags-attributes-set-member-menu"><img class="shot-light" src="../figures/zh-Hans/light/sets-tags-attributes-set-member-menu.webp" alt="文档集“行动派”下“时间不多了”的快捷菜单，其中有“从文档集中移除”。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/sets-tags-attributes-set-member-menu.webp" alt="文档集“行动派”下“时间不多了”的快捷菜单，其中有“从文档集中移除”。" loading="lazy"><figcaption>文档集“行动派”下“时间不多了”的快捷菜单，其中有“从文档集中移除”。</figcaption></figure>
+<p>要把文档移出文档集：</p>
+<ol>
+<li>点按文档集旁边的展开三角形。</li>
+<li>右键点按该文档，选取<strong class="ui">从文档集中移除</strong>。</li>
+</ol>
+<p>在文档集下点按该文档后，也可以使用菜单项<strong class="ui">项目 ▸ 从文档集中移除</strong>。从项目中删除文档后，它也会从所有文档集中移除。</p>
+<p>要移出多个文档，请在文档集下按住 ⌘ 键点按这些文档，然后右键点按其中一个，或者打开<strong class="ui">项目</strong>菜单，选取<strong class="ui">从文档集中移除</strong>。如果所选内容中还有其他文档集下的文档或<strong class="ui">文档</strong>部分中的文档，<strong class="ui">从文档集中移除</strong>会变为不可用。</p>
+<p>文档集只包含原文。用<strong class="ui">添加到文档集</strong>添加译文时，加入的是它的原文。本章后文的<a href="#translations-and-sets">译文</a>会进一步说明译文参与分析时的影响。</p>
+<h3 id="opening-a-set">打开文档集<a class="anchor" href="#opening-a-set" aria-hidden="true">#</a></h3>
+<p>文档集在标签页中打开，其中包含导航栏<strong class="ui">项目</strong>下的全部十个视图（从<strong class="ui">编码本</strong>到<strong class="ui">查询</strong>）。不过，这十个视图只涉及属于该文档集的文档。</p>
+<p>点按文档集的名称，或者右键点按文档集并选取<strong class="ui">打开文档集</strong>，即可打开它。标签页的标题区域显示文档集的名称及其包含的文档数量。关于这十个视图各自的详细说明，请参阅<a href="projects-and-documents.html">第 3 章“项目与文档”</a>中的<a href="projects-and-documents.html#project-shelf">项目视图栏</a>。</p>
+<p>通过快捷菜单中的<strong class="ui">词汇速写</strong>，可以在单独的窗口中打开基于该文档集的词汇速写。</p>
+<h3 id="managing-sets">重命名、导出和删除文档集<a class="anchor" href="#managing-sets" aria-hidden="true">#</a></h3>
+<p>文档集的快捷菜单中有以下选项：</p>
+<ul>
+<li><strong class="ui">重命名</strong>会把文档集的名称变成可编辑的文本框。输入新名称，然后按下 Return 键。</li>
+<li><strong class="ui">导出</strong>把文档集中的所有文档连同文档集本身导出到一个 LemmaLoom 归档文件中。用这个选项可以把项目的一部分交给同事（见<a href="exchange-and-export.html">第 22 章“交换与导出”</a>）。</li>
+<li><strong class="ui">删除文档集</strong>会立即删除所选的文档集。<strong class="ui">编辑 ▸ 撤销删除文档集</strong>（⌘Z）可以恢复被删除的文档集。点按一个文档集后，也可以用<strong class="ui">项目 ▸ 删除文档集</strong>（⌘⌫）删除它。</li>
+</ul>
+<figure class="shot" id="sets-tags-attributes-set-menu"><img class="shot-light" src="../figures/zh-Hans/light/sets-tags-attributes-set-menu.webp" alt="文档集“行动派”的快捷菜单。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/sets-tags-attributes-set-menu.webp" alt="文档集“行动派”的快捷菜单。" loading="lazy"><figcaption>文档集“行动派”的快捷菜单。</figcaption></figure>
+<p>删除文档集后，凡是<strong class="ui">适用范围</strong>为该文档集的编码，其<strong class="ui">文档集</strong>菜单都会显示<strong class="ui">无</strong>。要再次使用这些编码，请选择另一个文档集或适用范围（见<a href="coding.html">第 7 章“编码”</a>中的<a href="coding.html#code-scope">编码的适用范围</a>）。存储在该文档集中的查询会移到项目的<strong class="ui">查询</strong>视图中。</p>
+<h2 id="smart-sets">智能文档集<a class="anchor" href="#smart-sets" aria-hidden="true">#</a></h2>
+<p>智能文档集包含符合其条件的文档。在示例项目“气候辩论”中，智能文档集“广泛传播”包含“读者数”<strong class="ui">至少为</strong> 100,000 的六个文档。如果把“模型总是失准”的“读者数”从 96,000 更正为 104,000，这个文档会立即成为“广泛传播”的一员，文档集名称旁边的计数也会加一，变为 7。</p>
+<p>在大多数方面，智能文档集的表现与普通文档集相同。它在标签页中打开时有同样的视图，凡是可以用文档集作范围的地方，也都可以用它。智能文档集的成员完全由条件决定，所以要改变其中的文档，就要编辑它的条件。</p>
+<p>每次对智能文档集运行分析，分析读取的都是它当时包含的文档。因此，如果这期间有值发生变化，今天对智能文档集“广泛传播”运行的分析，与下周对它运行的同一分析，结果可能不同。</p>
+<h3 id="creating-a-smart-set">新建智能文档集<a class="anchor" href="#creating-a-smart-set" aria-hidden="true">#</a></h3>
+<p>“广泛传播”只需要一个条件，但一个智能文档集可以组合多个条件。下图是新建范围更窄的智能文档集“读者众多的行动派”时的对话框，它要求同时满足两个条件，即“立场”<strong class="ui">是以下任一</strong>“行动派”和“读者数”<strong class="ui">至少为</strong> 100,000。从计数（<strong class="ui">2 个文档</strong>）可以看出，这个智能文档集只包含“时间不多了”和“来自气候罢课的信”。</p>
+<figure class="shot" id="sets-tags-attributes-smart-set-editor"><img class="shot-light" src="../figures/zh-Hans/light/sets-tags-attributes-smart-set-editor.webp" alt="“读者众多的行动派”的“新建智能文档集”对话框，其中有两个条件，计数为 2 个文档。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/sets-tags-attributes-smart-set-editor.webp" alt="“读者众多的行动派”的“新建智能文档集”对话框，其中有两个条件，计数为 2 个文档。" loading="lazy"><figcaption>“读者众多的行动派”的“新建智能文档集”对话框，其中有两个条件，计数为 2 个文档。</figcaption></figure>
+<p>要新建智能文档集：</p>
+<ol>
+<li>点按<strong class="ui">文档集</strong>部分末尾的<strong class="ui">新建智能文档集</strong>，或选取<strong class="ui">项目 ▸ 新建智能文档集</strong>。<strong class="ui">新建智能文档集</strong>对话框随即打开，其中有一个条件。</li>
+<li>在<strong class="ui">名称</strong>中输入智能文档集的名称。</li>
+<li>设置条件。在第一个菜单中选择字段（选择<strong class="ui">属性</strong>时，还要在第二个菜单中选择具体的属性），然后选择比较方式，再填写值（见本章后文的<a href="#condition-values">条件中的值</a>）。</li>
+<li>如果还要检验别的内容，请点按<strong class="ui">添加条件</strong>，用同样的方法设置新条件。</li>
+<li>在<strong class="ui">匹配</strong>中选择<strong class="ui">全部</strong>或<strong class="ui">任一</strong>（见下文的<a href="#all-or-any">全部与任一</a>）。</li>
+<li>查看条件下方的计数，然后点按<strong class="ui">存储</strong>。</li>
+</ol>
+<p>每个条件占一行。第一个菜单用来选择字段，例如<strong class="ui">属性</strong>、<strong class="ui">标签</strong>或<strong class="ui">标题</strong>。选择<strong class="ui">属性</strong>时，第二个菜单用来选择具体的属性。接下来的菜单列出适用于该字段的所有比较方式，供你选择。最后填写值。行末尾的移除按钮（<strong class="ui">移除条件</strong>）用来移除条件；只剩一个条件时，这个按钮已停用（<strong class="ui">仅剩一项</strong>）。</p>
+<p>新条件默认使用项目的第一个属性及其第一种比较方式。因此，在“气候辩论”中，新条件会自动使用<strong class="ui">属性</strong>、“立场”、<strong class="ui">是以下任一</strong>。如果项目中没有定义任何属性，初始条件默认使用<strong class="ui">标签</strong>和<strong class="ui">包含以下任一</strong>。</p>
+<p>计数会随时更新，所以你在设置条件的同时就能预览智能文档集，看到项目中有多少原文文档符合已经填写完整的条件。在你填写完一个条件之前，计数包括所有原文文档。因此，在为“气候辩论”设置第一个条件时，计数显示 14，因为项目中有 14 个原文文档。</p>
+<p>在你填写智能文档集的<strong class="ui">名称</strong>（<strong class="ui">名称为空</strong>）并填写完每个条件（<strong class="ui">不完整</strong>）之前，<strong class="ui">存储</strong>一直处于停用状态。将鼠标指针悬停在<strong class="ui">存储</strong>上，可以看到具体原因。<strong class="ui">不完整</strong>表示某个条件需要值却没有值，例如选了<strong class="ui">至少为</strong>却没有在栏中输入任何内容，或者选了<strong class="ui">是以下任一</strong>却没有勾选任何项。</p>
+<p>更改条件的字段会清空它的值，但会尽可能保留比较方式；无法保留时，改用新字段的第一种比较方式。更改条件的比较方式则会保留值，所以从<strong class="ui">至少为</strong>换成<strong class="ui">大于</strong>时，不必重新输入数字。</p>
+<p>查找文档的查询也可以存储为智能文档集（见<a href="queries-using-results.html">第 18 章“使用查询结果”</a>中的<a href="queries-using-results.html#save-as-smart-set">把文档查询存储为智能文档集</a>）。</p>
+<h3 id="all-or-any">全部与任一<a class="anchor" href="#all-or-any" aria-hidden="true">#</a></h3>
+<p><strong class="ui">匹配</strong>决定各个条件之间的逻辑关系。把<strong class="ui">匹配</strong>设为<strong class="ui">全部</strong>时，文档必须符合所有条件，每添加一个条件，智能文档集就会进一步收窄。按<strong class="ui">任一</strong>匹配时，文档要符合其中一个条件。</p>
+<p>以上图中的“读者众多的行动派”为例，它设定了两个条件。第一，“立场”为“行动派”的文档有六个，即“时间不多了”“来自气候罢课的信”“我们为什么封路”“农民不是敌人”“一位市长的承诺”和“希望要靠行动”。第二，“读者数”至少为 100,000 的文档也有六个，即“时间不多了”“来自气候罢课的信”“净零代价高昂”“不必恐慌”“碳税之争”和“电台辩论”。</p>
+<div class="table-wrap"><table>
+<thead><tr><th>匹配</th><th>智能文档集中的文档</th><th>数量</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">全部</strong></td><td>两份名单上都有的文档，即“时间不多了”和“来自气候罢课的信”</td><td>2</td></tr>
+<tr><td><strong class="ui">任一</strong></td><td>至少在一份名单上的文档，即六篇行动派文本，以及“净零代价高昂”“不必恐慌”“碳税之争”和“电台辩论”</td><td>10</td></tr>
+</tbody></table></div>
+<p>有两个文档同时出现在两份名单上。直接把两份名单的数量 6 和 6 相加，会把这两个文档算两次，所以<strong class="ui">任一</strong>得到 6 + 6 − 2 = 10 个文档。</p>
+<p>智能文档集的所有条件都以同一种方式组合，而且只考虑文档本身的特征。像“读者数至少为 100,000 的行动派，或者任何怀疑派”这样的规则，或者检验文档是否属于另一个文档集的规则，都需要改用查询。查询可以嵌套规则（<strong class="ui">添加条件组</strong>，与文档的分组无关），还有<strong class="ui">文档集</strong>字段（见<a href="queries-building.html">第 15 章“构建查询”</a>中的<a href="queries-building.html#query-groups">条件组</a>）。</p>
+<h3 id="smart-set-fields">字段<a class="anchor" href="#smart-set-fields" aria-hidden="true">#</a></h3>
+<p>条件的第一个菜单包含以下字段。只有项目中定义了属性时，这里才会出现<strong class="ui">属性</strong>。</p>
+<div class="table-wrap"><table>
+<thead><tr><th>字段</th><th>检验的内容</th><th>比较方式</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">属性</strong></td><td>第二个菜单中所选属性的值</td><td>取决于属性的类型（见<a href="#attribute-comparisons">属性的比较方式</a>）</td></tr>
+<tr><td><strong class="ui">标签</strong></td><td>文档的标签</td><td><strong class="ui">包含以下任一</strong>、<strong class="ui">包含以下全部</strong>、<strong class="ui">不含以下任何</strong>、<strong class="ui">为空</strong>、<strong class="ui">不为空</strong></td></tr>
+<tr><td><strong class="ui">分组</strong></td><td>文档所在的分组</td><td><strong class="ui">是以下任一</strong>、<strong class="ui">不是以下任何</strong>、<strong class="ui">为空</strong>、<strong class="ui">不为空</strong></td></tr>
+<tr><td><strong class="ui">语言</strong></td><td>文档的语言</td><td><strong class="ui">是以下任一</strong>、<strong class="ui">不是以下任何</strong></td></tr>
+<tr><td><strong class="ui">格式</strong></td><td><strong class="ui">文本</strong>、<strong class="ui">PDF</strong>、<strong class="ui">网页</strong>、<strong class="ui">音频</strong>或<strong class="ui">视频</strong></td><td><strong class="ui">是以下任一</strong>、<strong class="ui">不是以下任何</strong></td></tr>
+<tr><td><strong class="ui">标题</strong></td><td>文档的名称</td><td><strong class="ui">是</strong>、<strong class="ui">不是</strong>、<strong class="ui">包含</strong>、<strong class="ui">不包含</strong>、<strong class="ui">匹配</strong>、<strong class="ui">为空</strong>、<strong class="ui">不为空</strong></td></tr>
+<tr><td><strong class="ui">作者</strong></td><td><strong class="ui">文档信息</strong>中的作者</td><td>同<strong class="ui">标签</strong></td></tr>
+<tr><td><strong class="ui">日期</strong></td><td><strong class="ui">文档信息</strong>中文档本身的日期</td><td><strong class="ui">是</strong>、<strong class="ui">早于</strong>、<strong class="ui">晚于</strong>、<strong class="ui">不早于</strong>、<strong class="ui">不晚于</strong>、<strong class="ui">介于</strong>、<strong class="ui">为空</strong>、<strong class="ui">不为空</strong></td></tr>
+<tr><td><strong class="ui">出版方</strong>、<strong class="ui">出版物</strong>、<strong class="ui">URL</strong>、<strong class="ui">DOI</strong></td><td>引用信息</td><td>同<strong class="ui">标题</strong></td></tr>
+<tr><td><strong class="ui">源文件</strong></td><td>导入的文件的名称，或导入的网页的地址</td><td>同<strong class="ui">标题</strong></td></tr>
+<tr><td><strong class="ui">创建时间</strong></td><td>文档加入项目的日期</td><td>同<strong class="ui">日期</strong></td></tr>
+<tr><td><strong class="ui">修改时间</strong></td><td>文档最后一次更改的日期</td><td>同<strong class="ui">日期</strong></td></tr>
+<tr><td><strong class="ui">颜色</strong></td><td>文档的颜色</td><td><strong class="ui">是以下任一</strong>、<strong class="ui">不是以下任何</strong>、<strong class="ui">为空</strong>、<strong class="ui">不为空</strong></td></tr>
+<tr><td><strong class="ui">词符</strong></td><td>词和标点符号的数量，在为文档建立索引时统计</td><td><strong class="ui">是</strong>、<strong class="ui">不是</strong>、<strong class="ui">小于</strong>、<strong class="ui">最多为</strong>、<strong class="ui">大于</strong>、<strong class="ui">至少为</strong>、<strong class="ui">介于</strong>、<strong class="ui">为空</strong>、<strong class="ui">不为空</strong></td></tr>
+<tr><td><strong class="ui">句子</strong></td><td>句子的数量，在为文档建立索引时统计</td><td>同<strong class="ui">词符</strong></td></tr>
+<tr><td><strong class="ui">字符数</strong></td><td>文本中的字符数，包括空格</td><td>同<strong class="ui">词符</strong></td></tr>
+<tr><td><strong class="ui">媒体时长</strong></td><td>音频或视频录音的长度</td><td>同<strong class="ui">词符</strong></td></tr>
+<tr><td><strong class="ui">含媒体</strong></td><td>文档是否为音频或视频录音</td><td><strong class="ui">为真</strong>、<strong class="ui">为假</strong>、<strong class="ui">为空</strong></td></tr>
+<tr><td><strong class="ui">有译文</strong></td><td>文档是否至少有一份译文</td><td>同<strong class="ui">含媒体</strong></td></tr>
+<tr><td><strong class="ui">已跳过索引</strong></td><td>文档是否在导入时未建立索引，且此后尚未用<strong class="ui">立即建立索引</strong>为它建立索引</td><td>同<strong class="ui">含媒体</strong></td></tr>
+<tr><td><strong class="ui">索引状态</strong></td><td>文档的索引处于什么状态</td><td><strong class="ui">是以下任一</strong>、<strong class="ui">不是以下任何</strong>、<strong class="ui">为空</strong>、<strong class="ui">不为空</strong></td></tr>
+</tbody></table></div>
+<p><strong class="ui">语言</strong>只列出原文文档所用的语言。“气候辩论”项目中只有中文原文，因为其中唯一的英语文档是译文。</p>
+<p><strong class="ui">修改时间</strong>是指文档最后一次被编辑、重命名、在分组之间移动，或者标签、文档信息有所更改的时间。在属性窗口中更改属性值，或在标签窗口中重命名或删除标签，都不会影响它的<strong class="ui">修改时间</strong>。</p>
+<p>LemmaLoom 在建立索引时自动计算<strong class="ui">词符</strong>和<strong class="ui">句子</strong>。在建立索引之前，两者都等于 0。你可能想用<strong class="ui">词符</strong> <strong class="ui">小于</strong> <code>700</code> 这样的条件来选取文档。这样的条件也会选中仍在等待建立索引的文档；再添加<strong class="ui">索引状态</strong> <strong class="ui">是以下任一</strong> <strong class="ui">已建立索引</strong>这样的条件，就能把它们排除。<strong class="ui">字符数</strong>直接从文档文本统计，从导入那一刻起就有。</p>
+<p><strong class="ui">含媒体</strong>、<strong class="ui">有译文</strong>和<strong class="ui">已跳过索引</strong>的结果都是真或假。同样，<strong class="ui">索引状态</strong>总是下列七个值之一：</p>
+<div class="table-wrap"><table>
+<thead><tr><th>值</th><th>该文档</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">已建立索引</strong></td><td>已经建立索引</td></tr>
+<tr><td><strong class="ui">正在建立索引</strong></td><td>正在建立索引</td></tr>
+<tr><td><strong class="ui">正在运行分析器</strong></td><td>已经建立索引，并且有一个分析器（内置的或你自己编写的）正在处理它（见<a href="analysis-and-indexing.html">第 21 章“分析与索引”</a>中的<a href="analysis-and-indexing.html#document-analyzers">为文档选择分析器</a>）</td></tr>
+<tr><td><strong class="ui">失败</strong></td><td>无法建立索引</td></tr>
+<tr><td><strong class="ui">未索引</strong></td><td>正在等待建立索引</td></tr>
+<tr><td><strong class="ui">不支持</strong></td><td>使用英语、德语和中文以外的语言</td></tr>
+<tr><td><strong class="ui">已跳过</strong></td><td>导入时未建立索引，此后也未建立索引</td></tr>
+</tbody></table></div>
+<p>条件为<strong class="ui">索引状态</strong> <strong class="ui">是以下任一</strong> <strong class="ui">失败</strong>、<strong class="ui">未索引</strong>和<strong class="ui">已跳过</strong>的智能文档集，包含所有仍需处理的文档。文档建立索引后，就不再属于这个智能文档集。要找出所有导入时未建立索引的文档，请使用<strong class="ui">已跳过索引</strong> <strong class="ui">为真</strong>。关于这些状态的详细说明，请参阅<a href="analysis-and-indexing.html">第 21 章“分析与索引”</a>中的<a href="analysis-and-indexing.html#index-status-field">按索引状态查找文档</a>。</p>
+<h3 id="attribute-comparisons">属性的比较方式<a class="anchor" href="#attribute-comparisons" aria-hidden="true">#</a></h3>
+<p>属性的比较方式取决于属性的类型：</p>
+<div class="table-wrap"><table>
+<thead><tr><th>类型</th><th>比较方式</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">文本</strong></td><td><strong class="ui">是</strong>、<strong class="ui">不是</strong>、<strong class="ui">包含</strong>、<strong class="ui">不包含</strong>、<strong class="ui">匹配</strong>、<strong class="ui">为空</strong>、<strong class="ui">不为空</strong></td></tr>
+<tr><td><strong class="ui">整数</strong>、<strong class="ui">小数</strong></td><td><strong class="ui">是</strong>、<strong class="ui">不是</strong>、<strong class="ui">小于</strong>、<strong class="ui">最多为</strong>、<strong class="ui">大于</strong>、<strong class="ui">至少为</strong>、<strong class="ui">介于</strong>、<strong class="ui">为空</strong>、<strong class="ui">不为空</strong></td></tr>
+<tr><td><strong class="ui">日期</strong></td><td><strong class="ui">是</strong>、<strong class="ui">早于</strong>、<strong class="ui">晚于</strong>、<strong class="ui">不早于</strong>、<strong class="ui">不晚于</strong>、<strong class="ui">介于</strong>、<strong class="ui">为空</strong>、<strong class="ui">不为空</strong></td></tr>
+<tr><td><strong class="ui">布尔值</strong></td><td><strong class="ui">为真</strong>、<strong class="ui">为假</strong>、<strong class="ui">为空</strong></td></tr>
+<tr><td><strong class="ui">选择器</strong></td><td><strong class="ui">是以下任一</strong>、<strong class="ui">不是以下任何</strong>、<strong class="ui">为空</strong>、<strong class="ui">不为空</strong></td></tr>
+</tbody></table></div>
+<h3 id="condition-values">条件中的值<a class="anchor" href="#condition-values" aria-hidden="true">#</a></h3>
+<p>条件值的填写方法取决于比较方式和字段：</p>
+<ul>
+<li>文本和数字填在<strong class="ui">值</strong>栏中。为<strong class="ui">介于</strong>填写值时请注意，它会显示两个栏，两个值的先后顺序不限，而且两端的值都包括在内。因此，查找“读者数”<strong class="ui">介于</strong> <code>50000</code> 和 <code>100000</code> 时，结果也包括“读者数”恰好等于 50,000 或 100,000 的文档。</li>
+<li>日期用日期选择器选择，选择器从当天开始。</li>
+<li><strong class="ui">为空</strong>、<strong class="ui">不为空</strong>、<strong class="ui">为真</strong>和<strong class="ui">为假</strong>一经选择，条件即算填写完整。</li>
+<li>对于<strong class="ui">是以下任一</strong>、<strong class="ui">不是以下任何</strong>，以及<strong class="ui">包含以下任一</strong>、<strong class="ui">包含以下全部</strong>和<strong class="ui">不含以下任何</strong>这几种比较方式，请先点按值，随即出现一个复选列表。勾选一项或多项，然后点按列表以外的地方将其关闭；值随即显示你的选择。显示的值可以是“评论”或“热门”，什么都没有勾选时则是<strong class="ui">无</strong>。</li>
+</ul>
+<p>列表中可选的项如下：</p>
+<ul>
+<li>对于<strong class="ui">选择器</strong>属性，是它的选项，后面是文档仍然带有的其他值；</li>
+<li>对于<strong class="ui">标签</strong>和<strong class="ui">作者</strong>，是项目的文档中用到的标签和作者；</li>
+<li>对于<strong class="ui">分组</strong>，是项目中的分组；</li>
+<li>对于<strong class="ui">语言</strong>，是原文文档所用的语言；</li>
+<li>对于<strong class="ui">颜色</strong>，是从<strong class="ui">红色</strong>到<strong class="ui">灰色</strong>的十一种文档颜色；</li>
+<li>对于<strong class="ui">格式</strong>，是五种可用的格式；对于<strong class="ui">索引状态</strong>，是上面的七种状态。</li>
+</ul>
+<p><strong class="ui">媒体时长</strong>中的时长按分和秒输入（例如 <code>30:00</code>），或者按时、分、秒输入（例如 <code>1:05:30</code>）。比较之前，时间会先换算成秒，所以 <code>1:05:30</code> 等于 1 × 3,600 + 5 × 60 + 30 = 3,930 秒。只输入一个数字时，按秒计算。例如，“电台辩论”长 4 分 58 秒（4 × 60 + 58 = 298 秒），所以<strong class="ui">媒体时长</strong> <strong class="ui">大于</strong> <code>4:00</code>（240 秒）和<strong class="ui">大于</strong> <code>5</code>（5 秒）都能匹配它。</p>
+<p>录音的时长精确到千分之一秒，所以<strong class="ui">是</strong>很少能恰好匹配某个时长。请改用<strong class="ui">至少为</strong>、<strong class="ui">最多为</strong>或<strong class="ui">介于</strong>。</p>
+<h3 id="how-values-are-compared">值如何比较<a class="anchor" href="#how-values-are-compared" aria-hidden="true">#</a></h3>
+<p>比较文本时，忽略大小写、重音符号以及字符串开头或结尾的空白。比较时也不区分全角和半角字符（中文和日文文本中字母和数字的宽、窄两种写法）。用<strong class="ui">是</strong>比较时，比较的是整个值；<strong class="ui">包含</strong>则在值中的任何位置查找你输入的文本。“媒体”<strong class="ui">包含</strong> <code>先驱</code> 能找到“北方先驱报”的三个文档。“媒体”<strong class="ui">包含</strong> <code>北</code> 能找到四个文档，即“北方先驱报”的三个，再加上另一个文档“电台辩论”，因为它的媒体“北线电台”中也有<em>北</em>字。用很短的文本进行比较时，请务必在存储之前查看计数。</p>
+<p><strong class="ui">匹配</strong>用一个简单的文本模式与整个值进行比较。在<strong class="ui">匹配</strong>中，通配符 <code>*</code> 代表任意一串字符，<code>?</code> 恰好代表一个字符。<strong class="ui">标题</strong> <strong class="ui">匹配</strong> <code>*辩论</code> 能找到“电台辩论”；<strong class="ui">标题</strong> <strong class="ui">匹配</strong> <code>辩论</code> 则什么也找不到，因为模式必须与整个标题匹配。</p>
+<p>数字按数值比较，所以 9 排在 10 之前。日期按日历日比较。<strong class="ui">早于</strong>不包括当天，<strong class="ui">不晚于</strong>则包括当天。LemmaLoom 为<strong class="ui">创建时间</strong>和<strong class="ui">修改时间</strong>记录日期和时刻，比较时按你的 Mac 所在的本地时区换算成日期。在“气候辩论”中，“发表日期”<strong class="ui">介于</strong> 2024 年 9 月 1 日和 2024 年 9 月 30 日能找到在此期间发表的五个文档。</p>
+<p>比较列表时，<strong class="ui">是以下任一</strong>和<strong class="ui">包含以下任一</strong>要求文档至少具有所选项中的一项，<strong class="ui">包含以下全部</strong>要求文档具有所选的全部项。<strong class="ui">不是以下任何</strong>和<strong class="ui">不含以下任何</strong>都只接受一个所选项都不具有的文档。比较标签、作者和<strong class="ui">选择器</strong>选项这类列表项时，只忽略大小写以及名称开头或结尾的空白。在“气候辩论”中，有三个文档加了“评论”标签，另外两个加了“热门”标签：</p>
+<div class="table-wrap"><table>
+<thead><tr><th>条件</th><th>文档</th><th>数量</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">标签</strong> <strong class="ui">包含以下任一</strong> “评论”、“热门”</td><td>时间不多了、来自气候罢课的信、净零代价高昂、不必恐慌、转型谁来买单</td><td>5</td></tr>
+<tr><td><strong class="ui">标签</strong> <strong class="ui">包含以下全部</strong> “评论”、“热门”</td><td>无</td><td>0</td></tr>
+<tr><td><strong class="ui">标签</strong> <strong class="ui">不含以下任何</strong> “评论”</td><td>14 个原文中除“时间不多了”“净零代价高昂”和“转型谁来买单”以外的文档</td><td>11</td></tr>
+</tbody></table></div>
+<p>下图是其中的第一个条件，它的标签列表处于展开状态。</p>
+<figure class="shot" id="sets-tags-attributes-condition-values"><img class="shot-light" src="../figures/zh-Hans/light/sets-tags-attributes-condition-values.webp" alt="“标签”条件中打开的标签列表，勾选了“评论”和“热门”。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/sets-tags-attributes-condition-values.webp" alt="“标签”条件中打开的标签列表，勾选了“评论”和“热门”。" loading="lazy"><figcaption>“标签”条件中打开的标签列表，勾选了“评论”和“热门”。</figcaption></figure>
+<h4 id="documents-without-a-value">没有值的文档<a class="anchor" href="#documents-without-a-value" aria-hidden="true">#</a></h4>
+<p>大多数比较都不会匹配没有值的文档。“读者数”<strong class="ui">小于</strong> <code>10000</code> 能找到“一位市长的承诺”和“2024 热浪报告”，但完全没有“读者数”值的文档都不会被选中。这类文档可能包括刚刚导入的文档。<strong class="ui">不是</strong>、<strong class="ui">不包含</strong>、<strong class="ui">不是以下任何</strong>、<strong class="ui">不含以下任何</strong>和<strong class="ui">为空</strong>这五种比较方式会接受这类文档。</p>
+<p>这个区别对<strong class="ui">不是以下任何</strong>影响最大。“气候辩论”中的每个原文都有全部四个属性值，但有两个原文不属于任何分组。<strong class="ui">分组</strong> <strong class="ui">不是以下任何</strong>“纸媒”匹配 8 个文档，即“网络”中的六个，以及没有分配分组的“2024 热浪报告”和“碳税之争”。要缩小到“网络”中的六个文档，请添加第二个条件<strong class="ui">分组</strong> <strong class="ui">不为空</strong>，并让<strong class="ui">匹配</strong>保持为<strong class="ui">全部</strong>；计数随即降为 6。</p>
+<p><strong class="ui">布尔值</strong>属性把未赋值的文档视为空。<strong class="ui">为假</strong>只返回值被设为假的文档，无论是勾选复选框后又取消勾选、导入时为假，还是在复选框未勾选的状态下通过<strong class="ui">设置值</strong>指定的。其余文档请用<strong class="ui">为空</strong>查找。</p>
+<h3 id="editing-a-smart-set">修改智能文档集<a class="anchor" href="#editing-a-smart-set" aria-hidden="true">#</a></h3>
+<p>要修改智能文档集的条件，请在导航栏的列表中右键点按该智能文档集，从快捷菜单中选取<strong class="ui">编辑</strong>；或者点按该智能文档集，然后选取<strong class="ui">项目 ▸ 编辑智能文档集</strong>。在<strong class="ui">编辑智能文档集</strong>对话框中编辑，与在<strong class="ui">新建智能文档集</strong>中创建的方式相同。只有点按<strong class="ui">存储</strong>才会应用你的修改。要重命名智能文档集，请右键点按它，在快捷菜单中选取<strong class="ui">重命名</strong>。这只会更改名称。</p>
+<p>重命名属性或分组时，智能文档集会相应地调整。删除和其他更改的影响如下：</p>
+<ul>
+<li>删除分组后，所有引用它的条件都会把它去掉。如果<strong class="ui">分组</strong> <strong class="ui">是以下任一</strong>条件中已没有任何选中的项，只检验这个分组的智能文档集就会变空；下次编辑这个智能文档集时，你会看到值显示为<strong class="ui">无</strong>，在你指定另一个分组或移除这个条件之前，<strong class="ui">存储</strong>一直处于停用状态。</li>
+<li>删除属性后，检验该属性的条件对每个文档都不成立。选择<strong class="ui">全部</strong>时，智能文档集会变空；选择<strong class="ui">任一</strong>时，其他条件照常起作用。用<strong class="ui">编辑</strong>打开智能文档集时，失效条件的属性菜单是空白的，在你更改或移除这个条件之前，<strong class="ui">存储</strong>一直处于停用状态。</li>
+<li>更改属性的类型也可能使条件失效。属性改变类型后（例如“立场”从<strong class="ui">选择器</strong>改为<strong class="ui">文本</strong>），不再适用于新类型的比较方式对每个文档都不成立。在各种属性类型中，<strong class="ui">是以下任一</strong>这类比较方式只有<strong class="ui">选择器</strong>类型才有，所以“立场”<strong class="ui">是以下任一</strong>“行动派”会失效。用<strong class="ui">编辑</strong>打开智能文档集时，这样的条件会显示新类型的第一种比较方式，值为空；你必须手动填写值（本例中为“立场”<strong class="ui">是</strong> <code>行动派</code>），然后存储。</li>
+<li>最后，在<strong class="ui">窗口 ▸ 标签</strong>中重命名或删除标签，也会相应地影响含有<strong class="ui">标签</strong>条件的智能文档集。重命名标签后，所有<strong class="ui">标签</strong>条件中引用的名称都会变为新名称。删除标签后，它会从<strong class="ui">包含以下任一</strong>和<strong class="ui">不含以下任何</strong>条件中去掉，但会保留在<strong class="ui">包含以下全部</strong>条件中，因此在你编辑这些条件之前，它们对每个文档都不成立。</li>
+</ul>
+<h3 id="smart-sets-export">LemmaLoom 之外的智能文档集<a class="anchor" href="#smart-sets-export" aria-hidden="true">#</a></h3>
+<p>REFI-QDA 交换格式只支持普通文档集。以这种格式导出项目时，所有智能文档集都会导出为普通文档集，其中包含导出那一刻的成员。LemmaLoom 归档文件则保留定义智能文档集的所有条件，以后在另一台 Mac 上的 LemmaLoom 中也能继续使用。关于这两种格式的详细说明，请参阅<a href="exchange-and-export.html">第 22 章“交换与导出”</a>。</p>
+<h2 id="groups">分组<a class="anchor" href="#groups" aria-hidden="true">#</a></h2>
+<p>分组是用来整理导航栏<strong class="ui">文档</strong>部分中文档的文件夹。例如，“气候辩论”项目中有“纸媒”和“网络”两个分组，把纸媒上的文章与网上的文章分开，“网络”中还包括“电台辩论”。一个文档最多属于一个分组，文档的译文也会自动位于同一个分组中。关于如何新建分组、向分组中添加文档以及重命名和删除分组，请参阅<a href="projects-and-documents.html">第 3 章“项目与文档”</a>中的<a href="projects-and-documents.html#groups">分组</a>。</p>
+<p>要分析一个分组中的文档，请新建一个带<strong class="ui">分组</strong>条件的智能文档集（见本章前文的<a href="#creating-a-smart-set">新建智能文档集</a>）。在条件的第一个菜单中选择<strong class="ui">分组</strong>，比较方式保持为<strong class="ui">是以下任一</strong>，然后选择这个分组。这样的智能文档集会随着文档移入或移出该分组而变化。在“气候辩论”中，<strong class="ui">分组</strong> <strong class="ui">是以下任一</strong>“纸媒”收集“纸媒”中的六个文档，<strong class="ui">分组</strong> <strong class="ui">为空</strong>则收集不属于任何分组的两个文档，即“2024 热浪报告”和“碳税之争”。</p>
+<p>LemmaLoom 的查询也可以通过<strong class="ui">分组</strong>字段读取分组，用模板还可以生成按分组计数的查询结果（见<a href="queries-patterns.html">第 17 章“查询模式与发现”</a>中的<a href="queries-patterns.html#recipes">模板</a>）。<strong class="ui">编码矩阵</strong>可以通过<strong class="ui">列分组依据</strong>按分组归并各列（见<a href="coding-analysis.html">第 13 章“编码分析”</a>）。</p>
+<h2 id="tags">标签<a class="anchor" href="#tags" aria-hidden="true">#</a></h2>
+<h3 id="tag-vocabulary">所有项目共用一份列表<a class="anchor" href="#tag-vocabulary" aria-hidden="true">#</a></h3>
+<p>项目、文档、编码、备忘录和链接都可以加标签。你输入的每个标签都属于同一份全局列表，整个资料库都可以使用。查询甚至可以在整个资料库中查找带有特定标签的文档或项目（见<a href="projects-and-documents.html">第 3 章“项目与文档”</a>中的<a href="projects-and-documents.html#working-across-projects">跨项目工作</a>）。</p>
+<p>如果你在“气候辩论”中给某个文档加了“热门”标签，之后在另一个项目中给编码加标签时再输入 <code>热门</code>，用的就是同一个标签。标签名称不区分大小写，所以“CO2”和“co2”是同一个标签。</p>
+<p>选取<strong class="ui">窗口 ▸ 标签</strong>可以查看这份全局列表。连按两次某个标签，会在标签页中打开带有它的文档。点按它的某个计数，则会显示当前项目中哪些内容带有这个标签，或者哪些项目使用了它。要在全局范围内更改标签的名称，或者把它从所有带有它的对象上移除，请右键点按该标签。详细说明请参阅<a href="projects-and-documents.html">第 3 章“项目与文档”</a>中的<a href="projects-and-documents.html#tags-window">标签窗口</a>。</p>
+<h3 id="tagging-documents">为文档添加标签<a class="anchor" href="#tagging-documents" aria-hidden="true">#</a></h3>
+<p>“气候辩论”中有三个文档加了“评论”标签，即“时间不多了”“净零代价高昂”和“转型谁来买单”；另有两个文档加了“热门”标签，即“来自气候罢课的信”和“不必恐慌”。你可以在导入文档时、在<strong class="ui">文档信息</strong>中或在检查器中添加标签。用检查器更快：</p>
+<ol>
+<li>打开文档。</li>
+<li>在检查器中点按<strong class="ui">文本</strong>，再点按<strong class="ui">详细信息</strong>。</li>
+<li>在<strong class="ui">标签</strong>下点按显示<strong class="ui">添加标签</strong>的栏，输入标签，然后按下 Return 键。输入英文逗号也会结束一个标签。</li>
+</ol>
+<p>输入满三个字符（汉字只需一个）后，LemmaLoom 会根据共用的标签列表给出相符的建议。如果某个标签已经以另一种大小写形式存在，无论你输入的大小写如何，它都保持原有的写法。要移除标签，请点按标签上的 × 按钮（<strong class="ui">移除标签</strong>）。在检查器中所做的任何更改都会立即保存，并同时作用于文档及其所有译文。</p>
+<p>标签只能逐个文档添加。如果某项内容要在许多文档中重复使用，可以考虑建立一个属性，而不是使用标签。用<strong class="ui">设置值</strong>甚至可以一次为多个文档快速填入值，<strong class="ui">布尔值</strong>或<strong class="ui">选择器</strong>属性也能起到与标签相近的作用（见本章后文的<a href="#bulk-values">为多个文档设置同一个值</a>）。</p>
+<h3 id="tags-in-the-navigator">导航栏中的标签<a class="anchor" href="#tags-in-the-navigator" aria-hidden="true">#</a></h3>
+<p>导航栏底部的<strong class="ui">标签</strong>部分按字母顺序列出当前项目的文档中出现的标签。每个标签旁边显示带有该标签的原文文档数量；在“气候辩论”中，“评论”旁边是 3，“热门”旁边是 2。这个部分只统计文档上的标签，标签窗口还会统计项目、编码、备忘录和链接上的标签。</p>
+<p>标签相当于通往带有它的那组文档的捷径，所以用标签可以快速地同时查看几个文档。</p>
+<ul>
+<li>点按标签，即可在标签页中打开它。这个标签页与文档集一样有十个视图，但只限于带有该标签的文档。</li>
+<li>右键点按标签并选取<strong class="ui">词汇速写</strong>，可以根据带有该标签的文档生成词汇速写。</li>
+<li>右键点按标签并选取<strong class="ui">重命名</strong>或<strong class="ui">删除标签</strong>，可以像在标签窗口中一样重命名或删除这个标签，更改会作用于含有这个标签的每个项目。</li>
+</ul>
+<figure class="shot" id="sets-tags-attributes-tags-section"><img class="shot-light" src="../figures/zh-Hans/light/sets-tags-attributes-tags-section.webp" alt="导航栏底部的标签部分，其中有“评论”和“热门”，以及“热门”的快捷菜单。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/sets-tags-attributes-tags-section.webp" alt="导航栏底部的标签部分，其中有“评论”和“热门”，以及“热门”的快捷菜单。" loading="lazy"><figcaption>导航栏底部的标签部分，其中有“评论”和“热门”，以及“热门”的快捷菜单。</figcaption></figure>
+<p>只要再给任何一个文档加上“热门”标签，“热门”旁边的计数就会增加到 3，这个文档也会出现在该标签的视图中。项目中最后一个带有某个标签的文档去掉这个标签后，这个标签就会从标签部分中消失。</p>
+<p>关于智能文档集中的标签，请参阅本章前文<a href="#how-values-are-compared">值如何比较</a>一节中介绍的<strong class="ui">标签</strong>字段。编码上的标签可以用来筛选编码本中的条目；关于为编码、备忘录和链接添加标签，请参阅<a href="coding.html">第 7 章“编码”</a>。</p>
+<h2 id="attributes">属性<a class="anchor" href="#attributes" aria-hidden="true">#</a></h2>
+<p>LemmaLoom 中的大多数比较都依赖属性。智能文档集按属性值收集文档，有几种分析也按属性拆分结果（见下文的<a href="#using-attributes">属性可用在哪些地方</a>一节）。“气候辩论”中定义了四个属性。“立场”按辩论双方划分文本，“读者数”让文档集“广泛传播”能挑出读者众多的文本，“发表日期”记录每篇文本的发表时间，“媒体”记录每篇文本的出处。</p>
+<h3 id="attribute-types">属性类型<a class="anchor" href="#attribute-types" aria-hidden="true">#</a></h3>
+<p>每个属性都属于六种类型之一。类型决定值可以是什么、应当如何填写，以及条件可以对它进行哪些比较。</p>
+<div class="table-wrap"><table>
+<thead><tr><th>类型</th><th>值是</th><th>填写方式</th><th>在“气候辩论”中</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">文本</strong></td><td>任意文本</td><td>文本框</td><td>媒体</td></tr>
+<tr><td><strong class="ui">整数</strong></td><td>整数，可以是负数</td><td>数字框</td><td>读者数</td></tr>
+<tr><td><strong class="ui">小数</strong></td><td>可以带小数部分的数</td><td>数字框</td><td></td></tr>
+<tr><td><strong class="ui">布尔值</strong></td><td>真或假</td><td>复选框</td><td></td></tr>
+<tr><td><strong class="ui">日期</strong></td><td>一个日历日</td><td>日期选择器</td><td>发表日期</td></tr>
+<tr><td><strong class="ui">选择器</strong></td><td>你设定的一组选项中的一个</td><td>菜单</td><td>“立场”，选项为“行动派”“怀疑派”和“中立”</td></tr>
+</tbody></table></div>
+<p><strong class="ui">选择器</strong>能让写法保持一致，属性窗口也按选项的顺序为它的值排序。<strong class="ui">整数</strong>和<strong class="ui">小数</strong>类型都支持<strong class="ui">至少为</strong>之类的比较，还能在<strong class="ui">编码矩阵</strong>或速写空间中按区间归并。<strong class="ui">日期</strong>属性支持<strong class="ui">早于</strong>和<strong class="ui">晚于</strong>，<strong class="ui">编码矩阵</strong>还可以按年或按月归并日期。自由文本应作为值填入<strong class="ui">文本</strong>属性。例如，“气候辩论”的“媒体”属性就使用<strong class="ui">文本</strong>类型。本章后文会介绍<a href="#converting-types">更改属性的类型</a>（在一定限度内可行）。</p>
+<h3 id="attributes-sheet">属性窗口<a class="anchor" href="#attributes-sheet" aria-hidden="true">#</a></h3>
+<p>属性窗口以表格形式列出项目中的每个原文文档及其属性值。要打开这个窗口，请在主菜单中选取<strong class="ui">项目 ▸ 属性</strong>，或者使用导航栏中<strong class="ui">项目</strong>下该项目的快捷菜单（右键点按项目，然后选取<strong class="ui">属性</strong>）。工作时可以让这个窗口一直开着。图中是“气候辩论”的属性窗口，按“读者数”降序排列，六个行动派文档处于选中状态。</p>
+<figure class="shot" id="sets-tags-attributes-attributes-sheet"><img class="shot-light" src="../figures/zh-Hans/light/sets-tags-attributes-attributes-sheet.webp" alt="“气候辩论”的属性窗口，按“读者数”排序，选中了六篇行动派文本。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/sets-tags-attributes-attributes-sheet.webp" alt="“气候辩论”的属性窗口，按“读者数”排序，选中了六篇行动派文本。" loading="lazy"><figcaption>“气候辩论”的属性窗口，按“读者数”排序，选中了六篇行动派文本。</figcaption></figure>
+<p>顶部的一行先是<strong class="ui">搜索</strong>，末尾是<strong class="ui">导入</strong>、<strong class="ui">导出</strong>、<strong class="ui">管理</strong>和<strong class="ui">添加属性</strong>。下方是表格，其中有一列复选框、一列<strong class="ui">文档</strong>，项目中的每个属性也各占一列。项目中没有属性时，窗口只显示<strong class="ui">导入</strong>和<strong class="ui">添加属性</strong>。</p>
+<p>窗口只显示原文文档。译文文档沿用对应原文的属性值，所以你为“时间不多了”填写的任何值也适用于“时间不多了 (英语)”。</p>
+<h3 id="defining-an-attribute">定义属性<a class="anchor" href="#defining-an-attribute" aria-hidden="true">#</a></h3>
+<figure class="shot" id="sets-tags-attributes-new-attribute"><img class="shot-light" src="../figures/zh-Hans/light/sets-tags-attributes-new-attribute.webp" alt="属性窗口中的“新建属性”对话框，名称为“地区”，类型为选择器，有四个选项。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/sets-tags-attributes-new-attribute.webp" alt="属性窗口中的“新建属性”对话框，名称为“地区”，类型为选择器，有四个选项。" loading="lazy"><figcaption>属性窗口中的“新建属性”对话框，名称为“地区”，类型为选择器，有四个选项。</figcaption></figure>
+<p>要在属性窗口中定义属性：</p>
+<ol>
+<li>点按<strong class="ui">添加属性</strong>。</li>
+<li>在<strong class="ui">新建属性</strong>对话框中输入<strong class="ui">名称</strong>。</li>
+<li>选择它的<strong class="ui">类型</strong>。</li>
+<li>对于<strong class="ui">选择器</strong>，请在<strong class="ui">选项</strong>中输入各个选项，每行一个；点按<strong class="ui">添加选项</strong>可以再加一行。</li>
+<li>如有需要，可以在<strong class="ui">描述</strong>中说明这个属性记录的是什么。</li>
+<li>点按<strong class="ui">添加</strong>。</li>
+</ol>
+<p><strong class="ui">名称</strong>栏为空时（<strong class="ui">名称为空</strong>），项目中已有同名属性时（比较时忽略大小写，<strong class="ui">名称已被使用</strong>），以及添加的<strong class="ui">选择器</strong>属性没有任何选项时（<strong class="ui">无选项</strong>），<strong class="ui">添加</strong>按钮都已停用。属性创建后显示为表格最右边的一列，各文档在这一列中都没有值。</p>
+<p>你也可以通过<strong class="ui">新建项目</strong>和<strong class="ui">项目信息</strong>对话框、<strong class="ui">文档信息</strong>、<strong class="ui">导入文档</strong>对话框或检查器为项目添加属性，从电子表格导入属性值时也可以添加。除了从电子表格导入属性值和使用<strong class="ui">新建属性</strong>对话框之外，只要输入了名称的至少三个字符（汉字只需一个），LemmaLoom 就会从你所有项目的属性中给出建议。建议会显示属性的类型。从建议中选取一项，或者直接输入它的名称，就会复制它的类型和选项，使多项研究中的属性保持一致。新添加的属性只属于当前项目。</p>
+<h3 id="entering-values">填写值<a class="anchor" href="#entering-values" aria-hidden="true">#</a></h3>
+<p>在属性窗口中点按一个单元格，然后根据属性的类型填写值：</p>
+<ul>
+<li>对于<strong class="ui">文本</strong>，直接输入文本值。</li>
+<li>对于<strong class="ui">整数</strong>和<strong class="ui">小数</strong>，输入数字后按下 Return 键，或者点按单元格以外的地方。这里只接受数字，删除输入的内容即会删除属性值。</li>
+<li>对于<strong class="ui">布尔值</strong>，勾选或取消勾选复选框。</li>
+<li>对于<strong class="ui">日期</strong>，在日期选择器中选择具体日期。</li>
+<li>对于<strong class="ui">选择器</strong>，从菜单中选择一个选项，或者选择<strong class="ui">无</strong>来移除值。</li>
+</ul>
+<p>编辑属性时所做的所有更改都会自动保存。</p>
+<aside class="callout note"><p class="callout-title">注意</p><p>没有值的日期单元格显示今天的日期，没有值的布尔值单元格显示为未勾选。两者都在你进行编辑后才存储相应的值。取消勾选复选框会存储“假”值，这与没有值不同（见前文的<a href="#documents-without-a-value">没有值的文档</a>）。要区分这两种情况，请按这一列排序，没有值的文档会排在最后。要移除日期或布尔值，需要使用检查器中的移除按钮，下文会介绍。</p>
+</aside>
+<p>处理单个文档时，检查器通常更快。它显示当前文档的属性和标签（见下图，图中是“时间不多了”，它有四个值和标签“评论”）。</p>
+<figure class="shot" id="sets-tags-attributes-inspector-overview"><img class="shot-light" src="../figures/zh-Hans/light/sets-tags-attributes-inspector-overview.webp" alt="“时间不多了”在“文本”检查器中的“详细信息”分面，显示它的属性值和标签。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/sets-tags-attributes-inspector-overview.webp" alt="“时间不多了”在“文本”检查器中的“详细信息”分面，显示它的属性值和标签。" loading="lazy"><figcaption>“时间不多了”在“文本”检查器中的“详细信息”分面，显示它的属性值和标签。</figcaption></figure>
+<p>要查看某个文档的属性值，请打开该文档，在检查器中点按<strong class="ui">文本</strong>，再点按<strong class="ui">详细信息</strong>。<strong class="ui">属性</strong>下列出这个文档中每个有值的属性，各占一行。你可以直接在该行中编辑值。要删除这个值而保留项目中的属性，请点按行末尾的移除按钮（<strong class="ui">移除属性</strong>）。更改立即生效。</p>
+<figure class="shot" id="sets-tags-attributes-add-attribute-type"><img class="shot-light" src="../figures/zh-Hans/light/sets-tags-attributes-add-attribute-type.webp" alt="“时间不多了”的详细信息分面，列表下方的栏中输入了新属性“地区”，类型菜单已展开。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/sets-tags-attributes-add-attribute-type.webp" alt="“时间不多了”的详细信息分面，列表下方的栏中输入了新属性“地区”，类型菜单已展开。" loading="lazy"><figcaption>“时间不多了”的详细信息分面，列表下方的栏中输入了新属性“地区”，类型菜单已展开。</figcaption></figure>
+<p>要为当前未显示的属性填写值：</p>
+<ol>
+<li>在列表下方的栏中输入属性的名称。输入满三个字符（汉字只需一个）后会出现建议。</li>
+<li>如果项目中还没有这个名称，请在随即出现的菜单中选择<strong class="ui">类型</strong>。对于<strong class="ui">选择器</strong>，还要输入它的选项。</li>
+<li>点按<strong class="ui">添加属性</strong>，或按下 Return 键。</li>
+<li>在新出现的一行中填写值。</li>
+</ol>
+<p><strong class="ui">添加属性</strong>按钮在三种情况下已停用，即名称为空时（<strong class="ui">名称为空</strong>）、文档已有这个属性时（<strong class="ui">已添加</strong>），以及新建的<strong class="ui">选择器</strong>没有选项时（<strong class="ui">无选项</strong>）。每当你在列表下方的栏中输入一个新名称，就会把这个属性添加到整个项目中。值留空的行要等你离开该文档后才会删除，属性则仍保留在项目中。</p>
+<p>在检查器中更改译文的值，会同时更改对应原文的值。</p>
+<p><strong class="ui">文档信息</strong>的<strong class="ui">属性</strong>部分有相同的栏，点按<strong class="ui">存储</strong>后才会保存（见<a href="projects-and-documents.html">第 3 章“项目与文档”</a>中的<a href="projects-and-documents.html#properties-attributes">属性</a>）。要从电子表格导入属性值，请参阅<a href="importing.html">第 4 章“导入资料”</a>中的<a href="importing.html#attribute-import">从电子表格导入属性值</a>。</p>
+<h3 id="bulk-values">为多个文档设置同一个值<a class="anchor" href="#bulk-values" aria-hidden="true">#</a></h3>
+<p>如果多个文档的某个属性值相同，可以同时为它们设置这个值。在“气候辩论”项目中，六个文档的“立场”都是“行动派”，五个是“怀疑派”，三个是“中立”，所以每个值都可以一步分配给相应的文档。本章前文<a href="#attributes-sheet">属性窗口</a>中的插图选中了六个行动派文档，正是为了给它们设置共同的值。</p>
+<figure class="shot" id="sets-tags-attributes-set-value-dialog"><img class="shot-light" src="../figures/zh-Hans/light/sets-tags-attributes-set-value-dialog.webp" alt="在属性窗口中选中六个文档后打开的“设置值”对话框，已为“立场”选择“行动派”。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/sets-tags-attributes-set-value-dialog.webp" alt="在属性窗口中选中六个文档后打开的“设置值”对话框，已为“立场”选择“行动派”。" loading="lazy"><figcaption>在属性窗口中选中六个文档后打开的“设置值”对话框，已为“立场”选择“行动派”。</figcaption></figure>
+<p>要为多个文档设置同一个值：</p>
+<ol>
+<li>在属性窗口中，勾选文档旁边的复选框。列顶部的复选框可以勾选或取消勾选显示的每一行。</li>
+<li>这时，窗口会在<strong class="ui">搜索</strong>旁边显示所选文档的数量（例如<strong class="ui">已选择 6 个文档</strong>）和一个<strong class="ui">设置值</strong>菜单。选取<strong class="ui">设置值</strong>，再选取属性。</li>
+<li>在<strong class="ui">设置值</strong>对话框中选择或输入值。</li>
+<li>点按<strong class="ui">应用</strong>。</li>
+</ol>
+<p>新值会替换所选文档中该属性原来存储的任何值。用<strong class="ui">编辑 ▸ 撤销设置值</strong>（⌘Z）即可撤销。</p>
+<p>根据属性是<strong class="ui">选择器</strong>、<strong class="ui">布尔值</strong>、<strong class="ui">日期</strong>还是其他类型，<strong class="ui">设置值</strong>对话框分别提供菜单、复选框、日期选择器或文本框。输入<strong class="ui">小数</strong>时，可以使用你的 Mac 所用的小数分隔符。输入栏为空时（<strong class="ui">无值</strong>），或者输入的值不符合属性类型的限制时（<strong class="ui">无效值</strong>，例如为“读者数”输入 <code>4 万左右</code>），<strong class="ui">应用</strong>会变为不可用。<strong class="ui">设置值</strong>只用于填入值；要删除已有的值，需要逐个文档清除。</p>
+<p><strong class="ui">设置值</strong>作用于已选中且可见的行。如果你先选中了多行，再在<strong class="ui">搜索</strong>中输入内容，搜索可能会隐藏其中一些行，但被隐藏的行仍处于选中状态。因此，<strong class="ui">设置值</strong>旁边显示的数字等于当前选中且可见的行数。要为搜索找到的多个文档设置同一个值，请先搜索，再点按列顶部的复选框。</p>
+<h3 id="searching-sorting">搜索和排序<a class="anchor" href="#searching-sorting" aria-hidden="true">#</a></h3>
+<p>用<strong class="ui">搜索</strong>可以只显示标题或单元格中含有你所输入词语的行。搜索不区分大小写。在示例项目“气候辩论”中，搜索 <code>纪事</code> 会显示“希望要靠行动”“模型总是失准”和“科学从无定论”，也就是来自“每周纪事”的三篇文本。</p>
+<p>点按列标题，各行会按这一列的值升序排列。再点按一次则反转排序顺序。箭头表示当前选择的排序方向。</p>
+<ul>
+<li>数值类型的值按大小排序，所以 8,500 排在 23,000 之前。</li>
+<li><strong class="ui">选择器</strong>的值按<strong class="ui">选项</strong>的顺序排序。选项为“行动派”“怀疑派”和“中立”时，“行动派”排在其他值之前。</li>
+<li>文本按字母顺序排序，文本值中包含的数字按数值排序，例如“草稿 2”排在“草稿 10”之前。日期按时间先后排序，<strong class="ui">布尔值</strong>则按先假后真排序。</li>
+<li>缺少值的文档总是排在最后，与排序方向无关。</li>
+<li>值相同时，文档按标题的字母顺序排列；从低到高排序时按升序，从高到低排序时按降序。</li>
+</ul>
+<p>点按两次“读者数”列标题，各行会从“读者数”最高的值开始排列。如本章前文<a href="#attributes-sheet">属性窗口</a>中的插图所示，这样得到一个从高到低的列表，开头是“碳税之争”（875,000）、“时间不多了”（412,000）和“净零代价高昂”（398,000）。随后是读者较少的文档，最后是“一位市长的承诺”（8,500）和“2024 热浪报告”（3,100）。所有缺少这个属性值的文档都排在最后。排序一直有效，直到你关闭窗口。</p>
+<h3 id="editing-an-attribute">修改属性<a class="anchor" href="#editing-an-attribute" aria-hidden="true">#</a></h3>
+<p>要编辑属性，请选取<strong class="ui">管理</strong>，再选取该属性，然后选取<strong class="ui">编辑</strong>；或者右键点按属性的列标题并选取<strong class="ui">编辑</strong>。<strong class="ui">编辑属性</strong>对话框有<strong class="ui">名称</strong>、<strong class="ui">类型</strong>、<strong class="ui">选项</strong>（仅限<strong class="ui">选择器</strong>）和<strong class="ui">描述</strong>（REFI-QDA 格式导出会包含它）几个栏，与<strong class="ui">新建属性</strong>中的栏一一对应。点按<strong class="ui">存储</strong>按钮会更新属性的定义；<strong class="ui">名称</strong>栏为空时（<strong class="ui">名称为空</strong>），或者<strong class="ui">选择器</strong>没有选项时（<strong class="ui">无选项</strong>），<strong class="ui">存储</strong>按钮会变为不可用。</p>
+<figure class="shot" id="sets-tags-attributes-manage-menu"><img class="shot-light" src="../figures/zh-Hans/light/sets-tags-attributes-manage-menu.webp" alt="“气候辩论”属性窗口的管理菜单，已选取“读者数”，“编辑”高亮显示。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/sets-tags-attributes-manage-menu.webp" alt="“气候辩论”属性窗口的管理菜单，已选取“读者数”，“编辑”高亮显示。" loading="lazy"><figcaption>“气候辩论”属性窗口的管理菜单，已选取“读者数”，“编辑”高亮显示。</figcaption></figure>
+<p><strong class="ui">选择器</strong>属性的选项可以编辑，用来添加新选项、调整已有选项的顺序或删除选项。选项的顺序决定它们在菜单中的排列和排序方式。无论选项列表如何变化，文档都保留原来的选项值。</p>
+<ul>
+<li>删除某些文档仍在使用的选项后，这些文档会继续保留这个选项。它在这些文档的菜单中显示在所有已列出的选项之后，在智能文档集中也仍然可以使用。</li>
+<li>重命名选项（例如把“怀疑派”改为“质疑派”）后，文档仍然带有原来的选项，所以要把它们改过来，需要添加一个使用新名称的选项。添加之后，可以先用<strong class="ui">设置值</strong>把带有旧选项的文档改为新选项，再移除旧选项。</li>
+</ul>
+<h3 id="converting-types">更改属性的类型<a class="anchor" href="#converting-types" aria-hidden="true">#</a></h3>
+<p>有时某个属性最终需要换成完全不同的类型；比如为了保持一致，<strong class="ui">文本</strong>属性的值应当限定在预先确定的几个选项中，这就需要<strong class="ui">选择器</strong>类型。<strong class="ui">编辑属性</strong>对话框中<strong class="ui">类型</strong>下的下拉列表会列出当前类型，以及与该属性现有全部值兼容的所有其他类型。存储时，LemmaLoom 会按新类型改写这些值。各类型兼容的值如下：</p>
+<div class="table-wrap"><table>
+<thead><tr><th>类型</th><th>符合的值</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">文本</strong></td><td>任何值</td></tr>
+<tr><td><strong class="ui">选择器</strong></td><td>任何值</td></tr>
+<tr><td><strong class="ui">整数</strong></td><td>用阿拉伯数字写成的整数，需要时带负号，没有前导零；<code>12.0</code> 也符合，会变为 <code>12</code></td></tr>
+<tr><td><strong class="ui">小数</strong></td><td>用阿拉伯数字写成的数，需要时带负号，最多一个小数点，没有前导零，有效数字不超过 15 位（<code>0.5</code> 符合，<code>.5</code> 不符合）；<code>14</code> 会变为 <code>14.0</code></td></tr>
+<tr><td><strong class="ui">布尔值</strong></td><td><code>true</code>、<code>false</code>、<code>yes</code>、<code>no</code>、<code>1</code> 和 <code>0</code>，不区分大小写；它们会变为真或假</td></tr>
+<tr><td><strong class="ui">日期</strong></td><td>严格采用 <code>2024-08-21</code> 这种形式的日期（四位数的年、两位数的月和日，用连字符连接）；<code>2024/8/21</code> 不符合</td></tr>
+</tbody></table></div>
+<p>对于“气候辩论”项目中的属性，菜单提供以下类型：</p>
+<div class="table-wrap"><table>
+<thead><tr><th>属性</th><th>当前类型</th><th>提供的类型</th></tr></thead>
+<tbody>
+<tr><td>立场</td><td><strong class="ui">选择器</strong></td><td><strong class="ui">文本</strong>、<strong class="ui">选择器</strong></td></tr>
+<tr><td>读者数</td><td><strong class="ui">整数</strong></td><td><strong class="ui">文本</strong>、<strong class="ui">整数</strong>、<strong class="ui">小数</strong>、<strong class="ui">选择器</strong></td></tr>
+<tr><td>发表日期</td><td><strong class="ui">日期</strong></td><td><strong class="ui">文本</strong>、<strong class="ui">日期</strong>、<strong class="ui">选择器</strong></td></tr>
+<tr><td>媒体</td><td><strong class="ui">文本</strong></td><td><strong class="ui">文本</strong>、<strong class="ui">选择器</strong></td></tr>
+</tbody></table></div>
+<p>假设有人在一个记录读者人数的<strong class="ui">文本</strong>属性中输入了 <code>4 万左右</code>。只有在你通过<strong class="ui">搜索</strong>或按这一列排序找到这个值，并把它改为整数之后，菜单才会提供<strong class="ui">整数</strong>。</p>
+<p>改为<strong class="ui">选择器</strong>时，如果<strong class="ui">选项</strong>起初为空，LemmaLoom 会自动填入文档已有的值，并按字母顺序（中文按拼音）排列。下图演示了这一点。“媒体”已改为<strong class="ui">选择器</strong>，<strong class="ui">选项</strong>中包括全部八个媒体，开头是“北方先驱报”和“北线电台”。点按<strong class="ui">存储</strong>之前，可以调整选项的顺序或添加选项。</p>
+<figure class="shot" id="sets-tags-attributes-edit-attribute"><img class="shot-light" src="../figures/zh-Hans/light/sets-tags-attributes-edit-attribute.webp" alt="“媒体”的“编辑属性”对话框，类型已改为“选择器”，选项根据现有的值自动填入。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/sets-tags-attributes-edit-attribute.webp" alt="“媒体”的“编辑属性”对话框，类型已改为“选择器”，选项根据现有的值自动填入。" loading="lazy"><figcaption>“媒体”的“编辑属性”对话框，类型已改为“选择器”，选项根据现有的值自动填入。</figcaption></figure>
+<p>新类型也决定条件可以使用哪些比较方式。在<strong class="ui">整数</strong>和<strong class="ui">小数</strong>之间转换，所有比较方式都不受影响。但如果以其他方式更改属性的类型，之后就必须检查你的智能文档集，具体见本章前文的<a href="#editing-a-smart-set">修改智能文档集</a>。</p>
+<h3 id="ordering-attributes">调整属性的顺序<a class="anchor" href="#ordering-attributes" aria-hidden="true">#</a></h3>
+<p>属性按创建的先后排列。要移动某个属性，请选取<strong class="ui">管理</strong>，再选取该属性，然后选取<strong class="ui">左移</strong>或<strong class="ui">右移</strong>；也可以右键点按属性的列标题。</p>
+<p>凡是出现属性的地方都采用这个顺序，包括属性窗口的各列、检查器、<strong class="ui">文档信息</strong>、<strong class="ui">项目信息</strong>，以及智能文档集条件中的属性菜单。新条件默认使用第一个属性，所以最常检验的属性应当排在最前面。</p>
+<h3 id="deleting-an-attribute">删除属性<a class="anchor" href="#deleting-an-attribute" aria-hidden="true">#</a></h3>
+<p>要删除属性，请选取<strong class="ui">管理</strong>，再选取该属性，然后选取<strong class="ui">删除</strong>；或者右键点按它的列标题并选取<strong class="ui">删除</strong>。属性会立即连同它在项目中每个文档上的值一起删除。针对这个属性设置的智能文档集条件随即对每个文档都不成立（见本章前文的<a href="#editing-a-smart-set">修改智能文档集</a>）。<strong class="ui">编辑 ▸ 撤销删除属性</strong>（⌘Z）可以恢复被删除的属性及其值。在<strong class="ui">项目信息</strong>中删除属性，点按<strong class="ui">存储</strong>后效果相同；用<strong class="ui">编辑 ▸ 撤销项目信息</strong>可以全部恢复。</p>
+<h3 id="exporting-importing-values">导出和导入属性值<a class="anchor" href="#exporting-importing-values" aria-hidden="true">#</a></h3>
+<p><strong class="ui">导出</strong>会创建一个电子表格程序可以打开的 CSV 文件，当前显示的每一项各占一行，顺序与显示的相同。文件中先是<strong class="ui">文档</strong>列，列出文档标题，后面每个属性各占一列。文件名根据项目名称生成，例如 <code>气候辩论-attributes.csv</code>。</p>
+<p><strong class="ui">导入</strong>从 CSV 文件或制表符分隔的文件中读取属性值，必要时还会在导入过程中创建属性。具体做法请参阅<a href="importing.html">第 4 章“导入资料”</a>中的<a href="importing.html#attribute-import">从电子表格导入属性值</a>。要添加或更改许多属性值，最简单的做法往往是先导出表格，在电子表格程序中修改，再导入回来。</p>
+<h3 id="using-attributes">属性可用在哪些地方<a class="anchor" href="#using-attributes" aria-hidden="true">#</a></h3>
+<ul>
+<li>智能文档集检验属性值，见本章前文的<a href="#smart-sets">智能文档集</a>。</li>
+<li><strong class="ui">编码矩阵</strong>可以按属性归并各列（见<a href="coding-analysis.html">第 13 章“编码分析”</a>）。</li>
+<li>速写空间比较词在不同属性值之间的语法特征（见<a href="sketch-space.html">第 14 章“速写空间”</a>中的<a href="sketch-space.html#attribute-columns">比较属性取值</a>）。</li>
+<li>查询在规则中检验属性值（见<a href="queries-building.html">第 15 章“构建查询”</a>中的<a href="queries-building.html#query-fields">字段</a>）。<strong class="ui">比较</strong>把一个属性每个值的计数并排显示，并给出统计检验（见<a href="queries-results.html">第 16 章“查询结果与统计”</a>）。</li>
+</ul>
+<p>编码也可以有属性，这些属性为每个编码实例分别保存值。它们直接添加在编码上，属性窗口只显示文档的属性。详细说明请参阅<a href="coding.html">第 7 章“编码”</a>中的<a href="coding.html#coding-attributes">带属性的编码</a>。</p>
+<h2 id="scopes">用文档集和标签限定范围<a class="anchor" href="#scopes" aria-hidden="true">#</a></h2>
+<p>可以用文档集、智能文档集或标签来限定所分析的文档。下表列出可以选择它们的位置：</p>
+<div class="table-wrap"><table>
+<thead><tr><th>位置</th><th>文档集和智能文档集</th><th>标签</th></tr></thead>
+<tbody>
+<tr><td>从导航栏打开的标签页及其十个视图</td><td>是</td><td>是</td></tr>
+<tr><td>词汇速写窗口中<strong class="ui">词</strong>栏后面的菜单</td><td>是</td><td>是</td></tr>
+<tr><td><strong class="ui">窗口 ▸ 查询</strong>的范围菜单</td><td>当前项目的文档集</td><td>否</td></tr>
+<tr><td><strong class="ui">自动编码</strong>对话框中的<strong class="ui">文档</strong></td><td>是</td><td>否</td></tr>
+<tr><td>快捷菜单中的<strong class="ui">导出</strong></td><td>是</td><td>否</td></tr>
+<tr><td><strong class="ui">新建编码</strong>和<strong class="ui">编辑编码</strong>对话框中的<strong class="ui">适用范围</strong> ▸ <strong class="ui">文档集</strong>（见<a href="coding.html">第 7 章“编码”</a>中的<a href="coding.html#code-scope">编码的适用范围</a>）</td><td>是</td><td>否</td></tr>
+<tr><td><strong class="ui">关键词</strong>查询中的<strong class="ui">比较对象</strong> ▸ <strong class="ui">文档集</strong>（见<a href="queries-results.html">第 16 章“查询结果与统计”</a>中的<a href="queries-results.html#keywords">关键词</a>）</td><td>是</td><td>否</td></tr>
+</tbody></table></div>
+<p>词汇速写窗口中<strong class="ui">词</strong>栏后面的下拉菜单反映你当前使用的范围。菜单先列出整个项目，然后是项目的文档集（按字母顺序）和标签，最后是当前标签页中的文档。在只提供文档集的地方，可以在某个标签的标签页中改用<strong class="ui">查询</strong>视图，或者新建一个带<strong class="ui">标签</strong>条件的智能文档集。</p>
+<h2 id="translations-and-sets">译文<a class="anchor" href="#translations-and-sets" aria-hidden="true">#</a></h2>
+<p>普通文档集、智能文档集和导航栏中的标签都只考虑文档的原文版本。译文在任何地方都跟随原文。</p>
+<p>例如，文档集下只列出原文文档（见前文的<a href="#adding-and-removing">添加和移除文档</a>），智能文档集检验的也是原文文档的值。原文与其译文共用标签、属性值和分组，所以两者在这些方面总是相同。</p>
+<p>对文档集、标签或项目的分析默认在原文文档中进行。因此，分析“时间不多了”和“时间不多了 (英语)”相当于分析一篇文本。文档集的编码视图统计的也是原文文档中的编码实例。在译文文档中为一段文字编码时，LemmaLoom 会在对应原文的同一位置创建编码实例；因此，“时间不多了 (英语)”中的编码实例只计算一次，计在原文“时间不多了”中。</p>
+<p>有两种分析方法可以改为读取译文。查询的<strong class="ui">选项</strong>条件中有<strong class="ui">语料</strong>参数，可以把语料设为<strong class="ui">原文</strong>、<strong class="ui">译文</strong>或<strong class="ui">两者</strong>（见<a href="queries-building.html">第 15 章“构建查询”</a>中的<a href="queries-building.html#query-options">选项</a>）。为文档集、标签或项目生成词汇速写时，如果其中有译文文档，<strong class="ui">词</strong>栏后面的下拉菜单中会提供相应选项。这个菜单中有<strong class="ui">语料</strong>部分，包含<strong class="ui">原文</strong>选项，每种可用的译文语言也各有一个选项，例如<strong class="ui">译文（英语）</strong>（见<a href="word-sketch.html">第 12 章“词汇速写”</a>）。关于使用译文的更多信息，请参阅<a href="translations.html">第 9 章“译文与分屏浏览”</a>。</p>
+</article>
+<nav class="pager"><a class="previous" href="coding.html"><span>上一章</span>编码</a><a class="next" href="translations.html"><span>下一章</span>译文与分屏浏览</a></nav>
+<footer class="site-footer">© 2026 Ryan S. Cooper. 保留所有权利。<br>本版本借助人工智能根据英文原版翻译而成，译文可能存在错误或不准确之处。如有疑问，请以英文版为准。</footer>
+</main>
+<nav class="page-toc" aria-label="本页内容"><p>本页内容</p><ul>
+<li class="level-2"><a href="#key-terms">关键术语</a></li>
+<li class="level-2"><a href="#choosing">该用哪一种</a></li>
+<li class="level-2"><a href="#example-values">本章的示例</a></li>
+<li class="level-2"><a href="#sets">文档集</a></li>
+<li class="level-3"><a href="#making-a-set">新建文档集</a></li>
+<li class="level-3"><a href="#adding-and-removing">添加和移除文档</a></li>
+<li class="level-3"><a href="#opening-a-set">打开文档集</a></li>
+<li class="level-3"><a href="#managing-sets">重命名、导出和删除文档集</a></li>
+<li class="level-2"><a href="#smart-sets">智能文档集</a></li>
+<li class="level-3"><a href="#creating-a-smart-set">新建智能文档集</a></li>
+<li class="level-3"><a href="#all-or-any">全部与任一</a></li>
+<li class="level-3"><a href="#smart-set-fields">字段</a></li>
+<li class="level-3"><a href="#attribute-comparisons">属性的比较方式</a></li>
+<li class="level-3"><a href="#condition-values">条件中的值</a></li>
+<li class="level-3"><a href="#how-values-are-compared">值如何比较</a></li>
+<li class="level-3"><a href="#editing-a-smart-set">修改智能文档集</a></li>
+<li class="level-3"><a href="#smart-sets-export">LemmaLoom 之外的智能文档集</a></li>
+<li class="level-2"><a href="#groups">分组</a></li>
+<li class="level-2"><a href="#tags">标签</a></li>
+<li class="level-3"><a href="#tag-vocabulary">所有项目共用一份列表</a></li>
+<li class="level-3"><a href="#tagging-documents">为文档添加标签</a></li>
+<li class="level-3"><a href="#tags-in-the-navigator">导航栏中的标签</a></li>
+<li class="level-2"><a href="#attributes">属性</a></li>
+<li class="level-3"><a href="#attribute-types">属性类型</a></li>
+<li class="level-3"><a href="#attributes-sheet">属性窗口</a></li>
+<li class="level-3"><a href="#defining-an-attribute">定义属性</a></li>
+<li class="level-3"><a href="#entering-values">填写值</a></li>
+<li class="level-3"><a href="#bulk-values">为多个文档设置同一个值</a></li>
+<li class="level-3"><a href="#searching-sorting">搜索和排序</a></li>
+<li class="level-3"><a href="#editing-an-attribute">修改属性</a></li>
+<li class="level-3"><a href="#converting-types">更改属性的类型</a></li>
+<li class="level-3"><a href="#ordering-attributes">调整属性的顺序</a></li>
+<li class="level-3"><a href="#deleting-an-attribute">删除属性</a></li>
+<li class="level-3"><a href="#exporting-importing-values">导出和导入属性值</a></li>
+<li class="level-3"><a href="#using-attributes">属性可用在哪些地方</a></li>
+<li class="level-2"><a href="#scopes">用文档集和标签限定范围</a></li>
+<li class="level-2"><a href="#translations-and-sets">译文</a></li>
+</ul></nav>
+</div>
+<script src="../assets/guide.js" defer></script>
+</body>
+</html>

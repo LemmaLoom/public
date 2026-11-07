@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>阅读与编辑 · LemmaLoom 用户指南</title>
+<link rel="stylesheet" href="../assets/guide.css">
+<link rel="icon" type="image/png" href="../assets/logo.png">
+<script>var r=document.documentElement;r.setAttribute('data-theme','light');try{if(localStorage.getItem('guide-theme')==='dark'){r.setAttribute('data-theme','dark')}}catch(e){}</script>
+</head>
+<body>
+<header class="topbar">
+<button class="menu-toggle" aria-label="目录" aria-expanded="false">☰</button>
+<a class="brand" href="index.html"><span class="wordmark"><span class="lemma">Lemma</span>Loom</span><span class="guide-name">用户指南</span></a>
+<div class="search"><input type="search" id="search" placeholder="搜索" aria-label="搜索" autocomplete="off" data-empty="无结果"><div class="results" id="results" hidden></div></div>
+<nav class="languages" aria-label="Language"><a href="../en/reading-and-editing.html" lang="en">English</a><a href="../de/reading-and-editing.html" lang="de">Deutsch</a><a href="../zh-Hans/reading-and-editing.html" lang="zh-Hans" aria-current="true">简体中文</a></nav>
+<button class="theme-toggle" data-light="浅色" data-dark="深色" aria-label="外观"></button>
+<a class="pdf-link" href="https://github.com/LemmaLoom/public/raw/main/pdf/lemmaloom-guide-zh-Hans.pdf">PDF</a>
+</header>
+<div class="layout">
+<nav class="sidebar" aria-label="目录"><ol>
+<li class="unnumbered"><a href="quick-start.html">快速入门</a></li>
+<li><a href="introduction.html">简介</a></li>
+<li><a href="getting-started.html">开始使用</a></li>
+<li><a href="projects-and-documents.html">项目与文档</a></li>
+<li><a href="importing.html">导入资料</a></li>
+<li class="current"><a href="reading-and-editing.html">阅读与编辑</a></li>
+<li><a href="lenses.html">透镜</a></li>
+<li><a href="coding.html">编码</a></li>
+<li><a href="sets-tags-attributes.html">文档集、分组、标签和属性</a></li>
+<li><a href="translations.html">译文与分屏浏览</a></li>
+<li><a href="text-inspector.html">文本检查器</a></li>
+<li><a href="grammar-inspector.html">语法检查器</a></li>
+<li><a href="word-sketch.html">词汇速写</a></li>
+<li><a href="coding-analysis.html">编码分析</a></li>
+<li><a href="sketch-space.html">速写空间</a></li>
+<li><a href="queries-building.html">构建查询</a></li>
+<li><a href="queries-results.html">查询结果与统计</a></li>
+<li><a href="queries-patterns.html">查询模式与发现</a></li>
+<li><a href="queries-using-results.html">使用查询结果</a></li>
+<li><a href="dictionaries.html">词典</a></li>
+<li><a href="custom-analyzers.html">自定义分析器</a></li>
+<li><a href="analysis-and-indexing.html">分析与索引</a></li>
+<li><a href="exchange-and-export.html">交换与导出</a></li>
+<li><a href="undo.html">撤销与重做</a></li>
+<li><a href="settings.html">设置与外观</a></li>
+<li><a href="keyboard-shortcuts.html">键盘快捷键</a></li>
+<li><a href="help-and-support.html">帮助与支持</a></li>
+<li><a href="statistics-reference.html">统计量一览</a></li>
+<li class="unnumbered"><a href="glossary.html">术语表</a></li>
+<li class="unnumbered"><a href="thanks.html">感谢</a></li>
+</ol></nav>
+<main class="content">
+<article>
+<h1 id="reading-and-editing">阅读与编辑</h1>
+<p>LemmaLoom 的阅读器是主窗口中间的窗格，显示文档的文本。你在这里阅读文档、在文本中搜索、选择词或一段文字以便编码或添加标注，也在这里修改文本本身。如果文档是以音频或视频文件导入的，阅读器会显示转写文本，上方是播放栏，让你可以一边阅读转写文本，一边收听录音。</p>
+<p>本章的示例来自示例项目“气候辩论”（见<a href="introduction.html">第 1 章“简介”</a>中的<a href="introduction.html#example-project">示例项目</a>）。大多数示例使用其中的评论文章和专栏，例如“时间不多了”和“净零代价高昂”；与录音有关的示例则使用文档“电台辩论”。你可以选取<strong class="ui">文件 ▸ 导入 ▸ 示例项目</strong>，自己载入这个项目。LemmaLoom 会以界面所用的语言把它导入为一个新项目。</p>
+<h2 id="the-reader">阅读器<a class="anchor" href="#the-reader" aria-hidden="true">#</a></h2>
+<p>在导航栏中点按一个文档，它就会在阅读器的一个标签页中打开。无论哪个文档，阅读器都由相同的几个部分组成：</p>
+<ul>
+<li><em>标题栏</em>位于文本栏上方，与窗口按钮处于同一高度。它的最左端是 LemmaLoom 的名称，最右端是阅读器的工具。</li>
+<li>文本栏占据阅读器的大部分，所有文本都在这里。每行在适合阅读的宽度处换行。</li>
+<li><em>页边栏</em>位于文本栏左侧，为段落和句子编号，并显示你的所有标注，包括编码实例（你已编码的文字）、备忘录、书签和链接。每个标注在页边栏中都有对应的符号。</li>
+<li><em>文档概览</em>位于阅读器的最右侧，让你概览文档中各处内容的位置，以及它们与当前视图的相对位置。</li>
+<li><em>状态栏</em>位于文本栏下方，显示你在文档中的位置以及文档的总长度。</li>
+</ul>
+<p>标题栏和文本之间还可能出现搜索栏、大多数已启用透镜的图例，以及音频和视频的播放器。</p>
+<p>下图是“气候辩论”中一篇持怀疑立场的评论文章“净零代价高昂”，其中的编码实例大多属于编码“成本”。另有几段文字带有其他编码，例如“不确定性”“责任”“紧迫性”或“时间节点”。有一句话谈到一笔“要以数千亿元计”的账单，同时带有“成本”和“责任”，所以页边栏中它的旁边是一个带两个圆点的合并标注。</p>
+<figure class="shot" id="reading-and-editing-reader"><img class="shot-light" src="../figures/zh-Hans/light/reading-and-editing-reader.webp" alt="阅读器中的“净零代价高昂”，页边栏中有段落编号、句子编号和编码片段，右侧是文档概览，下方是状态栏。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/reading-and-editing-reader.webp" alt="阅读器中的“净零代价高昂”，页边栏中有段落编号、句子编号和编码片段，右侧是文档概览，下方是状态栏。" loading="lazy"><figcaption>阅读器中的“净零代价高昂”，页边栏中有段落编号、句子编号和编码片段，右侧是文档概览，下方是状态栏。</figcaption></figure>
+<h3 id="title-band">标题栏<a class="anchor" href="#title-band" aria-hidden="true">#</a></h3>
+<p>标题栏右端的按钮作用于你正在查看的文档。两个文档并排打开时，这些按钮作用于当前窗格，也就是你最后点按的那个窗格（见本章后文的<a href="#split-view">并排阅读两个文档</a>）。这些按钮从左到右依次是：</p>
+<ul>
+<li>透镜菜单。启用了一个透镜时，菜单上显示它的名称；同时启用了多个时，显示启用的数量；一个都没有启用时，显示<strong class="ui">透镜</strong>。新打开的文档已启用<strong class="ui">书签</strong>和<strong class="ui">编码</strong>两个透镜，所以菜单显示<strong class="ui">2 个透镜</strong>。文档建立索引之前，这个菜单不可用。</li>
+<li>折叠按钮，悬停提示为<strong class="ui">仅显示透镜标注的句子</strong>。它把整个文档折叠为只剩已启用透镜所标注的句子。再点按一次，即可取消折叠。只有当某个透镜有内容可以标注时，这个按钮才会出现（见<a href="lenses.html">第 6 章“透镜”</a>）。</li>
+<li><strong class="ui">在文档中查找</strong>，图标是放大镜，用来显示搜索栏。</li>
+<li><strong class="ui">字体、边栏与文字大小</strong>，图标是“大小”二字，用来打开一个关于文档外观的选项菜单。</li>
+<li><strong class="ui">编辑</strong>把阅读器切换到编辑模式。</li>
+</ul>
+<p>在编辑模式下，标题栏中只有<strong class="ui">取消</strong>和<strong class="ui">存储</strong>两个按钮。</p>
+<h3 id="gutter">页边栏<a class="anchor" href="#gutter" aria-hidden="true">#</a></h3>
+<p>页边栏主要分为两部分。最左边是编号，段落编号在左列，句子编号在右列。句子在整个文档中连续编号。几个句子从同一行开始时，它们的编号排在同一行，用逗号隔开，列中放得下几个就显示几个。</p>
+<p>要选中整个段落或句子，请点按页边栏中对应的编号。两列编号同时显示时，点按左列选中段落，点按右列选中句子。选中之后，这段文字可以像其他选区一样处理，包括为它编码。事实上，点按编号是为整个段落或句子编码最快的方法（见本章后文的<a href="#selecting-text">选择文本</a>）。</p>
+<p>编号和文本之间是标注区，你为文档添加的所有内容都显示在这里。启用<strong class="ui">编码</strong>透镜时，这里显示编码实例；同样，启用<strong class="ui">书签</strong>时显示书签。备忘录和链接则无论启用哪个透镜都会显示。</p>
+<ul>
+<li>编码片段旁边有一条细竖条，颜色与各自的编码相同。编码实例相互重叠时，竖条并排显示；第三条之后的竖条共用第三个位置。将鼠标指针悬停在竖条上，文本中对应的文字会高亮显示。</li>
+<li>每个编码实例、备忘录、书签和链接在起点处都有一个小标注。编码实例的标注显示编码名称，备忘录的标注显示备忘录的开头；书签的标注显示书签的评论，链接的标注则显示链接类型。</li>
+<li>标注可能相互重叠时，所有重叠的标注会合并为一个灰色标注，上面有彩色圆点和数量。</li>
+</ul>
+<p>点按标注或竖条，就会选中它所对应的文字。点按链接标注则不同，它会跳到链接另一端的文字，必要时还会打开另一个文档。例如在“气候辩论”项目中，评论文章“净零代价高昂”里一段文字上的链接，会直接通向这篇文章所回应的演讲“一位市长的承诺”。将鼠标指针悬停在标注上，可以看到备忘录、链接或较长书签评论的全文；链接的弹出窗口显示链接信息，还有<strong class="ui">跳转到另一端</strong>。指向或点按合并标注，会以列表形式显示其中的所有条目；点按一个条目即可选中它的文字，如果是链接，则跳到另一端。</p>
+<figure class="shot" id="reading-and-editing-link-popover"><img class="shot-light" src="../figures/zh-Hans/light/reading-and-editing-link-popover.webp" alt="“净零代价高昂”中的一个链接标注，鼠标指针停在其上，弹出窗口显示指向“一位市长的承诺”的链接和跳转到另一端。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/reading-and-editing-link-popover.webp" alt="“净零代价高昂”中的一个链接标注，鼠标指针停在其上，弹出窗口显示指向“一位市长的承诺”的链接和跳转到另一端。" loading="lazy"><figcaption>“净零代价高昂”中的一个链接标注，鼠标指针停在其上，弹出窗口显示指向“一位市长的承诺”的链接和跳转到另一端。</figcaption></figure>
+<h3 id="minimap">文档概览<a class="anchor" href="#minimap" aria-hidden="true">#</a></h3>
+<p>文档概览位于阅读器右侧，是一条按已启用透镜着色的滚动条。它告诉你当前位于文档中的哪个位置，以及已启用的透镜（例如编码）标注了文档的哪些部分。文档的全部内容都容纳在文档概览面板的范围之内。文本显示为从上到下排列的浅色线条，段落之间留有空隙。全部由大写字母组成的短段落表示类似标题的文字，显示为颜色较深的笔画。编码片段和透镜着色的词以各自的颜色显示。</p>
+<p>文档概览还显示以下内容：</p>
+<ul>
+<li>你当前查看的位置，以一个线框矩形标出；</li>
+<li>书签，显示为最左侧的小方块；</li>
+<li>搜索匹配项，显示为最右侧的短刻线；</li>
+<li>选中的词，显示为横贯文档概览面板的一条线。</li>
+</ul>
+<p>将鼠标指针悬停在文档概览的某个位置，可以预览那里的文字，即鼠标指针下方的段落及其编号，以及它前后各四个段落。你可以点按跳到文本中的这个段落（它会短暂高亮显示），也可以在文档概览中上下拖移，在文档中移动。</p>
+<figure class="shot" id="reading-and-editing-document-overview"><img class="shot-light" src="../figures/zh-Hans/light/reading-and-editing-document-overview.webp" alt="“净零代价高昂”的文档概览，鼠标指针停在其上，显示鼠标指针下方段落的预览。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/reading-and-editing-document-overview.webp" alt="“净零代价高昂”的文档概览，鼠标指针停在其上，显示鼠标指针下方段落的预览。" loading="lazy"><figcaption>“净零代价高昂”的文档概览，鼠标指针停在其上，显示鼠标指针下方段落的预览。</figcaption></figure>
+<h3 id="status-bar">状态栏<a class="anchor" href="#status-bar" aria-hidden="true">#</a></h3>
+<p>状态栏左端显示当前所选内容的位置。选中一个词时，状态栏显示它所在的段落和句子，以及它在句中是第几个词符，例如 <strong class="ui">¶ 4 · S 22 · T 6</strong> 表示第 4 段、第 22 句、第 6 个词符。<em>词符</em>是一个词或一个标点符号。选中一段文字时，状态栏显示它开始和结束处的段落和句子，以及它包含的词符总数。</p>
+<p>索引建立完成后，右端以简洁的形式显示文档的统计信息，例如“时间不多了”显示 <strong class="ui">10 ¶ · 63 S · 1,119 个词</strong>。词数按词符计算，也就是包括标点符号；显示哪几项计数，取决于页边编号的设置。页边栏设为<strong class="ui">段落</strong>时显示段落数和词数，设为<strong class="ui">句子</strong>时显示句子数和词数，设为<strong class="ui">关闭</strong>时只显示词数。</p>
+<p>索引建立完成之前，或者无法建立索引时，这里显示文档当前的索引状态，而不是统计信息（见<a href="analysis-and-indexing.html">第 21 章“分析与索引”</a>中的<a href="analysis-and-indexing.html#reader-status">在阅读器中</a>）。</p>
+<p>这些状态包括：</p>
+<ul>
+<li>首次建立索引时，显示当前阶段的名称和百分比；</li>
+<li>分析器处理文档时（专门针对某一类特征的额外处理，例如句子之间的衔接），显示<strong class="ui">运行中</strong>和正在运行的分析器名称；</li>
+<li>对于不做语法分析的语言，显示<strong class="ui">不支持…的语法分析</strong>，省略号处为该语言的名称；</li>
+<li>如果导入时取消勾选了<strong class="ui">为语法分析建立索引</strong>，索引处于关闭状态，显示<strong class="ui">索引已关闭</strong>和<strong class="ui">立即建立索引</strong>链接；</li>
+<li>建立索引出现问题时，显示原因和<strong class="ui">重试索引</strong>链接。</li>
+</ul>
+<h3 id="before-analysis">索引建立完成之前<a class="anchor" href="#before-analysis" aria-hidden="true">#</a></h3>
+<p>文档一打开就可以阅读。不过，在文档的索引建立完成之前，阅读器的几项功能暂时无法使用：</p>
+<ul>
+<li>页边栏只显示段落编号，因为句子要在建立索引时才切分出来；</li>
+<li>要选择文字，只能用点按并拖移的方式手动选择；</li>
+<li>透镜菜单不可用；</li>
+<li>状态栏显示索引进度，而不是统计信息。</li>
+</ul>
+<p>建立索引需要多长时间，取决于文档的大小和电脑的配置。LemmaLoom 的语法分析支持英语、德语和中文。其他语言的文档会一直保持上述状态，但仍然可以阅读、搜索、编码和编辑。</p>
+<h3 id="reader-state">阅读器会保留什么<a class="anchor" href="#reader-state" aria-hidden="true">#</a></h3>
+<p>每个文档都会记住你读到了哪里、启用了哪些透镜，以及检查器的状态。项目会记住打开了哪些标签页、当前是哪个标签页，以及哪个文档在分屏浏览中并排打开。退出 LemmaLoom 时，这些都会保留下来，所以阅读器会回到你上次离开的位置。</p>
+<h2 id="text-appearance">更改文本的呈现方式<a class="anchor" href="#text-appearance" aria-hidden="true">#</a></h2>
+<p>你可以设置字体、文字大小、页边栏显示的内容以及文本版式。这些设置适用于所有项目中的所有文档，在你更改之前一直保留。</p>
+<p>有三个地方可以调整这些选项：</p>
+<ul>
+<li>标题栏中的<strong class="ui">字体、边栏与文字大小</strong>菜单，其中有<strong class="ui">字体</strong>、<strong class="ui">边栏</strong>和<strong class="ui">版式</strong>子菜单，以及<strong class="ui">增大文字</strong>、<strong class="ui">减小文字</strong>和<strong class="ui">重置文字大小</strong>选项；</li>
+<li><strong class="ui">显示</strong>菜单，只用于调整文字大小；</li>
+<li><strong class="ui">LemmaLoom ▸ 设置…</strong>（⌘,）中的<strong class="ui">阅读器</strong>页面，在这里还可以设置选区的显示方式，并查看预览。</li>
+</ul>
+<p>要把这些设置以及选区的显示方式恢复为首次启动 LemmaLoom 时的默认状态，请点按<strong class="ui">阅读器</strong>页面顶部的<strong class="ui">全部重置为默认</strong>。</p>
+<h3 id="font">字体<a class="anchor" href="#font" aria-hidden="true">#</a></h3>
+<p>阅读器提供十一种字体，即 <strong class="ui">System Serif</strong>、<strong class="ui">System Sans</strong>、<strong class="ui">System Rounded</strong>、<strong class="ui">System Mono</strong>、<strong class="ui">Georgia</strong>、<strong class="ui">Palatino</strong>、<strong class="ui">Baskerville</strong>、<strong class="ui">Times New Roman</strong>、<strong class="ui">Helvetica Neue</strong>、<strong class="ui">Avenir Next</strong> 和 <strong class="ui">Menlo</strong>。在你更改之前，所有文本都以 <strong class="ui">System Serif</strong> 显示。无论你选择哪种字体，中文文本都使用 Mac 默认的中文字体。</p>
+<p>要更换字体，请点按标题栏中的<strong class="ui">字体、边栏与文字大小</strong>，然后在<strong class="ui">字体</strong>下选择一种。在设置中，它位于<strong class="ui">排印</strong>部分的<strong class="ui">字体</strong>一行。</p>
+<h3 id="text-size">文字大小<a class="anchor" href="#text-size" aria-hidden="true">#</a></h3>
+<p>文字大小可以在 70% 到 200% 之间以 10% 为一级调整。默认大小为 100%，即 17 磅。</p>
+<ul>
+<li>选取<strong class="ui">显示 ▸ 增大文字</strong>（⌘+）或<strong class="ui">显示 ▸ 减小文字</strong>（⌘-），每次调整一级。</li>
+<li>要恢复默认大小，请选取<strong class="ui">显示 ▸ 重置文字大小</strong>（⌘0）。</li>
+<li>你也可以在设置中使用<strong class="ui">排印</strong>下的<strong class="ui">文字大小</strong>滑块。滑块旁边显示百分比，百分比旁边的重置按钮可以恢复到 100%。</li>
+</ul>
+<p>文本栏的宽度会随之调整，使每行平均容纳的词数保持不变。文本编辑器（见本章后文的<a href="#editing-text">编辑文档文本</a>）也使用相同的设置。</p>
+<h3 id="gutter-numbering">页边编号<a class="anchor" href="#gutter-numbering" aria-hidden="true">#</a></h3>
+<p><strong class="ui">边栏</strong>子菜单（在设置中称为<strong class="ui">页边编号</strong>）决定页边栏使用哪种编号方式：</p>
+<div class="table-wrap"><table>
+<thead><tr><th>设置</th><th>页边栏显示</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">两者</strong></td><td>段落编号和句子编号（初始设置）</td></tr>
+<tr><td><strong class="ui">段落</strong></td><td>仅段落编号</td></tr>
+<tr><td><strong class="ui">句子</strong></td><td>仅句子编号</td></tr>
+<tr><td><strong class="ui">关闭</strong></td><td>不显示编号</td></tr>
+</tbody></table></div>
+<p>如果你只用段落来指明文字的位置，选择<strong class="ui">段落</strong>可以让页边栏更清爽。不过，即使选择<strong class="ui">关闭</strong>，标注区仍然显示编码实例、备忘录、书签和链接等标注。</p>
+<h3 id="layout">版式<a class="anchor" href="#layout" aria-hidden="true">#</a></h3>
+<p><strong class="ui">版式</strong>子菜单（在设置中位于<strong class="ui">页面</strong>下）提供两种版式，即<strong class="ui">单栏</strong>和<strong class="ui">双页跨页</strong>。</p>
+<p>文档默认以<strong class="ui">单栏</strong>显示，文本排成一栏，旁边是页边栏。</p>
+<p>在<strong class="ui">双页跨页</strong>中，文本排在页面上，两页并排显示，就像一本打开的书。每页与阅读器等高，向下滚动即可从一对页面转到下一对。每页都像<strong class="ui">单栏</strong>版式一样显示段落编号和句子编号，文档概览也照常工作。调整窗口大小时，文本会重新排到新的页面上。<strong class="ui">双页跨页</strong>适合较大的屏幕，也适合在编码之前通读较长的文档。</p>
+<p>切换版式时，你在文档中的当前位置会保持不变。</p>
+<figure class="shot" id="reading-and-editing-two-page-spread"><img class="shot-light" src="../figures/zh-Hans/light/reading-and-editing-two-page-spread.webp" alt="以“双页跨页”版式显示的“碳税之争”，即从网上导入的那篇新闻报道。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/reading-and-editing-two-page-spread.webp" alt="以“双页跨页”版式显示的“碳税之争”，即从网上导入的那篇新闻报道。" loading="lazy"><figcaption>以“双页跨页”版式显示的“碳税之争”，即从网上导入的那篇新闻报道。</figcaption></figure>
+<h3 id="reader-themes">阅读器颜色<a class="anchor" href="#reader-themes" aria-hidden="true">#</a></h3>
+<p>阅读器的外观，包括文字颜色和背景，取决于你为整个应用选择的主题。你可以在设置的<strong class="ui">通用</strong>页面中，用<strong class="ui">外观</strong>下的<strong class="ui">主题</strong>选择主题。关于主题的详细说明，请参阅<a href="settings.html">第 24 章“设置与外观”</a>。各个主题在阅读器中的效果如下：</p>
+<div class="table-wrap"><table>
+<thead><tr><th>主题</th><th>阅读器</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">系统</strong>、<strong class="ui">红色盲</strong>、<strong class="ui">绿色盲</strong>、<strong class="ui">蓝色盲</strong></td><td>跟随 macOS 的浅色或深色外观</td></tr>
+<tr><td><strong class="ui">浅色</strong>、<strong class="ui">高对比度</strong></td><td>白底深色文字</td></tr>
+<tr><td><strong class="ui">深色</strong>、<strong class="ui">高对比度深色</strong></td><td>深色背景上的浅色文字</td></tr>
+<tr><td><strong class="ui">奶油色</strong></td><td>暖调米白纸色上的深棕色文字</td></tr>
+<tr><td><strong class="ui">Solarized 浅色</strong></td><td>淡奶油色背景上的灰蓝色文字</td></tr>
+<tr><td><strong class="ui">Solarized 深色</strong></td><td>深蓝绿色背景上的淡灰色文字</td></tr>
+</tbody></table></div>
+<h3 id="selection-appearance">选区的显示方式<a class="anchor" href="#selection-appearance" aria-hidden="true">#</a></h3>
+<p>选中一个词或一段文字时，选区会在文本中显示出来；选中的如果是一个词，还会显示它的语法关系。它们的外观由设置中<strong class="ui">阅读器</strong>页面的<strong class="ui">选择</strong>部分决定。页面底部有预览，你可以在更改各行时查看最终效果。</p>
+<div class="table-wrap"><table>
+<thead><tr><th>行</th><th>选项</th><th>控制的内容</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">所选文本</strong></td><td><strong class="ui">实心块</strong>、<strong class="ui">高亮</strong></td><td>用文字颜色的圆角色块衬在所选的词下面，词改用背景色显示；或者在它们后面衬一层浅色。</td></tr>
+<tr><td><strong class="ui">中心词和依存词</strong></td><td><strong class="ui">弧线</strong>、<strong class="ui">连线</strong>、<strong class="ui">标签</strong>、<strong class="ui">高亮</strong>、<strong class="ui">关闭</strong></td><td>阅读器如何显示所选词依存于哪个词（它的<em>中心词</em>），以及哪些词依存于它（它的<em>依存词</em>）。</td></tr>
+<tr><td><strong class="ui">周围文本</strong></td><td><strong class="ui">淡化</strong>、<strong class="ui">轻度淡化</strong>、<strong class="ui">高亮句子</strong>、<strong class="ui">关闭</strong></td><td>选区周围的其余文本是否变暗，或者是否为所选词所在的句子加上底色。</td></tr>
+<tr><td><strong class="ui">音频播放</strong></td><td><strong class="ui">聚光</strong>、<strong class="ui">实心块</strong>、<strong class="ui">高亮</strong></td><td>阅读器跟随录音时，正在播放的那段话如何呈现（见本章后文的<a href="#following-transcript">跟随转写文本</a>）。</td></tr>
+</tbody></table></div>
+<figure class="shot" id="reading-and-editing-reader-settings"><img class="shot-light" src="../figures/zh-Hans/light/reading-and-editing-reader-settings.webp" alt="设置中阅读器页面的默认状态，有排印、页面和选择三个部分，下方是预览。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/reading-and-editing-reader-settings.webp" alt="设置中阅读器页面的默认状态，有排印、页面和选择三个部分，下方是预览。" loading="lazy"><figcaption>设置中<strong class="ui">阅读器</strong>页面的默认状态，有排印、页面和选择三个部分，下方是预览。</figcaption></figure>
+<p>每一行的默认选项都是第一个选项。</p>
+<p>在语言学中，一个词的中心词就是它所修饰或依存的那个词。例如，在“一项全国住宅保温计划”中，“全国”修饰、描述“计划”，所以“计划”是中心词，“全国”是它的依存词之一。</p>
+<p><strong class="ui">淡化</strong>能让你的注意力集中在当前句子上。如果你希望编码时上下文依然清晰可见，可以选择<strong class="ui">轻度淡化</strong>或<strong class="ui">高亮句子</strong>。</p>
+<h2 id="finding-text">查找文本<a class="anchor" href="#finding-text" aria-hidden="true">#</a></h2>
+<p>搜索栏在当前打开的文档中搜索你输入的字符，并直接带你到匹配的文字处。如果需要匹配一个词的所有形式（例如英语的 <em>pay</em> 和 <em>paid</em>），或者同时搜索多个文档，请使用查询，而不是搜索栏。查询会考虑词形和语法上下文（见<a href="queries-building.html">第 15 章“构建查询”</a>）。</p>
+<p>图中是专栏“模型总是失准”，作者是一位“也曾以建模为生”的怀疑论者。用搜索栏搜索“模型”时，LemmaLoom 找到 10 个匹配项，文档概览显示它们在文中的分布。</p>
+<figure class="shot" id="reading-and-editing-find-bar"><img class="shot-light" src="../figures/zh-Hans/light/reading-and-editing-find-bar.webp" alt="专栏“模型总是失准”中的搜索栏，正在搜索“模型”；文本中突出显示当前匹配项，文档概览中显示所有匹配项。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/reading-and-editing-find-bar.webp" alt="专栏“模型总是失准”中的搜索栏，正在搜索“模型”；文本中突出显示当前匹配项，文档概览中显示所有匹配项。" loading="lazy"><figcaption>专栏“模型总是失准”中的搜索栏，正在搜索“模型”；文本中突出显示当前匹配项，文档概览中显示所有匹配项。</figcaption></figure>
+<p>要在文档中查找文本：</p>
+<ol>
+<li>选取<strong class="ui">编辑 ▸ 查找</strong>（⌘F），或点按标题栏中的<strong class="ui">在文档中查找</strong>（放大镜）。搜索栏在文本上方打开，光标位于它的搜索框中。</li>
+<li>输入要查找的内容。LemmaLoom 会边输入边搜索，并滚动到第一个匹配项。</li>
+<li>按下 Return 键或 ⌘G，或点按向下的箭头，转到下一个匹配项。按下 ⇧⌘G 或点按向上的箭头，回到上一个匹配项。过了最后一个匹配项，搜索会从第一个重新开始；在第一个匹配项上按下 ⇧⌘G，则转到最后一个。</li>
+<li>要关闭搜索栏，请按下 Esc 键、点按搜索栏右端的 ×，或再次选取<strong class="ui">编辑 ▸ 查找</strong>（⌘F）。</li>
+</ol>
+<p>搜索框中的计数器显示你当前所在的是第几个匹配项，以及匹配项的总数，例如 <strong class="ui">3/10</strong> 表示共 10 个匹配项中的第 3 个。没有匹配项时，显示<strong class="ui">未找到</strong>。</p>
+<p>阅读器会自动突出显示文本中的当前匹配项。<strong class="ui">周围文本</strong>设为<strong class="ui">淡化</strong>或<strong class="ui">轻度淡化</strong>时，匹配项周围的文本会变暗；设为<strong class="ui">高亮句子</strong>或<strong class="ui">关闭</strong>时，匹配项会加上底色。所有匹配项都以短刻线的形式显示在阅读器文档概览的右边缘。</p>
+<p>匹配规则如下：</p>
+<ul>
+<li>忽略大小写和重音符号，所以 <code>model</code> 能匹配 <em>Model</em>，<code>cafe</code> 能匹配 <em>café</em>；</li>
+<li>忽略输入内容前后的空格；</li>
+<li>匹配项可以位于较长的词内部，所以 <code>model</code> 也能匹配 <em>models</em> 或 <em>modelers</em>。要把一个短语作为整体查找，请连同其中的空格一起输入，例如 <code>error bars</code>；</li>
+<li>中文文本也按同样的方式搜索，即作为一串字符来匹配。例如，<code>建模</code> 也能找到“建模中心”和“建模者”中的“建模”。</li>
+</ul>
+<p>在 LemmaLoom 中，每个文档都有自己的搜索栏。关闭搜索栏会重置搜索。如果阅读器已折叠为文档中被标注的句子，打开搜索栏会展开阅读器，让你搜索整个文档。再次折叠阅读器时，搜索栏会自动关闭。编辑文档时，<strong class="ui">查找</strong>不可用。</p>
+<h2 id="selecting-text">选择文本<a class="anchor" href="#selecting-text" aria-hidden="true">#</a></h2>
+<p>在 LemmaLoom 的阅读器中选中文字之后，你可以为它编码、加书签、附上备忘录、建立链接，或者把它添加到词典中。选中的可以是一个词，也可以是更长的一段文字。</p>
+<h3 id="selecting-a-word">选择一个词<a class="anchor" href="#selecting-a-word" aria-hidden="true">#</a></h3>
+<p>点按一个词即可选中它。再次点按这个词，或按下 Esc 键，可以取消选择。文档建立索引之后，才能选择单个词。</p>
+<p>选中一个词，还会显示它与句中其他词的关系。默认情况下，弧线显示所选词与它的中心词和依存词之间的联系，所在句子之外的文本会变淡。如果检查器已打开，它的<strong class="ui">语法</strong>标签页会显示所选词的详细信息（见<a href="grammar-inspector.html">第 11 章“语法检查器”</a>）。选区的外观以及关系的显示方式可以在设置中更改（见本章前文的<a href="#selection-appearance">选区的显示方式</a>）。</p>
+<figure class="shot" id="reading-and-editing-word-selection"><img class="shot-light" src="../figures/zh-Hans/light/reading-and-editing-word-selection.webp" alt="“时间不多了”中选中了一个词，弧线连向它的中心词，其余文本变淡。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/reading-and-editing-word-selection.webp" alt="“时间不多了”中选中了一个词，弧线连向它的中心词，其余文本变淡。" loading="lazy"><figcaption>“时间不多了”中选中了一个词，弧线连向它的中心词，其余文本变淡。</figcaption></figure>
+<h3 id="selecting-a-passage">选择一段文字<a class="anchor" href="#selecting-a-passage" aria-hidden="true">#</a></h3>
+<p>在一段文字的开头点按，然后拖移到结尾，即可选中这段文字。两端的空格不计入选区。你也可以点按页边栏中段落或句子旁边的编号，直接选中它们；或者点按标注区中的标注或竖条，选中对应的文字。</p>
+<p>选多少文字，取决于你的需要。不过，建议选取足够多的文字，让选区本身就能看懂，因为编码之后，这些文字会脱离上下文被单独阅读。在“气候辩论”中，大多数编码的选区是一两个完整的句子。</p>
+<p>要拷贝选中的文字，请选取<strong class="ui">编辑 ▸ 拷贝</strong>（⌘C）。</p>
+<h3 id="selection-bar">选区栏<a class="anchor" href="#selection-bar" aria-hidden="true">#</a></h3>
+<p>在文档中选中一个词或一段文字后，阅读器底部附近会立即出现选区栏。选区栏的开头显示所选内容的前几个词，后面是可以对它执行的操作。</p>
+<p>图中选中了“时间不多了”中的一句话，准备像快速入门中那样为它编码“时间节点”。前面一段文字已经编码为“时间节点”。下一句旁边有一个标注，属于一条以“遥远的目标被解读为推诿”开头的备忘录。</p>
+<figure class="shot" id="reading-and-editing-selection-bar"><img class="shot-light" src="../figures/zh-Hans/light/reading-and-editing-selection-bar.webp" alt="在评论文章“时间不多了”中选中的一段文字，阅读器底部是选区栏。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/reading-and-editing-selection-bar.webp" alt="在评论文章“时间不多了”中选中的一段文字，阅读器底部是选区栏。" loading="lazy"><figcaption>在评论文章“时间不多了”中选中的一段文字，阅读器底部是选区栏。</figcaption></figure>
+<p>选区栏提供以下功能：</p>
+<ul>
+<li><strong class="ui">书签</strong>为当前这段文字加上书签，可以附带评论，例如“时间不多了”中一个书签的评论“转入结尾呼吁时的反问句”。如果选区位于一个书签上，这个按钮会变为<strong class="ui">移除书签</strong>。</li>
+<li><strong class="ui">编码</strong>打开编码面板。选择一个编码，即可为这段文字编码；在输入框中输入文字，可以在列表中查找编码，按下 Return 键会应用高亮显示的编码（在你用 ↑ 和 ↓ 移动之前，高亮显示的是第一个匹配项）；选择带勾号的编码（即这段文字已有的编码），则会将它移除。列表中所有编码的后面是<strong class="ui">添加编码“…”</strong>，如果还没有同名的编码，它会以你输入的内容为名新建一个编码。最后是<strong class="ui">实境编码“…”</strong>，用一个以所选文字命名的新编码为选区编码。</li>
+<li><strong class="ui">添加到词典</strong>把所选文本添加到项目中某个词典的一个类别中（见<a href="dictionaries.html">第 19 章“词典”</a>）。只有项目中至少有一个词典时，才会出现这个按钮。</li>
+<li><strong class="ui">备忘录</strong>为所选的文字新建一条备忘录。</li>
+<li><strong class="ui">链接</strong>开始在两段文字之间建立链接。你需要先选中第二段文字（在本文档或其他文档中），再点按<strong class="ui">完成链接</strong>。在此期间，会出现一个带斜线的链接按钮<strong class="ui">取消待定链接</strong>，用来删除尚未完成的链接。</li>
+<li>点按选区栏末端的 × 会取消当前选择，与 Esc 键的作用相同。</li>
+</ul>
+<figure class="shot" id="reading-and-editing-code-list"><img class="shot-light" src="../figures/zh-Hans/light/reading-and-editing-code-list.webp" alt="从“时间不多了”的选区栏打开的编码面板，输入了“时间”，“时间节点”高亮显示在添加编码和实境编码上方。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/reading-and-editing-code-list.webp" alt="从“时间不多了”的选区栏打开的编码面板，输入了“时间”，“时间节点”高亮显示在添加编码和实境编码上方。" loading="lazy"><figcaption>从“时间不多了”的选区栏打开的编码面板，输入了“时间”，“时间节点”高亮显示在添加编码和实境编码上方。</figcaption></figure>
+<figure class="shot" id="reading-and-editing-pending-link"><img class="shot-light" src="../figures/zh-Hans/light/reading-and-editing-pending-link.webp" alt="“时间不多了”中的一段文字有待完成的链接，选区栏中显示完成链接和取消待完成链接的按钮。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/reading-and-editing-pending-link.webp" alt="“时间不多了”中的一段文字有待完成的链接，选区栏中显示完成链接和取消待完成链接的按钮。" loading="lazy"><figcaption>“时间不多了”中的一段文字有待完成的链接，选区栏中显示完成链接和取消待完成链接的按钮。</figcaption></figure>
+<p>关于何时适合使用编码、备忘录、书签或链接，请参阅<a href="coding.html">第 7 章“编码”</a>。</p>
+<p><strong class="ui">文档</strong>菜单中有执行这些操作的命令，各自的快捷键如下：</p>
+<div class="table-wrap"><table>
+<thead><tr><th>命令</th><th>快捷键</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">文档 ▸ 编码</strong></td><td>⇧⌘C</td></tr>
+<tr><td><strong class="ui">文档 ▸ 实境编码</strong></td><td>⇧⌘V</td></tr>
+<tr><td><strong class="ui">文档 ▸ 备忘录</strong></td><td>⇧⌘M</td></tr>
+<tr><td><strong class="ui">文档 ▸ 书签</strong>（或<strong class="ui">移除书签</strong>）</td><td>⇧⌘B</td></tr>
+<tr><td><strong class="ui">文档 ▸ 链接</strong>（或<strong class="ui">完成链接</strong>）</td><td>⇧⌘L</td></tr>
+<tr><td><strong class="ui">文档 ▸ 取消链接</strong></td><td>⌥⇧⌘L</td></tr>
+</tbody></table></div>
+<h2 id="editing-text">编辑文档文本<a class="anchor" href="#editing-text" aria-hidden="true">#</a></h2>
+<p>所有文档的文本都可以编辑。LemmaLoom 中的编辑用于修正小错误，例如文章中的打字错误、提取 PDF 文本时产生的错误、转写文本中转写错的词，或者机器翻译中译得不好的措辞。编辑时，LemmaLoom 会让编码实例、备忘录、链接和书签继续附在各自的文字上。存储之后，整个文档会重新建立索引。</p>
+<p>编辑器以纯文本显示文档，使用等宽字体。要大段修改文本，请先在别处编辑好，再粘贴回编辑器中；或者导入修改后的文档文件，重新开始编码。粘贴之后，请务必检查各个标注，因为它们现在可能指向错误的文字（见下文<a href="#annotations-follow-edits">标注如何跟随编辑</a>末尾的注释）。</p>
+<h3 id="editing-and-saving">编辑与存储<a class="anchor" href="#editing-and-saving" aria-hidden="true">#</a></h3>
+<p>最常需要编辑的，大概是 LemmaLoom 生成的文本，即转写文本、译文，或者 LemmaLoom 从 PDF 中提取的文本。在“气候辩论”中，它们是“2024 热浪报告”、“电台辩论”的转写文本和“时间不多了 (英语)”。下图是编辑器中一篇持怀疑立场的评论文章“净零代价高昂”，段落之间以空行隔开，标题栏中只有<strong class="ui">取消</strong>和<strong class="ui">存储</strong>两个按钮。</p>
+<figure class="shot" id="reading-and-editing-editor"><img class="shot-light" src="../figures/zh-Hans/light/reading-and-editing-editor.webp" alt="文本编辑器中的评论文章“净零代价高昂”，标题栏中有“取消”和“存储”。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/reading-and-editing-editor.webp" alt="文本编辑器中的评论文章“净零代价高昂”，标题栏中有“取消”和“存储”。" loading="lazy"><figcaption>文本编辑器中的评论文章“净零代价高昂”，标题栏中有“取消”和“存储”。</figcaption></figure>
+<p>要修改文档的文本：</p>
+<ol>
+<li>打开文档。</li>
+<li>点按标题栏右端的<strong class="ui">编辑</strong>，或选取<strong class="ui">文档 ▸ 编辑</strong>（⇧⌘E）。阅读器会变成使用等宽字体的纯文本编辑器。编辑期间，透镜、页边栏、文档概览和状态栏都会隐藏，文本下方会出现一行<strong class="ui">编辑将替换文档文本；存储时会重建索引。</strong></li>
+<li>进行修改。输入时，按 ⌘Z 可以撤销你在编辑器中最近的改动。</li>
+<li>点按标题栏中的<strong class="ui">存储</strong>，或选取<strong class="ui">文档 ▸ 存储</strong>（⌘Return）。</li>
+</ol>
+<p>段落之间用空行隔开。没有空行时，文档中每一行算作一个段落。只要加入一个空行，就只有空行才能分隔段落，因此段落数会大幅减少。</p>
+<p>点按<strong class="ui">取消</strong>或选取<strong class="ui">文档 ▸ 取消</strong>（⌘.），会离开编辑器并放弃当前的修改；自你点按<strong class="ui">编辑</strong>以来输入的所有内容都会立即消失。</p>
+<p>如果阅读器已折叠为只剩被标注的句子，点按<strong class="ui">编辑</strong>会先展开整个文档。</p>
+<p>项目中的其他操作（例如为文字编码和撰写备忘录）都会在你执行时自动存储；文本的修改则只有点按<strong class="ui">存储</strong>才会存储。只要编辑器保持打开，切换标签页不会丢失你的修改。但是，如果没有存储就切换到另一个项目或退出 LemmaLoom，修改会永久丢失。</p>
+<h3 id="after-saving">存储做了什么<a class="anchor" href="#after-saving" aria-hidden="true">#</a></h3>
+<p>存储编辑后的文本时，LemmaLoom 会：</p>
+<ol>
+<li>用你的文本替换文档原来的文本；</li>
+<li>移动文档中的编码实例、备忘录、书签和链接，让它们跟随各自的文字（见下文的<a href="#annotations-follow-edits">标注如何跟随编辑</a>）；</li>
+<li>从头重新为文档建立索引。</li>
+</ol>
+<p>建立索引期间，阅读器显示修改后的新文本，上方覆盖着<strong class="ui">正在存储</strong>标签。标题栏中原来<strong class="ui">编辑</strong>的位置也显示<strong class="ui">正在存储</strong>。索引建立完成后，透镜、词数和检查器都会根据新的文本更新。如果文档的语言是 LemmaLoom 不做语法分析的语言，阅读器会立即恢复可用。</p>
+<figure class="shot" id="reading-and-editing-saving"><img class="shot-light" src="../figures/zh-Hans/light/reading-and-editing-saving.webp" alt="长文本“转型谁来买单”刚存储之后，标题栏中和文本上方都显示正在存储，状态栏中显示索引进度。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/reading-and-editing-saving.webp" alt="长文本“转型谁来买单”刚存储之后，标题栏中和文本上方都显示正在存储，状态栏中显示索引进度。" loading="lazy"><figcaption>长文本“转型谁来买单”刚存储之后，标题栏中和文本上方都显示正在存储，状态栏中显示索引进度。</figcaption></figure>
+<p>为修改后的文档建立索引，所需时间与最初建立索引时大致相同。你可以在状态栏中查看进度，也可以选取菜单项<strong class="ui">窗口 ▸ 活动</strong>（⌥⌘0）。如果某个文档的索引已关闭，LemmaLoom 要等你点按状态栏中的<strong class="ui">立即建立索引</strong>之后才会重新为它建立索引；在此之前，阅读器会一直显示<strong class="ui">正在存储</strong>。</p>
+<h3 id="annotations-follow-edits">标注如何跟随编辑<a class="anchor" href="#annotations-follow-edits" aria-hidden="true">#</a></h3>
+<p>存储对文档的修改时，LemmaLoom 会逐个字符比较修改前后的文本，分析两个版本之间的差异，找出添加和删除了哪些内容。然后，它移动所有相关的内容，使其对应更新后的位置，包括编码实例、附于一段文字的备忘录、书签、链接、转写文本与音频或视频之间的对应关系（见本章后文的<a href="#correcting-transcripts">校正转写文本</a>），以及原文与译文之间的对齐。<strong class="ui">同步滚动</strong>和标注新副本的放置都依赖这种对齐（见<a href="translations.html">第 9 章“译文与分屏浏览”</a>中的<a href="translations.html#annotations-in-both-languages">两种语言中的标注</a>）。</p>
+<p>编辑只作用于你所编辑的那个语言版本（原文或译文），另一个语言版本中的标注保持不变。如果你事先知道要翻译某个文档，不妨先修正其中的错误，以免把错误带进另一种语言。</p>
+<p>在文档中更靠前的位置添加或删除文字，片段会随它的文字一起移动。在片段内部添加的文字会成为片段的一部分。紧接在片段之后添加的文字留在片段之外（除非新文字的最后一个字符与片段的最后一个字符相同，这时它会成为片段的一部分）。在片段内部删除文字，片段会相应变短。紧挨在片段之前添加的文字留在片段之外。替换片段的文字会成为新的片段。删除片段的全部文字后，标注仍然保留，只是片段变为空。</p>
+<h4 id="an-example">一个示例<a class="anchor" href="#an-example" aria-hidden="true">#</a></h4>
+<p>演讲“一位市长的承诺”中有这样一段话：</p>
+<blockquote><p>我们将种下一万二千棵树，先从最需要树荫的街区种起。</p>
+</blockquote>
+<p>假设“一万二千棵树”已编码为“希望”。下表列出对原句逐一做出以下各项编辑（每次只做一项）之后，这个编码片段的变化：</p>
+<div class="table-wrap"><table>
+<thead><tr><th>编辑</th><th>编辑后的编码片段</th></tr></thead>
+<tbody>
+<tr><td>“我们将种下”改为“市政府将种下”</td><td>“一万二千棵树”，随文字一起移动</td></tr>
+<tr><td>“一万二千”改为“12000”</td><td>“12000棵树”</td></tr>
+<tr><td>在“棵”和“树”之间加上“行道”</td><td>“一万二千棵行道树”</td></tr>
+<tr><td>在“一万二千”前加上“大约”</td><td>“一万二千棵树”；“大约”留在片段之外</td></tr>
+<tr><td>在“树”后加上“，2035年前种完”</td><td>“一万二千棵树”；新加的文字留在片段之外</td></tr>
+<tr><td>在“树”后加上“，其中一半是果树”</td><td>“一万二千棵树，其中一半是果树”</td></tr>
+<tr><td>“一万二千棵树”换成“一片城市森林”</td><td>“一片城市森林”</td></tr>
+<tr><td>删去“一万二千棵树”</td><td>空片段</td></tr>
+</tbody></table></div>
+<p>新加的“，2035年前种完”以“完”结尾，而“一万二千棵树”以“树”结尾，所以 LemmaLoom 把新文字放在片段之后。新加的“，其中一半是果树”则和“一万二千棵树”一样以“树”结尾，所以 LemmaLoom 认为它出现在片段内部；这段新文字同样可以看作是在片段最后一个字之前插入的“树，其中一半是果”。</p>
+<p>如果像最后一行那样删除了编码实例的文字，这个编码实例就只能在项目视图栏的<strong class="ui">编码实例</strong>视图中找到。你可以在那里右键点按它，然后选取<strong class="ui">删除编码实例</strong>。文字被删除的备忘录和书签也同样会保留下来。为了避免出现空的标注，请先移除标注，再删除它们的文字。</p>
+<p>在编码实例附近做了编辑之后，请在阅读器中检查这个编码实例是否仍然覆盖修改后文字中正确的部分。如果需要调整，请从这段文字上移除这个编码实例，然后重新编码（见<a href="coding.html">第 7 章“编码”</a>中的<a href="coding.html#removing-codings">移除一段文字上的编码</a>）。</p>
+<aside class="callout note"><p class="callout-title">注意</p><p>只有当插入和删除的字符合计大约在一千个以内时，LemmaLoom 才会逐个字符比较两个版本。如果一次插入或删除的字符超过这个数量，例如粘贴进一段长文字的新版本，LemmaLoom 会先比较行、句子和词，只在改动过的部分内逐个比较字符。改动过的部分如果仍然太大，就会被视为一整块替换。这块范围内的标注会尽可能保持它们在新文字中的相对位置，因此可能落到别的词上。每做完一处较大的改动就存储一次，然后检查改动部分中的标注。</p>
+</aside>
+<h3 id="undoing-edits">撤销编辑<a class="anchor" href="#undoing-edits" aria-hidden="true">#</a></h3>
+<p>每存储一次编辑，撤销历史中就会增加一个条目（见<a href="undo.html">第 23 章“撤销与重做”</a>）。要把编辑过的文本恢复到之前的状态，并让它的所有编码实例、备忘录、书签和链接回到原来的位置，请选取<strong class="ui">编辑 ▸ 撤销编辑文本</strong>（⌘Z）。随后文档会相应地重新建立索引。</p>
+<h2 id="media-documents">音频和视频文档<a class="anchor" href="#media-documents" aria-hidden="true">#</a></h2>
+<p>处理“电台辩论”这样的音频或视频文档时，你使用转写文本的方式与使用任何文本文档完全相同。导入录音后，LemmaLoom 会为你生成转写文本（见<a href="importing.html">第 4 章“导入资料”</a>）。转写文本的每一部分都与录音中它所来自的那一段相关联。每当说话人改变，或者停顿超过大约一秒半，就开始一个新段落。</p>
+<p>为录音编码，是通过它的转写文本进行的。如果某些话的含义仅凭转写文本无法确定，例如意思取决于说话人的语调或讽刺口吻，你可以直接收听这些地方的录音。</p>
+<p>在 LemmaLoom 中，说话人与文本是分开保存的。录音中有多位说话人时，播放栏会在你收听时显示当前的说话人。由 LemmaLoom 转写的录音，说话人按“说话人 1”“说话人 2”的方式依次命名；在“电台辩论”中，说话人是“主持人”“活动人士”和“怀疑论者”。每位说话人的发言都会自动以“说话人”编码下的一个子编码进行编码。重命名说话人编码之后，播放栏中的名称仍保持原样（见<a href="importing.html">第 4 章“导入资料”</a>中的<a href="importing.html#speaker-detection">说话人</a>）。</p>
+<h3 id="player-bar">播放栏<a class="anchor" href="#player-bar" aria-hidden="true">#</a></h3>
+<p>播放栏位于文本上方，其中的内容从左到右依次是：</p>
+<ul>
+<li>仅视频才有的两个按钮，一个把视频播放器折叠为控制条（<strong class="ui">折叠为控制条</strong>）或重新显示视频（<strong class="ui">显示视频</strong>），另一个把视频移到文本旁边或移回文本上方；</li>
+<li><strong class="ui">播放</strong>或<strong class="ui">暂停</strong>按钮；</li>
+<li><strong class="ui">随音频滚动</strong>按钮，让阅读器跟随录音；</li>
+<li>已播放时间、播放滑块和录音总长度；</li>
+<li>录音中有多位说话人时，当前这段话的说话人，例如“怀疑论者”。</li>
+</ul>
+<p>已播放时间和总长度都以分和秒显示，例如 2:14。一小时或更长的录音还会显示小时，例如 3:56:32。</p>
+<p>下图是录音“电台辩论”。这段录音将近五分钟，暂停在 1:14，此时正是怀疑论者在发言。由于<strong class="ui">随音频滚动</strong>已打开，当前这段话突出显示，其余文本变灰。说话人编码显示在页边栏中每段发言的旁边。</p>
+<figure class="shot" id="reading-and-editing-media-player"><img class="shot-light" src="../figures/zh-Hans/light/reading-and-editing-media-player.webp" alt="音频文档“电台辩论”，“随音频滚动”已打开，当前这段话处于聚光之下。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/reading-and-editing-media-player.webp" alt="音频文档“电台辩论”，“随音频滚动”已打开，当前这段话处于聚光之下。" loading="lazy"><figcaption>音频文档“电台辩论”，“随音频滚动”已打开，当前这段话处于聚光之下。</figcaption></figure>
+<p>要播放录音：</p>
+<ol>
+<li>打开文档。</li>
+<li>点按<strong class="ui">播放</strong>（三角形），或选取<strong class="ui">文档 ▸ 播放</strong>（⇧⌘P）。</li>
+<li>要停止，请点按<strong class="ui">暂停</strong>或选取<strong class="ui">文档 ▸ 暂停</strong>（⇧⌘P）。</li>
+<li>要转到另一个位置，请拖动滑块。</li>
+</ol>
+<p>在录音末尾点按<strong class="ui">播放</strong>，会从头重新播放。如果在播放时切换标签页或关闭文档，播放会立即暂停。</p>
+<h3 id="playing-from-text">从转写文本中的某处开始播放<a class="anchor" href="#playing-from-text" aria-hidden="true">#</a></h3>
+<p>点按转写文本中的一个词，播放器会移到这个词所在那段话的开头。点按只会移动播放头；要从这里开始收听，请点按<strong class="ui">播放</strong>。只有文档建立索引之后，才能通过点按词来移动播放位置（见本章前文的<a href="#before-analysis">索引建立完成之前</a>）。如果文档的语言没有语法分析，请改用滑块。</p>
+<p>要核对一段拿不准的内容，请点按其中的一个词，然后按下 ⇧⌘P 收听，再按一次 ⇧⌘P 即可暂停。</p>
+<h3 id="following-transcript">跟随转写文本<a class="anchor" href="#following-transcript" aria-hidden="true">#</a></h3>
+<p><strong class="ui">随音频滚动</strong>打开时（按钮呈高亮状态），阅读器会突出显示正在播放的那段话，并在录音推进时让它保持在窗格中间。拖动滑块时，突出显示的那段话也会随之移动。打开<strong class="ui">随音频滚动</strong>时，阅读器会立即跳到录音当前播放的位置。<strong class="ui">随音频滚动</strong>默认是关闭的；与视频的大小和位置一样，它适用于所有音频和视频文档。</p>
+<p>如果在播放时滚动、点按或用键盘移动，阅读器会暂停跟随几秒钟，等录音中的下一段话开始时再滚动回来。选中了文字时，阅读器会停在原处。点按<strong class="ui">播放</strong>，会立即跳回正在播放的那段话。</p>
+<p>一边收听一边为录音编码，或者对照录音核对转写文本时，<strong class="ui">随音频滚动</strong>特别有用。遇到值得编码的一段话时，按 ⇧⌘P 暂停播放，阅读器会停在这段话上，让你选中并编码。</p>
+<p>设置中<strong class="ui">阅读器</strong>页面的<strong class="ui">音频播放</strong>决定正在播放的那段话如何显示。<strong class="ui">聚光</strong>使正在播放的那段话之外的所有内容变暗。<strong class="ui">实心块</strong>把正在播放的那段话放在一块色块上。<strong class="ui">高亮</strong>则给正在播放的那段话加上一层浅浅的高亮。</p>
+<h3 id="video-position">视频在文本上方或旁边<a class="anchor" href="#video-position" aria-hidden="true">#</a></h3>
+<p>视频在文本区域上方的画框中播放。你可以向上拖动视频画框下方的分隔条，给文本区域留出更多空间；也可以点按<strong class="ui">折叠为控制条</strong>，把视频折叠起来，只保留播放栏。</p>
+<figure class="shot" id="reading-and-editing-video-above"><img class="shot-light" src="../figures/zh-Hans/light/reading-and-editing-video-above.webp" alt="视频“sample-video”在转写文本上方的框中播放，播放栏位于两者之间。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/reading-and-editing-video-above.webp" alt="视频“sample-video”在转写文本上方的框中播放，播放栏位于两者之间。" loading="lazy"><figcaption>视频“sample-video”在转写文本上方的框中播放，播放栏位于两者之间。</figcaption></figure>
+<figure class="shot" id="reading-and-editing-video-collapsed"><img class="shot-light" src="../figures/zh-Hans/light/reading-and-editing-video-collapsed.webp" alt="视频“sample-video”折叠为播放栏的控件，位于转写文本上方。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/reading-and-editing-video-collapsed.webp" alt="视频“sample-video”折叠为播放栏的控件，位于转写文本上方。" loading="lazy"><figcaption>视频“sample-video”折叠为播放栏的控件，位于转写文本上方。</figcaption></figure>
+<p>点按<strong class="ui">在文本旁边显示视频</strong>按钮，视频会移到文本区域左侧，播放栏位于视频下方。拖动两者之间的分隔条，可以相应地调整两个区域的大小，文本始终保持适合阅读的宽度。点按<strong class="ui">在文本上方显示视频</strong>按钮，即可恢复原来的布局。在较宽的屏幕上，把视频放在文本旁边能显示更多行转写文本。</p>
+<figure class="shot" id="reading-and-editing-video-beside"><img class="shot-light" src="../figures/zh-Hans/light/reading-and-editing-video-beside.webp" alt="视频“sample-video”位于转写文本旁边，播放栏在视频下方。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/reading-and-editing-video-beside.webp" alt="视频“sample-video”位于转写文本旁边，播放栏在视频下方。" loading="lazy"><figcaption>视频“sample-video”位于转写文本旁边，播放栏在视频下方。</figcaption></figure>
+<h3 id="correcting-transcripts">校正转写文本<a class="anchor" href="#correcting-transcripts" aria-hidden="true">#</a></h3>
+<p>转写文本难免有错误，人名和专业术语尤其如此。校正转写文本与编辑其他文本的方法相同（见本章前文的<a href="#editing-and-saving">编辑与存储</a>）。编辑期间播放栏保持不动，你仍然可以用 ⇧⌘P 开始或暂停播放。</p>
+<p>最合理的做法是先找出转写文本中的错误，再逐一修正。在阅读器中打开<strong class="ui">随音频滚动</strong>并播放录音，找出需要修正的地方（可以为它们加上书签）。然后进入编辑器，修正这些错误。最好在编码之前校正转写文本。</p>
+<p>转写文本与录音之间的对应关系会像编码实例一样跟随你的编辑（见本章前文的<a href="#annotations-follow-edits">标注如何跟随编辑</a>）。因此，一段话中改正过的词仍然作为这段话的一部分播放，点按它也会跳到录音中与修改前相同的位置。</p>
+<h2 id="full-screen">全屏幕阅读器<a class="anchor" href="#full-screen" aria-hidden="true">#</a></h2>
+<p>LemmaLoom 以全屏幕模式运行时，整个窗口占满屏幕。标题栏会隐藏，它的工具移到屏幕最上方的工具栏中。全屏幕模式特别适合初读较长的文档。为文档编码时，你可以让检查器保持打开，例如在它的<strong class="ui">编码</strong>标签页中随时看到文档的编码。</p>
+<p>下图是“时间不多了”以全屏幕显示时的样子，导航栏和检查器都保持打开，工具栏中的<strong class="ui">阅读器设置</strong>菜单已打开。</p>
+<figure class="shot" id="reading-and-editing-full-screen"><img class="shot-light" src="../figures/zh-Hans/light/reading-and-editing-full-screen.webp" alt="全屏幕阅读器的工具栏，“阅读器设置”菜单已打开。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/reading-and-editing-full-screen.webp" alt="全屏幕阅读器的工具栏，“阅读器设置”菜单已打开。" loading="lazy"><figcaption>全屏幕阅读器的工具栏，“阅读器设置”菜单已打开。</figcaption></figure>
+<p>要以全屏幕模式阅读：</p>
+<ol>
+<li>打开文档。</li>
+<li>选取<strong class="ui">显示 ▸ 进入全屏幕</strong>（⌃⌘F），或点按窗口左上角的绿色按钮。</li>
+<li>要让文本占据整个屏幕的宽度，请用<strong class="ui">显示 ▸ 显示/隐藏导航栏</strong>（⌃⌘S）隐藏导航栏，用<strong class="ui">显示 ▸ 显示/隐藏检查器</strong>（⌃⌘I）隐藏检查器。</li>
+<li>要退出全屏幕，请选取<strong class="ui">显示 ▸ 退出全屏幕</strong>（⌃⌘F）。</li>
+</ol>
+<p>本章介绍的所有菜单命令和快捷键在全屏幕模式下同样适用。</p>
+<h2 id="split-view">并排阅读两个文档<a class="anchor" href="#split-view" aria-hidden="true">#</a></h2>
+<p>分屏浏览把阅读器分成两个窗格，各显示一个文档。你可以用它把两个文档放在一起对照，例如行动派就某个话题写的一篇评论文章和怀疑派就同一问题写的另一篇，或者一篇文章和它的译文。编码进行到一半时，分屏浏览也很有帮助。在一个窗格中打开已经编码过的文档，你可以确切地看到自己是如何为某处内容编码的，从而在为当前文档编码时一致地使用这个编码。关于如何结合分屏浏览使用译文，请参阅<a href="translations.html">第 9 章“译文与分屏浏览”</a>。</p>
+<p>图中左侧是评论文章“时间不多了”，右侧是它的英文译本“时间不多了 (英语)”。译文中有原文编码实例的副本，<strong class="ui">同步滚动</strong>让两者在滚动时保持对齐。</p>
+<figure class="shot" id="reading-and-editing-split-view"><img class="shot-light" src="../figures/zh-Hans/light/reading-and-editing-split-view.webp" alt="左侧是评论文章“时间不多了”，右侧是它的英文译本“时间不多了 (英语)”，“同步滚动”已打开。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/reading-and-editing-split-view.webp" alt="左侧是评论文章“时间不多了”，右侧是它的英文译本“时间不多了 (英语)”，“同步滚动”已打开。" loading="lazy"><figcaption>左侧是评论文章“时间不多了”，右侧是它的英文译本“时间不多了 (英语)”，“同步滚动”已打开。</figcaption></figure>
+<p>在当前文档旁边打开第二个文档有几种方法。</p>
+<ul>
+<li>在导航栏中右键点按该文档，然后从快捷菜单中选取<strong class="ui">在分屏浏览中打开</strong>。</li>
+<li>也可以右键点按另一个已打开文档的标签页，然后从菜单中选取<strong class="ui">在分屏浏览中打开</strong>。</li>
+<li>要同时并排打开两个文档，请在导航栏中按住 ⌘ 键点按第二个文档，然后右键点按其中一个，从快捷菜单中选取<strong class="ui">并排打开</strong>。在导航栏中位置较高的那个文档在左侧打开。</li>
+<li>对于译文，请在导航栏中右键点按它，然后选取<strong class="ui">在原文旁边打开</strong>。原文在左侧打开，译文在右侧打开。</li>
+</ul>
+<figure class="shot" id="reading-and-editing-split-view-menu"><img class="shot-light" src="../figures/zh-Hans/light/reading-and-editing-split-view-menu.webp" alt="边栏中“时间不多了 (英语)”的快捷菜单，其中有在原文旁边打开。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/reading-and-editing-split-view-menu.webp" alt="边栏中“时间不多了 (英语)”的快捷菜单，其中有在原文旁边打开。" loading="lazy"><figcaption>边栏中“时间不多了 (英语)”的快捷菜单，其中有在原文旁边打开。</figcaption></figure>
+<p>以上所有选项也都位于主菜单的<strong class="ui">窗口</strong>下。在那里，<strong class="ui">在分屏浏览中打开</strong>会列出可以放在当前文档旁边的已打开文档。</p>
+<p>新打开的文档显示在右侧窗格中。它的标签页会从标签页栏中移到右侧窗格的标题条上。</p>
+<p>分屏浏览的工作方式如下。</p>
+<ul>
+<li>点按任一窗格即可激活它，它的标签页会高亮显示。此后工具、菜单和检查器都只作用于当前窗格，所以 ⌘F 只会搜索这个窗格中的文档。</li>
+<li>拖动两个窗格之间的分隔条，可以调整它们各自的大小。窗格有最小尺寸限制。LemmaLoom 会记住分隔的位置，再次打开分屏浏览时恢复。</li>
+<li>每个窗格都有自己的透镜和搜索栏，选区和滚动位置也各自独立。例如，你可以在一个窗格中启用某个语法透镜，在另一个窗格中只显示你的编码。字体、文字大小、页边栏和版式在两个窗格之间保持同步。</li>
+<li>如果两个文档是原文和译文，或者是同一原文的两份译文，右侧窗格标题条的最右端会出现一个锁形按钮<strong class="ui">同步滚动</strong>。点按它，或者选取<strong class="ui">显示 ▸ 同步滚动</strong>（⌥⌘L），即可同步滚动。</li>
+</ul>
+<p>要关闭分屏浏览，请点按右侧窗格标题条上的 ×，从这个标题条的快捷菜单中选取<strong class="ui">关闭分屏浏览</strong>，或者从主菜单中选取<strong class="ui">窗口 ▸ 关闭分屏浏览</strong>。右侧窗格中的文档会随之关闭。</p>
+<h3 id="document-window">在单独的窗口中打开文档<a class="anchor" href="#document-window" aria-hidden="true">#</a></h3>
+<p>你也可以在单独的窗口中阅读文档。如果你有另一台显示器，或者希望在主窗口显示其他内容（例如编码本或查询）时让一篇文本保持可见，这会很有用。要在单独的窗口中打开文档，请右键点按该文档的标签页，然后选取<strong class="ui">在新窗口中打开</strong>。对于当前文档，也可以选取<strong class="ui">窗口 ▸ 在新窗口中打开</strong>。<strong class="ui">文档</strong>窗口显示阅读器和它自己的检查器。LemmaLoom 只有一个这样的窗口，所以在新窗口中打开另一个文档时，会替换窗口中原来显示的文档。</p>
+<figure class="shot" id="reading-and-editing-document-window"><img class="shot-light" src="../figures/zh-Hans/light/reading-and-editing-document-window.webp" alt="“文档”窗口显示“时间不多了”，左侧是阅读器，右侧是它自己的检查器。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/reading-and-editing-document-window.webp" alt="“文档”窗口显示“时间不多了”，左侧是阅读器，右侧是它自己的检查器。" loading="lazy"><figcaption>“文档”窗口显示“时间不多了”，左侧是阅读器，右侧是它自己的检查器。</figcaption></figure>
+<p>在这个窗口中，你可以使用相应的菜单命令及其快捷键，例如用 ⌘F 查找文本，用 ⌘+ 和 ⌘- 调整文字大小，用 ⇧⌘E 编辑文档，用 ⌃⌘I 显示或隐藏检查器，用 ⌘Return 完成编辑，或者用 ⌘. 取消编辑。</p>
+<h2 id="reading-commands">阅读与编辑命令<a class="anchor" href="#reading-commands" aria-hidden="true">#</a></h2>
+<div class="table-wrap"><table>
+<thead><tr><th>命令</th><th>快捷键</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">编辑 ▸ 查找</strong></td><td>⌘F</td><td>打开或关闭搜索栏。编辑时不可用。</td></tr>
+<tr><td><strong class="ui">编辑 ▸ 查找下一个</strong></td><td>⌘G</td><td>搜索栏有匹配项时可用。</td></tr>
+<tr><td><strong class="ui">编辑 ▸ 查找上一个</strong></td><td>⇧⌘G</td><td>搜索栏有匹配项时可用。</td></tr>
+<tr><td><strong class="ui">显示 ▸ 增大文字</strong></td><td>⌘+</td><td>打开了文档时可用，最大 200%。</td></tr>
+<tr><td><strong class="ui">显示 ▸ 减小文字</strong></td><td>⌘-</td><td>打开了文档时可用，最小 70%。</td></tr>
+<tr><td><strong class="ui">显示 ▸ 重置文字大小</strong></td><td>⌘0</td><td>打开了文档且文字大小不是 100% 时可用。</td></tr>
+<tr><td><strong class="ui">显示 ▸ 同步滚动</strong></td><td>⌥⌘L</td><td>在分屏浏览中显示同一文档的两种语言版本时可用。</td></tr>
+<tr><td><strong class="ui">显示 ▸ 显示/隐藏导航栏</strong></td><td>⌃⌘S</td><td>显示或隐藏导航栏。</td></tr>
+<tr><td><strong class="ui">显示 ▸ 显示/隐藏检查器</strong></td><td>⌃⌘I</td><td>显示或隐藏检查器。</td></tr>
+<tr><td><strong class="ui">显示 ▸ 进入全屏幕</strong></td><td>⌃⌘F</td><td>在全屏幕模式下显示为<strong class="ui">退出全屏幕</strong>。</td></tr>
+<tr><td><strong class="ui">文档 ▸ 编辑</strong></td><td>⇧⌘E</td><td>文档的文本载入后可用。</td></tr>
+<tr><td><strong class="ui">文档 ▸ 存储</strong></td><td>⌘Return</td><td>编辑时可用。</td></tr>
+<tr><td><strong class="ui">文档 ▸ 取消</strong></td><td>⌘.</td><td>编辑时可用。</td></tr>
+<tr><td><strong class="ui">文档 ▸ 播放</strong>或<strong class="ui">暂停</strong></td><td>⇧⌘P</td><td>用于音频和视频文档。</td></tr>
+<tr><td><strong class="ui">编辑 ▸ 撤销编辑文本</strong></td><td>⌘Z</td><td>存储编辑之后可用。</td></tr>
+</tbody></table></div>
+<p>LemmaLoom 中所有快捷键的列表，请参阅<a href="keyboard-shortcuts.html">第 25 章“键盘快捷键”</a>。</p>
+</article>
+<nav class="pager"><a class="previous" href="importing.html"><span>上一章</span>导入资料</a><a class="next" href="lenses.html"><span>下一章</span>透镜</a></nav>
+<footer class="site-footer">© 2026 Ryan S. Cooper. 保留所有权利。<br>本版本借助人工智能根据英文原版翻译而成，译文可能存在错误或不准确之处。如有疑问，请以英文版为准。</footer>
+</main>
+<nav class="page-toc" aria-label="本页内容"><p>本页内容</p><ul>
+<li class="level-2"><a href="#the-reader">阅读器</a></li>
+<li class="level-3"><a href="#title-band">标题栏</a></li>
+<li class="level-3"><a href="#gutter">页边栏</a></li>
+<li class="level-3"><a href="#minimap">文档概览</a></li>
+<li class="level-3"><a href="#status-bar">状态栏</a></li>
+<li class="level-3"><a href="#before-analysis">索引建立完成之前</a></li>
+<li class="level-3"><a href="#reader-state">阅读器会保留什么</a></li>
+<li class="level-2"><a href="#text-appearance">更改文本的呈现方式</a></li>
+<li class="level-3"><a href="#font">字体</a></li>
+<li class="level-3"><a href="#text-size">文字大小</a></li>
+<li class="level-3"><a href="#gutter-numbering">页边编号</a></li>
+<li class="level-3"><a href="#layout">版式</a></li>
+<li class="level-3"><a href="#reader-themes">阅读器颜色</a></li>
+<li class="level-3"><a href="#selection-appearance">选区的显示方式</a></li>
+<li class="level-2"><a href="#finding-text">查找文本</a></li>
+<li class="level-2"><a href="#selecting-text">选择文本</a></li>
+<li class="level-3"><a href="#selecting-a-word">选择一个词</a></li>
+<li class="level-3"><a href="#selecting-a-passage">选择一段文字</a></li>
+<li class="level-3"><a href="#selection-bar">选区栏</a></li>
+<li class="level-2"><a href="#editing-text">编辑文档文本</a></li>
+<li class="level-3"><a href="#editing-and-saving">编辑与存储</a></li>
+<li class="level-3"><a href="#after-saving">存储做了什么</a></li>
+<li class="level-3"><a href="#annotations-follow-edits">标注如何跟随编辑</a></li>
+<li class="level-3"><a href="#undoing-edits">撤销编辑</a></li>
+<li class="level-2"><a href="#media-documents">音频和视频文档</a></li>
+<li class="level-3"><a href="#player-bar">播放栏</a></li>
+<li class="level-3"><a href="#playing-from-text">从转写文本中的某处开始播放</a></li>
+<li class="level-3"><a href="#following-transcript">跟随转写文本</a></li>
+<li class="level-3"><a href="#video-position">视频在文本上方或旁边</a></li>
+<li class="level-3"><a href="#correcting-transcripts">校正转写文本</a></li>
+<li class="level-2"><a href="#full-screen">全屏幕阅读器</a></li>
+<li class="level-2"><a href="#split-view">并排阅读两个文档</a></li>
+<li class="level-3"><a href="#document-window">在单独的窗口中打开文档</a></li>
+<li class="level-2"><a href="#reading-commands">阅读与编辑命令</a></li>
+</ul></nav>
+</div>
+<script src="../assets/guide.js" defer></script>
+</body>
+</html>

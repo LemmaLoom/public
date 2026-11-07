@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Exchanging and Exporting · LemmaLoom User Guide</title>
+<link rel="stylesheet" href="../assets/guide.css">
+<link rel="icon" type="image/png" href="../assets/logo.png">
+<script>var r=document.documentElement;r.setAttribute('data-theme','light');try{if(localStorage.getItem('guide-theme')==='dark'){r.setAttribute('data-theme','dark')}}catch(e){}</script>
+</head>
+<body>
+<header class="topbar">
+<button class="menu-toggle" aria-label="Contents" aria-expanded="false">☰</button>
+<a class="brand" href="index.html"><span class="wordmark"><span class="lemma">Lemma</span>Loom</span><span class="guide-name">User Guide</span></a>
+<div class="search"><input type="search" id="search" placeholder="Search" aria-label="Search" autocomplete="off" data-empty="No results"><div class="results" id="results" hidden></div></div>
+<nav class="languages" aria-label="Language"><a href="../en/exchange-and-export.html" lang="en" aria-current="true">English</a><a href="../de/exchange-and-export.html" lang="de">Deutsch</a><a href="../zh-Hans/exchange-and-export.html" lang="zh-Hans">简体中文</a></nav>
+<button class="theme-toggle" data-light="Light" data-dark="Dark" aria-label="Theme"></button>
+<a class="pdf-link" href="https://github.com/LemmaLoom/public/raw/main/pdf/lemmaloom-guide-en.pdf">PDF</a>
+</header>
+<div class="layout">
+<nav class="sidebar" aria-label="Contents"><ol>
+<li class="unnumbered"><a href="quick-start.html">Quick Start</a></li>
+<li><a href="introduction.html">Introduction</a></li>
+<li><a href="getting-started.html">Getting Started</a></li>
+<li><a href="projects-and-documents.html">Projects and Documents</a></li>
+<li><a href="importing.html">Importing Material</a></li>
+<li><a href="reading-and-editing.html">Reading and Editing</a></li>
+<li><a href="lenses.html">Lenses</a></li>
+<li><a href="coding.html">Coding</a></li>
+<li><a href="sets-tags-attributes.html">Sets, Groups, Tags, and Attributes</a></li>
+<li><a href="translations.html">Translations and Split View</a></li>
+<li><a href="text-inspector.html">The Text Inspector</a></li>
+<li><a href="grammar-inspector.html">The Grammar Inspector</a></li>
+<li><a href="word-sketch.html">Word Sketch</a></li>
+<li><a href="coding-analysis.html">Analyzing Codes</a></li>
+<li><a href="sketch-space.html">Sketch Space</a></li>
+<li><a href="queries-building.html">Building a Query</a></li>
+<li><a href="queries-results.html">Query Results and Statistics</a></li>
+<li><a href="queries-patterns.html">Query Patterns and Discovery</a></li>
+<li><a href="queries-using-results.html">Using Query Results</a></li>
+<li><a href="dictionaries.html">Dictionaries</a></li>
+<li><a href="custom-analyzers.html">Custom Analyzers</a></li>
+<li><a href="analysis-and-indexing.html">Analysis and Indexing</a></li>
+<li class="current"><a href="exchange-and-export.html">Exchanging and Exporting</a></li>
+<li><a href="undo.html">Undo and Redo</a></li>
+<li><a href="settings.html">Settings and Appearance</a></li>
+<li><a href="keyboard-shortcuts.html">Keyboard Shortcuts</a></li>
+<li><a href="help-and-support.html">Help and Support</a></li>
+<li><a href="statistics-reference.html">Statistics at a Glance</a></li>
+<li class="unnumbered"><a href="glossary.html">Glossary</a></li>
+<li class="unnumbered"><a href="thanks.html">Thank You</a></li>
+</ol></nav>
+<main class="content">
+<article>
+<h1 id="exchange-and-export">Exchanging and Exporting</h1>
+<p>Projects are stored in the LemmaLoom library on your macOS device (refer to <a href="getting-started.html#library">Where work is stored</a> in <a href="getting-started.html">Chapter 2, Getting Started</a>). Work can be taken out of the library or put into the library via exporting or importing respectively. The choice of file type comes from who will access the exported file next.</p>
+<p>All examples use the project called “Climate Debate”. The project contains eleven made-up opinion pieces written by climate activists and climate skeptics, such as “Running Out of Time” and “The Models Keep Missing”, along with the PDF document “Heat Wave Report 2024”, the web page “Carbon Tax Debate”, and the recording “Radio Debate”. “Running Out of Time (German)” is the translation of “Running Out of Time”, for a total of 15 documents. Following along with these examples requires selecting <strong class="ui">File ▸ Import ▸ Example Project</strong>. Upon importation, LemmaLoom will automatically create a new project entitled “Climate Debate” inside your library, already indexed and in the language of the interface.</p>
+<h2 id="exchange-overview">Choosing a format<a class="anchor" href="#exchange-overview" aria-hidden="true">#</a></h2>
+<div class="table-wrap"><table>
+<thead><tr><th>You want to</th><th>File</th><th>Command</th></tr></thead>
+<tbody>
+<tr><td>Back up a project, or move it to another Mac</td><td>LemmaLoom archive (<code>.llz</code>)</td><td><strong class="ui">File ▸ Export ▸ LemmaLoom Project</strong></td></tr>
+<tr><td>Give a colleague a set or some documents with your coding</td><td>LemmaLoom archive (<code>.llz</code>)</td><td><strong class="ui">File ▸ Export ▸ LemmaLoom Set</strong> or <strong class="ui">LemmaLoom Document</strong></td></tr>
+<tr><td>Import an archive</td><td>LemmaLoom archive (<code>.llz</code>)</td><td><strong class="ui">File ▸ Import ▸ LemmaLoom Archive</strong></td></tr>
+<tr><td>Pass a project to software that supports the REFI-QDA standard</td><td>REFI-QDA project (<code>.qdpx</code>)</td><td><strong class="ui">File ▸ Export ▸ REFI-QDA Project</strong></td></tr>
+<tr><td>Open a project made in such software</td><td>REFI-QDA project (<code>.qdpx</code>)</td><td><strong class="ui">File ▸ Import ▸ REFI-QDA Project</strong></td></tr>
+<tr><td>Share a code system without any documents</td><td>REFI-QDA codebook (<code>.qdc</code>)</td><td><strong class="ui">File ▸ Export ▸ REFI-QDA Codebook</strong> and <strong class="ui">File ▸ Import ▸ REFI-QDA Codebook</strong></td></tr>
+<tr><td>Work on numbers in a spreadsheet or statistics program</td><td>CSV</td><td>The export button of the table</td></tr>
+<tr><td>Put a chart or diagram in a paper or on a slide</td><td>PNG or PDF</td><td>The export button of the chart</td></tr>
+<tr><td>Keep a query result with a record of how it was made</td><td>Markdown</td><td>The export button of the query result</td></tr>
+</tbody></table></div>
+<p>You would typically opt for LemmaLoom archive export whenever the materials continue to remain inside LemmaLoom, whether that means keeping backups yourself, moving your work to another Mac, or passing along LemmaLoom documents to a colleague who uses LemmaLoom. An archive keeps the indexing, the saved queries, and the tie between a translation and its original, so the material is ready to use right after import. When your work moves in or out of LemmaLoom (either originating somewhere else or destined somewhere else), then you’ll want to use a REFI-QDA project instead. This will retain none of the LemmaLoom indexing structure or any of the functionality derived from it.</p>
+<p><strong class="ui">File ▸ Import ▸ REFI-QDA Codebook</strong> and everything listed under <strong class="ui">File ▸ Export</strong> work on the active project (bolded in the navigation sidebar). These options will all appear disabled until you select a project.</p>
+<figure class="shot" id="exchange-and-export-export-menu"><img class="shot-light" src="../figures/en/light/exchange-and-export-export-menu.webp" alt="The Export submenu of the File menu." loading="lazy"><img class="shot-dark" src="../figures/en/dark/exchange-and-export-export-menu.webp" alt="The Export submenu of the File menu." loading="lazy"><figcaption>The Export submenu of the File menu.</figcaption></figure>
+<p>Alternatively, you could import <code>.llz</code>, <code>.qdpx</code>, or <code>.qdc</code> files by double-clicking them in the Finder. Doing so will launch LemmaLoom if it hasn’t been started already. A project archive and a REFI-QDA project each become a new project. If you are importing a codebook, set archive, or document archive, it will be imported into the active project, so make sure the right project is active. If you have conflicting programs opening <code>.qdpx</code> or <code>.qdc</code> files on a Mac, you may alternatively right-click a file and choose <strong class="ui">Open With ▸ LemmaLoom</strong>.</p>
+<h3 id="exchange-terms">Key terms<a class="anchor" href="#exchange-terms" aria-hidden="true">#</a></h3>
+<ul>
+<li>A <em>LemmaLoom archive</em> is an export file containing either a complete project, a set, or a selection of documents together with all their LemmaLoom data, such as indexing and recordings.</li>
+<li><em>REFI-QDA</em> is an open data exchange format for transferring projects from one qualitative analysis program to another. The format handles documents, codes, codings, memos, links, variables (LemmaLoom attributes), and sets within projects.</li>
+<li><em>Scope</em> is the source of an archive (a whole project, one set, or documents you selected) and determines what will be archived and how archives are imported.</li>
+<li>Archives of sets or selected documents match the groups, codes, and attributes present in the receiving project based on their names. The <em>matching</em> is performed during importing.</li>
+</ul>
+<h2 id="exchange-sheet">The exchange dialog<a class="anchor" href="#exchange-sheet" aria-hidden="true">#</a></h2>
+<p>Import and export of REFI-QDA files and LemmaLoom archives occur through a dialog, which is attached to the top of the main window. Once you choose a file, or double-click one in the Finder, the dialog appears instantly.</p>
+<figure class="shot" id="exchange-and-export-progress-sheet"><img class="shot-light" src="../figures/en/light/exchange-and-export-progress-sheet.webp" alt="The exchange dialog while “Climate Debate” is exported as an archive." loading="lazy"><img class="shot-dark" src="../figures/en/dark/exchange-and-export-progress-sheet.webp" alt="The exchange dialog while “Climate Debate” is exported as an archive." loading="lazy"><figcaption>The exchange dialog while “Climate Debate” is exported as an archive.</figcaption></figure>
+<p>The dialog will display a title such as <strong class="ui">Exporting LemmaLoom Archive</strong>, the filename being exported/imported, and a ring that gradually gets filled according to the progress made during import/export operations. For exports of REFI-QDA projects and codebooks, and for imports of codebooks, a spinner replaces the ring icon. Import/export time mostly depends on project size and recording size.</p>
+<p>An exchange operation cannot happen simultaneously with another exchange operation. Before completion of such operations, all commands related to importing and exporting REFI-QDA files/archives get disabled, both in the <strong class="ui">File</strong> menu and in the sidebar. The <strong class="ui">Activity</strong> window lists the currently running exchange under the <strong class="ui">Importing</strong> or <strong class="ui">Exporting</strong> category. For a detailed description see <a href="importing.html#activity-window">The Activity window</a> in <a href="importing.html">Chapter 4, Importing Material</a>.</p>
+<p>Upon completion of the export operation, the dialog displays a new title, for example <strong class="ui">LemmaLoom Archive Exported</strong>. Until the exchange finishes, <strong class="ui">Done</strong> remains disabled and hovering the mouse pointer over it reveals <strong class="ui">Running</strong>. Click <strong class="ui">Done</strong> to close the dialog.</p>
+<p>Upon completion of the import operation, the dialog automatically closes. A project contained in an archive/REFI-QDA file will become the active project; newly imported documents and codes appear in the receiving project.</p>
+<p>Should anything go wrong during import/export operations, the dialog will stay open. It would display a failure message in the title (<strong class="ui">Import Failed</strong> or <strong class="ui">Export Failed</strong>), followed by the file’s name and a reason. Such reasons include the following:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Message</th><th>What it means</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">The file isn’t a REFI-QDA project.</strong></td><td>The <code>.qdpx</code> file contains no project description. It may be damaged, or have been renamed from another kind of file.</td></tr>
+<tr><td><strong class="ui">The file isn’t a REFI-QDA codebook.</strong></td><td>The <code>.qdc</code> file is not a codebook.</td></tr>
+<tr><td><strong class="ui">The file isn’t a LemmaLoom archive.</strong></td><td>The <code>.llz</code> file was not written by LemmaLoom, or it is damaged.</td></tr>
+<tr><td><strong class="ui">This archive was made by a newer version of LemmaLoom.</strong></td><td>Update LemmaLoom, then import the archive again.</td></tr>
+<tr><td><strong class="ui">Open a project to import into.</strong></td><td>The file holds a codebook, a set, or documents, which go into an existing project, and no project was active. Click a project in the sidebar and try again.</td></tr>
+<tr><td><strong class="ui">The file isn’t a valid archive.</strong> or <strong class="ui">The archive is damaged.</strong></td><td>Every <code>.qdpx</code> and <code>.llz</code> file is a ZIP file, and this one is incomplete or damaged. Copy it again from its source.</td></tr>
+<tr><td><strong class="ui">The archive uses a format LemmaLoom can’t read.</strong></td><td>The ZIP file is protected by a password, or compressed with a method other than the usual Deflate. Export it again from the other program without a password.</td></tr>
+<tr><td><strong class="ui">The library isn’t available.</strong></td><td>LemmaLoom could not reach its library or the project. Wait until the sidebar lists your projects, then try again.</td></tr>
+</tbody></table></div>
+<figure class="shot" id="exchange-and-export-import-failed"><img class="shot-light" src="../figures/en/light/exchange-and-export-import-failed.webp" alt="The exchange dialog titled Import Failed for the file “Letters to the Editor.llz”, with the reason The file isn't a valid archive." loading="lazy"><img class="shot-dark" src="../figures/en/dark/exchange-and-export-import-failed.webp" alt="The exchange dialog titled Import Failed for the file “Letters to the Editor.llz”, with the reason The file isn't a valid archive." loading="lazy"><figcaption>The exchange dialog titled Import Failed for the file “Letters to the Editor.llz”, with the reason The file isn’t a valid archive.</figcaption></figure>
+<p>Click <strong class="ui">Done</strong> to close the dialog. If LemmaLoom is unable to export your files successfully, the incomplete file will be deleted. If you chose to replace an existing file, the file you were replacing is at risk as well.</p>
+<h2 id="archives">LemmaLoom archives<a class="anchor" href="#archives" aria-hidden="true">#</a></h2>
+<p>Archives are useful when backing up your projects prior to deleting them, transferring your project to another machine, or sharing parts of it with colleagues that use LemmaLoom too. Only archives retain LemmaLoom’s indexing and your saved queries.</p>
+<h3 id="archive-contents">What an archive contains<a class="anchor" href="#archive-contents" aria-hidden="true">#</a></h3>
+<p>Regardless of the scope involved, an archive contains the following for each document:</p>
+<ul>
+<li>the document’s text as edited, and for audio and video documents the transcript with its speakers and times, and a copy of the recording;</li>
+<li>the document’s metadata including its properties, color, tags, and attribute values for the project;</li>
+<li>its indexing including sentences, words, lemmas, parts of speech, sentence trees, along with results produced by built-in and custom analyzers (see <a href="analysis-and-indexing.html">Chapter 21, Analysis and Indexing</a>);</li>
+<li>its codings, bookmarks, and memos;</li>
+<li>its translations, which themselves include text, indexing, and codings.</li>
+</ul>
+<p>The rest depends on the scope. A code may be limited to a single document or set (see <a href="coding.html#code-scope">Where a code can be used</a> in <a href="coding.html">Chapter 7, Coding</a>); such codes are referred to below as <em>limited</em>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Content</th><th>Project</th><th>Set</th><th>Selected documents</th></tr></thead>
+<tbody>
+<tr><td>Documents</td><td>All documents of the project</td><td>The set’s documents, and their translations</td><td>The selected documents, and their translations</td></tr>
+<tr><td>Codes</td><td>All codes, with their memos</td><td>The codes that the archive’s codings, memos, and queries use, codes limited to one of its documents or to the set, and the parents of all these, with their memos</td><td>The codes that the archive’s codings, memos, and queries use, codes limited to one of its documents, and the parents of all these, with their memos</td></tr>
+<tr><td>Code sets</td><td>All</td><td>None</td><td>None</td></tr>
+<tr><td>Links</td><td>All</td><td>Links whose two ends both lie in the archive’s documents</td><td>As for a set</td></tr>
+<tr><td>Groups</td><td>All</td><td>The groups of the archive’s documents, and groups named in the set’s conditions</td><td>The groups of the archive’s documents</td></tr>
+<tr><td>Sets</td><td>All sets and smart sets</td><td>The exported set, with its conditions if it is a smart set</td><td>None</td></tr>
+<tr><td>Attributes</td><td>All</td><td>All except those defined on a code the archive leaves out, with the values of the archive’s documents, codings, and memos</td><td>As for a set</td></tr>
+<tr><td>Dictionaries</td><td>All</td><td>None</td><td>None</td></tr>
+<tr><td>Saved queries</td><td>Those saved for the project, its sets, its tags, or its documents</td><td>Those saved for the project, for the set, or for one of its documents</td><td>Those saved for the project or for one of the documents</td></tr>
+<tr><td>Custom analyzers</td><td>Those whose findings are stored with the documents, those an included query uses, and those generated from an included query</td><td>As for a project</td><td>As for a project</td></tr>
+<tr><td>The project’s name, color, tags, and project memos</td><td>Yes</td><td>No</td><td>No</td></tr>
+</tbody></table></div>
+<p>Queries with <strong class="ui">Available In</strong> set to <strong class="ui">All Projects</strong> will be part of your library and travel only along with a copy of your complete library (refer to <a href="queries-building.html#saving-queries">Saving queries</a> in <a href="queries-building.html">Chapter 15, Building a Query</a>). How queries and analyzers travel is explained in greater detail in <a href="queries-using-results.html#queries-in-archives">Queries in LemmaLoom archives</a> in <a href="queries-using-results.html">Chapter 18, Using Query Results</a>.</p>
+<h3 id="exporting-project">Exporting a project<a class="anchor" href="#exporting-project" aria-hidden="true">#</a></h3>
+<ol>
+<li>In the sidebar, click the project, for example “Climate Debate”.</li>
+<li>Choose <strong class="ui">File ▸ Export ▸ LemmaLoom Project</strong>.</li>
+<li>The save dialog suggests the project’s name, <code>Climate Debate</code>. Change it if you like, choose a folder, and click <strong class="ui">Save</strong>.</li>
+<li>When the dialog reads <strong class="ui">LemmaLoom Archive Exported</strong>, click <strong class="ui">Done</strong>.</li>
+</ol>
+<p>The archive file is named <code>Climate Debate.llz</code>. For importing and restoring the project, follow the steps explained in the section on <a href="#importing-archive">Importing an archive</a> later in this chapter.</p>
+<h3 id="exporting-set">Exporting a set<a class="anchor" href="#exporting-set" aria-hidden="true">#</a></h3>
+<p>A set archive exports a portion of a project with the codes it uses. For instance, the set “Activists” within the “Climate Debate” project contains the six activist documents.</p>
+<ol>
+<li>In the <strong class="ui">Sets</strong> section of the sidebar, click the set, for example “Activists”.</li>
+<li>Choose <strong class="ui">File ▸ Export ▸ LemmaLoom Set</strong>, or right-click the set and choose <strong class="ui">Export</strong>.</li>
+<li>The save dialog suggests the set’s name. Choose a folder, and click <strong class="ui">Save</strong>.</li>
+<li>When the dialog reads <strong class="ui">LemmaLoom Archive Exported</strong>, click <strong class="ui">Done</strong>.</li>
+</ol>
+<figure class="shot" id="exchange-and-export-set-menu"><img class="shot-light" src="../figures/en/light/exchange-and-export-set-menu.webp" alt="The shortcut menu of the set “Activists”, with Export." loading="lazy"><img class="shot-dark" src="../figures/en/dark/exchange-and-export-set-menu.webp" alt="The shortcut menu of the set “Activists”, with Export." loading="lazy"><figcaption>The shortcut menu of the set “Activists”, with Export.</figcaption></figure>
+<p><strong class="ui">File ▸ Export ▸ LemmaLoom Set</strong> exports the current set highlighted in the navigation sidebar, or the set open in the active tab.</p>
+<p>An archive is packaged up with all the set’s documents, including their translations. This means that for “Activists”, you get seven documents, the six activist texts and “Running Out of Time (German)”, which is a translation of one of the documents in that set. The set archive excludes code sets, dictionaries, and any codes except those listed above. If your colleague needs your complete coding scheme, send a codebook export in REFI-QDA format as well (see <a href="#refi-codebook">REFI-QDA codebooks</a> further ahead in this chapter).</p>
+<p>A smart set exports with the documents meeting its conditions at the point of export, along with these conditions. Upon receipt in another project, the smart set will reapply its conditions to all documents in the project, making it possible that more documents match than when first exported. Exported from “Climate Debate”, the smart set “Wide Reach”, which collects documents where “Readership” is greater than or equal to 100,000, arrives with its six documents, plus “Running Out of Time (German)”, whose original is among the six documents. With a colleague’s project featuring a “Readership” attribute, this smart set collects her documents with a value greater than or equal to 100,000 too.</p>
+<p>When passing on all the documents with a tag, you first click the tag in the <strong class="ui">Tags</strong> section to view which documents carry it, then select them in the <strong class="ui">Documents</strong> section before exporting as described next.</p>
+<h3 id="exporting-documents">Exporting documents<a class="anchor" href="#exporting-documents" aria-hidden="true">#</a></h3>
+<p>Export individual documents if you wish to share just a few texts with a coworker for a one-off purpose, like a second reading of three skeptic texts. If your documents should arrive as a named collection, then export a set, because your archive then carries the set along.</p>
+<ol>
+<li>In the <strong class="ui">Documents</strong> section of the sidebar, click a document. To export several, ⌘-click each of the others, or ⇧-click to select a run of them.</li>
+<li>Choose <strong class="ui">File ▸ Export ▸ LemmaLoom Documents</strong> (or <strong class="ui">LemmaLoom Document</strong> for one), or right-click one of the selected documents and choose <strong class="ui">Export</strong>.</li>
+<li>The save dialog suggests the document’s title, or for several documents the project’s name. Choose a folder, and click <strong class="ui">Save</strong>.</li>
+<li>When the dialog reads <strong class="ui">LemmaLoom Archive Exported</strong>, click <strong class="ui">Done</strong>.</li>
+</ol>
+<figure class="shot" id="exchange-and-export-documents-menu"><img class="shot-light" src="../figures/en/light/exchange-and-export-documents-menu.webp" alt="The shortcut menu for three selected skeptic texts, with Export." loading="lazy"><img class="shot-dark" src="../figures/en/dark/exchange-and-export-documents-menu.webp" alt="The shortcut menu for three selected skeptic texts, with Export." loading="lazy"><figcaption>The shortcut menu for three selected skeptic texts, with Export.</figcaption></figure>
+<p>If no document is selected in the sidebar, then <strong class="ui">File ▸ Export ▸ LemmaLoom Document</strong> will export the document in the active tab.</p>
+<p>Exporting an original document includes all of its translations too. As such, exporting “Running Out of Time” will also export “Running Out of Time (German)”. When you export a translation alone, it arrives as a regular document along with its content and codings.</p>
+<h3 id="importing-archive">Importing an archive<a class="anchor" href="#importing-archive" aria-hidden="true">#</a></h3>
+<p>Archive import actions differ based on the archive’s scope:</p>
+<ul>
+<li><em>Project archive</em> imports will become a new project using the imported project’s properties, including name, color, and tags, regardless of what the active project may be.</li>
+<li><em>Set or documents archive</em> imports will import the archives into the currently active project. No active project results in failure with the message <strong class="ui">Open a project to import into.</strong> If you don’t have any projects yet, create a blank one first (see <a href="getting-started.html#creating-a-project">Creating a project</a> in <a href="getting-started.html">Chapter 2, Getting Started</a>).</li>
+</ul>
+<p>To begin importing an archive:</p>
+<ol>
+<li>For an archive of a set or of documents, click the project that should receive it in the sidebar. For a project archive, skip this step.</li>
+<li>Choose <strong class="ui">File ▸ Import ▸ LemmaLoom Archive</strong>.</li>
+<li>Choose the <code>.llz</code> file and click <strong class="ui">Open</strong>.</li>
+</ol>
+<p>Alternatively, double-clicking the <code>.llz</code> file inside the Finder will import the archive the same way as the previous method. Reimporting the exact same project archive results in two projects having the exact same name, which means you should rename one of those projects (refer to <a href="projects-and-documents.html#project-menu">The project’s shortcut menu</a> in <a href="projects-and-documents.html">Chapter 3, Projects and Documents</a>).</p>
+<p>The imported documents come indexed right away and are ready for lenses, the grammar inspector, and queries. LemmaLoom then checks the library in the background and indexes only the missing items (refer to <a href="analysis-and-indexing.html">Chapter 21, Analysis and Indexing</a>). Recordings are copied into the library as well.</p>
+<p>When wanting to get rid of everything imported via an archive import operation, delete the newly created project. With set/documents archives, delete the imported documents and set (see <a href="projects-and-documents.html#deleting-documents">Deleting documents</a> in <a href="projects-and-documents.html">Chapter 3, Projects and Documents</a>), then any codes, groups, and/or attributes the import added, such as “Adaptation” in the example below.</p>
+<h3 id="moving-a-project">Moving a project to another Mac<a class="anchor" href="#moving-a-project" aria-hidden="true">#</a></h3>
+<ol>
+<li>On the first Mac, click the project in the sidebar and choose <strong class="ui">File ▸ Export ▸ LemmaLoom Project</strong>.</li>
+<li>Copy the <code>.llz</code> file to the other Mac, for example with AirDrop or on an external drive.</li>
+<li>On the other Mac, double-click the file in the Finder, or choose <strong class="ui">File ▸ Import ▸ LemmaLoom Archive</strong>, choose the file, and click <strong class="ui">Open</strong>.</li>
+<li>Open a few documents and check that codings, memos, and recordings are there.</li>
+<li>If you no longer need the project on the first Mac, delete it there.</li>
+</ol>
+<p>Queries with <strong class="ui">Available In</strong> set to <strong class="ui">All Projects</strong> are stored within the library. Copying an entire library copies all of your projects and queries therein at once; please consult <a href="getting-started.html#library">Where work is stored</a> in <a href="getting-started.html">Chapter 2, Getting Started</a> for further instructions.</p>
+<h3 id="archive-matching">How an archive joins an existing project<a class="anchor" href="#archive-matching" aria-hidden="true">#</a></h3>
+<p>When a set or documents archive is brought into an existing project, its documents are added and linked to what exists in the project where there are matching names.</p>
+<ul>
+<li>Documents are added regardless of duplication of titles within the importing project; thus, re-importing an archive leads to duplicates of the documents.</li>
+<li>Group matching occurs based upon names while ignoring differences of upper/lower cases and whitespace around names. The documents inside a matched group are moved into the destination group.</li>
+<li>The matching occurs between codes of the same name residing in the same parent code without regard to upper/lower cases and surrounding whitespaces. Any codings, memos, or queries referring to the code are automatically changed to refer to the code of the importing project. The descriptions and colors of the codes remain as they are in the destination project, whereas the imported memos associated with the code are merged into it. Attribute match-ups take place between attributes with matching names within the code. A limited code is always added; if its document or set is not in the archive, it arrives as a code of the whole project.</li>
+<li>Attributes are matched by name. The attribute type of the destination project dominates when there are differences. Conversion of values according to the types happens, and unconvertible values are discarded.</li>
+<li>Sets are always added, regardless of whether a set of the same name already exists within the project, resulting in duplication. The conditions of the imported smart set are transformed in accordance with value conversions.</li>
+<li>Saved queries are added; the queries are tied to the document/set/tag they were saved for.</li>
+<li>Custom analyzers are universal among projects, and new ones are added and reside inside <strong class="ui">Window ▸ Analyzers</strong>.</li>
+</ul>
+<h4 id="importing-a-colleague-s-set">Importing a colleague’s set<a class="anchor" href="#importing-a-colleague-s-set" aria-hidden="true">#</a></h4>
+<p>Consider the situation where your colleague, who has been researching the same debate you have, sends you <code>Letters to the Editor.llz</code>, which contains a set of four letters from her own project. Click “Climate Debate” in the sidebar and import the <code>.llz</code> file. The table below summarizes the impact on the archive’s group, codes, attribute, and set.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>In the archive</th><th>In “Climate Debate”</th><th>Result</th></tr></thead>
+<tbody>
+<tr><td>Group “Print”</td><td>Group “Print”</td><td>The letters from “Print” join the existing group.</td></tr>
+<tr><td>Code “deadlines”, under “Urgency”</td><td>Code “Deadlines”, under “Urgency”</td><td>Matched, since matching ignores case. Her codings now use your “Deadlines”.</td></tr>
+<tr><td>Code “Fear”, at the top level</td><td>Code “Fear”, under “Emotions”</td><td>Kept apart, because the parents differ. A new top-level code “Fear” is added.</td></tr>
+<tr><td>Code “Adaptation”</td><td>No such code</td><td>Added.</td></tr>
+<tr><td>Attribute “Readership”, type <strong class="ui">Text</strong>, with the values <code>120000</code>, <code>45000</code>, <code>310000</code>, and <code>about 80000</code></td><td>“Readership”, type <strong class="ui">Integer</strong></td><td>The values 120000, 45000, and 310000 arrive as numbers. <code>about 80000</code> is text, so it is left out, and that letter’s “Readership” stays empty.</td></tr>
+<tr><td>Set “Letters to the Editor”</td><td>No such set</td><td>Added, with the four letters.</td></tr>
+</tbody></table></div>
+<p>Now, “Climate Debate” contains 19 documents, while your codebook includes two codes entitled “Fear” appearing at separate points. The letters with 120,000 and 310,000 readers also join “Wide Reach”, giving it eight total. If both codes mean the same thing, merge them according to <a href="coding.html#merging-codes">Merging codes</a> in <a href="coding.html">Chapter 7, Coding</a>. Fill out the missing “Readership” figure in <strong class="ui">Document Properties</strong>.</p>
+<h3 id="archive-file">The archive file<a class="anchor" href="#archive-file" aria-hidden="true">#</a></h3>
+<p>A <code>.llz</code> file is a ZIP file. Unzipping it allows you to view its contents manually.</p>
+<p>An archive will import into the version of LemmaLoom that generated it or newer versions thereof (refer to <a href="#exchange-sheet">The exchange dialog</a> earlier in this chapter). If you plan on exchanging archives with your colleagues, it’s helpful for everyone to stay updated to the latest version of LemmaLoom.</p>
+<h2 id="refi-qda">REFI-QDA projects<a class="anchor" href="#refi-qda" aria-hidden="true">#</a></h2>
+<p>REFI-QDA project files (<code>.qdpx</code>) are ZIP files containing a project descriptor called <code>project.qde</code> (XML), along with documents kept in a directory named <code>sources</code>. Project files allow you to share your projects with anyone whose software supports the REFI-QDA format, and to load such a colleague’s project into LemmaLoom.</p>
+<p>LemmaLoom-specific data such as indexing, saved queries, dictionaries, and analyzers travel only in a LemmaLoom archive.</p>
+<p>Some common elements use distinct terminology under the REFI-QDA standard:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>REFI-QDA</th><th>LemmaLoom</th></tr></thead>
+<tbody>
+<tr><td>Source</td><td>Document</td></tr>
+<tr><td>Selection</td><td>A passage, usually one that is coded</td></tr>
+<tr><td>Note</td><td>Memo</td></tr>
+<tr><td>Variable</td><td>Attribute</td></tr>
+<tr><td>Case</td><td>LemmaLoom writes one unnamed case per document, holding its attribute values; a named case from another program becomes a set.</td></tr>
+<tr><td>Set</td><td>A set of documents, or a set of codes</td></tr>
+</tbody></table></div>
+<h3 id="refi-export">Exporting a REFI-QDA project<a class="anchor" href="#refi-export" aria-hidden="true">#</a></h3>
+<ol>
+<li>In the sidebar, click the project, for example “Climate Debate”.</li>
+<li>Choose <strong class="ui">File ▸ Export ▸ REFI-QDA Project</strong>.</li>
+<li>The save dialog suggests the project’s name. Choose a folder, and click <strong class="ui">Save</strong>.</li>
+<li>When the dialog reads <strong class="ui">REFI-QDA Project Exported</strong>, click <strong class="ui">Done</strong>.</li>
+</ol>
+<p>Your file name is <code>Climate Debate.qdpx</code>. When looking for your import command, check for either REFI-QDA or QDPX in the other program.</p>
+<p>LemmaLoom saves your project like so:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>In LemmaLoom</th><th>In the <code>.qdpx</code> file</th></tr></thead>
+<tbody>
+<tr><td>Text, PDF, and web page documents</td><td>Text sources holding the documents’ current text</td></tr>
+<tr><td>Audio and video documents</td><td>Audio or video sources with the recording and the transcript. The transcript’s timing is written as sync points, so codings stay tied to their place in the recording.</td></tr>
+<tr><td>Translations</td><td>Sources of their own: text sources for translated text, and audio or video sources with their own copy of the recording for translated recordings.</td></tr>
+<tr><td>Authors, date, publication, publisher, URL, and DOI</td><td>The source’s description, one line per field, with the field names in the language of the interface, such as <code>Date: 2024-08-21</code></td></tr>
+<tr><td>Codes, with their hierarchy, colors, and descriptions</td><td>The codebook</td></tr>
+<tr><td>Codings</td><td>Coded selections, with the date each coding was made</td></tr>
+<tr><td>Memos on a passage</td><td>Notes on the selection</td></tr>
+<tr><td>Coded memos (see <a href="coding.html#coded-memos">Coded memos</a> in <a href="coding.html">Chapter 7, Coding</a>)</td><td>Notes on the coding of the same code on that passage, or on the selection if the passage has no such coding</td></tr>
+<tr><td>Memos on a whole document, on a code, or on the project</td><td>Notes on the source, the code, or the project</td></tr>
+<tr><td>Links</td><td>Links between selections, with their colors. The relation becomes the link’s name, and the comment a note.</td></tr>
+<tr><td>Attributes</td><td>Variables. A <strong class="ui">Picker</strong> becomes a plain text variable.</td></tr>
+<tr><td>Attribute values</td><td>One case per document, holding that document’s values</td></tr>
+<tr><td>Sets and smart sets</td><td>Sets of sources. A smart set is written with the documents it holds at the time of export.</td></tr>
+<tr><td>Groups</td><td>Sets of sources, named after the group</td></tr>
+<tr><td>Code sets</td><td>Sets of codes</td></tr>
+</tbody></table></div>
+<p>The file omits:</p>
+<ul>
+<li>Indexing and everything built on it, such as text statistics and word sketches (LemmaLoom will index the imported documents again);</li>
+<li>Saved queries, lenses based off the queries, dictionaries, custom analyzers, and bookmarks;</li>
+<li>Tags assigned to documents, codes, memos, and links;</li>
+<li>Document colors and languages, names of speakers in transcripts, and attribute values assigned to codings and memos;</li>
+<li>The connection between a translation and its original;</li>
+<li>The scope limitation of a code to a particular document or set, meaning that all such codes will become project codes upon import;</li>
+<li>The <strong class="ui">Format</strong> of a code, meaning that all codes will use <strong class="ui">Highlight</strong> upon import;</li>
+<li>Recordings exceeding 2 GB in size; such a document will be saved as a text source including only its transcript.</li>
+</ul>
+<p>The exported file records you as its author, under the full name of your macOS user account. The application LemmaLoom and its exact version are saved as well, as the creator of the project.</p>
+<h3 id="refi-import">Importing a REFI-QDA project<a class="anchor" href="#refi-import" aria-hidden="true">#</a></h3>
+<ol>
+<li>Choose <strong class="ui">File ▸ Import ▸ REFI-QDA Project</strong>.</li>
+<li>Choose the <code>.qdpx</code> file and click <strong class="ui">Open</strong>.</li>
+<li>When the import has finished, open two or three documents and check that the codings sit on the words they were made on.</li>
+</ol>
+<p>Double-clicking a <code>.qdpx</code> file within the Finder imports it in the exact same fashion. Importation creates a new project every time. It uses either the name within the file, if there is any, or just the file name. This newly created project will be the active project, and its documents get indexed in the background. You may monitor indexing progress via the <strong class="ui">Activity</strong> window. If need be, you may repeat the process by deleting the project and re-importing the <code>.qdpx</code> file.</p>
+<p>LemmaLoom reads the file as follows:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>In the <code>.qdpx</code> file</th><th>In LemmaLoom</th></tr></thead>
+<tbody>
+<tr><td>Text sources</td><td>Documents with the source’s text. Formatting in rich text sources is dropped.</td></tr>
+<tr><td>PDF sources</td><td>Documents with the PDF’s text, from the text version the other program stored, or else read from the PDF itself</td></tr>
+<tr><td>Audio and video sources with a transcript</td><td>Audio or video documents. The transcript becomes the text and its sync points become timed passages. The recording is copied into the library if the file contains it.</td></tr>
+<tr><td>Audio and video sources without a transcript, picture sources, and sources without any text, such as a scanned PDF without a text layer or a source the file refers to but does not contain</td><td>Left out</td></tr>
+<tr><td>A source’s description</td><td>The document’s authors, date, and other properties, if the description is in the form LemmaLoom exports, with the field names in English or in the language of your interface; otherwise a memo on the document</td></tr>
+<tr><td>Codes</td><td>Codes for the whole project, with their hierarchy, colors, and descriptions</td></tr>
+<tr><td>Codings of selections</td><td>Codings of the same passages, with their dates</td></tr>
+<tr><td>A coding of a whole source</td><td>A coding of the document’s entire text</td></tr>
+<tr><td>A selection’s description</td><td>A memo on the passage</td></tr>
+<tr><td>Notes</td><td>A note on a selection becomes a memo on the passage, and a note on a coding a coded memo. Notes on a source or a code become memos on the document or the code. A note that belongs to nothing becomes a project memo, and a note on a link the link’s comment.</td></tr>
+<tr><td>Links between selections</td><td>Links. The link’s name becomes the relation.</td></tr>
+<tr><td>Variables</td><td>Attributes. Integer becomes <strong class="ui">Integer</strong>, Float <strong class="ui">Decimal</strong>, Boolean <strong class="ui">Boolean</strong>, Date and DateTime <strong class="ui">Date</strong>, and anything else <strong class="ui">Text</strong>.</td></tr>
+<tr><td>Cases</td><td>Their values go to the documents that belong to them. A named case also becomes a set of those documents.</td></tr>
+<tr><td>Sets</td><td>Sets of documents and code sets</td></tr>
+</tbody></table></div>
+<p>If there is an unnamed source, the title will become <strong class="ui">Imported document</strong>. When documents are missing after an import from another application, re-export the project from there and ensure the sources have been included in the exported file.</p>
+<p>The language of each document is determined based on its content. Incorrect determination can be fixed manually via <strong class="ui">Document Properties</strong>; LemmaLoom will then re-index the document according to the selected language (see <a href="projects-and-documents.html#properties-indexing">Indexing</a> in <a href="projects-and-documents.html">Chapter 3, Projects and Documents</a>).</p>
+<p>Since LemmaLoom can only code text, any codings for areas within a PDF file page or image are discarded.</p>
+<p>Selections are stored with references to where they begin and end, both measured in number of characters, usually along with an excerpt from the text within the selection. Different programs compute the character count differently; in some cases, a line break is counted as two characters. LemmaLoom attempts each common method and keeps the one in which the largest percentage of excerpts correspond correctly.</p>
+<h2 id="refi-codebook">REFI-QDA codebooks<a class="anchor" href="#refi-codebook" aria-hidden="true">#</a></h2>
+<p>A REFI-QDA codebook file (<code>.qdc</code>) contains nothing more than a collection of codes, with their hierarchy, colors, and descriptions, and the code sets.</p>
+<h3 id="codebook-export">Exporting a codebook<a class="anchor" href="#codebook-export" aria-hidden="true">#</a></h3>
+<ol>
+<li>In the sidebar, click the project.</li>
+<li>Choose <strong class="ui">File ▸ Export ▸ REFI-QDA Codebook</strong>.</li>
+<li>The save dialog suggests the project’s name. Choose a folder, and click <strong class="ui">Save</strong>.</li>
+<li>When the dialog reads <strong class="ui">REFI-QDA Codebook Exported</strong>, click <strong class="ui">Done</strong>.</li>
+</ol>
+<p>The codebook contains every single one of your codes organized hierarchically. Any code set containing codes will appear alongside its codes. A code restricted to one document or set is written like any other, without its restriction, and comes back as a code of the whole project.</p>
+<h3 id="codebook-import">Importing a codebook<a class="anchor" href="#codebook-import" aria-hidden="true">#</a></h3>
+<p>Imported codes go into the active project.</p>
+<ol>
+<li>In the sidebar, click the project that should receive the codes.</li>
+<li>Choose <strong class="ui">File ▸ Import ▸ REFI-QDA Codebook</strong>.</li>
+<li>Choose the <code>.qdc</code> file and click <strong class="ui">Open</strong>.</li>
+</ol>
+<p>Double-clicking the <code>.qdc</code> file in the Finder will import the file similarly.</p>
+<p>For every code in the imported file, LemmaLoom searches among the siblings under the same parent for a matching code name regardless of capitalization. Should there be a match, the matching code is used, and the search proceeds with its children. Should there be no matches, a new code is created with its properties taken from the imported file. Matching code sets is performed in the same manner, adding to the matching code set the codes from the file that are new to it.</p>
+<p>Importing the file is performed in one undo step. By selecting <strong class="ui">Edit ▸ Undo REFI-QDA Codebook</strong> or pressing ⌘Z, all added codes and code sets are undone, and the added codes are taken out of existing code sets.</p>
+<h4 id="importing-a-research-group-s-codebook">Importing a research group’s codebook<a class="anchor" href="#importing-a-research-group-s-codebook" aria-hidden="true">#</a></h4>
+<p>For example, suppose a research group sends <code>Climate Rhetoric.qdc</code>, which has a code “Science” with the children “Uncertainty” and “Consensus”, a top-level code “Irony”, and a code set “Arguments” holding “Uncertainty” and “Consensus”. If it is imported into “Climate Debate”, LemmaLoom would make changes to the codebook as follows:</p>
+<ul>
+<li>The top-level code “Science” along with its child “Uncertainty” already exists within “Climate Debate”.</li>
+<li>The child “Consensus” of “Science” would be imported alongside “Uncertainty”.</li>
+<li>The top-level code “Irony” would be imported alongside the existing top-level codes.</li>
+<li>The code set “Arguments”, which contains the codes “Science”, “Uncertainty”, “Costs”, and “Responsibility”, would gain the new code “Consensus”.</li>
+</ul>
+<h2 id="tables-and-charts">Exporting tables and charts<a class="anchor" href="#tables-and-charts" aria-hidden="true">#</a></h2>
+<p>Most tables may be exported as CSV files, while most charts and diagrams may be exported as PNG or PDF images.</p>
+<h3 id="export-button">The export button<a class="anchor" href="#export-button" aria-hidden="true">#</a></h3>
+<p>The export button resembles a square with an arrow pointing upwards. This button appears in the heading of the table/chart, in the header of views on the project shelf, or in the bar of word sketches. The export button functions in either one of two ways:</p>
+<ul>
+<li>When beside a table not attached to any chart, clicking the button immediately opens the save dialog for a CSV format file. Hovering the mouse pointer over the button reveals <strong class="ui">Export as CSV</strong>.</li>
+<li>When beside a chart/diagram, clicking the button opens a menu showing <strong class="ui">PNG</strong>, <strong class="ui">PDF</strong>, and then <strong class="ui">CSV</strong> in cases where the chart has a table behind it. When hovered over, the button displays <strong class="ui">Export</strong>. Structure diagrams and the <strong class="ui">Mosaic</strong> are able to export <strong class="ui">PNG</strong> and <strong class="ui">PDF</strong> only.</li>
+</ul>
+<p>This button becomes visible upon the presence of anything that can be exported. In the <strong class="ui">Codings</strong>, <strong class="ui">Memos</strong>, and <strong class="ui">Links</strong> views of the project shelf, as well as in <strong class="ui">Relations</strong> and the word sketches’ bars, the button remains visible all the time. In these places, when there isn’t anything available for exporting, the button is disabled, showing <strong class="ui">Nothing to export</strong>. Inside the <strong class="ui">Attributes</strong> window and the <strong class="ui">Diagram</strong> window (see <a href="grammar-inspector.html#diagram-window">The Diagram window</a> in <a href="grammar-inspector.html">Chapter 11, The Grammar Inspector</a>), the button carries the word <strong class="ui">Export</strong>.</p>
+<figure class="shot" id="exchange-and-export-chart-menu"><img class="shot-light" src="../figures/en/light/exchange-and-export-chart-menu.webp" alt="The export menu of the Code Matrix for “Climate Debate”." loading="lazy"><img class="shot-dark" src="../figures/en/dark/exchange-and-export-chart-menu.webp" alt="The export menu of the Code Matrix for “Climate Debate”." loading="lazy"><figcaption>The export menu of the Code Matrix for “Climate Debate”.</figcaption></figure>
+<p>Exporting involves:</p>
+<ol>
+<li>Set up the view as you want it, with the codes, filter, search, and display you need.</li>
+<li>Click the export button, and choose a format if a menu opens.</li>
+<li>Change the suggested name if you like, choose a folder, and click <strong class="ui">Save</strong>.</li>
+</ol>
+<p>Suggested file names join the document, set, or project to what is exported, such as <code>Running Out of Time-codings</code> or <code>Climate Debate-code-matrix</code>. In some cases where grammar views are concerned, however, the file name reflects whatever word you searched on; e.g., <code>collocates-climate</code> or <code>word-sketch-climate</code> regarding the word <em>climate</em>.</p>
+<p>Your export will consist of everything visible in the view. Any search or filter conditions will transfer over, including the tag filter in your codebook and the <strong class="ui">Filter</strong> field of a query result. Disabled sectors in Sketch Space and your selected display are preserved as well.</p>
+<h3 id="csv-files">CSV files<a class="anchor" href="#csv-files" aria-hidden="true">#</a></h3>
+<p>A CSV file is a plain text file with comma-separated values. Each row has one value per column, separated by commas. The very first row contains the names of the columns in the language of the interface. The CSV file can be consumed by spreadsheet and statistical analysis applications.</p>
+<p>LemmaLoom exports its CSV files using the following formatting rules:</p>
+<ul>
+<li>All text in the file is UTF-8 encoded, beginning with a byte order mark so that spreadsheet applications will recognize the encoding.</li>
+<li>All numbers have plain digits and a decimal point, regardless of the locale you have chosen on your Mac computer, e.g., <code>1234.5</code>. Columns whose name ends with (%) contain percentages represented numerically as portions of 100, e.g., <code>12.35</code> for 12.35%.</li>
+<li>Any cell containing commas, double quotes, or line breaks, or leading or trailing spaces is enclosed by double quotes to meet the standard for CSV formatting.</li>
+<li>Any cells starting with <code>=</code>, <code>+</code>, <code>-</code>, or <code>@</code> which cannot be parsed as numbers are prefixed with an apostrophe so that spreadsheet applications will not interpret the value incorrectly, such as taking a memo like <code>+ check the figures against the report</code> for a formula.</li>
+</ul>
+<p>An exception applies for the statistics of the <strong class="ui">Overview</strong> facet found in the <strong class="ui">Text</strong> tab of the inspector, whose CSV file stores all values as shown in the inspector, including the unit label if applicable. For example, a value will read <code>13.9 words</code>.</p>
+<p>Should a spreadsheet application set to a language having commas for decimal separators, such as German, expect semicolons to separate columns, and put entire rows in a single cell, open the CSV file using the application’s command for importing text/csv files and select the comma as the delimiter.</p>
+<h3 id="png-and-pdf">PNG and PDF pictures<a class="anchor" href="#png-and-pdf" aria-hidden="true">#</a></h3>
+<p>An image will be rendered anew for the file. You get margins, background color matching the current theme, and width determined by your graph. No hover highlight or selections here.</p>
+<ul>
+<li>The <strong class="ui">PNG</strong> format is rendered at Retina quality regardless of your monitor. PNG is suited for presentations, websites, and documents made by word processing software.</li>
+<li><strong class="ui">PDF</strong> is just one page with dimensions equivalent to your graph size. Everything in a PDF is crisply rendered regardless of zoom level. It suits printing and academic journals requiring vector graphics.</li>
+</ul>
+<p>Images created with a dark theme are also dark in appearance. If you wish to use your image in a paper, change the theme setting to something lighter, like <strong class="ui">Light</strong>, prior to exporting (see <a href="settings.html#themes">Themes</a> in <a href="settings.html">Chapter 24, Settings and Appearance</a>).</p>
+<h3 id="query-exports">Query results<a class="anchor" href="#query-exports" aria-hidden="true">#</a></h3>
+<p>The export button of query results appears on the far right side of the query results bar, above the actual query results. Within the <strong class="ui">Query</strong> facet of a document, the export button will appear inside the bar on the very top of the facet. The available formats are <strong class="ui">CSV</strong>, <strong class="ui">Markdown</strong>, <strong class="ui">PNG</strong>, and <strong class="ui">PDF</strong>. Following them is <strong class="ui">Copy</strong>. The suggested file name is the name of your query itself. A Markdown file keeps the result together with the query, the scope of the query, how many documents were read, the <strong class="ui">Corpus</strong> setting used for the query, the date of the export, and the LemmaLoom version.</p>
+<figure class="shot" id="exchange-and-export-query-export-menu"><img class="shot-light" src="../figures/en/light/exchange-and-export-query-export-menu.webp" alt="The export menu of the Keywords results for “Activists” compared with “Skeptics”, listing CSV, Markdown, PNG, PDF, and Copy." loading="lazy"><img class="shot-dark" src="../figures/en/dark/exchange-and-export-query-export-menu.webp" alt="The export menu of the Keywords results for “Activists” compared with “Skeptics”, listing CSV, Markdown, PNG, PDF, and Copy." loading="lazy"><figcaption>The export menu of the Keywords results for “Activists” compared with “Skeptics”, listing CSV, Markdown, PNG, PDF, and Copy.</figcaption></figure>
+<p><strong class="ui">Copy</strong> places the table onto the clipboard with tab characters delimiting the column values. The files produced from exporting your query results are discussed more thoroughly in <a href="queries-results.html#export">Exporting results</a> in <a href="queries-results.html">Chapter 16, Query Results and Statistics</a>.</p>
+<h3 id="export-locations">Where exports are available<a class="anchor" href="#export-locations" aria-hidden="true">#</a></h3>
+<p>In the inspector:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Tab</th><th>Place</th><th>Formats</th><th>Columns of the CSV file</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">Text</strong></td><td><strong class="ui">Overview</strong>, beside the heading of the <strong class="ui">Overview</strong> section</td><td>CSV</td><td>Section, Measure, and Value, with every measure of the five sections, then the rows of the three charts</td></tr>
+<tr><td><strong class="ui">Text</strong></td><td><strong class="ui">Overview</strong>, the <strong class="ui">Parts of speech</strong>, <strong class="ui">Functions</strong>, and <strong class="ui">Phrases</strong> charts</td><td>PNG, PDF, CSV</td><td>Category, Count</td></tr>
+<tr><td><strong class="ui">Text</strong></td><td><strong class="ui">Bookmarks</strong></td><td>CSV</td><td>Location, Text, Comment</td></tr>
+<tr><td><strong class="ui">Grammar</strong></td><td><strong class="ui">Structure</strong>, each diagram, and the <strong class="ui">Diagram</strong> window</td><td>PNG, PDF</td><td></td></tr>
+<tr><td><strong class="ui">Grammar</strong></td><td><strong class="ui">Form × Function</strong>, the matrix</td><td>PNG, PDF, CSV</td><td>Form, Total, then one column per function</td></tr>
+<tr><td><strong class="ui">Grammar</strong></td><td><strong class="ui">Form × Function</strong>, the list of a cell</td><td>CSV</td><td>Sentence, Phrase, Text</td></tr>
+<tr><td><strong class="ui">Grammar</strong></td><td><strong class="ui">Collocates</strong></td><td>CSV</td><td>Rank, Collocate, Part of speech, Frequency, Expected, Log-likelihood, MI, MI3, t-score, z-score, Dice, logDice (every score, whichever one ranks the list)</td></tr>
+<tr><td><strong class="ui">Grammar</strong></td><td><strong class="ui">Word Sketch</strong></td><td>PNG, PDF, and CSV for the <strong class="ui">Map</strong> and <strong class="ui">Web</strong> displays; CSV for the <strong class="ui">List</strong></td><td>Relation, Collocate, Lemma, Part of speech, Frequency, logDice</td></tr>
+<tr><td><strong class="ui">Grammar</strong></td><td><strong class="ui">Discourse</strong></td><td>CSV</td><td>Category, Sentence, Text, Detail</td></tr>
+<tr><td><strong class="ui">Coding</strong></td><td><strong class="ui">Codes</strong>, beside <strong class="ui">Code System</strong></td><td>CSV</td><td>As for the codebook, below</td></tr>
+<tr><td><strong class="ui">Coding</strong></td><td><strong class="ui">Codings</strong>, with <strong class="ui">Codings</strong> chosen</td><td>CSV</td><td>Code, Location, Start, End, Text</td></tr>
+<tr><td><strong class="ui">Coding</strong></td><td><strong class="ui">Codings</strong>, with <strong class="ui">Memos</strong> chosen</td><td>CSV</td><td>Code, Location, Text, Memo, Tags</td></tr>
+<tr><td><strong class="ui">Coding</strong></td><td><strong class="ui">Links</strong></td><td>CSV</td><td>As for links, below</td></tr>
+<tr><td><strong class="ui">Coding</strong></td><td><strong class="ui">Code Stats</strong>, <strong class="ui">Code Frequencies &amp; Coverage</strong></td><td>PNG, PDF, CSV</td><td>Code, Segments, Characters, Coverage (%)</td></tr>
+<tr><td><strong class="ui">Coding</strong></td><td><strong class="ui">Code Stats</strong>, <strong class="ui">Co-occurrences</strong></td><td>CSV</td><td>Code, Code, Overlaps, Characters, φ, p</td></tr>
+<tr><td><strong class="ui">Coding</strong></td><td><strong class="ui">Code Stats</strong>, each chart under <strong class="ui">Attribute Breakdowns</strong></td><td>PNG, PDF, CSV</td><td>Attribute, Value, Count</td></tr>
+<tr><td><strong class="ui">Coding</strong></td><td><strong class="ui">Portrait</strong>, <strong class="ui">Mosaic</strong></td><td>PNG, PDF</td><td></td></tr>
+<tr><td><strong class="ui">Coding</strong></td><td><strong class="ui">Portrait</strong>, <strong class="ui">Codeline</strong></td><td>CSV</td><td>Sentence, Codes, Text</td></tr>
+<tr><td><strong class="ui">Coding</strong></td><td><strong class="ui">Code Sketch</strong></td><td>PNG, PDF, and CSV for the <strong class="ui">Map</strong>; CSV for the <strong class="ui">List</strong></td><td>As for <strong class="ui">Word Sketch</strong></td></tr>
+<tr><td><strong class="ui">Multimode</strong></td><td><strong class="ui">Sketch Space</strong></td><td>PNG, PDF, and CSV for the <strong class="ui">Map</strong>; CSV for the <strong class="ui">List</strong></td><td>Code or Attribute, then as for <strong class="ui">Word Sketch</strong></td></tr>
+<tr><td><strong class="ui">Multimode</strong></td><td><strong class="ui">Query</strong></td><td>CSV, Markdown, PNG, PDF, Copy</td><td>See <a href="queries-results.html#export">Exporting results</a> in <a href="queries-results.html">Chapter 16, Query Results and Statistics</a></td></tr>
+</tbody></table></div>
+<p>Each of these measures has its explanation in the respective chapter and is collected in <a href="statistics-reference.html">Chapter 27, Statistics at a Glance</a>.</p>
+<p>In the views of the project shelf, for a project, set, or tag:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>View</th><th>Place</th><th>Formats</th><th>Columns of the CSV file</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">Codebook</strong></td><td>The bar below the code list</td><td>CSV</td><td>Code, Path, Level, Count, Description, Color</td></tr>
+<tr><td><strong class="ui">Codebook</strong></td><td><strong class="ui">USE IN THIS SCOPE</strong>, in the details of a selected code</td><td>PNG, PDF, CSV</td><td>Document, Segments</td></tr>
+<tr><td><strong class="ui">Codings</strong></td><td>Header</td><td>CSV</td><td>Document, Code, Text, Start, End, then one column per attribute on the codings</td></tr>
+<tr><td><strong class="ui">Memos</strong></td><td>Header</td><td>CSV</td><td>Document, Code, Memo, Tags, Start, End, then one column per attribute on the memos</td></tr>
+<tr><td><strong class="ui">Links</strong></td><td>Header</td><td>CSV</td><td>Source document, Source text, Relation, Target document, Target text, Comment, Tags</td></tr>
+<tr><td><strong class="ui">Code Stats</strong></td><td>Header</td><td>PNG, PDF, CSV</td><td>Code, Segments, Documents, Characters, Coverage (%)</td></tr>
+<tr><td><strong class="ui">Code Stats</strong></td><td>Each chart under <strong class="ui">Attribute Breakdowns</strong></td><td>PNG, PDF, CSV</td><td>Attribute, Value, Count</td></tr>
+<tr><td><strong class="ui">Code Matrix</strong></td><td>Header</td><td>PNG, PDF, CSV</td><td>Code, then one column per document or group, and Total</td></tr>
+<tr><td><strong class="ui">Relations</strong></td><td>Header, with <strong class="ui">Grid</strong> chosen</td><td>PNG, PDF, CSV</td><td>Code, Segments, then one column per code</td></tr>
+<tr><td><strong class="ui">Relations</strong></td><td>Header, with <strong class="ui">Pairs</strong> chosen</td><td>CSV</td><td>Code, Code, Overlaps, Characters, φ, p</td></tr>
+<tr><td><strong class="ui">Word Sketch</strong></td><td>As in the inspector</td><td>PNG, PDF, CSV</td><td>As in the inspector</td></tr>
+<tr><td><strong class="ui">Dictionaries</strong></td><td><strong class="ui">Category Frequencies</strong> and <strong class="ui">By Document</strong></td><td>PNG, PDF, CSV</td><td>See <a href="dictionaries.html#exporting-counts">Exporting the counts</a> in <a href="dictionaries.html">Chapter 19, Dictionaries</a></td></tr>
+<tr><td><strong class="ui">Queries</strong></td><td>The results bar</td><td>CSV, Markdown, PNG, PDF, Copy</td><td>See <a href="queries-results.html#export">Exporting results</a> in <a href="queries-results.html">Chapter 16, Query Results and Statistics</a></td></tr>
+</tbody></table></div>
+<p>The same export functionality exists in the <strong class="ui">Codebook</strong> window, the <strong class="ui">Word Sketch</strong> window, <strong class="ui">Window ▸ Queries</strong>, and query results opened in a window of their own. From the <strong class="ui">Attributes</strong> window, <strong class="ui">Export</strong> outputs the attribute table (see <a href="#attributes-csv">Attribute values</a> below).</p>
+<p>Both <strong class="ui">Start</strong> and <strong class="ui">End</strong> within exported files indicate the location of a passage as character counts from the beginning of the document’s text. <strong class="ui">Location</strong> specifies which paragraph and sentence number that passage occurs within according to its display on the inspector; therefore, <code>¶12·3</code> represents the third sentence of paragraph 12.</p>
+<p>Exporting a <strong class="ui">Code Matrix</strong> grouped by an attribute, a group, a language, or a format creates one column for each group, followed by Total and columns for the test used. Its first row indicates the base for each group. <a href="coding-analysis.html#exporting">Exporting tables and charts</a> in <a href="coding-analysis.html">Chapter 13, Analyzing Codes</a> explains what kind of file gets generated by this feature, while <a href="coding-analysis.html#matrix-tests">Testing the differences between groups</a> explains the meaning of its numbers.</p>
+<h3 id="codebook-csv">The codebook as CSV<a class="anchor" href="#codebook-csv" aria-hidden="true">#</a></h3>
+<p>Every code shown in the list appears in the codebook’s CSV file, each on a separate row, followed by its children. These are sorted alphabetically at each level. An excerpt of the beginning of the file for “Climate Debate” follows:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Code</th><th>Path</th><th>Level</th><th>Count</th><th>Description</th><th>Color</th></tr></thead>
+<tbody>
+<tr><td>Costs</td><td>Costs</td><td>1</td><td>19</td><td>Prices, bills, subsidies and budgets: what climate policy or climate damage costs and where the bill lands.</td><td>#4F46E5</td></tr>
+<tr><td>Emotions</td><td>Emotions</td><td>1</td><td>6</td><td>Feelings writers express or attribute to others, such as grief, despair, anger or tiredness.</td><td>#DB2777</td></tr>
+<tr><td>Fear</td><td>Emotions / Fear</td><td>2</td><td>12</td><td>Fear and anxiety about climate change, and arguments about whether fear helps or harms.</td><td>#E11D48</td></tr>
+<tr><td>Hope</td><td>Emotions / Hope</td><td>2</td><td>11</td><td>Hope and confidence that change is possible, and how writers frame them.</td><td>#9333EA</td></tr>
+<tr><td>Responsibility</td><td>Responsibility</td><td>1</td><td>19</td><td>Who caused the problem, who should act or pay, and what is owed to others, including future generations.</td><td>#65A30D</td></tr>
+<tr><td>Science</td><td>Science</td><td>1</td><td>15</td><td>Appeals to research, measurements, models and experts, and arguments about how science works.</td><td>#0D9488</td></tr>
+</tbody></table></div>
+<ul>
+<li><strong class="ui">Path</strong> concatenates the names of codes from the top level down, separated by slashes, allowing you to distinguish codes with identical names but existing under distinct parent codes.</li>
+<li><strong class="ui">Level</strong> indicates at which hierarchy level a particular code exists; 1 means a top-level code, 2 means children of those codes, etc.</li>
+<li><strong class="ui">Count</strong> represents the numeric value shown next to each code in the tree view, which refers to how many times the code has been used within the original documents of the project, set, or tag whose codebook you export. For “Emotions”, it only includes the 6 occurrences of “Emotions” itself, not “Fear” or “Hope”, which each have their own count values (12 and 11 respectively).</li>
+</ul>
+<p>The export beside <strong class="ui">Code System</strong> in the <strong class="ui">Codes</strong> facet of the inspector has identical columns. <strong class="ui">Count</strong> here, however, counts the usage within the currently opened document along with coded memos.</p>
+<h3 id="links-csv">Links as CSV<a class="anchor" href="#links-csv" aria-hidden="true">#</a></h3>
+<p>Linking is performed between two passages, usually from different documents (see <a href="coding.html#links">Links</a> in <a href="coding.html">Chapter 7, Coding</a>). An exported CSV file contains one row for every link:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Source document</th><th>Source text</th><th>Relation</th><th>Target document</th><th>Target text</th><th>Comment</th><th>Tags</th></tr></thead>
+<tbody>
+<tr><td>The Models Keep Missing</td><td>Clouds alone probably hide more uncertainty than any press release will admit.</td><td>contradicts</td><td>Heat Wave Report 2024</td><td>This estimate carries a wide margin of uncertainty and should not be cited without it.</td><td>The agency states its margin of uncertainty plainly; the column assumes official sources hide it.</td><td></td></tr>
+</tbody></table></div>
+<p><strong class="ui">Relation</strong> refers to the wording that was entered while creating the link. <strong class="ui">Tags</strong> refers to a list of all tags associated with the link, separated by semicolons; in this case, <strong class="ui">Tags</strong> is blank. Exporting from the <strong class="ui">Links</strong> view of the project shelf will yield all links listed in the project, set, or tag selected. The <strong class="ui">Links</strong> facet of the inspector will export the links of the opened document.</p>
+<h3 id="segments-csv">Coded segments and memos<a class="anchor" href="#segments-csv" aria-hidden="true">#</a></h3>
+<p>The project shelf view of <strong class="ui">Codings</strong> exports a row for every coding made. Where the values of attributes on codings were recorded, those attributes will become additional columns, blank when a coding does not contain a value.</p>
+<p>In comparison, the project shelf view of <strong class="ui">Memos</strong> operates similarly, except here the memo’s text and tags replace coded text. The name of the code of a coded memo becomes part of the <strong class="ui">Code</strong> column in a row, and the column remains blank whenever a non-coded memo contributes to the spreadsheet. The code’s tags get inherited by a coded memo, meaning they fill out the <strong class="ui">Tags</strong> cell in a memo row, while a memo’s own tags can be captured using the <strong class="ui">Codings</strong> facet of the inspector, with <strong class="ui">Memos</strong> chosen. In a project’s <strong class="ui">Memos</strong> view, memos which exist independently of documents receive a row, with the <strong class="ui">Document</strong> column empty.</p>
+<h3 id="attributes-csv">Attribute values<a class="anchor" href="#attributes-csv" aria-hidden="true">#</a></h3>
+<p>To open the <strong class="ui">Attributes</strong> window, go to <strong class="ui">Project ▸ Attributes</strong> or, alternatively, right-click on the project and select <strong class="ui">Attributes</strong>. <strong class="ui">Export</strong> will save the table content as displayed, including a <strong class="ui">Document</strong> column and each attribute as its own separate column. Each row represents each document that remains visible through your search, in order of display. Translations share the same row as the original, along with its attribute values.</p>
+<figure class="shot" id="exchange-and-export-attributes-window"><img class="shot-light" src="../figures/en/light/exchange-and-export-attributes-window.webp" alt="The Attributes window of “Climate Debate” with six documents selected, showing Import and Export in the toolbar." loading="lazy"><img class="shot-dark" src="../figures/en/dark/exchange-and-export-attributes-window.webp" alt="The Attributes window of “Climate Debate” with six documents selected, showing Import and Export in the toolbar." loading="lazy"><figcaption>The Attributes window of “Climate Debate” with six documents selected, showing Import and Export in the toolbar.</figcaption></figure>
+<p>The file takes the format required by the <strong class="ui">Import</strong> function in the window. If you need to update many values at once, export the table contents, edit the contents in a spreadsheet program, then re-import them (see <a href="importing.html#attribute-import">Importing attribute values from a spreadsheet</a> in <a href="importing.html">Chapter 4, Importing Material</a>).</p>
+</article>
+<nav class="pager"><a class="previous" href="analysis-and-indexing.html"><span>Previous</span>Analysis and Indexing</a><a class="next" href="undo.html"><span>Next</span>Undo and Redo</a></nav>
+<footer class="site-footer">© 2026 Ryan S. Cooper. All rights reserved.</footer>
+</main>
+<nav class="page-toc" aria-label="On this page"><p>On this page</p><ul>
+<li class="level-2"><a href="#exchange-overview">Choosing a format</a></li>
+<li class="level-3"><a href="#exchange-terms">Key terms</a></li>
+<li class="level-2"><a href="#exchange-sheet">The exchange dialog</a></li>
+<li class="level-2"><a href="#archives">LemmaLoom archives</a></li>
+<li class="level-3"><a href="#archive-contents">What an archive contains</a></li>
+<li class="level-3"><a href="#exporting-project">Exporting a project</a></li>
+<li class="level-3"><a href="#exporting-set">Exporting a set</a></li>
+<li class="level-3"><a href="#exporting-documents">Exporting documents</a></li>
+<li class="level-3"><a href="#importing-archive">Importing an archive</a></li>
+<li class="level-3"><a href="#moving-a-project">Moving a project to another Mac</a></li>
+<li class="level-3"><a href="#archive-matching">How an archive joins an existing project</a></li>
+<li class="level-3"><a href="#archive-file">The archive file</a></li>
+<li class="level-2"><a href="#refi-qda">REFI-QDA projects</a></li>
+<li class="level-3"><a href="#refi-export">Exporting a REFI-QDA project</a></li>
+<li class="level-3"><a href="#refi-import">Importing a REFI-QDA project</a></li>
+<li class="level-2"><a href="#refi-codebook">REFI-QDA codebooks</a></li>
+<li class="level-3"><a href="#codebook-export">Exporting a codebook</a></li>
+<li class="level-3"><a href="#codebook-import">Importing a codebook</a></li>
+<li class="level-2"><a href="#tables-and-charts">Exporting tables and charts</a></li>
+<li class="level-3"><a href="#export-button">The export button</a></li>
+<li class="level-3"><a href="#csv-files">CSV files</a></li>
+<li class="level-3"><a href="#png-and-pdf">PNG and PDF pictures</a></li>
+<li class="level-3"><a href="#query-exports">Query results</a></li>
+<li class="level-3"><a href="#export-locations">Where exports are available</a></li>
+<li class="level-3"><a href="#codebook-csv">The codebook as CSV</a></li>
+<li class="level-3"><a href="#links-csv">Links as CSV</a></li>
+<li class="level-3"><a href="#segments-csv">Coded segments and memos</a></li>
+<li class="level-3"><a href="#attributes-csv">Attribute values</a></li>
+</ul></nav>
+</div>
+<script src="../assets/guide.js" defer></script>
+</body>
+</html>

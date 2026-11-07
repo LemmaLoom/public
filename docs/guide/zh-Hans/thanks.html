@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>感谢 · LemmaLoom 用户指南</title>
+<link rel="stylesheet" href="../assets/guide.css">
+<link rel="icon" type="image/png" href="../assets/logo.png">
+<script>var r=document.documentElement;r.setAttribute('data-theme','light');try{if(localStorage.getItem('guide-theme')==='dark'){r.setAttribute('data-theme','dark')}}catch(e){}</script>
+</head>
+<body>
+<header class="topbar">
+<button class="menu-toggle" aria-label="目录" aria-expanded="false">☰</button>
+<a class="brand" href="index.html"><span class="wordmark"><span class="lemma">Lemma</span>Loom</span><span class="guide-name">用户指南</span></a>
+<div class="search"><input type="search" id="search" placeholder="搜索" aria-label="搜索" autocomplete="off" data-empty="无结果"><div class="results" id="results" hidden></div></div>
+<nav class="languages" aria-label="Language"><a href="../en/thanks.html" lang="en">English</a><a href="../de/thanks.html" lang="de">Deutsch</a><a href="../zh-Hans/thanks.html" lang="zh-Hans" aria-current="true">简体中文</a></nav>
+<button class="theme-toggle" data-light="浅色" data-dark="深色" aria-label="外观"></button>
+<a class="pdf-link" href="https://github.com/LemmaLoom/public/raw/main/pdf/lemmaloom-guide-zh-Hans.pdf">PDF</a>
+</header>
+<div class="layout">
+<nav class="sidebar" aria-label="目录"><ol>
+<li class="unnumbered"><a href="quick-start.html">快速入门</a></li>
+<li><a href="introduction.html">简介</a></li>
+<li><a href="getting-started.html">开始使用</a></li>
+<li><a href="projects-and-documents.html">项目与文档</a></li>
+<li><a href="importing.html">导入资料</a></li>
+<li><a href="reading-and-editing.html">阅读与编辑</a></li>
+<li><a href="lenses.html">透镜</a></li>
+<li><a href="coding.html">编码</a></li>
+<li><a href="sets-tags-attributes.html">文档集、分组、标签和属性</a></li>
+<li><a href="translations.html">译文与分屏浏览</a></li>
+<li><a href="text-inspector.html">文本检查器</a></li>
+<li><a href="grammar-inspector.html">语法检查器</a></li>
+<li><a href="word-sketch.html">词汇速写</a></li>
+<li><a href="coding-analysis.html">编码分析</a></li>
+<li><a href="sketch-space.html">速写空间</a></li>
+<li><a href="queries-building.html">构建查询</a></li>
+<li><a href="queries-results.html">查询结果与统计</a></li>
+<li><a href="queries-patterns.html">查询模式与发现</a></li>
+<li><a href="queries-using-results.html">使用查询结果</a></li>
+<li><a href="dictionaries.html">词典</a></li>
+<li><a href="custom-analyzers.html">自定义分析器</a></li>
+<li><a href="analysis-and-indexing.html">分析与索引</a></li>
+<li><a href="exchange-and-export.html">交换与导出</a></li>
+<li><a href="undo.html">撤销与重做</a></li>
+<li><a href="settings.html">设置与外观</a></li>
+<li><a href="keyboard-shortcuts.html">键盘快捷键</a></li>
+<li><a href="help-and-support.html">帮助与支持</a></li>
+<li><a href="statistics-reference.html">统计量一览</a></li>
+<li class="unnumbered"><a href="glossary.html">术语表</a></li>
+<li class="current unnumbered"><a href="thanks.html">感谢</a></li>
+</ol></nav>
+<main class="content">
+<article>
+<h1 id="thanks">感谢</h1>
+<h2 id="acknowledgments">致谢<a class="anchor" href="#acknowledgments" aria-hidden="true">#</a></h2>
+<p>LemmaLoom 由 Ryan S. Cooper 设计和开发，特别感谢 Mary Lynne Gasaway Hill, PhD, FRSA。</p>
+<p>LemmaLoom 还包含他人制作并以开放许可证发布的软件、模型、语言数据和一套字体。这里所说的<em>模型</em>，是从大量录音样例或文本样例中学到的一大组数值。LemmaLoom 用这些模型转写语音、区分说话人和分析语法。</p>
+<p>下列条目与 <strong class="ui">LemmaLoom ▸ 关于 LemmaLoom</strong> 中<strong class="ui">许可证</strong>列表的条目相同，只是按类别分了组。在那里点按某个条目，即可阅读它的许可证全文；有的条目附有不止一份许可证（见<a href="help-and-support.html#licenses">许可证</a>）。在那份列表中，Whisper 模型及其分词器文件归在 WhisperKit 条目下，pyannote 模型归在 FluidAudio 条目下，TypeScript、DOMPurify 和 marked 归在 Monaco Editor 条目下。</p>
+<h3 id="software">软件<a class="anchor" href="#software" aria-hidden="true">#</a></h3>
+<div class="table-wrap"><table>
+<thead><tr><th>名称</th><th>许可证</th><th>版权所有者</th></tr></thead>
+<tbody>
+<tr><td>Factory (FactoryKit)</td><td>MIT 许可证</td><td>Michael Long</td></tr>
+<tr><td>GRDB.swift</td><td>MIT 许可证</td><td>Gwendal Roué</td></tr>
+<tr><td>WhisperKit</td><td>MIT 许可证</td><td>argmax, inc.</td></tr>
+<tr><td>swift-transformers（随 WhisperKit 提供）</td><td>Apache 许可证 2.0</td><td>Hugging Face</td></tr>
+<tr><td>FluidAudio</td><td>Apache 许可证 2.0</td><td>Fluid Inference</td></tr>
+<tr><td>fastcluster（随 FluidAudio 提供）</td><td>二条款 BSD 许可证</td><td>Daniel Müllner 和 Google Inc.</td></tr>
+<tr><td>VBx（随 FluidAudio 提供）</td><td>Apache 许可证 2.0</td><td>BUT Speech@FIT</td></tr>
+<tr><td>Monaco Editor</td><td>MIT 许可证</td><td>Microsoft Corporation</td></tr>
+<tr><td>TypeScript（随 Monaco Editor 提供）</td><td>Apache 许可证 2.0</td><td>Microsoft Corporation</td></tr>
+<tr><td>DOMPurify（随 Monaco Editor 提供）</td><td>Apache 许可证 2.0 或 Mozilla 公共许可证 2.0</td><td>Cure53</td></tr>
+<tr><td>marked（随 Monaco Editor 提供）</td><td>MIT 许可证</td><td>MarkedJS 和 Christopher Jeffrey</td></tr>
+<tr><td>Mozilla Readability</td><td>Apache 许可证 2.0</td><td>Arc90 Inc.</td></tr>
+<tr><td>PCRE2</td><td>三条款 BSD 许可证</td><td>University of Cambridge</td></tr>
+</tbody></table></div>
+<h3 id="language-data">模型与语言数据<a class="anchor" href="#language-data" aria-hidden="true">#</a></h3>
+<div class="table-wrap"><table>
+<thead><tr><th>名称</th><th>许可证</th><th>版权所有者或来源</th></tr></thead>
+<tbody>
+<tr><td>Whisper large-v3 和 large-v3-turbo</td><td>MIT 许可证</td><td>OpenAI</td></tr>
+<tr><td>经 Argmax 适配的 Whisper 模型</td><td>MIT 许可证</td><td>argmax, inc.</td></tr>
+<tr><td>Whisper 分词器文件</td><td>Apache 许可证 2.0</td><td>Hugging Face 上的 openai/whisper-large-v3 仓库</td></tr>
+<tr><td>经 Fluid Inference 适配的 pyannote speaker-diarization-community-1</td><td>知识共享署名 4.0</td><td>pyannote、WeSpeaker 和 BUT Speech@FIT</td></tr>
+<tr><td>spaCy en_core_web_md</td><td>MIT 许可证</td><td>ExplosionAI GmbH</td></tr>
+<tr><td>spaCy de_core_news_md</td><td>MIT 许可证</td><td>ExplosionAI GmbH</td></tr>
+<tr><td>spaCy zh_core_web_md</td><td>MIT 许可证</td><td>ExplosionAI GmbH</td></tr>
+<tr><td>spacy-pkuseg</td><td>MIT 许可证</td><td>ExplosionAI GmbH 和 pkuseg 的作者</td></tr>
+<tr><td>WordNet 3.0</td><td>WordNet 3.0 许可证</td><td>普林斯顿大学</td></tr>
+<tr><td>Berkeley Neural Parser：benepar_en3、benepar_de2 和 benepar_zh2</td><td>MIT 许可证</td><td>Nikita Kitaev、Victor Huang 和 Mitchell Stern</td></tr>
+<tr><td>T5 (T5-small)</td><td>Apache 许可证 2.0</td><td>Google Research</td></tr>
+<tr><td>XLM-RoBERTa</td><td>MIT 许可证</td><td>Facebook, Inc. 及其关联公司</td></tr>
+<tr><td>Chinese ELECTRA (ELECTRA-180G-large)</td><td>Apache 许可证 2.0</td><td>哈工大讯飞联合实验室</td></tr>
+<tr><td>LemmInflect 0.2.3</td><td>MIT 许可证</td><td>Brad Jascob</td></tr>
+</tbody></table></div>
+<h3 id="typeface">字体<a class="anchor" href="#typeface" aria-hidden="true">#</a></h3>
+<p>LemmaLoom 的界面采用 Ubuntu 字体系列。这套字体的版权归 Canonical Ltd. 所有，由 Canonical 以 Ubuntu 字体许可证 1.0 版发布。</p>
+<h2 id="example-project">示例项目<a class="anchor" href="#example-project" aria-hidden="true">#</a></h2>
+<p>本指南大多数示例和插图所用的“气候辩论”项目是虚构的。如与真实人物、地点或出版物雷同，纯属巧合。</p>
+<p>感谢你使用 LemmaLoom！</p>
+</article>
+<nav class="pager"><a class="previous" href="glossary.html"><span>上一章</span>术语表</a></nav>
+<footer class="site-footer">© 2026 Ryan S. Cooper. 保留所有权利。<br>本版本借助人工智能根据英文原版翻译而成，译文可能存在错误或不准确之处。如有疑问，请以英文版为准。</footer>
+</main>
+<nav class="page-toc" aria-label="本页内容"><p>本页内容</p><ul>
+<li class="level-2"><a href="#acknowledgments">致谢</a></li>
+<li class="level-3"><a href="#software">软件</a></li>
+<li class="level-3"><a href="#language-data">模型与语言数据</a></li>
+<li class="level-3"><a href="#typeface">字体</a></li>
+<li class="level-2"><a href="#example-project">示例项目</a></li>
+</ul></nav>
+</div>
+<script src="../assets/guide.js" defer></script>
+</body>
+</html>

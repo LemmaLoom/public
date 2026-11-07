@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Austausch und Export · LemmaLoom Benutzerhandbuch</title>
+<link rel="stylesheet" href="../assets/guide.css">
+<link rel="icon" type="image/png" href="../assets/logo.png">
+<script>var r=document.documentElement;r.setAttribute('data-theme','light');try{if(localStorage.getItem('guide-theme')==='dark'){r.setAttribute('data-theme','dark')}}catch(e){}</script>
+</head>
+<body>
+<header class="topbar">
+<button class="menu-toggle" aria-label="Inhalt" aria-expanded="false">☰</button>
+<a class="brand" href="index.html"><span class="wordmark"><span class="lemma">Lemma</span>Loom</span><span class="guide-name">Benutzerhandbuch</span></a>
+<div class="search"><input type="search" id="search" placeholder="Suchen" aria-label="Suchen" autocomplete="off" data-empty="Keine Treffer"><div class="results" id="results" hidden></div></div>
+<nav class="languages" aria-label="Language"><a href="../en/exchange-and-export.html" lang="en">English</a><a href="../de/exchange-and-export.html" lang="de" aria-current="true">Deutsch</a><a href="../zh-Hans/exchange-and-export.html" lang="zh-Hans">简体中文</a></nav>
+<button class="theme-toggle" data-light="Hell" data-dark="Dunkel" aria-label="Erscheinungsbild"></button>
+<a class="pdf-link" href="https://github.com/LemmaLoom/public/raw/main/pdf/lemmaloom-guide-de.pdf">PDF</a>
+</header>
+<div class="layout">
+<nav class="sidebar" aria-label="Inhalt"><ol>
+<li class="unnumbered"><a href="quick-start.html">Schnellstart</a></li>
+<li><a href="introduction.html">Einführung</a></li>
+<li><a href="getting-started.html">Erste Schritte</a></li>
+<li><a href="projects-and-documents.html">Projekte und Dokumente</a></li>
+<li><a href="importing.html">Material importieren</a></li>
+<li><a href="reading-and-editing.html">Lesen und Bearbeiten</a></li>
+<li><a href="lenses.html">Lenses</a></li>
+<li><a href="coding.html">Kodieren</a></li>
+<li><a href="sets-tags-attributes.html">Sets, Gruppen, Tags und Attribute</a></li>
+<li><a href="translations.html">Übersetzungen und geteilte Ansicht</a></li>
+<li><a href="text-inspector.html">Der Text-Inspektor</a></li>
+<li><a href="grammar-inspector.html">Der Grammatik-Inspektor</a></li>
+<li><a href="word-sketch.html">Wortskizze</a></li>
+<li><a href="coding-analysis.html">Codes auswerten</a></li>
+<li><a href="sketch-space.html">Skizzenraum</a></li>
+<li><a href="queries-building.html">Eine Abfrage erstellen</a></li>
+<li><a href="queries-results.html">Abfrageergebnisse und Statistik</a></li>
+<li><a href="queries-patterns.html">Abfragemuster und Erkundung</a></li>
+<li><a href="queries-using-results.html">Abfrageergebnisse nutzen</a></li>
+<li><a href="dictionaries.html">Wörterbücher</a></li>
+<li><a href="custom-analyzers.html">Eigene Analysatoren</a></li>
+<li><a href="analysis-and-indexing.html">Analyse und Indizierung</a></li>
+<li class="current"><a href="exchange-and-export.html">Austausch und Export</a></li>
+<li><a href="undo.html">Widerrufen und Wiederholen</a></li>
+<li><a href="settings.html">Einstellungen und Darstellung</a></li>
+<li><a href="keyboard-shortcuts.html">Tastaturkurzbefehle</a></li>
+<li><a href="help-and-support.html">Hilfe und Support</a></li>
+<li><a href="statistics-reference.html">Statistik im Überblick</a></li>
+<li class="unnumbered"><a href="glossary.html">Glossar</a></li>
+<li class="unnumbered"><a href="thanks.html">Vielen Dank</a></li>
+</ol></nav>
+<main class="content">
+<article>
+<h1 id="exchange-and-export">Austausch und Export</h1>
+<p>Ihre Projekte liegen in der Bibliothek von LemmaLoom auf Ihrem Mac (siehe <a href="getting-started.html#library">Wo die Arbeit gespeichert wird</a> in <a href="getting-started.html">Kapitel 2, Erste Schritte</a>). Mit einem Export bringen Sie Arbeit aus der Bibliothek heraus, mit einem Import bringen Sie Material in sie hinein. Welcher Dateityp der richtige ist, hängt davon ab, wer die exportierte Datei als Nächstes öffnet.</p>
+<p>Alle Beispiele verwenden das Projekt „Klimadebatte“. Es enthält elf erfundene Meinungstexte von Klimaaktivisten und Klimaskeptikern, etwa „Uns läuft die Zeit davon“ und „Die Modelle liegen daneben“, dazu das PDF-Dokument „Hitzebericht 2024“, die Webseite „Streit um die CO2-Steuer“ und die Aufnahme „Radiodebatte“. „Uns läuft die Zeit davon (Englisch)“ ist die Übersetzung von „Uns läuft die Zeit davon“; insgesamt sind es damit 15 Dokumente. Um die Beispiele nachzuvollziehen, wählen Sie <strong class="ui">Ablage ▸ Importieren ▸ Beispielprojekt</strong>. LemmaLoom legt dann in Ihrer Bibliothek automatisch ein neues Projekt „Klimadebatte“ an, bereits indiziert und in der Sprache der Oberfläche.</p>
+<h2 id="exchange-overview">Ein Format wählen<a class="anchor" href="#exchange-overview" aria-hidden="true">#</a></h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Sie möchten</th><th>Datei</th><th>Befehl</th></tr></thead>
+<tbody>
+<tr><td>Ein Projekt sichern oder auf einen anderen Mac übertragen</td><td>LemmaLoom-Archiv (<code>.llz</code>)</td><td><strong class="ui">Ablage ▸ Exportieren ▸ LemmaLoom-Projekt</strong></td></tr>
+<tr><td>Einer Kollegin oder einem Kollegen ein Set oder einige Dokumente mit Ihrer Kodierung geben</td><td>LemmaLoom-Archiv (<code>.llz</code>)</td><td><strong class="ui">Ablage ▸ Exportieren ▸ LemmaLoom-Set</strong> oder <strong class="ui">LemmaLoom-Dokument</strong></td></tr>
+<tr><td>Ein Archiv einlesen</td><td>LemmaLoom-Archiv (<code>.llz</code>)</td><td><strong class="ui">Ablage ▸ Importieren ▸ LemmaLoom-Archiv</strong></td></tr>
+<tr><td>Ein Projekt an Software weitergeben, die den REFI-QDA-Standard unterstützt</td><td>REFI-QDA-Projekt (<code>.qdpx</code>)</td><td><strong class="ui">Ablage ▸ Exportieren ▸ REFI-QDA-Projekt</strong></td></tr>
+<tr><td>Ein Projekt öffnen, das mit solcher Software erstellt wurde</td><td>REFI-QDA-Projekt (<code>.qdpx</code>)</td><td><strong class="ui">Ablage ▸ Importieren ▸ REFI-QDA-Projekt</strong></td></tr>
+<tr><td>Ein Codesystem ohne Dokumente weitergeben</td><td>REFI-QDA-Codebuch (<code>.qdc</code>)</td><td><strong class="ui">Ablage ▸ Exportieren ▸ REFI-QDA-Codebuch</strong> und <strong class="ui">Ablage ▸ Importieren ▸ REFI-QDA-Codebuch</strong></td></tr>
+<tr><td>Mit Zahlen in einem Tabellen- oder Statistikprogramm arbeiten</td><td>CSV</td><td>Die Exportschaltfläche der Tabelle</td></tr>
+<tr><td>Ein Diagramm in einen Aufsatz oder auf eine Folie bringen</td><td>PNG oder PDF</td><td>Die Exportschaltfläche des Diagramms</td></tr>
+<tr><td>Ein Abfrageergebnis zusammen mit einem Protokoll seiner Entstehung aufbewahren</td><td>Markdown</td><td>Die Exportschaltfläche des Abfrageergebnisses</td></tr>
+</tbody></table></div>
+<p>Ein LemmaLoom-Archiv wählen Sie in der Regel, wenn das Material in LemmaLoom bleibt, etwa für Ihre eigenen Sicherungen, für den Umzug auf einen anderen Mac oder für die Weitergabe von LemmaLoom-Dokumenten an Kolleginnen und Kollegen, die ebenfalls mit LemmaLoom arbeiten. Ein Archiv bewahrt die Indizierung, die gesicherten Abfragen und die Verbindung zwischen einer Übersetzung und ihrem Original, sodass das Material gleich nach dem Import bereitsteht. Wenn Ihre Arbeit in LemmaLoom hinein- oder aus LemmaLoom hinausgeht (also von anderswo kommt oder anderswohin soll), verwenden Sie stattdessen ein REFI-QDA-Projekt. Es bewahrt weder die Indizierung von LemmaLoom noch die Funktionen, die darauf aufbauen.</p>
+<p><strong class="ui">Ablage ▸ Importieren ▸ REFI-QDA-Codebuch</strong> und alle Befehle unter <strong class="ui">Ablage ▸ Exportieren</strong> beziehen sich auf das aktive Projekt (in der Seitenleiste fett dargestellt). Solange Sie kein Projekt ausgewählt haben, sind diese Befehle alle deaktiviert.</p>
+<figure class="shot" id="exchange-and-export-export-menu"><img class="shot-light" src="../figures/de/light/exchange-and-export-export-menu.webp" alt="Das Untermenü „Exportieren“ des Menüs „Ablage“." loading="lazy"><img class="shot-dark" src="../figures/de/dark/exchange-and-export-export-menu.webp" alt="Das Untermenü „Exportieren“ des Menüs „Ablage“." loading="lazy"><figcaption>Das Untermenü „Exportieren“ des Menüs „Ablage“.</figcaption></figure>
+<p>Sie können <code>.llz</code>-, <code>.qdpx</code>- und <code>.qdc</code>-Dateien auch importieren, indem Sie im Finder darauf doppelklicken. LemmaLoom wird dabei geöffnet, falls es noch nicht läuft. Ein Projektarchiv und ein REFI-QDA-Projekt werden jeweils zu einem neuen Projekt. Ein Codebuch, ein Set-Archiv oder ein Dokumentarchiv wird dagegen in das aktive Projekt importiert; achten Sie deshalb darauf, dass das richtige Projekt aktiv ist. Öffnet auf Ihrem Mac ein anderes Programm <code>.qdpx</code>- oder <code>.qdc</code>-Dateien, klicken Sie stattdessen mit der rechten Maustaste auf die Datei und wählen Sie <strong class="ui">Öffnen mit ▸ LemmaLoom</strong>.</p>
+<h3 id="exchange-terms">Wichtige Begriffe<a class="anchor" href="#exchange-terms" aria-hidden="true">#</a></h3>
+<ul>
+<li>Ein <em>LemmaLoom-Archiv</em> ist eine Exportdatei mit einem vollständigen Projekt, einem Set oder einer Auswahl von Dokumenten samt allen zugehörigen Daten aus LemmaLoom, etwa der Indizierung und den Aufnahmen.</li>
+<li><em>REFI-QDA</em> ist ein offenes Austauschformat, mit dem sich Projekte von einem Programm für qualitative Analyse in ein anderes übertragen lassen. Das Format umfasst Dokumente, Codes, Kodierungen, Memos, Verknüpfungen, Variablen (in LemmaLoom die Attribute) und Sets innerhalb von Projekten.</li>
+<li>Der <em>Umfang</em> ist das, woraus ein Archiv erstellt wurde (ein ganzes Projekt, ein Set oder von Ihnen ausgewählte Dokumente). Er bestimmt, was archiviert wird und wie das Archiv importiert wird.</li>
+<li>Archive von Sets oder ausgewählten Dokumenten werden über die Namen den Gruppen, Codes und Attributen zugeordnet, die es im aufnehmenden Projekt schon gibt. Diese <em>Zuordnung</em> geschieht beim Import.</li>
+</ul>
+<h2 id="exchange-sheet">Der Austauschdialog<a class="anchor" href="#exchange-sheet" aria-hidden="true">#</a></h2>
+<p>Import und Export von REFI-QDA-Dateien und LemmaLoom-Archiven laufen in einem Dialog, der oben am Hauptfenster angeheftet ist. Sobald Sie eine Datei auswählen oder im Finder auf eine Datei doppelklicken, erscheint der Dialog sofort.</p>
+<figure class="shot" id="exchange-and-export-progress-sheet"><img class="shot-light" src="../figures/de/light/exchange-and-export-progress-sheet.webp" alt="Der Austauschdialog, während die „Klimadebatte“ als Archiv exportiert wird." loading="lazy"><img class="shot-dark" src="../figures/de/dark/exchange-and-export-progress-sheet.webp" alt="Der Austauschdialog, während die „Klimadebatte“ als Archiv exportiert wird." loading="lazy"><figcaption>Der Austauschdialog, während die „Klimadebatte“ als Archiv exportiert wird.</figcaption></figure>
+<p>Der Dialog zeigt einen Titel wie <strong class="ui">LemmaLoom-Archiv wird exportiert</strong>, den Namen der Datei, die exportiert oder importiert wird, und einen Ring, der sich mit dem Fortschritt nach und nach füllt. Beim Export von REFI-QDA-Projekten und Codebüchern sowie beim Import von Codebüchern dreht sich anstelle des Rings eine Aktivitätsanzeige. Wie lange ein Import oder Export dauert, hängt vor allem von der Größe des Projekts und der Aufnahmen ab.</p>
+<p>Es kann immer nur ein Austausch zur selben Zeit laufen. Bis er abgeschlossen ist, sind alle Befehle zum Importieren und Exportieren von REFI-QDA-Dateien und Archiven deaktiviert, im Menü <strong class="ui">Ablage</strong> ebenso wie in der Seitenleiste. Das Fenster <strong class="ui">Aktivität</strong> führt den laufenden Austausch in der Kategorie <strong class="ui">Import</strong> oder <strong class="ui">Export</strong> auf. Eine ausführliche Beschreibung finden Sie unter <a href="importing.html#activity-window">Das Fenster „Aktivität“</a> in <a href="importing.html">Kapitel 4, Material importieren</a>.</p>
+<p>Ist der Export abgeschlossen, zeigt der Dialog einen neuen Titel, etwa <strong class="ui">LemmaLoom-Archiv exportiert</strong>. Bis der Austausch abgeschlossen ist, bleibt <strong class="ui">Fertig</strong> deaktiviert; halten Sie den Mauszeiger darauf, erscheint <strong class="ui">Läuft</strong>. Klicken Sie auf <strong class="ui">Fertig</strong>, um den Dialog zu schließen.</p>
+<p>Ist der Import abgeschlossen, schließt sich der Dialog von selbst. Ein Projekt aus einem Archiv oder einer REFI-QDA-Datei wird zum aktiven Projekt; neu importierte Dokumente und Codes erscheinen in dem Projekt, das sie aufgenommen hat.</p>
+<p>Geht beim Import oder Export etwas schief, bleibt der Dialog geöffnet. Er zeigt dann im Titel eine Fehlermeldung (<strong class="ui">Import fehlgeschlagen</strong> oder <strong class="ui">Export fehlgeschlagen</strong>), gefolgt vom Namen der Datei und einem Grund. Mögliche Gründe sind:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Meldung</th><th>Bedeutung</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">Die Datei ist kein REFI-QDA-Projekt.</strong></td><td>Die <code>.qdpx</code>-Datei enthält keine Projektbeschreibung. Sie ist vielleicht beschädigt, oder es handelt sich um eine andere Art von Datei, die umbenannt wurde.</td></tr>
+<tr><td><strong class="ui">Die Datei ist kein REFI-QDA-Codebuch.</strong></td><td>Die <code>.qdc</code>-Datei ist kein Codebuch.</td></tr>
+<tr><td><strong class="ui">Die Datei ist kein LemmaLoom-Archiv.</strong></td><td>Die <code>.llz</code>-Datei wurde nicht von LemmaLoom geschrieben, oder sie ist beschädigt.</td></tr>
+<tr><td><strong class="ui">Dieses Archiv wurde mit einer neueren Version von LemmaLoom erstellt.</strong></td><td>Aktualisieren Sie LemmaLoom und importieren Sie das Archiv dann erneut.</td></tr>
+<tr><td><strong class="ui">Öffnen Sie ein Projekt, in das importiert werden soll.</strong></td><td>Die Datei enthält ein Codebuch, ein Set oder Dokumente, die in ein vorhandenes Projekt gehören, und es war kein Projekt aktiv. Klicken Sie in der Seitenleiste auf ein Projekt und versuchen Sie es erneut.</td></tr>
+<tr><td><strong class="ui">Die Datei ist kein gültiges Archiv.</strong> oder <strong class="ui">Das Archiv ist beschädigt.</strong></td><td>Jede <code>.qdpx</code>- und <code>.llz</code>-Datei ist eine ZIP-Datei, und diese hier ist unvollständig oder beschädigt. Kopieren Sie sie erneut von ihrer Quelle.</td></tr>
+<tr><td><strong class="ui">Das Archiv verwendet ein Format, das LemmaLoom nicht lesen kann.</strong></td><td>Die ZIP-Datei ist mit einem Passwort geschützt oder mit einem anderen Verfahren als dem üblichen Deflate komprimiert. Exportieren Sie sie im anderen Programm erneut, diesmal ohne Passwort.</td></tr>
+<tr><td><strong class="ui">Die Bibliothek ist nicht verfügbar.</strong></td><td>LemmaLoom konnte seine Bibliothek oder das Projekt nicht erreichen. Warten Sie, bis die Seitenleiste Ihre Projekte anzeigt, und versuchen Sie es dann erneut.</td></tr>
+</tbody></table></div>
+<figure class="shot" id="exchange-and-export-import-failed"><img class="shot-light" src="../figures/de/light/exchange-and-export-import-failed.webp" alt="Der Austauschdialog mit dem Titel Import fehlgeschlagen für die Datei „Letters to the Editor.llz“ und dem Grund Die Datei ist kein gültiges Archiv." loading="lazy"><img class="shot-dark" src="../figures/de/dark/exchange-and-export-import-failed.webp" alt="Der Austauschdialog mit dem Titel Import fehlgeschlagen für die Datei „Letters to the Editor.llz“ und dem Grund Die Datei ist kein gültiges Archiv." loading="lazy"><figcaption>Der Austauschdialog mit dem Titel Import fehlgeschlagen für die Datei „Letters to the Editor.llz“ und dem Grund Die Datei ist kein gültiges Archiv.</figcaption></figure>
+<p>Klicken Sie auf <strong class="ui">Fertig</strong>, um den Dialog zu schließen. Gelingt ein Export nicht, löscht LemmaLoom die unvollständige Datei. Wollten Sie eine vorhandene Datei ersetzen, ist auch diese Datei gefährdet.</p>
+<h2 id="archives">LemmaLoom-Archive<a class="anchor" href="#archives" aria-hidden="true">#</a></h2>
+<p>Archive brauchen Sie, wenn Sie Projekte vor dem Löschen sichern, ein Projekt auf einen anderen Rechner übertragen oder Teile davon an Kolleginnen und Kollegen weitergeben, die ebenfalls mit LemmaLoom arbeiten. Nur Archive bewahren die Indizierung von LemmaLoom und Ihre gesicherten Abfragen.</p>
+<h3 id="archive-contents">Was ein Archiv enthält<a class="anchor" href="#archive-contents" aria-hidden="true">#</a></h3>
+<p>Unabhängig vom Umfang enthält ein Archiv zu jedem Dokument:</p>
+<ul>
+<li>den Text des Dokuments in der bearbeiteten Fassung, bei Audio- und Videodokumenten außerdem das Transkript mit Sprechern und Zeiten sowie eine Kopie der Aufnahme;</li>
+<li>die Metadaten des Dokuments, also seine Eigenschaften, seine Farbe, seine Tags und seine Werte für die Attribute des Projekts;</li>
+<li>seine Indizierung mit Sätzen, Wörtern, Lemmata, Wortarten und Satzbäumen, zusammen mit den Ergebnissen der eingebauten und der eigenen Analysatoren (siehe <a href="analysis-and-indexing.html">Kapitel 21, Analyse und Indizierung</a>);</li>
+<li>seine Kodierungen, Lesezeichen und Memos;</li>
+<li>seine Übersetzungen, jeweils mit Text, Indizierung und Kodierungen.</li>
+</ul>
+<p>Alles Weitere hängt vom Umfang ab. Ein Code kann auf ein einzelnes Dokument oder Set beschränkt sein (siehe <a href="coding.html#code-scope">Wo ein Code verwendet werden kann</a> in <a href="coding.html">Kapitel 7, Kodieren</a>); solche Codes heißen im Folgenden <em>beschränkt</em>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Inhalt</th><th>Projekt</th><th>Set</th><th>Ausgewählte Dokumente</th></tr></thead>
+<tbody>
+<tr><td>Dokumente</td><td>Alle Dokumente des Projekts</td><td>Die Dokumente des Sets und ihre Übersetzungen</td><td>Die ausgewählten Dokumente und ihre Übersetzungen</td></tr>
+<tr><td>Codes</td><td>Alle Codes mit ihren Memos</td><td>Die Codes, die in den Kodierungen, Memos und Abfragen des Archivs vorkommen, die auf eines seiner Dokumente oder auf das Set beschränkten Codes und die übergeordneten Codes all dieser Codes, jeweils mit ihren Memos</td><td>Die Codes, die in den Kodierungen, Memos und Abfragen des Archivs vorkommen, die auf eines seiner Dokumente beschränkten Codes und die übergeordneten Codes all dieser Codes, jeweils mit ihren Memos</td></tr>
+<tr><td>Code-Sets</td><td>Alle</td><td>Keine</td><td>Keine</td></tr>
+<tr><td>Verknüpfungen</td><td>Alle</td><td>Verknüpfungen, deren beide Enden in Dokumenten des Archivs liegen</td><td>Wie bei einem Set</td></tr>
+<tr><td>Gruppen</td><td>Alle</td><td>Die Gruppen der Dokumente des Archivs und die Gruppen, die in den Bedingungen des Sets genannt sind</td><td>Die Gruppen der Dokumente des Archivs</td></tr>
+<tr><td>Sets</td><td>Alle Sets und intelligenten Sets</td><td>Das exportierte Set, bei einem intelligenten Set mit seinen Bedingungen</td><td>Keine</td></tr>
+<tr><td>Attribute</td><td>Alle</td><td>Alle außer denen, die an einem Code definiert sind, den das Archiv nicht enthält, mit den Werten der Dokumente, Kodierungen und Memos des Archivs</td><td>Wie bei einem Set</td></tr>
+<tr><td>Wörterbücher</td><td>Alle</td><td>Keine</td><td>Keine</td></tr>
+<tr><td>Gesicherte Abfragen</td><td>Die für das Projekt, seine Sets, seine Tags oder seine Dokumente gesicherten</td><td>Die für das Projekt, für das Set oder für eines seiner Dokumente gesicherten</td><td>Die für das Projekt oder für eines der Dokumente gesicherten</td></tr>
+<tr><td>Eigene Analysatoren</td><td>Die, deren Befunde bei den Dokumenten gespeichert sind, die, die eine enthaltene Abfrage verwendet, und die, die aus einer enthaltenen Abfrage erzeugt wurden</td><td>Wie bei einem Projekt</td><td>Wie bei einem Projekt</td></tr>
+<tr><td>Name, Farbe, Tags und Projektmemos des Projekts</td><td>Ja</td><td>Nein</td><td>Nein</td></tr>
+</tbody></table></div>
+<p>Abfragen, bei denen <strong class="ui">Verfügbar in</strong> auf <strong class="ui">Alle Projekte</strong> steht, gehören zu Ihrer Bibliothek und werden nur mit einer Kopie Ihrer gesamten Bibliothek übertragen (siehe <a href="queries-building.html#saving-queries">Abfragen sichern</a> in <a href="queries-building.html">Kapitel 15, Eine Abfrage erstellen</a>). Wie Abfragen und Analysatoren übertragen werden, erklärt <a href="queries-using-results.html#queries-in-archives">Abfragen in LemmaLoom-Archiven</a> in <a href="queries-using-results.html">Kapitel 18, Abfrageergebnisse nutzen</a> ausführlicher.</p>
+<h3 id="exporting-project">Ein Projekt exportieren<a class="anchor" href="#exporting-project" aria-hidden="true">#</a></h3>
+<ol>
+<li>Klicken Sie in der Seitenleiste auf das Projekt, zum Beispiel „Klimadebatte“.</li>
+<li>Wählen Sie <strong class="ui">Ablage ▸ Exportieren ▸ LemmaLoom-Projekt</strong>.</li>
+<li>Der Dialog zum Sichern schlägt den Namen des Projekts vor, <code>Klimadebatte</code>. Ändern Sie ihn, wenn Sie möchten, wählen Sie einen Ordner und klicken Sie auf <strong class="ui">Sichern</strong>.</li>
+<li>Wenn im Dialog <strong class="ui">LemmaLoom-Archiv exportiert</strong> steht, klicken Sie auf <strong class="ui">Fertig</strong>.</li>
+</ol>
+<p>Die Archivdatei heißt <code>Klimadebatte.llz</code>. Um das Projekt zu importieren und wiederherzustellen, folgen Sie den Schritten im Abschnitt <a href="#importing-archive">Ein Archiv importieren</a> weiter unten in diesem Kapitel.</p>
+<h3 id="exporting-set">Ein Set exportieren<a class="anchor" href="#exporting-set" aria-hidden="true">#</a></h3>
+<p>Ein Set-Archiv exportiert einen Teil eines Projekts mit den Codes, die darin verwendet werden. So enthält das Set „Aktivisten“ im Projekt „Klimadebatte“ die sechs Dokumente der Aktivisten.</p>
+<ol>
+<li>Klicken Sie im Abschnitt <strong class="ui">Sets</strong> der Seitenleiste auf das Set, zum Beispiel „Aktivisten“.</li>
+<li>Wählen Sie <strong class="ui">Ablage ▸ Exportieren ▸ LemmaLoom-Set</strong>, oder klicken Sie mit der rechten Maustaste auf das Set und wählen Sie <strong class="ui">Exportieren</strong>.</li>
+<li>Der Dialog zum Sichern schlägt den Namen des Sets vor. Wählen Sie einen Ordner und klicken Sie auf <strong class="ui">Sichern</strong>.</li>
+<li>Wenn im Dialog <strong class="ui">LemmaLoom-Archiv exportiert</strong> steht, klicken Sie auf <strong class="ui">Fertig</strong>.</li>
+</ol>
+<figure class="shot" id="exchange-and-export-set-menu"><img class="shot-light" src="../figures/de/light/exchange-and-export-set-menu.webp" alt="Das Kontextmenü des Sets „Aktivisten“ mit „Exportieren“." loading="lazy"><img class="shot-dark" src="../figures/de/dark/exchange-and-export-set-menu.webp" alt="Das Kontextmenü des Sets „Aktivisten“ mit „Exportieren“." loading="lazy"><figcaption>Das Kontextmenü des Sets „Aktivisten“ mit „Exportieren“.</figcaption></figure>
+<p><strong class="ui">Ablage ▸ Exportieren ▸ LemmaLoom-Set</strong> exportiert das Set, das in der Seitenleiste markiert ist, oder das Set, das im aktiven Tab geöffnet ist.</p>
+<p>Das Archiv enthält alle Dokumente des Sets samt ihren Übersetzungen. Für „Aktivisten“ erhalten Sie also sieben Dokumente: die sechs Texte der Aktivisten und „Uns läuft die Zeit davon (Englisch)“, die Übersetzung eines der Dokumente in diesem Set. Code-Sets, Wörterbücher und alle Codes außer den oben genannten enthält das Set-Archiv nicht. Braucht Ihre Kollegin oder Ihr Kollege Ihr vollständiges Codesystem, schicken Sie zusätzlich einen Codebuch-Export im REFI-QDA-Format (siehe <a href="#refi-codebook">REFI-QDA-Codebücher</a> weiter unten in diesem Kapitel).</p>
+<p>Ein intelligentes Set wird mit den Dokumenten exportiert, die zum Zeitpunkt des Exports seine Bedingungen erfüllen, und mit diesen Bedingungen selbst. In einem anderen Projekt wendet das intelligente Set seine Bedingungen auf alle Dokumente dieses Projekts an; es können dort also mehr Dokumente die Bedingungen erfüllen als beim Export. Aus der „Klimadebatte“ exportiert, kommt das intelligente Set „Große Reichweite“, das Dokumente sammelt, deren „Reichweite“ größer oder gleich 100.000 ist, mit seinen sechs Dokumenten an, dazu „Uns läuft die Zeit davon (Englisch)“, dessen Original zu diesen sechs Dokumenten gehört. Hat das Projekt einer Kollegin ein Attribut „Reichweite“, sammelt dieses intelligente Set auch ihre Dokumente mit einem Wert größer oder gleich 100.000.</p>
+<p>Um alle Dokumente mit einem bestimmten Tag weiterzugeben, klicken Sie zuerst im Abschnitt <strong class="ui">Tags</strong> auf das Tag, um zu sehen, welche Dokumente es tragen. Wählen Sie diese Dokumente dann im Abschnitt <strong class="ui">Dokumente</strong> aus und exportieren Sie sie wie im nächsten Abschnitt beschrieben.</p>
+<h3 id="exporting-documents">Dokumente exportieren<a class="anchor" href="#exporting-documents" aria-hidden="true">#</a></h3>
+<p>Exportieren Sie einzelne Dokumente, wenn Sie einer Kollegin oder einem Kollegen nur ein paar Texte für einen einmaligen Zweck geben möchten, etwa für eine zweite Lektüre von drei Texten der Skeptiker. Sollen die Dokumente als benannte Sammlung ankommen, exportieren Sie ein Set, denn dann bringt das Archiv das Set mit.</p>
+<ol>
+<li>Klicken Sie im Abschnitt <strong class="ui">Dokumente</strong> der Seitenleiste auf ein Dokument. Um mehrere zu exportieren, nehmen Sie die übrigen mit ⌘-Klick hinzu oder wählen Sie mit ⇧-Klick eine zusammenhängende Reihe aus.</li>
+<li>Wählen Sie <strong class="ui">Ablage ▸ Exportieren ▸ LemmaLoom-Dokumente</strong> (bei einem einzelnen Dokument <strong class="ui">LemmaLoom-Dokument</strong>), oder klicken Sie mit der rechten Maustaste auf eines der ausgewählten Dokumente und wählen Sie <strong class="ui">Exportieren</strong>.</li>
+<li>Der Dialog zum Sichern schlägt den Titel des Dokuments vor, bei mehreren Dokumenten den Namen des Projekts. Wählen Sie einen Ordner und klicken Sie auf <strong class="ui">Sichern</strong>.</li>
+<li>Wenn im Dialog <strong class="ui">LemmaLoom-Archiv exportiert</strong> steht, klicken Sie auf <strong class="ui">Fertig</strong>.</li>
+</ol>
+<figure class="shot" id="exchange-and-export-documents-menu"><img class="shot-light" src="../figures/de/light/exchange-and-export-documents-menu.webp" alt="Das Kontextmenü für drei ausgewählte Texte der Skeptiker mit „Exportieren“." loading="lazy"><img class="shot-dark" src="../figures/de/dark/exchange-and-export-documents-menu.webp" alt="Das Kontextmenü für drei ausgewählte Texte der Skeptiker mit „Exportieren“." loading="lazy"><figcaption>Das Kontextmenü für drei ausgewählte Texte der Skeptiker mit „Exportieren“.</figcaption></figure>
+<p>Ist in der Seitenleiste kein Dokument ausgewählt, exportiert <strong class="ui">Ablage ▸ Exportieren ▸ LemmaLoom-Dokument</strong> das Dokument im aktiven Tab.</p>
+<p>Wenn Sie ein Originaldokument exportieren, werden auch alle seine Übersetzungen exportiert. Mit „Uns läuft die Zeit davon“ wird also auch „Uns läuft die Zeit davon (Englisch)“ exportiert. Exportieren Sie eine Übersetzung allein, kommt sie als gewöhnliches Dokument mit ihrem Inhalt und ihren Kodierungen an.</p>
+<h3 id="importing-archive">Ein Archiv importieren<a class="anchor" href="#importing-archive" aria-hidden="true">#</a></h3>
+<p>Was beim Import eines Archivs geschieht, hängt von seinem Umfang ab:</p>
+<ul>
+<li>Ein <em>Projektarchiv</em> wird beim Import zu einem neuen Projekt mit den Eigenschaften des importierten Projekts, also seinem Namen, seiner Farbe und seinen Tags, ganz gleich, welches Projekt gerade aktiv ist.</li>
+<li>Ein <em>Set- oder Dokumentarchiv</em> wird in das gerade aktive Projekt importiert. Ist kein Projekt aktiv, schlägt der Import mit der Meldung <strong class="ui">Öffnen Sie ein Projekt, in das importiert werden soll.</strong> fehl. Haben Sie noch kein Projekt, legen Sie zuerst ein leeres an (siehe <a href="getting-started.html#creating-a-project">Ein Projekt anlegen</a> in <a href="getting-started.html">Kapitel 2, Erste Schritte</a>).</li>
+</ul>
+<p>So importieren Sie ein Archiv:</p>
+<ol>
+<li>Bei einem Set- oder Dokumentarchiv klicken Sie in der Seitenleiste auf das Projekt, das es aufnehmen soll. Bei einem Projektarchiv überspringen Sie diesen Schritt.</li>
+<li>Wählen Sie <strong class="ui">Ablage ▸ Importieren ▸ LemmaLoom-Archiv</strong>.</li>
+<li>Wählen Sie die <code>.llz</code>-Datei aus und klicken Sie auf <strong class="ui">Öffnen</strong>.</li>
+</ol>
+<p>Ein Doppelklick auf die <code>.llz</code>-Datei im Finder importiert das Archiv auf dieselbe Weise. Importieren Sie dasselbe Projektarchiv ein zweites Mal, entstehen zwei Projekte mit genau demselben Namen; benennen Sie in diesem Fall eines davon um (siehe <a href="projects-and-documents.html#project-menu">Das Kontextmenü eines Projekts</a> in <a href="projects-and-documents.html">Kapitel 3, Projekte und Dokumente</a>).</p>
+<p>Die importierten Dokumente sind sofort indiziert und stehen für Lenses, den Grammatik-Inspektor und Abfragen bereit. Anschließend prüft LemmaLoom die Bibliothek im Hintergrund und indiziert nur, was noch fehlt (siehe <a href="analysis-and-indexing.html">Kapitel 21, Analyse und Indizierung</a>). Auch die Aufnahmen werden in die Bibliothek kopiert.</p>
+<p>Um alles wieder zu entfernen, was ein Archivimport hinzugefügt hat, löschen Sie das neu angelegte Projekt. Bei einem Set- oder Dokumentarchiv löschen Sie die importierten Dokumente und das Set (siehe <a href="projects-and-documents.html#deleting-documents">Dokumente löschen</a> in <a href="projects-and-documents.html">Kapitel 3, Projekte und Dokumente</a>) und danach die Codes, Gruppen und Attribute, die der Import hinzugefügt hat, etwa „Anpassung“ im Beispiel unten.</p>
+<h3 id="moving-a-project">Ein Projekt auf einen anderen Mac übertragen<a class="anchor" href="#moving-a-project" aria-hidden="true">#</a></h3>
+<ol>
+<li>Klicken Sie auf dem ersten Mac in der Seitenleiste auf das Projekt und wählen Sie <strong class="ui">Ablage ▸ Exportieren ▸ LemmaLoom-Projekt</strong>.</li>
+<li>Kopieren Sie die <code>.llz</code>-Datei auf den anderen Mac, zum Beispiel per AirDrop oder auf einem externen Laufwerk.</li>
+<li>Doppelklicken Sie auf dem anderen Mac im Finder auf die Datei, oder wählen Sie <strong class="ui">Ablage ▸ Importieren ▸ LemmaLoom-Archiv</strong>, wählen Sie die Datei aus und klicken Sie auf <strong class="ui">Öffnen</strong>.</li>
+<li>Öffnen Sie einige Dokumente und prüfen Sie, ob Kodierungen, Memos und Aufnahmen vorhanden sind.</li>
+<li>Wenn Sie das Projekt auf dem ersten Mac nicht mehr brauchen, löschen Sie es dort.</li>
+</ol>
+<p>Abfragen, bei denen <strong class="ui">Verfügbar in</strong> auf <strong class="ui">Alle Projekte</strong> steht, werden in der Bibliothek gespeichert. Wenn Sie die gesamte Bibliothek kopieren, kopieren Sie alle Ihre Projekte und die darin enthaltenen Abfragen auf einmal; eine Anleitung dazu finden Sie unter <a href="getting-started.html#library">Wo die Arbeit gespeichert wird</a> in <a href="getting-started.html">Kapitel 2, Erste Schritte</a>.</p>
+<h3 id="archive-matching">Wie ein Archiv in ein vorhandenes Projekt eingefügt wird<a class="anchor" href="#archive-matching" aria-hidden="true">#</a></h3>
+<p>Wird ein Set- oder Dokumentarchiv in ein vorhandenes Projekt importiert, werden seine Dokumente hinzugefügt und überall dort mit dem Vorhandenen verbunden, wo die Namen übereinstimmen.</p>
+<ul>
+<li>Dokumente werden hinzugefügt, auch wenn das importierende Projekt bereits Dokumente mit denselben Titeln enthält; importieren Sie ein Archiv erneut, sind die Dokumente danach also doppelt vorhanden.</li>
+<li>Gruppen werden über ihre Namen zugeordnet; Unterschiede in Groß- und Kleinschreibung und Leerzeichen vor oder nach dem Namen werden dabei ignoriert. Die Dokumente einer zugeordneten Gruppe kommen in die Gruppe des Zielprojekts.</li>
+<li>Codes werden einander zugeordnet, wenn sie denselben Namen haben und unter demselben übergeordneten Code stehen, ohne Rücksicht auf Groß- und Kleinschreibung und auf Leerzeichen am Rand. Kodierungen, Memos und Abfragen, die sich auf den Code beziehen, verweisen danach automatisch auf den Code des importierenden Projekts. Beschreibung und Farbe des Codes bleiben so, wie sie im Zielprojekt sind; die importierten Memos zu dem Code kommen zu seinen Memos hinzu. Attribute an dem Code werden über gleiche Namen zugeordnet. Ein beschränkter Code wird immer hinzugefügt; gehört sein Dokument oder Set nicht zum Archiv, kommt er als Code des ganzen Projekts an.</li>
+<li>Attribute werden über ihren Namen zugeordnet. Unterscheiden sich die Typen, gilt der Attributtyp des Zielprojekts. Die Werte werden in diesen Typ umgewandelt; Werte, die sich nicht umwandeln lassen, entfallen.</li>
+<li>Sets werden immer hinzugefügt, auch wenn es im Projekt bereits ein Set mit demselben Namen gibt; der Name ist dann doppelt vorhanden. Die Bedingungen eines importierten intelligenten Sets werden entsprechend der Umwandlung der Werte angepasst.</li>
+<li>Gesicherte Abfragen werden hinzugefügt und bleiben an das Dokument, das Set oder das Tag gebunden, für das sie gesichert wurden.</li>
+<li>Eigene Analysatoren gelten für alle Projekte; neue werden hinzugefügt und erscheinen unter <strong class="ui">Fenster ▸ Analysatoren</strong>.</li>
+</ul>
+<h4 id="das-set-einer-kollegin-importieren">Das Set einer Kollegin importieren<a class="anchor" href="#das-set-einer-kollegin-importieren" aria-hidden="true">#</a></h4>
+<p>Angenommen, eine Kollegin, die dieselbe Debatte untersucht wie Sie, schickt Ihnen <code>Leserbriefe.llz</code> mit einem Set aus vier Leserbriefen aus ihrem eigenen Projekt. Klicken Sie in der Seitenleiste auf „Klimadebatte“ und importieren Sie die <code>.llz</code>-Datei. Die folgende Tabelle fasst zusammen, was mit der Gruppe, den Codes, dem Attribut und dem Set aus dem Archiv geschieht.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Im Archiv</th><th>In der „Klimadebatte“</th><th>Ergebnis</th></tr></thead>
+<tbody>
+<tr><td>Gruppe „Print“</td><td>Gruppe „Print“</td><td>Die Leserbriefe aus „Print“ kommen in die vorhandene Gruppe.</td></tr>
+<tr><td>Code „fristen“ unter „Dringlichkeit“</td><td>Code „Fristen“ unter „Dringlichkeit“</td><td>Zugeordnet, da die Zuordnung Groß- und Kleinschreibung ignoriert. Die Kodierungen der Kollegin verwenden jetzt Ihren Code „Fristen“.</td></tr>
+<tr><td>Code „Angst“ auf oberster Ebene</td><td>Code „Angst“ unter „Emotionen“</td><td>Getrennt gehalten, weil die übergeordneten Codes verschieden sind. Ein neuer Code „Angst“ auf oberster Ebene kommt hinzu.</td></tr>
+<tr><td>Code „Anpassung“</td><td>Kein solcher Code</td><td>Hinzugefügt.</td></tr>
+<tr><td>Attribut „Reichweite“, Typ <strong class="ui">Text</strong>, mit den Werten <code>120000</code>, <code>45000</code>, <code>310000</code> und <code>etwa 80000</code></td><td>„Reichweite“, Typ <strong class="ui">Ganzzahl</strong></td><td>Die Werte 120000, 45000 und 310000 kommen als Zahlen an. <code>etwa 80000</code> ist Text und entfällt deshalb; bei diesem Leserbrief bleibt „Reichweite“ leer.</td></tr>
+<tr><td>Set „Leserbriefe“</td><td>Kein solches Set</td><td>Hinzugefügt, mit den vier Leserbriefen.</td></tr>
+</tbody></table></div>
+<p>Danach enthält die „Klimadebatte“ 19 Dokumente, und Ihr Codebuch hat zwei Codes namens „Angst“ an verschiedenen Stellen. Die Leserbriefe mit 120.000 und 310.000 Lesern kommen außerdem zu „Große Reichweite“ hinzu, das damit insgesamt acht Dokumente enthält. Meinen beide Codes dasselbe, führen Sie sie zusammen, wie unter <a href="coding.html#merging-codes">Codes zusammenführen</a> in <a href="coding.html">Kapitel 7, Kodieren</a> beschrieben. Tragen Sie den fehlenden Wert für „Reichweite“ in den <strong class="ui">Dokumenteigenschaften</strong> nach.</p>
+<h3 id="archive-file">Die Archivdatei<a class="anchor" href="#archive-file" aria-hidden="true">#</a></h3>
+<p>Eine <code>.llz</code>-Datei ist eine ZIP-Datei. Wenn Sie sie entpacken, können Sie ihren Inhalt selbst ansehen.</p>
+<p>Ein Archiv lässt sich in die Version von LemmaLoom importieren, die es erstellt hat, und in neuere Versionen (siehe <a href="#exchange-sheet">Der Austauschdialog</a> weiter oben in diesem Kapitel). Wenn Sie Archive mit Kolleginnen und Kollegen austauschen möchten, ist es hilfreich, wenn alle die neueste Version von LemmaLoom verwenden.</p>
+<h2 id="refi-qda">REFI-QDA-Projekte<a class="anchor" href="#refi-qda" aria-hidden="true">#</a></h2>
+<p>REFI-QDA-Projektdateien (<code>.qdpx</code>) sind ZIP-Dateien mit einer Projektbeschreibung namens <code>project.qde</code> (XML) und den Dokumenten in einem Ordner namens <code>sources</code>. Mit Projektdateien geben Sie Ihre Projekte an alle weiter, deren Software das REFI-QDA-Format unterstützt, und laden das Projekt einer solchen Kollegin oder eines solchen Kollegen in LemmaLoom.</p>
+<p>Daten, die es nur in LemmaLoom gibt, etwa die Indizierung, gesicherte Abfragen, Wörterbücher und Analysatoren, werden nur in einem LemmaLoom-Archiv übertragen.</p>
+<p>Einige gängige Elemente heißen im REFI-QDA-Standard anders:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>REFI-QDA</th><th>LemmaLoom</th></tr></thead>
+<tbody>
+<tr><td>Quelle (Source)</td><td>Dokument</td></tr>
+<tr><td>Selektion (Selection)</td><td>Eine Textstelle, meist eine kodierte</td></tr>
+<tr><td>Notiz (Note)</td><td>Memo</td></tr>
+<tr><td>Variable</td><td>Attribut</td></tr>
+<tr><td>Fall (Case)</td><td>LemmaLoom schreibt pro Dokument einen unbenannten Fall mit seinen Attributwerten; ein benannter Fall aus einem anderen Programm wird zu einem Set.</td></tr>
+<tr><td>Set</td><td>Ein Set von Dokumenten oder ein Code-Set</td></tr>
+</tbody></table></div>
+<h3 id="refi-export">Ein REFI-QDA-Projekt exportieren<a class="anchor" href="#refi-export" aria-hidden="true">#</a></h3>
+<ol>
+<li>Klicken Sie in der Seitenleiste auf das Projekt, zum Beispiel „Klimadebatte“.</li>
+<li>Wählen Sie <strong class="ui">Ablage ▸ Exportieren ▸ REFI-QDA-Projekt</strong>.</li>
+<li>Der Dialog zum Sichern schlägt den Namen des Projekts vor. Wählen Sie einen Ordner und klicken Sie auf <strong class="ui">Sichern</strong>.</li>
+<li>Wenn im Dialog <strong class="ui">REFI-QDA-Projekt exportiert</strong> steht, klicken Sie auf <strong class="ui">Fertig</strong>.</li>
+</ol>
+<p>Die Datei heißt <code>Klimadebatte.qdpx</code>. Suchen Sie im anderen Programm nach einem Importbefehl, der REFI-QDA oder QDPX im Namen trägt.</p>
+<p>LemmaLoom speichert Ihr Projekt so:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>In LemmaLoom</th><th>In der <code>.qdpx</code>-Datei</th></tr></thead>
+<tbody>
+<tr><td>Text-, PDF- und Webseitendokumente</td><td>Textquellen mit dem aktuellen Text der Dokumente</td></tr>
+<tr><td>Audio- und Videodokumente</td><td>Audio- oder Videoquellen mit der Aufnahme und dem Transkript. Die Zeitangaben des Transkripts werden als Synchronisationspunkte geschrieben, sodass Kodierungen an ihre Stelle in der Aufnahme gebunden bleiben.</td></tr>
+<tr><td>Übersetzungen</td><td>Eigene Quellen: Textquellen für übersetzten Text und Audio- oder Videoquellen mit einer eigenen Kopie der Aufnahme für übersetzte Aufnahmen.</td></tr>
+<tr><td>Autoren, Datum, Publikation, Verlag, URL und DOI</td><td>Die Beschreibung der Quelle, eine Zeile pro Feld, mit den Feldnamen in der Sprache der Oberfläche, etwa <code>Datum: 2024-08-21</code></td></tr>
+<tr><td>Codes mit ihrer Hierarchie, ihren Farben und Beschreibungen</td><td>Das Codebuch</td></tr>
+<tr><td>Kodierungen</td><td>Kodierte Selektionen, jeweils mit dem Datum, an dem die Kodierung vorgenommen wurde</td></tr>
+<tr><td>Memos zu einer Textstelle</td><td>Notizen zur Selektion</td></tr>
+<tr><td>Kodierte Memos (siehe <a href="coding.html#coded-memos">Kodierte Memos</a> in <a href="coding.html">Kapitel 7, Kodieren</a>)</td><td>Notizen zur Kodierung mit demselben Code an dieser Textstelle oder, wenn die Textstelle keine solche Kodierung hat, zur Selektion</td></tr>
+<tr><td>Memos zu einem ganzen Dokument, zu einem Code oder zum Projekt</td><td>Notizen zur Quelle, zum Code oder zum Projekt</td></tr>
+<tr><td>Verknüpfungen</td><td>Links zwischen Selektionen, mit ihren Farben. Die Relation wird zum Namen des Links, der Kommentar zu einer Notiz.</td></tr>
+<tr><td>Attribute</td><td>Variablen. Eine <strong class="ui">Auswahl</strong> wird zu einer einfachen Textvariablen.</td></tr>
+<tr><td>Attributwerte</td><td>Ein Fall pro Dokument mit den Werten dieses Dokuments</td></tr>
+<tr><td>Sets und intelligente Sets</td><td>Sets von Quellen. Ein intelligentes Set wird mit den Dokumenten geschrieben, die es zum Zeitpunkt des Exports enthält.</td></tr>
+<tr><td>Gruppen</td><td>Sets von Quellen, benannt nach der Gruppe</td></tr>
+<tr><td>Code-Sets</td><td>Sets von Codes</td></tr>
+</tbody></table></div>
+<p>Nicht in der Datei enthalten sind:</p>
+<ul>
+<li>die Indizierung und alles, was darauf aufbaut, etwa Textstatistiken und Wortskizzen (LemmaLoom indiziert die importierten Dokumente neu);</li>
+<li>gesicherte Abfragen, Lenses, die auf Abfragen beruhen, Wörterbücher, eigene Analysatoren und Lesezeichen;</li>
+<li>Tags an Dokumenten, Codes, Memos und Verknüpfungen;</li>
+<li>Farben und Sprachen der Dokumente, Namen der Sprecher in Transkripten sowie Attributwerte an Kodierungen und Memos;</li>
+<li>die Verbindung zwischen einer Übersetzung und ihrem Original;</li>
+<li>die Beschränkung eines Codes auf ein bestimmtes Dokument oder Set, sodass alle solchen Codes beim Import zu Codes des ganzen Projekts werden;</li>
+<li>das <strong class="ui">Format</strong> eines Codes, sodass alle Codes beim Import <strong class="ui">Hervorheben</strong> verwenden;</li>
+<li>Aufnahmen über 2 GB; ein solches Dokument wird als Textquelle gespeichert, die nur sein Transkript enthält.</li>
+</ul>
+<p>Die exportierte Datei nennt Sie als Autorin oder Autor, mit dem vollständigen Namen Ihres macOS-Benutzerkontos. Außerdem werden LemmaLoom und seine genaue Version als das Programm gespeichert, mit dem das Projekt erstellt wurde.</p>
+<h3 id="refi-import">Ein REFI-QDA-Projekt importieren<a class="anchor" href="#refi-import" aria-hidden="true">#</a></h3>
+<ol>
+<li>Wählen Sie <strong class="ui">Ablage ▸ Importieren ▸ REFI-QDA-Projekt</strong>.</li>
+<li>Wählen Sie die <code>.qdpx</code>-Datei aus und klicken Sie auf <strong class="ui">Öffnen</strong>.</li>
+<li>Ist der Import abgeschlossen, öffnen Sie zwei oder drei Dokumente und prüfen Sie, ob die Kodierungen auf den Wörtern liegen, auf denen sie vorgenommen wurden.</li>
+</ol>
+<p>Ein Doppelklick auf eine <code>.qdpx</code>-Datei im Finder importiert sie auf genau dieselbe Weise. Der Import legt jedes Mal ein neues Projekt an. Es erhält den Namen, der in der Datei steht, oder, wenn dort keiner steht, den Dateinamen. Das neue Projekt wird zum aktiven Projekt, und seine Dokumente werden im Hintergrund indiziert. Den Fortschritt der Indizierung können Sie im Fenster <strong class="ui">Aktivität</strong> verfolgen. Bei Bedarf wiederholen Sie den Vorgang, indem Sie das Projekt löschen und die <code>.qdpx</code>-Datei erneut importieren.</p>
+<p>So liest LemmaLoom die Datei:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>In der <code>.qdpx</code>-Datei</th><th>In LemmaLoom</th></tr></thead>
+<tbody>
+<tr><td>Textquellen</td><td>Dokumente mit dem Text der Quelle. Die Formatierung von Rich-Text-Quellen entfällt.</td></tr>
+<tr><td>PDF-Quellen</td><td>Dokumente mit dem Text des PDFs, aus der Textfassung, die das andere Programm gespeichert hat, oder, falls es keine gibt, aus dem PDF selbst</td></tr>
+<tr><td>Audio- und Videoquellen mit Transkript</td><td>Audio- oder Videodokumente. Das Transkript wird zum Text, und seine Synchronisationspunkte werden zu Passagen mit Zeitangaben. Die Aufnahme wird in die Bibliothek kopiert, wenn die Datei sie enthält.</td></tr>
+<tr><td>Audio- und Videoquellen ohne Transkript, Bildquellen und Quellen ganz ohne Text, etwa ein gescanntes PDF ohne Textebene oder eine Quelle, auf die die Datei verweist, ohne sie zu enthalten</td><td>Entfallen</td></tr>
+<tr><td>Die Beschreibung einer Quelle</td><td>Autoren, Datum und andere Eigenschaften des Dokuments, sofern die Beschreibung die Form hat, in der LemmaLoom exportiert, mit den Feldnamen auf Englisch oder in der Sprache Ihrer Oberfläche; andernfalls ein Memo zum Dokument</td></tr>
+<tr><td>Codes</td><td>Codes für das ganze Projekt, mit ihrer Hierarchie, ihren Farben und Beschreibungen</td></tr>
+<tr><td>Kodierungen von Selektionen</td><td>Kodierungen derselben Textstellen, jeweils mit ihrem Datum</td></tr>
+<tr><td>Eine Kodierung einer ganzen Quelle</td><td>Eine Kodierung des gesamten Textes des Dokuments</td></tr>
+<tr><td>Die Beschreibung einer Selektion</td><td>Ein Memo zur Textstelle</td></tr>
+<tr><td>Notizen</td><td>Eine Notiz zu einer Selektion wird zu einem Memo zur Textstelle, eine Notiz zu einer Kodierung zu einem kodierten Memo. Notizen zu einer Quelle oder einem Code werden zu Memos zum Dokument oder zum Code. Eine Notiz, die zu nichts gehört, wird zu einem Projektmemo, eine Notiz zu einem Link zum Kommentar der Verknüpfung.</td></tr>
+<tr><td>Links zwischen Selektionen</td><td>Verknüpfungen. Der Name des Links wird zur Relation.</td></tr>
+<tr><td>Variablen</td><td>Attribute. Integer wird zu <strong class="ui">Ganzzahl</strong>, Float zu <strong class="ui">Dezimalzahl</strong>, Boolean zu <strong class="ui">Boolescher Wert</strong>, Date und DateTime zu <strong class="ui">Datum</strong> und alles andere zu <strong class="ui">Text</strong>.</td></tr>
+<tr><td>Fälle</td><td>Ihre Werte gehen an die Dokumente, die zu ihnen gehören. Ein benannter Fall wird außerdem zu einem Set dieser Dokumente.</td></tr>
+<tr><td>Sets</td><td>Sets von Dokumenten und Code-Sets</td></tr>
+</tbody></table></div>
+<p>Eine Quelle ohne Namen erhält den Titel <strong class="ui">Importiertes Dokument</strong>. Fehlen nach einem Import aus einem anderen Programm Dokumente, exportieren Sie das Projekt dort erneut und achten Sie darauf, dass die Quellen in die exportierte Datei aufgenommen werden.</p>
+<p>Die Sprache jedes Dokuments wird anhand seines Inhalts bestimmt. Wurde sie falsch erkannt, korrigieren Sie sie von Hand in den <strong class="ui">Dokumenteigenschaften</strong>; LemmaLoom indiziert das Dokument dann in der gewählten Sprache neu (siehe <a href="projects-and-documents.html#properties-indexing">Indizierung</a> in <a href="projects-and-documents.html">Kapitel 3, Projekte und Dokumente</a>).</p>
+<p>Da LemmaLoom nur Text kodieren kann, entfallen Kodierungen von Bereichen auf einer PDF-Seite oder in einem Bild.</p>
+<p>Selektionen werden mit Angaben zu ihrem Anfang und ihrem Ende gespeichert, beide in Zeichen gezählt, meist zusammen mit einem Auszug des Textes in der Selektion. Verschiedene Programme zählen Zeichen unterschiedlich; manche zählen einen Zeilenumbruch als zwei Zeichen. LemmaLoom probiert jede gängige Zählweise aus und behält die, bei der der größte Anteil der Auszüge übereinstimmt.</p>
+<h2 id="refi-codebook">REFI-QDA-Codebücher<a class="anchor" href="#refi-codebook" aria-hidden="true">#</a></h2>
+<p>Eine REFI-QDA-Codebuchdatei (<code>.qdc</code>) enthält nur eine Sammlung von Codes mit ihrer Hierarchie, ihren Farben und Beschreibungen sowie die Code-Sets.</p>
+<h3 id="codebook-export">Ein Codebuch exportieren<a class="anchor" href="#codebook-export" aria-hidden="true">#</a></h3>
+<ol>
+<li>Klicken Sie in der Seitenleiste auf das Projekt.</li>
+<li>Wählen Sie <strong class="ui">Ablage ▸ Exportieren ▸ REFI-QDA-Codebuch</strong>.</li>
+<li>Der Dialog zum Sichern schlägt den Namen des Projekts vor. Wählen Sie einen Ordner und klicken Sie auf <strong class="ui">Sichern</strong>.</li>
+<li>Wenn im Dialog <strong class="ui">REFI-QDA-Codebuch exportiert</strong> steht, klicken Sie auf <strong class="ui">Fertig</strong>.</li>
+</ol>
+<p>Das Codebuch enthält jeden einzelnen Ihrer Codes an seiner Stelle in der Hierarchie. Jedes Code-Set, das Codes enthält, erscheint mit seinen Codes. Ein Code, der auf ein Dokument oder Set beschränkt ist, wird wie jeder andere geschrieben, ohne seine Beschränkung, und kommt als Code des ganzen Projekts zurück.</p>
+<h3 id="codebook-import">Ein Codebuch importieren<a class="anchor" href="#codebook-import" aria-hidden="true">#</a></h3>
+<p>Importierte Codes kommen in das aktive Projekt.</p>
+<ol>
+<li>Klicken Sie in der Seitenleiste auf das Projekt, das die Codes erhalten soll.</li>
+<li>Wählen Sie <strong class="ui">Ablage ▸ Importieren ▸ REFI-QDA-Codebuch</strong>.</li>
+<li>Wählen Sie die <code>.qdc</code>-Datei aus und klicken Sie auf <strong class="ui">Öffnen</strong>.</li>
+</ol>
+<p>Ein Doppelklick auf die <code>.qdc</code>-Datei im Finder importiert die Datei auf dieselbe Weise.</p>
+<p>Für jeden Code in der importierten Datei sucht LemmaLoom unter den Codes mit demselben übergeordneten Code nach einem Code mit demselben Namen, ohne Rücksicht auf Groß- und Kleinschreibung. Gibt es einen Treffer, wird dieser Code verwendet, und die Suche geht bei seinen Untercodes weiter. Gibt es keinen, wird ein neuer Code mit den Eigenschaften aus der importierten Datei angelegt. Code-Sets werden auf dieselbe Weise zugeordnet; ein zugeordnetes Code-Set erhält die Codes aus der Datei, die es noch nicht enthält.</p>
+<p>Der Import der Datei ist ein einziger Widerrufschritt. Mit <strong class="ui">Bearbeiten ▸ REFI-QDA-Codebuch widerrufen</strong> oder ⌘Z entfernen Sie alle hinzugefügten Codes und Code-Sets, und die hinzugefügten Codes werden wieder aus den vorhandenen Code-Sets herausgenommen.</p>
+<h4 id="das-codebuch-einer-forschungsgruppe-importieren">Das Codebuch einer Forschungsgruppe importieren<a class="anchor" href="#das-codebuch-einer-forschungsgruppe-importieren" aria-hidden="true">#</a></h4>
+<p>Angenommen, eine Forschungsgruppe schickt <code>Klimarhetorik.qdc</code>. Die Datei enthält einen Code „Wissenschaft“ mit den Untercodes „Unsicherheit“ und „Konsens“, einen Code „Ironie“ auf oberster Ebene und ein Code-Set „Argumente“ mit „Unsicherheit“ und „Konsens“. Beim Import in die „Klimadebatte“ ändert LemmaLoom das Codebuch so:</p>
+<ul>
+<li>Der Code „Wissenschaft“ auf oberster Ebene und sein Untercode „Unsicherheit“ sind in der „Klimadebatte“ bereits vorhanden.</li>
+<li>„Konsens“ wird als Untercode von „Wissenschaft“ neben „Unsicherheit“ importiert.</li>
+<li>Der Code „Ironie“ wird neben den vorhandenen Codes auf oberster Ebene importiert.</li>
+<li>Das Code-Set „Argumente“, das die Codes „Wissenschaft“, „Unsicherheit“, „Kosten“ und „Verantwortung“ enthält, erhält den neuen Code „Konsens“.</li>
+</ul>
+<h2 id="tables-and-charts">Tabellen und Diagramme exportieren<a class="anchor" href="#tables-and-charts" aria-hidden="true">#</a></h2>
+<p>Die meisten Tabellen lassen sich als CSV-Datei exportieren, die meisten Diagramme und Grafiken als PNG- oder PDF-Bild.</p>
+<h3 id="export-button">Die Exportschaltfläche<a class="anchor" href="#export-button" aria-hidden="true">#</a></h3>
+<p>Die Exportschaltfläche zeigt ein Quadrat mit einem nach oben weisenden Pfeil. Sie erscheint in der Überschrift einer Tabelle oder eines Diagramms, in der Kopfzeile der Ansichten im Projektregal oder in der Leiste einer Wortskizze. Sie funktioniert auf eine von zwei Arten:</p>
+<ul>
+<li>Neben einer Tabelle, zu der kein Diagramm gehört, öffnet ein Klick sofort den Dialog zum Sichern einer CSV-Datei. Halten Sie den Mauszeiger auf der Schaltfläche, erscheint <strong class="ui">Als CSV exportieren</strong>.</li>
+<li>Neben einem Diagramm öffnet ein Klick ein Menü mit <strong class="ui">PNG</strong> und <strong class="ui">PDF</strong> und darunter <strong class="ui">CSV</strong>, wenn hinter dem Diagramm eine Tabelle steht. Bewegen Sie den Mauszeiger auf die Schaltfläche, erscheint <strong class="ui">Exportieren</strong>. Strukturdiagramme und das <strong class="ui">Mosaik</strong> lassen sich nur als <strong class="ui">PNG</strong> und <strong class="ui">PDF</strong> exportieren.</li>
+</ul>
+<p>Die Schaltfläche erscheint, sobald es etwas zu exportieren gibt. In den Ansichten <strong class="ui">Kodierungen</strong>, <strong class="ui">Memos</strong> und <strong class="ui">Verknüpfungen</strong> des Projektregals sowie in <strong class="ui">Beziehungen</strong> und in der Leiste der Wortskizzen ist sie immer zu sehen. Gibt es dort nichts zu exportieren, ist sie deaktiviert und zeigt <strong class="ui">Nichts zu exportieren</strong>. Im Fenster <strong class="ui">Attribute</strong> und im Fenster <strong class="ui">Diagramm</strong> (siehe <a href="grammar-inspector.html#diagram-window">Das Fenster Diagramm</a> in <a href="grammar-inspector.html">Kapitel 11, Der Grammatik-Inspektor</a>) trägt die Schaltfläche die Aufschrift <strong class="ui">Exportieren</strong>.</p>
+<figure class="shot" id="exchange-and-export-chart-menu"><img class="shot-light" src="../figures/de/light/exchange-and-export-chart-menu.webp" alt="Das Exportmenü der Code-Matrix für die „Klimadebatte“." loading="lazy"><img class="shot-dark" src="../figures/de/dark/exchange-and-export-chart-menu.webp" alt="Das Exportmenü der Code-Matrix für die „Klimadebatte“." loading="lazy"><figcaption>Das Exportmenü der Code-Matrix für die „Klimadebatte“.</figcaption></figure>
+<p>So exportieren Sie:</p>
+<ol>
+<li>Richten Sie die Ansicht so ein, wie Sie sie haben möchten, mit den Codes, dem Filter, der Suche und der Darstellung, die Sie brauchen.</li>
+<li>Klicken Sie auf die Exportschaltfläche und wählen Sie ein Format, falls sich ein Menü öffnet.</li>
+<li>Ändern Sie den vorgeschlagenen Namen, wenn Sie möchten, wählen Sie einen Ordner und klicken Sie auf <strong class="ui">Sichern</strong>.</li>
+</ol>
+<p>Vorgeschlagene Dateinamen verbinden das Dokument, das Set oder das Projekt mit dem, was exportiert wird, etwa <code>Uns läuft die Zeit davon-codings</code> oder <code>Klimadebatte-code-matrix</code>. Bei einigen Grammatikansichten richtet sich der Dateiname dagegen nach dem Wort, nach dem Sie gesucht haben, etwa <code>collocates-Klima</code> oder <code>word-sketch-Klima</code> für das Wort <em>Klima</em>.</p>
+<p>Der Export enthält alles, was in der Ansicht zu sehen ist. Suche und Filter werden übernommen, auch der Tag-Filter im Codebuch und das Feld <strong class="ui">Filter</strong> eines Abfrageergebnisses. Ausgeblendete Sektoren im Skizzenraum und die gewählte Darstellung bleiben ebenfalls erhalten.</p>
+<h3 id="csv-files">CSV-Dateien<a class="anchor" href="#csv-files" aria-hidden="true">#</a></h3>
+<p>Eine CSV-Datei ist eine reine Textdatei mit durch Kommas getrennten Werten. Jede Zeile enthält einen Wert pro Spalte, getrennt durch Kommas. Die erste Zeile enthält die Spaltennamen in der Sprache der Oberfläche. Tabellen- und Statistikprogramme können CSV-Dateien einlesen.</p>
+<p>LemmaLoom schreibt CSV-Dateien nach diesen Regeln:</p>
+<ul>
+<li>Der gesamte Text der Datei ist in UTF-8 kodiert und beginnt mit einer Byte Order Mark (BOM), an der Tabellenprogramme die Zeichenkodierung erkennen.</li>
+<li>Alle Zahlen bestehen aus bloßen Ziffern mit einem Dezimalpunkt, unabhängig von der Region, die Sie auf Ihrem Mac eingestellt haben, etwa <code>1234.5</code>. Spalten, deren Name auf (%) endet, enthalten Prozentwerte als Zahlen bezogen auf 100, etwa <code>12.35</code> für 12,35 %.</li>
+<li>Jede Zelle, die Kommas, doppelte Anführungszeichen oder Zeilenumbrüche enthält oder mit Leerzeichen beginnt oder endet, wird in doppelte Anführungszeichen gesetzt, wie es der CSV-Standard verlangt.</li>
+<li>Zellen, die mit <code>=</code>, <code>+</code>, <code>-</code> oder <code>@</code> beginnen und sich nicht als Zahl lesen lassen, erhalten einen vorangestellten Apostroph, damit Tabellenprogramme den Wert nicht falsch deuten und etwa ein Memo wie <code>+ die Zahlen mit dem Bericht abgleichen</code> für eine Formel halten.</li>
+</ul>
+<p>Eine Ausnahme bilden die Statistiken der Facette <strong class="ui">Überblick</strong> im Tab <strong class="ui">Text</strong> des Inspektors. Deren CSV-Datei speichert alle Werte so, wie der Inspektor sie zeigt, gegebenenfalls mit der Einheit. Ein Wert lautet dann zum Beispiel <code>13,9 Wörter</code>.</p>
+<p>Erwartet ein Tabellenprogramm, das auf eine Sprache mit Dezimalkomma wie Deutsch eingestellt ist, Semikolons zwischen den Spalten und schreibt es deshalb ganze Zeilen in eine einzige Zelle, öffnen Sie die CSV-Datei mit dem Befehl des Programms zum Importieren von Text- oder CSV-Dateien und wählen Sie das Komma als Trennzeichen.</p>
+<h3 id="png-and-pdf">PNG- und PDF-Bilder<a class="anchor" href="#png-and-pdf" aria-hidden="true">#</a></h3>
+<p>Für die Datei wird das Bild neu gezeichnet. Es erhält Ränder, eine Hintergrundfarbe passend zum aktuellen Thema und eine Breite, die sich nach Ihrem Diagramm richtet. Hervorhebungen unter dem Mauszeiger und Auswahlen sind darin nicht enthalten.</p>
+<ul>
+<li>Das Format <strong class="ui">PNG</strong> wird in Retina-Qualität gezeichnet, unabhängig von Ihrem Bildschirm. PNG eignet sich für Präsentationen, Webseiten und Dokumente aus Textverarbeitungsprogrammen.</li>
+<li><strong class="ui">PDF</strong> ist eine einzelne Seite in der Größe Ihres Diagramms. Alles in einem PDF bleibt in jeder Vergrößerung scharf. Es eignet sich für den Druck und für Fachzeitschriften, die Vektorgrafiken verlangen.</li>
+</ul>
+<p>Bilder, die mit einem dunklen Thema erstellt werden, sind ebenfalls dunkel. Möchten Sie ein Bild in einem Aufsatz verwenden, stellen Sie vor dem Export ein helleres Thema ein, etwa <strong class="ui">Hell</strong> (siehe <a href="settings.html#themes">Themen</a> in <a href="settings.html">Kapitel 24, Einstellungen und Darstellung</a>).</p>
+<h3 id="query-exports">Abfrageergebnisse<a class="anchor" href="#query-exports" aria-hidden="true">#</a></h3>
+<p>Die Exportschaltfläche eines Abfrageergebnisses sitzt ganz rechts in der Ergebnisleiste über den eigentlichen Ergebnissen. In der Facette <strong class="ui">Abfrage</strong> eines Dokuments erscheint sie in der Leiste ganz oben in der Facette. Zur Wahl stehen <strong class="ui">CSV</strong>, <strong class="ui">Markdown</strong>, <strong class="ui">PNG</strong> und <strong class="ui">PDF</strong>, danach folgt <strong class="ui">Kopieren</strong>. Als Dateiname wird der Name der Abfrage vorgeschlagen. Eine Markdown-Datei bewahrt das Ergebnis zusammen mit der Abfrage, ihrem Geltungsbereich, der Zahl der gelesenen Dokumente, der für die Abfrage verwendeten Einstellung <strong class="ui">Korpus</strong>, dem Datum des Exports und der Version von LemmaLoom.</p>
+<figure class="shot" id="exchange-and-export-query-export-menu"><img class="shot-light" src="../figures/de/light/exchange-and-export-query-export-menu.webp" alt="Das Exportmenü der Schlüsselwörter-Ergebnisse für „Aktivisten“ im Vergleich zu „Skeptiker“ mit CSV, Markdown, PNG, PDF und Kopieren." loading="lazy"><img class="shot-dark" src="../figures/de/dark/exchange-and-export-query-export-menu.webp" alt="Das Exportmenü der Schlüsselwörter-Ergebnisse für „Aktivisten“ im Vergleich zu „Skeptiker“ mit CSV, Markdown, PNG, PDF und Kopieren." loading="lazy"><figcaption>Das Exportmenü der Schlüsselwörter-Ergebnisse für „Aktivisten“ im Vergleich zu „Skeptiker“ mit CSV, Markdown, PNG, PDF und Kopieren.</figcaption></figure>
+<p><strong class="ui">Kopieren</strong> legt die Tabelle in die Zwischenablage, mit Tabulatoren zwischen den Spaltenwerten. Die Dateien, die beim Export von Abfrageergebnissen entstehen, beschreibt <a href="queries-results.html#export">Ergebnisse exportieren</a> in <a href="queries-results.html">Kapitel 16, Abfrageergebnisse und Statistik</a> ausführlicher.</p>
+<h3 id="export-locations">Wo Exporte verfügbar sind<a class="anchor" href="#export-locations" aria-hidden="true">#</a></h3>
+<p>Im Inspektor:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Tab</th><th>Ort</th><th>Formate</th><th>Spalten der CSV-Datei</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">Text</strong></td><td><strong class="ui">Überblick</strong>, neben der Überschrift des Abschnitts <strong class="ui">Überblick</strong></td><td>CSV</td><td>Abschnitt, Maß und Wert, mit jedem Maß der fünf Abschnitte, danach die Zeilen der drei Diagramme</td></tr>
+<tr><td><strong class="ui">Text</strong></td><td><strong class="ui">Überblick</strong>, die Diagramme <strong class="ui">Wortarten</strong>, <strong class="ui">Funktionen</strong> und <strong class="ui">Phrasen</strong></td><td>PNG, PDF, CSV</td><td>Kategorie, Anzahl</td></tr>
+<tr><td><strong class="ui">Text</strong></td><td><strong class="ui">Lesezeichen</strong></td><td>CSV</td><td>Stelle, Text, Kommentar</td></tr>
+<tr><td><strong class="ui">Grammatik</strong></td><td><strong class="ui">Struktur</strong>, jedes Diagramm, und das Fenster <strong class="ui">Diagramm</strong></td><td>PNG, PDF</td><td></td></tr>
+<tr><td><strong class="ui">Grammatik</strong></td><td><strong class="ui">Form × Funktion</strong>, die Matrix</td><td>PNG, PDF, CSV</td><td>Form, Gesamt, dann eine Spalte pro Funktion</td></tr>
+<tr><td><strong class="ui">Grammatik</strong></td><td><strong class="ui">Form × Funktion</strong>, die Liste einer Zelle</td><td>CSV</td><td>Satz, Phrase, Text</td></tr>
+<tr><td><strong class="ui">Grammatik</strong></td><td><strong class="ui">Kollokationen</strong></td><td>CSV</td><td>Rang, Kollokat, Wortart, Häufigkeit, Erwartet, Log-Likelihood, MI, MI3, t-Wert, z-Wert, Dice, logDice (alle Maße, gleichgültig, nach welchem die Liste sortiert ist)</td></tr>
+<tr><td><strong class="ui">Grammatik</strong></td><td><strong class="ui">Wortskizze</strong></td><td>PNG, PDF und CSV für die Darstellungen <strong class="ui">Karte</strong> und <strong class="ui">Netz</strong>; CSV für die <strong class="ui">Liste</strong></td><td>Relation, Kollokat, Lemma, Wortart, Häufigkeit, logDice</td></tr>
+<tr><td><strong class="ui">Grammatik</strong></td><td><strong class="ui">Diskurs</strong></td><td>CSV</td><td>Kategorie, Satz, Text, Detail</td></tr>
+<tr><td><strong class="ui">Kodierung</strong></td><td><strong class="ui">Codes</strong>, neben <strong class="ui">Codesystem</strong></td><td>CSV</td><td>Wie beim Codebuch, siehe unten</td></tr>
+<tr><td><strong class="ui">Kodierung</strong></td><td><strong class="ui">Kodierungen</strong>, wenn <strong class="ui">Kodierungen</strong> gewählt ist</td><td>CSV</td><td>Code, Stelle, Anfang, Ende, Text</td></tr>
+<tr><td><strong class="ui">Kodierung</strong></td><td><strong class="ui">Kodierungen</strong>, wenn <strong class="ui">Memos</strong> gewählt ist</td><td>CSV</td><td>Code, Stelle, Text, Memo, Tags</td></tr>
+<tr><td><strong class="ui">Kodierung</strong></td><td><strong class="ui">Verknüpfungen</strong></td><td>CSV</td><td>Wie bei Verknüpfungen, siehe unten</td></tr>
+<tr><td><strong class="ui">Kodierung</strong></td><td><strong class="ui">Code-Statistik</strong>, <strong class="ui">Code-Häufigkeiten &amp; Abdeckung</strong></td><td>PNG, PDF, CSV</td><td>Code, Segmente, Zeichen, Abdeckung (%)</td></tr>
+<tr><td><strong class="ui">Kodierung</strong></td><td><strong class="ui">Code-Statistik</strong>, <strong class="ui">Kookkurrenzen</strong></td><td>CSV</td><td>Code, Code, Überschneidungen, Zeichen, φ, p</td></tr>
+<tr><td><strong class="ui">Kodierung</strong></td><td><strong class="ui">Code-Statistik</strong>, jedes Diagramm unter <strong class="ui">Attribut-Aufschlüsselungen</strong></td><td>PNG, PDF, CSV</td><td>Attribut, Wert, Anzahl</td></tr>
+<tr><td><strong class="ui">Kodierung</strong></td><td><strong class="ui">Porträt</strong>, <strong class="ui">Mosaik</strong></td><td>PNG, PDF</td><td></td></tr>
+<tr><td><strong class="ui">Kodierung</strong></td><td><strong class="ui">Porträt</strong>, <strong class="ui">Codelinie</strong></td><td>CSV</td><td>Satz, Codes, Text</td></tr>
+<tr><td><strong class="ui">Kodierung</strong></td><td><strong class="ui">Code-Skizze</strong></td><td>PNG, PDF und CSV für die <strong class="ui">Karte</strong>; CSV für die <strong class="ui">Liste</strong></td><td>Wie bei <strong class="ui">Wortskizze</strong></td></tr>
+<tr><td><strong class="ui">Multimodus</strong></td><td><strong class="ui">Skizzenraum</strong></td><td>PNG, PDF und CSV für die <strong class="ui">Karte</strong>; CSV für die <strong class="ui">Liste</strong></td><td>Code oder Attribut, dann wie bei <strong class="ui">Wortskizze</strong></td></tr>
+<tr><td><strong class="ui">Multimodus</strong></td><td><strong class="ui">Abfrage</strong></td><td>CSV, Markdown, PNG, PDF, Kopieren</td><td>Siehe <a href="queries-results.html#export">Ergebnisse exportieren</a> in <a href="queries-results.html">Kapitel 16, Abfrageergebnisse und Statistik</a></td></tr>
+</tbody></table></div>
+<p>Jedes dieser Maße wird im jeweiligen Kapitel erklärt; gesammelt finden Sie sie in <a href="statistics-reference.html">Kapitel 27, Statistik im Überblick</a>.</p>
+<p>In den Ansichten des Projektregals, für ein Projekt, ein Set oder ein Tag:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Ansicht</th><th>Ort</th><th>Formate</th><th>Spalten der CSV-Datei</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">Codebuch</strong></td><td>Die Leiste unter der Codeliste</td><td>CSV</td><td>Code, Pfad, Ebene, Anzahl, Beschreibung, Farbe</td></tr>
+<tr><td><strong class="ui">Codebuch</strong></td><td><strong class="ui">VERWENDUNG IN DIESEM BEREICH</strong> in den Details eines ausgewählten Codes</td><td>PNG, PDF, CSV</td><td>Dokument, Segmente</td></tr>
+<tr><td><strong class="ui">Kodierungen</strong></td><td>Kopfzeile</td><td>CSV</td><td>Dokument, Code, Text, Anfang, Ende, dann eine Spalte pro Attribut an den Kodierungen</td></tr>
+<tr><td><strong class="ui">Memos</strong></td><td>Kopfzeile</td><td>CSV</td><td>Dokument, Code, Memo, Tags, Anfang, Ende, dann eine Spalte pro Attribut an den Memos</td></tr>
+<tr><td><strong class="ui">Verknüpfungen</strong></td><td>Kopfzeile</td><td>CSV</td><td>Ausgangsdokument, Ausgangstext, Relation, Zieldokument, Zieltext, Kommentar, Tags</td></tr>
+<tr><td><strong class="ui">Code-Statistik</strong></td><td>Kopfzeile</td><td>PNG, PDF, CSV</td><td>Code, Segmente, Dokumente, Zeichen, Abdeckung (%)</td></tr>
+<tr><td><strong class="ui">Code-Statistik</strong></td><td>Jedes Diagramm unter <strong class="ui">Attribut-Aufschlüsselungen</strong></td><td>PNG, PDF, CSV</td><td>Attribut, Wert, Anzahl</td></tr>
+<tr><td><strong class="ui">Code-Matrix</strong></td><td>Kopfzeile</td><td>PNG, PDF, CSV</td><td>Code, dann eine Spalte pro Dokument oder Gruppe und Gesamt</td></tr>
+<tr><td><strong class="ui">Beziehungen</strong></td><td>Kopfzeile, wenn <strong class="ui">Raster</strong> gewählt ist</td><td>PNG, PDF, CSV</td><td>Code, Segmente, dann eine Spalte pro Code</td></tr>
+<tr><td><strong class="ui">Beziehungen</strong></td><td>Kopfzeile, wenn <strong class="ui">Paare</strong> gewählt ist</td><td>CSV</td><td>Code, Code, Überschneidungen, Zeichen, φ, p</td></tr>
+<tr><td><strong class="ui">Wortskizze</strong></td><td>Wie im Inspektor</td><td>PNG, PDF, CSV</td><td>Wie im Inspektor</td></tr>
+<tr><td><strong class="ui">Wörterbücher</strong></td><td><strong class="ui">Kategorie-Häufigkeiten</strong> und <strong class="ui">Nach Dokument</strong></td><td>PNG, PDF, CSV</td><td>Siehe <a href="dictionaries.html#exporting-counts">Die Zahlen exportieren</a> in <a href="dictionaries.html">Kapitel 19, Wörterbücher</a></td></tr>
+<tr><td><strong class="ui">Abfragen</strong></td><td>Die Ergebnisleiste</td><td>CSV, Markdown, PNG, PDF, Kopieren</td><td>Siehe <a href="queries-results.html#export">Ergebnisse exportieren</a> in <a href="queries-results.html">Kapitel 16, Abfrageergebnisse und Statistik</a></td></tr>
+</tbody></table></div>
+<p>Dieselben Exporte gibt es im Fenster <strong class="ui">Codebuch</strong>, im Fenster <strong class="ui">Wortskizze</strong>, unter <strong class="ui">Fenster ▸ Abfragen</strong> und bei Abfrageergebnissen, die in einem eigenen Fenster geöffnet sind. Im Fenster <strong class="ui">Attribute</strong> gibt <strong class="ui">Exportieren</strong> die Attributtabelle aus (siehe <a href="#attributes-csv">Attributwerte</a> weiter unten).</p>
+<p><strong class="ui">Anfang</strong> und <strong class="ui">Ende</strong> geben in den exportierten Dateien die Lage einer Textstelle als Zahl der Zeichen vom Beginn des Dokumenttextes an. <strong class="ui">Stelle</strong> nennt die Nummern von Absatz und Satz, in denen die Textstelle liegt, so wie der Inspektor sie anzeigt; <code>¶12·3</code> ist also der dritte Satz von Absatz 12.</p>
+<p>Exportieren Sie eine <strong class="ui">Code-Matrix</strong>, die nach einem Attribut, einer Gruppe, einer Sprache oder einem Format gruppiert ist, entsteht eine Spalte pro Gruppe, danach die Spalte <strong class="ui">Gesamt</strong> und die Spalten des verwendeten Tests. Die erste Zeile gibt die Basis jeder Gruppe an. <a href="coding-analysis.html#exporting">Tabellen und Diagramme exportieren</a> in <a href="coding-analysis.html">Kapitel 13, Codes auswerten</a> beschreibt, welche Datei dabei entsteht, und <a href="coding-analysis.html#matrix-tests">Unterschiede zwischen Gruppen testen</a> erklärt, was ihre Zahlen bedeuten.</p>
+<h3 id="codebook-csv">Das Codebuch als CSV<a class="anchor" href="#codebook-csv" aria-hidden="true">#</a></h3>
+<p>Jeder Code, den die Liste zeigt, erscheint in der CSV-Datei des Codebuchs in einer eigenen Zeile, gefolgt von seinen Untercodes. Auf jeder Ebene sind die Codes alphabetisch sortiert. Ein Ausschnitt vom Anfang der Datei für die „Klimadebatte“:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Code</th><th>Pfad</th><th>Ebene</th><th>Anzahl</th><th>Beschreibung</th><th>Farbe</th></tr></thead>
+<tbody>
+<tr><td>Dringlichkeit</td><td>Dringlichkeit</td><td>1</td><td>10</td><td>Aussagen, dass Handeln keinen Aufschub duldet: Notfallsprache, Appelle, jetzt zu handeln, und Warnungen vor Verzögerung.</td><td>#C2410C</td></tr>
+<tr><td>Fristen</td><td>Dringlichkeit / Fristen</td><td>2</td><td>12</td><td>Zieljahre, Countdowns und Stichtage, ob gefordert, versprochen oder kritisiert.</td><td>#CA8A04</td></tr>
+<tr><td>Kipppunkte</td><td>Dringlichkeit / Kipppunkte</td><td>2</td><td>5</td><td>Schwellen, jenseits derer Schäden sich angeblich selbst verstärken oder unumkehrbar werden, und Argumente darüber, wo sie liegen.</td><td>#EA580C</td></tr>
+<tr><td>Emotionen</td><td>Emotionen</td><td>1</td><td>6</td><td>Gefühle, die die Schreibenden äußern oder anderen zuschreiben, zum Beispiel Trauer, Verzweiflung, Wut oder Müdigkeit.</td><td>#DB2777</td></tr>
+<tr><td>Angst</td><td>Emotionen / Angst</td><td>2</td><td>12</td><td>Angst und Sorge angesichts des Klimawandels sowie Argumente darüber, ob Angst hilft oder schadet.</td><td>#E11D48</td></tr>
+<tr><td>Hoffnung</td><td>Emotionen / Hoffnung</td><td>2</td><td>11</td><td>Hoffnung und Zuversicht, dass Veränderung möglich ist, und wie die Schreibenden sie rahmen.</td><td>#9333EA</td></tr>
+</tbody></table></div>
+<ul>
+<li><strong class="ui">Pfad</strong> verbindet die Namen der Codes von der obersten Ebene abwärts, getrennt durch Schrägstriche. So unterscheiden Sie gleichnamige Codes, die unter verschiedenen übergeordneten Codes stehen.</li>
+<li><strong class="ui">Ebene</strong> gibt an, auf welcher Ebene der Hierarchie ein Code steht; 1 steht für einen Code der obersten Ebene, 2 für dessen Untercodes und so weiter.</li>
+<li><strong class="ui">Anzahl</strong> ist die Zahl, die im Baum neben jedem Code steht, also wie oft der Code in den Originaldokumenten des Projekts, Sets oder Tags verwendet wurde, dessen Codebuch Sie exportieren. Bei „Emotionen“ zählen nur die 6 Verwendungen von „Emotionen“ selbst, nicht „Angst“ oder „Hoffnung“, die jeweils eine eigene Anzahl haben (12 und 11).</li>
+</ul>
+<p>Der Export neben <strong class="ui">Codesystem</strong> in der Facette <strong class="ui">Codes</strong> des Inspektors hat dieselben Spalten. <strong class="ui">Anzahl</strong> zählt dort jedoch die Verwendungen im gerade geöffneten Dokument, kodierte Memos eingeschlossen.</p>
+<h3 id="links-csv">Verknüpfungen als CSV<a class="anchor" href="#links-csv" aria-hidden="true">#</a></h3>
+<p>Eine Verknüpfung verbindet zwei Textstellen, meist aus verschiedenen Dokumenten (siehe <a href="coding.html#links">Verknüpfungen</a> in <a href="coding.html">Kapitel 7, Kodieren</a>). Eine exportierte CSV-Datei enthält eine Zeile pro Verknüpfung:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Ausgangsdokument</th><th>Ausgangstext</th><th>Relation</th><th>Zieldokument</th><th>Zieltext</th><th>Kommentar</th><th>Tags</th></tr></thead>
+<tbody>
+<tr><td>Die Modelle liegen daneben</td><td>Allein in den Wolken steckt vermutlich mehr Unsicherheit, als irgendeine Pressemitteilung zugeben wird.</td><td>widerspricht</td><td>Hitzebericht 2024</td><td>Diese Schätzung ist mit einer großen Unsicherheitsspanne behaftet und sollte nur zusammen mit ihr zitiert werden.</td><td>Das Amt nennt seine Unsicherheitsspanne ganz offen; die Kolumne unterstellt, offizielle Stellen würden sie verschweigen.</td><td></td></tr>
+</tbody></table></div>
+<p><strong class="ui">Relation</strong> ist der Wortlaut, den Sie beim Anlegen der Verknüpfung eingegeben haben. <strong class="ui">Tags</strong> listet alle Tags der Verknüpfung auf, getrennt durch Semikolons; in diesem Beispiel ist <strong class="ui">Tags</strong> leer. Ein Export aus der Ansicht <strong class="ui">Verknüpfungen</strong> des Projektregals liefert alle Verknüpfungen, die für das ausgewählte Projekt, Set oder Tag aufgelistet sind. Die Facette <strong class="ui">Verknüpfungen</strong> des Inspektors exportiert die Verknüpfungen des geöffneten Dokuments.</p>
+<h3 id="segments-csv">Kodierte Segmente und Memos<a class="anchor" href="#segments-csv" aria-hidden="true">#</a></h3>
+<p>Die Ansicht <strong class="ui">Kodierungen</strong> des Projektregals exportiert eine Zeile pro Kodierung. Wurden an Kodierungen Attributwerte erfasst, wird jedes dieser Attribute zu einer zusätzlichen Spalte, die leer bleibt, wenn eine Kodierung keinen Wert hat.</p>
+<p>Die Ansicht <strong class="ui">Memos</strong> des Projektregals funktioniert ähnlich, nur treten hier Text und Tags des Memos an die Stelle des kodierten Textes. Bei einem kodierten Memo steht der Name seines Codes in der Spalte <strong class="ui">Code</strong>; bei einem nicht kodierten Memo bleibt sie leer. Ein kodiertes Memo übernimmt die Tags seines Codes, die dann die Zelle <strong class="ui">Tags</strong> in seiner Zeile füllen; die eigenen Tags eines Memos erhalten Sie über die Facette <strong class="ui">Kodierungen</strong> des Inspektors, wenn dort <strong class="ui">Memos</strong> gewählt ist. In der Ansicht <strong class="ui">Memos</strong> eines Projekts erhalten auch Memos, die unabhängig von Dokumenten bestehen, eine Zeile, mit leerer Spalte <strong class="ui">Dokument</strong>.</p>
+<h3 id="attributes-csv">Attributwerte<a class="anchor" href="#attributes-csv" aria-hidden="true">#</a></h3>
+<p>Um das Fenster <strong class="ui">Attribute</strong> zu öffnen, wählen Sie <strong class="ui">Projekt ▸ Attribute</strong>, oder Sie klicken mit der rechten Maustaste auf das Projekt und wählen <strong class="ui">Attribute</strong>. <strong class="ui">Exportieren</strong> sichert den Inhalt der Tabelle so, wie er angezeigt wird, mit einer Spalte <strong class="ui">Dokument</strong> und einer eigenen Spalte für jedes Attribut. Jede Zeile steht für ein Dokument, das nach Ihrer Suche sichtbar bleibt, in der angezeigten Reihenfolge. Übersetzungen teilen sich die Zeile ihres Originals und damit dessen Attributwerte.</p>
+<figure class="shot" id="exchange-and-export-attributes-window"><img class="shot-light" src="../figures/de/light/exchange-and-export-attributes-window.webp" alt="Das Fenster Attribute der „Klimadebatte“ mit sechs ausgewählten Dokumenten, mit Importieren und Exportieren in der Symbolleiste." loading="lazy"><img class="shot-dark" src="../figures/de/dark/exchange-and-export-attributes-window.webp" alt="Das Fenster Attribute der „Klimadebatte“ mit sechs ausgewählten Dokumenten, mit Importieren und Exportieren in der Symbolleiste." loading="lazy"><figcaption>Das Fenster Attribute der „Klimadebatte“ mit sechs ausgewählten Dokumenten, mit Importieren und Exportieren in der Symbolleiste.</figcaption></figure>
+<p>Die Datei hat das Format, das <strong class="ui">Importieren</strong> im selben Fenster erwartet. Um viele Werte auf einmal zu ändern, exportieren Sie die Tabelle, bearbeiten sie in einem Tabellenprogramm und importieren sie wieder (siehe <a href="importing.html#attribute-import">Attributwerte aus einer Tabelle importieren</a> in <a href="importing.html">Kapitel 4, Material importieren</a>).</p>
+</article>
+<nav class="pager"><a class="previous" href="analysis-and-indexing.html"><span>Zurück</span>Analyse und Indizierung</a><a class="next" href="undo.html"><span>Weiter</span>Widerrufen und Wiederholen</a></nav>
+<footer class="site-footer">© 2026 Ryan S. Cooper. Alle Rechte vorbehalten.<br>Diese Ausgabe wurde mithilfe von KI aus der englischen Originalausgabe übersetzt. Die Übersetzung kann Fehler oder Ungenauigkeiten enthalten. Im Zweifel ist die englische Ausgabe maßgeblich.</footer>
+</main>
+<nav class="page-toc" aria-label="Auf dieser Seite"><p>Auf dieser Seite</p><ul>
+<li class="level-2"><a href="#exchange-overview">Ein Format wählen</a></li>
+<li class="level-3"><a href="#exchange-terms">Wichtige Begriffe</a></li>
+<li class="level-2"><a href="#exchange-sheet">Der Austauschdialog</a></li>
+<li class="level-2"><a href="#archives">LemmaLoom-Archive</a></li>
+<li class="level-3"><a href="#archive-contents">Was ein Archiv enthält</a></li>
+<li class="level-3"><a href="#exporting-project">Ein Projekt exportieren</a></li>
+<li class="level-3"><a href="#exporting-set">Ein Set exportieren</a></li>
+<li class="level-3"><a href="#exporting-documents">Dokumente exportieren</a></li>
+<li class="level-3"><a href="#importing-archive">Ein Archiv importieren</a></li>
+<li class="level-3"><a href="#moving-a-project">Ein Projekt auf einen anderen Mac übertragen</a></li>
+<li class="level-3"><a href="#archive-matching">Wie ein Archiv in ein vorhandenes Projekt eingefügt wird</a></li>
+<li class="level-3"><a href="#archive-file">Die Archivdatei</a></li>
+<li class="level-2"><a href="#refi-qda">REFI-QDA-Projekte</a></li>
+<li class="level-3"><a href="#refi-export">Ein REFI-QDA-Projekt exportieren</a></li>
+<li class="level-3"><a href="#refi-import">Ein REFI-QDA-Projekt importieren</a></li>
+<li class="level-2"><a href="#refi-codebook">REFI-QDA-Codebücher</a></li>
+<li class="level-3"><a href="#codebook-export">Ein Codebuch exportieren</a></li>
+<li class="level-3"><a href="#codebook-import">Ein Codebuch importieren</a></li>
+<li class="level-2"><a href="#tables-and-charts">Tabellen und Diagramme exportieren</a></li>
+<li class="level-3"><a href="#export-button">Die Exportschaltfläche</a></li>
+<li class="level-3"><a href="#csv-files">CSV-Dateien</a></li>
+<li class="level-3"><a href="#png-and-pdf">PNG- und PDF-Bilder</a></li>
+<li class="level-3"><a href="#query-exports">Abfrageergebnisse</a></li>
+<li class="level-3"><a href="#export-locations">Wo Exporte verfügbar sind</a></li>
+<li class="level-3"><a href="#codebook-csv">Das Codebuch als CSV</a></li>
+<li class="level-3"><a href="#links-csv">Verknüpfungen als CSV</a></li>
+<li class="level-3"><a href="#segments-csv">Kodierte Segmente und Memos</a></li>
+<li class="level-3"><a href="#attributes-csv">Attributwerte</a></li>
+</ul></nav>
+</div>
+<script src="../assets/guide.js" defer></script>
+</body>
+</html>

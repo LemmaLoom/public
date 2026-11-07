@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Analyse und Indizierung · LemmaLoom Benutzerhandbuch</title>
+<link rel="stylesheet" href="../assets/guide.css">
+<link rel="icon" type="image/png" href="../assets/logo.png">
+<script>var r=document.documentElement;r.setAttribute('data-theme','light');try{if(localStorage.getItem('guide-theme')==='dark'){r.setAttribute('data-theme','dark')}}catch(e){}</script>
+</head>
+<body>
+<header class="topbar">
+<button class="menu-toggle" aria-label="Inhalt" aria-expanded="false">☰</button>
+<a class="brand" href="index.html"><span class="wordmark"><span class="lemma">Lemma</span>Loom</span><span class="guide-name">Benutzerhandbuch</span></a>
+<div class="search"><input type="search" id="search" placeholder="Suchen" aria-label="Suchen" autocomplete="off" data-empty="Keine Treffer"><div class="results" id="results" hidden></div></div>
+<nav class="languages" aria-label="Language"><a href="../en/analysis-and-indexing.html" lang="en">English</a><a href="../de/analysis-and-indexing.html" lang="de" aria-current="true">Deutsch</a><a href="../zh-Hans/analysis-and-indexing.html" lang="zh-Hans">简体中文</a></nav>
+<button class="theme-toggle" data-light="Hell" data-dark="Dunkel" aria-label="Erscheinungsbild"></button>
+<a class="pdf-link" href="https://github.com/LemmaLoom/public/raw/main/pdf/lemmaloom-guide-de.pdf">PDF</a>
+</header>
+<div class="layout">
+<nav class="sidebar" aria-label="Inhalt"><ol>
+<li class="unnumbered"><a href="quick-start.html">Schnellstart</a></li>
+<li><a href="introduction.html">Einführung</a></li>
+<li><a href="getting-started.html">Erste Schritte</a></li>
+<li><a href="projects-and-documents.html">Projekte und Dokumente</a></li>
+<li><a href="importing.html">Material importieren</a></li>
+<li><a href="reading-and-editing.html">Lesen und Bearbeiten</a></li>
+<li><a href="lenses.html">Lenses</a></li>
+<li><a href="coding.html">Kodieren</a></li>
+<li><a href="sets-tags-attributes.html">Sets, Gruppen, Tags und Attribute</a></li>
+<li><a href="translations.html">Übersetzungen und geteilte Ansicht</a></li>
+<li><a href="text-inspector.html">Der Text-Inspektor</a></li>
+<li><a href="grammar-inspector.html">Der Grammatik-Inspektor</a></li>
+<li><a href="word-sketch.html">Wortskizze</a></li>
+<li><a href="coding-analysis.html">Codes auswerten</a></li>
+<li><a href="sketch-space.html">Skizzenraum</a></li>
+<li><a href="queries-building.html">Eine Abfrage erstellen</a></li>
+<li><a href="queries-results.html">Abfrageergebnisse und Statistik</a></li>
+<li><a href="queries-patterns.html">Abfragemuster und Erkundung</a></li>
+<li><a href="queries-using-results.html">Abfrageergebnisse nutzen</a></li>
+<li><a href="dictionaries.html">Wörterbücher</a></li>
+<li><a href="custom-analyzers.html">Eigene Analysatoren</a></li>
+<li class="current"><a href="analysis-and-indexing.html">Analyse und Indizierung</a></li>
+<li><a href="exchange-and-export.html">Austausch und Export</a></li>
+<li><a href="undo.html">Widerrufen und Wiederholen</a></li>
+<li><a href="settings.html">Einstellungen und Darstellung</a></li>
+<li><a href="keyboard-shortcuts.html">Tastaturkurzbefehle</a></li>
+<li><a href="help-and-support.html">Hilfe und Support</a></li>
+<li><a href="statistics-reference.html">Statistik im Überblick</a></li>
+<li class="unnumbered"><a href="glossary.html">Glossar</a></li>
+<li class="unnumbered"><a href="thanks.html">Vielen Dank</a></li>
+</ol></nav>
+<main class="content">
+<article>
+<h1 id="analysis-and-indexing">Analyse und Indizierung</h1>
+<p>Wenn LemmaLoom ein Dokument in Ihr Projekt aufnimmt, indiziert es das Dokument automatisch, sofern es auf Englisch, Deutsch oder Chinesisch geschrieben ist und Sie beim Import nichts anderes festlegen. Die Indizierung zerlegt Ihren Text in Sätze und Wörter, bestimmt die Grundform und die Wortklasse jedes Wortes und ermittelt die syntaktischen Beziehungen zwischen allen Wörtern jedes Satzes. Lenses, der Tab <strong class="ui">Grammatik</strong> im Inspektor, Wortskizzen, Schlüsselwortlisten und die meisten Abfragen über Wörter stützen sich auf die Ergebnisse der Indizierung. Während LemmaLoom Ihre Dokumente verarbeitet, können Sie sie in der Leseansicht lesen und kodieren, ohne zu warten.</p>
+<p>Wie lange die Indizierung dauert, hängt von der Länge Ihrer Dokumente und von der Hardware Ihres Mac ab. „Klimadebatte“, das Beispielprojekt, ist bereits indiziert.</p>
+<p>Im weiteren Verlauf dieses Kapitels bezeichnet <em>Indizierung</em> den Vorgang, den LemmaLoom ausführt, so wie es auch seine Statusmeldungen tun (<strong class="ui">Indizierung</strong>, <strong class="ui">Indiziert</strong>, <strong class="ui">Wartet auf Indizierung</strong>). Die Ergebnisse der Indizierung heißen Grammatikanalyse (oder kurz <em>die Analyse</em>).</p>
+<h2 id="analysis-terms">Grundbegriffe<a class="anchor" href="#analysis-terms" aria-hidden="true">#</a></h2>
+<p>Die Analyse zerlegt einen Text auf mehreren Ebenen. Begriffe wie Token und Lemma kommen in diesem Handbuch häufig vor, und <strong class="ui">Hilfe ▸ Glossar</strong> definiert die wichtigsten.</p>
+<ul>
+<li><em>Tokens</em> sind einzelne Wörter oder Satzzeichen. Jeder Punkt, der Sätze voneinander trennt, ist ein eigenes Token.</li>
+<li><em>Lemmata</em> sind die Wörterbuchformen von Wörtern. So ist <em>Warnung</em> das Lemma von <em>Warnungen</em>, <em>sein</em> das Lemma von <em>war</em> und <em>go</em> das Lemma von <em>went</em>.</li>
+<li>Die <em>Wortklasse</em> oder Wortart gibt an, ob ein Token ein Substantiv, ein Verb, ein Adjektiv und so weiter ist. Alle drei Sprachen teilen dieselben universellen Wortklassen, etwa NOUN, VERB und ADJ.</li>
+<li><em>Tags</em> sind feinere Wortarten, die zu einer bestimmten Sprache gehören. Das englische <em>warnings</em> hat das Tag NNS, ein Substantiv im Plural. Das deutsche <em>Klima</em> hat das Tag NN, ein Substantiv.</li>
+<li>Die <em>Morphologie</em> erfasst die grammatischen Merkmale von Wortformen. Dazu gehören Angaben zu Tempus, Numerus und Kasus.</li>
+<li>Eine <em>Dependenz</em> verbindet ein Token mit einem anderen Token, seinem <em>Kopf</em>, und benennt außerdem die Art der Beziehung. In <em>die dringendsten Schritte</em> haben die Tokens <em>die</em> und <em>dringendsten</em> beide eine Dependenz, die sie mit <em>Schritte</em> verbindet. Jeder Satz hat ein Token, das von keinem anderen Wort abhängt. Dieses Wort heißt <em>Wurzel</em> und ist meist das Hauptverb.</li>
+<li>Die <em>Phrasenstruktur</em> (oder <em>Konstituenz</em>) ordnet Tokens in Hierarchien, etwa Nominalphrasen in Verbalphrasen, die wiederum in Teilsätzen stehen.</li>
+<li>Eine <em>Nominalgruppe</em> ist ein Substantiv zusammen mit den Tokens davor, die es näher bestimmen, etwa <em>die dringendsten Schritte</em>. Auch ein Pronomen wie <em>wir</em> bildet eine Nominalgruppe, wenn es Subjekt oder Objekt eines Verbs ist. Als Einheit in Abfragen heißen Nominalgruppen <strong class="ui">Nominalphrasen-Blöcke</strong>.</li>
+<li><em>Stoppwörter</em> sind sehr häufige Wörter, die für sich genommen wenig Bedeutung tragen, zum Beispiel <em>der</em>, <em>und</em> oder <em>war</em>.</li>
+<li>Ein <em>Analysator</em> schließlich läuft, sobald die Grammatikanalyse abgeschlossen ist, und annotiert Textstellen einer bestimmten Art, etwa Bezüge zwischen Sätzen oder rhetorische Mittel. Die Textstellen, die ein Analysator annotiert, sind seine <em>Befunde</em>.</li>
+</ul>
+<h2 id="analysis-steps">Was bei der Indizierung geschieht<a class="anchor" href="#analysis-steps" aria-hidden="true">#</a></h2>
+<p>Die Indizierung eines Dokuments umfasst die folgenden Schritte:</p>
+<ol>
+<li>LemmaLoom legt die Sprache des Dokuments fest, die bestimmt, welche Modelle es verwendet.</li>
+<li>Text, auf den die Muster des Dokuments unter <strong class="ui">Von der Indizierung ausschließen</strong> passen, wird durch Leerraum ersetzt, sodass die Indizierung ihn überspringt.</li>
+<li>Der Text wird in Tokens und Sätze zerlegt. Chinesischer Text, in dem keine Leerzeichen zwischen den Wörtern stehen, wird zuerst in Wörter zerlegt.</li>
+<li>Jedes Token erhält seine Wortklasse, sein Tag und sein Lemma, im Englischen und Deutschen auch seine Morphologie.</li>
+<li>LemmaLoom ermittelt die Dependenzen zwischen den Wörtern jedes Satzes.</li>
+<li>Es ermittelt die Phrasenstruktur jedes Satzes.</li>
+<li>Es findet die Nominalgruppen und die Stoppwörter.</li>
+<li>Die eingebauten Analysatoren <strong class="ui">Kohäsion</strong>, <strong class="ui">Metadiskurs</strong> und <strong class="ui">Rhetorik</strong> laufen, ebenso alle Analysatoren, die Sie selbst geschrieben haben.</li>
+<li>Alles wird mit dem Dokument gespeichert.</li>
+<li>Sobald das ganze Dokument indiziert ist, berechnet LemmaLoom seine Statistiken. Ein langes Dokument wird in Teilen indiziert (siehe <a href="#after-an-edit">Nach einer Änderung</a> weiter unten in diesem Kapitel).</li>
+</ol>
+<p>Während der Indizierung erscheinen Schritt und Prozentangabe in der Statusleiste der Leseansicht, im Fenster <strong class="ui">Aktivität</strong> und in den Tooltips der Kennzeichen in der Seitenleiste. Zuerst sehen Sie <strong class="ui">Analyse</strong>, bis etwa 5 Prozent des Dokuments verarbeitet sind, dann <strong class="ui">Struktur wird ermittelt</strong> bis etwa 97 Prozent und zuletzt <strong class="ui">Wird gespeichert</strong>. Die Prozentangabe zeigt, wie viel vom Text des Dokuments bereits indiziert ist; die Phrasenstruktur zu ermitteln, kostet den größten Teil der Zeit.</p>
+<h3 id="example-sentence">Ein Beispielsatz<a class="anchor" href="#example-sentence" aria-hidden="true">#</a></h3>
+<p>Der Meinungsbeitrag „Uns läuft die Zeit davon“ im Beispielprojekt fragt, was jetzt geschehen muss. Er beantwortet seine eigene Frage mit dem Satz <em>Die dringendsten Schritte sind kein Geheimnis.</em> Die folgende Tabelle zeigt die Analyse dieses Satzes:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Token</th><th>Lemma</th><th>Wortklasse</th><th>Tag</th><th>Dependenz</th><th>Kopf</th></tr></thead>
+<tbody>
+<tr><td>Die</td><td>der</td><td>DET</td><td>ART</td><td>nk</td><td>Schritte</td></tr>
+<tr><td>dringendsten</td><td>dringend</td><td>ADJ</td><td>ADJA</td><td>nk</td><td>Schritte</td></tr>
+<tr><td>Schritte</td><td>Schritt</td><td>NOUN</td><td>NN</td><td>sb</td><td>sind</td></tr>
+<tr><td>sind</td><td>sein</td><td>AUX</td><td>VAFIN</td><td>ROOT</td><td>keiner</td></tr>
+<tr><td>kein</td><td>kein</td><td>DET</td><td>PIAT</td><td>nk</td><td>Geheimnis</td></tr>
+<tr><td>Geheimnis</td><td>Geheimnis</td><td>NOUN</td><td>NN</td><td>pd</td><td>sind</td></tr>
+<tr><td>.</td><td><code>--</code></td><td>PUNCT</td><td><code>$.</code></td><td>punct</td><td>sind</td></tr>
+</tbody></table></div>
+<p>LemmaLoom verwendet zwei verschiedene Systeme, um die Wörter eines Textes zu kennzeichnen. Bei den Wortklassen steht zum Beispiel DET für ein Artikelwort, ADJ für ein Adjektiv, AUX für ein Hilfsverb und PUNCT für ein Satzzeichen. Bei den Tags dagegen steht ART für einen Artikel, ADJA für ein attributives Adjektiv, NN für ein Substantiv, das kein Eigenname ist, VAFIN für ein finites Hilfsverb, PIAT für ein attributives Indefinitpronomen und <code>$.</code> für ein Satzschlusszeichen. Die beiden Schemata teilen Wörter unterschiedlich ein; <em>kein</em> gehört im ersten zu den Artikelwörtern, im zweiten zu den Pronomen in attributivem Gebrauch. Dependenzen wiederum erfassen grammatische Beziehungen zwischen Wörtern statt Eigenschaften; so steht nk für einen Begleiter des Substantivs innerhalb seiner Nominalphrase, sb für das Subjekt, pd für ein Prädikativ, das sagt, was das Subjekt ist, und punct für ein Satzzeichen. Als Lemma eines Satzzeichens verzeichnet die deutsche Analyse <code>--</code>. Der Tab <strong class="ui">Grammatik</strong> schreibt all diese Kürzel aus, etwa <strong class="ui">Hilfsverb, finit</strong> für VAFIN, und <strong class="ui">Hilfe ▸ Glossar</strong> führt alle grammatischen Kürzel auf (einschließlich der morphologischen Merkmale).</p>
+<p>Beachten Sie zu diesen Annotationen Folgendes:</p>
+<ul>
+<li><em>Kein</em> ist ein eigenes Token, und die Lens <strong class="ui">Verneinung</strong> annotiert es, ebenso wie <em>keine</em> und <em>nicht</em> im folgenden Satz. Eine Verschmelzung aus Präposition und Artikel bleibt dagegen ein einziges Token: <em>am</em> in <em>am heißesten Tag</em>, aus dem ersten Satz des Meinungsbeitrags, hat das Tag APPRART und das Lemma <em>an</em>.</li>
+<li>Das Lemma von <em>Schritte</em> ist <em>Schritt</em>; Abfragen oder Wortskizzen, die vom Lemma <em>Schritt</em> ausgehen, finden deshalb sowohl <em>Schritt</em> als auch <em>Schritte</em>. Ebenso hat <em>sind</em> das Lemma <em>sein</em>.</li>
+<li>Die Wortklasse sagt nur, dass <em>Schritte</em> ein Substantiv ist. Das Tag NN fügt lediglich hinzu, dass <em>Schritte</em> kein Eigenname ist. Kasus, Genus und Numerus gibt die morphologische Annotation an, als <strong class="ui">Kasus Nominativ</strong>, <strong class="ui">Genus Maskulinum</strong> und <strong class="ui">Grammatischer Numerus Plural</strong>; so sehen Sie sie im Tab <strong class="ui">Grammatik</strong>.</li>
+<li>Die Dependenzen zeigen, welche Wörter welche Rolle im Satz übernehmen. <em>Schritte</em> ist das Subjekt (sb) von <em>sind</em>, <em>Geheimnis</em> ist sein Prädikativ (pd), und <em>kein</em> hängt als Begleiter (nk) von <em>Geheimnis</em> ab, nicht vom Verb. <em>Sind</em> ist die Wurzel des Satzes und hat deshalb keinen Kopf. <em>Sind</em> ist hier das einzige Verb, auch wenn seine Wortklasse AUX ist.</li>
+</ul>
+<p>Die Phrasenstruktur ordnet dieselben Wörter anders. <em>Die dringendsten Schritte</em> bildet eine Nominalphrase (NP), <em>kein Geheimnis</em> eine zweite. Zusammen mit dem Verb <em>sind</em> bilden sie den Satz (S). Die deutsche Phrasenstruktur ist flacher als die englische: Ein einzelnes Wort wie <em>dringendsten</em> bildet keine eigene Phrase, und um das finite Verb <em>sind</em> und seine Ergänzung legt sie keine Verbalphrase; das Verb gehört unmittelbar zum Satz.</p>
+<p>Hier gibt es zwei Nominalgruppen, <em>die dringendsten Schritte</em> und <em>kein Geheimnis</em>. Eine Nominalgruppe endet mit ihrem Substantiv oder Pronomen und kann deshalb kürzer sein als die NP, die sie umschließt. In <em>das Thermometer vor meinem Küchenfenster</em> vom Anfang des Meinungsbeitrags ist <em>das Thermometer</em> eine Nominalgruppe, während die Phrasenstruktur die ganze Wortfolge als eine NP behandelt. Ein Substantiv innerhalb einer Präpositionalphrase wie <em>meinem Küchenfenster</em> bildet im Deutschen keine eigene Nominalgruppe.</p>
+<p>Drei der sieben Tokens sind hier Stoppwörter (<em>Die</em>, <em>sind</em> und <em>kein</em>).</p>
+<p>Wenn Sie wissen möchten, wie die Indizierung ein Wort annotiert hat, klicken Sie in der Leseansicht auf das Wort. Öffnen Sie dann im Inspektor den Tab <strong class="ui">Grammatik</strong>; die Facette <strong class="ui">Grammatik</strong> zeigt das Lemma des Wortes (wenn es vom Wort abweicht), <strong class="ui">Wortart</strong> und <strong class="ui">Tag</strong>. Außerdem zeigt sie unter <strong class="ui">FUNKTION</strong> die Dependenz des Wortes und seinen Kopf und unter <strong class="ui">MORPHOLOGIE</strong> seine morphologischen Annotationen. Wenn Sie „Klimadebatte“ mit <strong class="ui">Ablage ▸ Importieren ▸ Beispielprojekt</strong> importiert haben (siehe <a href="introduction.html#example-project">Das Beispielprojekt</a> in <a href="introduction.html">Kapitel 1, Einführung</a>), können Sie prüfen, ob die Angaben oben mit der Annotation von <em>Schritte</em> in „Uns läuft die Zeit davon“ übereinstimmen. Mehr über diese Ansicht und über die Diagramme der Dependenzen und der Phrasenstruktur erfahren Sie in <a href="grammar-inspector.html">Kapitel 11, Der Grammatik-Inspektor</a>.</p>
+<figure class="shot" id="analysis-and-indexing-word-card"><img class="shot-light" src="../figures/de/light/analysis-and-indexing-word-card.webp" alt="Der Tab Grammatik beschreibt das Wort Schritte, das in „Uns läuft die Zeit davon“ ausgewählt ist." loading="lazy"><img class="shot-dark" src="../figures/de/dark/analysis-and-indexing-word-card.webp" alt="Der Tab Grammatik beschreibt das Wort Schritte, das in „Uns läuft die Zeit davon“ ausgewählt ist." loading="lazy"><figcaption>Der Tab Grammatik beschreibt das Wort Schritte, das in „Uns läuft die Zeit davon“ ausgewählt ist.</figcaption></figure>
+<h3 id="analysis-models">Die Quellen der Analyse<a class="anchor" href="#analysis-models" aria-hidden="true">#</a></h3>
+<p>Die Analyse stammt von statistischen Modellen, also von Modellen des maschinellen Lernens, die an großen Textmengen trainiert wurden, um für jedes Wort und jeden Satz eines Dokuments die wahrscheinlichste Analyse zu wählen. Für jede der drei Sprachen gibt es eigene Modelle, und alle werden mit LemmaLoom geliefert. Unter <strong class="ui">LemmaLoom ▸ Über LemmaLoom</strong> finden Sie die Lizenzen von LemmaLoom; der Abschnitt <strong class="ui">Lizenzen</strong> nennt die Urheber und die Lizenzbedingungen der enthaltenen Modelle (siehe <a href="help-and-support.html#licenses">Lizenzen</a> in <a href="help-and-support.html">Kapitel 26, Hilfe und Support</a>).</p>
+<p>Diese Modelle machen manchmal Fehler. Sie wurden überwiegend an geschriebenen Texten trainiert. Deshalb ist die Analyse bei transkribierten Dokumenten, bei Dialekten und bei Text, der beim Auslesen eines PDFs beschädigt wurde, weniger zuverlässig. Die chinesische Analyse macht mehr Fehler als die englische und die deutsche, weil die Modelle chinesische Wörter erst finden müssen, bevor sie sie analysieren können.</p>
+<h3 id="built-in-analyzers">Die eingebauten Analysatoren<a class="anchor" href="#built-in-analyzers" aria-hidden="true">#</a></h3>
+<p>Drei Analysatoren gehören zu LemmaLoom und verarbeiten Dokumente in allen drei Sprachen:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Analysator</th><th>Was er annotiert</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">Kohäsion</strong></td><td>Wie jeder Satz an das Vorangehende anknüpft, durch ein Pronomen, ein Possessivum, ein Demonstrativum wie <em>dieser</em>, ein wiederholtes Wort oder, im Chinesischen, ein ausgelassenes Subjekt. Ein Satz ohne einen solchen Bezug eröffnet ein neues Thema.</td></tr>
+<tr><td><strong class="ui">Metadiskurs</strong></td><td>Wörter, mit denen Sprechende oder Schreibende ihr Publikum lenken, nämlich Abschwächer (<em>vielleicht</em>), Verstärker (<em>eindeutig</em>), Einstellungsmarker (<em>leider</em>), Konnektoren (<em>jedoch</em>) und Wörter, die das Publikum einbeziehen (<em>wir</em>, <em>bedenken</em>). Im Deutschen kommen Modalpartikeln wie <em>ja</em> und <em>doch</em> hinzu, im Chinesischen Satzschlusspartikeln wie 吗 und 吧.</td></tr>
+<tr><td><strong class="ui">Rhetorik</strong></td><td>Rhetorische Mittel wie Passiv, Nominalisierung (eine Handlung, die zum Substantiv geworden ist, <em>Entscheidung</em> für <em>entscheiden</em>), Parallelismus, vorangestellte Eröffnungen (eine Wendung vor dem Subjekt), periodische Sätze (das Hauptverb erst am Ende), Fragen und Aufforderungen sowie Sätze, die mit denselben Wörtern beginnen.</td></tr>
+</tbody></table></div>
+<p>Die eingebauten Analysatoren bieten einen einfachen Einstieg in Fragen danach, wie ein bestimmter Text aufgebaut ist. Sie können zum Beispiel zeigen, wie oft jemand abschwächend formuliert oder wo ein Sprecher zu einem ganz anderen Thema übergeht. Ihre Ergebnisse erscheinen in den gleichnamigen Lenses (siehe <a href="lenses.html">Kapitel 6, Lenses</a>) und in der Facette <strong class="ui">Diskurs</strong> des Tabs <strong class="ui">Grammatik</strong> (siehe <a href="grammar-inspector.html">Kapitel 11, Der Grammatik-Inspektor</a>). Auch Abfragen, die <strong class="ui">Befunde</strong> liefern (siehe <a href="queries-building.html">Kapitel 15, Eine Abfrage erstellen</a>), können auf diese Analysatoren zugreifen. Eigene Analysatoren, die Sie unter <strong class="ui">Fenster ▸ Analysatoren</strong> entwickeln, laufen neben den eingebauten, und zwar auf Dokumenten in den Sprachen, die Sie für sie festgelegt haben (siehe <a href="custom-analyzers.html">Kapitel 20, Eigene Analysatoren</a>).</p>
+<h3 id="statistics-and-counts">Statistiken und Zählungen<a class="anchor" href="#statistics-and-counts" aria-hidden="true">#</a></h3>
+<p>Sobald LemmaLoom ein Dokument fertig indiziert hat, zählt es seine Sätze und Tokens. Der Tab <strong class="ui">Text</strong> im Inspektor des Dokuments nennt die Zahl der Sätze und berechnet Wortzahlen, Lesbarkeit und Wortschatzstatistiken (siehe <a href="text-inspector.html">Kapitel 10, Der Text-Inspektor</a>). Bis der erste Teil des Dokuments indiziert ist, zeigt der Tab <strong class="ui">Text</strong> den Hinweis <strong class="ui">Statistiken werden verfügbar, sobald die Indizierung abgeschlossen ist</strong>.</p>
+<p>LemmaLoom kennt im Wesentlichen zwei Zählungen:</p>
+<ul>
+<li>Eine Zählung von <em>Tokens</em> schließt alle Satzzeichen und Symbole ein. Wenn Sie in einem intelligenten Set eine Bedingung oder in einer Abfrage eine Regel anlegen, richtet sich das Feld <strong class="ui">Token</strong> nach dieser Zählung. Auch die Statusleiste der Leseansicht zeigt die Zahl der Tokens, beschriftet mit <strong class="ui">Wörter</strong>.</li>
+<li>Eine Zählung von <em>Wörtern</em> lässt Satzzeichen und Symbole weg, zählt aber neben gewöhnlichen Wörtern alle Zahlen und Zahlwörter mit. Der Tab <strong class="ui">Text</strong> verwendet die Wortzahl, ebenso das Maß <strong class="ui">Pro 10.000 Wörter</strong> in Abfragen (siehe <a href="queries-results.html#measures">Maße</a> in <a href="queries-results.html">Kapitel 16, Abfrageergebnisse und Statistik</a>).</li>
+</ul>
+<p>Der Beispielsatz aus „Uns läuft die Zeit davon“ hat sieben Tokens (sechs Wörter und den Punkt). Verschmelzungen wie <em>am</em> bilden ein einziges Wort, ebenso Zahlen wie <em>2050</em>. In chinesischen Texten zählt LemmaLoom die Wörter, die es bei der Indizierung gefunden hat.</p>
+<p>Vor der Indizierung haben die Felder <strong class="ui">Token</strong> und <strong class="ui">Sätze</strong> eines Dokuments in Abfragen und intelligenten Sets den Wert 0. Bei Dokumenten in anderen Sprachen (etwa Französisch) bleiben beide Werte immer 0. Ein intelligentes Set der Dokumente mit weniger als 1.000 <strong class="ui">Token</strong> enthält deshalb auch alle nicht indizierten Dokumente. Wenn Sie ein vorhandenes Dokument bearbeiten, behalten die beiden Felder ihre letzten bekannten Werte, bis die Indizierung abgeschlossen ist. Das Feld <strong class="ui">Zeichen</strong> ergibt sich direkt aus dem Inhalt des Dokuments und wird sofort berechnet. Wenn Sie Dokumente, deren Indizierung noch aussteht, nach ihrer Länge sortieren oder vergleichen möchten, wählen Sie stattdessen <strong class="ui">Zeichen</strong>.</p>
+<h3 id="excluded-text">Von der Analyse ausgeschlossener Text<a class="anchor" href="#excluded-text" aria-hidden="true">#</a></h3>
+<p>Muster unter <strong class="ui">Von der Indizierung ausschließen</strong>, im Importdialog oder in den <strong class="ui">Dokumenteigenschaften</strong>, verhindern, dass passender Text analysiert wird (siehe <a href="importing.html#exclude-from-analysis">Text von der Indizierung ausschließen</a> in <a href="importing.html">Kapitel 4, Material importieren</a>). Dazu gehören etwa Zeitstempel, Sprecherkennzeichnungen sowie Kopf- und Fußzeilen. LemmaLoom ersetzt jede passende Textstelle durch Leerraum, bevor es den Text indiziert; so fließen diese Teile nicht in Wortzahlen, Schlüsselwortlisten, Wortskizzen und die eingebauten Lenses ein.</p>
+<p>Ausgeschlossenen Text sehen Sie weiterhin in der Leseansicht, Sie können ihn kodieren, und die Suchleiste durchsucht ihn. Auch eine Abfrage mit der Einheit <strong class="ui">Texttreffer</strong> durchsucht ihn, wenn das erste Menü ihrer Textzeile auf der Voreinstellung <strong class="ui">Text</strong> steht, denn dann liest die Abfrage den Text selbst. Stellen Sie dieses Menü auf <strong class="ui">Wort</strong>, <strong class="ui">Wortform</strong> oder <strong class="ui">Lemma</strong>, vergleicht die Abfrage stattdessen Tokens und überspringt deshalb ausgeschlossenen Text.</p>
+<h2 id="languages">Was jede Sprache unterstützt<a class="anchor" href="#languages" aria-hidden="true">#</a></h2>
+<p>Für alle drei Sprachen gibt es Tokenisierung, Satzerkennung, Wortklassen, Tags, Lemmata, Dependenzen, Phrasenstruktur, Nominalgruppen, Stoppwörter und alle drei eingebauten Analysatoren. Unterschiede gibt es in den Einzelheiten:</p>
+<div class="table-wrap"><table>
+<thead><tr><th></th><th>Englisch</th><th>Deutsch</th><th>Chinesisch</th></tr></thead>
+<tbody>
+<tr><td>Zerlegung des Textes in Wörter</td><td>An Leerzeichen und Satzzeichen; <em>don’t</em> wird zu <em>do</em> und <em>n’t</em></td><td>An Leerzeichen und Satzzeichen</td><td>Durch ein Modell, das die Wörter findet, da sie nicht durch Leerzeichen getrennt sind</td></tr>
+<tr><td>Tags</td><td>Penn Treebank</td><td>STTS (Stuttgart-Tübingen-Tagset)</td><td>Penn Chinese Treebank</td></tr>
+<tr><td>Dependenzbezeichnungen</td><td>Englische Bezeichnungen wie nsubj und dobj</td><td>TIGER-Bezeichnungen wie sb (Subjekt) und oa (Akkusativobjekt, das direkte Objekt)</td><td>Die englischen Bezeichnungen, dazu chinesische wie aux:asp für Aspektmarker wie 了</td></tr>
+<tr><td>Phrasenbezeichnungen</td><td>Penn Treebank, etwa NP und PP</td><td>TIGER, etwa NP und PP</td><td>Penn Chinese Treebank</td></tr>
+<tr><td>Lens <strong class="ui">Morphologie</strong></td><td><strong class="ui">Tempus</strong>, <strong class="ui">Numerus</strong>, <strong class="ui">Steigerung</strong> (Komparativ, Superlativ), <strong class="ui">Verbform</strong></td><td>Dieselben, dazu <strong class="ui">Kasus</strong>, <strong class="ui">Modus</strong> und <strong class="ui">Genus</strong></td><td>Nicht angeboten</td></tr>
+<tr><td>Kategorien in <strong class="ui">Metadiskurs</strong></td><td>Fünf</td><td>Die fünf, dazu <strong class="ui">Modalpartikel</strong></td><td>Die fünf, dazu <strong class="ui">Satzschlusspartikel</strong></td></tr>
+<tr><td>Mittel in <strong class="ui">Rhetorik</strong></td><td>Alle dreizehn</td><td>Alle außer <strong class="ui">Absolute Konstruktion</strong></td><td>Alle außer <strong class="ui">Periodischer Satz</strong> und <strong class="ui">Absolute Konstruktion</strong></td></tr>
+<tr><td>Lenses nur für diese Sprache</td><td>Keine</td><td><strong class="ui">Satzfelder</strong> (siehe <a href="lenses.html#sentence-fields">Satzfelder (Deutsch)</a> in <a href="lenses.html">Kapitel 6, Lenses</a>)</td><td><strong class="ui">Konstruktionen</strong> und <strong class="ui">Partikeln</strong> (siehe <a href="lenses.html#chinese-lenses">Konstruktionen und Partikeln (Chinesisch)</a> in <a href="lenses.html">Kapitel 6, Lenses</a>)</td></tr>
+</tbody></table></div>
+<p>Penn Treebank, Penn Chinese Treebank, STTS und TIGER sind Standardschemata für die Annotation, und die Modelle wurden an Texten trainiert, die nach ihnen annotiert sind.</p>
+<figure class="shot" id="analysis-and-indexing-german-word"><img class="shot-light" src="../figures/de/light/analysis-and-indexing-german-word.webp" alt="Der Tab Grammatik beschreibt climate in „Uns läuft die Zeit davon (Englisch)“, mit seinem Numerus unter Morphologie." loading="lazy"><img class="shot-dark" src="../figures/de/dark/analysis-and-indexing-german-word.webp" alt="Der Tab Grammatik beschreibt climate in „Uns läuft die Zeit davon (Englisch)“, mit seinem Numerus unter Morphologie." loading="lazy"><figcaption>Der Tab Grammatik beschreibt climate in „Uns läuft die Zeit davon (Englisch)“, mit seinem Numerus unter Morphologie.</figcaption></figure>
+<p>Chinesische Wörter haben nur eine Form; das Lemma eines chinesischen Wortes ist deshalb immer das Wort selbst.</p>
+<p>Die Stoppwörter, die bei der Indizierung erkannt werden, gehen in den <strong class="ui">Stoppwort-Anteil</strong> im Tab <strong class="ui">Text</strong> und in das Feld <strong class="ui">Stoppwort</strong> für Wörter in Abfragen ein; die Facette <strong class="ui">Kollokationen</strong> des Tabs <strong class="ui">Grammatik</strong> lässt Stoppwörter aus. Die Stoppwortlisten gehören fest zu LemmaLoom und umfassen 162 Stoppwörter für Englisch, 211 für Deutsch und 153 für Chinesisch. Stimmt die Form oder das Lemma eines Tokens mit einem Eintrag auf einer dieser Listen überein, ohne Rücksicht auf Groß- und Kleinschreibung, ist es ein Stoppwort. Da die Listen fest vorgegeben sind, können Sie in Abfragen eigene Regeln festlegen, um weitere Wörter auszulassen.</p>
+<p><strong class="ui">Hilfe ▸ Glossar</strong> beschreibt ausführlich jedes Tag, jede Dependenzbezeichnung und jede Phrasenbezeichnung, die LemmaLoom verwendet. Wählen Sie in der Seitenleiste von <strong class="ui">Hilfe ▸ Glossar</strong> eine Kategorie (etwa <strong class="ui">Wortart-Tags</strong>, <strong class="ui">Dependenzrelationen</strong>, <strong class="ui">Phrasenbezeichnungen</strong> oder <strong class="ui">Morphologie</strong>) und suchen Sie dann im Feld <strong class="ui">Suchen</strong> über der Liste. Ein Eintrag mit der Kennzeichnung EN, DE oder ZH gilt nur für Englisch, Deutsch beziehungsweise Chinesisch; andernfalls gilt die Definition für alle drei Sprachen. Jedes Wortart-Tag, jede Dependenzbezeichnung und jede Phrasenbezeichnung, die Lenses farbig hervorheben, erscheint auch in <strong class="ui">Hilfe ▸ Glossar</strong> in denselben Farben. Halten Sie den Mauszeiger auf einen solchen Eintrag, um zu sehen, welche Lens das Tag, die Dependenzbezeichnung oder die Phrasenbezeichnung verwendet.</p>
+<figure class="shot" id="analysis-and-indexing-glossary-tags"><img class="shot-light" src="../figures/de/light/analysis-and-indexing-glossary-tags.webp" alt="Die Wortart-Tags im Glossar nach einer Suche nach „Eigenname“, mit den Sprachen, zu denen jedes Tag gehört." loading="lazy"><img class="shot-dark" src="../figures/de/dark/analysis-and-indexing-glossary-tags.webp" alt="Die Wortart-Tags im Glossar nach einer Suche nach „Eigenname“, mit den Sprachen, zu denen jedes Tag gehört." loading="lazy"><figcaption>Die Wortart-Tags im Glossar nach einer Suche nach „Eigenname“, mit den Sprachen, zu denen jedes Tag gehört.</figcaption></figure>
+<h3 id="language-detection">Wie LemmaLoom die Sprache bestimmt<a class="anchor" href="#language-detection" aria-hidden="true">#</a></h3>
+<p>Die <strong class="ui">Sprache</strong>, festgelegt im Importdialog oder in den <strong class="ui">Dokumenteigenschaften</strong>, bestimmt, mit welchen Modellen das Dokument indiziert wird. In der Seitenleiste erscheint die <strong class="ui">Sprache</strong> hinter dem Namen des Dokuments als Kürzel wie EN, DE oder ZH; halten Sie den Mauszeiger auf das Kürzel, um den vollen Namen zu sehen.</p>
+<p>Steht <strong class="ui">Sprache</strong> auf <strong class="ui">Automatisch</strong>, erkennt LemmaLoom die Sprache an den ersten 4.096 Zeichen des Dokumenttextes. Bei einer Aufnahme richtet sich LemmaLoom nach der Sprache der Transkription, sofern diese bekannt ist; andernfalls liest es den Text des Dokuments. Das geschieht beim Import und jedes Mal, wenn Sie <strong class="ui">Sprache</strong> wieder auf <strong class="ui">Automatisch</strong> stellen und sichern. Bei Dokumenten in einem Projekt, das im REFI-QDA-Format importiert wurde, wird die Sprache auf dieselbe Weise erkannt.</p>
+<p>Manchmal hält LemmaLoom eine der drei unterstützten Sprachen für eine andere und analysiert die Dokumente nach dem Import dann mit den falschen Modellen. Prüfen Sie nach einem großen Import die Sprachkürzel in der Seitenleiste. Wählen Sie die Sprache selbst, wenn der Anfang eines Dokuments nicht für das ganze Dokument steht oder wenn LemmaLoom die Sprache falsch erkannt hat. Meldet LemmaLoom zum Beispiel <strong class="ui">Keine Grammatikanalyse für Spanisch</strong> bei einem englischsprachigen Blogbeitrag, stellen Sie in den <strong class="ui">Dokumenteigenschaften</strong> die <strong class="ui">Sprache</strong> auf <strong class="ui">Englisch</strong> und klicken Sie auf <strong class="ui">Sichern</strong>.</p>
+<p>Ein Dokument wird immer durchgehend in einer einzigen Sprache indiziert. Textabschnitte in einer anderen Sprache, etwa fremdsprachige Zitate, werden trotzdem mit den Modellen der Hauptsprache analysiert und liefern unzuverlässige Ergebnisse.</p>
+<p>Bei Übersetzungen bestimmt die Zielsprache die Sprache. „Uns läuft die Zeit davon (Englisch)“ wird deshalb mit den englischen Modellen analysiert. Übersetzungen werden zunächst mit allen Analysatoren ihrer Sprache und mit leerem Feld <strong class="ui">Von der Indizierung ausschließen</strong> indiziert, gleich welche Einstellungen das Original verwendet; jede Einstellung können Sie in den <strong class="ui">Dokumenteigenschaften</strong> ändern.</p>
+<h3 id="other-languages">Andere Sprachen<a class="anchor" href="#other-languages" aria-hidden="true">#</a></h3>
+<p>Dokumente in jeder anderen Sprache (Französisch, Spanisch und so weiter) importiert LemmaLoom als reinen Text. Das Kennzeichen eines solchen Dokuments in der Seitenleiste ist ein Fragezeichen, und wenn Sie den Mauszeiger darauf halten, erscheint <strong class="ui">Sprache wird für die Indizierung nicht unterstützt</strong>. In der Leseansicht meldet die Statusleiste unten <strong class="ui">Keine Grammatikanalyse für Französisch</strong>, wobei an der Stelle von Französisch die jeweilige nicht unterstützte Sprache steht. Sie können solche Dokumente trotzdem lesen, durchsuchen, bearbeiten und kodieren und in jeder Ansicht verwenden, die ohne die Analyse auskommt (siehe <a href="#what-needs-analysis">Was ohne die Analyse verfügbar ist</a> weiter unten in diesem Kapitel).</p>
+<h2 id="following-the-analysis">Die Indizierung verfolgen<a class="anchor" href="#following-the-analysis" aria-hidden="true">#</a></h2>
+<p>Die Indizierung läuft für alle Ihre Projekte, gleich welches gerade geöffnet ist. LemmaLoom indiziert bis zu drei Dokumente gleichzeitig oder bis zu drei Teile eines Dokuments auf einmal; alles andere wird der Reihe nach indiziert. Wenn Sie LemmaLoom beenden, bevor die Indizierung abgeschlossen ist, setzt es die verbleibende Indizierung beim nächsten Start fort.</p>
+<p>LemmaLoom lädt die Modelle einer Sprache in den Arbeitsspeicher, sobald es das erste Dokument in dieser Sprache analysieren muss, und entlädt sie etwa anderthalb Minuten, nachdem das letzte Dokument fertig ist.</p>
+<h3 id="navigator-status">In der Seitenleiste<a class="anchor" href="#navigator-status" aria-hidden="true">#</a></h3>
+<p>Ein kleines Kennzeichen hinter dem Namen und dem Sprachkürzel eines Dokuments in der Seitenleiste zeigt seinen Indexstatus. Halten Sie den Mauszeiger auf das Kennzeichen, um die Bezeichnung des Status zu sehen. Diese Status stehen in intelligenten Sets und Abfragen auch über das Feld <strong class="ui">Indexstatus</strong> zur Verfügung.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Kennzeichen</th><th><strong class="ui">Indexstatus</strong></th><th>Bedeutung</th></tr></thead>
+<tbody>
+<tr><td>Kein Kennzeichen</td><td><strong class="ui">Indiziert</strong></td><td>Das Dokument ist indiziert.</td></tr>
+<tr><td>Fortschrittsring; der Name ist grau</td><td><strong class="ui">Indizierung</strong></td><td>Das Dokument wird gerade indiziert. Der Tooltip zeigt Schritt und Prozentangabe, etwa <strong class="ui">Struktur wird ermittelt 35 %</strong>.</td></tr>
+<tr><td>Fortschrittsring oder Aktivitätsanzeige</td><td><strong class="ui">Analysator läuft</strong></td><td>Ein Analysator, den Sie mit <strong class="ui">Ausführen</strong> in den <strong class="ui">Dokumenteigenschaften</strong> gestartet haben, läuft auf dem Dokument. Der Tooltip lautet zum Beispiel <strong class="ui">Kohäsion läuft</strong>.</td></tr>
+<tr><td>Gepunkteter Kreis</td><td><strong class="ui">Nicht indiziert</strong></td><td>Das Dokument wartet in der Warteschlange (<strong class="ui">Wartet auf Indizierung</strong>).</td></tr>
+<tr><td>Pausenzeichen</td><td><strong class="ui">Übersprungen</strong></td><td>Für dieses Dokument gilt <strong class="ui">Indizierung ist aus</strong>, weil es ohne Indizierung importiert wurde (siehe <a href="#turning-indexing-off">Ohne Indizierung importieren</a> weiter unten).</td></tr>
+<tr><td>Fragezeichen</td><td><strong class="ui">Nicht unterstützt</strong></td><td>Das Dokument ist in einer anderen Sprache (<strong class="ui">Sprache wird für die Indizierung nicht unterstützt</strong>).</td></tr>
+<tr><td>Rotes Warndreieck</td><td><strong class="ui">Fehlgeschlagen</strong></td><td>Die Indizierung ist fehlgeschlagen. Der Tooltip nennt den Grund (siehe <a href="#indexing-failures">Wenn die Indizierung fehlschlägt</a> weiter unten).</td></tr>
+</tbody></table></div>
+<figure class="shot" id="analysis-and-indexing-navigator"><img class="shot-light" src="../figures/de/light/analysis-and-indexing-navigator.webp" alt="Die Seitenleiste während der Indizierung. Die Texte der Skeptiker in „Print“ werden indiziert, die in „Online“ warten, und „Hitzebericht 2024“, ohne Indizierung importiert, zeigt das Pausenzeichen." loading="lazy"><img class="shot-dark" src="../figures/de/dark/analysis-and-indexing-navigator.webp" alt="Die Seitenleiste während der Indizierung. Die Texte der Skeptiker in „Print“ werden indiziert, die in „Online“ warten, und „Hitzebericht 2024“, ohne Indizierung importiert, zeigt das Pausenzeichen." loading="lazy"><figcaption>Die Seitenleiste während der Indizierung. Die Texte der Skeptiker in „Print“ werden indiziert, die in „Online“ warten, und „Hitzebericht 2024“, ohne Indizierung importiert, zeigt das Pausenzeichen.</figcaption></figure>
+<h3 id="reader-status">In der Leseansicht<a class="anchor" href="#reader-status" aria-hidden="true">#</a></h3>
+<p>Die Zahlen eines Dokuments, etwa die Zahl seiner Absätze, Sätze und Tokens, stehen ganz rechts in der Statusleiste der Leseansicht. Welche Zahlen erscheinen, hängt davon ab, was die Randspalte zeigt (siehe <a href="reading-and-editing.html#status-bar">Die Statusleiste</a> in <a href="reading-and-editing.html">Kapitel 5, Lesen und Bearbeiten</a>). Bei „Uns läuft die Zeit davon“ zeigt die Statusleiste zum Beispiel <strong class="ui">10 ¶ · 66 S · 1.084 Wörter</strong>. Bis die Indizierung abgeschlossen ist und während ein Analysator läuft, den Sie mit <strong class="ui">Ausführen</strong> gestartet haben, zeigt die Statusleiste stattdessen eine dieser Angaben:</p>
+<ul>
+<li>Schritt und Prozentangabe, etwa <strong class="ui">Struktur wird ermittelt 35 %</strong>, zusammen mit einem Fortschrittsring;</li>
+<li><strong class="ui">Indizierung</strong> mit einer Aktivitätsanzeige, solange das Dokument wartet, bis es an der Reihe ist (in der Seitenleiste <strong class="ui">Wartet auf Indizierung</strong>);</li>
+<li>den Namen eines Analysators mit <strong class="ui">läuft</strong> dahinter, bei einem großen Dokument gefolgt von der Prozentangabe, etwa <strong class="ui">Rhetorik läuft</strong>;</li>
+<li><strong class="ui">Indizierung ist aus</strong> mit einem Link <strong class="ui">Jetzt indizieren</strong> bei einem Dokument, das ohne Indizierung hinzugefügt wurde;</li>
+<li><strong class="ui">Keine Grammatikanalyse für</strong>, gefolgt von der Sprache;</li>
+<li>den Grund für den Fehlschlag, gefolgt von einem Link <strong class="ui">Indizierung wiederholen</strong>, bei einem Dokument, dessen Indizierung fehlgeschlagen ist.</li>
+</ul>
+<figure class="shot" id="analysis-and-indexing-status-paused"><img class="shot-light" src="../figures/de/light/analysis-and-indexing-status-paused.webp" alt="Die Statusleiste von „Hitzebericht 2024“, ohne Indizierung importiert." loading="lazy"><img class="shot-dark" src="../figures/de/dark/analysis-and-indexing-status-paused.webp" alt="Die Statusleiste von „Hitzebericht 2024“, ohne Indizierung importiert." loading="lazy"><figcaption>Die Statusleiste von „Hitzebericht 2024“, ohne Indizierung importiert.</figcaption></figure>
+<p>Auch andere Teile der Leseansicht warten auf die Indizierung (siehe <a href="reading-and-editing.html#before-analysis">Bevor die Indizierung abgeschlossen ist</a> in <a href="reading-and-editing.html">Kapitel 5, Lesen und Bearbeiten</a>).</p>
+<h3 id="activity-window">Im Fenster „Aktivität“<a class="anchor" href="#activity-window" aria-hidden="true">#</a></h3>
+<p><strong class="ui">Fenster ▸ Aktivität</strong> (⌥⌘0) zeigt, was in allen Projekten im Hintergrund geschieht (siehe <a href="importing.html#activity-window">Das Fenster „Aktivität“</a> in <a href="importing.html">Kapitel 4, Material importieren</a>). Diese Abschnitte des Fensters <strong class="ui">Aktivität</strong> betreffen die Indizierung:</p>
+<ul>
+<li><strong class="ui">Indizierung</strong> listet die Dokumente, die gerade indiziert werden, mit Schritt und Prozentangabe, sowie die Dokumente, auf denen gerade ein bestimmter Analysator läuft, etwa <strong class="ui">Metadiskurs läuft 40 %</strong>.</li>
+<li><strong class="ui">Fehlgeschlagen</strong> listet die Dokumente, deren Indizierung fehlgeschlagen ist, mit dem Grund und einem Link <strong class="ui">Indizierung wiederholen</strong> für einen neuen Versuch.</li>
+<li><strong class="ui">Wartend</strong> listet schließlich die Dokumente, die in der Warteschlange warten, bis sie an der Reihe sind, jeweils mit dem Status <strong class="ui">Wartet auf Indizierung</strong>.</li>
+</ul>
+<p>Jede Zeile nennt das zugehörige Projekt; im Fenster <strong class="ui">Aktivität</strong> verfolgen Sie deshalb die Indizierung in anderen Projekten als dem aktiven.</p>
+<h3 id="index-status-field">Dokumente nach ihrem Indexstatus finden<a class="anchor" href="#index-status-field" aria-hidden="true">#</a></h3>
+<p>Die Mitglieder eines intelligenten Sets ändern sich von selbst, sobald Dokumente fertig indiziert sind. Nach einem Import vieler Dokumente kann Ihnen ein intelligentes Set deshalb zeigen, welche Dokumente noch nicht bereit sind. So legen Sie ein solches Set an:</p>
+<ol>
+<li>Wählen Sie <strong class="ui">Projekt ▸ Neues intelligentes Set</strong> oder klicken Sie in der Seitenleiste am Ende des Abschnitts <strong class="ui">Sets</strong> auf <strong class="ui">Neues intelligentes Set</strong>.</li>
+<li>Geben Sie dem Set im Dialog, der sich öffnet, einen Namen.</li>
+<li>Wählen Sie in der Bedingungszeile im Menü, das <strong class="ui">Attribut</strong> oder <strong class="ui">Tags</strong> zeigt, den Eintrag <strong class="ui">Indexstatus</strong>.</li>
+<li>Wählen Sie im Menü, das <strong class="ui">ist eines von</strong> zeigt, den Eintrag <strong class="ui">ist keines von</strong>.</li>
+<li>Öffnen Sie das Wertemenü, das <strong class="ui">Keine</strong> anzeigt, und wählen Sie <strong class="ui">Indiziert</strong>.</li>
+<li>Klicken Sie auf <strong class="ui">Sichern</strong>.</li>
+</ol>
+<p>Während Sie die Kriterien ändern, zeigt die Zahl unter den Bedingungen, wie viele Dokumente zum Set gehören. Das Set kann auch Dokumente in anderen Sprachen enthalten und vorübergehend Dokumente, auf denen gerade ein Analysator läuft, den Sie mit <strong class="ui">Ausführen</strong> gestartet haben. Wenn Sie nur die Dokumente sehen möchten, um die Sie sich kümmern müssen, wählen Sie stattdessen <strong class="ui">ist eines von</strong> mit <strong class="ui">Fehlgeschlagen</strong>, <strong class="ui">Übersprungen</strong> und <strong class="ui">Nicht unterstützt</strong>.</p>
+<figure class="shot" id="analysis-and-indexing-smart-set"><img class="shot-light" src="../figures/de/light/analysis-and-indexing-smart-set.webp" alt="Ein intelligentes Set der Dokumente, deren Indizierung noch nicht abgeschlossen ist." loading="lazy"><img class="shot-dark" src="../figures/de/dark/analysis-and-indexing-smart-set.webp" alt="Ein intelligentes Set der Dokumente, deren Indizierung noch nicht abgeschlossen ist." loading="lazy"><figcaption>Ein intelligentes Set der Dokumente, deren Indizierung noch nicht abgeschlossen ist.</figcaption></figure>
+<p>Das Feld <strong class="ui">Indexstatus</strong> gehört in Abfragen zur Einheit <strong class="ui">Dokumente</strong>. Intelligente Sets und Abfragen haben außerdem das Feld <strong class="ui">Indizierung übersprungen</strong>, das angibt, ob ein Dokument ohne Indizierung importiert wurde und noch auf <strong class="ui">Jetzt indizieren</strong> wartet. Mehr über intelligente Sets erfahren Sie in <a href="sets-tags-attributes.html">Kapitel 8, Sets, Gruppen, Tags und Attribute</a>.</p>
+<h2 id="indexing-failures">Wenn die Indizierung fehlschlägt<a class="anchor" href="#indexing-failures" aria-hidden="true">#</a></h2>
+<p>Schlägt die Indizierung eines Dokuments fehl, ersetzt ein rotes Warndreieck das Kennzeichen neben dem Dokument in der Seitenleiste. Das Dokument erscheint außerdem im Abschnitt <strong class="ui">Fehlgeschlagen</strong> des Fensters <strong class="ui">Aktivität</strong>. Die Ursache erscheint, wenn Sie den Mauszeiger auf das Symbol halten, im Kontextmenü des Dokuments in der Seitenleiste und in der Statusleiste der Leseansicht. Gibt es keine genauere Angabe, lautet der Grund <strong class="ui">Die Indizierung dieses Dokuments ist fehlgeschlagen.</strong></p>
+<p>Mit <strong class="ui">Indizierung wiederholen</strong> können Sie die Indizierung jederzeit erneut versuchen. Den Befehl finden Sie an diesen Stellen:</p>
+<ul>
+<li>im Kontextmenü des Dokuments in der Seitenleiste;</li>
+<li>in der Statusleiste der Leseansicht;</li>
+<li>in der Zeile des Dokuments im Abschnitt <strong class="ui">Fehlgeschlagen</strong> des Fensters <strong class="ui">Aktivität</strong>.</li>
+</ul>
+<p>LemmaLoom indiziert dann die Teile des Dokuments, denen die Analyse fehlt, und lässt seine Analysatoren erneut laufen. Von selbst versucht LemmaLoom es beim Start erneut und, sobald es lange genug gewartet hat, auch beim nächsten Mal, wenn es irgendein Dokument indiziert. Die Wartezeit beginnt bei einer Minute und verdoppelt sich mit jedem Fehlschlag, bis sie eine Stunde erreicht.</p>
+<p>Schlägt die Indizierung desselben Dokuments mehrmals fehl, prüfen Sie seine Eigenschaft <strong class="ui">Sprache</strong> in den <strong class="ui">Dokumenteigenschaften</strong>. Suchen Sie in der Leseansicht nach Textteilen, die eigentlich kein Text sind (etwa zufällige Zeichen aus einer beschädigten PDF-Datei), und korrigieren Sie sie oder schließen Sie sie aus. Hilft nichts davon, melden Sie das Problem über <strong class="ui">Hilfe ▸ Feedback senden</strong> (siehe <a href="help-and-support.html">Kapitel 26, Hilfe und Support</a>).</p>
+<h2 id="turning-indexing-off">Ohne Indizierung importieren<a class="anchor" href="#turning-indexing-off" aria-hidden="true">#</a></h2>
+<p>Sie können ein Dokument importieren, ohne es zu indizieren, und es später indizieren lassen. Das bietet sich etwa an bei einer großen Zahl von Dokumenten, wenn Ihr Mac jetzt für anderes frei bleiben soll, bei einem PDF, dessen ausgelesenen Text Sie vor der Indizierung erst korrigieren müssen, und bei Dokumenten, die Sie nur lesen und kodieren werden.</p>
+<p>So importieren Sie Dokumente ohne Indizierung:</p>
+<ol>
+<li>Importieren Sie das Dokument wie gewohnt (siehe <a href="importing.html">Kapitel 4, Material importieren</a>).</li>
+<li>Entfernen Sie im Teil <strong class="ui">Indizierung</strong> des Dialogs <strong class="ui">Dokument importieren</strong> oder <strong class="ui">Aus dem Web importieren</strong> das Häkchen bei <strong class="ui">Für die Grammatikanalyse indizieren</strong>. Die Liste <strong class="ui">Analysatoren</strong> darunter ist deaktiviert.</li>
+<li>Klicken Sie auf <strong class="ui">Importieren</strong>.</li>
+</ol>
+<p>Für jede importierte Datei erscheint ein eigener Dialog, und in jedem ist das Markierungsfeld zunächst aktiviert. Um mehrere Dateien ohne Indizierung zu importieren, entfernen Sie das Häkchen in jedem Dialog.</p>
+<p>Ein solches Dokument kommt nicht in die Warteschlange, auch wenn sich sein Inhalt später ändert. Sein Lens-Menü bleibt deaktiviert, und der Tab <strong class="ui">Grammatik</strong> zeigt <strong class="ui">Die Grammatik wird verfügbar, sobald die Indizierung abgeschlossen ist</strong>.</p>
+<p>Um das Dokument zu indizieren, klicken Sie in der Statusleiste der Leseansicht auf <strong class="ui">Jetzt indizieren</strong> oder öffnen Sie die <strong class="ui">Dokumenteigenschaften</strong> und klicken Sie dort auf <strong class="ui">Jetzt indizieren</strong>. Die <strong class="ui">Dokumenteigenschaften</strong> öffnen Sie, indem Sie das Dokument in der Seitenleiste auswählen und <strong class="ui">Projekt ▸ Eigenschaften</strong> wählen oder mit der rechten Maustaste auf das Dokument klicken und <strong class="ui">Eigenschaften</strong> wählen. Dort steht <strong class="ui">Jetzt indizieren</strong> oben im Teil <strong class="ui">Indizierung</strong>, neben <strong class="ui">Indizierung ist aus</strong>. Die Schaltfläche wirkt sofort.</p>
+<figure class="shot" id="analysis-and-indexing-index-now"><img class="shot-light" src="../figures/de/light/analysis-and-indexing-index-now.webp" alt="Der Teil Indizierung der Dokumenteigenschaften von „Hitzebericht 2024“, ohne Indizierung importiert, mit Jetzt indizieren neben Indizierung ist aus." loading="lazy"><img class="shot-dark" src="../figures/de/dark/analysis-and-indexing-index-now.webp" alt="Der Teil Indizierung der Dokumenteigenschaften von „Hitzebericht 2024“, ohne Indizierung importiert, mit Jetzt indizieren neben Indizierung ist aus." loading="lazy"><figcaption>Der Teil Indizierung der Dokumenteigenschaften von „Hitzebericht 2024“, ohne Indizierung importiert, mit Jetzt indizieren neben Indizierung ist aus.</figcaption></figure>
+<p>Danach kommt das Dokument in die Warteschlange. Haben Sie versehentlich auf <strong class="ui">Jetzt indizieren</strong> geklickt, setzt <strong class="ui">Bearbeiten ▸ Jetzt indizieren widerrufen</strong> (⌘Z) das Dokument auf den vorherigen Status <strong class="ui">Indizierung ist aus</strong> zurück. Ist die Indizierung bis dahin schon abgeschlossen, behält das Dokument seine Analyse.</p>
+<aside class="callout note"><p class="callout-title">Hinweis</p><p>Die Indizierung lässt sich nur beim Import verhindern oder nach dem Import, indem Sie <strong class="ui">Jetzt indizieren</strong> widerrufen.</p>
+</aside>
+<h2 id="document-analyzers">Analysatoren für ein Dokument wählen<a class="anchor" href="#document-analyzers" aria-hidden="true">#</a></h2>
+<p>Bei der Indizierung laufen auf einem Dokument alle Analysatoren, die seine Sprache verarbeiten. Sie können einen Analysator jederzeit für einzelne Dokumente ausschließen, entweder beim Import oder später, indem Sie seine Befunde in den <strong class="ui">Dokumenteigenschaften</strong> löschen. Einen Analysator auszuschließen bietet sich an, wenn er nicht zum Inhalt passt. <strong class="ui">Rhetorik</strong> zum Beispiel erkennt Mittel wie Nominalisierung und periodische Sätze; da diese typisch für geschriebene Prosa sind, möchten Sie ihn beim Dokument „Radiodebatte“, dem Transkript einer Aufnahme, vielleicht ausschließen. Schließen Sie ihn bei allen Transkripten aus, zählt eine Abfrage mit der Einheit <strong class="ui">Befunde</strong> über das ganze Projekt rhetorische Mittel nur in den geschriebenen Dokumenten.</p>
+<p>Wenn Sie einen Analysator für ein Dokument ausschließen, geschieht Folgendes:</p>
+<ul>
+<li>Alle Befunde des Analysators in diesem Dokument werden entfernt;</li>
+<li>die Lens dieses Analysators verschwindet aus dem Lens-Menü des Dokuments;</li>
+<li>in der Facette <strong class="ui">Diskurs</strong> des Tabs <strong class="ui">Grammatik</strong> finden Sie für das Dokument Hinweise wie <strong class="ui">Keine rhetorischen Mittel</strong>;</li>
+<li>wenn Sie einen selbst erstellten Analysator zum automatischen Kodieren verwenden, überspringt <strong class="ui">Automatisch kodieren…</strong> alle Dokumente, für die der Analysator zuvor ausgeschlossen wurde.</li>
+</ul>
+<h3 id="analyzers-at-import">Analysatoren beim Import wählen<a class="anchor" href="#analyzers-at-import" aria-hidden="true">#</a></h3>
+<p>Im Teil <strong class="ui">Indizierung</strong> des Importdialogs stehen die Analysatoren mit Markierungsfeldern unter <strong class="ui">Analysatoren</strong>. Zuerst kommen die eingebauten, dann Ihre eigenen in alphabetischer Reihenfolge. Steht <strong class="ui">Sprache</strong> auf <strong class="ui">Automatisch</strong>, erscheinen alle Analysatoren in der Liste; andernfalls nur die, die Dokumente in der gewählten Sprache verarbeiten können. Anfangs sind alle aktiviert; entfernen Sie das Häkchen bei denen, die Sie für dieses Dokument nicht verwenden möchten.</p>
+<h3 id="analyzer-list">Die Analysatorliste in den Dokumenteigenschaften<a class="anchor" href="#analyzer-list" aria-hidden="true">#</a></h3>
+<p>So sehen oder ändern Sie die Analysatoren eines Dokuments, das bereits in Ihrem Projekt ist:</p>
+<ol>
+<li>Wählen Sie das Dokument in der Seitenleiste aus und wählen Sie <strong class="ui">Projekt ▸ Eigenschaften</strong>, oder klicken Sie mit der rechten Maustaste darauf und wählen Sie <strong class="ui">Eigenschaften</strong>.</li>
+<li>Scrollen Sie nach unten zum Teil <strong class="ui">Indizierung</strong>. <strong class="ui">Analysatoren</strong> listet die Analysatoren auf, die die Sprache des Dokuments verarbeiten. Bei einem Dokument in einer anderen Sprache stehen dort alle, und <strong class="ui">Ausführen</strong> ist deaktiviert.</li>
+</ol>
+<p>Jede Zeile zeigt den Status des Analysators:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Status</th><th>Bedeutung</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">Fertig</strong></td><td>Der Analysator ist in seiner aktuellen Version über das ganze Dokument gelaufen. Auch ein Analysator, der gelaufen ist und nichts gefunden hat, ist <strong class="ui">Fertig</strong>.</td></tr>
+<tr><td><strong class="ui">Veraltet</strong></td><td>Der Analysator ist nur über einen Teil des Dokuments oder in einer früheren Version gelaufen. Dieser Status hält meist nur kurz an, weil LemmaLoom den Analysator von selbst auf den neuesten Stand bringt (siehe <a href="#analyzer-reruns">Wann Analysatoren erneut ausgeführt werden</a> weiter unten).</td></tr>
+<tr><td><strong class="ui">Nicht ausgeführt</strong></td><td>Der Analysator ist auf diesem Dokument nicht gelaufen, weil er ausgeschlossen wurde, weil das Dokument noch nicht indiziert ist oder weil der Analysator bei der Indizierung mit einem Fehler abgebrochen ist.</td></tr>
+<tr><td><strong class="ui">Läuft</strong></td><td>Der Analysator läuft gerade. Bei einem langen Dokument zeigt ein Fortschrittsring, wie weit er ist.</td></tr>
+<tr><td><strong class="ui">Fehlgeschlagen</strong></td><td>Der Analysator ist mit einem Fehler abgebrochen, nachdem Sie auf <strong class="ui">Ausführen</strong> geklickt haben. Halten Sie den Mauszeiger auf <strong class="ui">Fehlgeschlagen</strong>, um den Fehler zu lesen.</td></tr>
+</tbody></table></div>
+<figure class="shot" id="analysis-and-indexing-properties-analyzers"><img class="shot-light" src="../figures/de/light/analysis-and-indexing-properties-analyzers.webp" alt="Die Analysatoren von „Radiodebatte“ in den Dokumenteigenschaften; Rhetorik ist ausgeschlossen." loading="lazy"><img class="shot-dark" src="../figures/de/dark/analysis-and-indexing-properties-analyzers.webp" alt="Die Analysatoren von „Radiodebatte“ in den Dokumenteigenschaften; Rhetorik ist ausgeschlossen." loading="lazy"><figcaption>Die Analysatoren von „Radiodebatte“ in den Dokumenteigenschaften; Rhetorik ist ausgeschlossen.</figcaption></figure>
+<p>Ein Klick auf einen Link <strong class="ui">Ausführen</strong> oder auf eine Schaltfläche mit dem Papierkorb in dieser Liste wirkt sofort, auch wenn Sie danach auf <strong class="ui">Abbrechen</strong> klicken.</p>
+<h3 id="removing-analyzer-output">Die Ausgabe eines Analysators entfernen<a class="anchor" href="#removing-analyzer-output" aria-hidden="true">#</a></h3>
+<p>Wenn Sie die Ausgabe eines Analysators entfernen, löscht LemmaLoom seine Befunde und schließt den Analysator von da an für dieses Dokument aus.</p>
+<ol>
+<li>Öffnen Sie die <strong class="ui">Dokumenteigenschaften</strong> des Dokuments und scrollen Sie zu <strong class="ui">Indizierung</strong>.</li>
+<li>Klicken Sie in der Zeile des Analysators auf die Schaltfläche mit dem Papierkorb. Wenn Sie den Mauszeiger darauf halten, erscheint <strong class="ui">Ausgabe entfernen</strong>. Die Schaltfläche gibt es nur bei Analysatoren mit dem Status <strong class="ui">Fertig</strong> oder <strong class="ui">Veraltet</strong>.</li>
+</ol>
+<p>Die Zeile wechselt nun zu <strong class="ui">Nicht ausgeführt</strong>. Wird das Dokument erneut indiziert (etwa nach einer Änderung), bleibt der Analysator entfernt. Mit <strong class="ui">Bearbeiten ▸ Ausgabe entfernen widerrufen</strong> (⌘Z) machen Sie das Entfernen rückgängig; der Analysator wird wiederhergestellt und läuft erneut. Wenn Sie ihn später wieder ausführen möchten, klicken Sie in derselben Zeile auf <strong class="ui">Ausführen</strong>.</p>
+<h3 id="running-an-analyzer">Einen Analysator ausführen<a class="anchor" href="#running-an-analyzer" aria-hidden="true">#</a></h3>
+<ol>
+<li>Öffnen Sie die <strong class="ui">Dokumenteigenschaften</strong> des Dokuments und scrollen Sie zu <strong class="ui">Indizierung</strong>.</li>
+<li>Klicken Sie in der Zeile des Analysators auf <strong class="ui">Ausführen</strong>. Der Link erscheint bei Analysatoren, deren Status nicht <strong class="ui">Fertig</strong> ist.</li>
+</ol>
+<p>War der Analysator für das Dokument ausgeschlossen, wird er wieder hinzugefügt, und er läuft sofort, gestützt auf die vorhandene Analyse. Während er läuft, zeigt seine Zeile <strong class="ui">Läuft</strong>, und auch das Kennzeichen in der Seitenleiste, die Statusleiste der Leseansicht und das Fenster <strong class="ui">Aktivität</strong> zeigen es an, etwa mit <strong class="ui">Rhetorik läuft</strong>. War der Analysator für das Dokument ursprünglich ausgeschlossen, schließt <strong class="ui">Bearbeiten ▸ Ausführen widerrufen</strong> (⌘Z) ihn wieder aus und entfernt die Ergebnisse des Laufs.</p>
+<p><strong class="ui">Ausführen</strong> ist deaktiviert, solange die Indizierung nicht abgeschlossen ist, und bei einem Dokument, das ohne Indizierung importiert wurde. Wenn Sie den Mauszeiger darauf halten, erscheint entsprechend <strong class="ui">Noch nicht indiziert</strong> oder <strong class="ui">Indizierung ist aus</strong>.</p>
+<p>Zeigt einer Ihrer eigenen Analysatoren in einem vollständig indizierten Dokument <strong class="ui">Nicht ausgeführt</strong>, obwohl er nie ausgeschlossen wurde, ist er wahrscheinlich bei der Indizierung mit einem Fehler abgebrochen. Mit <strong class="ui">Ausführen</strong> können Sie es erneut versuchen. Schlägt der Lauf fehl, steht der Analysator auf <strong class="ui">Fehlgeschlagen</strong>. Wenn Sie den Mauszeiger auf <strong class="ui">Fehlgeschlagen</strong> halten, sehen Sie die zugehörige Fehlermeldung. Dem Fehler können Sie dann unter <strong class="ui">Fenster ▸ Analysatoren</strong> nachgehen (siehe <a href="custom-analyzers.html">Kapitel 20, Eigene Analysatoren</a>).</p>
+<h3 id="analyzer-reruns">Wann Analysatoren erneut ausgeführt werden<a class="anchor" href="#analyzer-reruns" aria-hidden="true">#</a></h3>
+<p><strong class="ui">Ausführen</strong> ist meist nicht nötig, weil LemmaLoom die Analysatoren von selbst erneut laufen lässt. Das geschieht in zwei Fällen: wenn Ihr Dokument erneut indiziert wird (siehe <a href="#reanalysis">Ein Dokument erneut indizieren</a>) und wenn Sie unter <strong class="ui">Fenster ▸ Analysatoren</strong> einen eigenen Analysator hinzufügen oder entfernen, seinen Code oder seine Sprachen ändern oder die Schlüssel seiner Legende bearbeiten.</p>
+<p>Im zweiten Fall lässt LemmaLoom den Analysator in allen Projekten erneut über jedes Dokument in seinen Sprachen laufen, außer über Dokumente, deren frühere Ergebnisse Sie gelöscht haben. Nur die Analysatoren laufen erneut, deshalb geht das viel schneller als eine vollständige Indizierung. Da alle betroffenen Dokumente in dieser Zeit den Status <strong class="ui">Indizierung</strong> haben, erscheinen ihre Namen in der Seitenleiste grau und mit einem Fortschrittsring, und in den <strong class="ui">Dokumenteigenschaften</strong> kann die Zeile des Analysators <strong class="ui">Veraltet</strong> zeigen, bis er fertig ist.</p>
+<p>Zeigt die Zeile eines Analysators unter <strong class="ui">Fenster ▸ Analysatoren</strong> <strong class="ui">Veraltet</strong>, bedeutet das etwas anderes. Dort heißt <strong class="ui">Veraltet</strong>, dass der Analysator aus einer Abfrage stammt, die inzwischen geändert wurde. Sichern Sie den Analysator erneut aus der geänderten Abfrage, um das zu beheben (siehe <a href="queries-using-results.html">Kapitel 18, Abfrageergebnisse nutzen</a>).</p>
+<h2 id="what-needs-analysis">Was ohne die Analyse verfügbar ist<a class="anchor" href="#what-needs-analysis" aria-hidden="true">#</a></h2>
+<p>Viele Funktionen von LemmaLoom stützen sich nur auf den Text und Ihre Annotationen; sie funktionieren deshalb in jedem Dokument, ob indiziert oder nicht:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Bereich</th><th>Funktioniert ohne die Analyse</th></tr></thead>
+<tbody>
+<tr><td>Leseansicht</td><td>Lesen, die Suchleiste, Textstellen auswählen, den Text bearbeiten und Aufnahmen abspielen</td></tr>
+<tr><td>Annotationen</td><td>Kodieren, Memos, Verknüpfungen und Lesezeichen; kodierte Textstellen und Lesezeichen werden im Text angezeigt</td></tr>
+<tr><td>Inspektor</td><td>Im Tab <strong class="ui">Kodierung</strong> die Facetten <strong class="ui">Codes</strong>, <strong class="ui">Kodierungen</strong>, <strong class="ui">Verknüpfungen</strong>, <strong class="ui">Code-Statistik</strong> und das <strong class="ui">Mosaik</strong> von <strong class="ui">Porträt</strong>; im Tab <strong class="ui">Text</strong> die Facetten <strong class="ui">Details</strong> (Attribute und Tags) und <strong class="ui">Lesezeichen</strong></td></tr>
+<tr><td>Projekt und Sets</td><td><strong class="ui">Codebuch</strong>, <strong class="ui">Kodierungen</strong>, <strong class="ui">Memos</strong>, <strong class="ui">Verknüpfungen</strong>, <strong class="ui">Code-Statistik</strong>, <strong class="ui">Code-Matrix</strong> und <strong class="ui">Beziehungen</strong></td></tr>
+<tr><td>Wörterbücher</td><td>Die Zahlen im Abschnitt <strong class="ui">Wörterbücher</strong>; <strong class="ui">Automatisch kodieren…</strong> mit einer Wörterbuch-Lens, das auch die noch nicht indizierten Dokumente eines Sets oder Projekts kodiert</td></tr>
+<tr><td>Abfragen</td><td>Die Einheiten <strong class="ui">Absätze</strong>, <strong class="ui">Texttreffer</strong>, <strong class="ui">Kodierungen</strong>, <strong class="ui">Memos</strong>, <strong class="ui">Lesezeichen</strong>, <strong class="ui">Verknüpfungen</strong>, <strong class="ui">Redebeiträge</strong> und <strong class="ui">Zuordnungen</strong> sowie die Bibliothekseinheiten wie <strong class="ui">Dokumente</strong> und <strong class="ui">Codes</strong></td></tr>
+<tr><td>Sonstiges</td><td>Übersetzen, Sets und intelligente Sets, Attribute, Tags sowie Projekte exportieren und austauschen</td></tr>
+</tbody></table></div>
+<p>Diese Funktionen brauchen die Analyse:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Bereich</th><th>Braucht die Analyse</th></tr></thead>
+<tbody>
+<tr><td>Leseansicht</td><td>Ein Wort per Klick auswählen, Satznummern in der Randspalte, die Zahlen in der Statusleiste und per Klick auf ein Wort in einem Transkript die Wiedergabe an diese Stelle setzen</td></tr>
+<tr><td>Lenses</td><td>Das Lens-Menü, für jede Lens; bis die Indizierung abgeschlossen ist, ist es deaktiviert, mit dem Tooltip <strong class="ui">Lenses stehen zur Verfügung, sobald die Indizierung abgeschlossen ist</strong></td></tr>
+<tr><td>Inspektor</td><td>Die Statistiken im Tab <strong class="ui">Text</strong>; der ganze Tab <strong class="ui">Grammatik</strong>; <strong class="ui">Code-Skizze</strong> und die <strong class="ui">Codelinie</strong> von <strong class="ui">Porträt</strong> im Tab <strong class="ui">Kodierung</strong>; <strong class="ui">Skizzenraum</strong> im Tab <strong class="ui">Multimodus</strong></td></tr>
+<tr><td>Wortskizzen</td><td>Wortskizzen für ein Dokument, ein Set oder das Projekt</td></tr>
+<tr><td>Abfragen</td><td>Die Einheiten <strong class="ui">Wörter</strong>, <strong class="ui">Mustertreffer</strong>, <strong class="ui">Sätze</strong>, <strong class="ui">Phrasen</strong>, <strong class="ui">Nominalphrasen-Blöcke</strong> und <strong class="ui">Befunde</strong>; <strong class="ui">Kollokationen</strong> und <strong class="ui">Schlüsselwörter</strong>; das Maß <strong class="ui">Pro 10.000 Wörter</strong>, das seine Wortzahlen aus der Analyse nimmt</td></tr>
+<tr><td>Automatisches Kodieren</td><td><strong class="ui">Automatisch kodieren…</strong> mit der Lens eines Ihrer eigenen Analysatoren; noch nicht indizierte Dokumente werden dabei übersprungen</td></tr>
+<tr><td>Intelligente Sets</td><td>Die Felder <strong class="ui">Token</strong> und <strong class="ui">Sätze</strong></td></tr>
+</tbody></table></div>
+<p>Umfasst eine solche Ansicht mehrere Dokumente, lässt sie die noch nicht indizierten aus und gibt an, wie viele sie einbezogen hat. Ebenso zeigt eine Abfrage in der Ergebnisleiste neben der Trefferzahl die Zahl der Dokumente (siehe <a href="queries-results.html#coverage-chip">Ausgelassene Dokumente</a> in <a href="queries-results.html">Kapitel 16, Abfrageergebnisse und Statistik</a>). Dort steht zum Beispiel <strong class="ui">5 von 6</strong>, wenn eines der sechs Dokumente im Set „Aktivisten“ noch nicht indiziert ist. Eine Wortskizze für ein Set oder das Projekt meldet etwa <strong class="ui">13 von 14 Dokumenten indiziert</strong>.</p>
+<p>Dokumente werden nur bei Einheiten ausgelassen, die die Analyse brauchen (siehe die Tabelle oben). Mit einer Einheit, die ohne die Analyse auskommt, etwa <strong class="ui">Absätze</strong>, bezieht Ihre Abfrage dagegen alle Dokumente ein. In noch nicht indizierten Dokumenten durchsucht eine Textzeile, deren erstes Menü auf <strong class="ui">Wort</strong>, <strong class="ui">Wortform</strong> oder <strong class="ui">Lemma</strong> steht, den Text wie bei <strong class="ui">Text</strong>, bis die Indizierung abgeschlossen ist. <strong class="ui">Abfrage aus Auswahl</strong> erzeugt dort eine einfache Textsuche (siehe <a href="queries-patterns.html">Kapitel 17, Abfragemuster und Erkundung</a>).</p>
+<h2 id="reanalysis">Ein Dokument erneut indizieren<a class="anchor" href="#reanalysis" aria-hidden="true">#</a></h2>
+<p>Die Analyse eines Dokuments bleibt in LemmaLoom gültig, bis sich etwas ändert, von dem sie abhängt. Diese Änderungen schicken das Dokument zurück in die Warteschlange:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Änderung</th><th>Was LemmaLoom tut</th></tr></thead>
+<tbody>
+<tr><td>Sie bearbeiten den Text und klicken auf <strong class="ui">Sichern</strong></td><td>Indiziert das Dokument erneut; in einem langen Dokument meist nur den Teil, den Sie geändert haben</td></tr>
+<tr><td><strong class="ui">Bearbeiten ▸ Text bearbeiten widerrufen</strong></td><td>Dasselbe, für den wiederhergestellten Text</td></tr>
+<tr><td>Sie ändern <strong class="ui">Sprache</strong> in den <strong class="ui">Dokumenteigenschaften</strong> und sichern</td><td>Indiziert das ganze Dokument in der neuen Sprache</td></tr>
+<tr><td>Sie ändern <strong class="ui">Von der Indizierung ausschließen</strong> in den <strong class="ui">Dokumenteigenschaften</strong> und sichern</td><td>Indiziert das ganze Dokument erneut</td></tr>
+<tr><td><strong class="ui">Bearbeiten ▸ Dokument löschen widerrufen</strong></td><td>Indiziert das wiederhergestellte Dokument, weil seine Analyse mit ihm gelöscht wurde</td></tr>
+<tr><td>Sie fügen einen eigenen Analysator hinzu, ändern ihn oder löschen ihn</td><td>Lässt nur die Analysatoren erneut laufen, über jedes Dokument in den Sprachen dieses Analysators</td></tr>
+<tr><td><strong class="ui">Bearbeiten ▸ Ausgabe entfernen widerrufen</strong></td><td>Lässt die Analysatoren dieses Dokuments erneut laufen</td></tr>
+<tr><td>Eine neue Version von LemmaLoom ändert, wie Dokumente indiziert werden</td><td>Indiziert jedes Dokument erneut, im Hintergrund, wenn Sie die neue Version zum ersten Mal öffnen</td></tr>
+</tbody></table></div>
+<h3 id="after-an-edit">Nach einer Änderung<a class="anchor" href="#after-an-edit" aria-hidden="true">#</a></h3>
+<p>Wenn Sie Änderungen sichern, zeigt die Leseansicht den geänderten Text sofort, und darüber steht <strong class="ui">Wird gespeichert</strong>, bis die neue Analyse fertig ist (siehe <a href="reading-and-editing.html#after-saving">Was das Sichern bewirkt</a> in <a href="reading-and-editing.html">Kapitel 5, Lesen und Bearbeiten</a>). Alle Ihre Kodierungen, Memos, Verknüpfungen und Lesezeichen wandern mit dem Text, an dem sie hängen, bevor die erneute Indizierung beginnt.</p>
+<p>Wie viel erneut indiziert werden muss, hängt von der Größe des Dokuments ab. Ein Dokument mit bis zu etwa 80.000 Wörtern englischen Textes wird in einem Stück indiziert; ein größeres wird an Absatzgrenzen in mehrere Teile zerlegt. Jede Änderung löst die erneute Indizierung des Teils aus, der sie enthält; bei den meisten Artikeln und Reden wird also das ganze Dokument neu indiziert. Bei langen Büchern oder Berichten behalten die unveränderten Teile dagegen meist ihre Analyse, sodass die neue Analyse viel früher bereit ist. Größere Einfügungen oder Löschungen können einen Absatz in den nächsten Teil verschieben und so die erneute Indizierung der folgenden Teile auslösen.</p>
+<p>Fehler und größere Überarbeitungen gehen Sie im Allgemeinen besser vor der Indizierung an. Wenn Sie zum Beispiel ein langes Dokument umfassend überarbeiten wollen, importieren Sie das PDF zunächst ohne Indizierung (siehe <a href="#turning-indexing-off">Ohne Indizierung importieren</a> weiter oben in diesem Kapitel).</p>
+<h3 id="archives-and-exchange">Archive und Austauschdateien<a class="anchor" href="#archives-and-exchange" aria-hidden="true">#</a></h3>
+<p>Ein LemmaLoom-Archiv (<code>.llz</code>) enthält die Analysen seiner Dokumente. Wenn Sie Dokumente aus einem Archiv importieren, können Sie diese Analysen sofort nutzen. Wurde das Archiv mit einer Version von LemmaLoom erstellt, die Dokumente anders indiziert, werden seine Dokumente erneut indiziert.</p>
+<p>Importierte Dokumente behalten auch die im Archiv gespeicherten Befunde der Analysatoren. In den <strong class="ui">Dokumenteigenschaften</strong> eines importierten Dokuments erscheinen Ihre Analysatoren, die die Bibliothek des Archivs nicht kennt, als <strong class="ui">Nicht ausgeführt</strong>; mit <strong class="ui">Ausführen</strong> analysieren Sie diese Dokumente entsprechend. Ein Analysator, der mit dem Archiv kommt und in Ihrer Bibliothek noch fehlt, wird Ihrer Bibliothek hinzugefügt. Dokumente, die bereits in Ihrer Bibliothek waren, analysiert er erst bei ihrer nächsten Indizierung oder wenn Sie auf <strong class="ui">Ausführen</strong> klicken.</p>
+<p>Ein REFI-QDA-Projekt (<code>.qdpx</code>) speichert seine Textdokumente, und die Indizierung läuft wie bei neuen Dokumenten. Mehr über diese beiden Dateiformate erfahren Sie in <a href="exchange-and-export.html">Kapitel 22, Austausch und Export</a>.</p>
+</article>
+<nav class="pager"><a class="previous" href="custom-analyzers.html"><span>Zurück</span>Eigene Analysatoren</a><a class="next" href="exchange-and-export.html"><span>Weiter</span>Austausch und Export</a></nav>
+<footer class="site-footer">© 2026 Ryan S. Cooper. Alle Rechte vorbehalten.<br>Diese Ausgabe wurde mithilfe von KI aus der englischen Originalausgabe übersetzt. Die Übersetzung kann Fehler oder Ungenauigkeiten enthalten. Im Zweifel ist die englische Ausgabe maßgeblich.</footer>
+</main>
+<nav class="page-toc" aria-label="Auf dieser Seite"><p>Auf dieser Seite</p><ul>
+<li class="level-2"><a href="#analysis-terms">Grundbegriffe</a></li>
+<li class="level-2"><a href="#analysis-steps">Was bei der Indizierung geschieht</a></li>
+<li class="level-3"><a href="#example-sentence">Ein Beispielsatz</a></li>
+<li class="level-3"><a href="#analysis-models">Die Quellen der Analyse</a></li>
+<li class="level-3"><a href="#built-in-analyzers">Die eingebauten Analysatoren</a></li>
+<li class="level-3"><a href="#statistics-and-counts">Statistiken und Zählungen</a></li>
+<li class="level-3"><a href="#excluded-text">Von der Analyse ausgeschlossener Text</a></li>
+<li class="level-2"><a href="#languages">Was jede Sprache unterstützt</a></li>
+<li class="level-3"><a href="#language-detection">Wie LemmaLoom die Sprache bestimmt</a></li>
+<li class="level-3"><a href="#other-languages">Andere Sprachen</a></li>
+<li class="level-2"><a href="#following-the-analysis">Die Indizierung verfolgen</a></li>
+<li class="level-3"><a href="#navigator-status">In der Seitenleiste</a></li>
+<li class="level-3"><a href="#reader-status">In der Leseansicht</a></li>
+<li class="level-3"><a href="#activity-window">Im Fenster „Aktivität“</a></li>
+<li class="level-3"><a href="#index-status-field">Dokumente nach ihrem Indexstatus finden</a></li>
+<li class="level-2"><a href="#indexing-failures">Wenn die Indizierung fehlschlägt</a></li>
+<li class="level-2"><a href="#turning-indexing-off">Ohne Indizierung importieren</a></li>
+<li class="level-2"><a href="#document-analyzers">Analysatoren für ein Dokument wählen</a></li>
+<li class="level-3"><a href="#analyzers-at-import">Analysatoren beim Import wählen</a></li>
+<li class="level-3"><a href="#analyzer-list">Die Analysatorliste in den Dokumenteigenschaften</a></li>
+<li class="level-3"><a href="#removing-analyzer-output">Die Ausgabe eines Analysators entfernen</a></li>
+<li class="level-3"><a href="#running-an-analyzer">Einen Analysator ausführen</a></li>
+<li class="level-3"><a href="#analyzer-reruns">Wann Analysatoren erneut ausgeführt werden</a></li>
+<li class="level-2"><a href="#what-needs-analysis">Was ohne die Analyse verfügbar ist</a></li>
+<li class="level-2"><a href="#reanalysis">Ein Dokument erneut indizieren</a></li>
+<li class="level-3"><a href="#after-an-edit">Nach einer Änderung</a></li>
+<li class="level-3"><a href="#archives-and-exchange">Archive und Austauschdateien</a></li>
+</ul></nav>
+</div>
+<script src="../assets/guide.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Widerrufen und Wiederholen · LemmaLoom Benutzerhandbuch</title>
+<link rel="stylesheet" href="../assets/guide.css">
+<link rel="icon" type="image/png" href="../assets/logo.png">
+<script>var r=document.documentElement;r.setAttribute('data-theme','light');try{if(localStorage.getItem('guide-theme')==='dark'){r.setAttribute('data-theme','dark')}}catch(e){}</script>
+</head>
+<body>
+<header class="topbar">
+<button class="menu-toggle" aria-label="Inhalt" aria-expanded="false">☰</button>
+<a class="brand" href="index.html"><span class="wordmark"><span class="lemma">Lemma</span>Loom</span><span class="guide-name">Benutzerhandbuch</span></a>
+<div class="search"><input type="search" id="search" placeholder="Suchen" aria-label="Suchen" autocomplete="off" data-empty="Keine Treffer"><div class="results" id="results" hidden></div></div>
+<nav class="languages" aria-label="Language"><a href="../en/undo.html" lang="en">English</a><a href="../de/undo.html" lang="de" aria-current="true">Deutsch</a><a href="../zh-Hans/undo.html" lang="zh-Hans">简体中文</a></nav>
+<button class="theme-toggle" data-light="Hell" data-dark="Dunkel" aria-label="Erscheinungsbild"></button>
+<a class="pdf-link" href="https://github.com/LemmaLoom/public/raw/main/pdf/lemmaloom-guide-de.pdf">PDF</a>
+</header>
+<div class="layout">
+<nav class="sidebar" aria-label="Inhalt"><ol>
+<li class="unnumbered"><a href="quick-start.html">Schnellstart</a></li>
+<li><a href="introduction.html">Einführung</a></li>
+<li><a href="getting-started.html">Erste Schritte</a></li>
+<li><a href="projects-and-documents.html">Projekte und Dokumente</a></li>
+<li><a href="importing.html">Material importieren</a></li>
+<li><a href="reading-and-editing.html">Lesen und Bearbeiten</a></li>
+<li><a href="lenses.html">Lenses</a></li>
+<li><a href="coding.html">Kodieren</a></li>
+<li><a href="sets-tags-attributes.html">Sets, Gruppen, Tags und Attribute</a></li>
+<li><a href="translations.html">Übersetzungen und geteilte Ansicht</a></li>
+<li><a href="text-inspector.html">Der Text-Inspektor</a></li>
+<li><a href="grammar-inspector.html">Der Grammatik-Inspektor</a></li>
+<li><a href="word-sketch.html">Wortskizze</a></li>
+<li><a href="coding-analysis.html">Codes auswerten</a></li>
+<li><a href="sketch-space.html">Skizzenraum</a></li>
+<li><a href="queries-building.html">Eine Abfrage erstellen</a></li>
+<li><a href="queries-results.html">Abfrageergebnisse und Statistik</a></li>
+<li><a href="queries-patterns.html">Abfragemuster und Erkundung</a></li>
+<li><a href="queries-using-results.html">Abfrageergebnisse nutzen</a></li>
+<li><a href="dictionaries.html">Wörterbücher</a></li>
+<li><a href="custom-analyzers.html">Eigene Analysatoren</a></li>
+<li><a href="analysis-and-indexing.html">Analyse und Indizierung</a></li>
+<li><a href="exchange-and-export.html">Austausch und Export</a></li>
+<li class="current"><a href="undo.html">Widerrufen und Wiederholen</a></li>
+<li><a href="settings.html">Einstellungen und Darstellung</a></li>
+<li><a href="keyboard-shortcuts.html">Tastaturkurzbefehle</a></li>
+<li><a href="help-and-support.html">Hilfe und Support</a></li>
+<li><a href="statistics-reference.html">Statistik im Überblick</a></li>
+<li class="unnumbered"><a href="glossary.html">Glossar</a></li>
+<li class="unnumbered"><a href="thanks.html">Vielen Dank</a></li>
+</ol></nav>
+<main class="content">
+<article>
+<h1 id="undo">Widerrufen und Wiederholen</h1>
+<p>LemmaLoom sichert jede Änderung sofort und führt einen Verlauf dieser Änderungen. Mit <strong class="ui">Bearbeiten ▸ Widerrufen</strong> nehmen Sie sie einzeln zurück, die neueste zuerst, bis Sie an der gewünschten Stelle im Verlauf angekommen sind. Fast alles in einem Projekt lässt sich widerrufen, auch das Löschen von Dokumenten und das automatische Kodieren eines ganzen Sets von Dokumenten.</p>
+<p>Bevor LemmaLoom ein Projekt, ein Dokument oder einen Code löscht oder zwei Codes zusammenführt, bittet es Sie um Bestätigung. Das meiste andere (etwa Gruppen, Sets, Tags, Attribute, Wörterbücher und Analysatoren) löscht LemmaLoom sofort, ohne nachzufragen. Haben Sie versehentlich etwas gelöscht, holen Sie es mit <strong class="ui">Bearbeiten ▸ Widerrufen</strong> zurück.</p>
+<p>Das Löschen eines Projekts ist endgültig, und der Import oder die Übersetzung von Dokumenten leert einen Teil des Verlaufs. <a href="#what-you-cannot-undo">Was sich nicht widerrufen lässt</a> weiter unten in diesem Kapitel beschreibt diese Fälle.</p>
+<p>Die Beispiele in diesem Handbuch verwenden das Projekt „Klimadebatte“, das der Abschnitt <a href="introduction.html#example-project">Das Beispielprojekt</a> in <a href="introduction.html">Kapitel 1, Einführung</a> ausführlich vorstellt. Zum Üben können Sie es mit <strong class="ui">Ablage ▸ Importieren ▸ Beispielprojekt</strong> importieren.</p>
+<h2 id="key-terms">Wichtige Begriffe<a class="anchor" href="#key-terms" aria-hidden="true">#</a></h2>
+<ul>
+<li>Ein <em>Schritt</em> ist eine einzelne Aktion, so wie LemmaLoom sie festhält. Sein Name, den das Menü <strong class="ui">Bearbeiten</strong> anzeigt, nennt den Befehl, der die Änderung vorgenommen hat, etwa <strong class="ui">Code anwenden</strong> oder <strong class="ui">Dokument löschen</strong>. Eine einzelne Kodierung ist ein Schritt, und auch ein Durchgang von <strong class="ui">Automatisch kodieren</strong> (siehe <a href="coding.html#auto-coding">Textstellen automatisch kodieren</a> in <a href="coding.html">Kapitel 7, Kodieren</a>), der zweihundert Kodierungen und vier neue Codes anlegt, zählt als ein Schritt.</li>
+<li>Der <em>Widerrufverlauf</em> umfasst alle Schritte, die Sie widerrufen können. Jedes Fenster führt seinen eigenen Widerrufverlauf (siehe <a href="#windows">Zu welchem Fenster ein Schritt gehört</a> weiter unten in diesem Kapitel).</li>
+</ul>
+<h2 id="undoing-a-change">Eine Änderung widerrufen<a class="anchor" href="#undoing-a-change" aria-hidden="true">#</a></h2>
+<ol>
+<li>Klicken Sie in das Fenster, in dem Sie die Änderung vorgenommen haben, damit es das aktive Fenster ist. Bei den meisten Änderungen ist das das Hauptfenster.</li>
+<li>Steht die Einfügemarke in einem Textfeld, klicken Sie außerhalb des Feldes.</li>
+<li>Öffnen Sie das Menü <strong class="ui">Bearbeiten</strong>. Der erste Eintrag nennt den Schritt, der widerrufen wird, zum Beispiel <strong class="ui">Code anwenden widerrufen</strong>.</li>
+<li>Wählen Sie den Eintrag, oder drücken Sie ⌘Z.</li>
+</ol>
+<figure class="shot" id="undo-edit-menu"><img class="shot-light" src="../figures/de/light/undo-edit-menu.webp" alt="Das Menü Bearbeiten, nachdem eine Textstelle in „Hoffnung braucht Arbeit“ mit „Angst“ kodiert wurde." loading="lazy"><img class="shot-dark" src="../figures/de/dark/undo-edit-menu.webp" alt="Das Menü Bearbeiten, nachdem eine Textstelle in „Hoffnung braucht Arbeit“ mit „Angst“ kodiert wurde." loading="lazy"><figcaption>Das Menü Bearbeiten, nachdem eine Textstelle in „Hoffnung braucht Arbeit“ mit „Angst“ kodiert wurde.</figcaption></figure>
+<p>Um mehrere Schritte zurückzugehen, wählen Sie den Eintrag zum Widerrufen erneut. Jedes Mal nennt das Menü den nächsten Schritt im Verlauf. Drücken Sie mehrmals schnell hintereinander ⌘Z, werden die Schritte der Reihe nach widerrufen. Gibt es nichts mehr zu widerrufen, lautet der Befehl nur noch <strong class="ui">Widerrufen</strong> und ist deaktiviert.</p>
+<p>Das Widerrufen stellt alles wieder her, was die jeweilige Aktion verändert hat. Nach <strong class="ui">Dokument löschen widerrufen</strong> zum Beispiel ist das Dokument wieder da, mit seinem ganzen Text, seinen Kodierungen, Memos, Verknüpfungen, Lesezeichen und Attributwerten und seinem Platz in jedem Set.</p>
+<p>Kehrt durch das Widerrufen Text zurück, indiziert LemmaLoom diesen Text im Hintergrund erneut (siehe <a href="analysis-and-indexing.html#reanalysis">Ein Dokument erneut indizieren</a> in <a href="analysis-and-indexing.html">Kapitel 21, Analyse und Indizierung</a>). Den Fortschritt der Indizierung zeigt <strong class="ui">Fenster ▸ Aktivität</strong> (⌥⌘0).</p>
+<h3 id="redoing-a-change">Eine Änderung wiederholen<a class="anchor" href="#redoing-a-change" aria-hidden="true">#</a></h3>
+<p>Nachdem Sie etwas widerrufen haben, bietet das Menü <strong class="ui">Bearbeiten</strong> immer an, die Änderung erneut vorzunehmen, zum Beispiel mit <strong class="ui">Code anwenden wiederholen</strong>. Wählen Sie diesen Eintrag, oder drücken Sie ⇧⌘Z. Sie können so viele Aktionen wiederholen, wie Sie widerrufen haben, die zuletzt widerrufene zuerst.</p>
+<p>Wiederholen können Sie nur, bis Sie im selben Fenster eine weitere Änderung vornehmen. Kodieren Sie dort zum Beispiel eine weitere Textstelle, sind die widerrufenen Schritte endgültig verloren, und <strong class="ui">Wiederholen</strong> ist deaktiviert.</p>
+<figure class="shot" id="undo-redo-menu"><img class="shot-light" src="../figures/de/light/undo-redo-menu.webp" alt="Das Menü Bearbeiten, nachdem das Löschen von „Streit um die CO2-Steuer“ widerrufen wurde. Der Eintrag zum Widerrufen nennt den Schritt davor, der Eintrag zum Wiederholen das Löschen." loading="lazy"><img class="shot-dark" src="../figures/de/dark/undo-redo-menu.webp" alt="Das Menü Bearbeiten, nachdem das Löschen von „Streit um die CO2-Steuer“ widerrufen wurde. Der Eintrag zum Widerrufen nennt den Schritt davor, der Eintrag zum Wiederholen das Löschen." loading="lazy"><figcaption>Das Menü Bearbeiten, nachdem das Löschen von „Streit um die CO2-Steuer“ widerrufen wurde. Der Eintrag zum Widerrufen nennt den Schritt davor, der Eintrag zum Wiederholen das Löschen.</figcaption></figure>
+<h3 id="worked-example">Ein Beispiel<a class="anchor" href="#worked-example" aria-hidden="true">#</a></h3>
+<p>Angenommen, Sie arbeiten im Hauptfenster an „Hoffnung braucht Arbeit“. Sie haben eine Textstelle mit „Angst“ kodiert. In der Facette <strong class="ui">Details</strong> im Tab <strong class="ui">Text</strong> des Inspektors haben Sie das Attribut „Medium“ des Essays von „Die Wochenbilanz“ in <code>Der Nordherold</code> geändert. Zuletzt haben Sie „Streit um die CO2-Steuer“ gelöscht. Die Tabelle zeigt, welche Einträge das Menü <strong class="ui">Bearbeiten</strong> nach jeder dieser Aktionen anbietet und nach dem anschließenden Widerrufen und Wiederholen.</p>
+<figure class="shot" id="undo-outlet-edit"><img class="shot-light" src="../figures/de/light/undo-outlet-edit.webp" alt="Die Facette „Details“ von „Hoffnung braucht Arbeit“, während das Attribut „Medium“ auf „Der Nordherold“ geändert wird." loading="lazy"><img class="shot-dark" src="../figures/de/dark/undo-outlet-edit.webp" alt="Die Facette „Details“ von „Hoffnung braucht Arbeit“, während das Attribut „Medium“ auf „Der Nordherold“ geändert wird." loading="lazy"><figcaption>Die Facette „Details“ von „Hoffnung braucht Arbeit“, während das Attribut „Medium“ auf „Der Nordherold“ geändert wird.</figcaption></figure>
+<div class="table-wrap"><table>
+<thead><tr><th>Nr.</th><th>Was Sie tun</th><th>Eintrag zum Widerrufen</th><th>Eintrag zum Wiederholen</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>Eine Textstelle mit „Angst“ kodieren</td><td><strong class="ui">Code anwenden widerrufen</strong></td><td><strong class="ui">Wiederholen</strong> (deaktiviert)</td></tr>
+<tr><td>2</td><td>Im Feld „Medium“ den Wert „Die Wochenbilanz“ auswählen, <code>Der Nordherold</code> eingeben, dann in die Leseansicht klicken</td><td><strong class="ui">Wert festlegen widerrufen</strong></td><td><strong class="ui">Wiederholen</strong> (deaktiviert)</td></tr>
+<tr><td>3</td><td>„Streit um die CO2-Steuer“ löschen</td><td><strong class="ui">Dokument löschen widerrufen</strong></td><td><strong class="ui">Wiederholen</strong> (deaktiviert)</td></tr>
+<tr><td>4</td><td>⌘Z drücken</td><td><strong class="ui">Wert festlegen widerrufen</strong></td><td><strong class="ui">Dokument löschen wiederholen</strong></td></tr>
+<tr><td>5</td><td>⌘Z drücken</td><td><strong class="ui">Code anwenden widerrufen</strong></td><td><strong class="ui">Wert festlegen wiederholen</strong></td></tr>
+<tr><td>6</td><td>⇧⌘Z drücken</td><td><strong class="ui">Wert festlegen widerrufen</strong></td><td><strong class="ui">Dokument löschen wiederholen</strong></td></tr>
+<tr><td>7</td><td>Eine weitere Textstelle mit „Hoffnung“ kodieren</td><td><strong class="ui">Code anwenden widerrufen</strong></td><td><strong class="ui">Wiederholen</strong> (deaktiviert)</td></tr>
+</tbody></table></div>
+<p>Nach Zeile 4 ist „Streit um die CO2-Steuer“ wieder im Projekt. Nach Zeile 5 steht in „Medium“ wieder „Die Wochenbilanz“, und Zeile 6 bringt <code>Der Nordherold</code> zurück. Durch die neue Kodierung in Zeile 7 ist <strong class="ui">Wiederholen</strong> deaktiviert, und „Streit um die CO2-Steuer“ bleibt im Projekt.</p>
+<p>Zeile 2 ist nur ein Schritt, obwohl Sie 14 Zeichen eingegeben haben. Den Grund erklärt <a href="#typing-attribute-values">In Attributfelder eingegebene Werte</a> weiter unten.</p>
+<h2 id="how-steps-are-recorded">Wie aus Änderungen Schritte werden<a class="anchor" href="#how-steps-are-recorded" aria-hidden="true">#</a></h2>
+<p>Jeder Befehl zählt als ein Schritt, ganz gleich, wie viel er ändert. Zum Beispiel:</p>
+<ul>
+<li><strong class="ui">Dokumente löschen</strong> mit sechs ausgewählten Dokumenten zählt als ein Schritt. Ebenso entfernt das Löschen von „Uns läuft die Zeit davon“ im selben Schritt auch „Uns läuft die Zeit davon (Englisch)“, denn dieses Dokument ist eine Übersetzung des ersten.</li>
+<li>Auch <strong class="ui">Sichern</strong> in den <strong class="ui">Dokumenteigenschaften</strong> zählt als ein Schritt, unabhängig davon, wie viele Eigenschaften des Dokuments (etwa Name, Tags, Attributwerte oder Sprache) Sie geändert haben.</li>
+<li>Ein Durchgang von <strong class="ui">Automatisch kodieren</strong> zählt als ein Schritt. Das Widerrufen entfernt alle Kodierungen, die der Befehl hinzugefügt hat, und löscht auch die Codes, die er angelegt hat. Wenn Sie auf <strong class="ui">Stoppen</strong> klicken, bevor der Befehl fertig ist, nimmt das Widerrufen alles zurück, was bis dahin geschehen ist.</li>
+<li>Ebenso zählen <strong class="ui">Treffer mit Lesezeichen versehen …</strong> und <strong class="ui">Zum Wörterbuch hinzufügen</strong> im Menü <strong class="ui">Aktionen</strong> einer Abfrage sowie <strong class="ui">Importieren</strong> im Attribute-Fenster bei jedem Aufruf als ein Schritt, der alles umfasst, was sie anlegen.</li>
+</ul>
+<p>Das Widerrufen eines Befehls nimmt auch die Änderungen zurück, die er an anderer Stelle vorgenommen hat. Wenn Sie eine Textstelle in „Uns läuft die Zeit davon“ kodieren, legt LemmaLoom dieselbe Kodierung auch in „Uns läuft die Zeit davon (Englisch)“ an. Das Widerrufen von <strong class="ui">Code anwenden</strong> nimmt die Änderung in beiden Dokumenten zurück.</p>
+<h3 id="typing-attribute-values">In Attributfelder eingegebene Werte<a class="anchor" href="#typing-attribute-values" aria-hidden="true">#</a></h3>
+<p>In der Facette <strong class="ui">Details</strong> im Tab <strong class="ui">Text</strong> des Inspektors und im Attribute-Fenster sichert LemmaLoom den Inhalt von Textattributen automatisch schon während der Eingabe, andere Werte, sobald Sie sie eingegeben haben. Alle Änderungen am selben Feld eines Dokuments fasst LemmaLoom zu einem einzigen Schritt <strong class="ui">Wert festlegen</strong> zusammen, solange kein anderer Schritt dazwischenliegt.</p>
+<p>Wenn Sie <code>Der Nordherold</code> in „Medium“ eingeben, entsteht ein einziger Schritt; <strong class="ui">Bearbeiten ▸ Wert festlegen widerrufen</strong> stellt dann den Wert wieder her, den das Feld vor Ihrer Eingabe hatte. Eine Änderung an „Haltung“ ergibt einen weiteren Schritt. Endet die Eingabe beim Ausgangswert (etwa weil Sie etwas eingeben und wieder löschen), verschwindet der ganze Schritt aus dem Verlauf. Dasselbe gilt für die Attributwerte von Kodierungen und Memos in der Facette <strong class="ui">Kodierungen</strong> im Tab <strong class="ui">Kodierung</strong> des Inspektors.</p>
+<p>Um den ganzen Wert auf einmal zu widerrufen, klicken Sie zuerst an eine andere Stelle und wählen dann <strong class="ui">Bearbeiten ▸ Wert festlegen widerrufen</strong>.</p>
+<h3 id="long-changes">Änderungen, die eine Weile dauern<a class="anchor" href="#long-changes" aria-hidden="true">#</a></h3>
+<p>Das Löschen mehrerer Dokumente, das automatische Kodieren eines Sets und der Import eines Codebuchs dauern eine Weile. Der laufende Schritt erscheint erst im Menü <strong class="ui">Bearbeiten</strong>, wenn er abgeschlossen ist. Bis dahin widerruft ⌘Z den Schritt davor. Vergewissern Sie sich deshalb vor dem Widerrufen, dass das zuletzt gelöschte Dokument aus der Seitenleiste verschwunden ist, dass der Dialog zum automatischen Kodieren <strong class="ui">Fertig</strong> anzeigt oder dass der Dialog <strong class="ui">REFI-QDA-Codebuch wird importiert</strong> geschlossen ist.</p>
+<h2 id="windows">Zu welchem Fenster ein Schritt gehört<a class="anchor" href="#windows" aria-hidden="true">#</a></h2>
+<p>Jedes Fenster von LemmaLoom führt einen eigenen Verlauf. Das gilt für das Hauptfenster, das Codebuch-Fenster, ein Dokumentfenster (aus <strong class="ui">In neuem Fenster öffnen</strong>) und jedes Abfragen-, Abfrageergebnisse-, Analysatoren-, Tags- oder Attribute-Fenster, in dem Sie gerade arbeiten. Öffnen Sie mit <strong class="ui">Ablage ▸ Neues Fenster</strong> ein weiteres Hauptfenster, hat es wiederum einen eigenen Verlauf. <strong class="ui">Bearbeiten ▸ Widerrufen</strong> und <strong class="ui">Bearbeiten ▸ Wiederholen</strong> wirken nur im aktiven Fenster.</p>
+<ul>
+<li>Ein Schritt gehört zu dem Fenster, das aktiv war, als die Änderung begann. Haben Sie das Tag „viral“ im Tags-Fenster umbenannt, klicken Sie in das Tags-Fenster, bevor Sie <strong class="ui">Bearbeiten ▸ Tag umbenennen widerrufen</strong> wählen.</li>
+<li>Änderungen aus einem Dialog gehören zu dem Fenster, aus dem Sie den Dialog geöffnet haben. Die Änderungen aus den <strong class="ui">Dokumenteigenschaften</strong> stehen im Verlauf des Hauptfensters; nehmen Sie sie dort mit <strong class="ui">Bearbeiten ▸ Widerrufen</strong> zurück, sobald der Dialog geschlossen ist. Ebenso stehen die Änderungen aus der Code-Palette im Verlauf des Fensters, aus dem Sie die Palette geöffnet haben. Die Änderungen aus Dialogen, die Sie im Attribute-Fenster öffnen, stehen im Verlauf des Attribute-Fensters.</li>
+<li>Vorgänge im Hintergrund gehören zu dem Fenster, in dem sie begonnen haben, gleich welches Fenster bei ihrem Abschluss aktiv ist. Ein Durchgang von <strong class="ui">Automatisch kodieren</strong>, den Sie im Hauptfenster starten, kommt in den Verlauf des Hauptfensters.</li>
+<li>Der Verlauf des Hauptfensters umfasst alle Ihre Projekte. Wenn Sie eine Textstelle in „Klimadebatte“ kodieren, dann zu einem anderen Projekt wechseln und ⌘Z drücken, wird die Kodierung im ersten Projekt widerrufen, während das andere Projekt aktiv bleibt. Wenn Sie sehen möchten, was Sie widerrufen, wechseln Sie vorher zurück.</li>
+</ul>
+<figure class="shot" id="undo-codebook-window"><img class="shot-light" src="../figures/de/light/undo-codebook-window.webp" alt="Das Codebuch-Fenster von „Klimadebatte“ als aktives Fenster. Sein Menü Bearbeiten bietet an, die gerade vorgenommene Änderung am Code „Kosten“ zu widerrufen." loading="lazy"><img class="shot-dark" src="../figures/de/dark/undo-codebook-window.webp" alt="Das Codebuch-Fenster von „Klimadebatte“ als aktives Fenster. Sein Menü Bearbeiten bietet an, die gerade vorgenommene Änderung am Code „Kosten“ zu widerrufen." loading="lazy"><figcaption>Das Codebuch-Fenster von „Klimadebatte“ als aktives Fenster. Sein Menü Bearbeiten bietet an, die gerade vorgenommene Änderung am Code „Kosten“ zu widerrufen.</figcaption></figure>
+<aside class="callout note"><p class="callout-title">Hinweis</p><p>Wenn Sie dasselbe Element in zwei Fenstern bearbeiten, etwa den Code „Kosten“ zuerst im Codebuch-Fenster und dann in der Facette <strong class="ui">Codes</strong> des Hauptfensters, widerrufen Sie zuerst die zweite Änderung, und zwar in dem Fenster, in dem Sie sie vorgenommen haben. Sonst kann eine Änderung, die Sie in einem Fenster widerrufen haben, zurückkehren, wenn Sie im anderen Fenster widerrufen.</p>
+</aside>
+<h2 id="what-you-can-undo">Was sich widerrufen lässt<a class="anchor" href="#what-you-can-undo" aria-hidden="true">#</a></h2>
+<p>In jeder Tabelle steht in der rechten Spalte der Name des Schritts, wie er im Menü <strong class="ui">Bearbeiten</strong> in den Einträgen zum Widerrufen und Wiederholen erscheint.</p>
+<h3 id="steps-coding">Codes und Kodierungen<a class="anchor" href="#steps-coding" aria-hidden="true">#</a></h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Was Sie tun</th><th>Schritt</th></tr></thead>
+<tbody>
+<tr><td>Eine Textstelle kodieren, einschließlich der Werte, nach denen ein Code mit Attributen fragt</td><td><strong class="ui">Code anwenden</strong></td></tr>
+<tr><td>Einen Code anlegen und die Textstelle in einem Zug damit kodieren, mit <strong class="ui">Code „…“ hinzufügen</strong> oder <strong class="ui">In vivo „…“</strong> in der Code-Palette oder mit <strong class="ui">Dokument ▸ In-vivo-Code</strong></td><td><strong class="ui">Code anwenden</strong></td></tr>
+<tr><td>Eine Kodierung in der Code-Palette entfernen oder mit <strong class="ui">Kodierung löschen</strong> in der Facette <strong class="ui">Kodierungen</strong> oder der Ansicht <strong class="ui">Kodierungen</strong></td><td><strong class="ui">Kodierung löschen</strong></td></tr>
+<tr><td>Einer Kodierung mit <strong class="ui">Code ändern</strong> einen anderen Code zuweisen</td><td><strong class="ui">Code ändern</strong></td></tr>
+<tr><td>Einen Code anlegen, auch mit <strong class="ui">Untercode hinzufügen</strong> im Codebuch-Fenster und in der Facette <strong class="ui">Codes</strong></td><td><strong class="ui">Neuer Code</strong></td></tr>
+<tr><td><strong class="ui">Name</strong>, <strong class="ui">Farbe</strong>, <strong class="ui">Format</strong>, <strong class="ui">Geltungsbereich</strong>, <strong class="ui">Tags</strong>, <strong class="ui">Attribute</strong> oder <strong class="ui">Beschreibung</strong> eines Codes ändern</td><td><strong class="ui">Code bearbeiten</strong></td></tr>
+<tr><td>Einen Code unter einen anderen Code oder auf die oberste Ebene verschieben, per Ziehen oder mit <strong class="ui">Verschieben nach</strong></td><td><strong class="ui">Code verschieben</strong></td></tr>
+<tr><td><strong class="ui">Zusammenführen mit</strong> einem anderen Code</td><td><strong class="ui">Zusammenführen</strong></td></tr>
+<tr><td>Einen Code löschen</td><td><strong class="ui">Code löschen</strong></td></tr>
+<tr><td><strong class="ui">Zu Code-Set hinzufügen ▸ Neues Set aus Code</strong></td><td><strong class="ui">Neues Code-Set</strong></td></tr>
+<tr><td><strong class="ui">Zu Code-Set hinzufügen</strong></td><td><strong class="ui">Zu Code-Set hinzufügen</strong></td></tr>
+<tr><td><strong class="ui">Aus Code-Set entfernen</strong></td><td><strong class="ui">Aus Code-Set entfernen</strong></td></tr>
+<tr><td>Ein Code-Set umbenennen</td><td><strong class="ui">Umbenennen</strong></td></tr>
+<tr><td>Ein Code-Set löschen, mit <strong class="ui">Löschen</strong> im Kontextmenü oder mit seiner Papierkorb-Schaltfläche in der Facette <strong class="ui">Codes</strong></td><td><strong class="ui">Code-Set löschen</strong></td></tr>
+<tr><td><strong class="ui">Automatisch kodieren…</strong> aus einer <a href="lenses.html">Lens</a> oder einer Abfrage</td><td><strong class="ui">Automatisch kodieren</strong></td></tr>
+<tr><td><strong class="ui">Ablage ▸ Importieren ▸ REFI-QDA-Codebuch</strong></td><td><strong class="ui">REFI-QDA-Codebuch</strong></td></tr>
+</tbody></table></div>
+<p>Wenn Sie <strong class="ui">Code löschen</strong> widerrufen, kehrt der Code zurück, mit allen Untercodes, ihren Kodierungen und den zugehörigen Attributwerten. <strong class="ui">Zusammenführen widerrufen</strong> trennt die Codes wieder und stellt den zusammengeführten Code mit allen seinen Kodierungen, Untercodes, Memos und Code-Sets wieder her, ebenso die gesicherten Abfragen, die sich auf ihn beziehen.</p>
+<p><strong class="ui">REFI-QDA-Codebuch widerrufen</strong> entfernt alles, was der Import dem Codebuch hinzugefügt hat (siehe <a href="exchange-and-export.html#refi-codebook">REFI-QDA-Codebücher</a> in <a href="exchange-and-export.html">Kapitel 22, Austausch und Export</a>).</p>
+<h3 id="steps-annotations">Memos, Verknüpfungen und Lesezeichen<a class="anchor" href="#steps-annotations" aria-hidden="true">#</a></h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Was Sie tun</th><th>Schritt</th></tr></thead>
+<tbody>
+<tr><td>Ein Memo schreiben</td><td><strong class="ui">Neues Memo</strong></td></tr>
+<tr><td>Text, Code, Tags oder Attributwerte eines Memos ändern</td><td><strong class="ui">Memo bearbeiten</strong></td></tr>
+<tr><td>Ein Memo löschen</td><td><strong class="ui">Memo löschen</strong></td></tr>
+<tr><td>Zwei Textstellen verknüpfen</td><td><strong class="ui">Neue Verknüpfung</strong></td></tr>
+<tr><td>Relation, Kommentar, Farbe oder Tags einer Verknüpfung ändern</td><td><strong class="ui">Verknüpfung bearbeiten</strong></td></tr>
+<tr><td>Eine Verknüpfung löschen</td><td><strong class="ui">Verknüpfung löschen</strong></td></tr>
+<tr><td>Eine Textstelle mit einem Lesezeichen versehen</td><td><strong class="ui">Lesezeichen</strong></td></tr>
+<tr><td>Kommentar oder Farbe eines Lesezeichens ändern</td><td><strong class="ui">Lesezeichen bearbeiten</strong></td></tr>
+<tr><td>Ein Lesezeichen entfernen</td><td><strong class="ui">Lesezeichen entfernen</strong></td></tr>
+<tr><td><strong class="ui">Treffer mit Lesezeichen versehen …</strong> im Menü <strong class="ui">Aktionen</strong> einer Abfrage</td><td><strong class="ui">Treffer mit Lesezeichen versehen</strong></td></tr>
+</tbody></table></div>
+<p>LemmaLoom überträgt Memos, Verknüpfungen und Lesezeichen in die Übersetzungen Ihrer Dokumente. Da die Kopien im selben Schritt entstehen wie die Originale, wirkt das Widerrufen auf beide zugleich.</p>
+<h3 id="steps-documents">Projekte und Dokumente<a class="anchor" href="#steps-documents" aria-hidden="true">#</a></h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Was Sie tun</th><th>Schritt</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">Ablage ▸ Neues Projekt</strong></td><td><strong class="ui">Neues Projekt</strong></td></tr>
+<tr><td>Ein Projekt, ein Dokument, eine Gruppe oder ein Set umbenennen</td><td><strong class="ui">Umbenennen</strong></td></tr>
+<tr><td><strong class="ui">Sichern</strong> in den <strong class="ui">Projekteigenschaften</strong>, auch für dort hinzugefügte oder entfernte Attribute</td><td><strong class="ui">Projekteigenschaften</strong></td></tr>
+<tr><td><strong class="ui">Sichern</strong> in den <strong class="ui">Dokumenteigenschaften</strong></td><td><strong class="ui">Dokumenteigenschaften</strong></td></tr>
+<tr><td>Die Tags eines Dokuments in der Facette <strong class="ui">Details</strong> im Tab <strong class="ui">Text</strong> des Inspektors ändern</td><td><strong class="ui">Tags bearbeiten</strong></td></tr>
+<tr><td><strong class="ui">Sichern</strong>, nachdem Sie den Text eines Dokuments bearbeitet haben</td><td><strong class="ui">Text bearbeiten</strong></td></tr>
+<tr><td><strong class="ui">Dokument löschen</strong></td><td><strong class="ui">Dokument löschen</strong></td></tr>
+<tr><td><strong class="ui">Dokumente löschen</strong> mit mehreren ausgewählten Dokumenten</td><td><strong class="ui">Dokumente löschen</strong></td></tr>
+<tr><td><strong class="ui">Ablage ▸ Neue Gruppe</strong> oder <strong class="ui">In Gruppe verschieben ▸ Neue Gruppe</strong></td><td><strong class="ui">Neue Gruppe</strong></td></tr>
+<tr><td><strong class="ui">In Gruppe verschieben</strong></td><td><strong class="ui">In Gruppe verschieben</strong></td></tr>
+<tr><td><strong class="ui">Gruppe löschen</strong></td><td><strong class="ui">Gruppe löschen</strong></td></tr>
+<tr><td>Die Papierkorb-Schaltfläche (<strong class="ui">Ausgabe entfernen</strong>) neben einem Analysator in den <strong class="ui">Dokumenteigenschaften</strong></td><td><strong class="ui">Ausgabe entfernen</strong></td></tr>
+<tr><td><strong class="ui">Ausführen</strong> für einen Analysator, dessen Ausgabe Sie entfernt haben</td><td><strong class="ui">Ausführen</strong></td></tr>
+<tr><td><strong class="ui">Jetzt indizieren</strong> in den <strong class="ui">Dokumenteigenschaften</strong> oder in der Statusleiste der Leseansicht, für ein Dokument, das ohne Indizierung importiert wurde</td><td><strong class="ui">Jetzt indizieren</strong></td></tr>
+</tbody></table></div>
+<p><strong class="ui">Ablage ▸ Neue Gruppe</strong> ergibt zwei Schritte, <strong class="ui">Neue Gruppe</strong> und danach <strong class="ui">Umbenennen</strong>, sobald Sie den Namen eingeben und den Zeilenschalter drücken. Um die Gruppe wieder zu entfernen, widerrufen Sie zweimal. Haben Sie den vorgeschlagenen Namen übernommen, genügt einmaliges Widerrufen, denn dann gibt es nur einen Schritt. <strong class="ui">In Gruppe verschieben ▸ Neue Gruppe</strong> und <strong class="ui">Neues Set</strong> in der Seitenleiste verhalten sich genauso.</p>
+<p>Beim Löschen einer Gruppe bleiben ihre Dokumente im Projekt, ohne Gruppe. Nach <strong class="ui">Gruppe löschen widerrufen</strong> gehören die Dokumente wieder zur wiederhergestellten Gruppe, und Bedingungen intelligenter Sets, die sich auf den Namen der Gruppe bezogen, sind ebenfalls wiederhergestellt.</p>
+<p>Wenn Sie <strong class="ui">Dokument löschen</strong> oder <strong class="ui">Dokumente löschen</strong> widerrufen, kehrt jedes Dokument mit seinen Übersetzungen und seiner Mediendatei zurück (siehe <a href="projects-and-documents.html#deleting-documents">Dokumente löschen</a> in <a href="projects-and-documents.html">Kapitel 3, Projekte und Dokumente</a>). Alle Codes, deren Geltungsbereich das Dokument war, kommen wieder hinzu, und Abfragen, die im Dokument gesichert waren und beim Löschen auf die Projektebene verschoben wurden, wandern zurück in das Dokument. Steht für ein Dokument noch eine Übersetzung aus, bricht das Löschen sie ab; starten Sie die Übersetzung nach dem Widerrufen erneut.</p>
+<p><strong class="ui">Text bearbeiten widerrufen</strong> stellt den vorherigen Text wieder her, mit allen Kodierungen, Memos, Lesezeichen und Verknüpfungen an ihrer früheren Stelle. Bei Aufnahmen kehrt auch die zeitliche Zuordnung des Transkripts zurück, bei Dokumenten mit Übersetzungen die Zuordnung zwischen Original und Übersetzung.</p>
+<p>Mehr dazu finden Sie unter <a href="reading-and-editing.html#undoing-edits">Eine Änderung widerrufen</a> in <a href="reading-and-editing.html">Kapitel 5, Lesen und Bearbeiten</a>.</p>
+<p>Wenn Sie eine in den <strong class="ui">Dokumenteigenschaften</strong> vorgenommene Änderung der Sprache oder der Muster unter <strong class="ui">Von der Indizierung ausschließen</strong> widerrufen, wird das Dokument erneut indiziert. Dasselbe geschieht bei <strong class="ui">Ausgabe entfernen widerrufen</strong>, denn danach läuft der Analysator wieder für das Dokument. <strong class="ui">Ausführen widerrufen</strong> löscht die Ausgabe des Analysators, und <strong class="ui">Jetzt indizieren widerrufen</strong> schaltet die Indizierung für das Dokument wieder aus (siehe <a href="analysis-and-indexing.html#document-analyzers">Analysatoren für ein Dokument wählen</a> in <a href="analysis-and-indexing.html">Kapitel 21, Analyse und Indizierung</a>).</p>
+<h3 id="steps-organizing">Sets, Tags und Attribute<a class="anchor" href="#steps-organizing" aria-hidden="true">#</a></h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Was Sie tun</th><th>Schritt</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">Neues Set</strong> in der Seitenleiste oder <strong class="ui">Set aus Treffern erstellen</strong> in einer Abfrage</td><td><strong class="ui">Neues Set</strong></td></tr>
+<tr><td><strong class="ui">Zu Set hinzufügen</strong></td><td><strong class="ui">Zu Set hinzufügen</strong></td></tr>
+<tr><td><strong class="ui">Aus Set entfernen</strong></td><td><strong class="ui">Aus Set entfernen</strong></td></tr>
+<tr><td><strong class="ui">Set löschen</strong></td><td><strong class="ui">Set löschen</strong></td></tr>
+<tr><td><strong class="ui">Neues intelligentes Set</strong> oder <strong class="ui">Als intelligentes Set sichern</strong> in einer Abfrage</td><td><strong class="ui">Neues intelligentes Set</strong></td></tr>
+<tr><td>Die Bedingungen eines intelligenten Sets mit <strong class="ui">Bearbeiten</strong> oder <strong class="ui">Projekt ▸ Intelligentes Set bearbeiten</strong> ändern</td><td><strong class="ui">Intelligentes Set bearbeiten</strong></td></tr>
+<tr><td>Ein Tag im Tags-Fenster oder in der Seitenleiste umbenennen</td><td><strong class="ui">Tag umbenennen</strong></td></tr>
+<tr><td>Ein Tag im Tags-Fenster oder in der Seitenleiste löschen</td><td><strong class="ui">Tag löschen</strong></td></tr>
+<tr><td><strong class="ui">Attribut hinzufügen</strong> im Attribute-Fenster oder ein neuer Attributname in der Facette <strong class="ui">Details</strong> im Tab <strong class="ui">Text</strong> des Inspektors</td><td><strong class="ui">Attribut hinzufügen</strong></td></tr>
+<tr><td>Name, Typ, Auswahlmöglichkeiten oder Beschreibung eines Attributs mit <strong class="ui">Bearbeiten</strong> ändern, im Menü <strong class="ui">Verwalten</strong> des Attribute-Fensters oder neben dem Attribut eines Codes im Code-Editor</td><td><strong class="ui">Attribut bearbeiten</strong></td></tr>
+<tr><td><strong class="ui">Nach links</strong> oder <strong class="ui">Nach rechts</strong> im Menü <strong class="ui">Verwalten</strong></td><td><strong class="ui">Attribut verschieben</strong></td></tr>
+<tr><td><strong class="ui">Löschen</strong> im Menü <strong class="ui">Verwalten</strong></td><td><strong class="ui">Attribut löschen</strong></td></tr>
+<tr><td>Einen Wert eingeben, ändern oder leeren, für ein Dokument oder mit <strong class="ui">Wert festlegen</strong> für mehrere</td><td><strong class="ui">Wert festlegen</strong></td></tr>
+<tr><td><strong class="ui">Importieren</strong> im Attribute-Fenster</td><td><strong class="ui">Attribute importieren</strong></td></tr>
+</tbody></table></div>
+<p><strong class="ui">Set löschen widerrufen</strong> holt das Set zurück, bei einem intelligenten Set samt seinen Bedingungen, und dazu jede Abfrage, die zu ihm gehört.</p>
+<p>Ein Tag gilt in allen Ihren Projekten. <strong class="ui">Tag umbenennen</strong> und <strong class="ui">Tag löschen</strong> ändern deshalb alle Projekte, Dokumente, Codes, Memos, Verknüpfungen und Bedingungen intelligenter Sets, die das Tag verwenden. Widerrufen Sie <strong class="ui">Tag umbenennen</strong>, erhält das Tag überall seinen vorherigen Namen zurück, und ein Tab, der für das Tag geöffnet ist, übernimmt den alten Namen wieder. <strong class="ui">Tag löschen widerrufen</strong> vergibt das Tag wieder an alles, was es vorher trug; ein Tab, der sich beim Löschen des Tags geschlossen hat, bleibt aber geschlossen.</p>
+<p>Hat ein Schritt <strong class="ui">Attribut bearbeiten</strong> den Typ des Attributs geändert, stellt das Widerrufen auch alle Werte wieder her, die LemmaLoom dabei umgewandelt hat. Ein Attribut, das Sie in den <strong class="ui">Projekteigenschaften</strong> oder im Attribute-Fenster löschen, kehrt beim Widerrufen überall mit seinem Wert zurück, wo es vor dem Löschen vorhanden war. <strong class="ui">Attribute importieren widerrufen</strong> nimmt jeden Wert zurück, den der Import eingetragen hat, und entfernt jedes Attribut, das er angelegt hat.</p>
+<h3 id="steps-queries">Abfragen, Wörterbücher und Analysatoren<a class="anchor" href="#steps-queries" aria-hidden="true">#</a></h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Was Sie tun</th><th>Schritt</th></tr></thead>
+<tbody>
+<tr><td>Eine Abfrage mit <strong class="ui">Sichern</strong> oder <strong class="ui">Sichern unter …</strong> sichern oder eine neue Abfrage als Lens sichern</td><td><strong class="ui">Abfrage sichern</strong></td></tr>
+<tr><td><strong class="ui">Umbenennen …</strong> für eine gesicherte Abfrage</td><td><strong class="ui">Umbenennen</strong></td></tr>
+<tr><td><strong class="ui">Als Lens sichern …</strong> für eine gesicherte Abfrage</td><td><strong class="ui">Als Lens sichern</strong></td></tr>
+<tr><td><strong class="ui">Lens entfernen</strong></td><td><strong class="ui">Lens entfernen</strong></td></tr>
+<tr><td><strong class="ui">Abfrage löschen</strong></td><td><strong class="ui">Abfrage löschen</strong></td></tr>
+<tr><td><strong class="ui">Neues Wörterbuch</strong></td><td><strong class="ui">Neues Wörterbuch</strong></td></tr>
+<tr><td>Ein Wörterbuch oder eine Kategorie umbenennen</td><td><strong class="ui">Umbenennen</strong></td></tr>
+<tr><td><strong class="ui">Wörterbuch löschen</strong></td><td><strong class="ui">Wörterbuch löschen</strong></td></tr>
+<tr><td><strong class="ui">Kategorie hinzufügen</strong></td><td><strong class="ui">Kategorie hinzufügen</strong></td></tr>
+<tr><td>Die Farbe einer Kategorie ändern</td><td><strong class="ui">Kategorie bearbeiten</strong></td></tr>
+<tr><td><strong class="ui">Kategorie löschen</strong></td><td><strong class="ui">Kategorie löschen</strong></td></tr>
+<tr><td>Begriffe im Feld <strong class="ui">Begriff hinzufügen</strong> eingeben oder mit <strong class="ui">Zum Wörterbuch hinzufügen</strong> in der Auswahlleiste der Leseansicht oder im Menü <strong class="ui">Aktionen</strong> einer Abfrage übernehmen</td><td><strong class="ui">Zum Wörterbuch hinzufügen</strong></td></tr>
+<tr><td>Begriffe entfernen</td><td><strong class="ui">Begriff entfernen</strong> oder <strong class="ui">Begriffe entfernen</strong></td></tr>
+<tr><td>Begriffe in eine andere Kategorie verschieben, per Ziehen oder mit <strong class="ui">In Kategorie verschieben</strong></td><td><strong class="ui">Begriffe verschieben</strong></td></tr>
+<tr><td><strong class="ui">Sichern</strong> für einen neuen Analysator unter <strong class="ui">Fenster ▸ Analysatoren</strong> oder <strong class="ui">Als Analysator sichern …</strong> in einer Abfrage</td><td><strong class="ui">Analysator hinzufügen</strong></td></tr>
+<tr><td><strong class="ui">Sichern</strong> für einen bestehenden Analysator oder <strong class="ui">Als Analysator sichern …</strong> für eine Abfrage, die schon einen hat</td><td><strong class="ui">Analysator bearbeiten</strong></td></tr>
+<tr><td>Einen Analysator löschen</td><td><strong class="ui">Analysator löschen</strong></td></tr>
+<tr><td><strong class="ui">Analysator aktualisieren</strong></td><td><strong class="ui">Analysator aktualisieren</strong></td></tr>
+</tbody></table></div>
+<p>Änderungen, die Sie im Abfrageeditor an einer Abfrage vornehmen, gelangen erst beim Sichern in die gesicherte Abfrage (siehe <a href="queries-building.html#saving-queries">Abfragen sichern</a> in <a href="queries-building.html">Kapitel 15, Eine Abfrage erstellen</a>). Wenn Sie eine gesicherte Abfrage oder eine Vorlage öffnen oder <strong class="ui">Neue Abfrage</strong> wählen, ersetzt das den aktuellen Stand Ihrer Abfrage. Gab es seit dem letzten Sichern Änderungen, holen Sie diese mit <strong class="ui">Bearbeiten ▸ Widerrufen</strong> zurück; der Eintrag nennt die geöffnete Abfrage oder Vorlage oder lautet <strong class="ui">Neue Abfrage widerrufen</strong>. Auch <strong class="ui">Werte einfrieren</strong> im Menü <strong class="ui">Aktionen</strong> der Abfrage ersetzt Ihre aktuelle Abfrage. Das nehmen Sie mit <strong class="ui">Werte einfrieren widerrufen</strong> zurück, ob die Abfrage vorher ungesicherte Änderungen hatte oder nicht.</p>
+<p>Wenn Sie <strong class="ui">Als Lens sichern …</strong> für eine gesicherte Abfrage mit ungesicherten Änderungen wählen, sichert LemmaLoom diese Änderungen zuerst als eigenen Schritt <strong class="ui">Abfrage sichern</strong> und sichert die Abfrage danach als Lens. Zweimaliges Widerrufen nimmt deshalb beides zurück.</p>
+<p>Wenn Sie das Löschen eines Analysators oder eine Änderung an seinem Skript oder seinen Sprachen widerrufen, führt LemmaLoom den Analysator erneut für die Dokumente in seinen Sprachen aus.</p>
+<p>Mehr zu Analysatoren finden Sie in <a href="custom-analyzers.html">Kapitel 20, Eigene Analysatoren</a>.</p>
+<h2 id="what-you-cannot-undo">Was sich nicht widerrufen lässt<a class="anchor" href="#what-you-cannot-undo" aria-hidden="true">#</a></h2>
+<h3 id="deleting-a-project">Ein Projekt löschen<a class="anchor" href="#deleting-a-project" aria-hidden="true">#</a></h3>
+<p>Das Löschen eines Projekts ist endgültig. Es entfernt außerdem die Schritte, die das Projekt, seine Dokumente oder seine Attribute betreffen, aus dem Verlauf jedes Fensters. Wenn Sie eine Sicherungskopie brauchen, die Sie wiederherstellen können, exportieren Sie das Projekt vorher mit <strong class="ui">Ablage ▸ Exportieren ▸ LemmaLoom-Projekt</strong> (siehe <a href="exchange-and-export.html">Kapitel 22, Austausch und Export</a>).</p>
+<h3 id="importing">Dokumente importieren<a class="anchor" href="#importing" aria-hidden="true">#</a></h3>
+<p>Der Import einer Textdatei, eines PDF-Dokuments, einer Webseite oder einer Aufnahme entfernt die meisten früheren Schritte für das Projekt, in das Sie importieren, aus allen Fenstern, sobald das neue Dokument da ist. Schritte in anderen Projekten bleiben erhalten, ebenso Änderungen an eigenen Analysatoren.</p>
+<p>Angenommen, Sie haben „Streit um die CO2-Steuer“ gelöscht und „Fristen“ mit „Dringlichkeit“ zusammengeführt und importieren nun ein weiteres PDF in dasselbe Projekt. Nach diesem Import lassen sich das Löschen von „Streit um die CO2-Steuer“ und das Zusammenführen von „Fristen“ mit „Dringlichkeit“ nicht mehr widerrufen. Widerrufen Sie vor dem Import, was Sie zurücknehmen möchten.</p>
+<p>Möchten Sie das importierte Dokument wieder aus dem Projekt entfernen, löschen Sie es; dieses Löschen lässt sich widerrufen. Mehr zum Import von Dokumenten finden Sie unter <a href="importing.html#importing-documents">Dokumente importieren</a> in <a href="importing.html">Kapitel 4, Material importieren</a>.</p>
+<p>Um zu entfernen, was ein REFI-QDA-Projekt, ein LemmaLoom-Archiv oder das Beispielprojekt mitgebracht hat, löschen Sie das ganze Projekt oder die hinzugefügten Dokumente. Zwei Importe sind Schritte, die sich widerrufen lassen, nämlich <strong class="ui">REFI-QDA-Codebuch</strong> und <strong class="ui">Attribute importieren</strong> (siehe die Tabellen oben).</p>
+<h3 id="translating">Ein Dokument übersetzen<a class="anchor" href="#translating" aria-hidden="true">#</a></h3>
+<p>Sobald eine Übersetzung (siehe <a href="translations.html">Kapitel 9, Übersetzungen und geteilte Ansicht</a>) fertig ist und unter ihrem Original erscheint, entfernt LemmaLoom alle früheren Schritte, die das Original betreffen, aus dem Verlauf jedes Fensters. Dazu gehören die Schritte für Kodierungen, Verknüpfungen, Lesezeichen und Attributwerte im Original sowie alle Bearbeitungen und sonstigen Änderungen daran.</p>
+<p>Eine Übersetzung, die Sie nicht mehr brauchen, löschen Sie wie jedes andere Dokument; auch dieses Löschen lässt sich widerrufen.</p>
+<h3 id="outside-the-project">Änderungen außerhalb des Projekts<a class="anchor" href="#outside-the-project" aria-hidden="true">#</a></h3>
+<p>Der Verlauf speichert alle Änderungen am Inhalt Ihrer Projekte. Die folgenden Änderungen wirken sofort, und Sie nehmen sie zurück, indem Sie den vorherigen Zustand wiederherstellen:</p>
+<ul>
+<li>Änderungen unter <strong class="ui">LemmaLoom ▸ Einstellungen …</strong>, etwa die Wahl des Themas, die Darstellung der Leseansicht und die Farben der Lenses;</li>
+<li>das Hinzufügen und Entfernen von Projekten in den <strong class="ui">Favoriten</strong>;</li>
+<li>welche Tabs geöffnet und welche Lenses aktiviert sind, welche Codes in der Leseansicht ausgeblendet sind, der gewählte Tab des Inspektors und die Größe der Bereiche.</li>
+</ul>
+<h2 id="typing">Eingaben in Textfeldern<a class="anchor" href="#typing" aria-hidden="true">#</a></h2>
+<p>Steht die Einfügemarke in einem Textfeld, widerrufen und wiederholen ⌘Z und ⇧⌘Z Ihre Eingaben wie in jeder anderen macOS-Anwendung. Das gilt etwa für das Feld <strong class="ui">Name</strong> im Code-Editor, den Text eines Memos, einen Namen, den Sie in der Seitenleiste eingeben, und die Suchleisten. Im Textfeld zeigt das Menü <strong class="ui">Bearbeiten</strong> den Eintrag <strong class="ui">Eingabe widerrufen</strong>. Sobald Sie das Feld verlassen, wirkt ⌘Z wieder auf den Verlauf von LemmaLoom.</p>
+<p>Ein Schritt entsteht erst, wenn Sie Ihre Eingabe bestätigen. Bestätigen heißt, in einem Dialog auf <strong class="ui">Sichern</strong> zu klicken (oder beim Benennen den Zeilenschalter zu drücken oder an eine andere Stelle zu klicken). Die Esc-Taste beim Benennen oder <strong class="ui">Abbrechen</strong> im Dialog verwirft die Eingabe. Befehle wie <strong class="ui">Jetzt indizieren</strong>, <strong class="ui">Ausführen</strong> und <strong class="ui">Ausgabe entfernen</strong> in den <strong class="ui">Dokumenteigenschaften</strong> wirken sofort. Im Dialog <strong class="ui">Attribut bearbeiten</strong>, den Sie aus dem Code-Editor öffnen, gilt das auch für die Schaltfläche <strong class="ui">Sichern</strong>; alles, was Sie an diesem Attribut bearbeitet haben, wird zu einem einzigen Schritt <strong class="ui">Attribut bearbeiten</strong>. Alle diese Schritte bleiben bestehen, auch wenn Sie danach auf <strong class="ui">Abbrechen</strong> klicken.</p>
+<p>Der Texteditor für Dokumente folgt demselben Muster. Während Sie den Text bearbeiten, widerruft ⌘Z Ihre Eingaben. Ein Klick auf <strong class="ui">Sichern</strong> macht aus der ganzen Bearbeitung einen einzigen Schritt <strong class="ui">Text bearbeiten</strong>, und <strong class="ui">Abbrechen</strong> verwirft sie. Ausführlicher beschreibt das <a href="reading-and-editing.html#editing-and-saving">Bearbeiten und sichern</a> in <a href="reading-and-editing.html">Kapitel 5, Lesen und Bearbeiten</a>.</p>
+<p>Die Ausnahme sind Attributwerte, denn ihre Felder sichern jeden eingegebenen Wert automatisch (siehe <a href="#typing-attribute-values">In Attributfelder eingegebene Werte</a> weiter oben in diesem Kapitel).</p>
+<h2 id="history-lifetime">Wie lange der Verlauf besteht<a class="anchor" href="#history-lifetime" aria-hidden="true">#</a></h2>
+<p>Der Verlauf besteht, bis Sie LemmaLoom beenden. Schließen Sie das letzte offene Fenster, wird LemmaLoom beendet. Wenn Sie ein Fenster schließen, endet aber auch dessen Verlauf. Nach dem nächsten Start von LemmaLoom bleibt <strong class="ui">Bearbeiten ▸ Widerrufen</strong> deaktiviert, bis Sie in dieser Sitzung etwas ändern.</p>
+<p>Wenn Sie ein Dokument mit einer Aufnahme löschen, bewahrt LemmaLoom die Audio- oder Videodatei auf, damit sich das Löschen widerrufen lässt. Beim nächsten Start von LemmaLoom wird die Datei endgültig gelöscht (siehe <a href="getting-started.html#library">Wo die Arbeit gespeichert wird</a> in <a href="getting-started.html">Kapitel 2, Erste Schritte</a>).</p>
+<h2 id="undo-commands">Befehle<a class="anchor" href="#undo-commands" aria-hidden="true">#</a></h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Befehl</th><th>Kurzbefehl</th><th>Wo er wirkt</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">Bearbeiten ▸ Widerrufen</strong></td><td>⌘Z</td><td>In jedem Fenster, dessen Verlauf einen Schritt zum Widerrufen enthält</td></tr>
+<tr><td><strong class="ui">Bearbeiten ▸ Wiederholen</strong></td><td>⇧⌘Z</td><td>Nach einem Widerrufen, bis Sie eine neue Änderung vornehmen</td></tr>
+</tbody></table></div>
+<p>Alle Kurzbefehle von LemmaLoom finden Sie in <a href="keyboard-shortcuts.html">Kapitel 25, Tastaturkurzbefehle</a>.</p>
+</article>
+<nav class="pager"><a class="previous" href="exchange-and-export.html"><span>Zurück</span>Austausch und Export</a><a class="next" href="settings.html"><span>Weiter</span>Einstellungen und Darstellung</a></nav>
+<footer class="site-footer">© 2026 Ryan S. Cooper. Alle Rechte vorbehalten.<br>Diese Ausgabe wurde mithilfe von KI aus der englischen Originalausgabe übersetzt. Die Übersetzung kann Fehler oder Ungenauigkeiten enthalten. Im Zweifel ist die englische Ausgabe maßgeblich.</footer>
+</main>
+<nav class="page-toc" aria-label="Auf dieser Seite"><p>Auf dieser Seite</p><ul>
+<li class="level-2"><a href="#key-terms">Wichtige Begriffe</a></li>
+<li class="level-2"><a href="#undoing-a-change">Eine Änderung widerrufen</a></li>
+<li class="level-3"><a href="#redoing-a-change">Eine Änderung wiederholen</a></li>
+<li class="level-3"><a href="#worked-example">Ein Beispiel</a></li>
+<li class="level-2"><a href="#how-steps-are-recorded">Wie aus Änderungen Schritte werden</a></li>
+<li class="level-3"><a href="#typing-attribute-values">In Attributfelder eingegebene Werte</a></li>
+<li class="level-3"><a href="#long-changes">Änderungen, die eine Weile dauern</a></li>
+<li class="level-2"><a href="#windows">Zu welchem Fenster ein Schritt gehört</a></li>
+<li class="level-2"><a href="#what-you-can-undo">Was sich widerrufen lässt</a></li>
+<li class="level-3"><a href="#steps-coding">Codes und Kodierungen</a></li>
+<li class="level-3"><a href="#steps-annotations">Memos, Verknüpfungen und Lesezeichen</a></li>
+<li class="level-3"><a href="#steps-documents">Projekte und Dokumente</a></li>
+<li class="level-3"><a href="#steps-organizing">Sets, Tags und Attribute</a></li>
+<li class="level-3"><a href="#steps-queries">Abfragen, Wörterbücher und Analysatoren</a></li>
+<li class="level-2"><a href="#what-you-cannot-undo">Was sich nicht widerrufen lässt</a></li>
+<li class="level-3"><a href="#deleting-a-project">Ein Projekt löschen</a></li>
+<li class="level-3"><a href="#importing">Dokumente importieren</a></li>
+<li class="level-3"><a href="#translating">Ein Dokument übersetzen</a></li>
+<li class="level-3"><a href="#outside-the-project">Änderungen außerhalb des Projekts</a></li>
+<li class="level-2"><a href="#typing">Eingaben in Textfeldern</a></li>
+<li class="level-2"><a href="#history-lifetime">Wie lange der Verlauf besteht</a></li>
+<li class="level-2"><a href="#undo-commands">Befehle</a></li>
+</ul></nav>
+</div>
+<script src="../assets/guide.js" defer></script>
+</body>
+</html>

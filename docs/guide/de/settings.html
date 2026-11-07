@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Einstellungen und Darstellung · LemmaLoom Benutzerhandbuch</title>
+<link rel="stylesheet" href="../assets/guide.css">
+<link rel="icon" type="image/png" href="../assets/logo.png">
+<script>var r=document.documentElement;r.setAttribute('data-theme','light');try{if(localStorage.getItem('guide-theme')==='dark'){r.setAttribute('data-theme','dark')}}catch(e){}</script>
+</head>
+<body>
+<header class="topbar">
+<button class="menu-toggle" aria-label="Inhalt" aria-expanded="false">☰</button>
+<a class="brand" href="index.html"><span class="wordmark"><span class="lemma">Lemma</span>Loom</span><span class="guide-name">Benutzerhandbuch</span></a>
+<div class="search"><input type="search" id="search" placeholder="Suchen" aria-label="Suchen" autocomplete="off" data-empty="Keine Treffer"><div class="results" id="results" hidden></div></div>
+<nav class="languages" aria-label="Language"><a href="../en/settings.html" lang="en">English</a><a href="../de/settings.html" lang="de" aria-current="true">Deutsch</a><a href="../zh-Hans/settings.html" lang="zh-Hans">简体中文</a></nav>
+<button class="theme-toggle" data-light="Hell" data-dark="Dunkel" aria-label="Erscheinungsbild"></button>
+<a class="pdf-link" href="https://github.com/LemmaLoom/public/raw/main/pdf/lemmaloom-guide-de.pdf">PDF</a>
+</header>
+<div class="layout">
+<nav class="sidebar" aria-label="Inhalt"><ol>
+<li class="unnumbered"><a href="quick-start.html">Schnellstart</a></li>
+<li><a href="introduction.html">Einführung</a></li>
+<li><a href="getting-started.html">Erste Schritte</a></li>
+<li><a href="projects-and-documents.html">Projekte und Dokumente</a></li>
+<li><a href="importing.html">Material importieren</a></li>
+<li><a href="reading-and-editing.html">Lesen und Bearbeiten</a></li>
+<li><a href="lenses.html">Lenses</a></li>
+<li><a href="coding.html">Kodieren</a></li>
+<li><a href="sets-tags-attributes.html">Sets, Gruppen, Tags und Attribute</a></li>
+<li><a href="translations.html">Übersetzungen und geteilte Ansicht</a></li>
+<li><a href="text-inspector.html">Der Text-Inspektor</a></li>
+<li><a href="grammar-inspector.html">Der Grammatik-Inspektor</a></li>
+<li><a href="word-sketch.html">Wortskizze</a></li>
+<li><a href="coding-analysis.html">Codes auswerten</a></li>
+<li><a href="sketch-space.html">Skizzenraum</a></li>
+<li><a href="queries-building.html">Eine Abfrage erstellen</a></li>
+<li><a href="queries-results.html">Abfrageergebnisse und Statistik</a></li>
+<li><a href="queries-patterns.html">Abfragemuster und Erkundung</a></li>
+<li><a href="queries-using-results.html">Abfrageergebnisse nutzen</a></li>
+<li><a href="dictionaries.html">Wörterbücher</a></li>
+<li><a href="custom-analyzers.html">Eigene Analysatoren</a></li>
+<li><a href="analysis-and-indexing.html">Analyse und Indizierung</a></li>
+<li><a href="exchange-and-export.html">Austausch und Export</a></li>
+<li><a href="undo.html">Widerrufen und Wiederholen</a></li>
+<li class="current"><a href="settings.html">Einstellungen und Darstellung</a></li>
+<li><a href="keyboard-shortcuts.html">Tastaturkurzbefehle</a></li>
+<li><a href="help-and-support.html">Hilfe und Support</a></li>
+<li><a href="statistics-reference.html">Statistik im Überblick</a></li>
+<li class="unnumbered"><a href="glossary.html">Glossar</a></li>
+<li class="unnumbered"><a href="thanks.html">Vielen Dank</a></li>
+</ol></nav>
+<main class="content">
+<article>
+<h1 id="settings">Einstellungen und Darstellung</h1>
+<p>Die Einstellungen umfassen Optionen, die in ganz LemmaLoom gelten. Dazu gehören das Thema, die Sprache der Benutzeroberfläche, das Transkriptionsmodell, Ihre eigenen Ausschlussmuster, die Darstellung in der Leseansicht sowie Farbe und Stil von vier Lenses.</p>
+<p>Die Sprache eines einzelnen Dokuments, seine Lenses und der Text, den es von der Analyse ausschließt, gehören dagegen nicht dazu.</p>
+<h2 id="settings-window">Das Einstellungsfenster<a class="anchor" href="#settings-window" aria-hidden="true">#</a></h2>
+<p>Um die Einstellungen zu öffnen, wählen Sie <strong class="ui">LemmaLoom ▸ Einstellungen …</strong> oder drücken ⌘,.</p>
+<p>Die Seitenleiste links führt drei Bereiche auf: <strong class="ui">Allgemein</strong> (Symbol eines Zahnrads), <strong class="ui">Leseansicht</strong> (Symbol eines Buchs) und <strong class="ui">Lenses</strong> (Symbol eines Kreises auf einem Quadrat). Wenn Sie die Einstellungen nach dem Start von LemmaLoom zum ersten Mal öffnen, erscheint der Bereich <strong class="ui">Allgemein</strong>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Bereich</th><th>Abschnitte</th><th>Was sie festlegen</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">Allgemein</strong></td><td><strong class="ui">Erscheinungsbild</strong>, <strong class="ui">Sprache</strong>, <strong class="ui">Transkription</strong>, <strong class="ui">Ausschluss-Voreinstellungen</strong></td><td>Das Thema, die Sprache der Benutzeroberfläche, das Spracherkennungsmodell und Ihre eigenen Muster, mit denen Sie Text von der Analyse ausschließen</td></tr>
+<tr><td><strong class="ui">Leseansicht</strong></td><td><strong class="ui">Typografie</strong>, <strong class="ui">Seite</strong>, <strong class="ui">Auswahl</strong>, <strong class="ui">Vorschau</strong></td><td>Schrift, Textgröße und Layout der Leseansicht, die Absatz- und Satznummern neben dem Text und die Darstellung von Auswahl und Audiowiedergabe</td></tr>
+<tr><td><strong class="ui">Lenses</strong></td><td><strong class="ui">Wortklasse</strong>, <strong class="ui">Grammatische Funktion</strong>, <strong class="ui">Phrase</strong>, <strong class="ui">Morphologie</strong></td><td>Farbe und Stil jedes Aspekts dieser vier Lenses</td></tr>
+</tbody></table></div>
+<p>Änderungen an den Einstellungen wirken sofort, im Einstellungsfenster ebenso wie in jedem geöffneten Dokument. Nur die Sprache der Benutzeroberfläche wechselt erst beim nächsten Start von LemmaLoom.</p>
+<p>Wenn Sie an den Rändern des Fensters ziehen, ändern Sie seine Größe und schaffen Platz für einen großen Bereich wie <strong class="ui">Lenses</strong>. Ist ein Bereich höher als das Fenster, können Sie den übrigen Teil scrollen.</p>
+<p>Änderungen an den Einstellungen gelten sofort (siehe <a href="undo.html">Kapitel 23, Widerrufen und Wiederholen</a>). Um eine Änderung zurückzunehmen, wählen Sie wieder den vorherigen Wert oder klicken auf eine Schaltfläche zum Zurücksetzen, etwa <strong class="ui">Alles auf Standard zurücksetzen</strong> oben in den Bereichen <strong class="ui">Leseansicht</strong> und <strong class="ui">Lenses</strong>. Für alle übrigen Einstellungen nennt dieses Kapitel die Standardwerte.</p>
+<figure class="shot" id="settings-general-pane"><img class="shot-light" src="../figures/de/light/settings-general-pane.webp" alt="Der Bereich „Allgemein“ der Einstellungen." loading="lazy"><img class="shot-dark" src="../figures/de/dark/settings-general-pane.webp" alt="Der Bereich „Allgemein“ der Einstellungen." loading="lazy"><figcaption>Der Bereich „Allgemein“ der Einstellungen.</figcaption></figure>
+<h2 id="themes">Themen<a class="anchor" href="#themes" aria-hidden="true">#</a></h2>
+<p>Ein <em>Thema</em> ist der Satz von Farben für die gesamte Benutzeroberfläche der App. Es bestimmt, ob Ihre Fenster hell oder dunkel sind, welche Farben Fensterleisten und Seitenbereiche haben, welche Papier- und Schriftfarbe die Leseansicht hat, und vieles mehr. Auch Ihre <em>Akzentfarbe</em> hängt vom Thema ab. Sie färbt aktive Auswahlen, etwa den gewählten Bereich in der Seitenleiste der Einstellungen oder die Schaltfläche <strong class="ui">Mit dem Audio scrollen</strong>, solange sie eingeschaltet ist.</p>
+<p>LemmaLoom bietet elf Themen:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Thema</th><th>Hell oder dunkel</th><th>Farben</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">System</strong></td><td>folgt macOS</td><td>die Standardfarben von macOS, hell oder dunkel je nach Einstellung von macOS</td></tr>
+<tr><td><strong class="ui">Hell</strong></td><td>hell</td><td>die hellen Standardfarben von macOS, auch wenn macOS dunkel eingestellt ist</td></tr>
+<tr><td><strong class="ui">Dunkel</strong></td><td>dunkel</td><td>die dunklen Standardfarben von macOS, auch wenn macOS hell eingestellt ist</td></tr>
+<tr><td><strong class="ui">Creme</strong></td><td>hell</td><td>dunkelbrauner Text auf warmem, gebrochenem Weiß, mit braunem Akzent</td></tr>
+<tr><td><strong class="ui">Solarized Hell</strong></td><td>hell</td><td>graublauer Text auf blassem Cremeton, beige Leisten, blauer Akzent</td></tr>
+<tr><td><strong class="ui">Solarized Dunkel</strong></td><td>dunkel</td><td>blassgrauer Text auf tiefem Blaugrün, blauer Akzent</td></tr>
+<tr><td><strong class="ui">Hoher Kontrast</strong></td><td>hell</td><td>schwarzer Text auf Weiß, schwarze Trennlinien, tiefblauer Akzent</td></tr>
+<tr><td><strong class="ui">Hoher Kontrast (Dunkel)</strong></td><td>dunkel</td><td>weißer Text auf Schwarz, weiße Trennlinien, gelber Akzent</td></tr>
+<tr><td><strong class="ui">Protanopie</strong></td><td>folgt macOS</td><td>die Standardfarben von macOS, Lens- und Codefarben an Rotblindheit angepasst, blauer Akzent</td></tr>
+<tr><td><strong class="ui">Deuteranopie</strong></td><td>folgt macOS</td><td>die Standardfarben von macOS, Lens- und Codefarben an Grünblindheit angepasst, blauer Akzent</td></tr>
+<tr><td><strong class="ui">Tritanopie</strong></td><td>folgt macOS</td><td>die Standardfarben von macOS, Lens- und Codefarben an Blaublindheit angepasst, orangeroter Akzent</td></tr>
+</tbody></table></div>
+<p>Zu Beginn ist <strong class="ui">System</strong> eingestellt. Dieses Thema wechselt automatisch zwischen hell und dunkel, je nachdem, ob macOS gerade hell oder dunkel erscheint, auch wenn das Erscheinungsbild von macOS auf <strong class="ui">Automatisch</strong> steht.</p>
+<p><strong class="ui">System</strong>, <strong class="ui">Hell</strong> und <strong class="ui">Dunkel</strong> verwenden die Akzentfarbe, die macOS für LemmaLoom vorgibt. Standardmäßig ist das ein Violettblau; je nach Ihren Einstellungen unter <strong class="ui">Systemeinstellungen ▸ Erscheinungsbild</strong> kann es auch eine andere Farbe sein. Alle anderen Themen verwenden immer ihren eigenen Akzent.</p>
+<p>So ändern Sie das Thema:</p>
+<ol>
+<li>Wählen Sie <strong class="ui">LemmaLoom ▸ Einstellungen …</strong> (⌘,) und klicken Sie auf <strong class="ui">Allgemein</strong>.</li>
+<li>Öffnen Sie unter <strong class="ui">Erscheinungsbild</strong> das Menü <strong class="ui">Thema</strong>.</li>
+<li>Wählen Sie ein Thema.</li>
+</ol>
+<p>Alle Fenster wechseln gleichzeitig, auch das Einstellungsfenster.</p>
+<p>Auf Beamern verblassen helle Farben schnell. Mit <strong class="ui">Hoher Kontrast</strong> bleiben Seitenbereiche, Listen und Trennlinien auch auf einem Beamer sichtbar, während die Leseansicht genauso aussieht wie in <strong class="ui">Hell</strong>.</p>
+<figure class="shot" id="settings-theme-menu"><img class="shot-light" src="../figures/de/light/settings-theme-menu.webp" alt="Das geöffnete Menü „Thema“ im Bereich „Allgemein“." loading="lazy"><img class="shot-dark" src="../figures/de/dark/settings-theme-menu.webp" alt="Das geöffnete Menü „Thema“ im Bereich „Allgemein“." loading="lazy"><figcaption>Das geöffnete Menü „Thema“ im Bereich „Allgemein“.</figcaption></figure>
+<h3 id="window-tinting">Was ein Thema verändert<a class="anchor" href="#window-tinting" aria-hidden="true">#</a></h3>
+<p>Ein Thema verändert in jedem Fenster von LemmaLoom, auch in den Fenstern <strong class="ui">Glossar</strong> und <strong class="ui">Analysatoren</strong>, das Aussehen folgender Elemente:</p>
+<ul>
+<li>Elemente, die macOS darstellt, etwa Rollbalken und Textfelder, erscheinen je nach Thema hell oder dunkel, unabhängig davon, wie macOS eingestellt ist.</li>
+<li>Der Fensterhintergrund und der Streifen am oberen Fensterrand nehmen die Leistenfarbe des aktuellen Themas an. In <strong class="ui">Creme</strong>, <strong class="ui">Solarized Hell</strong> und <strong class="ui">Solarized Dunkel</strong> bildet diese Farbe von oben nach unten einen sanften Verlauf zwischen zwei Tönen.</li>
+<li>Papier- und Textfarbe der Leseansicht folgen dem Thema, wie unter <a href="reading-and-editing.html#reader-themes">Farben der Leseansicht</a> in <a href="reading-and-editing.html">Kapitel 5, Lesen und Bearbeiten</a> aufgeführt. In der Leseansicht sieht <strong class="ui">Hoher Kontrast</strong> genauso aus wie <strong class="ui">Hell</strong> und <strong class="ui">Hoher Kontrast (Dunkel)</strong> genauso wie <strong class="ui">Dunkel</strong>.</li>
+<li>Die Markierung von ausgewähltem Text und die Einfügemarke in Textfeldern erscheinen in der Akzentfarbe des Themas, in <strong class="ui">System</strong>, <strong class="ui">Hell</strong> und <strong class="ui">Dunkel</strong> dagegen in der Auswahlfarbe von macOS.</li>
+<li>In den fünf Themen mit eigenen Farben erscheinen Tabellenköpfe in der Leistenfarbe und ihre Linien in der Trennlinienfarbe des Themas, und die Zeilen wechseln zwischen zwei Hintergrundtönen.</li>
+<li>Dialoge, darunter <strong class="ui">Dokumenteigenschaften</strong> und <strong class="ui">Dokument importieren</strong>, übernehmen Papier- und Textfarbe des aktuellen Themas.</li>
+<li>Der Code-Editor unter <strong class="ui">Fenster ▸ Analysatoren</strong> wechselt mit dem aktiven Thema zwischen seinen hellen und dunklen Farben.</li>
+<li>Im Vollbildmodus erscheint die Symbolleiste am oberen Bildschirmrand in der Leistenfarbe des aktiven Themas.</li>
+</ul>
+<figure class="shot" id="settings-solarized-dark"><img class="shot-light" src="../figures/de/light/settings-solarized-dark.webp" alt="Das Hauptfenster im Thema „Solarized Dunkel“, mit dem geöffneten Dokument „Uns läuft die Zeit davon“ und aktivierter Lens „Wortklasse“." loading="lazy"><img class="shot-dark" src="../figures/de/dark/settings-solarized-dark.webp" alt="Das Hauptfenster im Thema „Solarized Dunkel“, mit dem geöffneten Dokument „Uns läuft die Zeit davon“ und aktivierter Lens „Wortklasse“." loading="lazy"><figcaption>Das Hauptfenster im Thema „Solarized Dunkel“, mit dem geöffneten Dokument „Uns läuft die Zeit davon“ und aktivierter Lens „Wortklasse“.</figcaption></figure>
+<h3 id="fixed-colors">Farben, die gleich bleiben<a class="anchor" href="#fixed-colors" aria-hidden="true">#</a></h3>
+<p>Codes und Wörterbuchkategorien behalten ihre Farben in jedem Thema außer <strong class="ui">Protanopie</strong>, <strong class="ui">Deuteranopie</strong> und <strong class="ui">Tritanopie</strong>, die sie für die Anzeige anpassen. Dasselbe gilt für die Aspekte einer Lens, deren Farbe Sie im Bereich <strong class="ui">Lenses</strong> geändert haben.</p>
+<p>Die voreingestellten Farben der Aspekte sind Standardfarben von macOS, die in dunklen Themen etwas heller werden. Sobald Sie für einen Aspekt eine Farbe wählen (eine neue oder die, die er schon hatte), bleibt diese Farbe fest. Wenn Sie die Farbe des Aspekts im Bereich <strong class="ui">Lenses</strong> zurücksetzen, passt sie sich wieder an.</p>
+<p>Wenn Sie zwischen hellen und dunklen Themen wechseln, prüfen Sie, ob Ihre eigenen Farben in beiden gut lesbar sind. Ein helles Gelb etwa, das auf dem Hintergrund von <strong class="ui">Solarized Dunkel</strong> gut zu lesen ist, verschwindet auf dem reinweißen Hintergrund von <strong class="ui">Hoher Kontrast</strong> fast ganz.</p>
+<h2 id="interface-language">Die Sprache der Benutzeroberfläche<a class="anchor" href="#interface-language" aria-hidden="true">#</a></h2>
+<p>Menüs, Fenster und Meldungen von LemmaLoom können auf Englisch, auf Deutsch oder in vereinfachtem Chinesisch (wie in China verwendet) erscheinen. Mit <strong class="ui">Systemstandard</strong>, der Voreinstellung, richtet sich die Wahl nach der Reihenfolge der Sprachen unter <strong class="ui">Systemeinstellungen ▸ Allgemein ▸ Sprache &amp; Region</strong>. Steht keine dieser Sprachen in der Liste, verwendet LemmaLoom Englisch.</p>
+<p>So wählen Sie eine Sprache nur für die Benutzeroberfläche von LemmaLoom:</p>
+<ol>
+<li>Wählen Sie <strong class="ui">LemmaLoom ▸ Einstellungen …</strong> (⌘,) und klicken Sie auf <strong class="ui">Allgemein</strong>.</li>
+<li>Öffnen Sie unter <strong class="ui">Sprache</strong> das Menü <strong class="ui">Sprache der Benutzeroberfläche</strong> und wählen Sie <strong class="ui">English</strong>, <strong class="ui">Deutsch</strong> oder <strong class="ui">简体中文</strong>. Mit <strong class="ui">Systemstandard</strong> folgt LemmaLoom wieder macOS.</li>
+<li>Klicken Sie auf <strong class="ui">LemmaLoom beenden</strong> unter dem Hinweis <strong class="ui">Beenden Sie LemmaLoom und öffnen Sie es erneut, damit eine Sprachänderung wirksam wird.</strong></li>
+<li>Öffnen Sie LemmaLoom erneut.</li>
+</ol>
+<figure class="shot" id="settings-interface-restart"><img class="shot-light" src="../figures/de/light/settings-interface-restart.webp" alt="Der Abschnitt „Sprache“ im Bereich „Allgemein“ mit gewähltem „English“, dem Hinweis zum Beenden und erneuten Öffnen und der Schaltfläche „LemmaLoom beenden“." loading="lazy"><img class="shot-dark" src="../figures/de/dark/settings-interface-restart.webp" alt="Der Abschnitt „Sprache“ im Bereich „Allgemein“ mit gewähltem „English“, dem Hinweis zum Beenden und erneuten Öffnen und der Schaltfläche „LemmaLoom beenden“." loading="lazy"><figcaption>Der Abschnitt „Sprache“ im Bereich „Allgemein“ mit gewähltem „English“, dem Hinweis zum Beenden und erneuten Öffnen und der Schaltfläche „LemmaLoom beenden“.</figcaption></figure>
+<p>Jede Sprache steht unter ihrem eigenen Namen im Menü.</p>
+<p>Die Sprache der Benutzeroberfläche gilt für Menüs, Beschriftungen, Meldungen, die Namen der Lenses und ihrer Aspekte, das <strong class="ui">Glossar</strong> und die Beispieltexte in der Vorschau des Bereichs <strong class="ui">Leseansicht</strong>. Jedes Dokument wird in der Sprache indiziert, in der es geschrieben ist. Auch bei englischer Benutzeroberfläche werden die deutschen Dokumente von „Klimadebatte“ also als deutsche Texte indiziert. Wie LemmaLoom die Sprache eines Dokuments bestimmt, beschreibt <a href="analysis-and-indexing.html#language-detection">Wie LemmaLoom die Sprache bestimmt</a> in <a href="analysis-and-indexing.html">Kapitel 21, Analyse und Indizierung</a>.</p>
+<p>Wenn Sie in diesem Menü eine Sprache wählen, schlägt der Dialog <strong class="ui">Übersetzen</strong> außerdem diese Sprache zuerst als Zielsprache vor. Mit <strong class="ui">English</strong> schlägt er zum Beispiel vor, den deutschen Meinungsbeitrag „Netto-Null wird teuer“ ins Englische zu übersetzen (siehe <a href="translations.html#translate-sheet">Der Dialog Übersetzen</a> in <a href="translations.html">Kapitel 9, Übersetzungen und geteilte Ansicht</a>).</p>
+<p>Auch die Sprache des Beispielprojekts hängt von ihr ab. Mit <strong class="ui">Ablage ▸ Importieren ▸ Beispielprojekt</strong> erhalten Sie bei englischer Benutzeroberfläche „Climate Debate“, bei deutscher „Klimadebatte“ und bei chinesischer „气候辩论“ (siehe <a href="introduction.html#example-project">Das Beispielprojekt</a> in <a href="introduction.html">Kapitel 1, Einführung</a>). Eine Kopie, die Sie bereits importiert haben, behält ihre Sprache.</p>
+<h2 id="transcription-model">Das Transkriptionsmodell<a class="anchor" href="#transcription-model" aria-hidden="true">#</a></h2>
+<p>Wenn Sie eine Audio- oder Videodatei importieren, transkribiert LemmaLoom sie automatisch mit einem Spracherkennungsmodell (siehe <a href="importing.html#how-transcription-works">Wie die Transkription funktioniert</a> in <a href="importing.html">Kapitel 4, Material importieren</a>). Welches Modell dabei zum Einsatz kommt, wählen Sie im Menü <strong class="ui">Modell</strong> unter <strong class="ui">Transkription</strong>:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Modell</th><th>Hinweise</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">Apple-Spracherkennung</strong></td><td>Die Voreinstellung und das schnellste Modell</td></tr>
+<tr><td><strong class="ui">Whisper Large v3 Turbo</strong></td><td>Das schnellere der beiden Whisper-Modelle</td></tr>
+<tr><td><strong class="ui">Whisper Large v3</strong></td><td>Langsamer und bei schwierigen Aufnahmen manchmal etwas genauer</td></tr>
+</tbody></table></div>
+<p>Chinesische Aufnahmen transkribiert LemmaLoom auch dann mit Whisper, wenn Sie <strong class="ui">Apple-Spracherkennung</strong> gewählt haben, weil Whisper dabei die bessere Qualität liefert.</p>
+<p>Ein Modellwechsel gilt ab der nächsten Aufnahme, die Sie importieren. Um zu prüfen, ob ein anderes Modell bessere Ergebnisse bringt, importieren Sie einen kurzen, schwierigen Ausschnitt mit beiden Modellen und vergleichen die Transkripte nebeneinander.</p>
+<h2 id="exclusion-presets">Ausschluss-Voreinstellungen<a class="anchor" href="#exclusion-presets" aria-hidden="true">#</a></h2>
+<p>Beim Import eines Dokuments oder später in seinen <strong class="ui">Dokumenteigenschaften</strong> können Sie Textmuster angeben, die LemmaLoom übergehen soll, sodass an diesen Stellen keinerlei Grammatikanalyse stattfindet. Solche Muster erfassen etwa Zeitstempel, Sprecherkennzeichnungen und viele andere Arten von Text (siehe <a href="importing.html#exclude-from-analysis">Text von der Indizierung ausschließen</a> in <a href="importing.html">Kapitel 4, Material importieren</a>). Geschrieben werden sie als <em>reguläre Ausdrücke</em>, eine knappe Schreibweise für eine bestimmte Form von Text, etwa jedes Wort in eckigen Klammern. Das Menü <strong class="ui">Voreinstellungen</strong> neben dem Eingabefeld für das Muster enthält von Haus aus fünf Voreinstellungen.</p>
+<p>Eine <em>Ausschluss-Voreinstellung</em> ist ein selbst definiertes Muster mit eigenem Namen, das im Menü <strong class="ui">Voreinstellungen</strong> erscheint.</p>
+<p>Angenommen, Sie haben mehrere abgetippte Transkripte von Radiogesprächen, in denen Pausen, Lachen und unverständliche Äußerungen als <code>[pause]</code>, <code>[laughs]</code> und <code>[inaudible]</code> vermerkt sind (die Vermerke sollen im Text bleiben, sind aber nichts Gesprochenes). Mit diesen Schritten legen Sie eine Ausschluss-Voreinstellung für die drei Vermerke an:</p>
+<ol>
+<li>Wählen Sie <strong class="ui">LemmaLoom ▸ Einstellungen …</strong> (⌘,) und klicken Sie auf <strong class="ui">Allgemein</strong>.</li>
+<li>Klicken Sie unter <strong class="ui">Ausschluss-Voreinstellungen</strong> auf <strong class="ui">Voreinstellung hinzufügen</strong>. Eine neue Zeile mit zwei leeren Feldern erscheint.</li>
+<li>Geben Sie in das Feld <strong class="ui">Name</strong> <code>Transkriptionsnotizen</code> ein. Unter diesem Namen zeigt das Menü <strong class="ui">Voreinstellungen</strong> die Voreinstellung an.</li>
+<li>Geben Sie in das Feld <strong class="ui">Muster</strong> <code>\[(inaudible|laughs|pause)\]</code> ein.</li>
+</ol>
+<p>Die Zeile unter dem Feld beschreibt, worauf der eingegebene reguläre Ausdruck passt, hier <strong class="ui">Passt auf Text wie [inaudible]</strong>. Kann LemmaLoom zu dem Ausdruck keinen passenden Beispieltext bilden, steht dort <strong class="ui">Gültiges Muster</strong>. Ein ungültiges Muster enthält einen Syntaxfehler, etwa eine Klammer ohne Gegenstück. Bei einem ungültigen Muster erscheint in roter Schrift <strong class="ui">Kein gültiges Muster</strong>.</p>
+<p>Die umgekehrten Schrägstriche sorgen dafür, dass die eckigen Klammern wörtlich erfasst werden, und die senkrechten Striche trennen die Alternativen innerhalb der runden Klammern. Fügen Sie <code>|crosstalk</code> in die runden Klammern ein, erfasst das Muster auch <code>[crosstalk]</code>. Dieses Muster unterscheidet Groß- und Kleinschreibung und erfasst <code>[laughs]</code> daher nur in Kleinbuchstaben.</p>
+<p>Die Voreinstellung wird schon während der Eingabe gespeichert. Sie erscheint im Menü <strong class="ui">Voreinstellungen</strong> der Importdialoge (<strong class="ui">Dokument importieren</strong>, bei einer Webseite <strong class="ui">Aus dem Web importieren</strong>) und in den <strong class="ui">Dokumenteigenschaften</strong>, direkt nach den fünf Standardvoreinstellungen und durch eine Linie von ihnen getrennt.</p>
+<figure class="shot" id="settings-exclusion-presets"><img class="shot-light" src="../figures/de/light/settings-exclusion-presets.webp" alt="Der Abschnitt „Ausschluss-Voreinstellungen“ im Bereich „Allgemein“ mit der Voreinstellung „Transkriptionsnotizen“." loading="lazy"><img class="shot-dark" src="../figures/de/dark/settings-exclusion-presets.webp" alt="Der Abschnitt „Ausschluss-Voreinstellungen“ im Bereich „Allgemein“ mit der Voreinstellung „Transkriptionsnotizen“." loading="lazy"><figcaption>Der Abschnitt „Ausschluss-Voreinstellungen“ im Bereich „Allgemein“ mit der Voreinstellung „Transkriptionsnotizen“.</figcaption></figure>
+<figure class="shot" id="settings-presets-menu"><img class="shot-light" src="../figures/de/light/settings-presets-menu.webp" alt="Das Menü „Voreinstellungen“ des Dialogs „Dokument importieren“ mit den fünf Standardvoreinstellungen." loading="lazy"><img class="shot-dark" src="../figures/de/dark/settings-presets-menu.webp" alt="Das Menü „Voreinstellungen“ des Dialogs „Dokument importieren“ mit den fünf Standardvoreinstellungen." loading="lazy"><figcaption>Das Menü „Voreinstellungen“ des Dialogs „Dokument importieren“ mit den fünf Standardvoreinstellungen.</figcaption></figure>
+<p>Sobald Name und Muster eingegeben sind, erhält das Menü <strong class="ui">Voreinstellungen</strong> einen Eintrag. Fehlt noch der Name oder das Muster, bleibt der Eintrag in den Einstellungen, bis Sie ihn vervollständigen oder löschen.</p>
+<p>Wenn Sie im Menü <strong class="ui">Voreinstellungen</strong> eine Voreinstellung wählen, wird ihr Muster in das Dokument kopiert. Eine Voreinstellung, deren Muster das Dokument bereits hat, ist im Menü deaktiviert. Um ein solches Muster später zu ändern, bearbeiten Sie die Eigenschaften jedes Dokuments einzeln (<strong class="ui">Dokumenteigenschaften</strong>).</p>
+<p>Wählen Sie eine Voreinstellung mit ungültigem Muster, wird das ganze Dokument indiziert. Prüfen Sie deshalb die Zeile unter Ihrem Muster, bevor Sie eine Voreinstellung wählen.</p>
+<p>Um eine Voreinstellung zu löschen, klicken Sie auf das kleine Minuszeichen neben dem Eintrag (<strong class="ui">Voreinstellung entfernen</strong>). Der Eintrag verschwindet sofort.</p>
+<h2 id="reader-pane">Der Bereich „Leseansicht“<a class="anchor" href="#reader-pane" aria-hidden="true">#</a></h2>
+<p>Der Bereich <strong class="ui">Leseansicht</strong> legt fest, wie die Leseansicht Text darstellt. Seine ersten beiden Abschnitte, <strong class="ui">Typografie</strong> und <strong class="ui">Seite</strong>, enthalten dieselben Optionen wie das Menü <strong class="ui">Schrift, Randspalte und Textgröße</strong> in der Titelleiste der Leseansicht (siehe <a href="reading-and-editing.html#title-band">Die Titelleiste</a> in <a href="reading-and-editing.html">Kapitel 5, Lesen und Bearbeiten</a>). Die Befehle <strong class="ui">Darstellung ▸ Größerer Text</strong> (⌘+), <strong class="ui">Kleinerer Text</strong> (⌘-) und <strong class="ui">Textgröße zurücksetzen</strong> (⌘0) ändern genau dieselbe Textgröße, und eine Änderung an einer Stelle zeigt sich auch an den anderen.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Abschnitt</th><th>Zeile</th><th>Möglichkeiten</th><th>Zu Beginn</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">Typografie</strong></td><td><strong class="ui">Schrift</strong></td><td><strong class="ui">System Serif</strong>, <strong class="ui">System Sans</strong>, <strong class="ui">System Rounded</strong>, <strong class="ui">System Mono</strong>, <strong class="ui">Georgia</strong>, <strong class="ui">Palatino</strong>, <strong class="ui">Baskerville</strong>, <strong class="ui">Times New Roman</strong>, <strong class="ui">Helvetica Neue</strong>, <strong class="ui">Avenir Next</strong>, <strong class="ui">Menlo</strong></td><td><strong class="ui">System Serif</strong></td></tr>
+<tr><td><strong class="ui">Typografie</strong></td><td><strong class="ui">Textgröße</strong></td><td>ein Schieberegler von 70 bis 200 Prozent in Schritten von 10</td><td>100 Prozent</td></tr>
+<tr><td><strong class="ui">Seite</strong></td><td><strong class="ui">Layout</strong></td><td><strong class="ui">Einspaltig</strong>, <strong class="ui">Doppelseite</strong></td><td><strong class="ui">Einspaltig</strong></td></tr>
+<tr><td><strong class="ui">Seite</strong></td><td><strong class="ui">Randnummerierung</strong></td><td><strong class="ui">Aus</strong>, <strong class="ui">Absätze</strong>, <strong class="ui">Sätze</strong>, <strong class="ui">Beide</strong></td><td><strong class="ui">Beide</strong></td></tr>
+</tbody></table></div>
+<p>Die <em>Randspalte</em> ist die Spalte links neben Ihrem Text, in der die Leseansicht die Absätze und Sätze des Dokuments nummeriert (siehe <a href="reading-and-editing.html#gutter">Die Randspalte</a> in <a href="reading-and-editing.html">Kapitel 5, Lesen und Bearbeiten</a>). Der gebogene Pfeil neben der Prozentangabe der Textgröße, <strong class="ui">Zurücksetzen</strong>, setzt den Text auf seine Standardgröße von 100 Prozent zurück. Bei 100 Prozent ist der Pfeil deaktiviert, und wenn Sie den Mauszeiger darauf halten, erscheint <strong class="ui">Bereits auf Standard</strong>. Mehr zu Schriften, Größen, Layouts und Randnummern finden Sie unter <a href="reading-and-editing.html#text-appearance">Die Darstellung des Textes ändern</a> in <a href="reading-and-editing.html">Kapitel 5, Lesen und Bearbeiten</a>.</p>
+<p>Mit <strong class="ui">Alles auf Standard zurücksetzen</strong> oben im Bereich setzen Sie alle Zeilen des Bereichs auf einmal auf ihre Anfangswerte zurück.</p>
+<h3 id="selection-settings">Auswahl<a class="anchor" href="#selection-settings" aria-hidden="true">#</a></h3>
+<p>Der Abschnitt <strong class="ui">Auswahl</strong> bestimmt, wie die Leseansicht Ihre Auswahl darstellt und wie sie mit dem übrigen Text um die Auswahl herum verfährt.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Zeile</th><th>Möglichkeit</th><th>Was Sie sehen</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">Ausgewählter Text</strong></td><td><strong class="ui">Volle Fläche</strong></td><td>Eine abgerundete Fläche in der Textfarbe, darauf die ausgewählten Wörter in der Papierfarbe</td></tr>
+<tr><td></td><td><strong class="ui">Hervorheben</strong></td><td>Eine leichte Tönung hinter den ausgewählten Wörtern</td></tr>
+<tr><td><strong class="ui">Kopf und Dependenten</strong></td><td><strong class="ui">Bögen</strong></td><td>Eine gebogene Linie vom ausgewählten Wort zu seinem Kopf und zu jedem Dependenten, mit einer kleinen Pfeilspitze am Dependenten</td></tr>
+<tr><td></td><td><strong class="ui">Linien</strong></td><td>Dieselben Verbindungen als eckige Klammern über dem Text</td></tr>
+<tr><td></td><td><strong class="ui">Beschriftungen</strong></td><td>Der Name jeder Relation über dem betreffenden Wort</td></tr>
+<tr><td></td><td><strong class="ui">Hervorheben</strong></td><td>Der Kopf gelb getönt, die Dependenten blassviolett</td></tr>
+<tr><td></td><td><strong class="ui">Aus</strong></td><td>Nur die Auswahl</td></tr>
+<tr><td><strong class="ui">Umgebender Text</strong></td><td><strong class="ui">Abblenden</strong></td><td>Der übrige Text des Dokuments abgeschwächt, rund um die Sätze mit der Auswahl</td></tr>
+<tr><td></td><td><strong class="ui">Leicht abblenden</strong></td><td>Dasselbe, nur schwächer</td></tr>
+<tr><td></td><td><strong class="ui">Satz hervorheben</strong></td><td>Der Satz mit dem ausgewählten Wort getönt</td></tr>
+<tr><td></td><td><strong class="ui">Aus</strong></td><td>Das ganze Dokument wie gewohnt</td></tr>
+<tr><td><strong class="ui">Audiowiedergabe</strong></td><td><strong class="ui">Spotlight</strong></td><td>Alles außer der gerade abgespielten Passage abgeschwächt</td></tr>
+<tr><td></td><td><strong class="ui">Volle Fläche</strong></td><td>Die gerade abgespielte Passage auf einer Fläche in der Akzentfarbe</td></tr>
+<tr><td></td><td><strong class="ui">Hervorheben</strong></td><td>Die gerade abgespielte Passage leicht in der Akzentfarbe getönt</td></tr>
+</tbody></table></div>
+<p>In jeder Zeile ist die erste Möglichkeit die Voreinstellung.</p>
+<figure class="shot" id="settings-surrounding-text-menu"><img class="shot-light" src="../figures/de/light/settings-surrounding-text-menu.webp" alt="Der Bereich „Leseansicht“ mit „Bögen“ unter „Kopf und Dependenten“ und dem geöffneten Menü „Umgebender Text“." loading="lazy"><img class="shot-dark" src="../figures/de/dark/settings-surrounding-text-menu.webp" alt="Der Bereich „Leseansicht“ mit „Bögen“ unter „Kopf und Dependenten“ und dem geöffneten Menü „Umgebender Text“." loading="lazy"><figcaption>Der Bereich „Leseansicht“ mit „Bögen“ unter „Kopf und Dependenten“ und dem geöffneten Menü „Umgebender Text“.</figcaption></figure>
+<p><strong class="ui">Kopf und Dependenten</strong> gilt, wenn ein einzelnes Wort ausgewählt ist. Der <em>Kopf</em> ist das Wort, zu dem das ausgewählte Wort in der grammatischen Struktur des Satzes gehört, zum Beispiel das Verb, dessen Subjekt es ist. Die <em>Dependenten</em> eines Wortes sind alle Wörter, die von ihm abhängen. Mehr zu den Relationen zwischen Wörtern und ihrer Einteilung finden Sie in <a href="grammar-inspector.html">Kapitel 11, Der Grammatik-Inspektor</a>. Bögen, Linien und Beschriftungen erscheinen in den voreingestellten Farben der Lens <strong class="ui">Grammatische Funktion</strong>.</p>
+<p>Die <strong class="ui">Vorschau</strong> unten im Bereich zeigt den Satz <em>Der alte Fuchs sah den stillen Fluss.</em> mit ausgewähltem <em>Fuchs</em>. Der Kopf von <em>Fuchs</em> ist <em>sah</em>, denn <em>Fuchs</em> ist dessen Subjekt. Die Dependenten von <em>Fuchs</em> sind <em>Der</em> und <em>alte</em>. Ist <strong class="ui">Beschriftungen</strong> gewählt, zeigt die Vorschau Beschriftungen über <em>sah</em> (▲ <code>sb</code>, Subjekt) sowie über <em>Der</em> und über <em>alte</em> (jeweils <code>nk</code>, nominaler Kernbestandteil). Jede Beschriftung nennt die grammatische Funktion, die das Wort im Verhältnis zu <em>Fuchs</em> hat, und das ▲ kennzeichnet den Kopf. Englische Dokumente verwenden andere Beschriftungen, etwa <code>nsubj</code> statt <code>sb</code>.</p>
+<p>Mit <strong class="ui">Umgebender Text</strong> legen Sie außerdem fest, wie eine Textstelle erscheint, zu der LemmaLoom Sie führt, etwa über einen Abfragetreffer. Bei <strong class="ui">Leicht abblenden</strong> oder <strong class="ui">Abblenden</strong> wird der umgebende Text abgeschwächt; bei <strong class="ui">Satz hervorheben</strong> oder <strong class="ui">Aus</strong> wird die Textstelle stattdessen hellgelb hervorgehoben.</p>
+<p><strong class="ui">Audiowiedergabe</strong> gilt nur, wenn die Leseansicht einer Aufnahme folgt (<strong class="ui">Mit dem Audio scrollen</strong> in der Wiedergabeleiste eingeschaltet; siehe <a href="reading-and-editing.html#following-transcript">Dem Transkript folgen</a> in <a href="reading-and-editing.html">Kapitel 5, Lesen und Bearbeiten</a>). Wie stark <strong class="ui">Spotlight</strong> den übrigen Text abschwächt, hängt von der Einstellung bei <strong class="ui">Umgebender Text</strong> ab. Bei <strong class="ui">Leicht abblenden</strong> fällt die Abschwächung geringer aus, bei allen anderen Möglichkeiten so stark wie bei <strong class="ui">Abblenden</strong>.</p>
+<h3 id="reader-preview">Die Vorschau<a class="anchor" href="#reader-preview" aria-hidden="true">#</a></h3>
+<p>Unten im Bereich steht die <strong class="ui">Vorschau</strong>. Sie zeigt zwei kurze Textausschnitte in Ihrer Schrift, Ihrer Textgröße und Ihrem Thema. Der erste enthält ein ausgewähltes Wort mit seinem Kopf und allen seinen Dependenten, der zweite zeigt Text so, wie er beim Abspielen aussieht. Beide ändern sich mit den Zeilen darüber, und ihr Text erscheint in der Sprache der Benutzeroberfläche.</p>
+<figure class="shot" id="settings-reader-pane"><img class="shot-light" src="../figures/de/light/settings-reader-pane.webp" alt="Der Bereich „Leseansicht“ mit „Beschriftungen“ unter „Kopf und Dependenten“ und der Vorschau darunter." loading="lazy"><img class="shot-dark" src="../figures/de/dark/settings-reader-pane.webp" alt="Der Bereich „Leseansicht“ mit „Beschriftungen“ unter „Kopf und Dependenten“ und der Vorschau darunter." loading="lazy"><figcaption>Der Bereich „Leseansicht“ mit „Beschriftungen“ unter „Kopf und Dependenten“ und der Vorschau darunter.</figcaption></figure>
+<h2 id="lenses-pane">Der Bereich „Lenses“<a class="anchor" href="#lenses-pane" aria-hidden="true">#</a></h2>
+<p>Eine <em>Lens</em> annotiert die Wörter Ihrer Dokumente nach einer Einteilung wie der Wortklasse (siehe <a href="lenses.html">Kapitel 6, Lenses</a>). Die Kategorien einer Lens sind ihre <em>Aspekte</em>, etwa <strong class="ui">Substantiv</strong> in <strong class="ui">Wortklasse</strong>. Im Bereich <strong class="ui">Lenses</strong> legen Sie Farbe und Stil jedes Aspekts von vier eingebauten Lenses fest. Das hilft, wenn sich zwei Aspekte optisch ähneln oder wenn Sie mit mehreren Lenses gleichzeitig arbeiten.</p>
+<p>Der Bereich <strong class="ui">Lenses</strong> hat für jede der vier Lenses einen eigenen Abschnitt:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Abschnitt</th><th>Zeilen</th><th>Stil zu Beginn</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">Wortklasse</strong></td><td><strong class="ui">Substantiv</strong>, <strong class="ui">Verb</strong>, <strong class="ui">Adjektiv</strong>, <strong class="ui">Adverb</strong>, <strong class="ui">Pronomen</strong>, <strong class="ui">Artikelwort</strong>, <strong class="ui">Präposition</strong>, <strong class="ui">Konjunktion</strong>, <strong class="ui">Zahlwort</strong>, <strong class="ui">Interjektion</strong></td><td><strong class="ui">Unterstreichen</strong></td></tr>
+<tr><td><strong class="ui">Grammatische Funktion</strong></td><td><strong class="ui">Subjekt</strong>, <strong class="ui">Objekt</strong>, <strong class="ui">Prädikativ</strong>, <strong class="ui">Komplement</strong>, <strong class="ui">Adjektivisch</strong>, <strong class="ui">Adverbial</strong>, <strong class="ui">Apposition</strong>, <strong class="ui">Agens</strong>, <strong class="ui">Konjunkt</strong>, <strong class="ui">Konnektor</strong></td><td><strong class="ui">Unterstreichen</strong></td></tr>
+<tr><td><strong class="ui">Phrase</strong></td><td><strong class="ui">Nominalphrase</strong>, <strong class="ui">Verbalphrase</strong>, <strong class="ui">Präpositionalphrase</strong>, <strong class="ui">Adjektivphrase</strong>, <strong class="ui">Adverbphrase</strong>, <strong class="ui">Konjunktionalphrase</strong>, <strong class="ui">Interjektion</strong>, <strong class="ui">Nominalgruppe</strong></td><td><strong class="ui">Hervorheben</strong></td></tr>
+<tr><td><strong class="ui">Morphologie</strong></td><td>20 Zeilen, jeweils benannt nach einem Merkmal und einem seiner Werte, von <strong class="ui">Tempus: Vergangenheit</strong> bis <strong class="ui">Genus: Neutrum</strong></td><td><strong class="ui">Hervorheben</strong></td></tr>
+</tbody></table></div>
+<p>Die Zeilen von <strong class="ui">Morphologie</strong> umfassen <strong class="ui">Tempus</strong>, <strong class="ui">Numerus</strong>, <strong class="ui">Steigerung</strong>, <strong class="ui">Verbform</strong>, <strong class="ui">Kasus</strong>, <strong class="ui">Modus</strong> und <strong class="ui">Genus</strong>. <strong class="ui">Kasus</strong>, <strong class="ui">Modus</strong> und <strong class="ui">Genus</strong> kommen nur in deutschen Dokumenten vor; die Lens <strong class="ui">Morphologie</strong> selbst arbeitet mit englischen und deutschen Dokumenten. Jedes Wort zeigt nur ein morphologisches Merkmal, ein deutsches Substantiv im Dativ also nur <strong class="ui">Kasus: Dativ</strong>. Mehr dazu finden Sie unter <a href="lenses.html#morphology">Morphologie</a> in <a href="lenses.html">Kapitel 6, Lenses</a>.</p>
+<p>Andere eingebaute Lenses wie <strong class="ui">Modalität</strong> und <strong class="ui">Kohäsion</strong> haben dagegen feste Farben. Wörterbuch-, Abfrage- und Analysator-Lenses übernehmen ihre Farben von ihrem Wörterbuch, ihrer Abfrage oder ihrem Analysator.</p>
+<p>Jede Zeile enthält den Namen des Aspekts, ein Stilmenü und ein Farbfeld, nach einer Änderung außerdem eine Schaltfläche zum Zurücksetzen. Im Stilmenü stehen vier Stile zur Wahl, jeder mit seinem eigenen Symbol.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Stil</th><th>So sieht ein annotiertes Wort aus</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">Hervorheben</strong></td><td>Ein blasser Streifen in der Farbe des Aspekts hinter dem Wort</td></tr>
+<tr><td><strong class="ui">Unterstreichen</strong></td><td>Eine Linie in der Farbe unter dem Wort</td></tr>
+<tr><td><strong class="ui">Textfarbe</strong></td><td>Die Buchstaben in der Farbe</td></tr>
+<tr><td><strong class="ui">Fett</strong></td><td>Die Buchstaben fett und in der Farbe</td></tr>
+</tbody></table></div>
+<p>Ob eine Farbe deutlich genug hervortritt, hängt vom Stil ab. <strong class="ui">Hervorheben</strong> legt eine zarte Tönung der Farbe hinter das Wort, und eine helle Farbe fällt dabei unter Umständen kaum auf. Bei <strong class="ui">Textfarbe</strong> und <strong class="ui">Fett</strong> nehmen die Buchstaben selbst die volle Farbe an; sie muss sich deshalb deutlich von der Papierfarbe Ihres Themas abheben. Siehe auch <a href="lenses.html#lens-colors-and-styles">Farben und Stile der Lenses</a> in <a href="lenses.html">Kapitel 6, Lenses</a>.</p>
+<h3 id="changing-a-key">Einen Aspekt ändern<a class="anchor" href="#changing-a-key" aria-hidden="true">#</a></h3>
+<p>Das Beispielprojekt enthält den Meinungsbeitrag „Uns läuft die Zeit davon“, das deutsche Original von „Uns läuft die Zeit davon (Englisch)“. An ihm lässt sich gut der Dativ beobachten, der im Deutschen die indirekten Objekte kennzeichnet, ebenso die Substantive nach Wörtern wie <em>mit</em>. Falls Sie „Klimadebatte“ noch nicht importiert haben, importieren Sie das Projekt mit <strong class="ui">Ablage ▸ Importieren ▸ Beispielprojekt</strong>. In der Lens <strong class="ui">Morphologie</strong> ist zunächst jeder Kasus blass hervorgehoben. So heben Sie die Dative von den übrigen Kasus ab:</p>
+<ol>
+<li>Wählen Sie <strong class="ui">LemmaLoom ▸ Einstellungen …</strong> (⌘,) und klicken Sie auf <strong class="ui">Lenses</strong>.</li>
+<li>Scrollen Sie nach unten zum Abschnitt <strong class="ui">Morphologie</strong> und suchen Sie die Zeile <strong class="ui">Kasus: Dativ</strong>.</li>
+<li>Öffnen Sie ihr Stilmenü, das <strong class="ui">Hervorheben</strong> zeigt, und wählen Sie <strong class="ui">Fett</strong>.</li>
+<li>Klicken Sie auf das Farbfeld (das kleine Farbmuster) daneben. Wählen Sie in der Farbauswahl von macOS, die sich öffnet, ein dunkles Rot.</li>
+<li>Öffnen Sie „Uns läuft die Zeit davon“ und aktivieren Sie <strong class="ui">Morphologie</strong> im Lens-Menü (siehe <a href="lenses.html#lens-menu">Das Lens-Menü</a> in <a href="lenses.html">Kapitel 6, Lenses</a>).</li>
+</ol>
+<p>Dative erscheinen jetzt fett in dunklem Rot, während die übrigen Kasus blass hervorgehoben bleiben. Änderungen an Aspekten von <strong class="ui">Wortklasse</strong>, <strong class="ui">Grammatische Funktion</strong> und <strong class="ui">Phrase</strong> gelten auch im <strong class="ui">Glossar</strong> (<strong class="ui">Hilfe ▸ Glossar</strong>), denn es zeigt jedes Tag und jeden Begriff, der für einen dieser Aspekte steht, in Farbe und Stil dieses Aspekts. Die Lenslets in der Legende über Ihrem Text behalten ihre voreingestellten Farben, sodass das Lenslet <strong class="ui">Kasus: Dativ</strong> orange bleibt. Dieselben Schritte gelten für jeden Aspekt der vier Lenses.</p>
+<figure class="shot" id="settings-lens-style-menu"><img class="shot-light" src="../figures/de/light/settings-lens-style-menu.webp" alt="Das geöffnete Stilmenü für „Kasus: Dativ“ im Abschnitt „Morphologie“ des Bereichs „Lenses“." loading="lazy"><img class="shot-dark" src="../figures/de/dark/settings-lens-style-menu.webp" alt="Das geöffnete Stilmenü für „Kasus: Dativ“ im Abschnitt „Morphologie“ des Bereichs „Lenses“." loading="lazy"><figcaption>Das geöffnete Stilmenü für „Kasus: Dativ“ im Abschnitt „Morphologie“ des Bereichs „Lenses“.</figcaption></figure>
+<h3 id="lens-defaults">Zurück zu den Voreinstellungen<a class="anchor" href="#lens-defaults" aria-hidden="true">#</a></h3>
+<p>Jeder Aspekt, den Sie geändert haben, erhält eine Schaltfläche zum Zurücksetzen, einen gebogenen Pfeil am Ende seiner Zeile. Ein Klick darauf stellt die voreingestellte Farbe und den voreingestellten Stil wieder her.</p>
+<p><strong class="ui">Alles auf Standard zurücksetzen</strong> ganz oben im Bereich setzt alle Aspekte der vier Lenses zurück. Das Zurücksetzen ist endgültig.</p>
+<h2 id="where-settings-are-stored">Wo Einstellungen gespeichert werden<a class="anchor" href="#where-settings-are-stored" aria-hidden="true">#</a></h2>
+<p>Alles, was Sie im Einstellungsfenster ändern, gilt nur für den Mac, an dem Sie arbeiten. Die Bibliothek mit Ihren Projekten (siehe <a href="getting-started.html#library">Wo die Arbeit gespeichert wird</a> in <a href="getting-started.html">Kapitel 2, Erste Schritte</a>) merkt sich außerdem, wo Sie in jedem Projekt stehen.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Einstellung</th><th>Gespeichert</th></tr></thead>
+<tbody>
+<tr><td>Alles, was Sie im Einstellungsfenster wählen</td><td>auf dem Mac</td></tr>
+<tr><td><strong class="ui">Mit dem Audio scrollen</strong>, Größe und Position des Videos und ob es eingeklappt ist</td><td>auf dem Mac</td></tr>
+<tr><td>Die Trennlinie zwischen zwei Dokumenten in der geteilten Ansicht, die Trennlinien in Analysebereichen (etwa die zwischen dem Abfrageeditor und den Ergebnissen einer Abfrage) und die Darstellung von Wortskizzen</td><td>auf dem Mac</td></tr>
+<tr><td>Welche Projekte Favoriten sind, das zuletzt geöffnete Projekt, die geöffneten Tabs jedes Projekts sowie für jedes Dokument die Leseposition, die Lenses und der Inspektor (ob er angezeigt wird, seine Breite und welcher Tab aktiv ist)</td><td>in der Bibliothek</td></tr>
+</tbody></table></div>
+<p>Ihre Projekte samt Favoriten, geöffneten Tabs und Lesepositionen ziehen mit der Bibliothek auf einen anderen Mac um oder lassen sich aus einer älteren Sicherungskopie wiederherstellen. Einstellungen gelten dagegen pro Mac. Wenn alles gleich aussehen soll, wählen Sie Thema, Schriften und Lens-Stile deshalb auf jedem Mac.</p>
+<p>Wer Ihr LemmaLoom-Archiv oder REFI-QDA-Projekt öffnet, sieht alles mit den Einstellungen des eigenen Mac, also mit dessen Thema, Schriften und Lens-Stilen (siehe <a href="exchange-and-export.html">Kapitel 22, Austausch und Export</a>).</p>
+</article>
+<nav class="pager"><a class="previous" href="undo.html"><span>Zurück</span>Widerrufen und Wiederholen</a><a class="next" href="keyboard-shortcuts.html"><span>Weiter</span>Tastaturkurzbefehle</a></nav>
+<footer class="site-footer">© 2026 Ryan S. Cooper. Alle Rechte vorbehalten.<br>Diese Ausgabe wurde mithilfe von KI aus der englischen Originalausgabe übersetzt. Die Übersetzung kann Fehler oder Ungenauigkeiten enthalten. Im Zweifel ist die englische Ausgabe maßgeblich.</footer>
+</main>
+<nav class="page-toc" aria-label="Auf dieser Seite"><p>Auf dieser Seite</p><ul>
+<li class="level-2"><a href="#settings-window">Das Einstellungsfenster</a></li>
+<li class="level-2"><a href="#themes">Themen</a></li>
+<li class="level-3"><a href="#window-tinting">Was ein Thema verändert</a></li>
+<li class="level-3"><a href="#fixed-colors">Farben, die gleich bleiben</a></li>
+<li class="level-2"><a href="#interface-language">Die Sprache der Benutzeroberfläche</a></li>
+<li class="level-2"><a href="#transcription-model">Das Transkriptionsmodell</a></li>
+<li class="level-2"><a href="#exclusion-presets">Ausschluss-Voreinstellungen</a></li>
+<li class="level-2"><a href="#reader-pane">Der Bereich „Leseansicht“</a></li>
+<li class="level-3"><a href="#selection-settings">Auswahl</a></li>
+<li class="level-3"><a href="#reader-preview">Die Vorschau</a></li>
+<li class="level-2"><a href="#lenses-pane">Der Bereich „Lenses“</a></li>
+<li class="level-3"><a href="#changing-a-key">Einen Aspekt ändern</a></li>
+<li class="level-3"><a href="#lens-defaults">Zurück zu den Voreinstellungen</a></li>
+<li class="level-2"><a href="#where-settings-are-stored">Wo Einstellungen gespeichert werden</a></li>
+</ul></nav>
+</div>
+<script src="../assets/guide.js" defer></script>
+</body>
+</html>

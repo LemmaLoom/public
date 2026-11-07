@@ -1,0 +1,654 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>开始使用 · LemmaLoom 用户指南</title>
+<link rel="stylesheet" href="../assets/guide.css">
+<link rel="icon" type="image/png" href="../assets/logo.png">
+<script>var r=document.documentElement;r.setAttribute('data-theme','light');try{if(localStorage.getItem('guide-theme')==='dark'){r.setAttribute('data-theme','dark')}}catch(e){}</script>
+</head>
+<body>
+<header class="topbar">
+<button class="menu-toggle" aria-label="目录" aria-expanded="false">☰</button>
+<a class="brand" href="index.html"><span class="wordmark"><span class="lemma">Lemma</span>Loom</span><span class="guide-name">用户指南</span></a>
+<div class="search"><input type="search" id="search" placeholder="搜索" aria-label="搜索" autocomplete="off" data-empty="无结果"><div class="results" id="results" hidden></div></div>
+<nav class="languages" aria-label="Language"><a href="../en/getting-started.html" lang="en">English</a><a href="../de/getting-started.html" lang="de">Deutsch</a><a href="../zh-Hans/getting-started.html" lang="zh-Hans" aria-current="true">简体中文</a></nav>
+<button class="theme-toggle" data-light="浅色" data-dark="深色" aria-label="外观"></button>
+<a class="pdf-link" href="https://github.com/LemmaLoom/public/raw/main/pdf/lemmaloom-guide-zh-Hans.pdf">PDF</a>
+</header>
+<div class="layout">
+<nav class="sidebar" aria-label="目录"><ol>
+<li class="unnumbered"><a href="quick-start.html">快速入门</a></li>
+<li><a href="introduction.html">简介</a></li>
+<li class="current"><a href="getting-started.html">开始使用</a></li>
+<li><a href="projects-and-documents.html">项目与文档</a></li>
+<li><a href="importing.html">导入资料</a></li>
+<li><a href="reading-and-editing.html">阅读与编辑</a></li>
+<li><a href="lenses.html">透镜</a></li>
+<li><a href="coding.html">编码</a></li>
+<li><a href="sets-tags-attributes.html">文档集、分组、标签和属性</a></li>
+<li><a href="translations.html">译文与分屏浏览</a></li>
+<li><a href="text-inspector.html">文本检查器</a></li>
+<li><a href="grammar-inspector.html">语法检查器</a></li>
+<li><a href="word-sketch.html">词汇速写</a></li>
+<li><a href="coding-analysis.html">编码分析</a></li>
+<li><a href="sketch-space.html">速写空间</a></li>
+<li><a href="queries-building.html">构建查询</a></li>
+<li><a href="queries-results.html">查询结果与统计</a></li>
+<li><a href="queries-patterns.html">查询模式与发现</a></li>
+<li><a href="queries-using-results.html">使用查询结果</a></li>
+<li><a href="dictionaries.html">词典</a></li>
+<li><a href="custom-analyzers.html">自定义分析器</a></li>
+<li><a href="analysis-and-indexing.html">分析与索引</a></li>
+<li><a href="exchange-and-export.html">交换与导出</a></li>
+<li><a href="undo.html">撤销与重做</a></li>
+<li><a href="settings.html">设置与外观</a></li>
+<li><a href="keyboard-shortcuts.html">键盘快捷键</a></li>
+<li><a href="help-and-support.html">帮助与支持</a></li>
+<li><a href="statistics-reference.html">统计量一览</a></li>
+<li class="unnumbered"><a href="glossary.html">术语表</a></li>
+<li class="unnumbered"><a href="thanks.html">感谢</a></li>
+</ol></nav>
+<main class="content">
+<article>
+<h1 id="getting-started">开始使用</h1>
+<p>LemmaLoom 附带一个名为“气候辩论”的示例项目。你可以导入它，试用应用中的各种工具。本指南的大部分例子都取自这个项目。其中的评论文章、专栏和演讲都是虚构的，报告和电台辩论录音也是如此。如与真实人物或出版物雷同，纯属巧合。这些文本不代表任何人的观点，也无意说服你接受任何看法。</p>
+<p>要把这个示例项目作为新项目添加到资料库中，请选取<strong class="ui">文件 ▸ 导入 ▸ 示例项目</strong>。<strong class="ui">正在导入示例项目</strong>对话框会显示进度。对话框关闭后，“气候辩论”就成为当前项目。导入的项目使用哪种语言，取决于 LemmaLoom 当前的界面语言，可能是英语、德语或中国大陆简体中文。如何切换界面语言，请参阅<a href="introduction.html">第 1 章“简介”</a>中的<a href="introduction.html#languages">支持的语言</a>。本章提到的所有文档、文档集、编码、属性和已存储的查询，在导入的项目中都有。</p>
+<p>你也可以用几篇自己的文本来跟着例子操作，凡是例子用到“气候辩论”里某个文档的地方，都换成你自己的文档。</p>
+<h2 id="first-launch">首次启动 LemmaLoom<a class="anchor" href="#first-launch" aria-hidden="true">#</a></h2>
+<p>第一次启动时，LemmaLoom 的应用窗口分为三栏（导航栏、阅读区和检查器）。还没有项目时，导航栏和检查器都是空白的。同样，在你创建项目并打开文档之前，检查器顶部的四个标签页图标都处于停用状态。应用的所有设置都可以通过 <strong class="ui">LemmaLoom ▸ 设置…</strong>（⌘,）打开。</p>
+<p>开始之前，有两项设置值得检查，它们都在<strong class="ui">通用</strong>中。第一项是<strong class="ui">主题</strong>，它把所选的配色应用到 LemmaLoom 的整个界面。<strong class="ui">主题</strong>可以跟随 Mac 系统所选的浅色或深色外观（<strong class="ui">系统</strong>），也可以改用<strong class="ui">奶油色</strong>、<strong class="ui">高对比度深色</strong>或其他主题。</p>
+<p><strong class="ui">界面语言</strong>既决定 LemmaLoom 的显示语言，也决定导入示例项目时使用的语言。选择<strong class="ui">系统默认</strong>时，<strong class="ui">界面语言</strong>与你的 Mac 所用的语言一致；其他可选的语言有 <strong class="ui">English</strong>、<strong class="ui">Deutsch</strong> 和<strong class="ui">简体中文</strong>（即中国大陆简体中文）。对<strong class="ui">界面语言</strong>所做的更改，要在用这个菜单下方的<strong class="ui">退出 LemmaLoom</strong> 关闭应用并重新启动后才生效。</p>
+<figure class="shot" id="getting-started-interface-language"><img class="shot-light" src="../figures/zh-Hans/light/getting-started-interface-language.webp" alt="设置 ▸ 通用中的界面语言菜单，选项有系统默认、English、Deutsch 和简体中文。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/getting-started-interface-language.webp" alt="设置 ▸ 通用中的界面语言菜单，选项有系统默认、English、Deutsch 和简体中文。" loading="lazy"><figcaption>设置 ▸ 通用中的界面语言菜单，选项有系统默认、English、Deutsch 和简体中文。</figcaption></figure>
+<p>在设置窗口中，<strong class="ui">通用</strong>还包括转写录音所用的语音识别<strong class="ui">模型</strong>，以及导入对话框使用的<strong class="ui">排除预设</strong>。其他部分有<strong class="ui">阅读器</strong>（控制阅读器中文本样式的设置）和<strong class="ui">透镜</strong>，你可以在<strong class="ui">透镜</strong>中自定义透镜的样式。<a href="settings.html">第 24 章“设置与外观”</a>逐项介绍设置窗口中的各个选项。</p>
+<p>只有英语、德语和中文文档会进行语法分析。其他语言的文档可以作为纯文本导入，照样可以阅读、编码和搜索。如果其他语言的文档需要语法分析，就要改为分析它的英语、德语或中文译文。这时，分析结果反映的是译文中的语法结构。关于如何在 LemmaLoom 中管理译文，请参阅<a href="translations.html">第 9 章“译文与分屏浏览”</a>。</p>
+<p>要查看应用中各种术语的简短解释，请选取<strong class="ui">帮助 ▸ 术语表</strong>。在主窗口中工作时，术语表窗口可以一直开着。</p>
+<h2 id="how-work-is-organized">LemmaLoom 如何组织工作<a class="anchor" href="#how-work-is-organized" aria-hidden="true">#</a></h2>
+<p>你在 LemmaLoom 中所做的一切都存放在<em>资料库</em>里。资料库其实就是你的 Mac 上的一个文件夹。详细情况见下文的<a href="#library">工作保存在哪里</a>。</p>
+<p>在资料库中，每项研究都有自己的<em>项目</em>。项目中存放你要研究的文本，也存放你在分析过程中做出的一切，包括编码及其编码实例、备忘录和链接、文档集和分组。词典和已存储的查询也保存在项目中。各个项目彼此独立。在一个项目上运行的查询只看得到这个项目的文档。一般来说，最好把一项研究的所有相关材料都放在同一个项目中。</p>
+<p>有三样东西由所有项目共用。标签都来自同一份列表，可以通过<strong class="ui">窗口 ▸ 标签</strong>查看。为<strong class="ui">所有项目</strong>存储的查询在每个项目中都能使用；此外，你还可以同时查询多个项目。具体做法见<a href="projects-and-documents.html">第 3 章“项目与文档”</a>中的<a href="projects-and-documents.html#working-across-projects">跨项目工作</a>。你为 LemmaLoom 编写的分析器是一些标注文字的小脚本，在每个项目中都可以通过<strong class="ui">窗口 ▸ 分析器</strong>使用。关于分析器在 LemmaLoom 中如何工作，请参阅<a href="custom-analyzers.html">第 20 章“自定义分析器”</a>。</p>
+<p>每一份导入的文本都是项目中的一个<em>文档</em>。文档可以是一篇报刊文章、一篇演讲稿或一个 PDF 文件的内容，也可以是一篇取自网页的文章，或者一段音频、视频录音的转写文本。导入文档时，LemmaLoom 会保存一份自己的副本，无论原文件在别处怎样修改，这份副本都保持原样。更正应当直接在 LemmaLoom 中进行，不过 LemmaLoom 的更正功能相当有限。一般来说，只导入已经定稿或者只需少量修改的文档。大幅修改最好在 LemmaLoom 之外完成，然后把修改后的文本粘贴到 LemmaLoom 的编辑器中，或者在修改完成后重新导入文档。</p>
+<p>把文档导入项目后，LemmaLoom 会在后台处理这些文档。这一步称为<em>建立索引</em>，包括把文本切分成句子和词，并分析每个句子的语法结构。LemmaLoom 会找出每个词的词典形式，即<em>词元</em>；英文 <em>runs</em> 和 <em>ran</em> 的词元都是 <em>run</em>。LemmaLoom 还会确定词类（名词、动词等）。关于索引的更多内容，请参阅<a href="analysis-and-indexing.html">第 21 章“分析与索引”</a>。词汇速写、透镜、大多数查询以及检查器的<strong class="ui">语法</strong>标签页都依赖索引结果。编码和阅读则在索引完成之前就可以进行。建立索引所需的时间取决于文档的大小和电脑的性能。</p>
+<p>LemmaLoom 的主窗口一次显示一个项目，称为<em>当前项目</em>。每个项目打开的标签页、你在每个文档中的位置以及所选的透镜，在下次启动应用时都会保留。</p>
+<h2 id="creating-a-project">新建项目<a class="anchor" href="#creating-a-project" aria-hidden="true">#</a></h2>
+<p>项目只需要一个名称，不过你也可以为它指定颜色和标签，以及项目中所有文档共用的属性。<em>属性</em>为每个文档记录一项事实信息，例如发表日期或文本所代表的立场。属性属于整个项目，在每个文档中都可以有一个值。如果在创建项目时就定义好属性，导入文档时就能顺便填写属性值。属性中保存的值最终可以用来按各种属性给文档分组、比较文档，所以值得比较的事实信息，都可以考虑做成属性。</p>
+<p>标签只有名称，可以加在项目和文档上，用作整理工具；标签代表什么，完全由你决定。</p>
+<p>“气候辩论”定义了四个属性：</p>
+<div class="table-wrap"><table>
+<thead><tr><th>名称</th><th>类型</th><th>选项</th><th>用途</th></tr></thead>
+<tbody>
+<tr><td>立场</td><td><strong class="ui">选择器</strong></td><td>行动派、怀疑派、中立</td><td>比较辩论双方，以及只报道这场辩论、不偏向任何一方的来源</td></tr>
+<tr><td>读者数</td><td><strong class="ui">整数</strong></td><td></td><td>挑选读者众多的文本，智能文档集“广泛传播”就是这样做的</td></tr>
+<tr><td>发表日期</td><td><strong class="ui">日期</strong></td><td></td><td>确定每篇文本的发表时间</td></tr>
+<tr><td>媒体</td><td><strong class="ui">文本</strong></td><td></td><td>记录每篇文本刊登在哪里</td></tr>
+</tbody></table></div>
+<p>每个属性都有一种数据类型。关于可用的类型以及如何更改属性的类型，请参阅<a href="sets-tags-attributes.html">第 8 章“文档集、分组、标签和属性”</a>。“立场”是选择器类型的一个例子，选择器只接受你列出的选项。如果无法事先列出所有值，例如“气候辩论”中的媒体，就应当使用<strong class="ui">文本</strong>。<strong class="ui">整数</strong>属性存储整数，<strong class="ui">小数</strong>和<strong class="ui">布尔值</strong>属性则分别存储小数和是或否的值。</p>
+<figure class="shot" id="getting-started-new-project"><img class="shot-light" src="../figures/zh-Hans/light/getting-started-new-project.webp" alt="创建“气候辩论”及其四个属性。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/getting-started-new-project.webp" alt="创建“气候辩论”及其四个属性。" loading="lazy"><figcaption>创建“气候辩论”及其四个属性。</figcaption></figure>
+<p>新建项目的步骤如下：</p>
+<ol>
+<li>选取<strong class="ui">文件 ▸ 新建项目</strong>（⇧⌘N）。</li>
+<li>在<strong class="ui">名称</strong>中输入项目名称。如果这一栏留空，项目会命名为“新建项目”。</li>
+<li>如果需要颜色，在<strong class="ui">颜色</strong>下点按一种颜色。导航栏中项目的图标会使用这种颜色。</li>
+<li>在<strong class="ui">标签</strong>下输入一个标签，然后按下 Return 键或输入英文逗号。标签取自所有项目共用的同一份列表。</li>
+<li>在<strong class="ui">属性</strong>下，每个属性点按一次<strong class="ui">添加属性</strong>。在新出现的行中，把名称输入左侧的输入框，再从菜单中选择类型。如果类型是<strong class="ui">选择器</strong>（一组固定的选项），就在名称和类型下方逐行输入各个选项，每行一个；点按<strong class="ui">添加选项</strong>可以再加一行。</li>
+<li>点按<strong class="ui">创建</strong>。</li>
+</ol>
+<p>新项目会出现在导航栏的<strong class="ui">项目</strong>下，并随即成为当前项目。</p>
+<p>要切换项目，在<strong class="ui">项目</strong>下选择一个即可。导航栏顶部是<strong class="ui">收藏</strong>，列出你想快速打开的项目。将鼠标指针悬停在项目上，再点按出现的星形图标，就可以把它加入<strong class="ui">收藏</strong>。右键点按项目，会出现<strong class="ui">重命名</strong>、<strong class="ui">信息</strong>和<strong class="ui">属性</strong>等选项。<a href="projects-and-documents.html">第 3 章“项目与文档”</a>介绍了所有这些选项。</p>
+<h2 id="importing-a-first-document">导入文档<a class="anchor" href="#importing-a-first-document" aria-hidden="true">#</a></h2>
+<p>LemmaLoom 可以导入四类来源：</p>
+<ul>
+<li>纯文本文件；</li>
+<li>PDF 文件；</li>
+<li>音频和视频文件；</li>
+<li>网页，通过<strong class="ui">文件 ▸ 导入 ▸ 网页</strong>（⌥⇧⌘I）导入。</li>
+</ul>
+<p>示例项目“气候辩论”包含全部四类来源。评论文章、专栏、博客文章和一篇演讲是作为纯文本导入的，“2024 热浪报告”导入自一个 PDF 文件。“电台辩论”导入自一个音频文件，“碳税之争”则是作为网页导入的。所有导入的文档都带有发表日期，以及项目中所定义属性的值。以“时间不多了”为例，它发表于 2024 年 8 月 21 日，“立场”的值为“行动派”，“读者数”为 412,000，并且属于“纸媒”分组。</p>
+<figure class="shot" id="getting-started-import-document"><img class="shot-light" src="../figures/zh-Hans/light/getting-started-import-document.webp" alt="导入“时间不多了”，已填写“立场”和“读者数”。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/getting-started-import-document.webp" alt="导入“时间不多了”，已填写“立场”和“读者数”。" loading="lazy"><figcaption>导入“时间不多了”，已填写“立场”和“读者数”。</figcaption></figure>
+<p>导入文本文件的步骤如下：</p>
+<ol>
+<li>确认你要用的项目是当前项目（它的名称在<strong class="ui">项目</strong>下以粗体显示）。</li>
+<li>选取<strong class="ui">文件 ▸ 导入 ▸ 文档</strong>（⇧⌘I）。</li>
+<li>选择文件，然后点按<strong class="ui">打开</strong>。你可以一次选择多个文件。</li>
+<li><strong class="ui">导入文档</strong>对话框随即打开。检查下文介绍的各项内容，然后点按<strong class="ui">导入</strong>。</li>
+</ol>
+<p>在<strong class="ui">整理</strong>中，你可以把文档放进项目的某个<strong class="ui">分组</strong>，或者让它保持<strong class="ui">未分组</strong>，还可以为文档设置<strong class="ui">颜色</strong>、添加<strong class="ui">标签</strong>。<em>分组</em>在导航栏中的作用很像文件夹，用来把同类文档放在一起，就像“气候辩论”中的“纸媒”和“网络”。一个文档可以同时属于多个文档集，但只能属于一个分组（未分组的文档除外）。分组主要用来整理导航栏中的内容，而文档集和智能文档集则在分析中发挥作用。</p>
+<p>在<strong class="ui">属性</strong>下，填写这个文档在项目各个属性上的实际值。开始输入属性名称时，会出现一个建议列表，列出已有属性的名称及其类型（“立场 · 选择器”）。点按<strong class="ui">添加属性</strong>，然后在出现的行中选择或输入值。</p>
+<p>你也可以直接新建一个属性。只要输入一个尚未使用的名称，名称旁边就会出现一个菜单，供你选择属性的类型。如果是选择器，再逐行输入各个选项，每行一个。另一种做法是先不填值，以后再一次为多个文档填写；也可以以后在<strong class="ui">文本</strong>标签页的<strong class="ui">详细信息</strong>分面中逐个文档填写。详见下文的<a href="#walk-through-attributes">填写属性值</a>。</p>
+<p><strong class="ui">索引</strong>决定是否以及如何为这个文档建立索引。<strong class="ui">语言</strong>的默认设置是<strong class="ui">自动</strong>，由程序根据文档内容推断语言。如果推断可能不准确，可以手动把语言设为<strong class="ui">英语</strong>、<strong class="ui">德语</strong>或<strong class="ui">中文</strong>。例如，对于一段很短且夹杂另一种语言的文本，这样设置就会有帮助。</p>
+<p><strong class="ui">为语法分析建立索引</strong>默认已勾选；如果这个文档只需要阅读或编码，用不着建立索引，就取消勾选。你也可以把一个大文档的索引推迟到以后再建立。之后点按阅读器底部状态栏中的<strong class="ui">立即建立索引</strong>按钮，就会开始建立索引。再往下，<strong class="ui">分析器</strong>下有一些复选框，用来启用特定的分析，其中包括内置的<strong class="ui">衔接</strong>、<strong class="ui">元话语</strong>和<strong class="ui">修辞</strong>分析器，以及你自己编写的分析器，它们一开始全部勾选。取消勾选某一项，就会对这个文档停用相应的分析器。</p>
+<p><strong class="ui">从索引中排除</strong>中存放正则表达式模式，用来匹配不应计入分析的文本。最常见的例子是说话人标签和时间戳。处理转写文本时，通常都会用到这个功能。<a href="importing.html">第 4 章“导入资料”</a>列出了一些常用的排除模式。<em>正则表达式</em>是一种描述某类文本的特殊写法。输入框中给出了一个例子（<code>\[\d+:\d+:\d+\]</code>），这个模式表示方括号中以冒号分隔的三个数字，例如 <code>[00:12:31]</code>。你可以自己输入模式，然后点按<strong class="ui">添加</strong>，也可以从<strong class="ui">预设</strong>中选择，其中包括<strong class="ui">时间戳 [hh:mm:ss]</strong>（就是这个模式）等。匹配到的文本仍然显示在阅读器中，也仍然可以编码，只是不计入分析。</p>
+<figure class="shot" id="getting-started-import-presets"><img class="shot-light" src="../figures/zh-Hans/light/getting-started-import-presets.webp" alt="“电台辩论”的导入文档对话框下半部分，预设菜单已打开。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/getting-started-import-presets.webp" alt="“电台辩论”的导入文档对话框下半部分，预设菜单已打开。" loading="lazy"><figcaption>“电台辩论”的导入文档对话框下半部分，预设菜单已打开。</figcaption></figure>
+<p>一次导入多个文件时，对话框会为每个文件各出现一次，并在右上角显示当前的顺序（例如 <strong class="ui">2 / 10</strong>）。<strong class="ui">跳过</strong>会略过当前文件，转到下一个文件；<strong class="ui">取消</strong>会停止导入其余所有尚未确认的文件。已经确认的文件在取消后仍会继续导入。</p>
+<h3 id="after-the-import">导入之后<a class="anchor" href="#after-the-import" aria-hidden="true">#</a></h3>
+<p>文档会出现在导航栏的<strong class="ui">文档</strong>标题下，名称后面还有检测到的或你选择的语言代码，例如 ZH。建立索引期间，标题呈灰色，旁边有一个随进度逐渐填满的指示器。索引完成后，指示器就会消失。</p>
+<p>活动窗口（<strong class="ui">窗口 ▸ 活动</strong>，⌥⌘0）显示所有项目中正在进行的工作，并按状态把文档分别列在<strong class="ui">正在导入</strong>、<strong class="ui">正在翻译</strong>、<strong class="ui">正在建立索引</strong>、<strong class="ui">失败</strong>和<strong class="ui">等待中</strong>几个列表中。活动窗口中的项目菜单旁边有一个<strong class="ui">导入</strong>菜单，可以把文档或网页导入你的项目。</p>
+<figure class="shot" id="getting-started-activity-window"><img class="shot-light" src="../figures/zh-Hans/light/getting-started-activity-window.webp" alt="导入过程中的活动窗口，“电台辩论”位于正在导入下，另外三个文档位于正在建立索引下。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/getting-started-activity-window.webp" alt="导入过程中的活动窗口，“电台辩论”位于正在导入下，另外三个文档位于正在建立索引下。" loading="lazy"><figcaption>导入过程中的活动窗口，“电台辩论”位于正在导入下，另外三个文档位于正在建立索引下。</figcaption></figure>
+<p>在导航栏中点按文档所在的行，就会为这个文档单独打开一个标签页。即使还没有建立索引，你也可以在阅读器中看到它的文本，但在索引完成之前：</p>
+<ul>
+<li>标题栏中的透镜菜单已停用，悬停提示为<strong class="ui">索引完成后即可使用透镜</strong>；</li>
+<li>检查器的<strong class="ui">语法</strong>标签页和<strong class="ui">多重模式</strong>标签页的<strong class="ui">速写空间</strong>分面都显示<strong class="ui">索引完成后即可查看语法信息</strong>；</li>
+<li><strong class="ui">文本</strong>标签页中原本显示统计数据的地方，显示的是<strong class="ui">索引完成后即可查看统计数据</strong>；</li>
+<li>阅读器下方的状态栏显示当前阶段（例如<strong class="ui">解析结构</strong>）和百分比。</li>
+</ul>
+<p>如果 LemmaLoom 无法为文档的语言建立索引，导航栏中文档标题旁边会显示一个问号图标，状态栏则会显示例如<strong class="ui">不支持法语的语法分析</strong>这样的信息。</p>
+<h2 id="main-window">认识主窗口<a class="anchor" href="#main-window" aria-hidden="true">#</a></h2>
+<p>主窗口左侧是<em>导航栏</em>，中间是阅读区，右侧是<em>检查器</em>。在导航栏中，你可以选择要打开的项目，并打开它的文档、文档集和视图。阅读区顶部是一排<em>标签页</em>，标签页上方是<em>标题栏</em>，其中有当前标签页中文档的各项控件。在阅读区中，<em>阅读器</em>显示当前标签页的内容，可能是文档本身，也可能是一个视图。阅读区底部是<em>状态栏</em>，显示所选文字的位置和文档的大小。最后，检查器显示当前文档的信息，并提供进一步查看它的工具。</p>
+<figure class="shot" id="getting-started-main-window"><img class="shot-light" src="../figures/zh-Hans/light/getting-started-main-window.webp" alt="主窗口中的“时间不多了”，已启用编码透镜，检查器的编码标签页中显示编码系统。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/getting-started-main-window.webp" alt="主窗口中的“时间不多了”，已启用编码透镜，检查器的编码标签页中显示编码系统。" loading="lazy"><figcaption>主窗口中的“时间不多了”，已启用编码透镜，检查器的编码标签页中显示编码系统。</figcaption></figure>
+<p>窗口中有些按钮可能处于停用状态。这些按钮与当前选中的文档或标签页无关，或者暂时还不能用于它。将鼠标指针悬停在这样的按钮上，可以看到它停用的原因。</p>
+<h3 id="sidebar">导航栏<a class="anchor" href="#sidebar" aria-hidden="true">#</a></h3>
+<p><strong class="ui">搜索文档</strong>位于导航栏其余部分的上方、窗口按钮的下方。在这个输入框中输入文字，导航栏就只列出当前项目中标题包含这段文字的文档。按下 Return 键会打开第一个匹配的文档，按下 Esc 键则清空输入框。<strong class="ui">编辑 ▸ 查找文档</strong>（⇧⌘F）会把焦点移到<strong class="ui">搜索文档</strong>输入框；如果导航栏已收起，这个命令会先展开导航栏。</p>
+<p><strong class="ui">搜索文档</strong>下方是一个分为若干部分的列表，排在最前面的是<strong class="ui">收藏</strong>。你给第一个项目加上星标后，这一部分就会出现，其中列出每个加了星标的项目。<strong class="ui">收藏</strong>下方的<strong class="ui">项目</strong>中列出资料库里的所有项目。点按一个项目即可将它设为当前项目，下面的<strong class="ui">项目</strong>部分随即列出当前项目的十个视图。这些视图从<strong class="ui">编码本</strong>、<strong class="ui">编码实例</strong>一直到<strong class="ui">查询</strong>，每个都在阅读器的一个标签页中打开，合起来构成<em>项目视图栏</em>；详见下文的<a href="#project-shelf">项目视图栏</a>。</p>
+<p><strong class="ui">文档集</strong>列出当前项目中创建的所有文档集，每个文档集都显示名称和文档数。点按文档集的名称，会在标签页中打开它；点按它的展开三角形，会显示文档集中的全部成员。这一部分末尾的<strong class="ui">新建文档集</strong>和<strong class="ui">新建智能文档集</strong>用来创建文档集。<strong class="ui">文档</strong>列出当前项目中的文档。分组先以文件夹的形式出现，其余文档排在后面。每篇译文都显示在它的原文下方。最底部的<strong class="ui">标签</strong>列出你为本项目文档添加的所有标签，每个标签后面是带有它的文档数。至少有一个文档带有标签时，这一部分才会出现。点按一个标签，会在标签页中打开带有它的文档，与文档集类似。</p>
+<figure class="shot" id="getting-started-sidebar"><img class="shot-light" src="../figures/zh-Hans/light/getting-started-sidebar.webp" alt="“气候辩论”的导航栏，“行动派”文档集和“纸媒”分组已展开。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/getting-started-sidebar.webp" alt="“气候辩论”的导航栏，“行动派”文档集和“纸媒”分组已展开。" loading="lazy"><figcaption>“气候辩论”的导航栏，“行动派”文档集和“纸媒”分组已展开。</figcaption></figure>
+<p>每个文档行都有一个表示文档类型的图标。如果文档设置了颜色，图标就使用这种颜色。图标后面是文档标题和语言代码，必要时还有一个索引状态图标。如果透镜或查询漏掉了某个文档，请检查这个文档是否带有状态图标。没有状态图标的行表示已经建立了索引。各个状态图标的含义如下：</p>
+<div class="table-wrap"><table>
+<thead><tr><th>状态图标</th><th>含义</th></tr></thead>
+<tbody>
+<tr><td>进度环</td><td>正在建立索引；将鼠标指针悬停在上面，可以看到当前阶段和百分比</td></tr>
+<tr><td>虚线圆圈</td><td><strong class="ui">等待建立索引</strong></td></tr>
+<tr><td>暂停符号</td><td>这个文档的<strong class="ui">索引已关闭</strong></td></tr>
+<tr><td>问号</td><td><strong class="ui">该语言不支持索引</strong></td></tr>
+<tr><td>红色三角形</td><td>建立索引失败；右键点按文档并选取<strong class="ui">重试索引</strong></td></tr>
+</tbody></table></div>
+<figure class="shot" id="getting-started-sidebar-badges"><img class="shot-light" src="../figures/zh-Hans/light/getting-started-sidebar-badges.webp" alt="导航栏中的索引标记：进度环、虚线圆圈、暂停符号，以及法语文本的问号。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/getting-started-sidebar-badges.webp" alt="导航栏中的索引标记：进度环、虚线圆圈、暂停符号，以及法语文本的问号。" loading="lazy"><figcaption>导航栏中的索引标记：进度环、虚线圆圈、暂停符号，以及法语文本的问号。</figcaption></figure>
+<p>在导航栏中点按文档即可打开它。如果想用键盘操作，可以用 ↑ 和 ↓ 键在行之间移动，再按下 Return 键打开当前高亮的行。按住 ⌘ 键或 ⇧ 键点按，可以选择多行。在导航栏中右键点按文档，可以使用与这一行相关的上下文命令，包括<strong class="ui">在分屏浏览中打开</strong>、<strong class="ui">重命名</strong>、<strong class="ui">移到分组</strong>、<strong class="ui">文档集</strong>、<strong class="ui">信息</strong>、<strong class="ui">翻译</strong>、<strong class="ui">导出</strong>和<strong class="ui">删除文档</strong>。选中多行时，上下文菜单中有把它们加入文档集的命令（<strong class="ui">添加到文档集</strong>）和删除所选文档的命令（<strong class="ui">删除文档</strong>）。</p>
+<p>菜单栏的<strong class="ui">项目</strong>菜单中也有上面的几条命令，作用于导航栏中当前选中的行。<strong class="ui">项目</strong>菜单还提供<strong class="ui">新建文档集</strong>、<strong class="ui">新建智能文档集</strong>和<strong class="ui">添加编码</strong>命令。其中的删除命令（⌘⌫）会删除选中的项目、文档集、分组或文档。</p>
+<h3 id="project-shelf">项目视图栏<a class="anchor" href="#project-shelf" aria-hidden="true">#</a></h3>
+<p>通过<strong class="ui">项目</strong>部分打开的每一项，都会在标签页中打开自己的视图。视图中显示的是整个项目的信息。使用项目视图栏，你可以同时处理所有文档。</p>
+<div class="table-wrap"><table>
+<thead><tr><th>视图</th><th>显示的内容</th><th>详见</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">编码本</strong></td><td>以树形显示项目的编码，你可以在这里创建、编辑和整理编码</td><td><a href="coding.html">第 7 章“编码”</a></td></tr>
+<tr><td><strong class="ui">编码实例</strong></td><td>项目中每一段已编码的文字，以及它所在的文档和它的编码</td><td><a href="coding-analysis.html">第 13 章“编码分析”</a></td></tr>
+<tr><td><strong class="ui">备忘录</strong></td><td>项目的备忘录</td><td><a href="coding.html">第 7 章“编码”</a></td></tr>
+<tr><td><strong class="ui">链接</strong></td><td>文字之间的链接</td><td><a href="coding.html">第 7 章“编码”</a></td></tr>
+<tr><td><strong class="ui">编码统计</strong></td><td>每个编码的使用次数，以及它覆盖的文本量</td><td><a href="coding-analysis.html">第 13 章“编码分析”</a></td></tr>
+<tr><td><strong class="ui">编码矩阵</strong></td><td>编码与文档或文档组交叉构成的表格</td><td><a href="coding-analysis.html">第 13 章“编码分析”</a></td></tr>
+<tr><td><strong class="ui">关系</strong></td><td>列出每对编码共同出现次数的表格</td><td><a href="coding-analysis.html">第 13 章“编码分析”</a></td></tr>
+<tr><td><strong class="ui">词汇速写</strong></td><td>在整个项目中，一个词在语法上与哪些词组合，例如<em>气候危机</em>和<em>气候政策</em>中受<em>气候</em>修饰的名词</td><td><a href="word-sketch.html">第 12 章“词汇速写”</a></td></tr>
+<tr><td><strong class="ui">词典</strong></td><td>带类别的词表，例如一份模糊限制语词表</td><td><a href="dictionaries.html">第 19 章“词典”</a></td></tr>
+<tr><td><strong class="ui">查询</strong></td><td>查询构建器，在整个项目上运行</td><td><a href="queries-building.html">第 15 章“构建查询”</a></td></tr>
+</tbody></table></div>
+<p>如果只想处理项目的某一部分，就打开一个文档集。文档集的标签页提供同样的十个视图，范围仅限于这个文档集。标签页顶部的一排按钮让你快速切换到各个视图。窗口较窄时，这排按钮会变成一个菜单，以当前所选视图的名称作为标题。</p>
+<figure class="shot" id="getting-started-set-tab"><img class="shot-light" src="../figures/zh-Hans/light/getting-started-set-tab.webp" alt="标签页中的“行动派”文档集，编码本上方有一排各部分的按钮。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/getting-started-set-tab.webp" alt="标签页中的“行动派”文档集，编码本上方有一排各部分的按钮。" loading="lazy"><figcaption>标签页中的“行动派”文档集，编码本上方有一排各部分的按钮。</figcaption></figure>
+<p>视图的页眉只有一行，左边是视图的名称，右边是相关的工具，例如搜索框。要让某个视图留在文档旁边，可以使用<strong class="ui">在窗口中打开</strong>按钮，它位于页眉的最右端。<strong class="ui">窗口 ▸ 编码本</strong>和<strong class="ui">窗口 ▸ 查询</strong>会在单独的窗口中打开这两个视图。<strong class="ui">项目 ▸ 打开</strong>则可以在单独的标签页中打开项目视图栏中的任一视图。</p>
+<h3 id="document-tabs">文档标签页<a class="anchor" href="#document-tabs" aria-hidden="true">#</a></h3>
+<p>每个打开的文档、视图或文档集，在阅读器上方的那一排中都有自己的标签页。点按标签页上的 × 可以关闭它。</p>
+<p>想快速看一眼时，可以点按查询结果中的一条命中，或者词汇速写中的一个例句，这样会打开一个<em>预览标签页</em>。下一次快速查看会自动替换这个预览标签页。如果想保留它，点按这个标签页本身即可。</p>
+<div class="table-wrap"><table>
+<thead><tr><th>命令</th><th>快捷键</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">文件 ▸ 关闭标签页</strong></td><td>⌘W</td></tr>
+<tr><td><strong class="ui">窗口 ▸ 显示上一个标签页</strong></td><td>⇧⌘[</td></tr>
+<tr><td><strong class="ui">窗口 ▸ 显示下一个标签页</strong></td><td>⇧⌘]</td></tr>
+</tbody></table></div>
+<p>右键点按标签页，可以选择在新窗口中打开文档（<strong class="ui">在新窗口中打开</strong>），或者在分屏浏览中打开（<strong class="ui">在分屏浏览中打开</strong>）。分屏浏览把所选文档显示在当前文档旁边。想并排比较两个文档，或者对照原文阅读译文时，就可以使用分屏浏览。关于分屏浏览的更多内容，请参阅<a href="translations.html">第 9 章“译文与分屏浏览”</a>。<strong class="ui">窗口</strong>菜单中也有相同的选项。</p>
+<h3 id="reader">阅读器<a class="anchor" href="#reader" aria-hidden="true">#</a></h3>
+<p>阅读器以文本形式显示当前标签页中的文档。文本左侧是<em>页边栏</em>，其中显示段落编号、句子编号，以及每段已编码文字旁边的彩色竖条。点按段落编号会选中整个段落，点按句子编号会选中这个句子，点按竖条则选中对应的文字。</p>
+<p><em>文档概览</em>位于阅读器的右边缘。文档概览就像一条用颜色区分内容的滚动条，显示你在文档中的当前位置；与滚动条不同的是，它还显示已启用的透镜、书签和搜索命中分别落在哪里。在文档概览中任意位置点按或拖移，会直接滚动到文档的相应部分；将鼠标指针悬停在上面，则可以预览那个位置的文字。</p>
+<p>要选择文本，可以在任意长度的一段文字上点按并拖移，也可以点按一个词。在已建立索引的文档中，点按一个词就只选中这个词，检查器的<strong class="ui">语法</strong>标签页会显示这个词的语法详情。再次点按同一个词，会取消选择。在录音的转写文本中，点按一个词会把播放位置移到文件中这个词所在的地方。</p>
+<p>只要文档中有选中的内容，阅读器底部就会显示<em>选区栏</em>。选区栏最左边用引号显示所选文字的开头，后面依次是<strong class="ui">书签</strong>、<strong class="ui">编码</strong>、<strong class="ui">添加到词典</strong>、<strong class="ui">备忘录</strong>和<strong class="ui">链接</strong>。只有带词典的项目才会显示<strong class="ui">添加到词典</strong>。本章后文的<a href="#applying-a-first-code">应用编码</a>会详细介绍如何应用编码。<strong class="ui">文档</strong>菜单中也有<strong class="ui">书签</strong>（⇧⌘B）、<strong class="ui">编码</strong>（⇧⌘C）、<strong class="ui">备忘录</strong>（⇧⌘M）和<strong class="ui">链接</strong>（⇧⌘L）命令。按下 Esc 键或点按选区栏中的 ×，可以取消选择。</p>
+<p><em>状态栏</em>位于阅读器底部。它的左侧显示所选文字的位置。选中一个词时，状态栏会显示类似 ¶ 4 · S 17 · T 3 的内容，表示第 4 段、全文第 17 句，以及这个句子中的第 3 个词符（计算词符时也包括标点符号）。选中一段文字时，状态栏显示其中的词符数，以及它的起止位置。状态栏右侧显示文档的总体规模，即段落数、句子数和词数；建立索引期间，这里改为显示索引进度。</p>
+<h3 id="title-band">标题栏<a class="anchor" href="#title-band" aria-hidden="true">#</a></h3>
+<p><em>标题栏</em>横跨阅读区顶部，与窗口按钮位于同一高度。它的左侧显示 LemmaLoom 的名称，右侧是与当前标签页中文档相关的控件，从左到右依次是：</p>
+<ul>
+<li>透镜菜单。没有启用透镜时，这个控件显示<strong class="ui">透镜</strong>；启用一个透镜时，显示这个透镜的名称；启用多个透镜时，显示透镜的数目，例如 <strong class="ui">2 个透镜</strong>。阅读文档时，<em>透镜</em>可以帮你突出显示其中的规律。透镜或者按词类等语法特征突出显示文本，或者按你自己的标注突出显示文本。文档建立索引之前，透镜控件处于停用状态。关于透镜的更多内容，请参阅<a href="lenses.html">第 6 章“透镜”</a>。</li>
+<li>折叠按钮，悬停提示为<strong class="ui">仅显示透镜标注的句子</strong>。点按这个按钮，会隐藏文档中除已启用透镜所标注句子以外的所有内容。只有当文档已建立索引，并且有透镜能够标注部分文本，也就是启用了<strong class="ui">编码</strong>和<strong class="ui">书签</strong>以外的某个透镜时，这个按钮才会显示。如果文档中有可以通过<strong class="ui">编码</strong>和<strong class="ui">书签</strong>透镜显示的编码实例或书签，这个按钮也会出现。再次点按这个按钮，就会恢复显示整个文档，按钮的悬停提示也会变为<strong class="ui">重新显示整个文档</strong>。</li>
+<li>放大镜图标，悬停提示为<strong class="ui">在文档中查找</strong>。点按这个图标，会在文档文本的正上方打开搜索栏。<strong class="ui">编辑 ▸ 查找</strong>（⌘F）的作用相同。<strong class="ui">查找下一个</strong>（⌘G）和<strong class="ui">查找上一个</strong>（⇧⌘G）用来依次浏览查找结果。</li>
+<li><strong class="ui">字体、边栏与文字大小</strong>，即带有一大一小“大”“小”二字的控件。它的下拉菜单包括<strong class="ui">字体</strong>、<strong class="ui">边栏</strong>（<strong class="ui">关闭</strong>、<strong class="ui">段落</strong>、<strong class="ui">句子</strong>或<strong class="ui">两者</strong>）、<strong class="ui">版式</strong>（<strong class="ui">单栏</strong>或<strong class="ui">双页跨页</strong>）、<strong class="ui">增大文字</strong>（⌘+）、<strong class="ui">减小文字</strong>（⌘−）和<strong class="ui">重置文字大小</strong>（⌘0）。</li>
+<li><strong class="ui">编辑</strong>，把阅读器切换到编辑当前文档文本内容的模式。编辑结束之前，<strong class="ui">取消</strong>和<strong class="ui">存储</strong>按钮会取代它。关于编辑的详细说明，请参阅<a href="reading-and-editing.html">第 5 章“阅读与编辑”</a>。</li>
+</ul>
+<figure class="shot" id="getting-started-text-size-menu"><img class="shot-light" src="../figures/zh-Hans/light/getting-started-text-size-menu.webp" alt="“时间不多了”标题栏中的“字体、边栏与文字大小”菜单。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/getting-started-text-size-menu.webp" alt="“时间不多了”标题栏中的“字体、边栏与文字大小”菜单。" loading="lazy"><figcaption>“时间不多了”标题栏中的“字体、边栏与文字大小”菜单。</figcaption></figure>
+<figure class="shot" id="getting-started-lens-menu"><img class="shot-light" src="../figures/zh-Hans/light/getting-started-lens-menu.webp" alt="打开的透镜菜单，已勾选词类、书签和编码。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/getting-started-lens-menu.webp" alt="打开的透镜菜单，已勾选词类、书签和编码。" loading="lazy"><figcaption>打开的透镜菜单，已勾选词类、书签和编码。</figcaption></figure>
+<p>每个新文档都启用了两个透镜，即<strong class="ui">编码</strong>和<strong class="ui">书签</strong>，它们把编码实例和书签作为标注显示在文本上。因此，在透镜仍为默认设置的文档中，菜单显示的是 <strong class="ui">2 个透镜</strong>。</p>
+<p>透镜菜单把透镜分成几组。第一组是基于语法分析的透镜，包括<strong class="ui">词类</strong>、<strong class="ui">语法功能</strong>以及该文档语言可用的其他选项。接下来是<strong class="ui">清除透镜</strong>，它清除上面列出的这些透镜以及所有查询透镜。然后是你自己的分析器和<strong class="ui">清除分析器</strong>，最后是<strong class="ui">书签</strong>、<strong class="ui">编码</strong>、项目的词典透镜和查询透镜，以及<strong class="ui">清除标注</strong>，它停用这最后一组。点按其中任何一项，就会相应地启用或停用它。</p>
+<p>每个透镜都会在文档上方的一行中显示它的<em>图例</em>，其中以颜色的形式列出代表各个标注项的一系列图例项。点按一个图例项，可以停用或启用它所代表的标注项。图例的开头是透镜本身的名称，后面是<strong class="ui">全部</strong>和<strong class="ui">无</strong>，分别用来启用或停用所有标注项。一个透镜中可能有多种颜色，而你也许只想显示其中一种。这时，右键点按需要的图例项，然后选取<strong class="ui">仅启用此项</strong>即可。</p>
+<figure class="shot" id="getting-started-lenslet-menu"><img class="shot-light" src="../figures/zh-Hans/light/getting-started-lenslet-menu.webp" alt="“时间不多了”的情态图例，义务图例项的快捷菜单已打开。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/getting-started-lenslet-menu.webp" alt="“时间不多了”的情态图例，义务图例项的快捷菜单已打开。" loading="lazy"><figcaption>“时间不多了”的情态图例，义务图例项的快捷菜单已打开。</figcaption></figure>
+<aside class="callout note"><p class="callout-title">注意</p><p>透镜菜单顶部的<strong class="ui">全部清除</strong>也会停用<strong class="ui">编码</strong>和<strong class="ui">书签</strong>透镜。<strong class="ui">清除透镜</strong>则只停用语法着色和所有查询透镜，保留你的编码实例。如果编码实例看起来消失了，在透镜菜单中重新选择<strong class="ui">编码</strong>，就能让它们重新显示。</p>
+</aside>
+<h3 id="inspector">检查器<a class="anchor" href="#inspector" aria-hidden="true">#</a></h3>
+<p>检查器作用于当前标签页中显示的文档，让你更仔细地查看正在处理的文档。检查器顶部有四个图标，各代表一个标签页。书本代表<strong class="ui">文本</strong>，一排分开的词代表<strong class="ui">语法</strong>。价签代表<strong class="ui">编码</strong>，四个方块代表<strong class="ui">多重模式</strong>。将鼠标指针悬停在图标上可以看到它的名称；也可以使用<strong class="ui">显示 ▸ 检查器</strong>菜单项及其中的各个快捷键。</p>
+<p>每个标签页又分为若干<em>分面</em>。<a href="text-inspector.html">第 10 章“文本检查器”</a>、<a href="grammar-inspector.html">第 11 章“语法检查器”</a>、<a href="coding-analysis.html">第 13 章“编码分析”</a>和<a href="sketch-space.html">第 14 章“速写空间”</a>会逐一介绍各个分面。用图标下方的那排按钮在分面之间切换。</p>
+<div class="table-wrap"><table>
+<thead><tr><th>标签页</th><th>快捷键</th><th>分面</th><th>用途</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">文本</strong></td><td>⌥⌘1</td><td><strong class="ui">概览</strong>、<strong class="ui">详细信息</strong>、<strong class="ui">书签</strong></td><td>文档的统计数据，例如词数和可读性；文档的属性和标签；文档的书签</td></tr>
+<tr><td><strong class="ui">语法</strong></td><td>⌥⌘2</td><td><strong class="ui">语法</strong>、<strong class="ui">句子</strong>、<strong class="ui">结构</strong>、<strong class="ui">形式 × 功能</strong>、<strong class="ui">搭配词</strong>、<strong class="ui">词汇速写</strong>、<strong class="ui">语篇</strong></td><td>所选词或句子的语法，以及整个文档的语法模式</td></tr>
+<tr><td><strong class="ui">编码</strong></td><td>⌥⌘3</td><td><strong class="ui">编码</strong>、<strong class="ui">编码实例</strong>、<strong class="ui">链接</strong>、<strong class="ui">编码统计</strong>、<strong class="ui">画像</strong>、<strong class="ui">编码速写</strong></td><td>编码系统、本文档的编码实例和链接，以及相关的统计数据</td></tr>
+<tr><td><strong class="ui">多重模式</strong></td><td>⌥⌘4</td><td><strong class="ui">速写空间</strong>、<strong class="ui">查询</strong></td><td>比较一个词在不同编码或属性值下的用法，以及在本文档上运行的查询</td></tr>
+</tbody></table></div>
+<p><strong class="ui">语法</strong>分面针对当前所选的词，<strong class="ui">句子</strong>分面针对当前所选的句子。选中之前，它们分别显示<strong class="ui">请选择一个词</strong>和<strong class="ui">请选择一个句子</strong>。</p>
+<figure class="shot" id="getting-started-inspector-grammar"><img class="shot-light" src="../figures/zh-Hans/light/getting-started-inspector-grammar.webp" alt="语法标签页，说明“时间不多了”中的“气候”一词。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/getting-started-inspector-grammar.webp" alt="语法标签页，说明“时间不多了”中的“气候”一词。" loading="lazy"><figcaption>语法标签页，说明“时间不多了”中的“气候”一词。</figcaption></figure>
+<p>检查器的标签页、分面和面板宽度为每个文档分别保存。如果当前标签页中是视图或文档集，检查器会关闭，它们的工具改为显示在阅读区中。在另一个窗口中打开文档时，那个窗口有自己的检查器。</p>
+<h3 id="arranging-the-window">调整窗口布局<a class="anchor" href="#arranging-the-window" aria-hidden="true">#</a></h3>
+<p>只想阅读文档时，隐藏两侧的面板，就可以使用整个窗口的空间。导航栏按钮和检查器按钮都在窗口顶部的工具栏中。导航栏按钮紧挨着左上角的窗口按钮，检查器按钮则在右上角。<strong class="ui">显示</strong>菜单中有相应的命令：</p>
+<div class="table-wrap"><table>
+<thead><tr><th>命令</th><th>快捷键</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">显示 ▸ 显示/隐藏导航栏</strong></td><td>⌃⌘S</td></tr>
+<tr><td><strong class="ui">显示 ▸ 显示/隐藏检查器</strong></td><td>⌃⌘I</td></tr>
+</tbody></table></div>
+<p>拖移阅读器与导航栏或检查器之间的分隔线，可以调整它们的宽度。检查器最多可以占据窗口的三分之二，足以显示较宽的表格或较长的句子结构图。每个文档会分别记住检查器是否隐藏。视图和文档集的标签页把工具显示在阅读区中，因此检查器按钮和<strong class="ui">显示 ▸ 显示/隐藏检查器</strong>在这些标签页上已停用。</p>
+<h2 id="applying-a-first-code">应用编码<a class="anchor" href="#applying-a-first-code" aria-hidden="true">#</a></h2>
+<p>编码分两个阶段，先创建编码，再把编码应用到文字上。编码可以在检查器的<strong class="ui">编码</strong>分面中定义，也可以在<strong class="ui">编码本</strong>中定义。把编码应用到文字上，则使用编码面板。</p>
+<h3 id="creating-a-code">创建编码<a class="anchor" href="#creating-a-code" aria-hidden="true">#</a></h3>
+<p>“气候辩论”项目的编码本中有五个顶层主题编码，分别对应这项研究考察的一个主题，即“成本”“情绪”“责任”“科学”和“紧迫性”。其中一些编码带有子编码，描述相关主题在文本中的不同表现方式，例如编码“紧迫性”下的“临界点”和“时间节点”，以及编码“情绪”下的“恐惧”和“希望”。此外还有第六个顶层编码“说话人”，其中包含“电台辩论”中的三位说话人，即“主持人”“活动人士”和“怀疑论者”。</p>
+<p>新建编码的步骤如下：</p>
+<ol>
+<li>打开一个文档。</li>
+<li>在检查器中点按<strong class="ui">编码</strong>标签页（⌥⌘3），然后点按<strong class="ui">编码</strong>。</li>
+<li>点按<strong class="ui">编码系统</strong>右侧的 <strong class="ui">+</strong>。</li>
+<li>在<strong class="ui">新建编码</strong>对话框的<strong class="ui">名称</strong>中输入名称。</li>
+<li>在<strong class="ui">颜色</strong>下点按一种颜色。没有颜色的编码会以主题的强调色呈现。如果打算使用多个编码，请选一种颜色。</li>
+<li><strong class="ui">格式</strong>保持为<strong class="ui">高亮</strong>，<strong class="ui">适用范围</strong>保持为<strong class="ui">项目</strong>，然后点按<strong class="ui">存储</strong>。</li>
+</ol>
+<p>除了这些栏目，对话框中还有其他栏目；<a href="coding.html">第 7 章“编码”</a>介绍了所有可用的选项。<strong class="ui">格式</strong>还可以是<strong class="ui">下划线</strong>或<strong class="ui">方框</strong>样式。<strong class="ui">适用范围</strong>可以把编码限定在一个<strong class="ui">文档集</strong>或一个<strong class="ui">文档</strong>中使用。<strong class="ui">标签</strong>为编码加上标签。通过<strong class="ui">属性</strong>，可以为这个编码的每个编码实例分别指定值。<strong class="ui">说明</strong>用来描述编码的含义，并说明何时应当使用它。</p>
+<figure class="shot" id="getting-started-new-code-dialog"><img class="shot-light" src="../figures/zh-Hans/light/getting-started-new-code-dialog.webp" alt="新建编码对话框，“名称”中输入了“紧迫性”，格式为高亮，适用范围为项目。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/getting-started-new-code-dialog.webp" alt="新建编码对话框，“名称”中输入了“紧迫性”，格式为高亮，适用范围为项目。" loading="lazy"><figcaption>新建编码对话框，“名称”中输入了“紧迫性”，格式为高亮，适用范围为项目。</figcaption></figure>
+<p>创建子编码，可以把宽泛的主题细分为在你的资料中以不同形式出现的子主题。在<strong class="ui">编码</strong>列表中右键点按任一编码，然后点按<strong class="ui">添加子编码</strong>，即可创建子编码。</p>
+<p>这些编码也会出现在项目视图栏的<strong class="ui">编码本</strong>中，点按那里列表底部的<strong class="ui">添加编码</strong>按钮，可以继续添加编码。也可以在菜单栏中选取<strong class="ui">项目 ▸ 添加编码</strong>创建编码，它会打开同一个<strong class="ui">新建编码</strong>对话框。</p>
+<h3 id="coding-a-passage">为一段文字编码<a class="anchor" href="#coding-a-passage" aria-hidden="true">#</a></h3>
+<p>“时间不多了”的第四段列出了三个目标：“2050年实现净零。本十年末告别煤炭。2030年排放减半。”这些期限都指向必须完成某些行动的具体日期，所以它们的编码是“时间节点”。下图中选中的是同一段中靠后的一句话，编码面板已经打开。这句话是“一个在所有现任官员都退休之后才到期的期限，根本算不上期限。”</p>
+<figure class="shot" id="getting-started-code-palette"><img class="shot-light" src="../figures/zh-Hans/light/getting-started-code-palette.webp" alt="从选区栏为“时间不多了”中的一段文字打开的编码面板。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/getting-started-code-palette.webp" alt="从选区栏为“时间不多了”中的一段文字打开的编码面板。" loading="lazy"><figcaption>从选区栏为“时间不多了”中的一段文字打开的编码面板。</figcaption></figure>
+<p>为一段文字编码的步骤如下：</p>
+<ol>
+<li>在阅读器中选中要编码的文字。要为整个段落或句子编码，可以改为点按页边栏中的编号。</li>
+<li>在阅读器底部的选区栏中点按<strong class="ui">编码</strong>，或者选取<strong class="ui">文档 ▸ 编码</strong>（⇧⌘C）。</li>
+<li>在面板中点按编码。</li>
+</ol>
+<p>编码应用到文字上之后，这段文字就会显示为所选编码的颜色，页边栏中它的旁边出现一条同色竖条，<strong class="ui">编码</strong>分面中该编码旁边的数字加一。面板会一直打开，直到你按下 Esc 键；一段文字可以带有多个编码。</p>
+<p>面板打开时，焦点会自动落在<strong class="ui">搜索编码</strong>输入框中。输入名称的一部分，就会在已有编码中搜索匹配项。按下 Return 键会应用第一个匹配的编码；如果这段文字已经带有这个编码，按下 Return 键则会移除这个编码实例。如果想应用其他编码，可以先用方向键（↑ 和 ↓）在匹配项之间移动，再按 Return 键。没有与输入名称相同的编码时，会出现<strong class="ui">添加编码“…”</strong>；选择它，就会以输入的名称新建一个编码并应用。</p>
+<p>列表的最后一项是<strong class="ui">实境编码“…”</strong>。选择这一项，会当场新建一个编码并立即应用，编码的名称就是所选文字的实际内容。<strong class="ui">文档 ▸ 实境编码</strong>（⇧⌘V）不必打开面板，就能完成同样的操作。</p>
+<p>在已建立索引的文档中为单个词编码时，点按这个词即可选中它，然后点按选区栏中的<strong class="ui">编码</strong>，再从面板中选择所需的编码。</p>
+<p>从一段文字上移除编码，方法与应用编码差不多。点按这段文字在页边栏中的竖条，就可以再次选中它，然后打开面板。这段文字已有的编码旁边带有勾号图标；点按其中一个，会移除这个编码与当前所选内容重叠的所有编码实例。</p>
+<p>如果对刚才的编码不满意，<strong class="ui">编辑 ▸ 撤销应用编码</strong>（⌘Z）会撤回上一步操作。如果上一步是从文字上移除编码，这个菜单项则显示为<strong class="ui">撤销删除编码实例</strong>。在这两种情况下，⇧⌘Z 都用来重做。关于可以撤销和重做的操作，详见<a href="undo.html">第 23 章“撤销与重做”</a>。</p>
+<p>编码本身也可以带有属性。把带属性的编码应用到一段文字之前，会先出现一个小对话框，询问这些属性的值。<a href="coding.html">第 7 章“编码”</a>介绍如何用带属性的编码为文字编码，那一章还介绍备忘录、链接和书签。</p>
+<h2 id="library">工作保存在哪里<a class="anchor" href="#library" aria-hidden="true">#</a></h2>
+<p>大多数情况下，LemmaLoom 会自动保存你的更改。不过有两种情况需要你手动保存（存储查询和编辑文档文本）。编辑文档文本时，必须点按<strong class="ui">存储</strong>按钮，LemmaLoom 才会保存所做的更改。此外，没有存储的查询会在你退出 LemmaLoom 时丢失。</p>
+<p>存放这一切的资料库是一个名为 <code>LemmaLoom.lemmadb</code> 的文件夹，位于你个人资源库中这个应用的容器里：</p>
+<p><code>~/Library/Containers/app.LemmaLoom/Data/Documents/LemmaLoom.lemmadb</code></p>
+<p>访达会隐藏个人文件夹中的资源库文件夹。要前往那里，请在访达中选取<strong class="ui">前往 ▸ 前往文件夹…</strong>（⇧⌘G），然后粘贴路径。</p>
+<p>你在 LemmaLoom 中的所有工作都存放在同一个资料库中，包括文档、项目、索引结果、编码、编码实例、备忘录、链接、书签、文档集、分组、属性、词典、已存储的查询以及你自己的分析器。对于导入的 PDF 文档，资料库只保存其文本内容，并保留文件名。对于导入的网页文档，LemmaLoom 只保存其文本内容，并保留网址。对于导入的音频和视频录音，LemmaLoom 既保存转写文本，也保存文件本身的副本。此外，你收藏的项目、每个项目中打开的标签页以及你在每个文档中的位置，也都保存在资料库中。你在 LemmaLoom 设置窗口中所做的设置则保存在这台 Mac 上，详见<a href="settings.html">第 24 章“设置与外观”</a>中的<a href="settings.html#where-settings-are-stored">设置保存在哪里</a>。</p>
+<p>如果想把项目转移到另一台电脑，或者只是在别处备份项目，可以使用 LemmaLoom 提供的项目交换和导出功能（见<a href="exchange-and-export.html">第 22 章“交换与导出”</a>）。<strong class="ui">文件 ▸ 导出 ▸ LemmaLoom 项目</strong>会把项目导出为一个 <code>.llz</code> 压缩归档，其中包含文档及其编码实例和索引，以及附带的音频或视频录音；归档保留全部内容。<strong class="ui">文件 ▸ 导入 ▸ LemmaLoom 归档</strong>可以把这样的归档重新导入 LemmaLoom。<strong class="ui">文件 ▸ 导出 ▸ REFI-QDA 项目</strong>把项目导出为 REFI-QDA 交换格式，支持 REFI-QDA 标准的软件都可以打开这种文件。如果项目要离开 LemmaLoom、改在兼容的软件中打开，最适合使用这种格式。</p>
+<aside class="callout note"><p class="callout-title">注意</p><p>删除项目是永久性的。</p>
+</aside>
+<p>你可以手动复制 LemmaLoom 的资料库文件夹，用于备份或迁移。先退出 LemmaLoom，然后复制整个 <code>LemmaLoom.lemmadb</code> 文件夹。</p>
+<h2 id="privacy">隐私<a class="anchor" href="#privacy" aria-hidden="true">#</a></h2>
+<p><strong class="ui">帮助 ▸ 发送反馈</strong>会打开一个窗口，供你撰写反馈。写完后点按<strong class="ui">撰写邮件</strong>，内容就会作为一封新邮件交给你的邮件程序。邮件出现在邮件程序中之后，你可以在发送前修改。<strong class="ui">附上系统信息</strong>一开始已勾选，这个选项会附上你所用的 LemmaLoom 和 macOS 版本、处理器类型名称、内存大小以及 LemmaLoom 的界面语言。选项下方的文字列出了具体附上哪些内容。</p>
+<figure class="shot" id="getting-started-feedback-window"><img class="shot-light" src="../figures/zh-Hans/light/getting-started-feedback-window.webp" alt="“发送反馈”窗口，已输入一条信息，并选中“附上系统信息”。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/getting-started-feedback-window.webp" alt="“发送反馈”窗口，已输入一条信息，并选中“附上系统信息”。" loading="lazy"><figcaption>“发送反馈”窗口，已输入一条信息，并选中“附上系统信息”。</figcaption></figure>
+<p>LemmaLoom 导出的 <code>.llz</code> 归档文件或 REFI-QDA 项目包含每个文档的全部内容。</p>
+<h2 id="walk-through">从导入到第一次分析<a class="anchor" href="#walk-through" aria-hidden="true">#</a></h2>
+<p>分析从把文本导入 LemmaLoom、记录这些文本的某些特征开始。之后，把文本分成文档集并进行编码，再分析各个文档集之间的差异。对“气候辩论”所做的这项分析，最终结果是找出把行动派文本与怀疑派文本区分开来的那些词。</p>
+<h3 id="walk-through-import">导入多篇文本<a class="anchor" href="#walk-through-import" aria-hidden="true">#</a></h3>
+<p>“气候辩论”项目中有十一篇评论性文本。其中六篇出自行动派，包括“来自气候罢课的信”；另外五篇出自怀疑派，包括“净零代价高昂”。为了把双方区分开来，项目使用了两个文档集，以及属性“立场”。</p>
+<p>导入多篇文本的步骤如下：</p>
+<ol>
+<li>选取<strong class="ui">文件 ▸ 导入 ▸ 文档</strong>（⇧⌘I）。</li>
+<li>选中所有文件，然后点按<strong class="ui">打开</strong>。</li>
+<li><strong class="ui">导入文档</strong>对话框会为每个文件各出现一次，并在右上角显示当前位置，例如 <strong class="ui">1 / 10</strong>。检查每个对话框，然后点按<strong class="ui">导入</strong>。</li>
+</ol>
+<p>属性值可以在每个对话框中填写。你也可以用属性表格为多个文档指定同一个属性值，具体做法见下文的<a href="#walk-through-attributes">填写属性值</a>。要跟踪建立索引的进度，可以选取<strong class="ui">窗口 ▸ 活动</strong>（⌥⌘0），或者留意导航栏中的进度环。下面的步骤中，只有制作关键词列表需要先建立索引，见下文的<a href="#walk-through-keywords">用关键词比较两个文档集</a>。</p>
+<h3 id="walk-through-attributes">填写属性值<a class="anchor" href="#walk-through-attributes" aria-hidden="true">#</a></h3>
+<p>在项目“气候辩论”中，每个文档的四个属性都有值。例如，在行动派的全部六个文档中，“立场”的值都是“行动派”。在属性表格中只需选取一次<strong class="ui">设置值 ▸ 立场</strong>，就能为这六个文档全部填好这个值。另一些值因文档而异，例如读者数，这些值需要在表格中逐个输入。</p>
+<figure class="shot" id="getting-started-attributes-set-value"><img class="shot-light" src="../figures/zh-Hans/light/getting-started-attributes-set-value.webp" alt="“属性”窗口，行动派文本已勾选，“设置值”菜单在“立场”处展开。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/getting-started-attributes-set-value.webp" alt="“属性”窗口，行动派文本已勾选，“设置值”菜单在“立场”处展开。" loading="lazy"><figcaption>“属性”窗口，行动派文本已勾选，“设置值”菜单在“立场”处展开。</figcaption></figure>
+<p>批量填写属性值的步骤如下：</p>
+<ol>
+<li>选取<strong class="ui">项目 ▸ 属性</strong>，或者在<strong class="ui">项目</strong>下右键点按项目，然后选取<strong class="ui">属性</strong>。属性表格会在单独的窗口中打开。</li>
+<li>在表格中，勾选共用同一个值的那些文档旁边的复选框。</li>
+<li>选取<strong class="ui">设置值</strong>，再选取属性，在打开的对话框中选择或输入值，然后点按<strong class="ui">应用</strong>。</li>
+<li>取消勾选这些文档，勾选共用下一个值的文档，用同样的方法设置。</li>
+<li>对于因文档而异的值，在该属性的一栏中逐个输入。</li>
+</ol>
+<h3 id="walk-through-sets">建立文档集<a class="anchor" href="#walk-through-sets" aria-hidden="true">#</a></h3>
+<p><em>文档集</em>是有名称的文档集合。要告诉 LemmaLoom 一项分析应当涵盖哪些文档，通常就用文档集。“气候辩论”项目中有文档集“行动派”和“怀疑派”，各自包含一方的文章。你可以用查询比较这两个文档集，也可以分别在每个文档集内查询。<em>智能文档集</em>带有条件。如果一个文档满足这些条件，LemmaLoom 会自动把它加入智能文档集。例如，“读者数”属性值大于或等于 100,000 的文档都属于智能文档集“广泛传播”。关于文档集（包括智能文档集）、分组、标签和属性的更多内容，请参阅<a href="sets-tags-attributes.html">第 8 章“文档集、分组、标签和属性”</a>。</p>
+<figure class="shot" id="getting-started-add-to-set-menu"><img class="shot-light" src="../figures/zh-Hans/light/getting-started-add-to-set-menu.webp" alt="所选行动派文本的快捷菜单，“添加到文档集”已展开。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/getting-started-add-to-set-menu.webp" alt="所选行动派文本的快捷菜单，“添加到文档集”已展开。" loading="lazy"><figcaption>所选行动派文本的快捷菜单，“添加到文档集”已展开。</figcaption></figure>
+<p>用文档建立文档集的步骤如下：</p>
+<ol>
+<li>在导航栏的<strong class="ui">文档</strong>部分点按第一个文档，然后按住 ⌘ 键点按其他文档。</li>
+<li>右键点按其中一个选中的文档，然后选取<strong class="ui">添加到文档集 ▸ 从所选文档新建文档集</strong>。</li>
+<li><strong class="ui">文档集</strong>下会出现一个名为“新建文档集”的文档集，名称处于可编辑状态。输入名称，然后按下 Return 键。</li>
+</ol>
+<h3 id="walk-through-coding">为多篇文本编码<a class="anchor" href="#walk-through-coding" aria-hidden="true">#</a></h3>
+<p>为多篇文本编码，方法与为一篇文本编码完全相同；具体做法请回看本章前文的<a href="#coding-a-passage">为一段文字编码</a>。</p>
+<h3 id="walk-through-code-stats">查看一篇文本的编码情况<a class="anchor" href="#walk-through-code-stats" aria-hidden="true">#</a></h3>
+<p>在“气候辩论”项目中，“时间不多了”有 13 个编码实例，其中“成本”“责任”和“临界点”各有两个。</p>
+<figure class="shot" id="getting-started-code-stats"><img class="shot-light" src="../figures/zh-Hans/light/getting-started-code-stats.webp" alt="“时间不多了”的编码统计分面。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/getting-started-code-stats.webp" alt="“时间不多了”的编码统计分面。" loading="lazy"><figcaption>“时间不多了”的编码统计分面。</figcaption></figure>
+<p>查看一个文档的编码的步骤如下：</p>
+<ol>
+<li>把这个文档设为当前文档。</li>
+<li>点按检查器的<strong class="ui">编码</strong>标签页。</li>
+<li>点按<strong class="ui">编码统计</strong>。</li>
+</ol>
+<p><strong class="ui">编码统计</strong>分面中的<strong class="ui">编码频率与覆盖率</strong>列出当前文档中用到的所有编码，以及它们的频率和百分比。每一行显示有多少段文字带有这个编码，以及这些文字占文档全文的百分比，这个百分比称为编码的<em>覆盖率</em>。点按一行，阅读器就会显示它的一段文字。列表上方的<strong class="ui">数量</strong>按文字段数为编码排序，并据此调整条形的长度；<strong class="ui">长度</strong>则按覆盖的文本量排序和调整。列表下方的<strong class="ui">共现</strong>显示这些编码的共现情况；<a href="coding-analysis.html">第 13 章“编码分析”</a>介绍了这一部分，以及项目视图栏中涵盖整个项目的表格。</p>
+<p>两个各用了五次的编码，覆盖的文本量可能相差很大。覆盖率表示带有这个编码的文字在文档中所占的比例，计算公式如下：</p>
+<div class="math math-display" role="math" aria-label="\text{coverage} = \frac{c}{n} \times 100\%"><svg aria-hidden="true" focusable="false" fill="currentColor" style="height:2.187em"  version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'   viewBox='124.899942 -17.863155 93.911234 17.863139'>
+<defs>
+<path id='m1-g2-99' d='M3.945205-3.785803C3.785803-3.785803 3.646326-3.785803 3.506849-3.646326C3.347447-3.496887 3.327522-3.327522 3.327522-3.257783C3.327522-3.01868 3.506849-2.909091 3.696139-2.909091C3.985056-2.909091 4.254047-3.148194 4.254047-3.5467C4.254047-4.034869 3.785803-4.403487 3.078456-4.403487C1.733499-4.403487 .408468-2.978829 .408468-1.574097C.408468-.67746 .986301 .109589 2.022416 .109589C3.447073 .109589 4.283935-.946451 4.283935-1.066002C4.283935-1.125778 4.224159-1.195517 4.164384-1.195517C4.11457-1.195517 4.094645-1.175592 4.034869-1.09589C3.247821-.109589 2.161893-.109589 2.042341-.109589C1.414695-.109589 1.145704-.597758 1.145704-1.195517C1.145704-1.603985 1.344956-2.570361 1.683686-3.188045C1.992528-3.755915 2.540473-4.184309 3.088418-4.184309C3.427148-4.184309 3.805729-4.054795 3.945205-3.785803Z'/>
+<path id='m1-g2-110' d='M.876712-.587796C.846824-.438356 .787049-.209215 .787049-.159402C.787049 .019925 .926526 .109589 1.075965 .109589C1.195517 .109589 1.374844 .029888 1.444583-.169365C1.454545-.18929 1.574097-.657534 1.633873-.9066L1.853051-1.803238C1.912827-2.022416 1.972603-2.241594 2.022416-2.470735C2.062267-2.6401 2.141968-2.929016 2.15193-2.968867C2.30137-3.277709 2.82939-4.184309 3.775841-4.184309C4.224159-4.184309 4.313823-3.815691 4.313823-3.486924C4.313823-2.86924 3.825654-1.594022 3.666252-1.165629C3.576588-.936488 3.566625-.816936 3.566625-.707347C3.566625-.239103 3.915318 .109589 4.383562 .109589C5.32005 .109589 5.688667-1.344956 5.688667-1.424658C5.688667-1.524284 5.599004-1.524284 5.569116-1.524284C5.469489-1.524284 5.469489-1.494396 5.419676-1.344956C5.220423-.667497 4.891656-.109589 4.403487-.109589C4.234122-.109589 4.164384-.209215 4.164384-.438356C4.164384-.687422 4.254047-.926526 4.343711-1.145704C4.533001-1.673724 4.951432-2.769614 4.951432-3.337484C4.951432-4.004981 4.523039-4.403487 3.805729-4.403487C2.909091-4.403487 2.420922-3.765878 2.251557-3.536737C2.201743-4.094645 1.793275-4.403487 1.334994-4.403487S.687422-4.014944 .587796-3.835616C.428394-3.496887 .288917-2.909091 .288917-2.86924C.288917-2.769614 .388543-2.769614 .408468-2.769614C.508095-2.769614 .518057-2.779577 .577833-2.998755C.747198-3.706102 .946451-4.184309 1.305106-4.184309C1.504359-4.184309 1.613948-4.054795 1.613948-3.726027C1.613948-3.516812 1.58406-3.407223 1.454545-2.889166L.876712-.587796Z'/>
+<path id='m1-g0-2' d='M3.875467-2.769614L1.882939-4.752179C1.763387-4.871731 1.743462-4.891656 1.663761-4.891656C1.564134-4.891656 1.464508-4.801993 1.464508-4.692403C1.464508-4.622665 1.484433-4.60274 1.594022-4.493151L3.58655-2.49066L1.594022-.488169C1.484433-.37858 1.464508-.358655 1.464508-.288917C1.464508-.179328 1.564134-.089664 1.663761-.089664C1.743462-.089664 1.763387-.109589 1.882939-.229141L3.865504-2.211706L5.927771-.14944C5.947696-.139477 6.017435-.089664 6.07721-.089664C6.196762-.089664 6.276463-.179328 6.276463-.288917C6.276463-.308842 6.276463-.348692 6.246575-.398506C6.236613-.418431 4.652553-1.982565 4.154421-2.49066L5.977584-4.313823C6.027397-4.373599 6.176837-4.503113 6.22665-4.562889C6.236613-4.582814 6.276463-4.622665 6.276463-4.692403C6.276463-4.801993 6.196762-4.891656 6.07721-4.891656C5.997509-4.891656 5.957659-4.851806 5.84807-4.742217L3.875467-2.769614Z'/>
+<path id='m1-g4-37' d='M6.824408-7.0934C6.884184-7.183064 6.90411-7.212951 6.90411-7.272727C6.90411-7.382316 6.814446-7.47198 6.704857-7.47198C6.60523-7.47198 6.555417-7.402242 6.495641-7.332503C5.997509-6.655044 5.330012-6.386052 4.60274-6.386052C3.905355-6.386052 3.287671-6.635118 2.739726-7.153176C2.550436-7.32254 2.34122-7.47198 2.022416-7.47198C1.265255-7.47198 .557908-6.635118 .557908-5.469489C.557908-4.26401 1.275218-3.457036 2.022416-3.457036C2.749689-3.457036 3.317559-4.343711 3.317559-5.459527C3.317559-5.599004 3.317559-6.067248 3.108344-6.585305C3.755915-6.216687 4.254047-6.166874 4.612702-6.166874C5.369863-6.166874 5.877958-6.475716 5.937733-6.515567L5.947696-6.505604L1.474471 .159402C1.384807 .288917 1.384807 .33873 1.384807 .358655C1.384807 .468244 1.484433 .557908 1.58406 .557908S1.703611 .518057 1.783313 .408468L6.824408-7.0934ZM2.032379-3.676214C1.833126-3.676214 1.175592-3.805729 1.175592-5.459527C1.175592-7.123288 1.823163-7.252802 2.032379-7.252802C2.560399-7.252802 3.068493-6.515567 3.068493-5.469489C3.068493-4.393524 2.550436-3.676214 2.032379-3.676214ZM6.445828 .33873C6.246575 .33873 5.589041 .209215 5.589041-1.444583C5.589041-3.108344 6.236613-3.237858 6.445828-3.237858C6.973848-3.237858 7.481943-2.500623 7.481943-1.454545C7.481943-.37858 6.963885 .33873 6.445828 .33873ZM7.731009-1.444583C7.731009-2.590286 7.143213-3.457036 6.435866-3.457036C5.678705-3.457036 4.971357-2.620174 4.971357-1.454545C4.971357-.249066 5.688667 .557908 6.435866 .557908C7.163138 .557908 7.731009-.328767 7.731009-1.444583Z'/>
+<path id='m1-g4-48' d='M4.582814-3.188045C4.582814-3.985056 4.533001-4.782067 4.184309-5.519303C3.726027-6.475716 2.909091-6.635118 2.49066-6.635118C1.892902-6.635118 1.165629-6.37609 .757161-5.449564C.438356-4.762142 .388543-3.985056 .388543-3.188045C.388543-2.440847 .428394-1.544209 .836862-.787049C1.265255 .019925 1.992528 .219178 2.480697 .219178C3.01868 .219178 3.775841 .009963 4.214197-.936488C4.533001-1.62391 4.582814-2.400996 4.582814-3.188045ZM2.480697 0C2.092154 0 1.504359-.249066 1.325031-1.205479C1.215442-1.803238 1.215442-2.719801 1.215442-3.307597C1.215442-3.945205 1.215442-4.60274 1.295143-5.140722C1.484433-6.326276 2.231631-6.41594 2.480697-6.41594C2.809465-6.41594 3.466999-6.236613 3.656289-5.250311C3.755915-4.692403 3.755915-3.935243 3.755915-3.307597C3.755915-2.560399 3.755915-1.882939 3.646326-1.24533C3.496887-.298879 2.929016 0 2.480697 0Z'/>
+<path id='m1-g4-49' d='M2.929016-6.37609C2.929016-6.615193 2.929016-6.635118 2.699875-6.635118C2.082192-5.997509 1.205479-5.997509 .886675-5.997509V-5.688667C1.085928-5.688667 1.673724-5.688667 2.191781-5.947696V-.787049C2.191781-.428394 2.161893-.308842 1.265255-.308842H.946451V0C1.295143-.029888 2.161893-.029888 2.560399-.029888S3.825654-.029888 4.174346 0V-.308842H3.855542C2.958904-.308842 2.929016-.418431 2.929016-.787049V-6.37609Z'/>
+<path id='m1-g4-61' d='M6.844334-3.257783C6.993773-3.257783 7.183064-3.257783 7.183064-3.457036S6.993773-3.656289 6.854296-3.656289H.886675C.747198-3.656289 .557908-3.656289 .557908-3.457036S.747198-3.257783 .896638-3.257783H6.844334ZM6.854296-1.325031C6.993773-1.325031 7.183064-1.325031 7.183064-1.524284S6.993773-1.723537 6.844334-1.723537H.896638C.747198-1.723537 .557908-1.723537 .557908-1.524284S.747198-1.325031 .886675-1.325031H6.854296Z'/>
+<path id='m1-g4-97' d='M3.317559-.757161C3.35741-.358655 3.626401 .059776 4.094645 .059776C4.303861 .059776 4.911582-.079701 4.911582-.886675V-1.444583H4.662516V-.886675C4.662516-.308842 4.41345-.249066 4.303861-.249066C3.975093-.249066 3.935243-.697385 3.935243-.747198V-2.739726C3.935243-3.158157 3.935243-3.5467 3.576588-3.915318C3.188045-4.303861 2.689913-4.463263 2.211706-4.463263C1.39477-4.463263 .707347-3.995019 .707347-3.337484C.707347-3.038605 .9066-2.86924 1.165629-2.86924C1.444583-2.86924 1.62391-3.068493 1.62391-3.327522C1.62391-3.447073 1.574097-3.775841 1.115816-3.785803C1.384807-4.134496 1.872976-4.244085 2.191781-4.244085C2.67995-4.244085 3.247821-3.855542 3.247821-2.968867V-2.600249C2.739726-2.570361 2.042341-2.540473 1.414695-2.241594C.667497-1.902864 .418431-1.384807 .418431-.946451C.418431-.139477 1.384807 .109589 2.012453 .109589C2.669988 .109589 3.128269-.288917 3.317559-.757161ZM3.247821-2.391034V-1.39477C3.247821-.448319 2.530511-.109589 2.082192-.109589C1.594022-.109589 1.185554-.458281 1.185554-.956413C1.185554-1.504359 1.603985-2.331258 3.247821-2.391034Z'/>
+<path id='m1-g4-99' d='M1.165629-2.171856C1.165629-3.795766 1.982565-4.214197 2.510585-4.214197C2.600249-4.214197 3.227895-4.204234 3.576588-3.845579C3.16812-3.815691 3.108344-3.516812 3.108344-3.387298C3.108344-3.128269 3.287671-2.929016 3.566625-2.929016C3.825654-2.929016 4.024907-3.098381 4.024907-3.39726C4.024907-4.07472 3.267746-4.463263 2.500623-4.463263C1.255293-4.463263 .33873-3.387298 .33873-2.15193C.33873-.876712 1.325031 .109589 2.480697 .109589C3.815691 .109589 4.134496-1.085928 4.134496-1.185554S4.034869-1.285181 4.004981-1.285181C3.915318-1.285181 3.895392-1.24533 3.875467-1.185554C3.58655-.259029 2.938979-.139477 2.570361-.139477C2.042341-.139477 1.165629-.56787 1.165629-2.171856Z'/>
+<path id='m1-g4-101' d='M1.115816-2.510585C1.175592-3.995019 2.012453-4.244085 2.351183-4.244085C3.377335-4.244085 3.476961-2.899128 3.476961-2.510585H1.115816ZM1.105853-2.30137H3.88543C4.104608-2.30137 4.134496-2.30137 4.134496-2.510585C4.134496-3.496887 3.596513-4.463263 2.351183-4.463263C1.195517-4.463263 .278954-3.437111 .278954-2.191781C.278954-.856787 1.325031 .109589 2.470735 .109589C3.686177 .109589 4.134496-.996264 4.134496-1.185554C4.134496-1.285181 4.054795-1.305106 4.004981-1.305106C3.915318-1.305106 3.895392-1.24533 3.875467-1.165629C3.526775-.139477 2.630137-.139477 2.530511-.139477C2.032379-.139477 1.633873-.438356 1.404732-.806974C1.105853-1.285181 1.105853-1.942715 1.105853-2.30137Z'/>
+<path id='m1-g4-103' d='M2.211706-1.713574C1.344956-1.713574 1.344956-2.709838 1.344956-2.938979C1.344956-3.20797 1.354919-3.526775 1.504359-3.775841C1.58406-3.895392 1.8132-4.174346 2.211706-4.174346C3.078456-4.174346 3.078456-3.178082 3.078456-2.948941C3.078456-2.67995 3.068493-2.361146 2.919054-2.11208C2.839352-1.992528 2.610212-1.713574 2.211706-1.713574ZM1.05604-1.325031C1.05604-1.364882 1.05604-1.594022 1.225405-1.793275C1.613948-1.514321 2.022416-1.484433 2.211706-1.484433C3.138232-1.484433 3.825654-2.171856 3.825654-2.938979C3.825654-3.307597 3.666252-3.676214 3.417186-3.905355C3.775841-4.244085 4.134496-4.293898 4.313823-4.293898C4.333748-4.293898 4.383562-4.293898 4.41345-4.283935C4.303861-4.244085 4.254047-4.134496 4.254047-4.014944C4.254047-3.845579 4.383562-3.726027 4.542964-3.726027C4.64259-3.726027 4.83188-3.795766 4.83188-4.024907C4.83188-4.194271 4.712329-4.513076 4.323786-4.513076C4.124533-4.513076 3.686177-4.4533 3.267746-4.044832C2.849315-4.373599 2.430884-4.403487 2.211706-4.403487C1.285181-4.403487 .597758-3.716065 .597758-2.948941C.597758-2.510585 .816936-2.132005 1.066002-1.92279C.936488-1.77335 .757161-1.444583 .757161-1.09589C.757161-.787049 .886675-.408468 1.195517-.209215C.597758-.039851 .278954 .388543 .278954 .787049C.278954 1.504359 1.265255 2.052304 2.480697 2.052304C3.656289 2.052304 4.692403 1.544209 4.692403 .767123C4.692403 .418431 4.552927-.089664 4.044832-.368618C3.516812-.647572 2.938979-.647572 2.331258-.647572C2.082192-.647572 1.653798-.647572 1.58406-.657534C1.265255-.697385 1.05604-1.006227 1.05604-1.325031ZM2.49066 1.823163C1.484433 1.823163 .797011 1.315068 .797011 .787049C.797011 .328767 1.175592-.039851 1.613948-.069738H2.201743C3.058531-.069738 4.174346-.069738 4.174346 .787049C4.174346 1.325031 3.466999 1.823163 2.49066 1.823163Z'/>
+<path id='m1-g4-111' d='M4.692403-2.132005C4.692403-3.407223 3.696139-4.463263 2.49066-4.463263C1.24533-4.463263 .278954-3.377335 .278954-2.132005C.278954-.846824 1.315068 .109589 2.480697 .109589C3.686177 .109589 4.692403-.86675 4.692403-2.132005ZM2.49066-.139477C2.062267-.139477 1.62391-.348692 1.354919-.806974C1.105853-1.24533 1.105853-1.853051 1.105853-2.211706C1.105853-2.600249 1.105853-3.138232 1.344956-3.576588C1.613948-4.034869 2.082192-4.244085 2.480697-4.244085C2.919054-4.244085 3.347447-4.024907 3.606476-3.596513S3.865504-2.590286 3.865504-2.211706C3.865504-1.853051 3.865504-1.315068 3.646326-.876712C3.427148-.428394 2.988792-.139477 2.49066-.139477Z'/>
+<path id='m1-g4-114' d='M1.663761-3.307597V-4.403487L.278954-4.293898V-3.985056C.976339-3.985056 1.05604-3.915318 1.05604-3.427148V-.757161C1.05604-.308842 .946451-.308842 .278954-.308842V0C.667497-.009963 1.135741-.029888 1.414695-.029888C1.8132-.029888 2.281445-.029888 2.67995 0V-.308842H2.470735C1.733499-.308842 1.713574-.418431 1.713574-.777086V-2.311333C1.713574-3.297634 2.132005-4.184309 2.889166-4.184309C2.958904-4.184309 2.978829-4.184309 2.998755-4.174346C2.968867-4.164384 2.769614-4.044832 2.769614-3.785803C2.769614-3.506849 2.978829-3.35741 3.198007-3.35741C3.377335-3.35741 3.626401-3.476961 3.626401-3.795766S3.317559-4.403487 2.889166-4.403487C2.161893-4.403487 1.803238-3.73599 1.663761-3.307597Z'/>
+<path id='m1-g4-118' d='M4.144458-3.317559C4.234122-3.5467 4.403487-3.975093 5.061021-3.985056V-4.293898C4.83188-4.273973 4.542964-4.26401 4.313823-4.26401C4.07472-4.26401 3.616438-4.283935 3.447073-4.293898V-3.985056C3.815691-3.975093 3.92528-3.745953 3.92528-3.556663C3.92528-3.466999 3.905355-3.427148 3.865504-3.317559L2.849315-.777086L1.733499-3.556663C1.673724-3.686177 1.673724-3.706102 1.673724-3.726027C1.673724-3.985056 2.062267-3.985056 2.241594-3.985056V-4.293898C1.942715-4.283935 1.384807-4.26401 1.155666-4.26401C.886675-4.26401 .488169-4.273973 .18929-4.293898V-3.985056C.816936-3.985056 .856787-3.92528 .986301-3.616438L2.420922-.079701C2.480697 .059776 2.500623 .109589 2.630137 .109589S2.799502 .019925 2.839352-.079701L4.144458-3.317559Z'/>
+</defs>
+<g id='m1-page1'>
+<use x='124.899942' y='-6.833885' xlink:href='#m1-g4-99'/>
+<use x='129.327794' y='-6.833885' xlink:href='#m1-g4-111'/>
+<use x='134.032384' y='-6.833885' xlink:href='#m1-g4-118'/>
+<use x='139.013723' y='-6.833885' xlink:href='#m1-g4-101'/>
+<use x='143.441575' y='-6.833885' xlink:href='#m1-g4-114'/>
+<use x='147.343625' y='-6.833885' xlink:href='#m1-g4-97'/>
+<use x='152.324964' y='-6.833885' xlink:href='#m1-g4-103'/>
+<use x='157.306303' y='-6.833885' xlink:href='#m1-g4-101'/>
+<use x='164.501421' y='-6.833885' xlink:href='#m1-g4-61'/>
+<use x='177.047289' y='-13.573687' xlink:href='#m1-g2-99'/>
+<rect x='176.213015' y='-9.523795' height='.398484' width='5.979925'/>
+<use x='176.213015' y='-.000015' xlink:href='#m1-g2-110'/>
+<use x='185.60232' y='-6.833885' xlink:href='#m1-g0-2'/>
+<use x='195.564933' y='-6.833885' xlink:href='#m1-g4-49'/>
+<use x='200.546272' y='-6.833885' xlink:href='#m1-g4-48'/>
+<use x='205.527611' y='-6.833885' xlink:href='#m1-g4-48'/>
+<use x='210.50895' y='-6.833885' xlink:href='#m1-g4-37'/>
+</g>
+</svg></div>
+<p>公式中的 coverage 就是覆盖率，<span class="math math-inline" role="math" aria-label="c" style="vertical-align:-0.000em"><svg aria-hidden="true" focusable="false" fill="currentColor" style="height:0.465em"  version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'   viewBox='0 -4.289468 4.311397 4.289468'>
+<defs>
+<path id='m2-g2-99' d='M3.945205-3.785803C3.785803-3.785803 3.646326-3.785803 3.506849-3.646326C3.347447-3.496887 3.327522-3.327522 3.327522-3.257783C3.327522-3.01868 3.506849-2.909091 3.696139-2.909091C3.985056-2.909091 4.254047-3.148194 4.254047-3.5467C4.254047-4.034869 3.785803-4.403487 3.078456-4.403487C1.733499-4.403487 .408468-2.978829 .408468-1.574097C.408468-.67746 .986301 .109589 2.022416 .109589C3.447073 .109589 4.283935-.946451 4.283935-1.066002C4.283935-1.125778 4.224159-1.195517 4.164384-1.195517C4.11457-1.195517 4.094645-1.175592 4.034869-1.09589C3.247821-.109589 2.161893-.109589 2.042341-.109589C1.414695-.109589 1.145704-.597758 1.145704-1.195517C1.145704-1.603985 1.344956-2.570361 1.683686-3.188045C1.992528-3.755915 2.540473-4.184309 3.088418-4.184309C3.427148-4.184309 3.805729-4.054795 3.945205-3.785803Z'/>
+</defs>
+<g id='m2-page2'>
+<use x='0' y='0' xlink:href='#m2-g2-99'/>
+</g>
+</svg></span> 是带有这个编码的文字所含的字符数，<span class="math math-inline" role="math" aria-label="n" style="vertical-align:-0.000em"><svg aria-hidden="true" focusable="false" fill="currentColor" style="height:0.465em"  version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'   viewBox='0 -4.289468 5.979925 4.289468'>
+<defs>
+<path id='m3-g2-110' d='M.876712-.587796C.846824-.438356 .787049-.209215 .787049-.159402C.787049 .019925 .926526 .109589 1.075965 .109589C1.195517 .109589 1.374844 .029888 1.444583-.169365C1.454545-.18929 1.574097-.657534 1.633873-.9066L1.853051-1.803238C1.912827-2.022416 1.972603-2.241594 2.022416-2.470735C2.062267-2.6401 2.141968-2.929016 2.15193-2.968867C2.30137-3.277709 2.82939-4.184309 3.775841-4.184309C4.224159-4.184309 4.313823-3.815691 4.313823-3.486924C4.313823-2.86924 3.825654-1.594022 3.666252-1.165629C3.576588-.936488 3.566625-.816936 3.566625-.707347C3.566625-.239103 3.915318 .109589 4.383562 .109589C5.32005 .109589 5.688667-1.344956 5.688667-1.424658C5.688667-1.524284 5.599004-1.524284 5.569116-1.524284C5.469489-1.524284 5.469489-1.494396 5.419676-1.344956C5.220423-.667497 4.891656-.109589 4.403487-.109589C4.234122-.109589 4.164384-.209215 4.164384-.438356C4.164384-.687422 4.254047-.926526 4.343711-1.145704C4.533001-1.673724 4.951432-2.769614 4.951432-3.337484C4.951432-4.004981 4.523039-4.403487 3.805729-4.403487C2.909091-4.403487 2.420922-3.765878 2.251557-3.536737C2.201743-4.094645 1.793275-4.403487 1.334994-4.403487S.687422-4.014944 .587796-3.835616C.428394-3.496887 .288917-2.909091 .288917-2.86924C.288917-2.769614 .388543-2.769614 .408468-2.769614C.508095-2.769614 .518057-2.779577 .577833-2.998755C.747198-3.706102 .946451-4.184309 1.305106-4.184309C1.504359-4.184309 1.613948-4.054795 1.613948-3.726027C1.613948-3.516812 1.58406-3.407223 1.454545-2.889166L.876712-.587796Z'/>
+</defs>
+<g id='m3-page3'>
+<use x='0' y='0' xlink:href='#m3-g2-110'/>
+</g>
+</svg></span> 是文档的总字符数；空格和换行符也计入这两个总数。如果两段带有同一编码的文字部分重叠，重叠的字符在计算 <span class="math math-inline" role="math" aria-label="c" style="vertical-align:-0.000em"><svg aria-hidden="true" focusable="false" fill="currentColor" style="height:0.465em"  version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'   viewBox='0 -4.289468 4.311397 4.289468'>
+<defs>
+<path id='m4-g2-99' d='M3.945205-3.785803C3.785803-3.785803 3.646326-3.785803 3.506849-3.646326C3.347447-3.496887 3.327522-3.327522 3.327522-3.257783C3.327522-3.01868 3.506849-2.909091 3.696139-2.909091C3.985056-2.909091 4.254047-3.148194 4.254047-3.5467C4.254047-4.034869 3.785803-4.403487 3.078456-4.403487C1.733499-4.403487 .408468-2.978829 .408468-1.574097C.408468-.67746 .986301 .109589 2.022416 .109589C3.447073 .109589 4.283935-.946451 4.283935-1.066002C4.283935-1.125778 4.224159-1.195517 4.164384-1.195517C4.11457-1.195517 4.094645-1.175592 4.034869-1.09589C3.247821-.109589 2.161893-.109589 2.042341-.109589C1.414695-.109589 1.145704-.597758 1.145704-1.195517C1.145704-1.603985 1.344956-2.570361 1.683686-3.188045C1.992528-3.755915 2.540473-4.184309 3.088418-4.184309C3.427148-4.184309 3.805729-4.054795 3.945205-3.785803Z'/>
+</defs>
+<g id='m4-page2'>
+<use x='0' y='0' xlink:href='#m4-g2-99'/>
+</g>
+</svg></span> 时只计一次。</p>
+<p>例如，“时间不多了”约有 1,700 个字符，所以 <span class="math math-inline" role="math" aria-label="n = 1{,}700" style="vertical-align:-0.210em"><svg aria-hidden="true" focusable="false" fill="currentColor" style="height:0.906em"  version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'   viewBox='0 -6.420368 41.956102 8.35755'>
+<defs>
+<path id='m5-g11-48' d='M4.582814-3.188045C4.582814-3.985056 4.533001-4.782067 4.184309-5.519303C3.726027-6.475716 2.909091-6.635118 2.49066-6.635118C1.892902-6.635118 1.165629-6.37609 .757161-5.449564C.438356-4.762142 .388543-3.985056 .388543-3.188045C.388543-2.440847 .428394-1.544209 .836862-.787049C1.265255 .019925 1.992528 .219178 2.480697 .219178C3.01868 .219178 3.775841 .009963 4.214197-.936488C4.533001-1.62391 4.582814-2.400996 4.582814-3.188045ZM2.480697 0C2.092154 0 1.504359-.249066 1.325031-1.205479C1.215442-1.803238 1.215442-2.719801 1.215442-3.307597C1.215442-3.945205 1.215442-4.60274 1.295143-5.140722C1.484433-6.326276 2.231631-6.41594 2.480697-6.41594C2.809465-6.41594 3.466999-6.236613 3.656289-5.250311C3.755915-4.692403 3.755915-3.935243 3.755915-3.307597C3.755915-2.560399 3.755915-1.882939 3.646326-1.24533C3.496887-.298879 2.929016 0 2.480697 0Z'/>
+<path id='m5-g11-49' d='M2.929016-6.37609C2.929016-6.615193 2.929016-6.635118 2.699875-6.635118C2.082192-5.997509 1.205479-5.997509 .886675-5.997509V-5.688667C1.085928-5.688667 1.673724-5.688667 2.191781-5.947696V-.787049C2.191781-.428394 2.161893-.308842 1.265255-.308842H.946451V0C1.295143-.029888 2.161893-.029888 2.560399-.029888S3.825654-.029888 4.174346 0V-.308842H3.855542C2.958904-.308842 2.929016-.418431 2.929016-.787049V-6.37609Z'/>
+<path id='m5-g11-55' d='M4.742217-6.067248C4.83188-6.1868 4.83188-6.206725 4.83188-6.41594H2.410959C1.195517-6.41594 1.175592-6.545455 1.135741-6.734745H.886675L.557908-4.682441H.806974C.836862-4.841843 .926526-5.469489 1.05604-5.589041C1.125778-5.648817 1.902864-5.648817 2.032379-5.648817H4.094645C3.985056-5.489415 3.198007-4.403487 2.978829-4.07472C2.082192-2.729763 1.753425-1.344956 1.753425-.328767C1.753425-.229141 1.753425 .219178 2.211706 .219178S2.669988-.229141 2.669988-.328767V-.836862C2.669988-1.384807 2.699875-1.932752 2.779577-2.470735C2.819427-2.699875 2.958904-3.556663 3.39726-4.174346L4.742217-6.067248Z'/>
+<path id='m5-g11-61' d='M6.844334-3.257783C6.993773-3.257783 7.183064-3.257783 7.183064-3.457036S6.993773-3.656289 6.854296-3.656289H.886675C.747198-3.656289 .557908-3.656289 .557908-3.457036S.747198-3.257783 .896638-3.257783H6.844334ZM6.854296-1.325031C6.993773-1.325031 7.183064-1.325031 7.183064-1.524284S6.993773-1.723537 6.844334-1.723537H.896638C.747198-1.723537 .557908-1.723537 .557908-1.524284S.747198-1.325031 .886675-1.325031H6.854296Z'/>
+<path id='m5-g9-59' d='M2.022416-.009963C2.022416-.667497 1.77335-1.05604 1.384807-1.05604C1.05604-1.05604 .856787-.806974 .856787-.52802C.856787-.259029 1.05604 0 1.384807 0C1.504359 0 1.633873-.039851 1.733499-.129514C1.763387-.14944 1.77335-.159402 1.783313-.159402S1.803238-.14944 1.803238-.009963C1.803238 .727273 1.454545 1.325031 1.125778 1.653798C1.016189 1.763387 1.016189 1.783313 1.016189 1.8132C1.016189 1.882939 1.066002 1.92279 1.115816 1.92279C1.225405 1.92279 2.022416 1.155666 2.022416-.009963Z'/>
+<path id='m5-g9-110' d='M.876712-.587796C.846824-.438356 .787049-.209215 .787049-.159402C.787049 .019925 .926526 .109589 1.075965 .109589C1.195517 .109589 1.374844 .029888 1.444583-.169365C1.454545-.18929 1.574097-.657534 1.633873-.9066L1.853051-1.803238C1.912827-2.022416 1.972603-2.241594 2.022416-2.470735C2.062267-2.6401 2.141968-2.929016 2.15193-2.968867C2.30137-3.277709 2.82939-4.184309 3.775841-4.184309C4.224159-4.184309 4.313823-3.815691 4.313823-3.486924C4.313823-2.86924 3.825654-1.594022 3.666252-1.165629C3.576588-.936488 3.566625-.816936 3.566625-.707347C3.566625-.239103 3.915318 .109589 4.383562 .109589C5.32005 .109589 5.688667-1.344956 5.688667-1.424658C5.688667-1.524284 5.599004-1.524284 5.569116-1.524284C5.469489-1.524284 5.469489-1.494396 5.419676-1.344956C5.220423-.667497 4.891656-.109589 4.403487-.109589C4.234122-.109589 4.164384-.209215 4.164384-.438356C4.164384-.687422 4.254047-.926526 4.343711-1.145704C4.533001-1.673724 4.951432-2.769614 4.951432-3.337484C4.951432-4.004981 4.523039-4.403487 3.805729-4.403487C2.909091-4.403487 2.420922-3.765878 2.251557-3.536737C2.201743-4.094645 1.793275-4.403487 1.334994-4.403487S.687422-4.014944 .587796-3.835616C.428394-3.496887 .288917-2.909091 .288917-2.86924C.288917-2.769614 .388543-2.769614 .408468-2.769614C.508095-2.769614 .518057-2.779577 .577833-2.998755C.747198-3.706102 .946451-4.184309 1.305106-4.184309C1.504359-4.184309 1.613948-4.054795 1.613948-3.726027C1.613948-3.516812 1.58406-3.407223 1.454545-2.889166L.876712-.587796Z'/>
+</defs>
+<g id='m5-page1'>
+<use x='0' y='0' xlink:href='#m5-g9-110'/>
+<use x='8.747258' y='0' xlink:href='#m5-g11-61'/>
+<use x='19.263338' y='0' xlink:href='#m5-g11-49'/>
+<use x='24.244677' y='0' xlink:href='#m5-g9-59'/>
+<use x='27.012085' y='0' xlink:href='#m5-g11-55'/>
+<use x='31.993424' y='0' xlink:href='#m5-g11-48'/>
+<use x='36.974763' y='0' xlink:href='#m5-g11-48'/>
+</g>
+</svg></span>。假设其中有三段文字被编码为“紧迫性”，长度分别为 60、40 和 70 个字符。注意，这里的编码只是假设，示例项目对这篇文本的实际编码与此不同。在这几段文字互不重叠时，<span class="math math-inline" role="math" aria-label="c = 60 + 40 + 70 = 170" style="vertical-align:-0.090em"><svg aria-hidden="true" focusable="false" fill="currentColor" style="height:0.786em"  version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'   viewBox='0 -6.420368 100.063232 7.250595'>
+<defs>
+<path id='m6-g11-43' d='M4.07472-2.291407H6.854296C6.993773-2.291407 7.183064-2.291407 7.183064-2.49066S6.993773-2.689913 6.854296-2.689913H4.07472V-5.479452C4.07472-5.618929 4.07472-5.808219 3.875467-5.808219S3.676214-5.618929 3.676214-5.479452V-2.689913H.886675C.747198-2.689913 .557908-2.689913 .557908-2.49066S.747198-2.291407 .886675-2.291407H3.676214V.498132C3.676214 .637609 3.676214 .826899 3.875467 .826899S4.07472 .637609 4.07472 .498132V-2.291407Z'/>
+<path id='m6-g11-48' d='M4.582814-3.188045C4.582814-3.985056 4.533001-4.782067 4.184309-5.519303C3.726027-6.475716 2.909091-6.635118 2.49066-6.635118C1.892902-6.635118 1.165629-6.37609 .757161-5.449564C.438356-4.762142 .388543-3.985056 .388543-3.188045C.388543-2.440847 .428394-1.544209 .836862-.787049C1.265255 .019925 1.992528 .219178 2.480697 .219178C3.01868 .219178 3.775841 .009963 4.214197-.936488C4.533001-1.62391 4.582814-2.400996 4.582814-3.188045ZM2.480697 0C2.092154 0 1.504359-.249066 1.325031-1.205479C1.215442-1.803238 1.215442-2.719801 1.215442-3.307597C1.215442-3.945205 1.215442-4.60274 1.295143-5.140722C1.484433-6.326276 2.231631-6.41594 2.480697-6.41594C2.809465-6.41594 3.466999-6.236613 3.656289-5.250311C3.755915-4.692403 3.755915-3.935243 3.755915-3.307597C3.755915-2.560399 3.755915-1.882939 3.646326-1.24533C3.496887-.298879 2.929016 0 2.480697 0Z'/>
+<path id='m6-g11-49' d='M2.929016-6.37609C2.929016-6.615193 2.929016-6.635118 2.699875-6.635118C2.082192-5.997509 1.205479-5.997509 .886675-5.997509V-5.688667C1.085928-5.688667 1.673724-5.688667 2.191781-5.947696V-.787049C2.191781-.428394 2.161893-.308842 1.265255-.308842H.946451V0C1.295143-.029888 2.161893-.029888 2.560399-.029888S3.825654-.029888 4.174346 0V-.308842H3.855542C2.958904-.308842 2.929016-.418431 2.929016-.787049V-6.37609Z'/>
+<path id='m6-g11-52' d='M2.929016-1.643836V-.777086C2.929016-.418431 2.909091-.308842 2.171856-.308842H1.96264V0C2.371108-.029888 2.889166-.029888 3.307597-.029888S4.254047-.029888 4.662516 0V-.308842H4.4533C3.716065-.308842 3.696139-.418431 3.696139-.777086V-1.643836H4.692403V-1.952677H3.696139V-6.485679C3.696139-6.684932 3.696139-6.744707 3.536737-6.744707C3.447073-6.744707 3.417186-6.744707 3.337484-6.625156L.278954-1.952677V-1.643836H2.929016ZM2.988792-1.952677H.557908L2.988792-5.668742V-1.952677Z'/>
+<path id='m6-g11-54' d='M1.315068-3.267746V-3.506849C1.315068-6.027397 2.550436-6.386052 3.058531-6.386052C3.297634-6.386052 3.716065-6.326276 3.935243-5.987547C3.785803-5.987547 3.387298-5.987547 3.387298-5.539228C3.387298-5.230386 3.626401-5.080946 3.845579-5.080946C4.004981-5.080946 4.303861-5.17061 4.303861-5.559153C4.303861-6.156912 3.865504-6.635118 3.038605-6.635118C1.763387-6.635118 .418431-5.349938 .418431-3.148194C.418431-.488169 1.574097 .219178 2.500623 .219178C3.606476 .219178 4.552927-.71731 4.552927-2.032379C4.552927-3.297634 3.666252-4.254047 2.560399-4.254047C1.882939-4.254047 1.514321-3.745953 1.315068-3.267746ZM2.500623-.059776C1.872976-.059776 1.574097-.657534 1.514321-.806974C1.334994-1.275218 1.334994-2.072229 1.334994-2.251557C1.334994-3.028643 1.653798-4.024907 2.550436-4.024907C2.709838-4.024907 3.16812-4.024907 3.476961-3.407223C3.656289-3.038605 3.656289-2.530511 3.656289-2.042341C3.656289-1.564134 3.656289-1.066002 3.486924-.707347C3.188045-.109589 2.729763-.059776 2.500623-.059776Z'/>
+<path id='m6-g11-55' d='M4.742217-6.067248C4.83188-6.1868 4.83188-6.206725 4.83188-6.41594H2.410959C1.195517-6.41594 1.175592-6.545455 1.135741-6.734745H.886675L.557908-4.682441H.806974C.836862-4.841843 .926526-5.469489 1.05604-5.589041C1.125778-5.648817 1.902864-5.648817 2.032379-5.648817H4.094645C3.985056-5.489415 3.198007-4.403487 2.978829-4.07472C2.082192-2.729763 1.753425-1.344956 1.753425-.328767C1.753425-.229141 1.753425 .219178 2.211706 .219178S2.669988-.229141 2.669988-.328767V-.836862C2.669988-1.384807 2.699875-1.932752 2.779577-2.470735C2.819427-2.699875 2.958904-3.556663 3.39726-4.174346L4.742217-6.067248Z'/>
+<path id='m6-g11-61' d='M6.844334-3.257783C6.993773-3.257783 7.183064-3.257783 7.183064-3.457036S6.993773-3.656289 6.854296-3.656289H.886675C.747198-3.656289 .557908-3.656289 .557908-3.457036S.747198-3.257783 .896638-3.257783H6.844334ZM6.854296-1.325031C6.993773-1.325031 7.183064-1.325031 7.183064-1.524284S6.993773-1.723537 6.844334-1.723537H.896638C.747198-1.723537 .557908-1.723537 .557908-1.524284S.747198-1.325031 .886675-1.325031H6.854296Z'/>
+<path id='m6-g9-99' d='M3.945205-3.785803C3.785803-3.785803 3.646326-3.785803 3.506849-3.646326C3.347447-3.496887 3.327522-3.327522 3.327522-3.257783C3.327522-3.01868 3.506849-2.909091 3.696139-2.909091C3.985056-2.909091 4.254047-3.148194 4.254047-3.5467C4.254047-4.034869 3.785803-4.403487 3.078456-4.403487C1.733499-4.403487 .408468-2.978829 .408468-1.574097C.408468-.67746 .986301 .109589 2.022416 .109589C3.447073 .109589 4.283935-.946451 4.283935-1.066002C4.283935-1.125778 4.224159-1.195517 4.164384-1.195517C4.11457-1.195517 4.094645-1.175592 4.034869-1.09589C3.247821-.109589 2.161893-.109589 2.042341-.109589C1.414695-.109589 1.145704-.597758 1.145704-1.195517C1.145704-1.603985 1.344956-2.570361 1.683686-3.188045C1.992528-3.755915 2.540473-4.184309 3.088418-4.184309C3.427148-4.184309 3.805729-4.054795 3.945205-3.785803Z'/>
+</defs>
+<g id='m6-page2'>
+<use x='0' y='0' xlink:href='#m6-g9-99'/>
+<use x='7.078729' y='0' xlink:href='#m6-g11-61'/>
+<use x='17.594809' y='0' xlink:href='#m6-g11-54'/>
+<use x='22.576148' y='0' xlink:href='#m6-g11-48'/>
+<use x='29.771353' y='0' xlink:href='#m6-g11-43'/>
+<use x='39.733967' y='0' xlink:href='#m6-g11-52'/>
+<use x='44.715306' y='0' xlink:href='#m6-g11-48'/>
+<use x='51.910511' y='0' xlink:href='#m6-g11-43'/>
+<use x='61.873124' y='0' xlink:href='#m6-g11-55'/>
+<use x='66.854463' y='0' xlink:href='#m6-g11-48'/>
+<use x='74.603135' y='0' xlink:href='#m6-g11-61'/>
+<use x='85.119215' y='0' xlink:href='#m6-g11-49'/>
+<use x='90.100554' y='0' xlink:href='#m6-g11-55'/>
+<use x='95.081893' y='0' xlink:href='#m6-g11-48'/>
+</g>
+</svg></span>，覆盖率为：</p>
+<div class="math math-display" role="math" aria-label="\text{coverage} = \frac{170}{1{,}700} \times 100\% = 0.1 \times 100\% = 10\%"><svg aria-hidden="true" focusable="false" fill="currentColor" style="height:2.686em"  version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'   viewBox='70.051273 -21.931233 203.608595 21.931222'>
+<defs>
+<path id='m7-g0-2' d='M3.875467-2.769614L1.882939-4.752179C1.763387-4.871731 1.743462-4.891656 1.663761-4.891656C1.564134-4.891656 1.464508-4.801993 1.464508-4.692403C1.464508-4.622665 1.484433-4.60274 1.594022-4.493151L3.58655-2.49066L1.594022-.488169C1.484433-.37858 1.464508-.358655 1.464508-.288917C1.464508-.179328 1.564134-.089664 1.663761-.089664C1.743462-.089664 1.763387-.109589 1.882939-.229141L3.865504-2.211706L5.927771-.14944C5.947696-.139477 6.017435-.089664 6.07721-.089664C6.196762-.089664 6.276463-.179328 6.276463-.288917C6.276463-.308842 6.276463-.348692 6.246575-.398506C6.236613-.418431 4.652553-1.982565 4.154421-2.49066L5.977584-4.313823C6.027397-4.373599 6.176837-4.503113 6.22665-4.562889C6.236613-4.582814 6.276463-4.622665 6.276463-4.692403C6.276463-4.801993 6.196762-4.891656 6.07721-4.891656C5.997509-4.891656 5.957659-4.851806 5.84807-4.742217L3.875467-2.769614Z'/>
+<path id='m7-g1-58' d='M1.912827-.52802C1.912827-.816936 1.673724-1.05604 1.384807-1.05604S.856787-.816936 .856787-.52802S1.09589 0 1.384807 0S1.912827-.239103 1.912827-.52802Z'/>
+<path id='m7-g1-59' d='M2.022416-.009963C2.022416-.667497 1.77335-1.05604 1.384807-1.05604C1.05604-1.05604 .856787-.806974 .856787-.52802C.856787-.259029 1.05604 0 1.384807 0C1.504359 0 1.633873-.039851 1.733499-.129514C1.763387-.14944 1.77335-.159402 1.783313-.159402S1.803238-.14944 1.803238-.009963C1.803238 .727273 1.454545 1.325031 1.125778 1.653798C1.016189 1.763387 1.016189 1.783313 1.016189 1.8132C1.016189 1.882939 1.066002 1.92279 1.115816 1.92279C1.225405 1.92279 2.022416 1.155666 2.022416-.009963Z'/>
+<path id='m7-g3-37' d='M6.824408-7.0934C6.884184-7.183064 6.90411-7.212951 6.90411-7.272727C6.90411-7.382316 6.814446-7.47198 6.704857-7.47198C6.60523-7.47198 6.555417-7.402242 6.495641-7.332503C5.997509-6.655044 5.330012-6.386052 4.60274-6.386052C3.905355-6.386052 3.287671-6.635118 2.739726-7.153176C2.550436-7.32254 2.34122-7.47198 2.022416-7.47198C1.265255-7.47198 .557908-6.635118 .557908-5.469489C.557908-4.26401 1.275218-3.457036 2.022416-3.457036C2.749689-3.457036 3.317559-4.343711 3.317559-5.459527C3.317559-5.599004 3.317559-6.067248 3.108344-6.585305C3.755915-6.216687 4.254047-6.166874 4.612702-6.166874C5.369863-6.166874 5.877958-6.475716 5.937733-6.515567L5.947696-6.505604L1.474471 .159402C1.384807 .288917 1.384807 .33873 1.384807 .358655C1.384807 .468244 1.484433 .557908 1.58406 .557908S1.703611 .518057 1.783313 .408468L6.824408-7.0934ZM2.032379-3.676214C1.833126-3.676214 1.175592-3.805729 1.175592-5.459527C1.175592-7.123288 1.823163-7.252802 2.032379-7.252802C2.560399-7.252802 3.068493-6.515567 3.068493-5.469489C3.068493-4.393524 2.550436-3.676214 2.032379-3.676214ZM6.445828 .33873C6.246575 .33873 5.589041 .209215 5.589041-1.444583C5.589041-3.108344 6.236613-3.237858 6.445828-3.237858C6.973848-3.237858 7.481943-2.500623 7.481943-1.454545C7.481943-.37858 6.963885 .33873 6.445828 .33873ZM7.731009-1.444583C7.731009-2.590286 7.143213-3.457036 6.435866-3.457036C5.678705-3.457036 4.971357-2.620174 4.971357-1.454545C4.971357-.249066 5.688667 .557908 6.435866 .557908C7.163138 .557908 7.731009-.328767 7.731009-1.444583Z'/>
+<path id='m7-g3-48' d='M4.582814-3.188045C4.582814-3.985056 4.533001-4.782067 4.184309-5.519303C3.726027-6.475716 2.909091-6.635118 2.49066-6.635118C1.892902-6.635118 1.165629-6.37609 .757161-5.449564C.438356-4.762142 .388543-3.985056 .388543-3.188045C.388543-2.440847 .428394-1.544209 .836862-.787049C1.265255 .019925 1.992528 .219178 2.480697 .219178C3.01868 .219178 3.775841 .009963 4.214197-.936488C4.533001-1.62391 4.582814-2.400996 4.582814-3.188045ZM2.480697 0C2.092154 0 1.504359-.249066 1.325031-1.205479C1.215442-1.803238 1.215442-2.719801 1.215442-3.307597C1.215442-3.945205 1.215442-4.60274 1.295143-5.140722C1.484433-6.326276 2.231631-6.41594 2.480697-6.41594C2.809465-6.41594 3.466999-6.236613 3.656289-5.250311C3.755915-4.692403 3.755915-3.935243 3.755915-3.307597C3.755915-2.560399 3.755915-1.882939 3.646326-1.24533C3.496887-.298879 2.929016 0 2.480697 0Z'/>
+<path id='m7-g3-49' d='M2.929016-6.37609C2.929016-6.615193 2.929016-6.635118 2.699875-6.635118C2.082192-5.997509 1.205479-5.997509 .886675-5.997509V-5.688667C1.085928-5.688667 1.673724-5.688667 2.191781-5.947696V-.787049C2.191781-.428394 2.161893-.308842 1.265255-.308842H.946451V0C1.295143-.029888 2.161893-.029888 2.560399-.029888S3.825654-.029888 4.174346 0V-.308842H3.855542C2.958904-.308842 2.929016-.418431 2.929016-.787049V-6.37609Z'/>
+<path id='m7-g3-55' d='M4.742217-6.067248C4.83188-6.1868 4.83188-6.206725 4.83188-6.41594H2.410959C1.195517-6.41594 1.175592-6.545455 1.135741-6.734745H.886675L.557908-4.682441H.806974C.836862-4.841843 .926526-5.469489 1.05604-5.589041C1.125778-5.648817 1.902864-5.648817 2.032379-5.648817H4.094645C3.985056-5.489415 3.198007-4.403487 2.978829-4.07472C2.082192-2.729763 1.753425-1.344956 1.753425-.328767C1.753425-.229141 1.753425 .219178 2.211706 .219178S2.669988-.229141 2.669988-.328767V-.836862C2.669988-1.384807 2.699875-1.932752 2.779577-2.470735C2.819427-2.699875 2.958904-3.556663 3.39726-4.174346L4.742217-6.067248Z'/>
+<path id='m7-g3-61' d='M6.844334-3.257783C6.993773-3.257783 7.183064-3.257783 7.183064-3.457036S6.993773-3.656289 6.854296-3.656289H.886675C.747198-3.656289 .557908-3.656289 .557908-3.457036S.747198-3.257783 .896638-3.257783H6.844334ZM6.854296-1.325031C6.993773-1.325031 7.183064-1.325031 7.183064-1.524284S6.993773-1.723537 6.844334-1.723537H.896638C.747198-1.723537 .557908-1.723537 .557908-1.524284S.747198-1.325031 .886675-1.325031H6.854296Z'/>
+<path id='m7-g3-97' d='M3.317559-.757161C3.35741-.358655 3.626401 .059776 4.094645 .059776C4.303861 .059776 4.911582-.079701 4.911582-.886675V-1.444583H4.662516V-.886675C4.662516-.308842 4.41345-.249066 4.303861-.249066C3.975093-.249066 3.935243-.697385 3.935243-.747198V-2.739726C3.935243-3.158157 3.935243-3.5467 3.576588-3.915318C3.188045-4.303861 2.689913-4.463263 2.211706-4.463263C1.39477-4.463263 .707347-3.995019 .707347-3.337484C.707347-3.038605 .9066-2.86924 1.165629-2.86924C1.444583-2.86924 1.62391-3.068493 1.62391-3.327522C1.62391-3.447073 1.574097-3.775841 1.115816-3.785803C1.384807-4.134496 1.872976-4.244085 2.191781-4.244085C2.67995-4.244085 3.247821-3.855542 3.247821-2.968867V-2.600249C2.739726-2.570361 2.042341-2.540473 1.414695-2.241594C.667497-1.902864 .418431-1.384807 .418431-.946451C.418431-.139477 1.384807 .109589 2.012453 .109589C2.669988 .109589 3.128269-.288917 3.317559-.757161ZM3.247821-2.391034V-1.39477C3.247821-.448319 2.530511-.109589 2.082192-.109589C1.594022-.109589 1.185554-.458281 1.185554-.956413C1.185554-1.504359 1.603985-2.331258 3.247821-2.391034Z'/>
+<path id='m7-g3-99' d='M1.165629-2.171856C1.165629-3.795766 1.982565-4.214197 2.510585-4.214197C2.600249-4.214197 3.227895-4.204234 3.576588-3.845579C3.16812-3.815691 3.108344-3.516812 3.108344-3.387298C3.108344-3.128269 3.287671-2.929016 3.566625-2.929016C3.825654-2.929016 4.024907-3.098381 4.024907-3.39726C4.024907-4.07472 3.267746-4.463263 2.500623-4.463263C1.255293-4.463263 .33873-3.387298 .33873-2.15193C.33873-.876712 1.325031 .109589 2.480697 .109589C3.815691 .109589 4.134496-1.085928 4.134496-1.185554S4.034869-1.285181 4.004981-1.285181C3.915318-1.285181 3.895392-1.24533 3.875467-1.185554C3.58655-.259029 2.938979-.139477 2.570361-.139477C2.042341-.139477 1.165629-.56787 1.165629-2.171856Z'/>
+<path id='m7-g3-101' d='M1.115816-2.510585C1.175592-3.995019 2.012453-4.244085 2.351183-4.244085C3.377335-4.244085 3.476961-2.899128 3.476961-2.510585H1.115816ZM1.105853-2.30137H3.88543C4.104608-2.30137 4.134496-2.30137 4.134496-2.510585C4.134496-3.496887 3.596513-4.463263 2.351183-4.463263C1.195517-4.463263 .278954-3.437111 .278954-2.191781C.278954-.856787 1.325031 .109589 2.470735 .109589C3.686177 .109589 4.134496-.996264 4.134496-1.185554C4.134496-1.285181 4.054795-1.305106 4.004981-1.305106C3.915318-1.305106 3.895392-1.24533 3.875467-1.165629C3.526775-.139477 2.630137-.139477 2.530511-.139477C2.032379-.139477 1.633873-.438356 1.404732-.806974C1.105853-1.285181 1.105853-1.942715 1.105853-2.30137Z'/>
+<path id='m7-g3-103' d='M2.211706-1.713574C1.344956-1.713574 1.344956-2.709838 1.344956-2.938979C1.344956-3.20797 1.354919-3.526775 1.504359-3.775841C1.58406-3.895392 1.8132-4.174346 2.211706-4.174346C3.078456-4.174346 3.078456-3.178082 3.078456-2.948941C3.078456-2.67995 3.068493-2.361146 2.919054-2.11208C2.839352-1.992528 2.610212-1.713574 2.211706-1.713574ZM1.05604-1.325031C1.05604-1.364882 1.05604-1.594022 1.225405-1.793275C1.613948-1.514321 2.022416-1.484433 2.211706-1.484433C3.138232-1.484433 3.825654-2.171856 3.825654-2.938979C3.825654-3.307597 3.666252-3.676214 3.417186-3.905355C3.775841-4.244085 4.134496-4.293898 4.313823-4.293898C4.333748-4.293898 4.383562-4.293898 4.41345-4.283935C4.303861-4.244085 4.254047-4.134496 4.254047-4.014944C4.254047-3.845579 4.383562-3.726027 4.542964-3.726027C4.64259-3.726027 4.83188-3.795766 4.83188-4.024907C4.83188-4.194271 4.712329-4.513076 4.323786-4.513076C4.124533-4.513076 3.686177-4.4533 3.267746-4.044832C2.849315-4.373599 2.430884-4.403487 2.211706-4.403487C1.285181-4.403487 .597758-3.716065 .597758-2.948941C.597758-2.510585 .816936-2.132005 1.066002-1.92279C.936488-1.77335 .757161-1.444583 .757161-1.09589C.757161-.787049 .886675-.408468 1.195517-.209215C.597758-.039851 .278954 .388543 .278954 .787049C.278954 1.504359 1.265255 2.052304 2.480697 2.052304C3.656289 2.052304 4.692403 1.544209 4.692403 .767123C4.692403 .418431 4.552927-.089664 4.044832-.368618C3.516812-.647572 2.938979-.647572 2.331258-.647572C2.082192-.647572 1.653798-.647572 1.58406-.657534C1.265255-.697385 1.05604-1.006227 1.05604-1.325031ZM2.49066 1.823163C1.484433 1.823163 .797011 1.315068 .797011 .787049C.797011 .328767 1.175592-.039851 1.613948-.069738H2.201743C3.058531-.069738 4.174346-.069738 4.174346 .787049C4.174346 1.325031 3.466999 1.823163 2.49066 1.823163Z'/>
+<path id='m7-g3-111' d='M4.692403-2.132005C4.692403-3.407223 3.696139-4.463263 2.49066-4.463263C1.24533-4.463263 .278954-3.377335 .278954-2.132005C.278954-.846824 1.315068 .109589 2.480697 .109589C3.686177 .109589 4.692403-.86675 4.692403-2.132005ZM2.49066-.139477C2.062267-.139477 1.62391-.348692 1.354919-.806974C1.105853-1.24533 1.105853-1.853051 1.105853-2.211706C1.105853-2.600249 1.105853-3.138232 1.344956-3.576588C1.613948-4.034869 2.082192-4.244085 2.480697-4.244085C2.919054-4.244085 3.347447-4.024907 3.606476-3.596513S3.865504-2.590286 3.865504-2.211706C3.865504-1.853051 3.865504-1.315068 3.646326-.876712C3.427148-.428394 2.988792-.139477 2.49066-.139477Z'/>
+<path id='m7-g3-114' d='M1.663761-3.307597V-4.403487L.278954-4.293898V-3.985056C.976339-3.985056 1.05604-3.915318 1.05604-3.427148V-.757161C1.05604-.308842 .946451-.308842 .278954-.308842V0C.667497-.009963 1.135741-.029888 1.414695-.029888C1.8132-.029888 2.281445-.029888 2.67995 0V-.308842H2.470735C1.733499-.308842 1.713574-.418431 1.713574-.777086V-2.311333C1.713574-3.297634 2.132005-4.184309 2.889166-4.184309C2.958904-4.184309 2.978829-4.184309 2.998755-4.174346C2.968867-4.164384 2.769614-4.044832 2.769614-3.785803C2.769614-3.506849 2.978829-3.35741 3.198007-3.35741C3.377335-3.35741 3.626401-3.476961 3.626401-3.795766S3.317559-4.403487 2.889166-4.403487C2.161893-4.403487 1.803238-3.73599 1.663761-3.307597Z'/>
+<path id='m7-g3-118' d='M4.144458-3.317559C4.234122-3.5467 4.403487-3.975093 5.061021-3.985056V-4.293898C4.83188-4.273973 4.542964-4.26401 4.313823-4.26401C4.07472-4.26401 3.616438-4.283935 3.447073-4.293898V-3.985056C3.815691-3.975093 3.92528-3.745953 3.92528-3.556663C3.92528-3.466999 3.905355-3.427148 3.865504-3.317559L2.849315-.777086L1.733499-3.556663C1.673724-3.686177 1.673724-3.706102 1.673724-3.726027C1.673724-3.985056 2.062267-3.985056 2.241594-3.985056V-4.293898C1.942715-4.283935 1.384807-4.26401 1.155666-4.26401C.886675-4.26401 .488169-4.273973 .18929-4.293898V-3.985056C.816936-3.985056 .856787-3.92528 .986301-3.616438L2.420922-.079701C2.480697 .059776 2.500623 .109589 2.630137 .109589S2.799502 .019925 2.839352-.079701L4.144458-3.317559Z'/>
+</defs>
+<g id='m7-page39'>
+<use x='70.051273' y='-8.771064' xlink:href='#m7-g3-99'/>
+<use x='74.479124' y='-8.771064' xlink:href='#m7-g3-111'/>
+<use x='79.183715' y='-8.771064' xlink:href='#m7-g3-118'/>
+<use x='84.165054' y='-8.771064' xlink:href='#m7-g3-101'/>
+<use x='88.592906' y='-8.771064' xlink:href='#m7-g3-114'/>
+<use x='92.494956' y='-8.771064' xlink:href='#m7-g3-97'/>
+<use x='97.476295' y='-8.771064' xlink:href='#m7-g3-103'/>
+<use x='102.457634' y='-8.771064' xlink:href='#m7-g3-101'/>
+<use x='109.652752' y='-8.771064' xlink:href='#m7-g3-61'/>
+<use x='125.238717' y='-15.510865' xlink:href='#m7-g3-49'/>
+<use x='130.220056' y='-15.510865' xlink:href='#m7-g3-55'/>
+<use x='135.201395' y='-15.510865' xlink:href='#m7-g3-48'/>
+<rect x='121.364346' y='-11.460973' height='.398484' width='22.692749'/>
+<use x='121.364346' y='-1.937194' xlink:href='#m7-g3-49'/>
+<use x='126.345685' y='-1.937194' xlink:href='#m7-g1-59'/>
+<use x='129.113093' y='-1.937194' xlink:href='#m7-g3-55'/>
+<use x='134.094432' y='-1.937194' xlink:href='#m7-g3-48'/>
+<use x='139.075771' y='-1.937194' xlink:href='#m7-g3-48'/>
+<use x='147.466475' y='-8.771064' xlink:href='#m7-g0-2'/>
+<use x='157.429088' y='-8.771064' xlink:href='#m7-g3-49'/>
+<use x='162.410427' y='-8.771064' xlink:href='#m7-g3-48'/>
+<use x='167.391766' y='-8.771064' xlink:href='#m7-g3-48'/>
+<use x='172.373105' y='-8.771064' xlink:href='#m7-g3-37'/>
+<use x='183.442663' y='-8.771064' xlink:href='#m7-g3-61'/>
+<use x='193.958743' y='-8.771064' xlink:href='#m7-g3-48'/>
+<use x='198.940082' y='-8.771064' xlink:href='#m7-g1-58'/>
+<use x='201.707491' y='-8.771064' xlink:href='#m7-g3-49'/>
+<use x='208.902696' y='-8.771064' xlink:href='#m7-g0-2'/>
+<use x='218.865309' y='-8.771064' xlink:href='#m7-g3-49'/>
+<use x='223.846648' y='-8.771064' xlink:href='#m7-g3-48'/>
+<use x='228.827987' y='-8.771064' xlink:href='#m7-g3-48'/>
+<use x='233.809326' y='-8.771064' xlink:href='#m7-g3-37'/>
+<use x='244.878884' y='-8.771064' xlink:href='#m7-g3-61'/>
+<use x='255.394964' y='-8.771064' xlink:href='#m7-g3-49'/>
+<use x='260.376303' y='-8.771064' xlink:href='#m7-g3-48'/>
+<use x='265.357642' y='-8.771064' xlink:href='#m7-g3-37'/>
+</g>
+</svg></div>
+<p>“紧迫性”这一行显示 3 和 10.0%。如果后两段文字有 11 个字符重叠，那么 <span class="math math-inline" role="math" aria-label="c = 170 - 11 = 159" style="vertical-align:-0.090em"><svg aria-hidden="true" focusable="false" fill="currentColor" style="height:0.786em"  version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'   viewBox='0 -6.420368 82.905413 7.250595'>
+<defs>
+<path id='m8-g8-0' d='M6.56538-2.291407C6.734745-2.291407 6.914072-2.291407 6.914072-2.49066S6.734745-2.689913 6.56538-2.689913H1.175592C1.006227-2.689913 .826899-2.689913 .826899-2.49066S1.006227-2.291407 1.175592-2.291407H6.56538Z'/>
+<path id='m8-g11-48' d='M4.582814-3.188045C4.582814-3.985056 4.533001-4.782067 4.184309-5.519303C3.726027-6.475716 2.909091-6.635118 2.49066-6.635118C1.892902-6.635118 1.165629-6.37609 .757161-5.449564C.438356-4.762142 .388543-3.985056 .388543-3.188045C.388543-2.440847 .428394-1.544209 .836862-.787049C1.265255 .019925 1.992528 .219178 2.480697 .219178C3.01868 .219178 3.775841 .009963 4.214197-.936488C4.533001-1.62391 4.582814-2.400996 4.582814-3.188045ZM2.480697 0C2.092154 0 1.504359-.249066 1.325031-1.205479C1.215442-1.803238 1.215442-2.719801 1.215442-3.307597C1.215442-3.945205 1.215442-4.60274 1.295143-5.140722C1.484433-6.326276 2.231631-6.41594 2.480697-6.41594C2.809465-6.41594 3.466999-6.236613 3.656289-5.250311C3.755915-4.692403 3.755915-3.935243 3.755915-3.307597C3.755915-2.560399 3.755915-1.882939 3.646326-1.24533C3.496887-.298879 2.929016 0 2.480697 0Z'/>
+<path id='m8-g11-49' d='M2.929016-6.37609C2.929016-6.615193 2.929016-6.635118 2.699875-6.635118C2.082192-5.997509 1.205479-5.997509 .886675-5.997509V-5.688667C1.085928-5.688667 1.673724-5.688667 2.191781-5.947696V-.787049C2.191781-.428394 2.161893-.308842 1.265255-.308842H.946451V0C1.295143-.029888 2.161893-.029888 2.560399-.029888S3.825654-.029888 4.174346 0V-.308842H3.855542C2.958904-.308842 2.929016-.418431 2.929016-.787049V-6.37609Z'/>
+<path id='m8-g11-53' d='M4.473225-2.002491C4.473225-3.188045 3.656289-4.184309 2.580324-4.184309C2.102117-4.184309 1.673724-4.024907 1.315068-3.676214V-5.618929C1.514321-5.559153 1.843088-5.489415 2.161893-5.489415C3.387298-5.489415 4.084682-6.396015 4.084682-6.525529C4.084682-6.585305 4.054795-6.635118 3.985056-6.635118C3.975093-6.635118 3.955168-6.635118 3.905355-6.60523C3.706102-6.515567 3.217933-6.316314 2.550436-6.316314C2.15193-6.316314 1.693649-6.386052 1.225405-6.595268C1.145704-6.625156 1.125778-6.625156 1.105853-6.625156C1.006227-6.625156 1.006227-6.545455 1.006227-6.386052V-3.437111C1.006227-3.257783 1.006227-3.178082 1.145704-3.178082C1.215442-3.178082 1.235367-3.20797 1.275218-3.267746C1.384807-3.427148 1.753425-3.965131 2.560399-3.965131C3.078456-3.965131 3.327522-3.506849 3.407223-3.327522C3.566625-2.958904 3.58655-2.570361 3.58655-2.072229C3.58655-1.723537 3.58655-1.125778 3.347447-.707347C3.108344-.318804 2.739726-.059776 2.281445-.059776C1.554172-.059776 .986301-.587796 .816936-1.175592C.846824-1.165629 .876712-1.155666 .986301-1.155666C1.315068-1.155666 1.484433-1.404732 1.484433-1.643836S1.315068-2.132005 .986301-2.132005C.846824-2.132005 .498132-2.062267 .498132-1.603985C.498132-.747198 1.185554 .219178 2.30137 .219178C3.457036 .219178 4.473225-.737235 4.473225-2.002491Z'/>
+<path id='m8-g11-55' d='M4.742217-6.067248C4.83188-6.1868 4.83188-6.206725 4.83188-6.41594H2.410959C1.195517-6.41594 1.175592-6.545455 1.135741-6.734745H.886675L.557908-4.682441H.806974C.836862-4.841843 .926526-5.469489 1.05604-5.589041C1.125778-5.648817 1.902864-5.648817 2.032379-5.648817H4.094645C3.985056-5.489415 3.198007-4.403487 2.978829-4.07472C2.082192-2.729763 1.753425-1.344956 1.753425-.328767C1.753425-.229141 1.753425 .219178 2.211706 .219178S2.669988-.229141 2.669988-.328767V-.836862C2.669988-1.384807 2.699875-1.932752 2.779577-2.470735C2.819427-2.699875 2.958904-3.556663 3.39726-4.174346L4.742217-6.067248Z'/>
+<path id='m8-g11-57' d='M3.656289-3.16812V-2.849315C3.656289-.518057 2.620174-.059776 2.042341-.059776C1.872976-.059776 1.334994-.079701 1.066002-.418431C1.504359-.418431 1.58406-.707347 1.58406-.876712C1.58406-1.185554 1.344956-1.334994 1.125778-1.334994C.966376-1.334994 .667497-1.24533 .667497-.856787C.667497-.18929 1.205479 .219178 2.052304 .219178C3.337484 .219178 4.552927-1.135741 4.552927-3.277709C4.552927-5.957659 3.407223-6.635118 2.520548-6.635118C1.972603-6.635118 1.484433-6.455791 1.05604-6.007472C.647572-5.559153 .418431-5.140722 .418431-4.393524C.418431-3.148194 1.295143-2.171856 2.410959-2.171856C3.01868-2.171856 3.427148-2.590286 3.656289-3.16812ZM2.420922-2.400996C2.261519-2.400996 1.803238-2.400996 1.494396-3.028643C1.315068-3.39726 1.315068-3.895392 1.315068-4.383562C1.315068-4.921544 1.315068-5.389788 1.524284-5.758406C1.793275-6.256538 2.171856-6.386052 2.520548-6.386052C2.978829-6.386052 3.307597-6.047323 3.476961-5.599004C3.596513-5.280199 3.636364-4.652553 3.636364-4.194271C3.636364-3.367372 3.297634-2.400996 2.420922-2.400996Z'/>
+<path id='m8-g11-61' d='M6.844334-3.257783C6.993773-3.257783 7.183064-3.257783 7.183064-3.457036S6.993773-3.656289 6.854296-3.656289H.886675C.747198-3.656289 .557908-3.656289 .557908-3.457036S.747198-3.257783 .896638-3.257783H6.844334ZM6.854296-1.325031C6.993773-1.325031 7.183064-1.325031 7.183064-1.524284S6.993773-1.723537 6.844334-1.723537H.896638C.747198-1.723537 .557908-1.723537 .557908-1.524284S.747198-1.325031 .886675-1.325031H6.854296Z'/>
+<path id='m8-g9-99' d='M3.945205-3.785803C3.785803-3.785803 3.646326-3.785803 3.506849-3.646326C3.347447-3.496887 3.327522-3.327522 3.327522-3.257783C3.327522-3.01868 3.506849-2.909091 3.696139-2.909091C3.985056-2.909091 4.254047-3.148194 4.254047-3.5467C4.254047-4.034869 3.785803-4.403487 3.078456-4.403487C1.733499-4.403487 .408468-2.978829 .408468-1.574097C.408468-.67746 .986301 .109589 2.022416 .109589C3.447073 .109589 4.283935-.946451 4.283935-1.066002C4.283935-1.125778 4.224159-1.195517 4.164384-1.195517C4.11457-1.195517 4.094645-1.175592 4.034869-1.09589C3.247821-.109589 2.161893-.109589 2.042341-.109589C1.414695-.109589 1.145704-.597758 1.145704-1.195517C1.145704-1.603985 1.344956-2.570361 1.683686-3.188045C1.992528-3.755915 2.540473-4.184309 3.088418-4.184309C3.427148-4.184309 3.805729-4.054795 3.945205-3.785803Z'/>
+</defs>
+<g id='m8-page4'>
+<use x='0' y='0' xlink:href='#m8-g9-99'/>
+<use x='7.078729' y='0' xlink:href='#m8-g11-61'/>
+<use x='17.594809' y='0' xlink:href='#m8-g11-49'/>
+<use x='22.576148' y='0' xlink:href='#m8-g11-55'/>
+<use x='27.557487' y='0' xlink:href='#m8-g11-48'/>
+<use x='34.752692' y='0' xlink:href='#m8-g8-0'/>
+<use x='44.715306' y='0' xlink:href='#m8-g11-49'/>
+<use x='49.696645' y='0' xlink:href='#m8-g11-49'/>
+<use x='57.445316' y='0' xlink:href='#m8-g11-61'/>
+<use x='67.961396' y='0' xlink:href='#m8-g11-49'/>
+<use x='72.942735' y='0' xlink:href='#m8-g11-53'/>
+<use x='77.924074' y='0' xlink:href='#m8-g11-57'/>
+</g>
+</svg></span>，覆盖率为 <span class="math math-inline" role="math" aria-label="159 / 1{,}700 \times 100\% \approx 9.35\%" style="vertical-align:-0.270em"><svg aria-hidden="true" focusable="false" fill="currentColor" style="height:1.080em"  version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'   viewBox='0 -7.47198 117.337906 9.96264'>
+<defs>
+<path id='m9-g9-58' d='M1.912827-.52802C1.912827-.816936 1.673724-1.05604 1.384807-1.05604S.856787-.816936 .856787-.52802S1.09589 0 1.384807 0S1.912827-.239103 1.912827-.52802Z'/>
+<path id='m9-g9-59' d='M2.022416-.009963C2.022416-.667497 1.77335-1.05604 1.384807-1.05604C1.05604-1.05604 .856787-.806974 .856787-.52802C.856787-.259029 1.05604 0 1.384807 0C1.504359 0 1.633873-.039851 1.733499-.129514C1.763387-.14944 1.77335-.159402 1.783313-.159402S1.803238-.14944 1.803238-.009963C1.803238 .727273 1.454545 1.325031 1.125778 1.653798C1.016189 1.763387 1.016189 1.783313 1.016189 1.8132C1.016189 1.882939 1.066002 1.92279 1.115816 1.92279C1.225405 1.92279 2.022416 1.155666 2.022416-.009963Z'/>
+<path id='m9-g9-61' d='M4.373599-7.0934C4.423412-7.222914 4.423412-7.262765 4.423412-7.272727C4.423412-7.382316 4.333748-7.47198 4.224159-7.47198C4.154421-7.47198 4.084682-7.442092 4.054795-7.382316L.597758 2.11208C.547945 2.241594 .547945 2.281445 .547945 2.291407C.547945 2.400996 .637609 2.49066 .747198 2.49066C.876712 2.49066 .9066 2.420922 .966376 2.251557L4.373599-7.0934Z'/>
+<path id='m9-g8-2' d='M3.875467-2.769614L1.882939-4.752179C1.763387-4.871731 1.743462-4.891656 1.663761-4.891656C1.564134-4.891656 1.464508-4.801993 1.464508-4.692403C1.464508-4.622665 1.484433-4.60274 1.594022-4.493151L3.58655-2.49066L1.594022-.488169C1.484433-.37858 1.464508-.358655 1.464508-.288917C1.464508-.179328 1.564134-.089664 1.663761-.089664C1.743462-.089664 1.763387-.109589 1.882939-.229141L3.865504-2.211706L5.927771-.14944C5.947696-.139477 6.017435-.089664 6.07721-.089664C6.196762-.089664 6.276463-.179328 6.276463-.288917C6.276463-.308842 6.276463-.348692 6.246575-.398506C6.236613-.418431 4.652553-1.982565 4.154421-2.49066L5.977584-4.313823C6.027397-4.373599 6.176837-4.503113 6.22665-4.562889C6.236613-4.582814 6.276463-4.622665 6.276463-4.692403C6.276463-4.801993 6.196762-4.891656 6.07721-4.891656C5.997509-4.891656 5.957659-4.851806 5.84807-4.742217L3.875467-2.769614Z'/>
+<path id='m9-g8-25' d='M7.193026-4.503113C7.193026-4.712329 7.123288-4.801993 7.053549-4.801993C7.013699-4.801993 6.924035-4.762142 6.914072-4.533001C6.874222-3.845579 6.176837-3.437111 5.529265-3.437111C4.951432-3.437111 4.4533-3.745953 3.935243-4.094645C3.39726-4.4533 2.859278-4.811955 2.211706-4.811955C1.285181-4.811955 .547945-4.104608 .547945-3.188045C.547945-2.968867 .627646-2.889166 .687422-2.889166C.787049-2.889166 .826899-3.078456 .826899-3.118306C.876712-3.955168 1.693649-4.254047 2.211706-4.254047C2.789539-4.254047 3.287671-3.945205 3.805729-3.596513C4.343711-3.237858 4.881694-2.879203 5.529265-2.879203C6.455791-2.879203 7.193026-3.58655 7.193026-4.503113ZM7.193026-2.171856C7.193026-2.460772 7.073474-2.480697 7.053549-2.480697C7.013699-2.480697 6.924035-2.430884 6.914072-2.211706C6.874222-1.524284 6.176837-1.115816 5.529265-1.115816C4.951432-1.115816 4.4533-1.424658 3.935243-1.77335C3.39726-2.132005 2.859278-2.49066 2.211706-2.49066C1.285181-2.49066 .547945-1.783313 .547945-.86675C.547945-.647572 .627646-.56787 .687422-.56787C.787049-.56787 .826899-.757161 .826899-.797011C.876712-1.633873 1.693649-1.932752 2.211706-1.932752C2.789539-1.932752 3.287671-1.62391 3.805729-1.275218C4.343711-.916563 4.881694-.557908 5.529265-.557908C6.475716-.557908 7.193026-1.295143 7.193026-2.171856Z'/>
+<path id='m9-g11-37' d='M6.824408-7.0934C6.884184-7.183064 6.90411-7.212951 6.90411-7.272727C6.90411-7.382316 6.814446-7.47198 6.704857-7.47198C6.60523-7.47198 6.555417-7.402242 6.495641-7.332503C5.997509-6.655044 5.330012-6.386052 4.60274-6.386052C3.905355-6.386052 3.287671-6.635118 2.739726-7.153176C2.550436-7.32254 2.34122-7.47198 2.022416-7.47198C1.265255-7.47198 .557908-6.635118 .557908-5.469489C.557908-4.26401 1.275218-3.457036 2.022416-3.457036C2.749689-3.457036 3.317559-4.343711 3.317559-5.459527C3.317559-5.599004 3.317559-6.067248 3.108344-6.585305C3.755915-6.216687 4.254047-6.166874 4.612702-6.166874C5.369863-6.166874 5.877958-6.475716 5.937733-6.515567L5.947696-6.505604L1.474471 .159402C1.384807 .288917 1.384807 .33873 1.384807 .358655C1.384807 .468244 1.484433 .557908 1.58406 .557908S1.703611 .518057 1.783313 .408468L6.824408-7.0934ZM2.032379-3.676214C1.833126-3.676214 1.175592-3.805729 1.175592-5.459527C1.175592-7.123288 1.823163-7.252802 2.032379-7.252802C2.560399-7.252802 3.068493-6.515567 3.068493-5.469489C3.068493-4.393524 2.550436-3.676214 2.032379-3.676214ZM6.445828 .33873C6.246575 .33873 5.589041 .209215 5.589041-1.444583C5.589041-3.108344 6.236613-3.237858 6.445828-3.237858C6.973848-3.237858 7.481943-2.500623 7.481943-1.454545C7.481943-.37858 6.963885 .33873 6.445828 .33873ZM7.731009-1.444583C7.731009-2.590286 7.143213-3.457036 6.435866-3.457036C5.678705-3.457036 4.971357-2.620174 4.971357-1.454545C4.971357-.249066 5.688667 .557908 6.435866 .557908C7.163138 .557908 7.731009-.328767 7.731009-1.444583Z'/>
+<path id='m9-g11-48' d='M4.582814-3.188045C4.582814-3.985056 4.533001-4.782067 4.184309-5.519303C3.726027-6.475716 2.909091-6.635118 2.49066-6.635118C1.892902-6.635118 1.165629-6.37609 .757161-5.449564C.438356-4.762142 .388543-3.985056 .388543-3.188045C.388543-2.440847 .428394-1.544209 .836862-.787049C1.265255 .019925 1.992528 .219178 2.480697 .219178C3.01868 .219178 3.775841 .009963 4.214197-.936488C4.533001-1.62391 4.582814-2.400996 4.582814-3.188045ZM2.480697 0C2.092154 0 1.504359-.249066 1.325031-1.205479C1.215442-1.803238 1.215442-2.719801 1.215442-3.307597C1.215442-3.945205 1.215442-4.60274 1.295143-5.140722C1.484433-6.326276 2.231631-6.41594 2.480697-6.41594C2.809465-6.41594 3.466999-6.236613 3.656289-5.250311C3.755915-4.692403 3.755915-3.935243 3.755915-3.307597C3.755915-2.560399 3.755915-1.882939 3.646326-1.24533C3.496887-.298879 2.929016 0 2.480697 0Z'/>
+<path id='m9-g11-49' d='M2.929016-6.37609C2.929016-6.615193 2.929016-6.635118 2.699875-6.635118C2.082192-5.997509 1.205479-5.997509 .886675-5.997509V-5.688667C1.085928-5.688667 1.673724-5.688667 2.191781-5.947696V-.787049C2.191781-.428394 2.161893-.308842 1.265255-.308842H.946451V0C1.295143-.029888 2.161893-.029888 2.560399-.029888S3.825654-.029888 4.174346 0V-.308842H3.855542C2.958904-.308842 2.929016-.418431 2.929016-.787049V-6.37609Z'/>
+<path id='m9-g11-51' d='M2.889166-3.506849C3.706102-3.775841 4.283935-4.473225 4.283935-5.260274C4.283935-6.07721 3.407223-6.635118 2.450809-6.635118C1.444583-6.635118 .687422-6.03736 .687422-5.280199C.687422-4.951432 .9066-4.762142 1.195517-4.762142C1.504359-4.762142 1.703611-4.98132 1.703611-5.270237C1.703611-5.768369 1.235367-5.768369 1.085928-5.768369C1.39477-6.256538 2.052304-6.386052 2.410959-6.386052C2.819427-6.386052 3.367372-6.166874 3.367372-5.270237C3.367372-5.150685 3.347447-4.572852 3.088418-4.134496C2.789539-3.656289 2.450809-3.626401 2.201743-3.616438C2.122042-3.606476 1.882939-3.58655 1.8132-3.58655C1.733499-3.576588 1.663761-3.566625 1.663761-3.466999C1.663761-3.35741 1.733499-3.35741 1.902864-3.35741H2.34122C3.158157-3.35741 3.526775-2.67995 3.526775-1.703611C3.526775-.348692 2.839352-.059776 2.400996-.059776C1.972603-.059776 1.225405-.229141 .876712-.816936C1.225405-.767123 1.534247-.986301 1.534247-1.364882C1.534247-1.723537 1.265255-1.92279 .976339-1.92279C.737235-1.92279 .418431-1.783313 .418431-1.344956C.418431-.438356 1.344956 .219178 2.430884 .219178C3.646326 .219178 4.552927-.687422 4.552927-1.703611C4.552927-2.520548 3.92528-3.297634 2.889166-3.506849Z'/>
+<path id='m9-g11-53' d='M4.473225-2.002491C4.473225-3.188045 3.656289-4.184309 2.580324-4.184309C2.102117-4.184309 1.673724-4.024907 1.315068-3.676214V-5.618929C1.514321-5.559153 1.843088-5.489415 2.161893-5.489415C3.387298-5.489415 4.084682-6.396015 4.084682-6.525529C4.084682-6.585305 4.054795-6.635118 3.985056-6.635118C3.975093-6.635118 3.955168-6.635118 3.905355-6.60523C3.706102-6.515567 3.217933-6.316314 2.550436-6.316314C2.15193-6.316314 1.693649-6.386052 1.225405-6.595268C1.145704-6.625156 1.125778-6.625156 1.105853-6.625156C1.006227-6.625156 1.006227-6.545455 1.006227-6.386052V-3.437111C1.006227-3.257783 1.006227-3.178082 1.145704-3.178082C1.215442-3.178082 1.235367-3.20797 1.275218-3.267746C1.384807-3.427148 1.753425-3.965131 2.560399-3.965131C3.078456-3.965131 3.327522-3.506849 3.407223-3.327522C3.566625-2.958904 3.58655-2.570361 3.58655-2.072229C3.58655-1.723537 3.58655-1.125778 3.347447-.707347C3.108344-.318804 2.739726-.059776 2.281445-.059776C1.554172-.059776 .986301-.587796 .816936-1.175592C.846824-1.165629 .876712-1.155666 .986301-1.155666C1.315068-1.155666 1.484433-1.404732 1.484433-1.643836S1.315068-2.132005 .986301-2.132005C.846824-2.132005 .498132-2.062267 .498132-1.603985C.498132-.747198 1.185554 .219178 2.30137 .219178C3.457036 .219178 4.473225-.737235 4.473225-2.002491Z'/>
+<path id='m9-g11-55' d='M4.742217-6.067248C4.83188-6.1868 4.83188-6.206725 4.83188-6.41594H2.410959C1.195517-6.41594 1.175592-6.545455 1.135741-6.734745H.886675L.557908-4.682441H.806974C.836862-4.841843 .926526-5.469489 1.05604-5.589041C1.125778-5.648817 1.902864-5.648817 2.032379-5.648817H4.094645C3.985056-5.489415 3.198007-4.403487 2.978829-4.07472C2.082192-2.729763 1.753425-1.344956 1.753425-.328767C1.753425-.229141 1.753425 .219178 2.211706 .219178S2.669988-.229141 2.669988-.328767V-.836862C2.669988-1.384807 2.699875-1.932752 2.779577-2.470735C2.819427-2.699875 2.958904-3.556663 3.39726-4.174346L4.742217-6.067248Z'/>
+<path id='m9-g11-57' d='M3.656289-3.16812V-2.849315C3.656289-.518057 2.620174-.059776 2.042341-.059776C1.872976-.059776 1.334994-.079701 1.066002-.418431C1.504359-.418431 1.58406-.707347 1.58406-.876712C1.58406-1.185554 1.344956-1.334994 1.125778-1.334994C.966376-1.334994 .667497-1.24533 .667497-.856787C.667497-.18929 1.205479 .219178 2.052304 .219178C3.337484 .219178 4.552927-1.135741 4.552927-3.277709C4.552927-5.957659 3.407223-6.635118 2.520548-6.635118C1.972603-6.635118 1.484433-6.455791 1.05604-6.007472C.647572-5.559153 .418431-5.140722 .418431-4.393524C.418431-3.148194 1.295143-2.171856 2.410959-2.171856C3.01868-2.171856 3.427148-2.590286 3.656289-3.16812ZM2.420922-2.400996C2.261519-2.400996 1.803238-2.400996 1.494396-3.028643C1.315068-3.39726 1.315068-3.895392 1.315068-4.383562C1.315068-4.921544 1.315068-5.389788 1.524284-5.758406C1.793275-6.256538 2.171856-6.386052 2.520548-6.386052C2.978829-6.386052 3.307597-6.047323 3.476961-5.599004C3.596513-5.280199 3.636364-4.652553 3.636364-4.194271C3.636364-3.367372 3.297634-2.400996 2.420922-2.400996Z'/>
+</defs>
+<g id='m9-page5'>
+<use x='0' y='0' xlink:href='#m9-g11-49'/>
+<use x='4.981339' y='0' xlink:href='#m9-g11-53'/>
+<use x='9.962678' y='0' xlink:href='#m9-g11-57'/>
+<use x='14.944017' y='0' xlink:href='#m9-g9-61'/>
+<use x='19.925356' y='0' xlink:href='#m9-g11-49'/>
+<use x='24.906695' y='0' xlink:href='#m9-g9-59'/>
+<use x='27.674104' y='0' xlink:href='#m9-g11-55'/>
+<use x='32.655443' y='0' xlink:href='#m9-g11-48'/>
+<use x='37.636782' y='0' xlink:href='#m9-g11-48'/>
+<use x='44.831987' y='0' xlink:href='#m9-g8-2'/>
+<use x='54.7946' y='0' xlink:href='#m9-g11-49'/>
+<use x='59.775939' y='0' xlink:href='#m9-g11-48'/>
+<use x='64.757278' y='0' xlink:href='#m9-g11-48'/>
+<use x='69.738618' y='0' xlink:href='#m9-g11-37'/>
+<use x='80.808175' y='0' xlink:href='#m9-g8-25'/>
+<use x='91.324255' y='0' xlink:href='#m9-g11-57'/>
+<use x='96.305594' y='0' xlink:href='#m9-g9-58'/>
+<use x='99.073003' y='0' xlink:href='#m9-g11-51'/>
+<use x='104.054342' y='0' xlink:href='#m9-g11-53'/>
+<use x='109.035681' y='0' xlink:href='#m9-g11-37'/>
+</g>
+</svg></span>，这一行显示 9.4%。“紧迫性”的编码实例仍然是三个。用“临界点”或“时间节点”所做的编码实例各有自己的一行。文字段数按行、按编码分别统计。</p>
+<h3 id="walk-through-keywords">用关键词比较两个文档集<a class="anchor" href="#walk-through-keywords" aria-hidden="true">#</a></h3>
+<p><em>关键词列表</em>找出一组文档比另一组文档用得明显更多或更少的词。例如，“气候辩论”中的“行动派”文档集包含一个已存储的关键词查询，名为“关键词：行动派”。这个关键词列表把该文档集与“怀疑派”比较，找出使行动派的语言有别于对方的词。关键词列表统计的是建立索引时找出的词的出现频率，所以两个文档集中的文档都必须先建立索引。</p>
+<figure class="shot" id="getting-started-keywords"><img class="shot-light" src="../figures/zh-Hans/light/getting-started-keywords.webp" alt="“行动派”与“怀疑派”比较得出的关键词。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/getting-started-keywords.webp" alt="“行动派”与“怀疑派”比较得出的关键词。" loading="lazy"><figcaption>“行动派”与“怀疑派”比较得出的关键词。</figcaption></figure>
+<p>制作关键词列表的步骤如下：</p>
+<ol>
+<li>在导航栏的<strong class="ui">文档集</strong>下点按第一个文档集。这个文档集会在一个标签页中打开。</li>
+<li>在标签页顶部的那排按钮中点按<strong class="ui">查询</strong>。窗口较窄时，这排按钮是一个菜单，请从中选取<strong class="ui">查询</strong>。</li>
+<li>在左侧一栏的<strong class="ui">模板</strong>下，点按<strong class="ui">词语</strong>组中的<strong class="ui">关键词</strong>。</li>
+<li>在<strong class="ui">显示</strong>条件中，打开显示<strong class="ui">项目其余部分</strong>的菜单，选择<strong class="ui">文档集</strong>。在随后出现的菜单中，选择另一个文档集。</li>
+<li>显示<strong class="ui">词元</strong>的菜单保持不变，这样英文的 <em>cost</em> 和 <em>costs</em> 会算作同一个词。显示 <strong class="ui">LL ≥ 3.84</strong> 的菜单也保持不变。</li>
+</ol>
+<p>比较结果显示在构建器下方，分为<strong class="ui">正关键词</strong>和<strong class="ui">负关键词</strong>两个列表。<strong class="ui">正关键词</strong>列出在第一个文档集（<em>目标语料</em>）中比在第二个文档集（<em>参考语料</em>）中出现得更频繁的词。<strong class="ui">负关键词</strong>则相反，列出在目标语料中比在参考语料中出现得更少的词。这两个列表上方，<strong class="ui">目标语料词数</strong>显示目标语料的总词数，<strong class="ui">参考语料词数</strong>同样显示参考语料的总词数。如图所示，“行动派”是目标语料，“怀疑派”是参考语料。表格的每一行显示以下信息：</p>
+<ul>
+<li><strong class="ui">数量</strong>，即这个词在目标语料中出现的次数；</li>
+<li><strong class="ui">参考</strong>，即它在参考语料中出现的次数。分数会把这两个次数标准化；</li>
+<li><strong class="ui">对数似然</strong>，即表明差异并非偶然的证据有多强；</li>
+<li><strong class="ui">对数比</strong>，即两个文档集之间差异的大小，以这个词的<em>相对频率</em>翻了几番来衡量。相对频率是一个词在所属文档集总词数中所占的比例。值为 1 时，这个词在目标语料用词中所占的份额是它在参考语料用词中所占份额的两倍；值为 2 时是四倍；值为 −1 时是一半。</li>
+</ul>
+<p>假设<em>钱</em>在行动派的文本中每 1,000 个词出现 2 次，在怀疑派的文本中每 1,000 个词出现 1 次。也就是说，它在目标语料中出现的频率是参考语料中的两倍，目标语料与参考语料的相对频率之比为 2。由于相对频率翻了一番，对数比约为 1。以 2 为底的<em>对数</em>用来数翻了几番，它算出的是 2 的几次方等于某个数。因此，上例中相对频率之比等于 <span class="math math-inline" role="math" aria-label="2 = 2^1" style="vertical-align:-0.000em"><svg aria-hidden="true" focusable="false" fill="currentColor" style="height:0.879em"  version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'   viewBox='0 -8.109622 27.217331 8.109622'>
+<defs>
+<path id='m10-g4-49' d='M2.336239-4.435367C2.336239-4.623661 2.322291-4.630635 2.127024-4.630635C1.680697-4.191283 1.046077-4.184309 .760149-4.184309V-3.93325C.927522-3.93325 1.387796-3.93325 1.771357-4.128518V-.571856C1.771357-.341719 1.771357-.251059 1.073973-.251059H.808966V0C.934496-.006974 1.792279-.027895 2.050311-.027895C2.266501-.027895 3.145205-.006974 3.29863 0V-.251059H3.033624C2.336239-.251059 2.336239-.341719 2.336239-.571856V-4.435367Z'/>
+<path id='m10-g3-50' d='M1.265255-.767123L2.321295-1.793275C3.875467-3.16812 4.473225-3.706102 4.473225-4.702366C4.473225-5.838107 3.576588-6.635118 2.361146-6.635118C1.235367-6.635118 .498132-5.718555 .498132-4.83188C.498132-4.273973 .996264-4.273973 1.026152-4.273973C1.195517-4.273973 1.544209-4.393524 1.544209-4.801993C1.544209-5.061021 1.364882-5.32005 1.016189-5.32005C.936488-5.32005 .916563-5.32005 .886675-5.310087C1.115816-5.957659 1.653798-6.326276 2.231631-6.326276C3.138232-6.326276 3.566625-5.519303 3.566625-4.702366C3.566625-3.905355 3.068493-3.118306 2.520548-2.500623L.607721-.368618C.498132-.259029 .498132-.239103 .498132 0H4.194271L4.473225-1.733499H4.224159C4.174346-1.43462 4.104608-.996264 4.004981-.846824C3.935243-.767123 3.277709-.767123 3.058531-.767123H1.265255Z'/>
+<path id='m10-g3-61' d='M6.844334-3.257783C6.993773-3.257783 7.183064-3.257783 7.183064-3.457036S6.993773-3.656289 6.854296-3.656289H.886675C.747198-3.656289 .557908-3.656289 .557908-3.457036S.747198-3.257783 .896638-3.257783H6.844334ZM6.854296-1.325031C6.993773-1.325031 7.183064-1.325031 7.183064-1.524284S6.993773-1.723537 6.844334-1.723537H.896638C.747198-1.723537 .557908-1.723537 .557908-1.524284S.747198-1.325031 .886675-1.325031H6.854296Z'/>
+</defs>
+<g id='m10-page2'>
+<use x='0' y='0' xlink:href='#m10-g3-50'/>
+<use x='7.748672' y='0' xlink:href='#m10-g3-61'/>
+<use x='18.264752' y='0' xlink:href='#m10-g3-50'/>
+<use x='23.246091' y='-3.615364' xlink:href='#m10-g4-49'/>
+</g>
+</svg></span>，对数为 1。反过来，比值 <span class="math math-inline" role="math" aria-label="\tfrac{1}{2} = 2^{-1}" style="vertical-align:-0.372em"><svg aria-hidden="true" focusable="false" fill="currentColor" style="height:1.285em"  version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'   viewBox='1.195514 -8.416865 33.629423 11.852377'>
+<defs>
+<path id='m11-g1-0' d='M5.188543-1.57609C5.300125-1.57609 5.467497-1.57609 5.467497-1.743462C5.467497-1.917808 5.307098-1.917808 5.188543-1.917808H1.03213C.920548-1.917808 .753176-1.917808 .753176-1.750436C.753176-1.57609 .913574-1.57609 1.03213-1.57609H5.188543Z'/>
+<path id='m11-g3-50' d='M1.265255-.767123L2.321295-1.793275C3.875467-3.16812 4.473225-3.706102 4.473225-4.702366C4.473225-5.838107 3.576588-6.635118 2.361146-6.635118C1.235367-6.635118 .498132-5.718555 .498132-4.83188C.498132-4.273973 .996264-4.273973 1.026152-4.273973C1.195517-4.273973 1.544209-4.393524 1.544209-4.801993C1.544209-5.061021 1.364882-5.32005 1.016189-5.32005C.936488-5.32005 .916563-5.32005 .886675-5.310087C1.115816-5.957659 1.653798-6.326276 2.231631-6.326276C3.138232-6.326276 3.566625-5.519303 3.566625-4.702366C3.566625-3.905355 3.068493-3.118306 2.520548-2.500623L.607721-.368618C.498132-.259029 .498132-.239103 .498132 0H4.194271L4.473225-1.733499H4.224159C4.174346-1.43462 4.104608-.996264 4.004981-.846824C3.935243-.767123 3.277709-.767123 3.058531-.767123H1.265255Z'/>
+<path id='m11-g3-61' d='M6.844334-3.257783C6.993773-3.257783 7.183064-3.257783 7.183064-3.457036S6.993773-3.656289 6.854296-3.656289H.886675C.747198-3.656289 .557908-3.656289 .557908-3.457036S.747198-3.257783 .896638-3.257783H6.844334ZM6.854296-1.325031C6.993773-1.325031 7.183064-1.325031 7.183064-1.524284S6.993773-1.723537 6.844334-1.723537H.896638C.747198-1.723537 .557908-1.723537 .557908-1.524284S.747198-1.325031 .886675-1.325031H6.854296Z'/>
+<path id='m11-g4-49' d='M2.336239-4.435367C2.336239-4.623661 2.322291-4.630635 2.127024-4.630635C1.680697-4.191283 1.046077-4.184309 .760149-4.184309V-3.93325C.927522-3.93325 1.387796-3.93325 1.771357-4.128518V-.571856C1.771357-.341719 1.771357-.251059 1.073973-.251059H.808966V0C.934496-.006974 1.792279-.027895 2.050311-.027895C2.266501-.027895 3.145205-.006974 3.29863 0V-.251059H3.033624C2.336239-.251059 2.336239-.341719 2.336239-.571856V-4.435367Z'/>
+<path id='m11-g4-50' d='M3.521793-1.26924H3.284682C3.263761-1.115816 3.194022-.704359 3.103362-.63462C3.047572-.592777 2.510585-.592777 2.412951-.592777H1.129763C1.862017-1.241345 2.106102-1.436613 2.524533-1.764384C3.040598-2.175841 3.521793-2.608219 3.521793-3.270735C3.521793-4.11457 2.782565-4.630635 1.889913-4.630635C1.025156-4.630635 .439352-4.02391 .439352-3.382316C.439352-3.02665 .739228-2.991781 .808966-2.991781C.976339-2.991781 1.17858-3.110336 1.17858-3.361395C1.17858-3.486924 1.129763-3.731009 .767123-3.731009C.983313-4.226152 1.457534-4.379577 1.785305-4.379577C2.48269-4.379577 2.84533-3.835616 2.84533-3.270735C2.84533-2.66401 2.412951-2.182814 2.189788-1.931756L.509091-.27198C.439352-.209215 .439352-.195268 .439352 0H3.312578L3.521793-1.26924Z'/>
+</defs>
+<g id='m11-page3'>
+<use x='1.195514' y='-3.922607' xlink:href='#m11-g4-49'/>
+<rect x='1.195514' y='-2.68991' height='.398484' width='3.971238'/>
+<use x='1.195514' y='3.435512' xlink:href='#m11-g4-50'/>
+<use x='9.129598' y='0' xlink:href='#m11-g3-61'/>
+<use x='19.645678' y='0' xlink:href='#m11-g3-50'/>
+<use x='24.627017' y='-3.615364' xlink:href='#m11-g1-0'/>
+<use x='30.853696' y='-3.615364' xlink:href='#m11-g4-49'/>
+</g>
+</svg></span> 得到 −1。</p>
+<p><a href="queries-results.html#keywords">第 16 章“查询结果与统计”</a>用实例说明了这两种计分方法，并详细介绍如何选择阈值。各行按<strong class="ui">对数似然</strong>分数排序。分数高，说明差异很可能不只是偶然造成的。</p>
+<p>如果仍有文档正在建立索引，命中数旁边会另外显示已纳入的文档数，例如 <strong class="ui">4 / 6</strong>。</p>
+<figure class="shot" id="getting-started-save-query-dialog"><img class="shot-light" src="../figures/zh-Hans/light/getting-started-save-query-dialog.webp" alt="“行动派”关键词的存储查询对话框。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/getting-started-save-query-dialog.webp" alt="“行动派”关键词的存储查询对话框。" loading="lazy"><figcaption>“行动派”关键词的存储查询对话框。</figcaption></figure>
+<p>要保留这个查询：</p>
+<ol>
+<li>点按<strong class="ui">存储</strong>按钮（一个方框，箭头指向框内），然后选取<strong class="ui">存储</strong>。</li>
+<li>输入名称，<strong class="ui">可用范围</strong>保持为<strong class="ui">文档集</strong>。</li>
+<li>点按<strong class="ui">存储</strong>。</li>
+</ol>
+<p>这个已存储的查询保存在该文档集中。</p>
+<h3 id="walk-through-reading">阅读关键词背后的段落<a class="anchor" href="#walk-through-reading" aria-hidden="true">#</a></h3>
+<p>在“气候辩论”项目中，<em>农民</em>出现在行动派的关键词列表上，而行动派对这个词的提及几乎都出自同一篇文本“农民不是敌人”。在一篇文本之内，搜索栏可以带你逐一查看这个词出现的每个位置：</p>
+<ol>
+<li>打开文档集中的一篇文本。</li>
+<li>按下 ⌘F，输入这个词。文本中会标出当前命中位置，文档概览则显示所有命中位置；搜索栏显示你当前位于第几个命中。搜索栏会匹配文本中任何位置的字符，并且不区分大小写。因此，搜索 <code>天气</code> 也会命中 <em>十一天气温</em> 这样的字串。遇到这类结果，跳过即可。</li>
+<li>按下 ⌘G 或 Return 键转到下一个命中位置（⇧⌘G 返回上一个），并阅读周围的文字。</li>
+<li>为与你的研究问题相关的文字编码。</li>
+</ol>
+<figure class="shot" id="getting-started-find-bar"><img class="shot-light" src="../figures/zh-Hans/light/getting-started-find-bar.webp" alt="在“农民不是敌人”中查找“农民”的搜索栏，当前命中位置已在文本中标出，所有命中位置显示在文档概览中。" loading="lazy"><img class="shot-dark" src="../figures/zh-Hans/dark/getting-started-find-bar.webp" alt="在“农民不是敌人”中查找“农民”的搜索栏，当前命中位置已在文本中标出，所有命中位置显示在文档概览中。" loading="lazy"><figcaption>在“农民不是敌人”中查找“农民”的搜索栏，当前命中位置已在文本中标出，所有命中位置显示在文档概览中。</figcaption></figure>
+<p>要在整个文档集中查找这样的规律，请使用文档集<strong class="ui">查询</strong>视图中的索引行模板，把这个词作为词元输入。详见<a href="queries-results.html">第 16 章“查询结果与统计”</a>中的<a href="queries-results.html#concordance">索引行</a>。</p>
+<p>关于编码的更多内容，请参阅<a href="coding.html">第 7 章“编码”</a>和<a href="coding-analysis.html">第 13 章“编码分析”</a>。关于基于语法的分析，请参阅<a href="lenses.html">第 6 章“透镜”</a>、<a href="grammar-inspector.html">第 11 章“语法检查器”</a>和<a href="word-sketch.html">第 12 章“词汇速写”</a>。<a href="queries-building.html">第 15 章“构建查询”</a>介绍如何构建查询。</p>
+</article>
+<nav class="pager"><a class="previous" href="introduction.html"><span>上一章</span>简介</a><a class="next" href="projects-and-documents.html"><span>下一章</span>项目与文档</a></nav>
+<footer class="site-footer">© 2026 Ryan S. Cooper. 保留所有权利。<br>本版本借助人工智能根据英文原版翻译而成，译文可能存在错误或不准确之处。如有疑问，请以英文版为准。</footer>
+</main>
+<nav class="page-toc" aria-label="本页内容"><p>本页内容</p><ul>
+<li class="level-2"><a href="#first-launch">首次启动 LemmaLoom</a></li>
+<li class="level-2"><a href="#how-work-is-organized">LemmaLoom 如何组织工作</a></li>
+<li class="level-2"><a href="#creating-a-project">新建项目</a></li>
+<li class="level-2"><a href="#importing-a-first-document">导入文档</a></li>
+<li class="level-3"><a href="#after-the-import">导入之后</a></li>
+<li class="level-2"><a href="#main-window">认识主窗口</a></li>
+<li class="level-3"><a href="#sidebar">导航栏</a></li>
+<li class="level-3"><a href="#project-shelf">项目视图栏</a></li>
+<li class="level-3"><a href="#document-tabs">文档标签页</a></li>
+<li class="level-3"><a href="#reader">阅读器</a></li>
+<li class="level-3"><a href="#title-band">标题栏</a></li>
+<li class="level-3"><a href="#inspector">检查器</a></li>
+<li class="level-3"><a href="#arranging-the-window">调整窗口布局</a></li>
+<li class="level-2"><a href="#applying-a-first-code">应用编码</a></li>
+<li class="level-3"><a href="#creating-a-code">创建编码</a></li>
+<li class="level-3"><a href="#coding-a-passage">为一段文字编码</a></li>
+<li class="level-2"><a href="#library">工作保存在哪里</a></li>
+<li class="level-2"><a href="#privacy">隐私</a></li>
+<li class="level-2"><a href="#walk-through">从导入到第一次分析</a></li>
+<li class="level-3"><a href="#walk-through-import">导入多篇文本</a></li>
+<li class="level-3"><a href="#walk-through-attributes">填写属性值</a></li>
+<li class="level-3"><a href="#walk-through-sets">建立文档集</a></li>
+<li class="level-3"><a href="#walk-through-coding">为多篇文本编码</a></li>
+<li class="level-3"><a href="#walk-through-code-stats">查看一篇文本的编码情况</a></li>
+<li class="level-3"><a href="#walk-through-keywords">用关键词比较两个文档集</a></li>
+<li class="level-3"><a href="#walk-through-reading">阅读关键词背后的段落</a></li>
+</ul></nav>
+</div>
+<script src="../assets/guide.js" defer></script>
+</body>
+</html>

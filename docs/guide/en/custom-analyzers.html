@@ -1,0 +1,536 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Custom Analyzers · LemmaLoom User Guide</title>
+<link rel="stylesheet" href="../assets/guide.css">
+<link rel="icon" type="image/png" href="../assets/logo.png">
+<script>var r=document.documentElement;r.setAttribute('data-theme','light');try{if(localStorage.getItem('guide-theme')==='dark'){r.setAttribute('data-theme','dark')}}catch(e){}</script>
+</head>
+<body>
+<header class="topbar">
+<button class="menu-toggle" aria-label="Contents" aria-expanded="false">☰</button>
+<a class="brand" href="index.html"><span class="wordmark"><span class="lemma">Lemma</span>Loom</span><span class="guide-name">User Guide</span></a>
+<div class="search"><input type="search" id="search" placeholder="Search" aria-label="Search" autocomplete="off" data-empty="No results"><div class="results" id="results" hidden></div></div>
+<nav class="languages" aria-label="Language"><a href="../en/custom-analyzers.html" lang="en" aria-current="true">English</a><a href="../de/custom-analyzers.html" lang="de">Deutsch</a><a href="../zh-Hans/custom-analyzers.html" lang="zh-Hans">简体中文</a></nav>
+<button class="theme-toggle" data-light="Light" data-dark="Dark" aria-label="Theme"></button>
+<a class="pdf-link" href="https://github.com/LemmaLoom/public/raw/main/pdf/lemmaloom-guide-en.pdf">PDF</a>
+</header>
+<div class="layout">
+<nav class="sidebar" aria-label="Contents"><ol>
+<li class="unnumbered"><a href="quick-start.html">Quick Start</a></li>
+<li><a href="introduction.html">Introduction</a></li>
+<li><a href="getting-started.html">Getting Started</a></li>
+<li><a href="projects-and-documents.html">Projects and Documents</a></li>
+<li><a href="importing.html">Importing Material</a></li>
+<li><a href="reading-and-editing.html">Reading and Editing</a></li>
+<li><a href="lenses.html">Lenses</a></li>
+<li><a href="coding.html">Coding</a></li>
+<li><a href="sets-tags-attributes.html">Sets, Groups, Tags, and Attributes</a></li>
+<li><a href="translations.html">Translations and Split View</a></li>
+<li><a href="text-inspector.html">The Text Inspector</a></li>
+<li><a href="grammar-inspector.html">The Grammar Inspector</a></li>
+<li><a href="word-sketch.html">Word Sketch</a></li>
+<li><a href="coding-analysis.html">Analyzing Codes</a></li>
+<li><a href="sketch-space.html">Sketch Space</a></li>
+<li><a href="queries-building.html">Building a Query</a></li>
+<li><a href="queries-results.html">Query Results and Statistics</a></li>
+<li><a href="queries-patterns.html">Query Patterns and Discovery</a></li>
+<li><a href="queries-using-results.html">Using Query Results</a></li>
+<li><a href="dictionaries.html">Dictionaries</a></li>
+<li class="current"><a href="custom-analyzers.html">Custom Analyzers</a></li>
+<li><a href="analysis-and-indexing.html">Analysis and Indexing</a></li>
+<li><a href="exchange-and-export.html">Exchanging and Exporting</a></li>
+<li><a href="undo.html">Undo and Redo</a></li>
+<li><a href="settings.html">Settings and Appearance</a></li>
+<li><a href="keyboard-shortcuts.html">Keyboard Shortcuts</a></li>
+<li><a href="help-and-support.html">Help and Support</a></li>
+<li><a href="statistics-reference.html">Statistics at a Glance</a></li>
+<li class="unnumbered"><a href="glossary.html">Glossary</a></li>
+<li class="unnumbered"><a href="thanks.html">Thank You</a></li>
+</ol></nav>
+<main class="content">
+<article>
+<h1 id="custom-analyzers">Custom Analyzers</h1>
+<p>A custom analyzer is a short program in JavaScript. The analyzer reads the grammar analysis of a document and looks for the passages you want. Write the script in <strong class="ui">Window ▸ Analyzers</strong>, and LemmaLoom executes it during indexing of documents in the chosen languages in all your projects. Whatever your analyzer discovers gets stored in association with documents. Afterward, you can view those findings through your analyzer’s lens, auto-code them, and perform counts or comparisons in queries.</p>
+<p>Analyzers are for questions that depend on grammar and that the built-in lenses do not answer in the form you need. Queries provide quicker approaches to answering a single question (see <a href="queries-building.html">Chapter 15, Building a Query</a>); generally, an analyzer is worth writing when you repeatedly search for the same pattern in documents (both existing and ones you import later) and require annotations in the reader and counting capabilities.</p>
+<p>This chapter looks at the example project “Climate Debate”, which gets imported via <strong class="ui">File ▸ Import ▸ Example Project</strong> (see <a href="introduction.html#example-project">The example project</a> in <a href="introduction.html">Chapter 1, Introduction</a>). Specifically, it considers whether <em>climate</em> appears as the grammatical subject of clauses, in phrases such as <em>the climate has not waited for us</em>, or as an object, in phrases such as <em>protect the climate</em>. While dictionaries detect all instances of the word <em>climate</em> regardless of context, an analyzer distinguishes between subjects and objects based on their functions recorded in the grammar analysis. In the example analyzer “Climate Roles”, each <em>climate</em> that functions as the subject gets annotated in one color, whereas each <em>climate</em> that is an object gets annotated in another. <a href="#first-analyzer">Writing a first analyzer</a> gives details on how to write this particular analyzer yourself.</p>
+<p>Analyzers are the only component of LemmaLoom requiring programming skills from you. Although the scripts are relatively short and simple, they involve variables, lists, loops, <code>if</code> statements, and anonymous functions defined by <code>=&gt;</code> syntax. If you have never written a program, the free online <a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps">JavaScript course of the MDN Web Docs</a> introduces you to the basics. If you are not interested in programming, construct a query to retrieve desired data and turn that query into an analyzer to automatically generate the script (see <a href="queries-using-results.html#save-as-analyzer">Turning a query into an analyzer</a> in <a href="queries-using-results.html">Chapter 18, Using Query Results</a>). Generated scripts also serve as good examples for study.</p>
+<h2 id="key-terms">Key terms<a class="anchor" href="#key-terms" aria-hidden="true">#</a></h2>
+<p>An <em>analyzer</em> in LemmaLoom is a program executed during indexing which appends findings to the document. (For details about indexing in LemmaLoom, refer to <a href="analysis-and-indexing.html">Chapter 21, Analysis and Indexing</a>.) Three analyzers come bundled with LemmaLoom, and these include <strong class="ui">Cohesion</strong>, <strong class="ui">Metadiscourse</strong>, and <strong class="ui">Rhetoric</strong>. A <em>custom analyzer</em> may either be built by you or generated automatically by LemmaLoom according to your query. Each custom analyzer belongs to your library, so each one operates on the documents of all projects.</p>
+<p>The <em>script</em> is written in JavaScript, and must include a function called <code>analyze</code>. LemmaLoom will execute this function on your document analysis, and your analyzer must return the findings to LemmaLoom.</p>
+<p>The <em>document object</em> is the JavaScript object that will be passed into your function (<em>object</em> here in the programming sense, a bundle of named fields such as <code>text</code> and <code>lemma</code>). This object contains several fields which represent different properties of the document, including the language, sentences with their tokens, phrases, noun chunks, as well as outputs from the built-in analyzers.</p>
+<p><em>Tokens</em> are individual word forms and punctuation marks. Associated with each token are its dictionary form, or <em>lemma</em>, the part-of-speech tag, its <em>dependency relation</em> to the word it depends on (its <em>head</em>), and any morphological features such as number and tense.</p>
+<p>A <em>finding</em> represents one passage reported by the analyzer, consisting of a series of adjacent tokens in one sentence along with its key.</p>
+<p><em>Keys</em> represent types of findings, e.g., <code>subject</code>, <code>object</code>, and so forth. The <em>legend</em> is a collection of your keys along with corresponding labels, colors, and styles for visualization. The legend of your analyzer’s lens will be created from it.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Where</th><th>What you can do with a custom analyzer</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">Window ▸ Analyzers</strong></td><td>Write, test, save, change, and delete analyzers</td></tr>
+<tr><td><strong class="ui">Import Document</strong> dialog and <strong class="ui">Document Properties</strong></td><td>Choose whether an analyzer runs on a document; run it again or remove its output</td></tr>
+<tr><td>Lens menu of the reader</td><td>Annotate the findings in the open document</td></tr>
+<tr><td><strong class="ui">Document ▸ Auto Code…</strong></td><td>Code the findings</td></tr>
+<tr><td>Queries</td><td>Find <strong class="ui">Analysis · Findings</strong>, test them in rules, and count and compare them</td></tr>
+</tbody></table></div>
+<h2 id="analyzers-window">The Analyzers window<a class="anchor" href="#analyzers-window" aria-hidden="true">#</a></h2>
+<p>Choose <strong class="ui">Window ▸ Analyzers</strong> to open up the window. The window is split into three columns.</p>
+<ul>
+<li>The first column on the left is your list of analyzers sorted alphabetically. Within each row lies the list of languages your analyzer operates in; for example, <code>de en</code>. Clicking the <strong class="ui">Add Analyzer</strong> button below initiates creation of a new analyzer.</li>
+<li>The second column hosts the currently selected analyzer. This area contains the <strong class="ui">Name</strong>, the checkboxes for languages <strong class="ui">English</strong>, <strong class="ui">German</strong>, and <strong class="ui">Chinese</strong>, and the <strong class="ui">Save</strong> button at the top. Following those are the <strong class="ui">Legend</strong>, the script editor, and <strong class="ui">Try it out</strong>, which lets you test your analyzer on a few sentences.</li>
+<li>Lastly, the third column hosts the <strong class="ui">Reference</strong> panel, which contains the list of helper functions, named constants, and document object members.</li>
+</ul>
+<figure class="shot" id="custom-analyzers-window"><img class="shot-light" src="../figures/en/light/custom-analyzers-window.webp" alt="The Analyzers window with “Climate Roles” selected and its findings in a test sentence under Try it out." loading="lazy"><img class="shot-dark" src="../figures/en/dark/custom-analyzers-window.webp" alt="The Analyzers window with “Climate Roles” selected and its findings in a test sentence under Try it out." loading="lazy"><figcaption>The Analyzers window with “Climate Roles” selected and its findings in a test sentence under Try it out.</figcaption></figure>
+<p>When the window opens, the middle column will show a new, unsaved analyzer whose sample script finds every noun. If you want to modify an existing analyzer, click on it in the list on the left. At first, the <strong class="ui">Try it out</strong> pane consumes minimal vertical space at the bottom of the column, but dragging the divider upwards will increase its size during testing. LemmaLoom saves the height setting for you between launches.</p>
+<p>As you write your scripts, the editor numbers the lines, colors the parts of the script, and suggests names. Following <code>POS.</code>, the autocompletion popup will contain suggestions for all parts of speech. Likewise, after <code>LL.</code> the popup contains the list of helper functions. The editor will also underline some mistakes that occur while you type. This includes references to undefined constants for instance. To insert a breakpoint into your script, click in the left margin next to the line number of interest (see <a href="#breakpoints">Breakpoints and stepping</a> later in this chapter).</p>
+<figure class="shot" id="custom-analyzers-autocomplete"><img class="shot-light" src="../figures/en/light/custom-analyzers-autocomplete.webp" alt="The editor in the Analyzers window after typing POS. on a new last line, with the parts of speech suggested." loading="lazy"><img class="shot-dark" src="../figures/en/dark/custom-analyzers-autocomplete.webp" alt="The editor in the Analyzers window after typing POS. on a new last line, with the parts of speech suggested." loading="lazy"><figcaption>The editor in the Analyzers window after typing POS. on a new last line, with the parts of speech suggested.</figcaption></figure>
+<aside class="callout note"><p class="callout-title">Note</p><p>Changes are kept only until you save them. Clicking another analyzer in the list, clicking <strong class="ui">Add Analyzer</strong>, and closing the window are actions that would cause unsaved changes to disappear.</p>
+</aside>
+<h2 id="first-analyzer">Writing a first analyzer<a class="anchor" href="#first-analyzer" aria-hidden="true">#</a></h2>
+<p>In the “Climate Roles” analyzer, there are only two keys, <code>subject</code> and <code>object</code>. The key for each <em>climate</em> depends on whether the word acts as the subject or object within a sentence structure. The full script looks like this:</p>
+<pre><code>const CLIMATE = ['climate', 'klima', '气候'];
+function analyze(doc) {
+  const findings = [];
+  for (const sentence of doc.sentences) {
+    sentence.tokens.forEach((token, index) =&gt; {
+      if (CLIMATE.includes(token.lemma.toLowerCase())) {
+        const role = token.derived.function;
+        if (role === FUNCTION.SUBJECT) {
+          findings.push({ sentenceIndex: sentence.index, start: index, end: index + 1, key: 'subject' });
+        }
+        if (role === FUNCTION.OBJECT) {
+          findings.push({ sentenceIndex: sentence.index, start: index, end: index + 1, key: 'object' });
+        }
+      }
+    });
+  }
+  return findings;
+}
+</code></pre>
+<p>Most of the documents within “Climate Debate” are written in English, whereas “Running Out of Time (German)” is written in German, so “Climate Roles” runs on both languages. Its legend refers to the two keys as “Climate as subject” and “Climate as object”.</p>
+<p>To create an analyzer:</p>
+<ol>
+<li>Choose <strong class="ui">Window ▸ Analyzers</strong>. If the middle column shows an analyzer you have saved, click <strong class="ui">Add Analyzer</strong> below the list.</li>
+<li>Enter a name in <strong class="ui">Name</strong>.</li>
+<li>Select the languages of the documents the analyzer should run on. <strong class="ui">English</strong> is selected at the start.</li>
+<li>Click in the editor, press ⌘A to select the sample script, and type or paste your script in its place.</li>
+<li>Give each key a label in the <strong class="ui">Legend</strong>, where LemmaLoom lists the keys it has found in the script (see <a href="#legend">Keys and the legend</a> later in this chapter).</li>
+<li>Test the script under <strong class="ui">Try it out</strong> (see <a href="#try-it-out">Testing with Try it out</a> later in this chapter).</li>
+<li>Click <strong class="ui">Save</strong>.</li>
+</ol>
+<p>A good test for “Climate Roles” is one that involves both uses in a single sentence; for instance, <em>The climate is changing faster than our politics, so we must do more for the climate</em>. If you choose <code>en</code> in the language menu next to it, <strong class="ui">Run</strong> highlights the first instance of <em>climate</em> in blue as <code>subject</code>, while highlighting the second instance in red as <code>object</code>.</p>
+<p>After saving, the new analyzer gets added to the list, after which LemmaLoom automatically begins to run it on your documents, behind the scenes, in the languages you’ve selected. The analyzer is made available immediately from the lens menu of each document in its languages, and its annotations appear once it has run there.</p>
+<h3 id="reading-the-script">Reading the script<a class="anchor" href="#reading-the-script" aria-hidden="true">#</a></h3>
+<p>If you are familiar with JavaScript, move on to <a href="#document-object">The document an analyzer receives</a> below. Please note that lines are referred to according to the editor line numbering when the code has been inserted.</p>
+<p>Line 1 (<code>const CLIMATE = …</code>) defines which lemmas count as <em>climate</em>. <code>const</code> assigns a value a name, and square brackets define an array. <em>Climates</em> in English has the lemma <em>climate</em>, whereas German <em>Klimas</em>, like in <em>des Klimas</em>, has the lemma <em>Klima</em>. This array lists these words in English, German, and Chinese. Note that the German word is lowercased, <code>klima</code>, since line 6 lowercases each lemma when trying to match lemmas.</p>
+<p>On line 2 (<code>function analyze(doc) {</code>), the function called by LemmaLoom is defined with an argument called <code>doc</code>. This argument represents the document object passed by LemmaLoom. Line 3 (<code>const findings = []</code>) declares an array variable, <code>findings</code>, to hold findings.</p>
+<p>In line 4 (<code>for (const sentence of doc.sentences) {</code>), the script iterates over each sentence of the document; for each iteration, it performs the operations in this block. Similarly in line 5 (<code>sentence.tokens.forEach(…)</code>), it iterates over tokens in the current sentence; <code>(token, index) =&gt; { … }</code> is an anonymous function; <code>forEach</code> calls it once per iteration with arguments representing the current token and its position in the sentence, starting from 0.</p>
+<p>If the condition in line 6 (<code>if (CLIMATE.includes(…)) {</code>) is true, meaning <code>includes</code> finds the token lemma in the <code>CLIMATE</code> list, the statements within the curly braces of this <code>if</code> execute.</p>
+<p>Line 7 (<code>const role = token.derived.function;</code>) accesses the grammatical function value of the current token; this is the same value displayed by the <strong class="ui">Grammatical function</strong> lens. Lines 8 (<code>role === FUNCTION.SUBJECT</code>) and 11 (<code>role === FUNCTION.OBJECT</code>) test equality between variables using <code>===</code>. Equality operators return true if both operands are equal. Here the script checks whether the grammatical function of the token is <code>FUNCTION.SUBJECT</code> or <code>FUNCTION.OBJECT</code> (see <a href="#constants">Constants</a> later in this chapter).</p>
+<p>When true, the script pushes objects representing findings onto the <code>findings</code> array on lines 9 and 12 (<code>findings.push(…)</code>); note that an object is surrounded by braces. Each object includes four properties representing the sentence of origin, the starting index of the passage (<code>start</code>, i.e., the current token’s <code>index</code>), the position just after the passage’s last token (<code>end</code>, here <code>index + 1</code>), and the key. Therefore, each finding corresponds to just one word, whose starting index and ending index will be consecutive.</p>
+<p>Lastly, on line 17 (<code>return findings;</code>), the script sends the results back to LemmaLoom.</p>
+<p><em>Object</em> is one broad category of grammatical functions, and it includes the object of prepositions. Therefore, this script will count instances like <em>do more for the climate</em>, as well as <em>protect the climate</em>. The subjects of passive clauses such as <em>the climate is affected by our emissions</em> would fall under the <code>FUNCTION.SUBJECT</code> grammatical function category; thus, they are counted as subjects. Should you wish to count passive subjects with the objects, modify line 7 to <code>const role = token.dep === DEP.NSUBJPASS ? FUNCTION.OBJECT : token.derived.function;</code>. With <code>?</code> and <code>:</code>, the line chooses between <code>FUNCTION.OBJECT</code> and the token’s own function depending on whether the token is a passive clause subject or otherwise. Keep in mind that this solution applies fully to English alone; the German grammar parser recognizes passive subjects identically to active subjects, and the Chinese parser gives this label to only some subjects of 被 sentences.</p>
+<p>The script here could trace any word grammatically; for instance, <em>government</em> or <em>industry</em>. Replace the lemmas in line 1 with the respective lowercase versions of your words.</p>
+<h2 id="document-object">The document an analyzer receives<a class="anchor" href="#document-object" aria-hidden="true">#</a></h2>
+<p>The function <code>analyze</code> takes one argument, referred to hereafter as <code>doc</code>. This argument contains three fields:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>What it holds</th></tr></thead>
+<tbody>
+<tr><td><code>doc.language</code></td><td>The language of the analysis, <code>&quot;en&quot;</code>, <code>&quot;de&quot;</code>, or <code>&quot;zh&quot;</code></td></tr>
+<tr><td><code>doc.sentences</code></td><td>The sentences, in order</td></tr>
+<tr><td><code>doc.builtins</code></td><td>The results of the built-in analyzers <strong class="ui">Cohesion</strong>, <strong class="ui">Metadiscourse</strong>, and <strong class="ui">Rhetoric</strong></td></tr>
+</tbody></table></div>
+<p>Analyzers can only return results based on the document’s analysis. If you want to combine the analyzer’s findings with your codings, memos, links, bookmarks, attributes, document properties, or the results of other custom analyzers, you should consider creating a query to do so (see <a href="#using-findings">Using the findings</a> later in this chapter).</p>
+<p>For very large documents, LemmaLoom indexes documents in segments with a maximum text length of half a megabyte (approximately 80,000 English words). For each segment, LemmaLoom will invoke the <code>analyze</code> function once, and the sentence numbering resets to 0. Documents of ordinary length are indexed as a single segment.</p>
+<h3 id="sentences">Sentences<a class="anchor" href="#sentences" aria-hidden="true">#</a></h3>
+<p>Fields contained within entries of <code>doc.sentences</code> include:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>What it holds</th></tr></thead>
+<tbody>
+<tr><td><code>index</code></td><td>The sentence’s number, counting from 0. It is also the sentence’s position in <code>doc.sentences</code>.</td></tr>
+<tr><td><code>text</code></td><td>The text of the sentence</td></tr>
+<tr><td><code>tokens</code></td><td>The tokens of the sentence, in order</td></tr>
+<tr><td><code>root</code></td><td>The position of the sentence’s root token, usually its main verb, or <code>-1</code> if the sentence has no parse</td></tr>
+<tr><td><code>constituents</code></td><td>The phrases of the sentence (see <a href="#phrases-and-noun-chunks">Phrases and noun chunks</a>)</td></tr>
+<tr><td><code>nounChunks</code></td><td>The noun chunks of the sentence</td></tr>
+</tbody></table></div>
+<h3 id="tokens">Tokens<a class="anchor" href="#tokens" aria-hidden="true">#</a></h3>
+<p>The token numbering starts at 0 within each sentence, and positions in scripts refer to token indices. Tokens consist of either words or punctuation marks. Each token contains these fields:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>What it holds</th><th>Example</th></tr></thead>
+<tbody>
+<tr><td><code>text</code></td><td>The token as it appears in the text</td><td><code>targets</code></td></tr>
+<tr><td><code>whitespace</code></td><td>The spacing that follows the token</td><td><code>&quot; &quot;</code></td></tr>
+<tr><td><code>lemma</code></td><td>The dictionary form; in Chinese the same as <code>text</code></td><td><code>target</code></td></tr>
+<tr><td><code>pos</code></td><td>The universal part of speech, with the same codes in every language</td><td><code>NOUN</code></td></tr>
+<tr><td><code>tag</code></td><td>The fine-grained tag from the language’s own tag set</td><td><code>NNS</code></td></tr>
+<tr><td><code>dep</code></td><td>The dependency relation to the token’s head</td><td><code>nsubjpass</code></td></tr>
+<tr><td><code>head</code></td><td>The position of the token’s head; the root points to itself</td><td><code>4</code></td></tr>
+<tr><td><code>index</code></td><td>The token’s own position in the sentence</td><td><code>2</code></td></tr>
+<tr><td><code>morph</code></td><td>The morphological features; empty in Chinese</td><td><code>{ Number: &quot;Plur&quot; }</code></td></tr>
+<tr><td><code>isStop</code></td><td><code>true</code> for very common words such as <em>the</em> and <em>of</em></td><td><code>false</code></td></tr>
+<tr><td><code>derived</code></td><td>Three categories LemmaLoom works out from the fields above (see the next section)</td><td></td></tr>
+</tbody></table></div>
+<p>Example analyses in the table are based on the sentence <em>The new targets were announced last year.</em> An analysis of this sentence generally follows the form below:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>index</th><th>text</th><th>lemma</th><th>pos</th><th>tag</th><th>dep</th><th>head</th><th>derived.function</th></tr></thead>
+<tbody>
+<tr><td>0</td><td>The</td><td>the</td><td>DET</td><td>DT</td><td>det</td><td>2</td><td>adjectival</td></tr>
+<tr><td>1</td><td>new</td><td>new</td><td>ADJ</td><td>JJ</td><td>amod</td><td>2</td><td>adjectival</td></tr>
+<tr><td>2</td><td>targets</td><td>target</td><td>NOUN</td><td>NNS</td><td>nsubjpass</td><td>4</td><td>subject</td></tr>
+<tr><td>3</td><td>were</td><td>be</td><td>AUX</td><td>VBD</td><td>auxpass</td><td>4</td><td>connector</td></tr>
+<tr><td>4</td><td>announced</td><td>announce</td><td>VERB</td><td>VBN</td><td>ROOT</td><td>4</td><td>mainClause</td></tr>
+<tr><td>5</td><td>last</td><td>last</td><td>ADJ</td><td>JJ</td><td>amod</td><td>6</td><td>adjectival</td></tr>
+<tr><td>6</td><td>year</td><td>year</td><td>NOUN</td><td>NN</td><td>npadvmod</td><td>4</td><td>adverbial</td></tr>
+<tr><td>7</td><td>.</td><td>.</td><td>PUNCT</td><td>.</td><td>punct</td><td>4</td><td>unknown</td></tr>
+</tbody></table></div>
+<p>Read the <code>head</code> column as arrows pointing from each word to the word it depends on. <em>Targets</em> depends on <em>announced</em>, at position 4, as its passive subject, while <em>the</em> and <em>new</em> depend on <em>targets</em>. <em>Announced</em> is the root word, hence it is its own head, and <code>sentence.root</code> is 4.</p>
+<p>Tags and relations vary per language. In English, the tags follow Penn Treebank, and the relation labels are English dependency relations such as <code>nsubj</code> and <code>dobj</code>. In German, the tags follow STTS, whereas relation labels follow TIGER; for example, <code>sb</code> is for a subject while <code>oa</code> is for an accusative object. In Chinese, the tags follow the Chinese Treebank, while relation labels are the English labels plus Chinese ones such as <code>aux:asp</code> and <code>nmod:assmod</code>. The values of the <code>pos</code> field and all <code>derived</code> fields remain identical across the three languages; thus a script testing only these suffices across all languages. The Reference panel lists tags and labels by name (see <a href="#reference-panel">The Reference panel</a> later in this chapter).</p>
+<h3 id="derived-categories">Derived categories<a class="anchor" href="#derived-categories" aria-hidden="true">#</a></h3>
+<p><code>token.derived</code> consists of three categories calculated by LemmaLoom for each token. Each is the category of one lens and means the same in every language.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Lens</th><th>Values</th></tr></thead>
+<tbody>
+<tr><td><code>derived.function</code></td><td><strong class="ui">Grammatical function</strong></td><td><code>subject</code>, <code>object</code>, <code>predicative</code>, <code>complement</code>, <code>adjectival</code>, <code>adverbial</code>, <code>appositive</code>, <code>agent</code>, <code>conjunct</code>, <code>connector</code>, <code>mainClause</code>, <code>unknown</code></td></tr>
+<tr><td><code>derived.posCategory</code></td><td><strong class="ui">Word class</strong></td><td><code>noun</code>, <code>verb</code>, <code>adjective</code>, <code>adverb</code>, <code>pronoun</code>, <code>determiner</code>, <code>preposition</code>, <code>conjunction</code>, <code>number</code>, <code>interjection</code>, <code>other</code></td></tr>
+<tr><td><code>derived.phraseCategory</code></td><td><strong class="ui">Phrase</strong></td><td><code>nounPhrase</code>, <code>verbPhrase</code>, <code>prepPhrase</code>, <code>adjPhrase</code>, <code>advPhrase</code>, <code>conjPhrase</code>, <code>interjection</code>, <code>other</code>, or an empty string</td></tr>
+</tbody></table></div>
+<p>LemmaLoom uses the token’s dependency relation to infer the function of the token. For several relations, however, the inference takes the token’s head into account. If the head is a noun, pronoun, or numeral, a modifier relation such as <code>advmod</code> counts as <code>adjectival</code>; if not, it counts as <code>adverbial</code>. Relations that are classified with a subtype, indicated by a colon, will count according to their prefix, except <code>obl:agent</code>, which counts as <code>agent</code>. The root is assigned the function <code>mainClause</code>, while <code>unknown</code> refers to any remaining relations, including, say, punctuation.</p>
+<p>The phrase category refers to the category of the smallest enclosing phrase excluding clauses. Tokens belonging solely to a clause-level phrase (like the period punctuation mark) will receive an empty string for their phrase category.</p>
+<h3 id="phrases-and-noun-chunks">Phrases and noun chunks<a class="anchor" href="#phrases-and-noun-chunks" aria-hidden="true">#</a></h3>
+<p><code>sentence.constituents</code> gives you an array of the sentence’s phrases according to the phrase structure tree represented visually in the <strong class="ui">Phrase</strong> lens and the sentence diagrams. Phrases contain the starting and ending indices (<code>start</code> and <code>end</code>) of the phrase’s tokens along with an array of the phrase <code>labels</code>, e.g., <code>['NP']</code> for a noun phrase. If multiple phrases cover exactly the same tokens, then there will be one object containing the labels in the order they are nested from outside to inside.</p>
+<p><code>sentence.nounChunks</code> gives you the noun chunks of the sentence. Noun chunks refer to nouns preceded by words belonging to them, like <em>the new targets</em>. Noun chunks contain starting and ending indices.</p>
+<p>Here’s how the two arrays could look for <em>The new targets were announced last year.</em></p>
+<pre><code>constituents: [
+  { start: 0, end: 8, labels: ['S'] },
+  { start: 0, end: 3, labels: ['NP'] },
+  { start: 3, end: 7, labels: ['VP'] },
+  { start: 4, end: 7, labels: ['VP'] },
+  { start: 5, end: 7, labels: ['NP'] },
+]
+nounChunks: [
+  { start: 0, end: 3 },
+]
+</code></pre>
+<p><code>S</code> represents a sentence, while <code>VP</code> denotes a verb phrase. <em>Last year</em> is a noun phrase but not a noun chunk. English noun chunks occur exclusively around nouns or pronouns functioning as subjects, objects, or the like in the sentence. <em>Year</em> is actually an adverbial modifier in this instance. Both lists may be empty; e.g., consider a response consisting of a solitary word. Account for such possibilities when implementing your program code.</p>
+<h3 id="builtin-results">Results of the built-in analyzers<a class="anchor" href="#builtin-results" aria-hidden="true">#</a></h3>
+<p>Your custom analyzer runs on a document last. The three built-in analyzers run first, giving their results in <code>doc.builtins</code>. If you deleted the results from one of the built-in analyzers earlier, those results are still available to your custom analyzer.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Each entry holds</th></tr></thead>
+<tbody>
+<tr><td><code>doc.builtins.cohesion</code></td><td>One entry per sentence, with <code>sentenceIndex</code>, <code>tie</code> (how the sentence links back to what came before), <code>theme</code> and <code>rheme</code> (the token ranges of the sentence’s opening and of its stress position, each as <code>[start, end]</code>; the field is missing when the sentence has none), and <code>tieWord</code> (the word that makes the tie)</td></tr>
+<tr><td><code>doc.builtins.metadiscourse</code></td><td>One entry per word the analyzer found, with <code>sentenceIndex</code>, <code>local</code> (the position of the token), and <code>category</code>, such as <code>hedge</code></td></tr>
+<tr><td><code>doc.builtins.rhetoric</code></td><td>One entry per device, with <code>device</code>, such as <code>passiveVoice</code>, <code>sentenceIndex</code>, <code>range</code> (the tokens as <code>[start, end]</code>), and <code>note</code></td></tr>
+</tbody></table></div>
+<p><code>tie</code> has seven different values (<code>opening</code>, <code>pronoun</code>, <code>possessive</code>, <code>demonstrative</code>, <code>repetition</code>, <code>zero</code>, and <code>broken</code>). <code>category</code> includes five potential values (<code>hedge</code>, <code>booster</code>, <code>attitude</code>, <code>connective</code>, and <code>engagement</code>); additionally, <code>category</code> in German can contain <code>modalParticle</code>, while in Chinese it can include <code>finalParticle</code>. Lastly, there are thirteen possible values for <code>device</code> ranging from <code>passiveVoice</code> to <code>correlative</code>. All possible values for each field are listed in the Reference panel, along with any lens-defined names. Further information on what each analyzer analyzes can be found in <a href="lenses.html">Chapter 6, Lenses</a>.</p>
+<h3 id="helper-functions">Helper functions<a class="anchor" href="#helper-functions" aria-hidden="true">#</a></h3>
+<p>There are several functions available in <code>LL</code> which handle common operations during scripting.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Function</th><th>What it gives</th></tr></thead>
+<tbody>
+<tr><td><code>LL.isWord(token)</code></td><td><code>true</code> unless the token is punctuation or a symbol such as <code>$</code></td></tr>
+<tr><td><code>LL.isNominal(pos)</code></td><td><code>true</code> for <code>NOUN</code>, <code>PROPN</code>, and <code>PRON</code></td></tr>
+<tr><td><code>LL.isVerbal(pos)</code></td><td><code>true</code> for <code>VERB</code> and <code>AUX</code></td></tr>
+<tr><td><code>LL.children(sentence, i)</code></td><td>The positions of the tokens whose head is token <code>i</code></td></tr>
+<tr><td><code>LL.subtree(sentence, i)</code></td><td><code>{ start, end }</code>, the unbroken span around token <code>i</code> made of it and the tokens that depend on it, directly or through others</td></tr>
+<tr><td><code>LL.root(sentence)</code></td><td>The position of the sentence’s root, the same as <code>sentence.root</code></td></tr>
+<tr><td><code>LL.text(sentence, start, end)</code></td><td>The text of the tokens from <code>start</code> up to <code>end</code>, with their spacing</td></tr>
+<tr><td><code>console.log(...)</code></td><td>Writes a line under <strong class="ui">Try it out</strong>; lists and objects are written out in full</td></tr>
+</tbody></table></div>
+<p>In the example sentence, <code>LL.children(sentence, 4)</code> gives back an array <code>[2, 3, 6, 7]</code>, the tokens depending upon the word <em>announced</em>. Calling <code>LL.subtree(sentence, 2)</code> provides an object which has two fields <code>{ start: 0, end: 3 }</code>, spanning the text <em>The new targets</em>, while calling <code>LL.text(sentence, 0, 3)</code> yields the text <code>&quot;The new targets&quot;</code>.</p>
+<p><code>console.log</code> calls are for debugging only; their output is discarded when the analyzer runs on your documents.</p>
+<h3 id="constants">Constants<a class="anchor" href="#constants" aria-hidden="true">#</a></h3>
+<p>The large majority of fields consist of short codes such as <code>NOUN</code> and <code>nsubjpass</code>. Codes can be specified in quotes as strings, or as named constants; the expression <code>token.pos === POS.NOUN</code> means the same thing as <code>token.pos === 'NOUN'</code>. Named constants should be used whenever possible. Suggestions for named constants will pop up in the editor, and a misspelled constant is underlined. Any quoted string is accepted as-is, regardless of whether the spelling is correct or not. During runtime, an incorrectly spelled constant such as <code>POS.NOUM</code> evaluates to <code>undefined</code> and the script keeps running, so the underline is your only warning.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Constant</th><th>Holds the values of</th><th>Example</th></tr></thead>
+<tbody>
+<tr><td><code>POS</code></td><td><code>token.pos</code></td><td><code>POS.NOUN</code> is <code>'NOUN'</code></td></tr>
+<tr><td><code>TAG</code></td><td><code>token.tag</code>, in all three languages</td><td><code>TAG.NNS</code> is <code>'NNS'</code></td></tr>
+<tr><td><code>DEP</code></td><td><code>token.dep</code>, in all three languages</td><td><code>DEP.NSUBJPASS</code> is <code>'nsubjpass'</code></td></tr>
+<tr><td><code>PHRASE</code></td><td>the <code>labels</code> of constituents</td><td><code>PHRASE.NP</code> is <code>'NP'</code></td></tr>
+<tr><td><code>MORPH</code></td><td>the names of the features in <code>token.morph</code></td><td><code>MORPH.TENSE</code> is <code>'Tense'</code></td></tr>
+<tr><td><code>FUNCTION</code></td><td><code>token.derived.function</code></td><td><code>FUNCTION.SUBJECT</code> is <code>'subject'</code></td></tr>
+<tr><td><code>CATEGORY</code></td><td><code>token.derived.posCategory</code></td><td><code>CATEGORY.NOUN</code> is <code>'noun'</code></td></tr>
+<tr><td><code>PHRASE_CATEGORY</code></td><td><code>token.derived.phraseCategory</code></td><td><code>PHRASE_CATEGORY.NOUN_PHRASE</code> is <code>'nounPhrase'</code></td></tr>
+<tr><td><code>COHESION</code></td><td><code>tie</code> in <code>doc.builtins.cohesion</code></td><td><code>COHESION.REPETITION</code> is <code>'repetition'</code></td></tr>
+<tr><td><code>METADISCOURSE</code></td><td><code>category</code> in <code>doc.builtins.metadiscourse</code></td><td><code>METADISCOURSE.HEDGE</code> is <code>'hedge'</code></td></tr>
+<tr><td><code>RHETORIC</code></td><td><code>device</code> in <code>doc.builtins.rhetoric</code></td><td><code>RHETORIC.PASSIVE_VOICE</code> is <code>'passiveVoice'</code></td></tr>
+<tr><td><code>KEY</code></td><td>the keys in this analyzer’s legend</td><td><code>KEY.SUBJECT</code> is <code>'subject'</code></td></tr>
+</tbody></table></div>
+<p>Constant names in LemmaLoom consist of the codes in uppercase. When there is an occurrence of lowercase characters being followed directly by uppercase characters in a code, put an underscore in between; for instance, <code>nounPhrase</code> is written as <code>NOUN_PHRASE</code> and <code>mainClause</code> as <code>MAIN_CLAUSE</code>. All non-letter symbols that cannot be part of names, like colons, are replaced by underscores.</p>
+<p><code>MORPH</code> constants serve as names for the feature codes. Write your feature values as strings; examples include <code>token.morph[MORPH.TENSE] === 'Past'</code> or simply <code>token.morph.Tense === 'Past'</code>.</p>
+<p>Constant names apply to most codes, but four cases differ:</p>
+<ul>
+<li><code>DEP.ROOT</code> holds <code>'root'</code>; however, the root is labeled as <code>ROOT</code> in analyses. Determine whether a token is the root by comparing indices, like <code>index === sentence.root</code>, or using <code>'ROOT'</code>.</li>
+<li>Ten common features are listed under the <code>MORPH</code> constant as Tense, Number, Person, Mood, VerbForm, Case, Degree, Aspect, Gender, and PronType. Use the string representation of any feature not included in the <code>MORPH</code> constant directly, as in <code>token.morph.Definite === 'Def'</code>.</li>
+<li>Phrase labels that occur exclusively in Chinese, such as <code>IP</code>, <code>DNP</code>, and <code>LCP</code>, need quotation marks around their names.</li>
+<li>Any tag composed of purely punctuation, such as the English period (<code>.</code>) and comma (<code>,</code>) or the German <code>$,</code>, requires quotation marks too.</li>
+</ul>
+<p>Avoid assigning names that already belong to constants or to <code>LL</code> or <code>console</code>. When running scripts that define their own <code>const KEY</code>, the processing stops due to errors.</p>
+<h3 id="reference-panel">The Reference panel<a class="anchor" href="#reference-panel" aria-hidden="true">#</a></h3>
+<p>The <strong class="ui">Reference</strong> panel to the right side of the window lists the parts of the document object, the helper functions, and the constants. Under <strong class="ui">API</strong> are listed <code>doc.language</code>, <code>doc.sentences[i].tokens[j]</code>, all three lists in <code>doc.builtins</code>, along with the helper functions. Every component’s value type will be provided after its declaration, e.g., <code>String</code>, <code>Bool</code>. All fields of the sentence, token, and finding objects may be viewed in tables within this chapter. All sections below <strong class="ui">API</strong> contain constants listed with their names written in plain English:</p>
+<ul>
+<li><strong class="ui">Part of speech</strong> (<code>POS</code>), <strong class="ui">Fine-grained tags</strong> (<code>TAG</code>), <strong class="ui">Dependency relations</strong> (<code>DEP</code>), <strong class="ui">Constituency labels</strong> (<code>PHRASE</code>), and <strong class="ui">Morphological features</strong> (<code>MORPH</code>);</li>
+<li><strong class="ui">Grammatical functions</strong> (<code>FUNCTION</code>), <strong class="ui">Word categories</strong> (<code>CATEGORY</code>), and <strong class="ui">Phrase categories</strong> (<code>PHRASE_CATEGORY</code>);</li>
+<li><strong class="ui">Rhetoric devices</strong> (<code>RHETORIC</code>), <strong class="ui">Cohesion ties</strong> (<code>COHESION</code>), and <strong class="ui">Metadiscourse categories</strong> (<code>METADISCOURSE</code>).</li>
+</ul>
+<p>All sections above are collapsed by default. Clicking a section header expands/collapses the relevant section accordingly. Find a particular item by typing a substring of it into <strong class="ui">Search</strong>. Constant lookup considers its name, code, or common English name. Lookup for an <strong class="ui">API</strong> entry will search for the literal string of the API declaration. The panel displays a combined listing of all matching items from all sections, or <strong class="ui">No matches</strong>. Click any item to insert it at the location of the caret within the editor panel.</p>
+<figure class="shot" id="custom-analyzers-reference"><img class="shot-light" src="../figures/en/light/custom-analyzers-reference.webp" alt="The Reference panel after typing subject in Search." loading="lazy"><img class="shot-dark" src="../figures/en/dark/custom-analyzers-reference.webp" alt="The Reference panel after typing subject in Search." loading="lazy"><figcaption>The Reference panel after typing subject in Search.</figcaption></figure>
+<h2 id="findings-and-legend">Findings and the legend<a class="anchor" href="#findings-and-legend" aria-hidden="true">#</a></h2>
+<h3 id="findings">Findings<a class="anchor" href="#findings" aria-hidden="true">#</a></h3>
+<p><code>analyze</code> must return a list where each element is a finding consisting of the following fields:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>What it holds</th></tr></thead>
+<tbody>
+<tr><td><code>sentenceIndex</code></td><td>The <code>index</code> of the sentence</td></tr>
+<tr><td><code>start</code></td><td>The position of the first token of the passage</td></tr>
+<tr><td><code>end</code></td><td>The position just after the last token</td></tr>
+<tr><td><code>key</code></td><td>One of the keys in the legend</td></tr>
+<tr><td><code>note</code></td><td>A short text of your own; optional</td></tr>
+</tbody></table></div>
+<p>With respect to the example <em>The new targets were announced</em>, the first token is at position 0 while the last is at position 4, giving the finding <code>start: 0</code> and <code>end: 5</code>. The number of tokens, therefore, always equals <code>end - start</code>, here 5.</p>
+<p>A finding must occur in one sentence alone. Overlapping is possible for findings and, consequently, one token may carry several keys; the reader then renders all their styles on it.</p>
+<p>Note fields are intended for use in queries. You could test them in a query using the field <strong class="ui">Note</strong> (see <a href="#using-findings">Using the findings</a> later in this chapter).</p>
+<h3 id="legend">Keys and the legend<a class="anchor" href="#legend" aria-hidden="true">#</a></h3>
+<p>There must be a corresponding row in the legend for every key that your findings use. The <strong class="ui">Legend</strong> pane above the editor displays the row for each key, with the following parts:</p>
+<ul>
+<li><strong class="ui">Key</strong> contains your key in script form.</li>
+<li><strong class="ui">Label</strong> contains the name that will display in the legend of the lens, and is used for the purpose of querying. Labels are initially set as the key name itself.</li>
+<li>The color well specifies the color used for your key’s findings. New keys take their colors in turn from a pool of eight.</li>
+<li>The style menu defines the rendering method used by the reader. This includes the options <strong class="ui">Highlight</strong>, <strong class="ui">Underline</strong>, <strong class="ui">Text color</strong>, or <strong class="ui">Bold</strong>. Initially, newly added keys have <strong class="ui">Highlight</strong> selected.</li>
+</ul>
+<p>Legend rows are generated for all keys written out in quotes (<code>key: '...'</code>) in your script in order of appearance while you write your script. When you remove a key from your script, the respective row is deleted from your legend. If you modify your keys’ names, then that particular row gets deleted, and replaced by a new row containing the modified key as its label and the default color. You should therefore assign colors and labels after deciding on key names.</p>
+<p>You may update any row, including its label, color, and style, whenever you wish. After you save, changes made to legend rows show in every document where the lens is enabled.</p>
+<h3 id="computed-keys">Keys the script computes<a class="anchor" href="#computed-keys" aria-hidden="true">#</a></h3>
+<p>A key may also be generated from the analysis itself. If you replace both <code>if</code> statements of the analyzer “Climate Roles”, along with the <code>push</code> lines inside them, with the line below, the grammatical function becomes the key:</p>
+<pre><code>findings.push({ sentenceIndex: sentence.index, start: index, end: index + 1, key: token.derived.function });
+</code></pre>
+<p>A <em>climate</em> that acts as a subject receives the key <code>subject</code>, a <em>climate</em> that is an object receives <code>object</code>, the first part of <em>climate policy</em> becomes <code>adjectival</code>, and so forth for each of the twelve values listed under <a href="#derived-categories">Derived categories</a> earlier in this chapter.</p>
+<p>These keys reach the legend via a test run. Upon clicking <strong class="ui">Save</strong>, LemmaLoom executes the script using a sample three-word sentence (<em>Cats sleep soundly</em> in English). Keys produced during this process will be automatically added. These rows keep their labels and colors; a key the script no longer produces is removed at the next save.</p>
+<p>Keys that the test run does not produce, as in this example, are added by hand:</p>
+<ol>
+<li>Click <strong class="ui">Add Key</strong> below the legend.</li>
+<li>Enter the key in the new row’s <strong class="ui">Key</strong> field, exactly as the script produces it (such as <code>adjectival</code>).</li>
+<li>Fill in <strong class="ui">Label</strong>, the color, and the style.</li>
+</ol>
+<p>Rows that you add will have a minus button at the end of the row that lets you remove the row; the row persists in the legend regardless of what your script contains. At save time, LemmaLoom excludes any row whose <strong class="ui">Key</strong> is blank, and of two rows with the same key, it keeps only the first.</p>
+<figure class="shot" id="custom-analyzers-legend-pane"><img class="shot-light" src="../figures/en/light/custom-analyzers-legend-pane.webp" alt="The Legend pane of “Climate Roles” with a new row added by Add Key and the style menu open." loading="lazy"><img class="shot-dark" src="../figures/en/dark/custom-analyzers-legend-pane.webp" alt="The Legend pane of “Climate Roles” with a new row added by Add Key and the style menu open." loading="lazy"><figcaption>The Legend pane of “Climate Roles” with a new row added by Add Key and the style menu open.</figcaption></figure>
+<aside class="callout note"><p class="callout-title">Note</p><p>Should your script generate keys in a document that do not exist in the legend, the analyzer fails, and LemmaLoom discards all its findings in the document. Likewise, <strong class="ui">Try it out</strong> ends with the same failure. All keys that can be produced by the script should therefore be added to the legend.</p>
+</aside>
+<p>If there exists a key inside your legend, then <code>KEY</code> has a constant for it. When your key <code>subject</code> is listed in your legend, you can write <code>key: KEY.SUBJECT</code>. If you write your key only as a <code>KEY</code> constant, then it needs to be added using <strong class="ui">Add Key</strong>. Any key beginning with a number like <code>1st</code> or containing letters beyond a to z like <code>über</code> or <code>主语</code> should be enclosed in quotation marks.</p>
+<h2 id="languages">Supported languages<a class="anchor" href="#languages" aria-hidden="true">#</a></h2>
+<p>There are checkboxes next to <strong class="ui">English</strong>, <strong class="ui">German</strong>, and <strong class="ui">Chinese</strong> to select which documents to run the analyzer on. These three languages are the ones LemmaLoom indexes. Only a document in a selected language will show an available option for the analyzer in the lens menu and display it as part of <strong class="ui">Document Properties</strong>. You must choose at least one language.</p>
+<p>Make sure your script is compatible with the chosen languages. “Climate Roles” is compatible with all three languages, although “Climate Debate” needs only English and German. Its list contains English, German, and Chinese lemmas, and it checks <code>token.derived.function</code>, which has identical values across all languages. Scripts that check <code>token.tag</code> or <code>token.dep</code> work only for the language of their labels. Multiple languages may be handled within one script with <code>doc.language</code>:</p>
+<pre><code>let subjectLabel = 'nsubj';
+if (doc.language === 'de') {
+  subjectLabel = 'sb';
+}
+</code></pre>
+<p>Even with derived fields taken into account, the analysis of each language will differ in specifics. Therefore, you should test each language you choose. In the case of English, <em>do more for the climate</em> results in a finding because the analysis will regard <em>climate</em> as the object of the preposition <em>for</em>. In German, on the other hand, the noun within the prepositional phrase <em>für das Klima</em> is usually labeled <code>nk</code> (part of a noun phrase) and thus counts as <code>adjectival</code>, resulting in a sentence with no finding.</p>
+<p>In order to test another language, choose it from the dropdown language menu provided under <strong class="ui">Try it out</strong>, then provide a sentence written in the language. Only those languages chosen by you will be selectable via menu; the menu lists them by their codes, <code>en</code> for English, <code>de</code> for German, and <code>zh</code> for Chinese.</p>
+<p>Upon saving, LemmaLoom deletes the analyzer’s findings from documents in deselected languages, while running the analyzer on newly selected languages’ documents.</p>
+<h2 id="try-it-out">Testing with Try it out<a class="anchor" href="#try-it-out" aria-hidden="true">#</a></h2>
+<p><strong class="ui">Try it out</strong> executes the script currently in the editor on the text you enter, regardless of whether the script has been saved or not. Use <strong class="ui">Try it out</strong> frequently during writing, and include sentences that differ structurally from your initial example, since the analyzer must account for each sentence structure within your documents.</p>
+<ol>
+<li>Enter one or more sentences in the box under <strong class="ui">Try it out</strong>.</li>
+<li>Choose the language of the text in the menu beside the box.</li>
+<li>Click <strong class="ui">Run</strong>.</li>
+</ol>
+<p>LemmaLoom performs the grammar analysis of your text using the same methods as for documents, then runs the built-in analyzers and then your script. Below the box, your text will appear along with annotations of the findings in the colors and styles specified in the legend. It might initially take a few seconds to prepare the grammar analysis for a particular language before performing your first run on it. <strong class="ui">Run</strong> is disabled while the box is empty (<strong class="ui">No text entered</strong>), and during a run the spinner icon replaces the button.</p>
+<figure class="shot" id="custom-analyzers-try-it-out"><img class="shot-light" src="../figures/en/light/custom-analyzers-try-it-out.webp" alt="Try it out after a run, with the first climate found as a subject and the second as an object." loading="lazy"><img class="shot-dark" src="../figures/en/dark/custom-analyzers-try-it-out.webp" alt="Try it out after a run, with the first climate found as a subject and the second as an object." loading="lazy"><figcaption>Try it out after a run, with the first climate found as a subject and the second as an object.</figcaption></figure>
+<p>Below the annotated text, there is a small console which displays everything the script has printed with <code>console.log</code>, one line per call, with every line preceded by ›. If there is nothing found by the script, the console will display <strong class="ui">0 findings</strong>. If you would like to know the interpretation of the analysis on a particular sentence, you may print the values. This line, placed inside the loop over sentences, prints each token with its relation:</p>
+<pre><code>console.log(sentence.tokens.map((token) =&gt; token.text + '/' + token.dep));
+</code></pre>
+<p>For <em>The new targets were announced last year.</em> it generates <code>[&quot;The/det&quot;,&quot;new/amod&quot;,&quot;targets/nsubjpass&quot;,&quot;were/auxpass&quot;,&quot;announced/ROOT&quot;,&quot;last/amod&quot;,&quot;year/npadvmod&quot;,&quot;./punct&quot;]</code>.</p>
+<p>The test text is kept inside the box while the window is open, regardless of switching analyzers, allowing you to run multiple analyzers on the same text.</p>
+<h3 id="errors">When errors occur<a class="anchor" href="#errors" aria-hidden="true">#</a></h3>
+<p>Should the execution fail, LemmaLoom will halt execution of your script, display an error message in red under the editor, and underline the faulty line in the editor when the error belongs to a particular line. For any errors in your findings, the editor underlines line 1.</p>
+<figure class="shot" id="custom-analyzers-error"><img class="shot-light" src="../figures/en/light/custom-analyzers-error.webp" alt="The error after Run when line 6 reads token.lema instead of token.lemma." loading="lazy"><img class="shot-dark" src="../figures/en/dark/custom-analyzers-error.webp" alt="The error after Run when line 6 reads token.lema instead of token.lemma." loading="lazy"><figcaption>The error after Run when line 6 reads token.lema instead of token.lemma.</figcaption></figure>
+<div class="table-wrap"><table>
+<thead><tr><th>Message</th><th>What it means</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">The script must define a function named analyze(doc).</strong></td><td>There is no function called <code>analyze</code>, perhaps because its name is misspelled.</td></tr>
+<tr><td><strong class="ui">analyze(doc) must return an array of findings.</strong></td><td>The function returns nothing, or something other than a list. Check the <code>return</code> line.</td></tr>
+<tr><td><strong class="ui">Finding 3 must have sentenceIndex, start, end, and key.</strong></td><td>A finding lacks one of the four fields, one of their names is misspelled, or a value has the wrong kind (a position that is not a number, or a key that is not text). A misspelled constant such as <code>KEY.SUBJCT</code> has no value, so it causes this message too. Findings are counted from 0, so this is the fourth.</td></tr>
+<tr><td><strong class="ui">Finding 3: sentenceIndex 12 is out of range.</strong></td><td>No sentence has that number.</td></tr>
+<tr><td><strong class="ui">Finding 3: token range 4..4 is out of range for sentence 0.</strong></td><td><code>end</code> is not larger than <code>start</code>, <code>start</code> is below 0, or <code>end</code> lies beyond the end of the sentence.</td></tr>
+<tr><td><strong class="ui">Finding 3: key “objekt” is not in the legend.</strong></td><td>The key has no row in the legend. Correct the script, or add the key with <strong class="ui">Add Key</strong>.</td></tr>
+<tr><td>A message beginning with <strong class="ui">TypeError</strong>, <strong class="ui">ReferenceError</strong>, or <strong class="ui">SyntaxError</strong></td><td>A mistake in the JavaScript itself. The editor underlines the line.</td></tr>
+</tbody></table></div>
+<p>A <strong class="ui">TypeError</strong> often indicates that a field is incorrectly spelled. Suppose your script had <code>token.lema.toLowerCase()</code> instead of <code>token.lemma.toLowerCase()</code> at line 6 of “Climate Roles”. This mistake would halt execution with a <strong class="ui">TypeError</strong> at line 6 because <code>token.lema</code> doesn’t exist, and therefore cannot be turned into lowercase.</p>
+<p>A script stuck in an infinite loop continues executing infinitely. Under <strong class="ui">Try it out</strong>, the spinning circle replaces <strong class="ui">Run</strong> indefinitely. Even the <strong class="ui">Save</strong> button executes the script, thus possibly creating an identical problem. You will need to select the entire script with ⌘A and copy it with ⌘C, since quitting loses your unsaved progress. Then quit LemmaLoom itself (⌘Q), reopen it, and paste your script back in. Typically, scripts that suffer from infinite looping contain a <code>while</code> loop whose condition never evaluates to false. If the script has a loop other than a <code>for … of</code> or <code>forEach</code> over a list, test it on a short text before you save.</p>
+<aside class="callout tip"><p class="callout-title">Tip</p><p>Press F1 while in the editor to access its command palette. Commands like navigating to a particular line number, searching or replacing text in the script, or commenting out lines (turning them into comments the script skips) can all be found here. Commenting out lines is especially useful in pinpointing problem areas in scripts.</p>
+</aside>
+<h2 id="breakpoints">Breakpoints and stepping<a class="anchor" href="#breakpoints" aria-hidden="true">#</a></h2>
+<p>If your annotated text does not meet expectations, you may halt execution in the middle of a test run and examine the current state of the script’s variables.</p>
+<ol>
+<li>Click in the margin to the left of a line number in the editor, or on the number itself. A red dot shows that the line has a <em>breakpoint</em>. Click again to remove it.</li>
+<li>Click <strong class="ui">Run</strong> under <strong class="ui">Try it out</strong>.</li>
+</ol>
+<p>The execution of the script pauses just before reaching the line marked by the breakpoint. Highlighting occurs on that line, and a box under the test text shows its line number, such as <strong class="ui">● L7</strong>, along with the current values of the script’s variables. Additionally, hovering the mouse pointer over one of these variables in the script editor displays its value.</p>
+<figure class="shot" id="custom-analyzers-breakpoint"><img class="shot-light" src="../figures/en/light/custom-analyzers-breakpoint.webp" alt="“Climate Roles” stopped at the breakpoint in line 7, with the values of doc, sentence, token, findings, and index under the test text." loading="lazy"><img class="shot-dark" src="../figures/en/dark/custom-analyzers-breakpoint.webp" alt="“Climate Roles” stopped at the breakpoint in line 7, with the values of doc, sentence, token, findings, and index under the test text." loading="lazy"><figcaption>“Climate Roles” stopped at the breakpoint in line 7, with the values of doc, sentence, token, findings, and index under the test text.</figcaption></figure>
+<p>There are three buttons taking the place of <strong class="ui">Run</strong>:</p>
+<ul>
+<li>The play button advances past the breakpoint to the next breakpoint or the end of the run.</li>
+<li>The bent arrow advances to the next line beginning a statement. This includes advancing into any loop statements as well as functions passed to <code>forEach</code>. Running through steps of “Climate Roles” thus advances past each token sequentially.</li>
+<li>The square ends the run prematurely.</li>
+</ul>
+<p>Variables displayed by LemmaLoom are limited to <code>doc</code>, <code>sentence</code>, <code>token</code>, <code>findings</code>, <code>finding</code>, <code>marker</code>, <code>span</code>, <code>clause</code>, <code>i</code>, and <code>index</code>, and they appear only if they currently exist in the script. These names are used in examples throughout this chapter wherever possible. Other variables, such as <code>role</code> in “Climate Roles”, may be logged using <code>console.log</code>. Long values are truncated; lists appear as their lengths (<code>Array(3)</code>), texts are cut after their first 80 characters, and objects after 120 characters.</p>
+<p>Given “Climate Roles” along with the example test sentence introduced earlier in the chapter, breaking on line 7 (<code>const role = …</code>) pauses execution at the first <em>climate</em>, where <code>index</code> is equal to 1 and <code>findings</code> is equal to <code>Array(0)</code>. Clicking the play button pauses execution at the second <em>climate</em>, where <code>index</code> equals 16 and <code>findings</code> equals <code>Array(1)</code>, since the finding for the first <em>climate</em> has been added in between.</p>
+<p>A breakpoint pauses a script only on a line beginning a statement. Thus a breakpoint on lines of closing braces and parentheses like <code>}</code> or <code>});</code> in “Climate Roles”, on lines beginning with <code>else</code>, or on a continuation of a previous statement is skipped. In a select number of layouts, LemmaLoom can follow the script only from breakpoint to breakpoint, and in a few it executes scripts completely without stopping on any breakpoints. Breakpoints are limited to <strong class="ui">Try it out</strong>.</p>
+<h2 id="saving">Saving, changing, and deleting<a class="anchor" href="#saving" aria-hidden="true">#</a></h2>
+<h3 id="saving-an-analyzer">Saving an analyzer<a class="anchor" href="#saving-an-analyzer" aria-hidden="true">#</a></h3>
+<p>To save the analyzer, either press <strong class="ui">Save</strong> at the top of the middle column, or hit Return when editing <strong class="ui">Name</strong> or a <strong class="ui">Label</strong> field. <strong class="ui">Save</strong> is disabled while <strong class="ui">Name</strong> is empty (<strong class="ui">Name is empty</strong>) or while no language is selected (<strong class="ui">No language chosen</strong>).</p>
+<p>Before saving the analyzer, LemmaLoom verifies its script. LemmaLoom extracts the legend keys first before running your script on a sample three-word sentence in each selected language (<em>Cats sleep soundly</em>, <em>Katzen schlafen gern</em>, and 猫 喜欢 睡觉). Because these sample sentences generate blank results for phrases, noun chunks, morphological features, and built-in results, verifying your script also detects any problems arising when processing empty lists. Should there be issues in your script, LemmaLoom informs you below the script editor (see <a href="#errors">When errors occur</a> earlier in this chapter). Another pair of messages displays only when you save. <strong class="ui">The script is empty.</strong> means that there is no script written in the editor, while <strong class="ui">No keys found in the script.</strong> indicates that the legend table is blank.</p>
+<p>LemmaLoom applies the verified script across all your documents in the selected languages next. Progress rings show in the navigation sidebar and in <strong class="ui">Window ▸ Activity</strong> (⌥⌘0). The time this operation takes will depend on how many documents you have and the power of your Mac.</p>
+<h3 id="changing">Changing an analyzer<a class="anchor" href="#changing" aria-hidden="true">#</a></h3>
+<p>Select an analyzer in the list, update it, and click <strong class="ui">Save</strong>. Depending on the nature of your update, different outcomes may occur:</p>
+<ul>
+<li>If the update consisted of changing its name, label, color, or style, then the change will be reflected immediately wherever its lens is enabled.</li>
+<li>In the event of updating the analyzer script itself, updating the language or set of languages it uses, or the keys it uses for analysis, LemmaLoom will rerun the entire analyzer process again for all documents in its designated languages, including any language you have just selected. Until it has processed the document in question, the analyzer’s row in that document’s <strong class="ui">Document Properties</strong> displays <strong class="ui">Out of Date</strong>.</li>
+</ul>
+<p>Creating an analyzer, updating it, and deletion are all entries in the undo history of the Analyzers window. While the Analyzers window is active, the operation <strong class="ui">Edit ▸ Undo Edit Analyzer</strong>, for instance, rolls back to the previous version of the analyzer. The middle column keeps showing what you saved until you select the analyzer from the list again. Saving prior to selection re-saves the newer version of the analyzer. More detail regarding undo in particular windows can be found in <a href="undo.html#windows">Which window a step belongs to</a> in <a href="undo.html">Chapter 23, Undo and Redo</a>.</p>
+<h3 id="deleting">Deleting an analyzer<a class="anchor" href="#deleting" aria-hidden="true">#</a></h3>
+<p>To delete an analyzer, right-click the analyzer in the list and choose <strong class="ui">Delete Analyzer</strong>. Alternatively, you can select the analyzer first and then choose <strong class="ui">Edit ▸ Delete Analyzer</strong> (⌘⌫). This shortcut function applies while the list has focus, as would happen upon selecting an analyzer. LemmaLoom immediately deletes the analyzer.</p>
+<p>Analyzers are shared across all projects, meaning deletion causes immediate removal across all projects. Its lens gets disabled for all currently open documents, and LemmaLoom removes its findings from all documents. <strong class="ui">Edit ▸ Undo Delete Analyzer</strong> (⌘Z) restores it and runs it again. Should you merely want an analyzer out of particular documents, disable the analyzer for those documents (described in <a href="#per-document">Analyzers for each document</a> later on in this chapter).</p>
+<h2 id="when-analyzers-run">When analyzers are executed<a class="anchor" href="#when-analyzers-run" aria-hidden="true">#</a></h2>
+<p>A custom analyzer is executed on your documents at the end of indexing, after the grammar analysis of each document and the three built-in analyzers. Each custom analyzer for the document’s language will be executed sequentially as long as it is enabled for the document. Its findings are saved alongside the document itself and accessed through the lens, <strong class="ui">Auto Code…</strong>, and queries.</p>
+<p>Your analyzers are executed on your document:</p>
+<ul>
+<li>upon initial indexing, once imported into the project or via <strong class="ui">Index Now</strong>;</li>
+<li>upon subsequent indexing, for example following changes made to the document’s text or language setting;</li>
+<li>upon saving a new analyzer, or a modification to the analyzer script, selected languages, or keys;</li>
+<li>via <strong class="ui">Run</strong> in the document’s <strong class="ui">Document Properties</strong>.</li>
+</ul>
+<p>Should modifications be made to an existing analyzer, LemmaLoom generally uses the previously performed grammar analysis on your documents and executes only the analyzers again without redoing everything from scratch. Nonetheless, an analyzer still processes every document within its assigned languages. If the script is inefficiently written, it causes a bottleneck in processing all the documents. Worse yet, should the script become trapped in an infinite loop, it keeps running indefinitely until you quit LemmaLoom. Should that happen, correct or delete the offending analyzer via <strong class="ui">Window ▸ Analyzers</strong> before quitting and reopening LemmaLoom.</p>
+<p>It is possible that an error occurs while executing the script on a specific document. Perhaps the document contains some particular combination of words or syntax not included in test sentences during development of the script. LemmaLoom discards the analyzer’s findings for the document and flags the analyzer in <strong class="ui">Document Properties</strong> as <strong class="ui">Not Run</strong> or <strong class="ui">Out of Date</strong>. From there, you may click <strong class="ui">Run</strong> in order to retry. If the problem persists and causes failure of the analyzer script again, LemmaLoom marks it as <strong class="ui">Failed</strong> in <strong class="ui">Document Properties</strong>, displaying the error message upon hover. To debug the exact problem, place suspicious sentences into <strong class="ui">Try it out</strong> and run the script there.</p>
+<figure class="shot" id="custom-analyzers-failed"><img class="shot-light" src="../figures/en/light/custom-analyzers-failed.webp" alt="The Analyzers list in the Indexing section of Document Properties for “Running Out of Time”, with “Climate Roles” marked Failed and its error message shown on hover." loading="lazy"><img class="shot-dark" src="../figures/en/dark/custom-analyzers-failed.webp" alt="The Analyzers list in the Indexing section of Document Properties for “Running Out of Time”, with “Climate Roles” marked Failed and its error message shown on hover." loading="lazy"><figcaption>The Analyzers list in the Indexing section of Document Properties for “Running Out of Time”, with “Climate Roles” marked Failed and its error message shown on hover.</figcaption></figure>
+<h2 id="per-document">Analyzers for each document<a class="anchor" href="#per-document" aria-hidden="true">#</a></h2>
+<p>Analyzers run on each document within its supported languages unless disabled for a document. You can disable an analyzer that does not suit a document when you import the document or at any time thereafter. How to select analyzers for a document is covered under <a href="analysis-and-indexing.html#document-analyzers">Choosing analyzers for a document</a> in <a href="analysis-and-indexing.html">Chapter 21, Analysis and Indexing</a>.</p>
+<p>When you import a document, in the <strong class="ui">Import Document</strong> dialog (or <strong class="ui">Import from Web</strong> for web pages), you have access to the <strong class="ui">Analyzers</strong> list, which shows the built-in analyzers first and yours after them in alphabetical order. Each entry in the list has a checkbox that you can deselect to prevent that particular analyzer from being executed on the document. When <strong class="ui">Language</strong> is set to <strong class="ui">Automatic</strong>, all analyzers will appear, whereas when a specific language is selected, then only those for that particular language appear. Additionally, the list becomes disabled whenever <strong class="ui">Index for grammar analysis</strong> is deselected. Further details are available under <a href="importing.html#import-indexing-options">Analyzers and indexing</a> in <a href="importing.html">Chapter 4, Importing Material</a>.</p>
+<p>On a document currently in your project, the <strong class="ui">Analyzers</strong> list appears in <strong class="ui">Document Properties</strong>:</p>
+<ol>
+<li>Right-click the document in the sidebar and choose <strong class="ui">Properties</strong>.</li>
+<li>In the <strong class="ui">Indexing</strong> section, find the <strong class="ui">Analyzers</strong> list.</li>
+</ol>
+<p>Every analyzer available for the document’s language receives its own row indicating whether it is <strong class="ui">Done</strong>, <strong class="ui">Out of Date</strong>, <strong class="ui">Not Run</strong>, <strong class="ui">Running</strong>, or <strong class="ui">Failed</strong>.</p>
+<ul>
+<li>To remove an analyzer’s findings from a document so it stops running on it, you press its trash button, <strong class="ui">Remove Output</strong>. This button appears once the analyzer has run on the document.</li>
+<li>To execute an analyzer that is <strong class="ui">Not Run</strong>, <strong class="ui">Out of Date</strong>, or removed from a document, you click <strong class="ui">Run</strong>; this action will also enable a removed analyzer on the document again.</li>
+</ul>
+<p><strong class="ui">Run</strong> is disabled while either the document has not yet been indexed (<strong class="ui">Not indexed yet</strong>), or indexing has been turned off for the document (<strong class="ui">Indexing is off</strong>). Removal and execution both occur immediately.</p>
+<p>Both removal of an analyzer and execution of a removed one are actions that appear in the main window’s undo history, and <strong class="ui">Edit ▸ Undo Remove Output</strong> restores and runs the analyzer again.</p>
+<figure class="shot" id="custom-analyzers-document-properties"><img class="shot-light" src="../figures/en/light/custom-analyzers-document-properties.webp" alt="The Analyzers list in the Indexing section of Document Properties for “Running Out of Time”." loading="lazy"><img class="shot-dark" src="../figures/en/dark/custom-analyzers-document-properties.webp" alt="The Analyzers list in the Indexing section of Document Properties for “Running Out of Time”." loading="lazy"><figcaption>The Analyzers list in the Indexing section of Document Properties for “Running Out of Time”.</figcaption></figure>
+<p>When you remove an analyzer from a document, it no longer appears in the lens menu of the document, and <strong class="ui">Auto Code…</strong> and queries involving it skip the document. If you ever modify an analyzer that has been disabled on a document, it stays disabled there, so the new version runs only on the documents where it is enabled.</p>
+<h2 id="using-findings">Using the findings<a class="anchor" href="#using-findings" aria-hidden="true">#</a></h2>
+<h3 id="findings-in-the-reader">In the reader<a class="anchor" href="#findings-in-the-reader" aria-hidden="true">#</a></h3>
+<p>Analyzers can be toggled individually through the lens menu to view annotations of their findings directly in the reader. To activate an individual analyzer’s annotations, open the lens menu located at the right of the title band; here, your analyzers are grouped together. The lens displays annotations, while its legend displays label names. <strong class="ui">Clear Analyzers</strong> disables all analyzer lenses immediately. Learn more about toggling specific keys and viewing only annotated sentences via <strong class="ui">Show only the sentences a lens annotates</strong> in <a href="lenses.html#analyzer-lenses">Analyzer lenses</a> in <a href="lenses.html">Chapter 6, Lenses</a>.</p>
+<figure class="shot" id="custom-analyzers-lens"><img class="shot-light" src="../figures/en/light/custom-analyzers-lens.webp" alt="“Running Out of Time” with the “Climate Roles” lens enabled." loading="lazy"><img class="shot-dark" src="../figures/en/dark/custom-analyzers-lens.webp" alt="“Running Out of Time” with the “Climate Roles” lens enabled." loading="lazy"><figcaption>“Running Out of Time” with the “Climate Roles” lens enabled.</figcaption></figure>
+<h3 id="coding-findings">Coding the findings<a class="anchor" href="#coding-findings" aria-hidden="true">#</a></h3>
+<p>Enabling the analyzer’s lens gives you access to the <strong class="ui">Document ▸ Auto Code…</strong> (⇧⌘A) function, which performs coding on whatever findings were made using the analyzer. This could be done on the currently open document, a document set, or even an entire project. Each key in the findings becomes a row in the <strong class="ui">Auto Code</strong> dialog. Named after its respective label, each of these can either be sent to an already established code (e.g., the row “Climate as object” to “Responsibility” in “Climate Debate”) or turned into new codes (e.g., two new codes from the two rows of “Climate Roles”). In a set or project, LemmaLoom does the same to all documents within it that use the same languages as the analyzer, have been indexed, and have the analyzer enabled. Please note that every mistake of the grammar analysis becomes a coding too. For more information on the dialog, see <a href="coding.html">Chapter 7, Coding</a>.</p>
+<h3 id="findings-in-queries">In queries<a class="anchor" href="#findings-in-queries" aria-hidden="true">#</a></h3>
+<p>A query that finds <strong class="ui">Analysis · Findings</strong> searches what has been discovered by the analyzers, the ones included with LemmaLoom and any custom ones you may have made. There are three fields that relate specifically to findings. <strong class="ui">Analyzer</strong> checks which analyzer discovered the finding, <strong class="ui">Finding</strong> tests the key under which the finding was recorded (listed under its label), and <strong class="ui">Note</strong> checks the note associated with the finding. Other tests available in queries also apply, including the codes for any finding, and any attributes that belong to its associated document. Queries on <strong class="ui">Library · Analyzers</strong> list the analyzers themselves and can check their <strong class="ui">Name</strong>, <strong class="ui">Languages</strong>, and <strong class="ui">Legend Keys</strong> (see <a href="queries-building.html#query-units">Choosing what to find</a> in <a href="queries-building.html">Chapter 15, Building a Query</a>).</p>
+<p>In “Climate Debate”, each document has an attribute titled “Stance”, taking values of either “Activist”, “Skeptic”, or “Neutral”. As a result, counting the findings from the “Climate Roles” analyzer by both key and “Stance” should reveal any differences between how activists and skeptics represent the topic of climate. When working with your materials, group by whichever attribute divides your documents.</p>
+<p>To query for the counts of an analyzer’s findings by group:</p>
+<ol>
+<li>Open the <strong class="ui">Queries</strong> section of the project.</li>
+<li>In <strong class="ui">Find</strong>, choose <strong class="ui">Analysis · Findings</strong>.</li>
+<li>In the <strong class="ui">Where</strong> condition, click <strong class="ui">Add</strong> and choose <strong class="ui">Add Rule</strong>.</li>
+<li>In the new rule’s field menu, choose <strong class="ui">Analyzer</strong> from the <strong class="ui">Finding</strong> section.</li>
+<li>Leave the comparison at <strong class="ui">is any of</strong>, and choose the analyzer as the rule’s value.</li>
+<li>In <strong class="ui">Show</strong>, choose <strong class="ui">Count</strong>.</li>
+<li>Click <strong class="ui">Group By</strong> and choose <strong class="ui">Finding</strong> in the new row’s field menu.</li>
+<li>Click <strong class="ui">Group By</strong> again and choose the attribute in the second row’s field menu, such as <strong class="ui">Attribute ▸ Stance</strong>.</li>
+<li>In the menu showing <strong class="ui">Hits</strong>, choose <strong class="ui">Per 10,000 Words</strong>.</li>
+</ol>
+<p>For “Climate Roles” in “Climate Debate”, you end up with a table showing the subjects and objects for each value of “Stance”. Each group contains a different amount of text; therefore, what you end up with is actually a table of rates. Rate refers to how many findings occur in each group per 10,000 words of text contained within the documents in the group (see <a href="queries-results.html#measures">Measures</a> in <a href="queries-results.html">Chapter 16, Query Results and Statistics</a>). For instance, assuming there were 4,000 words and 3 occurrences of “Climate as object” in the activists’ documents (using round numbers purely as examples), the rate will be <span class="math math-inline" role="math" aria-label="3 / 4{,}000 \times 10{,}000 = 7.5" style="vertical-align:-0.270em"><svg aria-hidden="true" focusable="false" fill="currentColor" style="height:1.080em"  version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'   viewBox='0 -7.47198 98.519525 9.96264'>
+<defs>
+<path id='m1-g0-2' d='M3.875467-2.769614L1.882939-4.752179C1.763387-4.871731 1.743462-4.891656 1.663761-4.891656C1.564134-4.891656 1.464508-4.801993 1.464508-4.692403C1.464508-4.622665 1.484433-4.60274 1.594022-4.493151L3.58655-2.49066L1.594022-.488169C1.484433-.37858 1.464508-.358655 1.464508-.288917C1.464508-.179328 1.564134-.089664 1.663761-.089664C1.743462-.089664 1.763387-.109589 1.882939-.229141L3.865504-2.211706L5.927771-.14944C5.947696-.139477 6.017435-.089664 6.07721-.089664C6.196762-.089664 6.276463-.179328 6.276463-.288917C6.276463-.308842 6.276463-.348692 6.246575-.398506C6.236613-.418431 4.652553-1.982565 4.154421-2.49066L5.977584-4.313823C6.027397-4.373599 6.176837-4.503113 6.22665-4.562889C6.236613-4.582814 6.276463-4.622665 6.276463-4.692403C6.276463-4.801993 6.196762-4.891656 6.07721-4.891656C5.997509-4.891656 5.957659-4.851806 5.84807-4.742217L3.875467-2.769614Z'/>
+<path id='m1-g2-58' d='M1.912827-.52802C1.912827-.816936 1.673724-1.05604 1.384807-1.05604S.856787-.816936 .856787-.52802S1.09589 0 1.384807 0S1.912827-.239103 1.912827-.52802Z'/>
+<path id='m1-g2-59' d='M2.022416-.009963C2.022416-.667497 1.77335-1.05604 1.384807-1.05604C1.05604-1.05604 .856787-.806974 .856787-.52802C.856787-.259029 1.05604 0 1.384807 0C1.504359 0 1.633873-.039851 1.733499-.129514C1.763387-.14944 1.77335-.159402 1.783313-.159402S1.803238-.14944 1.803238-.009963C1.803238 .727273 1.454545 1.325031 1.125778 1.653798C1.016189 1.763387 1.016189 1.783313 1.016189 1.8132C1.016189 1.882939 1.066002 1.92279 1.115816 1.92279C1.225405 1.92279 2.022416 1.155666 2.022416-.009963Z'/>
+<path id='m1-g2-61' d='M4.373599-7.0934C4.423412-7.222914 4.423412-7.262765 4.423412-7.272727C4.423412-7.382316 4.333748-7.47198 4.224159-7.47198C4.154421-7.47198 4.084682-7.442092 4.054795-7.382316L.597758 2.11208C.547945 2.241594 .547945 2.281445 .547945 2.291407C.547945 2.400996 .637609 2.49066 .747198 2.49066C.876712 2.49066 .9066 2.420922 .966376 2.251557L4.373599-7.0934Z'/>
+<path id='m1-g4-48' d='M4.582814-3.188045C4.582814-3.985056 4.533001-4.782067 4.184309-5.519303C3.726027-6.475716 2.909091-6.635118 2.49066-6.635118C1.892902-6.635118 1.165629-6.37609 .757161-5.449564C.438356-4.762142 .388543-3.985056 .388543-3.188045C.388543-2.440847 .428394-1.544209 .836862-.787049C1.265255 .019925 1.992528 .219178 2.480697 .219178C3.01868 .219178 3.775841 .009963 4.214197-.936488C4.533001-1.62391 4.582814-2.400996 4.582814-3.188045ZM2.480697 0C2.092154 0 1.504359-.249066 1.325031-1.205479C1.215442-1.803238 1.215442-2.719801 1.215442-3.307597C1.215442-3.945205 1.215442-4.60274 1.295143-5.140722C1.484433-6.326276 2.231631-6.41594 2.480697-6.41594C2.809465-6.41594 3.466999-6.236613 3.656289-5.250311C3.755915-4.692403 3.755915-3.935243 3.755915-3.307597C3.755915-2.560399 3.755915-1.882939 3.646326-1.24533C3.496887-.298879 2.929016 0 2.480697 0Z'/>
+<path id='m1-g4-49' d='M2.929016-6.37609C2.929016-6.615193 2.929016-6.635118 2.699875-6.635118C2.082192-5.997509 1.205479-5.997509 .886675-5.997509V-5.688667C1.085928-5.688667 1.673724-5.688667 2.191781-5.947696V-.787049C2.191781-.428394 2.161893-.308842 1.265255-.308842H.946451V0C1.295143-.029888 2.161893-.029888 2.560399-.029888S3.825654-.029888 4.174346 0V-.308842H3.855542C2.958904-.308842 2.929016-.418431 2.929016-.787049V-6.37609Z'/>
+<path id='m1-g4-51' d='M2.889166-3.506849C3.706102-3.775841 4.283935-4.473225 4.283935-5.260274C4.283935-6.07721 3.407223-6.635118 2.450809-6.635118C1.444583-6.635118 .687422-6.03736 .687422-5.280199C.687422-4.951432 .9066-4.762142 1.195517-4.762142C1.504359-4.762142 1.703611-4.98132 1.703611-5.270237C1.703611-5.768369 1.235367-5.768369 1.085928-5.768369C1.39477-6.256538 2.052304-6.386052 2.410959-6.386052C2.819427-6.386052 3.367372-6.166874 3.367372-5.270237C3.367372-5.150685 3.347447-4.572852 3.088418-4.134496C2.789539-3.656289 2.450809-3.626401 2.201743-3.616438C2.122042-3.606476 1.882939-3.58655 1.8132-3.58655C1.733499-3.576588 1.663761-3.566625 1.663761-3.466999C1.663761-3.35741 1.733499-3.35741 1.902864-3.35741H2.34122C3.158157-3.35741 3.526775-2.67995 3.526775-1.703611C3.526775-.348692 2.839352-.059776 2.400996-.059776C1.972603-.059776 1.225405-.229141 .876712-.816936C1.225405-.767123 1.534247-.986301 1.534247-1.364882C1.534247-1.723537 1.265255-1.92279 .976339-1.92279C.737235-1.92279 .418431-1.783313 .418431-1.344956C.418431-.438356 1.344956 .219178 2.430884 .219178C3.646326 .219178 4.552927-.687422 4.552927-1.703611C4.552927-2.520548 3.92528-3.297634 2.889166-3.506849Z'/>
+<path id='m1-g4-52' d='M2.929016-1.643836V-.777086C2.929016-.418431 2.909091-.308842 2.171856-.308842H1.96264V0C2.371108-.029888 2.889166-.029888 3.307597-.029888S4.254047-.029888 4.662516 0V-.308842H4.4533C3.716065-.308842 3.696139-.418431 3.696139-.777086V-1.643836H4.692403V-1.952677H3.696139V-6.485679C3.696139-6.684932 3.696139-6.744707 3.536737-6.744707C3.447073-6.744707 3.417186-6.744707 3.337484-6.625156L.278954-1.952677V-1.643836H2.929016ZM2.988792-1.952677H.557908L2.988792-5.668742V-1.952677Z'/>
+<path id='m1-g4-53' d='M4.473225-2.002491C4.473225-3.188045 3.656289-4.184309 2.580324-4.184309C2.102117-4.184309 1.673724-4.024907 1.315068-3.676214V-5.618929C1.514321-5.559153 1.843088-5.489415 2.161893-5.489415C3.387298-5.489415 4.084682-6.396015 4.084682-6.525529C4.084682-6.585305 4.054795-6.635118 3.985056-6.635118C3.975093-6.635118 3.955168-6.635118 3.905355-6.60523C3.706102-6.515567 3.217933-6.316314 2.550436-6.316314C2.15193-6.316314 1.693649-6.386052 1.225405-6.595268C1.145704-6.625156 1.125778-6.625156 1.105853-6.625156C1.006227-6.625156 1.006227-6.545455 1.006227-6.386052V-3.437111C1.006227-3.257783 1.006227-3.178082 1.145704-3.178082C1.215442-3.178082 1.235367-3.20797 1.275218-3.267746C1.384807-3.427148 1.753425-3.965131 2.560399-3.965131C3.078456-3.965131 3.327522-3.506849 3.407223-3.327522C3.566625-2.958904 3.58655-2.570361 3.58655-2.072229C3.58655-1.723537 3.58655-1.125778 3.347447-.707347C3.108344-.318804 2.739726-.059776 2.281445-.059776C1.554172-.059776 .986301-.587796 .816936-1.175592C.846824-1.165629 .876712-1.155666 .986301-1.155666C1.315068-1.155666 1.484433-1.404732 1.484433-1.643836S1.315068-2.132005 .986301-2.132005C.846824-2.132005 .498132-2.062267 .498132-1.603985C.498132-.747198 1.185554 .219178 2.30137 .219178C3.457036 .219178 4.473225-.737235 4.473225-2.002491Z'/>
+<path id='m1-g4-55' d='M4.742217-6.067248C4.83188-6.1868 4.83188-6.206725 4.83188-6.41594H2.410959C1.195517-6.41594 1.175592-6.545455 1.135741-6.734745H.886675L.557908-4.682441H.806974C.836862-4.841843 .926526-5.469489 1.05604-5.589041C1.125778-5.648817 1.902864-5.648817 2.032379-5.648817H4.094645C3.985056-5.489415 3.198007-4.403487 2.978829-4.07472C2.082192-2.729763 1.753425-1.344956 1.753425-.328767C1.753425-.229141 1.753425 .219178 2.211706 .219178S2.669988-.229141 2.669988-.328767V-.836862C2.669988-1.384807 2.699875-1.932752 2.779577-2.470735C2.819427-2.699875 2.958904-3.556663 3.39726-4.174346L4.742217-6.067248Z'/>
+<path id='m1-g4-61' d='M6.844334-3.257783C6.993773-3.257783 7.183064-3.257783 7.183064-3.457036S6.993773-3.656289 6.854296-3.656289H.886675C.747198-3.656289 .557908-3.656289 .557908-3.457036S.747198-3.257783 .896638-3.257783H6.844334ZM6.854296-1.325031C6.993773-1.325031 7.183064-1.325031 7.183064-1.524284S6.993773-1.723537 6.844334-1.723537H.896638C.747198-1.723537 .557908-1.723537 .557908-1.524284S.747198-1.325031 .886675-1.325031H6.854296Z'/>
+</defs>
+<g id='m1-page134'>
+<use x='0' y='0' xlink:href='#m1-g4-51'/>
+<use x='4.981339' y='0' xlink:href='#m1-g2-61'/>
+<use x='9.962678' y='0' xlink:href='#m1-g4-52'/>
+<use x='14.944017' y='0' xlink:href='#m1-g2-59'/>
+<use x='17.711426' y='0' xlink:href='#m1-g4-48'/>
+<use x='22.692765' y='0' xlink:href='#m1-g4-48'/>
+<use x='27.674104' y='0' xlink:href='#m1-g4-48'/>
+<use x='34.869309' y='0' xlink:href='#m1-g0-2'/>
+<use x='44.831922' y='0' xlink:href='#m1-g4-49'/>
+<use x='49.813261' y='0' xlink:href='#m1-g4-48'/>
+<use x='54.7946' y='0' xlink:href='#m1-g2-59'/>
+<use x='57.562009' y='0' xlink:href='#m1-g4-48'/>
+<use x='62.543348' y='0' xlink:href='#m1-g4-48'/>
+<use x='67.524687' y='0' xlink:href='#m1-g4-48'/>
+<use x='75.273358' y='0' xlink:href='#m1-g4-61'/>
+<use x='85.789438' y='0' xlink:href='#m1-g4-55'/>
+<use x='90.770777' y='0' xlink:href='#m1-g2-58'/>
+<use x='93.538186' y='0' xlink:href='#m1-g4-53'/>
+</g>
+</svg></span>.</p>
+<figure class="shot" id="custom-analyzers-findings-query"><img class="shot-light" src="../figures/en/light/custom-analyzers-findings-query.webp" alt="The query in the “Climate Debate” project that counts the findings of “Climate Roles” by finding and by “Stance”, as rates per 10,000 words." loading="lazy"><img class="shot-dark" src="../figures/en/dark/custom-analyzers-findings-query.webp" alt="The query in the “Climate Debate” project that counts the findings of “Climate Roles” by finding and by “Stance”, as rates per 10,000 words." loading="lazy"><figcaption>The query in the “Climate Debate” project that counts the findings of “Climate Roles” by finding and by “Stance”, as rates per 10,000 words.</figcaption></figure>
+<p>As described in <a href="queries-results.html#compare">Comparing groups</a> in <a href="queries-results.html">Chapter 16, Query Results and Statistics</a>, if you want to test the groups for significant differences, choose <strong class="ui">Compare</strong> in <strong class="ui">Show</strong>, then delete the <strong class="ui">Finding</strong> row from <strong class="ui">Group By</strong> so that only “Stance” remains, and finally add a rule <strong class="ui">Finding</strong> <strong class="ui">is any of</strong> “Climate as object”. The three neutral documents, “Heat Wave Report 2024”, “Carbon Tax Debate”, and “Radio Debate”, participate in the comparison as their own group.</p>
+<h3 id="analyzers-in-archives">In archives<a class="anchor" href="#analyzers-in-archives" aria-hidden="true">#</a></h3>
+<p>A LemmaLoom archive (<code>.llz</code>) includes the analyzers whose findings are stored alongside the documents contained within the archive, together with the findings. An archive also includes any analyzers that the saved queries of the archive use or were turned into. On importing an archive, an unrelated analyzer having the same name as an existing analyzer in your library is imported next to it. Please refer to <a href="exchange-and-export.html">Chapter 22, Exchanging and Exporting</a> for further guidance.</p>
+<h2 id="generated-analyzers">Analyzers made from queries<a class="anchor" href="#generated-analyzers" aria-hidden="true">#</a></h2>
+<p>Choose <strong class="ui">Save as Analyzer…</strong> from a query’s <strong class="ui">Save</strong> menu to save it as an analyzer. The query must find words, pattern matches, sentences, phrases, or noun chunks and test only their words and grammar; otherwise it cannot be transformed into an analyzer. Your newly made analyzer will show up in <strong class="ui">Window ▸ Analyzers</strong> among the others available; hence, like other analyzers, you can view its script, test-run it using <strong class="ui">Try it out</strong>, and modify it directly. The keys used in generating the analyzer will either consist of the categories from your query, or just one key, <code>hit</code>, labeled <strong class="ui">Match</strong>, in case there are no categories to speak of. These will appear as legend rows with a <strong class="ui">Key</strong> field, as well as a minus button, similar to what happens when you use <strong class="ui">Add Key</strong>.</p>
+<p>The analyzer you have just generated is <em>linked</em> back to the saved query it was derived from. If the latter is resaved with updates, a label of <strong class="ui">Out of Date</strong> will appear next to the analyzer name in your list. Updating it is done as follows:</p>
+<ol>
+<li>Click the analyzer in the list.</li>
+<li>Click <strong class="ui">Update Analyzer</strong>, to the left of <strong class="ui">Save</strong>.</li>
+</ol>
+<p>When LemmaLoom writes a new script from the saved query, it preserves the analyzer’s name and languages but replaces its script and legend, meaning any changes to the labels, colors, and styles of the analyzer would be overwritten by the newly generated analyzer. The check that the new script finds what the query finds runs only with <strong class="ui">Save as Analyzer…</strong>. Should the newly written script have errors, they are shown underneath the editor. Should the current state of the saved query be unable to transform into an analyzer, then <strong class="ui">Update Analyzer</strong> is disabled with the appropriate explanation why it cannot be done; <strong class="ui">Edit ▸ Undo Update Analyzer</strong> will restore the previous state of the analyzer before updating.</p>
+<p>The link between the saved query and the analyzer becomes broken upon editing and saving the script. The analyzer then counts as one of your own. Changing only the name, languages, or legend keeps the connection. See <a href="queries-using-results.html#out-of-date">Keeping an analyzer in step with its query</a> in <a href="queries-using-results.html">Chapter 18, Using Query Results</a> for more ways to handle query-generated analyzers.</p>
+</article>
+<nav class="pager"><a class="previous" href="dictionaries.html"><span>Previous</span>Dictionaries</a><a class="next" href="analysis-and-indexing.html"><span>Next</span>Analysis and Indexing</a></nav>
+<footer class="site-footer">© 2026 Ryan S. Cooper. All rights reserved.</footer>
+</main>
+<nav class="page-toc" aria-label="On this page"><p>On this page</p><ul>
+<li class="level-2"><a href="#key-terms">Key terms</a></li>
+<li class="level-2"><a href="#analyzers-window">The Analyzers window</a></li>
+<li class="level-2"><a href="#first-analyzer">Writing a first analyzer</a></li>
+<li class="level-3"><a href="#reading-the-script">Reading the script</a></li>
+<li class="level-2"><a href="#document-object">The document an analyzer receives</a></li>
+<li class="level-3"><a href="#sentences">Sentences</a></li>
+<li class="level-3"><a href="#tokens">Tokens</a></li>
+<li class="level-3"><a href="#derived-categories">Derived categories</a></li>
+<li class="level-3"><a href="#phrases-and-noun-chunks">Phrases and noun chunks</a></li>
+<li class="level-3"><a href="#builtin-results">Results of the built-in analyzers</a></li>
+<li class="level-3"><a href="#helper-functions">Helper functions</a></li>
+<li class="level-3"><a href="#constants">Constants</a></li>
+<li class="level-3"><a href="#reference-panel">The Reference panel</a></li>
+<li class="level-2"><a href="#findings-and-legend">Findings and the legend</a></li>
+<li class="level-3"><a href="#findings">Findings</a></li>
+<li class="level-3"><a href="#legend">Keys and the legend</a></li>
+<li class="level-3"><a href="#computed-keys">Keys the script computes</a></li>
+<li class="level-2"><a href="#languages">Supported languages</a></li>
+<li class="level-2"><a href="#try-it-out">Testing with Try it out</a></li>
+<li class="level-3"><a href="#errors">When errors occur</a></li>
+<li class="level-2"><a href="#breakpoints">Breakpoints and stepping</a></li>
+<li class="level-2"><a href="#saving">Saving, changing, and deleting</a></li>
+<li class="level-3"><a href="#saving-an-analyzer">Saving an analyzer</a></li>
+<li class="level-3"><a href="#changing">Changing an analyzer</a></li>
+<li class="level-3"><a href="#deleting">Deleting an analyzer</a></li>
+<li class="level-2"><a href="#when-analyzers-run">When analyzers are executed</a></li>
+<li class="level-2"><a href="#per-document">Analyzers for each document</a></li>
+<li class="level-2"><a href="#using-findings">Using the findings</a></li>
+<li class="level-3"><a href="#findings-in-the-reader">In the reader</a></li>
+<li class="level-3"><a href="#coding-findings">Coding the findings</a></li>
+<li class="level-3"><a href="#findings-in-queries">In queries</a></li>
+<li class="level-3"><a href="#analyzers-in-archives">In archives</a></li>
+<li class="level-2"><a href="#generated-analyzers">Analyzers made from queries</a></li>
+</ul></nav>
+</div>
+<script src="../assets/guide.js" defer></script>
+</body>
+</html>

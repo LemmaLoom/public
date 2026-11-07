@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tastaturkurzbefehle · LemmaLoom Benutzerhandbuch</title>
+<link rel="stylesheet" href="../assets/guide.css">
+<link rel="icon" type="image/png" href="../assets/logo.png">
+<script>var r=document.documentElement;r.setAttribute('data-theme','light');try{if(localStorage.getItem('guide-theme')==='dark'){r.setAttribute('data-theme','dark')}}catch(e){}</script>
+</head>
+<body>
+<header class="topbar">
+<button class="menu-toggle" aria-label="Inhalt" aria-expanded="false">☰</button>
+<a class="brand" href="index.html"><span class="wordmark"><span class="lemma">Lemma</span>Loom</span><span class="guide-name">Benutzerhandbuch</span></a>
+<div class="search"><input type="search" id="search" placeholder="Suchen" aria-label="Suchen" autocomplete="off" data-empty="Keine Treffer"><div class="results" id="results" hidden></div></div>
+<nav class="languages" aria-label="Language"><a href="../en/keyboard-shortcuts.html" lang="en">English</a><a href="../de/keyboard-shortcuts.html" lang="de" aria-current="true">Deutsch</a><a href="../zh-Hans/keyboard-shortcuts.html" lang="zh-Hans">简体中文</a></nav>
+<button class="theme-toggle" data-light="Hell" data-dark="Dunkel" aria-label="Erscheinungsbild"></button>
+<a class="pdf-link" href="https://github.com/LemmaLoom/public/raw/main/pdf/lemmaloom-guide-de.pdf">PDF</a>
+</header>
+<div class="layout">
+<nav class="sidebar" aria-label="Inhalt"><ol>
+<li class="unnumbered"><a href="quick-start.html">Schnellstart</a></li>
+<li><a href="introduction.html">Einführung</a></li>
+<li><a href="getting-started.html">Erste Schritte</a></li>
+<li><a href="projects-and-documents.html">Projekte und Dokumente</a></li>
+<li><a href="importing.html">Material importieren</a></li>
+<li><a href="reading-and-editing.html">Lesen und Bearbeiten</a></li>
+<li><a href="lenses.html">Lenses</a></li>
+<li><a href="coding.html">Kodieren</a></li>
+<li><a href="sets-tags-attributes.html">Sets, Gruppen, Tags und Attribute</a></li>
+<li><a href="translations.html">Übersetzungen und geteilte Ansicht</a></li>
+<li><a href="text-inspector.html">Der Text-Inspektor</a></li>
+<li><a href="grammar-inspector.html">Der Grammatik-Inspektor</a></li>
+<li><a href="word-sketch.html">Wortskizze</a></li>
+<li><a href="coding-analysis.html">Codes auswerten</a></li>
+<li><a href="sketch-space.html">Skizzenraum</a></li>
+<li><a href="queries-building.html">Eine Abfrage erstellen</a></li>
+<li><a href="queries-results.html">Abfrageergebnisse und Statistik</a></li>
+<li><a href="queries-patterns.html">Abfragemuster und Erkundung</a></li>
+<li><a href="queries-using-results.html">Abfrageergebnisse nutzen</a></li>
+<li><a href="dictionaries.html">Wörterbücher</a></li>
+<li><a href="custom-analyzers.html">Eigene Analysatoren</a></li>
+<li><a href="analysis-and-indexing.html">Analyse und Indizierung</a></li>
+<li><a href="exchange-and-export.html">Austausch und Export</a></li>
+<li><a href="undo.html">Widerrufen und Wiederholen</a></li>
+<li><a href="settings.html">Einstellungen und Darstellung</a></li>
+<li class="current"><a href="keyboard-shortcuts.html">Tastaturkurzbefehle</a></li>
+<li><a href="help-and-support.html">Hilfe und Support</a></li>
+<li><a href="statistics-reference.html">Statistik im Überblick</a></li>
+<li class="unnumbered"><a href="glossary.html">Glossar</a></li>
+<li class="unnumbered"><a href="thanks.html">Vielen Dank</a></li>
+</ol></nav>
+<main class="content">
+<article>
+<h1 id="keyboard-shortcuts">Tastaturkurzbefehle</h1>
+<p>Die folgenden Tabellen führen alle Tastaturkurzbefehle von LemmaLoom auf, nach Menüs getrennt. Zu jedem Kurzbefehl steht dabei, wo genau er gilt.</p>
+<p>Die Symbole für die Sondertasten, die in diesen Menüs vorkommen, erklärt der Abschnitt <a href="introduction.html#conventions">Konventionen</a> in <a href="introduction.html">Kapitel 1, Einführung</a>. ⌘ steht für die Befehlstaste, ⇧ für die Umschalttaste, ⌥ für die Wahltaste und ⌃ für die Control-Taste. Die hier angegebenen Kurzbefehle gelten für eine US-Tastaturbelegung. Wenn Sie eine andere Belegung verwenden, legt macOS Kurzbefehle wie ⇧⌘[ unter Umständen auf Tasten, die Ihnen zur Verfügung stehen; das Menü zeigt dann die geänderten Tasten.</p>
+<h2 id="how-shortcuts-work">So funktionieren Kurzbefehle<a class="anchor" href="#how-shortcuts-work" aria-hidden="true">#</a></h2>
+<p>Jeder Kurzbefehl in LemmaLoom gehört zu einem Befehl in der Menüleiste, und das Menü zeigt neben dem Befehl die Tasten, die Sie dafür drücken. Ausnahmen sind die Esc-Taste, der Zeilenschalter, die Pfeiltasten und die Rückschritttaste (⌫); sie wirken auf den Teil des Fensters, mit dem Sie gerade arbeiten (siehe <a href="#esc-and-return">Esc-Taste, Zeilenschalter und Pfeiltasten</a> weiter unten in diesem Kapitel). Bei manchen Aktionen klicken oder scrollen Sie zusätzlich zum Tastendruck (siehe <a href="#modifier-clicks">Klicks mit Sondertaste</a> weiter unten in diesem Kapitel). Schließlich hat der Skripteditor im Fenster „Analysatoren“ eigene Tastaturkurzbefehle zum Bearbeiten (siehe <a href="custom-analyzers.html">Kapitel 20, Eigene Analysatoren</a>).</p>
+<p>Kurzbefehle wirken immer auf das aktive Fenster. Ist das Hauptfenster aktiv, wirken die Befehle für ein Dokument auf das Dokument im aktiven Tab. In der geteilten Ansicht wirken sie auf den Bereich, in den Sie zuletzt geklickt haben; er heißt <em>aktiver Bereich</em> (siehe <a href="translations.html#active-pane">Der aktive Bereich</a> in <a href="translations.html">Kapitel 9, Übersetzungen und geteilte Ansicht</a>).</p>
+<p>Ein Kurzbefehl funktioniert nur, solange sein Befehl im Menü verfügbar ist. <strong class="ui">Dokument ▸ Code</strong> (⇧⌘C) etwa bleibt deaktiviert, bis Sie in der Leseansicht ein Wort oder eine Textstelle auswählen. Was ein Befehl voraussetzt, steht jeweils in der letzten Spalte der folgenden Tabellen.</p>
+<p>Einige Befehle ändern je nach Situation ihren Namen, behalten aber ihre Tasten. Außerdem haben manche Tastenkombinationen je nach Fenster eine andere Funktion:</p>
+<ul>
+<li>⇧⌘B ist <strong class="ui">Lesezeichen</strong> oder, wenn die Auswahl ein Lesezeichen überlappt, <strong class="ui">Lesezeichen entfernen</strong>.</li>
+<li>⇧⌘L ist <strong class="ui">Verknüpfung</strong> oder, sobald Sie eine Verknüpfung begonnen haben, <strong class="ui">Verknüpfung abschließen</strong>.</li>
+<li>⇧⌘A ist <strong class="ui">Automatisch kodieren…</strong>, sofern nicht mehr als eine der aktivierten Lenses Textstellen automatisch kodieren kann. Sind mehrere solche Lenses aktiviert, gehört die Tastenkombination zum ersten der Befehle, die nach ihnen benannt sind, etwa <strong class="ui">Mit Heckenausdrücke automatisch kodieren…</strong>.</li>
+<li>⇧⌘P wechselt bei der Wiedergabe von Aufnahmen zwischen <strong class="ui">Wiedergabe</strong> und <strong class="ui">Pausieren</strong>.</li>
+<li>⌘W schließt im Hauptfenster Tabs (<strong class="ui">Tab schließen</strong>), solange ein Tab geöffnet ist. Überall sonst gehört ⌘W stattdessen zu <strong class="ui">Schließen</strong>.</li>
+<li>⌘⌫ löscht Projekte, Sets, Gruppen oder Dokumente, die in der Seitenleiste ausgewählt sind (<strong class="ui">Projekt löschen</strong>, <strong class="ui">Set löschen</strong>, <strong class="ui">Gruppe löschen</strong>, <strong class="ui">Dokument löschen</strong> oder <strong class="ui">Dokumente löschen</strong>). Sind mehrere Dokumente ausgewählt, löscht der Befehl sie alle auf einmal. Im Fenster „Analysatoren“ löscht ⌘⌫ Analysatoren aus der Liste (<strong class="ui">Analysator löschen</strong>), solange die Liste aktiv ist.</li>
+<li>⌘+, ⌘- und ⌘0 vergrößern, verkleinern und setzen die Textgröße zurück (<strong class="ui">Größerer Text</strong>, <strong class="ui">Kleinerer Text</strong>, <strong class="ui">Textgröße zurücksetzen</strong>); im Fenster „Diagramm“ zoomen sie dagegen hinein und heraus und stellen die Originalgröße wieder her (<strong class="ui">Vergrößern</strong>, <strong class="ui">Verkleinern</strong>, <strong class="ui">Originalgröße</strong>).</li>
+<li>⌃⌘F ist <strong class="ui">Vollbildmodus</strong> oder, im Vollbildmodus, <strong class="ui">Vollbildmodus aus</strong>.</li>
+</ul>
+<p>Während Sie den Text eines Dokuments bearbeiten, treten <strong class="ui">Sichern</strong> (⌘↩) und <strong class="ui">Abbrechen</strong> (⌘.) an die Stelle von <strong class="ui">Bearbeiten</strong> (⇧⌘E). Beim Verknüpfen von Textstellen erscheint unter <strong class="ui">Verknüpfung abschließen</strong> der Befehl <strong class="ui">Verknüpfung abbrechen</strong> (⌥⇧⌘L).</p>
+<h3 id="shortcuts-by-window">Kurzbefehle in den einzelnen Fenstern<a class="anchor" href="#shortcuts-by-window" aria-hidden="true">#</a></h3>
+<p>LemmaLoom hat ein Hauptfenster und mehrere kleinere Fenster. Alle teilen sich eine Menüleiste. Die meisten Befehle in den Menüs brauchen jedoch einen Kontext, den nur das Hauptfenster oder ein geöffnetes Dokument liefert. Ist ein anderes Fenster aktiv, erscheinen diese Befehle deshalb deaktiviert, bis Sie in das Hauptfenster klicken. Einige der kleineren Fenster bieten zusätzliche Befehle.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Aktives Fenster</th><th>Kurzbefehle, die funktionieren</th></tr></thead>
+<tbody>
+<tr><td>Das Hauptfenster</td><td>Alle, sofern geöffnet ist, worauf sie wirken, außer denen, die zum Fenster „Diagramm“ und zum Fenster „Analysatoren“ gehören</td></tr>
+<tr><td>Ein Dokument in einem eigenen Fenster (wählen Sie <strong class="ui">Fenster ▸ In neuem Fenster öffnen</strong>, oder klicken Sie mit der rechten Maustaste auf den Tab eines Dokuments und wählen Sie <strong class="ui">In neuem Fenster öffnen</strong>)</td><td>Das Menü <strong class="ui">Dokument</strong>; <strong class="ui">Suchen</strong>, <strong class="ui">Weitersuchen</strong> und <strong class="ui">Rückwärts suchen</strong>; <strong class="ui">Inspektor ein-/ausblenden</strong> und die vier Tabs des Inspektors; <strong class="ui">Größerer Text</strong>, <strong class="ui">Kleinerer Text</strong> und <strong class="ui">Textgröße zurücksetzen</strong>; <strong class="ui">Abfrage ausführen</strong>, wenn der Inspektor eine Abfrage zeigt; die Befehle unter <strong class="ui">Darstellung ▸ Wortskizze</strong>, wenn er eine Wortskizze zeigt; <strong class="ui">Schließen</strong> (⌘W)</td></tr>
+<tr><td>Das Wortskizzen-Fenster</td><td>Die Befehle unter <strong class="ui">Darstellung ▸ Wortskizze</strong>; <strong class="ui">Schließen</strong> (⌘W)</td></tr>
+<tr><td>Das Fenster „Diagramm“</td><td><strong class="ui">Vergrößern</strong>, <strong class="ui">Verkleinern</strong> und <strong class="ui">Originalgröße</strong>; <strong class="ui">Schließen</strong> (⌘W)</td></tr>
+<tr><td>Das Codebuch-Fenster</td><td><strong class="ui">Abfrage ausführen</strong> in seiner Ansicht <strong class="ui">Abfragen</strong> und die Befehle unter <strong class="ui">Darstellung ▸ Wortskizze</strong> in seiner Ansicht <strong class="ui">Wortskizze</strong>; <strong class="ui">Schließen</strong> (⌘W)</td></tr>
+<tr><td>Das Abfragen-Fenster</td><td><strong class="ui">Abfrage ausführen</strong> (⌘R); <strong class="ui">Schließen</strong> (⌘W)</td></tr>
+<tr><td>Das Fenster „Analysatoren“</td><td><strong class="ui">Analysator löschen</strong> (⌘⌫), solange die Liste aktiv ist; <strong class="ui">Schließen</strong> (⌘W)</td></tr>
+<tr><td>Jedes andere Fenster, etwa „Tags“, „Attribute“, „Aktivität“, „Glossar“ oder „Einstellungen“</td><td><strong class="ui">Schließen</strong> (⌘W)</td></tr>
+</tbody></table></div>
+<p>Einige Kurzbefehle aus den Menüs stehen unabhängig davon zur Verfügung, welches Fenster den Fokus hat, nämlich <strong class="ui">Ablage ▸ Neues Fenster</strong> (⌘N), <strong class="ui">LemmaLoom ▸ Einstellungen …</strong> (⌘,), <strong class="ui">Fenster ▸ Aktivität</strong> (⌥⌘0), <strong class="ui">Fenster ▸ Im Dock ablegen</strong> (⌘M), <strong class="ui">Bearbeiten ▸ Widerrufen</strong> (⌘Z) und <strong class="ui">Bearbeiten ▸ Wiederholen</strong> (⇧⌘Z). Auch die üblichen Kurzbefehle von macOS funktionieren wie gewohnt, etwa <strong class="ui">Kopieren</strong> (⌘C) und <strong class="ui">„LemmaLoom“ beenden</strong> (⌘Q). <strong class="ui">Darstellung ▸ Vollbildmodus</strong> funktioniert im Hauptfenster, im Abfragen-Fenster und in Ergebnisfenstern.</p>
+<h2 id="shortcuts-by-menu">Kurzbefehle nach Menüs<a class="anchor" href="#shortcuts-by-menu" aria-hidden="true">#</a></h2>
+<p>Die Tabellen folgen der Menüleiste von links nach rechts. Jede Tabelle führt alle Befehle von LemmaLoom in ihrem Menü der Reihe nach auf.</p>
+<h3 id="lemmaloom-menu">LemmaLoom<a class="anchor" href="#lemmaloom-menu" aria-hidden="true">#</a></h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Befehl</th><th>Kurzbefehl</th><th>Wo er funktioniert</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">LemmaLoom ▸ Über LemmaLoom</strong></td><td>Keiner</td><td>In jedem Fenster. Siehe <a href="help-and-support.html#about-lemmaloom">Über LemmaLoom</a> in <a href="help-and-support.html">Kapitel 26, Hilfe und Support</a>.</td></tr>
+<tr><td><strong class="ui">LemmaLoom ▸ Einstellungen …</strong></td><td>⌘,</td><td>In jedem Fenster. Öffnet die Einstellungen oder wechselt zu ihnen, wenn sie bereits geöffnet sind. Siehe <a href="settings.html">Kapitel 24, Einstellungen und Darstellung</a>.</td></tr>
+<tr><td><strong class="ui">LemmaLoom ▸ „LemmaLoom“ ausblenden</strong></td><td>⌘H</td><td>In jedem Fenster. Klicken Sie im Dock auf LemmaLoom, um seine Fenster wieder einzublenden.</td></tr>
+<tr><td><strong class="ui">LemmaLoom ▸ Andere ausblenden</strong></td><td>⌥⌘H</td><td>In jedem Fenster. Blendet die Fenster anderer Programme aus.</td></tr>
+<tr><td><strong class="ui">LemmaLoom ▸ „LemmaLoom“ beenden</strong></td><td>⌘Q</td><td>In jedem Fenster</td></tr>
+</tbody></table></div>
+<p>Mit dem Beenden endet der Widerrufverlauf, denn er besteht nur, solange LemmaLoom läuft (siehe <a href="undo.html#history-lifetime">Wie lange der Verlauf besteht</a> in <a href="undo.html">Kapitel 23, Widerrufen und Wiederholen</a>). LemmaLoom wird auch beendet, wenn Sie sein letztes offenes Fenster schließen, etwa das Hauptfenster mit ⇧⌘W, während sonst nichts geöffnet ist.</p>
+<h3 id="file-menu">Ablage<a class="anchor" href="#file-menu" aria-hidden="true">#</a></h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Befehl</th><th>Kurzbefehl</th><th>Wo er funktioniert</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">Ablage ▸ Neues Fenster</strong></td><td>⌘N</td><td>In jedem Fenster. Öffnet ein weiteres Hauptfenster.</td></tr>
+<tr><td><strong class="ui">Ablage ▸ Neues Projekt</strong></td><td>⇧⌘N</td><td>Im Hauptfenster</td></tr>
+<tr><td><strong class="ui">Ablage ▸ Neue Gruppe</strong></td><td>⌥⌘N</td><td>Im Hauptfenster, sobald ein Projekt aktiv ist. Die Gruppe erscheint in der Seitenleiste, und Sie können sofort ihren Namen eingeben.</td></tr>
+<tr><td><strong class="ui">Ablage ▸ Importieren ▸ Dokumente</strong></td><td>⇧⌘I</td><td>Im Hauptfenster, sobald ein Projekt aktiv ist. Öffnet einen Dateidialog für Text-, PDF-, Audio- und Videodateien.</td></tr>
+<tr><td><strong class="ui">Ablage ▸ Importieren ▸ Webseiten</strong></td><td>⌥⇧⌘I</td><td>Im Hauptfenster, sobald ein Projekt aktiv ist. Öffnet einen Dialog für Webadressen.</td></tr>
+<tr><td><strong class="ui">Ablage ▸ Importieren ▸ REFI-QDA-Projekt</strong>, <strong class="ui">REFI-QDA-Codebuch</strong> und <strong class="ui">LemmaLoom-Archiv</strong></td><td>Keiner</td><td>Im Hauptfenster. <strong class="ui">REFI-QDA-Codebuch</strong> setzt ein aktives Projekt voraus. Siehe <a href="exchange-and-export.html">Kapitel 22, Austausch und Export</a>.</td></tr>
+<tr><td><strong class="ui">Ablage ▸ Importieren ▸ Beispielprojekt</strong></td><td>Keiner</td><td>Im Hauptfenster. Fügt „Klimadebatte“ als neues Projekt in der Sprache der Benutzeroberfläche hinzu. Siehe <a href="introduction.html#example-project">Das Beispielprojekt</a> in <a href="introduction.html">Kapitel 1, Einführung</a>.</td></tr>
+<tr><td><strong class="ui">Ablage ▸ Exportieren ▸ REFI-QDA-Projekt</strong>, <strong class="ui">REFI-QDA-Codebuch</strong> und <strong class="ui">LemmaLoom-Projekt</strong></td><td>Keiner</td><td>Im Hauptfenster, sobald ein Projekt aktiv ist</td></tr>
+<tr><td><strong class="ui">Ablage ▸ Exportieren ▸ LemmaLoom-Dokument</strong> oder <strong class="ui">LemmaLoom-Dokumente</strong></td><td>Keiner</td><td>Im Hauptfenster, wenn in der Seitenleiste Dokumente ausgewählt sind oder in der Leseansicht ein Dokument aktiv ist. Der Name richtet sich nach der Zahl der ausgewählten Dokumente. Siehe <a href="exchange-and-export.html#exporting-documents">Dokumente exportieren</a> in <a href="exchange-and-export.html">Kapitel 22, Austausch und Export</a>.</td></tr>
+<tr><td><strong class="ui">Ablage ▸ Exportieren ▸ LemmaLoom-Set</strong></td><td>Keiner</td><td>Im Hauptfenster, wenn ein Set in der Seitenleiste ausgewählt oder im aktiven Tab geöffnet ist. Siehe <a href="exchange-and-export.html#exporting-set">Ein Set exportieren</a> in <a href="exchange-and-export.html">Kapitel 22, Austausch und Export</a>.</td></tr>
+<tr><td><strong class="ui">Ablage ▸ Tab schließen</strong></td><td>⌘W</td><td>Im Hauptfenster, solange ein Tab geöffnet ist. Ist der rechte Bereich einer geteilten Ansicht aktiv, schließt der Befehl die geteilte Ansicht.</td></tr>
+<tr><td><strong class="ui">Ablage ▸ Fenster schließen</strong></td><td>⇧⌘W</td><td>Im Hauptfenster, solange ein Tab geöffnet ist</td></tr>
+<tr><td><strong class="ui">Ablage ▸ Schließen</strong></td><td>⌘W</td><td>In allen anderen Fenstern und im Hauptfenster, wenn kein Tab geöffnet ist. Schließt das Fenster.</td></tr>
+</tbody></table></div>
+<p>Alle Befehle zum Importieren und Exportieren außer <strong class="ui">Importieren ▸ Dokumente</strong> und <strong class="ui">Importieren ▸ Webseiten</strong> sind deaktiviert, solange ein anderer Import oder Export läuft.</p>
+<p>Welcher Tab aktiv wird, nachdem Sie einen Tab geschlossen haben, beschreibt <a href="projects-and-documents.html#closing-tabs">Tabs schließen</a> in <a href="projects-and-documents.html">Kapitel 3, Projekte und Dokumente</a>.</p>
+<figure class="shot" id="keyboard-shortcuts-file-menu"><img class="shot-light" src="../figures/de/light/keyboard-shortcuts-file-menu.webp" alt="Das Menü „Ablage“ mit geöffnetem Untermenü „Importieren“." loading="lazy"><img class="shot-dark" src="../figures/de/dark/keyboard-shortcuts-file-menu.webp" alt="Das Menü „Ablage“ mit geöffnetem Untermenü „Importieren“." loading="lazy"><figcaption>Das Menü „Ablage“ mit geöffnetem Untermenü „Importieren“.</figcaption></figure>
+<h3 id="edit-menu">Bearbeiten<a class="anchor" href="#edit-menu" aria-hidden="true">#</a></h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Befehl</th><th>Kurzbefehl</th><th>Wo er funktioniert</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">Bearbeiten ▸ Widerrufen</strong></td><td>⌘Z</td><td>In jedem Fenster, in dem es einen Schritt zu widerrufen gibt. Der Befehl nennt den Schritt, etwa <strong class="ui">Code anwenden widerrufen</strong>.</td></tr>
+<tr><td><strong class="ui">Bearbeiten ▸ Wiederholen</strong></td><td>⇧⌘Z</td><td>Nach einem Widerrufen, bis Sie eine neue Änderung vornehmen</td></tr>
+<tr><td><strong class="ui">Bearbeiten ▸ Ausschneiden</strong>, <strong class="ui">Kopieren</strong>, <strong class="ui">Einsetzen</strong></td><td>⌘X, ⌘C, ⌘V</td><td>In Textfeldern. <strong class="ui">Kopieren</strong> kopiert auch Text, der in der Leseansicht ausgewählt ist.</td></tr>
+<tr><td><strong class="ui">Bearbeiten ▸ Alles auswählen</strong></td><td>⌘A</td><td>In Textfeldern und in der Leseansicht, sobald Sie in den Text eines Dokuments geklickt haben. Dort wählt der Befehl das ganze Dokument aus, und die Auswahlleiste erscheint.</td></tr>
+<tr><td><strong class="ui">Bearbeiten ▸ In Kategorie verschieben</strong></td><td>Keiner</td><td>In der Ansicht <strong class="ui">Wörterbücher</strong>, wenn in einer Kategorie Begriffe ausgewählt sind. Verschiebt sie in die Kategorie, die Sie wählen. Siehe <a href="dictionaries.html#adding-terms">Begriffe hinzufügen und entfernen</a> in <a href="dictionaries.html">Kapitel 19, Wörterbücher</a>.</td></tr>
+<tr><td><strong class="ui">Bearbeiten ▸ Analysator löschen</strong></td><td>⌘⌫</td><td>Im Fenster „Analysatoren“, wenn ein Analysator ausgewählt ist. Der Kurzbefehl funktioniert, solange die Liste aktiv ist, was nach einem Klick auf einen Analysator der Fall ist. Siehe <a href="custom-analyzers.html#deleting">Einen Analysator löschen</a> in <a href="custom-analyzers.html">Kapitel 20, Eigene Analysatoren</a>.</td></tr>
+<tr><td><strong class="ui">Bearbeiten ▸ Suchen</strong></td><td>⌘F</td><td>Wenn ein Dokument aktiv ist, dessen Text geladen ist, außer während Sie es bearbeiten. Öffnet die Suchleiste. Erneut gedrückt, schließt der Kurzbefehl die Leiste und leert die Suche.</td></tr>
+<tr><td><strong class="ui">Bearbeiten ▸ Weitersuchen</strong></td><td>⌘G</td><td>Solange die Suchleiste Treffer hat. Auf den letzten Treffer folgt der erste.</td></tr>
+<tr><td><strong class="ui">Bearbeiten ▸ Rückwärts suchen</strong></td><td>⇧⌘G</td><td>Solange die Suchleiste Treffer hat. Vor dem ersten Treffer kommt der letzte.</td></tr>
+<tr><td><strong class="ui">Bearbeiten ▸ Dokument suchen</strong></td><td>⇧⌘F</td><td>Im Hauptfenster, sobald ein Projekt aktiv ist. Setzt die Einfügemarke in das Feld <strong class="ui">Dokumente durchsuchen</strong> oben in der Seitenleiste und blendet vorher die Seitenleiste ein, falls sie ausgeblendet ist. Siehe <a href="projects-and-documents.html#navigator">Die Seitenleiste</a> in <a href="projects-and-documents.html">Kapitel 3, Projekte und Dokumente</a>.</td></tr>
+<tr><td><strong class="ui">Bearbeiten ▸ Abfrage aus Auswahl</strong></td><td>Keiner</td><td>Wenn in der Leseansicht Wörter ausgewählt sind, außer während der Bearbeitung. Siehe <a href="queries-patterns.html#query-from-selection">Abfrage aus Auswahl</a> in <a href="queries-patterns.html">Kapitel 17, Abfragemuster und Erkundung</a>.</td></tr>
+<tr><td><strong class="ui">Bearbeiten ▸ Neue Abfrage</strong></td><td>Keiner</td><td>Überall, wo eine Abfrage angezeigt wird. Setzt eine leere Abfrage an die Stelle der aktuellen.</td></tr>
+<tr><td><strong class="ui">Bearbeiten ▸ Abfrage ausführen</strong></td><td>⌘R</td><td>Überall, wo das aktive Fenster eine Abfrage zeigt. Deaktiviert, solange die Abfrage einen Fehler hat, der ihre Ausführung verhindert, etwa ein ungültiges Muster.</td></tr>
+</tbody></table></div>
+<p>Jedes Fenster führt einen eigenen Widerrufverlauf, und ⌘Z wirkt nur auf den Verlauf des gerade aktiven Fensters. Steht die Einfügemarke in einem Textfeld, widerruft ⌘Z stattdessen die Eingabe in diesem Feld. Ausführliches zu beiden Aktionen finden Sie in <a href="undo.html">Kapitel 23, Widerrufen und Wiederholen</a>.</p>
+<p><strong class="ui">Abfrage ausführen</strong> führt die Abfrage, die das gerade aktive Fenster zeigt, sofort aus. Ein Fenster zeigt eine Abfrage an einer dieser Stellen:</p>
+<ul>
+<li>in der Facette <strong class="ui">Abfrage</strong> im Tab <strong class="ui">Multimodus</strong> des Inspektors (die Reihe unter den Tabs besteht aus Facetten; siehe <a href="getting-started.html#inspector">Der Inspektor</a> in <a href="getting-started.html">Kapitel 2, Erste Schritte</a>);</li>
+<li>in der Ansicht <strong class="ui">Abfragen</strong> eines Sets, eines Tags oder des Projekts, sowohl im Hauptfenster als auch im Codebuch-Fenster;</li>
+<li>im Abfragen-Fenster (über <strong class="ui">Fenster ▸ Abfragen</strong>).</li>
+</ul>
+<p>Eine Abfrage in einem Dokument läuft nach jeder Änderung, die Sie an ihr vornehmen, von selbst. In einem Set oder Projekt, dessen Dokumente zusammen etwa 300.000 Tokens (Wörter und Satzzeichen) oder mehr umfassen, wartet eine Abfrage, die den Text dieser Dokumente liest, auf Sie und zeigt eine Schaltfläche <strong class="ui">Abfrage ausführen</strong>. Mit ⌘R starten Sie sie schneller als auf jedem anderen Weg (siehe <a href="queries-building.html#running-queries">Eine Abfrage ausführen</a> in <a href="queries-building.html">Kapitel 15, Eine Abfrage erstellen</a>).</p>
+<p><strong class="ui">Neue Abfrage</strong> übernimmt die Einheit der aktuellen Abfrage, also die Art von Elementen, die sie findet (siehe <a href="queries-building.html#query-units">Was gesucht wird</a> in <a href="queries-building.html">Kapitel 15, Eine Abfrage erstellen</a>). Dabei werden alle bisher nicht gesicherten Änderungen verworfen. Mit <strong class="ui">Bearbeiten ▸ Widerrufen</strong> holen Sie diese Änderungen zurück.</p>
+<figure class="shot" id="keyboard-shortcuts-edit-menu"><img class="shot-light" src="../figures/de/light/keyboard-shortcuts-edit-menu.webp" alt="Das Menü „Bearbeiten“ bei einer ausgewählten Textstelle in „Uns läuft die Zeit davon“. Der Inspektor zeigt die Abfrage „Dringlichkeit im Gespräch“." loading="lazy"><img class="shot-dark" src="../figures/de/dark/keyboard-shortcuts-edit-menu.webp" alt="Das Menü „Bearbeiten“ bei einer ausgewählten Textstelle in „Uns läuft die Zeit davon“. Der Inspektor zeigt die Abfrage „Dringlichkeit im Gespräch“." loading="lazy"><figcaption>Das Menü „Bearbeiten“ bei einer ausgewählten Textstelle in „Uns läuft die Zeit davon“. Der Inspektor zeigt die Abfrage „Dringlichkeit im Gespräch“.</figcaption></figure>
+<h3 id="view-menu">Darstellung<a class="anchor" href="#view-menu" aria-hidden="true">#</a></h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Befehl</th><th>Kurzbefehl</th><th>Wo er funktioniert</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">Darstellung ▸ Seitenleiste ein-/ausblenden</strong></td><td>⌃⌘S</td><td>Im Hauptfenster</td></tr>
+<tr><td><strong class="ui">Darstellung ▸ Inspektor ein-/ausblenden</strong></td><td>⌃⌘I</td><td>Im Hauptfenster und im eigenen Fenster eines Dokuments. Im Hauptfenster ist der Befehl deaktiviert, solange der aktive Tab ein Set, ein Tag oder eine Ansicht des Projektregals ist. Jedes Dokument merkt sich, ob sein Inspektor eingeblendet war.</td></tr>
+<tr><td><strong class="ui">Darstellung ▸ Inspektor ▸ Text</strong></td><td>⌥⌘1</td><td>Wenn ein Dokument aktiv ist, im Hauptfenster oder in seinem eigenen Fenster</td></tr>
+<tr><td><strong class="ui">Darstellung ▸ Inspektor ▸ Grammatik</strong></td><td>⌥⌘2</td><td>Wie bei <strong class="ui">Text</strong></td></tr>
+<tr><td><strong class="ui">Darstellung ▸ Inspektor ▸ Kodierung</strong></td><td>⌥⌘3</td><td>Wie bei <strong class="ui">Text</strong></td></tr>
+<tr><td><strong class="ui">Darstellung ▸ Inspektor ▸ Multimodus</strong></td><td>⌥⌘4</td><td>Wie bei <strong class="ui">Text</strong></td></tr>
+<tr><td><strong class="ui">Darstellung ▸ Größerer Text</strong></td><td>⌘+</td><td>Wenn ein Dokument aktiv ist, im Hauptfenster oder in seinem eigenen Fenster. Bis 200 Prozent.</td></tr>
+<tr><td><strong class="ui">Darstellung ▸ Kleinerer Text</strong></td><td>⌘-</td><td>Wie bei <strong class="ui">Größerer Text</strong>. Bis hinunter auf 70 Prozent.</td></tr>
+<tr><td><strong class="ui">Darstellung ▸ Textgröße zurücksetzen</strong></td><td>⌘0</td><td>Wie bei <strong class="ui">Größerer Text</strong>, wenn die Größe nicht 100 Prozent beträgt</td></tr>
+<tr><td><strong class="ui">Darstellung ▸ Vergrößern</strong></td><td>⌘+</td><td>Im Fenster „Diagramm“. Siehe <a href="grammar-inspector.html#diagram-window">Das Fenster Diagramm</a> in <a href="grammar-inspector.html">Kapitel 11, Der Grammatik-Inspektor</a>.</td></tr>
+<tr><td><strong class="ui">Darstellung ▸ Verkleinern</strong></td><td>⌘-</td><td>Im Fenster „Diagramm“</td></tr>
+<tr><td><strong class="ui">Darstellung ▸ Originalgröße</strong></td><td>⌘0</td><td>Im Fenster „Diagramm“, wenn das Diagramm nicht in Originalgröße angezeigt wird</td></tr>
+<tr><td><strong class="ui">Darstellung ▸ An Fenster anpassen</strong></td><td>Keiner</td><td>Im Fenster „Diagramm“</td></tr>
+<tr><td><strong class="ui">Darstellung ▸ Gemeinsam scrollen</strong></td><td>⌥⌘L</td><td>Im Hauptfenster, in der geteilten Ansicht mit zwei Sprachfassungen eines Dokuments. Ein Häkchen zeigt, dass die Funktion eingeschaltet ist. Siehe <a href="translations.html#scroll-together">Gemeinsam scrollen</a> in <a href="translations.html">Kapitel 9, Übersetzungen und geteilte Ansicht</a>.</td></tr>
+<tr><td><strong class="ui">Darstellung ▸ Wortskizze ▸ Zurück</strong></td><td>⌘[</td><td>In der Ansicht <strong class="ui">Wortskizze</strong>, im Wortskizzen-Fenster und in den Wortskizzen des Inspektors, sobald der Verlauf ein früheres Wort enthält. Siehe <a href="word-sketch.html#history">Zurück- und vorwärtsgehen</a> in <a href="word-sketch.html">Kapitel 12, Wortskizze</a>.</td></tr>
+<tr><td><strong class="ui">Darstellung ▸ Wortskizze ▸ Vorwärts</strong></td><td>⌘]</td><td>Wie bei <strong class="ui">Zurück</strong>, nachdem Sie zurückgegangen sind</td></tr>
+<tr><td><strong class="ui">Darstellung ▸ Wortskizze ▸ Wortfeld aktivieren</strong></td><td>⌘L</td><td>In der Ansicht <strong class="ui">Wortskizze</strong>, im Wortskizzen-Fenster und in den Wortskizzen des Inspektors. Setzt die Einfügemarke in das Feld <strong class="ui">Wort</strong>.</td></tr>
+<tr><td><strong class="ui">Darstellung ▸ Wortskizze ▸ Grammatik</strong>, <strong class="ui">Kodierung</strong> und <strong class="ui">Multimodus</strong></td><td>⌘1, ⌘2, ⌘3</td><td>In der Ansicht <strong class="ui">Wortskizze</strong>, im Wortskizzen-Fenster und in den Wortskizzen des Inspektors. Wechselt in diesen Modus; ein Häkchen kennzeichnet den aktuellen.</td></tr>
+<tr><td><strong class="ui">Darstellung ▸ Vollbildmodus</strong></td><td>⌃⌘F</td><td>Im Hauptfenster, im Abfragen-Fenster und in Ergebnisfenstern. Das Menü zeigt die Tasten unter Umständen als fn F (die Globustaste und F); beides funktioniert. Siehe <a href="reading-and-editing.html#full-screen">Die Leseansicht im Vollbildmodus</a> in <a href="reading-and-editing.html">Kapitel 5, Lesen und Bearbeiten</a>.</td></tr>
+</tbody></table></div>
+<p>⌥⌘1 bis ⌥⌘4 blenden den Inspektor ein, falls er gerade nicht angezeigt wird, und wechseln dann zum jeweiligen Tab. Ist ein Set, ein Tag oder eine Ansicht des Projektregals wie <strong class="ui">Codebuch</strong> der aktive Tab, wird der Inspektor automatisch geschlossen, und <strong class="ui">Inspektor ein-/ausblenden</strong> sowie ⌥⌘1 bis ⌥⌘4 sind deaktiviert. Mehr zum Projektregal finden Sie unter <a href="getting-started.html#project-shelf">Das Projektregal</a> in <a href="getting-started.html">Kapitel 2, Erste Schritte</a>.</p>
+<p><strong class="ui">Größerer Text</strong>, <strong class="ui">Kleinerer Text</strong> und <strong class="ui">Textgröße zurücksetzen</strong> ändern die Textgröße aller Dokumente in Schritten von 10 Prozent. Die drei Befehle verwenden dieselbe Einstellung wie der Regler <strong class="ui">Textgröße</strong> in den Einstellungen (siehe <a href="reading-and-editing.html#text-size">Textgröße</a> in <a href="reading-and-editing.html">Kapitel 5, Lesen und Bearbeiten</a>); im Fenster „Diagramm“ dagegen ändern ⌘+, ⌘- und ⌘0 die Zoomstufe des Diagramms oder setzen sie zurück. Auf US-Tastaturen entspricht ⌘+ sowohl bei <strong class="ui">Größerer Text</strong> als auch bei <strong class="ui">Vergrößern</strong> dem Drücken von ⇧⌘=.</p>
+<p>Die Befehle unter <strong class="ui">Darstellung ▸ Wortskizze</strong> wirken auf die Ansicht <strong class="ui">Wortskizze</strong> des Projekts, die Ansicht <strong class="ui">Wortskizze</strong> eines Sets oder Tags, das Wortskizzen-Fenster selbst und die Wortskizzen im Inspektor. Im Inspektor entsprechen die Modi seinen Wortskizzen. Wählen Sie etwa den Modus <strong class="ui">Grammatik</strong>, sehen Sie <strong class="ui">Wortskizze</strong> im Tab <strong class="ui">Grammatik</strong> des Inspektors; <strong class="ui">Kodierung</strong> ruft <strong class="ui">Code-Skizze</strong> im Tab <strong class="ui">Kodierung</strong> auf, und <strong class="ui">Multimodus</strong> zeigt <strong class="ui">Skizzenraum</strong> im Tab <strong class="ui">Multimodus</strong>. Alle drei speichern Ihre Wortskizzen im selben Verlauf, sodass das Wort erhalten bleibt.</p>
+<p><strong class="ui">Tableiste einblenden</strong> und <strong class="ui">Alle Tabs einblenden</strong> oben im Menü stammen direkt von macOS. Sie betreffen das Zusammenführen von Fenstern zu Tabs.</p>
+<figure class="shot" id="keyboard-shortcuts-view-menu"><img class="shot-light" src="../figures/de/light/keyboard-shortcuts-view-menu.webp" alt="Das Menü „Darstellung“ mit geöffnetem Untermenü „Inspektor“." loading="lazy"><img class="shot-dark" src="../figures/de/dark/keyboard-shortcuts-view-menu.webp" alt="Das Menü „Darstellung“ mit geöffnetem Untermenü „Inspektor“." loading="lazy"><figcaption>Das Menü „Darstellung“ mit geöffnetem Untermenü „Inspektor“.</figcaption></figure>
+<h3 id="project-menu">Projekt<a class="anchor" href="#project-menu" aria-hidden="true">#</a></h3>
+<p>Die meisten Befehle in diesem Menü wirken auf das, was in der Seitenleiste ausgewählt ist, und funktionieren deshalb im Hauptfenster. Die Befehle für Codes richten sich dagegen nach dem Code, der in einem beliebigen Fenster in der Ansicht <strong class="ui">Codebuch</strong> oder in der Facette <strong class="ui">Codes</strong> ausgewählt ist. Mehr dazu finden Sie in <a href="projects-and-documents.html">Kapitel 3, Projekte und Dokumente</a>, in <a href="sets-tags-attributes.html">Kapitel 8, Sets, Gruppen, Tags und Attribute</a> und unter <a href="coding.html#organizing-codes">Codes verwalten</a> in <a href="coding.html">Kapitel 7, Kodieren</a>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Befehl</th><th>Kurzbefehl</th><th>Wo er funktioniert</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">Projekt ▸ Neues Set</strong> und <strong class="ui">Neues intelligentes Set</strong></td><td>Keiner</td><td>Im Hauptfenster, sobald ein Projekt aktiv ist</td></tr>
+<tr><td><strong class="ui">Projekt ▸ Intelligentes Set bearbeiten</strong></td><td>Keiner</td><td>Im Hauptfenster, wenn ein intelligentes Set in der Seitenleiste ausgewählt oder im aktiven Tab geöffnet ist</td></tr>
+<tr><td><strong class="ui">Projekt ▸ Code hinzufügen</strong></td><td>Keiner</td><td>Im Hauptfenster, sobald ein Projekt aktiv ist</td></tr>
+<tr><td><strong class="ui">Projekt ▸ Untercode hinzufügen</strong>, <strong class="ui">Verschieben nach</strong>, <strong class="ui">Zusammenführen mit</strong>, <strong class="ui">Zu Code-Set hinzufügen</strong> und <strong class="ui">Code löschen</strong></td><td>Keiner</td><td>Wenn in der Ansicht <strong class="ui">Codebuch</strong> oder in der Facette <strong class="ui">Codes</strong> ein Code ausgewählt ist</td></tr>
+<tr><td><strong class="ui">Projekt ▸ Umbenennen</strong> und <strong class="ui">Eigenschaften</strong></td><td>Keiner</td><td>Im Hauptfenster, wenn in der Seitenleiste genau ein Dokument ausgewählt ist</td></tr>
+<tr><td><strong class="ui">Projekt ▸ In Gruppe verschieben</strong> und <strong class="ui">Zu Set hinzufügen</strong></td><td>Keiner</td><td>Im Hauptfenster, wenn in der Seitenleiste Dokumente ausgewählt sind</td></tr>
+<tr><td><strong class="ui">Projekt ▸ Aus Set entfernen</strong></td><td>Keiner</td><td>Im Hauptfenster, wenn in der Seitenleiste ein oder mehrere Dokumente unter demselben Set ausgewählt sind, sofern es kein intelligentes Set ist</td></tr>
+<tr><td><strong class="ui">Projekt ▸ Übersetzen</strong></td><td>Keiner</td><td>Im Hauptfenster, wenn ein Original in der Seitenleiste ausgewählt oder in der Leseansicht aktiv ist</td></tr>
+<tr><td><strong class="ui">Projekt ▸ Projekt löschen</strong>, <strong class="ui">Set löschen</strong>, <strong class="ui">Gruppe löschen</strong>, <strong class="ui">Dokument löschen</strong> oder <strong class="ui">Dokumente löschen</strong></td><td>⌘⌫</td><td>Im Hauptfenster, nachdem Sie in der Seitenleiste auf ein Projekt, ein Set oder eine Gruppe geklickt oder Dokumente unter <strong class="ui">Dokumente</strong> ausgewählt haben. Der Befehl ist nach dem benannt, was er löscht.</td></tr>
+<tr><td><strong class="ui">Projekt ▸ Attribute</strong></td><td>Keiner</td><td>Im Hauptfenster, sobald ein Projekt aktiv ist. Öffnet das Attribute-Fenster.</td></tr>
+<tr><td><strong class="ui">Projekt ▸ Öffnen</strong></td><td>Keiner</td><td>Im Hauptfenster, sobald ein Projekt aktiv ist. Führt die zehn Ansichten des Projektregals auf und öffnet die gewählte in einem Tab.</td></tr>
+</tbody></table></div>
+<p>Dokumente und Projekte werden erst nach einer Bestätigung gelöscht. Sets und Gruppen werden dagegen sofort gelöscht, und <strong class="ui">Bearbeiten ▸ Widerrufen</strong> (⌘Z) holt sie zurück.</p>
+<figure class="shot" id="keyboard-shortcuts-project-menu"><img class="shot-light" src="../figures/de/light/keyboard-shortcuts-project-menu.webp" alt="Das Menü Projekt, wobei im Codebuch von „Klimadebatte“ der Code „Fristen“ ausgewählt ist." loading="lazy"><img class="shot-dark" src="../figures/de/dark/keyboard-shortcuts-project-menu.webp" alt="Das Menü Projekt, wobei im Codebuch von „Klimadebatte“ der Code „Fristen“ ausgewählt ist." loading="lazy"><figcaption>Das Menü Projekt, wobei im Codebuch von „Klimadebatte“ der Code „Fristen“ ausgewählt ist.</figcaption></figure>
+<h3 id="document-menu">Dokument<a class="anchor" href="#document-menu" aria-hidden="true">#</a></h3>
+<p>Diese Befehle wirken auf das Dokument im aktiven Bereich oder im eigenen Fenster eines Dokuments.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Befehl</th><th>Kurzbefehl</th><th>Wo er funktioniert</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">Dokument ▸ Bearbeiten</strong></td><td>⇧⌘E</td><td>Sobald der Text des Dokuments geladen ist. Macht aus der Leseansicht einen Texteditor.</td></tr>
+<tr><td><strong class="ui">Dokument ▸ Sichern</strong></td><td>⌘↩</td><td>Während der Bearbeitung. Sichert den Text, den LemmaLoom danach erneut indiziert.</td></tr>
+<tr><td><strong class="ui">Dokument ▸ Abbrechen</strong></td><td>⌘.</td><td>Während der Bearbeitung. Verwirft alles, was Sie eingegeben haben, seit Sie <strong class="ui">Bearbeiten</strong> gewählt haben.</td></tr>
+<tr><td><strong class="ui">Dokument ▸ Code</strong></td><td>⇧⌘C</td><td>Wenn ein Wort oder eine Textstelle ausgewählt ist, außer während der Bearbeitung. Öffnet die Code-Palette, also die Liste der Codes, die Sie auf die Auswahl anwenden können.</td></tr>
+<tr><td><strong class="ui">Dokument ▸ In-vivo-Code</strong></td><td>⇧⌘V</td><td>Wie bei <strong class="ui">Code</strong>. Kodiert die Auswahl mit einem Code, der nach ihren Wörtern benannt ist, und legt diesen Code an, falls es noch keinen mit diesem Namen gibt. Siehe <a href="coding.html#coding-a-passage">Eine Textstelle kodieren</a> in <a href="coding.html">Kapitel 7, Kodieren</a>.</td></tr>
+<tr><td><strong class="ui">Dokument ▸ Automatisch kodieren…</strong></td><td>⇧⌘A</td><td>Wenn im Lens-Menü eine Lens für ein Wörterbuch, eine Abfrage oder einen Analysator aktiviert ist (siehe <a href="lenses.html">Kapitel 6, Lenses</a>). Sind mehrere davon aktiviert, hat das Menü für jede einen eigenen Befehl mit dem Namen der Lens, etwa <strong class="ui">Mit Heckenausdrücke automatisch kodieren…</strong>, und ⇧⌘A gehört zum ersten. Siehe <a href="coding.html#auto-coding">Textstellen automatisch kodieren</a> in <a href="coding.html">Kapitel 7, Kodieren</a>.</td></tr>
+<tr><td><strong class="ui">Dokument ▸ Memo</strong></td><td>⇧⌘M</td><td>Wie bei <strong class="ui">Code</strong>. Öffnet den Dialog <strong class="ui">Neues Memo</strong> für die Auswahl.</td></tr>
+<tr><td><strong class="ui">Dokument ▸ Lesezeichen</strong></td><td>⇧⌘B</td><td>Wie bei <strong class="ui">Code</strong>. Öffnet den Dialog <strong class="ui">Neues Lesezeichen</strong>. Überlappt die Auswahl ein Lesezeichen, heißt der Befehl <strong class="ui">Lesezeichen entfernen</strong> und entfernt es sofort; ⌘Z holt es zurück.</td></tr>
+<tr><td><strong class="ui">Dokument ▸ Verknüpfung</strong></td><td>⇧⌘L</td><td>Wie bei <strong class="ui">Code</strong>. Beginnt eine Verknüpfung, die von der Auswahl ausgeht. Danach heißt der Befehl <strong class="ui">Verknüpfung abschließen</strong>. Wählen Sie die andere Textstelle aus, in diesem oder einem anderen Dokument, und drücken Sie erneut ⇧⌘L, um den Dialog <strong class="ui">Neue Verknüpfung</strong> zu öffnen.</td></tr>
+<tr><td><strong class="ui">Dokument ▸ Verknüpfung abbrechen</strong></td><td>⌥⇧⌘L</td><td>Solange Sie eine Verknüpfung anlegen, mit oder ohne Auswahl. Verwirft die begonnene Verknüpfung.</td></tr>
+<tr><td><strong class="ui">Dokument ▸ Wiedergabe</strong></td><td>⇧⌘P</td><td>In Audio- und Videodokumenten. Während die Aufnahme läuft, heißt der Befehl <strong class="ui">Pausieren</strong>.</td></tr>
+</tbody></table></div>
+<p>Die Befehle <strong class="ui">Bearbeiten</strong>, <strong class="ui">Sichern</strong> und <strong class="ui">Abbrechen</strong> sind deaktiviert, während LemmaLoom Ihre Änderungen sichert.</p>
+<p>Mehr zum Anwenden von Codes, zum Anlegen von Memos, zum Setzen von Lesezeichen und zum Verknüpfen finden Sie in <a href="coding.html">Kapitel 7, Kodieren</a>. Das Bearbeiten Ihrer Texte und die Wiedergabe behandelt <a href="reading-and-editing.html">Kapitel 5, Lesen und Bearbeiten</a>.</p>
+<figure class="shot" id="keyboard-shortcuts-document-menu"><img class="shot-light" src="../figures/de/light/keyboard-shortcuts-document-menu.webp" alt="Das Menü „Dokument“ bei einer ausgewählten Textstelle in „Uns läuft die Zeit davon“." loading="lazy"><img class="shot-dark" src="../figures/de/dark/keyboard-shortcuts-document-menu.webp" alt="Das Menü „Dokument“ bei einer ausgewählten Textstelle in „Uns läuft die Zeit davon“." loading="lazy"><figcaption>Das Menü „Dokument“ bei einer ausgewählten Textstelle in „Uns läuft die Zeit davon“.</figcaption></figure>
+<h3 id="window-menu">Fenster<a class="anchor" href="#window-menu" aria-hidden="true">#</a></h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Befehl</th><th>Kurzbefehl</th><th>Wo er funktioniert</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">Fenster ▸ Im Dock ablegen</strong></td><td>⌘M</td><td>Im aktiven Fenster</td></tr>
+<tr><td><strong class="ui">Fenster ▸ Vorherigen Tab anzeigen</strong></td><td>⇧⌘[</td><td>Im Hauptfenster, wenn mindestens zwei Tabs geöffnet sind. Vor dem ersten Tab kommt der letzte.</td></tr>
+<tr><td><strong class="ui">Fenster ▸ Nächsten Tab anzeigen</strong></td><td>⇧⌘]</td><td>Im Hauptfenster, wenn mindestens zwei Tabs geöffnet sind. Auf den letzten Tab folgt der erste.</td></tr>
+<tr><td><strong class="ui">Fenster ▸ In neuem Fenster öffnen</strong></td><td>Keiner</td><td>Im Hauptfenster. Öffnet das Dokument im aktiven Bereich oder die Ansicht im aktiven Tab in einem eigenen Fenster. Im Tab eines Sets oder Tags öffnen sich nur die Ansichten <strong class="ui">Wortskizze</strong> und <strong class="ui">Abfragen</strong> in einem Fenster. Siehe <a href="reading-and-editing.html#document-window">Ein Dokument in einem eigenen Fenster öffnen</a> in <a href="reading-and-editing.html">Kapitel 5, Lesen und Bearbeiten</a>.</td></tr>
+<tr><td><strong class="ui">Fenster ▸ In geteilter Ansicht öffnen</strong></td><td>Keiner</td><td>Im Hauptfenster, wenn ein Dokument aktiv ist. Führt die geöffneten Dokumente auf, die daneben angezeigt werden können. Siehe <a href="translations.html#opening-split-view">Zwei Dokumente nebeneinander öffnen</a> in <a href="translations.html">Kapitel 9, Übersetzungen und geteilte Ansicht</a>.</td></tr>
+<tr><td><strong class="ui">Fenster ▸ Neben dem Original öffnen</strong></td><td>Keiner</td><td>Im Hauptfenster, wenn eine Übersetzung in der Seitenleiste ausgewählt oder in der Leseansicht aktiv ist</td></tr>
+<tr><td><strong class="ui">Fenster ▸ Nebeneinander öffnen</strong></td><td>Keiner</td><td>Im Hauptfenster, wenn in der Seitenleiste zwei Dokumente ausgewählt sind</td></tr>
+<tr><td><strong class="ui">Fenster ▸ Geteilte Ansicht schließen</strong></td><td>Keiner</td><td>Im Hauptfenster, in der geteilten Ansicht</td></tr>
+<tr><td><strong class="ui">Fenster ▸ Aktivität</strong></td><td>⌥⌘0</td><td>In jedem Fenster. Öffnet das Fenster „Aktivität“ oder wechselt zu ihm, wenn es bereits geöffnet ist. Siehe <a href="importing.html#activity-window">Das Fenster „Aktivität“</a> in <a href="importing.html">Kapitel 4, Material importieren</a>.</td></tr>
+<tr><td><strong class="ui">Fenster ▸ Analysatoren</strong></td><td>Keiner</td><td>In jedem Fenster. Siehe <a href="custom-analyzers.html">Kapitel 20, Eigene Analysatoren</a>.</td></tr>
+<tr><td><strong class="ui">Fenster ▸ Codebuch</strong></td><td>Keiner</td><td>In jedem Fenster, sobald ein Projekt aktiv ist. Siehe <a href="coding.html#codebook-view">Die Ansicht Codebuch</a> in <a href="coding.html">Kapitel 7, Kodieren</a>.</td></tr>
+<tr><td><strong class="ui">Fenster ▸ Tags</strong></td><td>Keiner</td><td>In jedem Fenster. Siehe <a href="projects-and-documents.html#tags-window">Das Tags-Fenster</a> in <a href="projects-and-documents.html">Kapitel 3, Projekte und Dokumente</a>.</td></tr>
+<tr><td><strong class="ui">Fenster ▸ Abfragen</strong></td><td>Keiner</td><td>In jedem Fenster. Siehe <a href="queries-building.html#queries-window">Das Abfragen-Fenster</a> in <a href="queries-building.html">Kapitel 15, Eine Abfrage erstellen</a>.</td></tr>
+</tbody></table></div>
+<p>Gemeint sind die Tabs über der Leseansicht, also die Dokumente, Sets, Tags und Ansichten aus dem Projektregal. Wenn Sie einen Tab aktivieren, wird in einer gerade angezeigten geteilten Ansicht der linke Bereich zum aktiven Bereich.</p>
+<p>Im unteren Teil des Menüs stellt macOS zwei weitere Befehle mit den Namen <strong class="ui">Vorherigen Tab anzeigen</strong> und <strong class="ui">Nächsten Tab anzeigen</strong> bereit; sie wechseln zwischen zusammengeführten Fenstern. Um zwischen den Tabs über der Leseansicht zu wechseln, verwenden Sie dagegen ⇧⌘[ und ⇧⌘]. Ganz unten im Menü steht schließlich die Liste der geöffneten Fenster von LemmaLoom.</p>
+<figure class="shot" id="keyboard-shortcuts-window-menu"><img class="shot-light" src="../figures/de/light/keyboard-shortcuts-window-menu.webp" alt="Das Menü Fenster mit zwei Dokumenten in Tabs des Hauptfensters." loading="lazy"><img class="shot-dark" src="../figures/de/dark/keyboard-shortcuts-window-menu.webp" alt="Das Menü Fenster mit zwei Dokumenten in Tabs des Hauptfensters." loading="lazy"><figcaption>Das Menü Fenster mit zwei Dokumenten in Tabs des Hauptfensters.</figcaption></figure>
+<h3 id="help-menu">Hilfe<a class="anchor" href="#help-menu" aria-hidden="true">#</a></h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Befehl</th><th>Kurzbefehl</th><th>Wo er funktioniert</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">Hilfe ▸ Glossar</strong></td><td>Keiner</td><td>In jedem Fenster. Siehe <a href="help-and-support.html#glossary">Das Glossar</a> in <a href="help-and-support.html">Kapitel 26, Hilfe und Support</a>.</td></tr>
+<tr><td><strong class="ui">Hilfe ▸ Feedback senden</strong></td><td>Keiner</td><td>In jedem Fenster. Siehe <a href="help-and-support.html#send-feedback">Feedback senden</a> in <a href="help-and-support.html">Kapitel 26, Hilfe und Support</a>.</td></tr>
+</tbody></table></div>
+<aside class="callout tip"><p class="callout-title">Tipp</p><p>macOS stellt oben im Menü <strong class="ui">Hilfe</strong> ein Suchfeld bereit. Um das Menü <strong class="ui">Hilfe</strong> zu öffnen und die Einfügemarke in das Suchfeld zu setzen, drücken Sie ⇧⌘/. Geben Sie einen Teil eines Befehlsnamens ein, etwa <code>scroll</code>, und halten Sie den Mauszeiger auf einen der Treffer; dann sehen Sie, in welchem Menü der Befehl steht und welchen Kurzbefehl er hat.</p>
+</aside>
+<h2 id="buttons-and-shortcuts">Schaltflächen mit Kurzbefehl<a class="anchor" href="#buttons-and-shortcuts" aria-hidden="true">#</a></h2>
+<p>Viele Schaltflächen verhalten sich wie ein Menübefehl und haben dieselben Tasten wie dieser. Meist liegen sie in der <a href="reading-and-editing.html#title-band">Titelleiste</a> oben im Lesebereich oder in der Suchleiste darunter. Manche erscheinen in der <a href="reading-and-editing.html#selection-bar">Auswahlleiste</a>, sobald Sie etwas auswählen, und in der <a href="reading-and-editing.html#player-bar">Wiedergabeleiste</a> eines Audio- oder Videodokuments. <a href="reading-and-editing.html">Kapitel 5, Lesen und Bearbeiten</a> beschreibt jede davon im Einzelnen.</p>
+<figure class="shot" id="keyboard-shortcuts-buttons"><img class="shot-light" src="../figures/de/light/keyboard-shortcuts-buttons.webp" alt="Das Hauptfenster mit „Uns läuft die Zeit davon“ und seiner englischen Übersetzung nebeneinander und einer ausgewählten Textstelle im linken Bereich." loading="lazy"><img class="shot-dark" src="../figures/de/dark/keyboard-shortcuts-buttons.webp" alt="Das Hauptfenster mit „Uns läuft die Zeit davon“ und seiner englischen Übersetzung nebeneinander und einer ausgewählten Textstelle im linken Bereich." loading="lazy"><figcaption>Das Hauptfenster mit „Uns läuft die Zeit davon“ und seiner englischen Übersetzung nebeneinander und einer ausgewählten Textstelle im linken Bereich.</figcaption></figure>
+<div class="table-wrap"><table>
+<thead><tr><th>Schaltfläche</th><th>Wo sie liegt</th><th>Entspricht</th><th>Kurzbefehl</th></tr></thead>
+<tbody>
+<tr><td><strong class="ui">Seitenleiste ein-/ausblenden</strong></td><td>Linkes Ende der Symbolleiste des Fensters</td><td><strong class="ui">Darstellung ▸ Seitenleiste ein-/ausblenden</strong></td><td>⌃⌘S</td></tr>
+<tr><td><strong class="ui">Inspektor ein-/ausblenden</strong></td><td>Rechtes Ende der Symbolleiste des Fensters</td><td><strong class="ui">Darstellung ▸ Inspektor ein-/ausblenden</strong></td><td>⌃⌘I</td></tr>
+<tr><td>× auf einem Tab (<strong class="ui">Tab schließen</strong>)</td><td>Tableiste</td><td><strong class="ui">Ablage ▸ Tab schließen</strong>, für den aktiven Tab</td><td>⌘W</td></tr>
+<tr><td>× auf dem Tab des rechten Bereichs (<strong class="ui">Geteilte Ansicht schließen</strong>)</td><td>Oben im rechten Bereich der geteilten Ansicht</td><td><strong class="ui">Ablage ▸ Tab schließen</strong>, wenn der rechte Bereich aktiv ist</td><td>⌘W</td></tr>
+<tr><td>Das Schloss (<strong class="ui">Gemeinsam scrollen</strong>)</td><td>Oben im rechten Bereich, wenn zwei Sprachfassungen nebeneinanderstehen</td><td><strong class="ui">Darstellung ▸ Gemeinsam scrollen</strong></td><td>⌥⌘L</td></tr>
+<tr><td><strong class="ui">Im Dokument suchen</strong> (die Lupe)</td><td>Titelleiste</td><td><strong class="ui">Bearbeiten ▸ Suchen</strong></td><td>⌘F</td></tr>
+<tr><td><strong class="ui">Größerer Text</strong>, <strong class="ui">Kleinerer Text</strong>, <strong class="ui">Textgröße zurücksetzen</strong></td><td>Das Menü <strong class="ui">Schrift, Randspalte und Textgröße</strong> in der Titelleiste</td><td>Die gleichnamigen Befehle im Menü <strong class="ui">Darstellung</strong></td><td>⌘+, ⌘-, ⌘0</td></tr>
+<tr><td><strong class="ui">Bearbeiten</strong></td><td>Titelleiste</td><td><strong class="ui">Dokument ▸ Bearbeiten</strong></td><td>⇧⌘E</td></tr>
+<tr><td><strong class="ui">Sichern</strong> und <strong class="ui">Abbrechen</strong></td><td>Titelleiste, während der Bearbeitung</td><td><strong class="ui">Dokument ▸ Sichern</strong> und <strong class="ui">Dokument ▸ Abbrechen</strong></td><td>⌘↩ und ⌘.</td></tr>
+<tr><td><strong class="ui">Nächster Treffer</strong> und <strong class="ui">Vorheriger Treffer</strong> (die Pfeile nach unten und nach oben)</td><td>Suchleiste</td><td><strong class="ui">Bearbeiten ▸ Weitersuchen</strong> und <strong class="ui">Bearbeiten ▸ Rückwärts suchen</strong></td><td>⌘G und ⇧⌘G</td></tr>
+<tr><td><strong class="ui">Suchleiste schließen</strong> (×)</td><td>Suchleiste</td><td><strong class="ui">Bearbeiten ▸ Suchen</strong>, solange die Leiste offen ist</td><td>⌘F oder Esc</td></tr>
+<tr><td><strong class="ui">Lesezeichen</strong> oder <strong class="ui">Lesezeichen entfernen</strong></td><td>Auswahlleiste</td><td><strong class="ui">Dokument ▸ Lesezeichen</strong></td><td>⇧⌘B</td></tr>
+<tr><td><strong class="ui">Code</strong></td><td>Auswahlleiste</td><td><strong class="ui">Dokument ▸ Code</strong></td><td>⇧⌘C</td></tr>
+<tr><td><strong class="ui">In vivo „…“</strong></td><td>Letzter Eintrag der Code-Palette</td><td><strong class="ui">Dokument ▸ In-vivo-Code</strong></td><td>⇧⌘V</td></tr>
+<tr><td><strong class="ui">Memo</strong></td><td>Auswahlleiste</td><td><strong class="ui">Dokument ▸ Memo</strong></td><td>⇧⌘M</td></tr>
+<tr><td><strong class="ui">Verknüpfung</strong> oder <strong class="ui">Verknüpfung abschließen</strong></td><td>Auswahlleiste</td><td><strong class="ui">Dokument ▸ Verknüpfung</strong></td><td>⇧⌘L</td></tr>
+<tr><td><strong class="ui">Ausstehende Verknüpfung abbrechen</strong> (das durchgestrichene Verknüpfungssymbol)</td><td>Auswahlleiste, solange Sie eine Verknüpfung anlegen</td><td><strong class="ui">Dokument ▸ Verknüpfung abbrechen</strong></td><td>⌥⇧⌘L</td></tr>
+<tr><td><strong class="ui">Auswahl aufheben</strong> (×)</td><td>Auswahlleiste</td><td>Kein Menübefehl</td><td>Esc</td></tr>
+<tr><td><strong class="ui">Wiedergabe</strong> oder <strong class="ui">Pausieren</strong></td><td>Wiedergabeleiste</td><td><strong class="ui">Dokument ▸ Wiedergabe</strong></td><td>⇧⌘P</td></tr>
+<tr><td><strong class="ui">Abfrage ausführen</strong> (das Dreieck)</td><td>Die Leiste über einer Abfrage</td><td><strong class="ui">Bearbeiten ▸ Abfrage ausführen</strong></td><td>⌘R</td></tr>
+<tr><td><strong class="ui">Zurück</strong> und <strong class="ui">Vorwärts</strong> (die Pfeile)</td><td>Die Leiste über einer Wortskizze</td><td><strong class="ui">Darstellung ▸ Wortskizze ▸ Zurück</strong> und <strong class="ui">Vorwärts</strong></td><td>⌘[ und ⌘]</td></tr>
+<tr><td><strong class="ui">Grammatik</strong>, <strong class="ui">Kodierung</strong> und <strong class="ui">Multimodus</strong></td><td>Die Modusauswahl in der Ansicht <strong class="ui">Wortskizze</strong> und im Wortskizzen-Fenster</td><td>Die gleichnamigen Befehle unter <strong class="ui">Darstellung ▸ Wortskizze</strong></td><td>⌘1, ⌘2, ⌘3</td></tr>
+<tr><td><strong class="ui">Vergrößern</strong> und <strong class="ui">Verkleinern</strong> (die Lupen)</td><td>Die Zoomleiste des Fensters „Diagramm“</td><td><strong class="ui">Darstellung ▸ Vergrößern</strong> und <strong class="ui">Darstellung ▸ Verkleinern</strong></td><td>⌘+ und ⌘-</td></tr>
+</tbody></table></div>
+<p>Im Vollbildmodus wandern die Werkzeuge der Titelleiste in die Symbolleiste des Fensters (siehe <a href="reading-and-editing.html#full-screen">Die Leseansicht im Vollbildmodus</a> in <a href="reading-and-editing.html">Kapitel 5, Lesen und Bearbeiten</a>). Ihre Kurzbefehle funktionieren weiterhin, und das Menü für den Text heißt dort <strong class="ui">Leseansicht-Einstellungen</strong>.</p>
+<h2 id="esc-and-return">Esc-Taste, Zeilenschalter und Pfeiltasten<a class="anchor" href="#esc-and-return" aria-hidden="true">#</a></h2>
+<p>Die Esc-Taste, der Zeilenschalter und die Pfeiltasten wirken außerhalb der Menüs, und was sie tun, hängt davon ab, wo Sie sich gerade befinden.</p>
+<p>Die Esc-Taste schließt oder leert, womit Sie gerade arbeiten:</p>
+<ul>
+<li>In der Leseansicht hebt die Esc-Taste die Auswahl auf, lässt eine ausstehende Verknüpfung aber unberührt. Wollen Sie eine Verknüpfung doch nicht anlegen, wählen Sie <strong class="ui">Dokument ▸ Verknüpfung abbrechen</strong> (⌥⇧⌘L).</li>
+<li>In der Suchleiste schließt sie die Leiste und leert die aktuelle Suche.</li>
+<li>In der Code-Palette schließt sie die Palette, und Ihre Auswahl bleibt erhalten.</li>
+<li>Im Feld <strong class="ui">Dokumente durchsuchen</strong> und in der Seitenleiste leert sie die Suchergebnisse und zeigt wieder alle Dokumente.</li>
+<li>In Dialogen mit einer Schaltfläche <strong class="ui">Abbrechen</strong> löst sie diese Schaltfläche aus.</li>
+<li>Drücken Sie die Esc-Taste, während Sie ein Projekt, ein Dokument, ein Set, eine Gruppe oder ein Tag umbenennen, bleibt der alte Name erhalten.</li>
+</ul>
+<p>In der geteilten Ansicht wirkt die Esc-Taste in der Leseansicht nur auf den aktiven Bereich.</p>
+<p>Der Zeilenschalter bestätigt Eingaben, übernimmt eine Wahl oder öffnet, was Sie ausgewählt haben:</p>
+<ul>
+<li>In der Suchleiste springen Sie mit dem Zeilenschalter zum nächsten Treffer des Suchbegriffs (wie mit ⌘G); im Feld <strong class="ui">Dokumente durchsuchen</strong> öffnet der Zeilenschalter dagegen das erste gefundene Dokument.</li>
+<li>In der Seitenleiste öffnen Sie ein Dokument per Klick oder mit dem Zeilenschalter.</li>
+<li>In anderen Listen, etwa in den Ansichten <strong class="ui">Codebuch</strong>, <strong class="ui">Kodierungen</strong>, <strong class="ui">Memos</strong> und <strong class="ui">Verknüpfungen</strong> oder im Tags-Fenster, wählt ein Klick ein Element aus, und ein Doppelklick oder der Zeilenschalter öffnet es.</li>
+<li>In der Code-Palette wendet der Zeilenschalter den hervorgehobenen Eintrag an (nach einer Eingabe in <strong class="ui">Codes suchen</strong> liegt die Hervorhebung auf dem ersten verbliebenen Eintrag). Hat die Auswahl den hervorgehobenen Code bereits, entfernt der Zeilenschalter ihn.</li>
+<li>Liegt der Fokus in einem Dialog auf keinem Feld oder auf einem einzeiligen Feld, das den Zeilenschalter nicht selbst verarbeitet, löst der Zeilenschalter die hervorgehobene Schaltfläche aus, etwa <strong class="ui">Sichern</strong> oder <strong class="ui">Automatisch kodieren</strong>; die Felder in den folgenden Punkten verarbeiten den Zeilenschalter selbst, auch in einem Dialog.</li>
+<li>Beim Umbenennen, auch eines Wörterbuchs in der Ansicht <strong class="ui">Wörterbücher</strong>, bestätigen der Zeilenschalter oder ein Klick an eine andere Stelle immer die Eingabe.</li>
+<li>Die Felder <strong class="ui">Tag hinzufügen</strong> akzeptieren immer den Zeilenschalter oder Kommas als Trennzeichen zwischen Tags.</li>
+<li>In Feldern <strong class="ui">Begriff hinzufügen</strong> in Textregeln von Abfragen und in Wörterbuchkategorien fügt der Zeilenschalter den Begriff hinzu. In einer Abfrage nehmen diese Felder auch mehrere Begriffe auf, durch Kommas getrennt.</li>
+<li>Haben Sie den Namen eines neuen Attributs in sein Feld eingegeben, fügt der Zeilenschalter das Attribut hinzu.</li>
+<li>In den Dialogen <strong class="ui">Dokument importieren</strong> und <strong class="ui">Dokumenteigenschaften</strong> fügt der Zeilenschalter das eingegebene Muster unter <strong class="ui">Von der Indizierung ausschließen</strong> hinzu.</li>
+<li>In den Feldern <strong class="ui">Wort</strong> der Wortskizze, der Code-Skizze und des Skizzenraums erhalten Sie mit dem Zeilenschalter die Skizze des eingegebenen Begriffs.</li>
+<li>Im Fenster „Analysatoren“ schließlich löst der Zeilenschalter <strong class="ui">Sichern</strong> aus, während Sie in <strong class="ui">Name</strong> oder in einem Feld <strong class="ui">Beschriftung</strong> tippen.</li>
+</ul>
+<p>Mit ↑ und ↓ bewegen Sie sich durch die Seitenleiste und die Code-Palette:</p>
+<ul>
+<li>In der Seitenleiste wechseln ↑ und ↓ zur vorherigen oder nächsten Zeile; ein anschließender Druck auf den Zeilenschalter öffnet das neu ausgewählte Dokument.</li>
+<li>Mit ↓ im Feld <strong class="ui">Dokumente durchsuchen</strong> wählen Sie das erste Dokument aus den Ergebnissen aus und wechseln in die Liste.</li>
+<li>In der Code-Palette heben ↑ und ↓ nacheinander die Einträge der Palette hervor, einschließlich <strong class="ui">Code „…“ hinzufügen</strong> und <strong class="ui">In vivo „…“</strong> an ihrem Ende.</li>
+</ul>
+<p>In der Tabelle einer Kategorie in der Ansicht <strong class="ui">Wörterbücher</strong> entfernt die Rückschritttaste (⌫) die ausgewählten Begriffe.</p>
+<aside class="callout note"><p class="callout-title">Hinweis</p><p>Während <strong class="ui">Automatisch kodieren</strong> läuft, ist <strong class="ui">Stoppen</strong> die hervorgehobene Schaltfläche des Dialogs; der Zeilenschalter hält den Durchlauf also an. Die bis dahin angewendeten Kodierungen bleiben erhalten und lassen sich mit <strong class="ui">Bearbeiten ▸ Automatisch kodieren widerrufen</strong> (⌘Z) zurücknehmen.</p>
+</aside>
+<h2 id="modifier-clicks">Klicks mit Sondertaste<a class="anchor" href="#modifier-clicks" aria-hidden="true">#</a></h2>
+<p>Bei einigen Aktionen kombinieren Sie eine Taste mit der Maus oder dem Trackpad.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Tasten</th><th>Wo</th><th>Was geschieht</th></tr></thead>
+<tbody>
+<tr><td>⌘-Klick</td><td>Ein Dokument im Abschnitt <strong class="ui">Dokumente</strong> der Seitenleiste</td><td>Fügt das Dokument der Auswahl hinzu oder entfernt es wieder daraus</td></tr>
+<tr><td>⇧-Klick</td><td>Ein Dokument im Abschnitt <strong class="ui">Dokumente</strong> der Seitenleiste</td><td>Fügt alle Dokumente zwischen diesem und dem zuletzt angeklickten der Auswahl hinzu</td></tr>
+<tr><td>⌘ und Scrollen</td><td>Die Karte einer Wortskizze, in der Wortskizze, in der Code-Skizze oder im Skizzenraum</td><td>Zoomt um den Mauszeiger herum hinein oder heraus. Einfaches Scrollen verschiebt die vergrößerte Karte.</td></tr>
+</tbody></table></div>
+<p>Wählen Sie mehrere Dokumente aus und klicken Sie mit der rechten Maustaste auf eines davon, um Aktionen aufzurufen, die auf alle ausgewählten Dokumente wirken (siehe <a href="projects-and-documents.html#selecting-documents">Mehrere Dokumente auswählen</a> in <a href="projects-and-documents.html">Kapitel 3, Projekte und Dokumente</a>). Das Zoomen beschreibt <a href="word-sketch.html#the-map">Die Karte</a> in <a href="word-sketch.html">Kapitel 12, Wortskizze</a> im Einzelnen.</p>
+<h2 id="shortcuts-by-key">Alle Kurzbefehle nach Tasten<a class="anchor" href="#shortcuts-by-key" aria-hidden="true">#</a></h2>
+<p>Diese Tabelle enthält alle Kurzbefehle aus den Menüs von LemmaLoom, geordnet zuerst nach Sondertaste und dann nach Taste. Sie hilft, wenn Sie herausfinden möchten, welchen Befehl Sie versehentlich ausgelöst haben oder ob Tasten, die Sie selbst belegen möchten, schon vergeben sind.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Tasten</th><th>Befehl</th></tr></thead>
+<tbody>
+<tr><td>⌘,</td><td><strong class="ui">LemmaLoom ▸ Einstellungen …</strong></td></tr>
+<tr><td>⌘.</td><td><strong class="ui">Dokument ▸ Abbrechen</strong></td></tr>
+<tr><td>⌘+</td><td><strong class="ui">Darstellung ▸ Größerer Text</strong> oder, im Fenster „Diagramm“, <strong class="ui">Darstellung ▸ Vergrößern</strong></td></tr>
+<tr><td>⌘-</td><td><strong class="ui">Darstellung ▸ Kleinerer Text</strong> oder, im Fenster „Diagramm“, <strong class="ui">Darstellung ▸ Verkleinern</strong></td></tr>
+<tr><td>⌘[</td><td><strong class="ui">Darstellung ▸ Wortskizze ▸ Zurück</strong></td></tr>
+<tr><td>⌘]</td><td><strong class="ui">Darstellung ▸ Wortskizze ▸ Vorwärts</strong></td></tr>
+<tr><td>⌘0</td><td><strong class="ui">Darstellung ▸ Textgröße zurücksetzen</strong> oder, im Fenster „Diagramm“, <strong class="ui">Darstellung ▸ Originalgröße</strong></td></tr>
+<tr><td>⌘1 bis ⌘3</td><td><strong class="ui">Darstellung ▸ Wortskizze ▸ Grammatik</strong>, <strong class="ui">Kodierung</strong> und <strong class="ui">Multimodus</strong></td></tr>
+<tr><td>⌘A</td><td><strong class="ui">Bearbeiten ▸ Alles auswählen</strong></td></tr>
+<tr><td>⌘C</td><td><strong class="ui">Bearbeiten ▸ Kopieren</strong></td></tr>
+<tr><td>⌘F</td><td><strong class="ui">Bearbeiten ▸ Suchen</strong></td></tr>
+<tr><td>⌘G</td><td><strong class="ui">Bearbeiten ▸ Weitersuchen</strong></td></tr>
+<tr><td>⌘H</td><td><strong class="ui">LemmaLoom ▸ „LemmaLoom“ ausblenden</strong></td></tr>
+<tr><td>⌘L</td><td><strong class="ui">Darstellung ▸ Wortskizze ▸ Wortfeld aktivieren</strong></td></tr>
+<tr><td>⌘M</td><td><strong class="ui">Fenster ▸ Im Dock ablegen</strong></td></tr>
+<tr><td>⌘N</td><td><strong class="ui">Ablage ▸ Neues Fenster</strong></td></tr>
+<tr><td>⌘Q</td><td><strong class="ui">LemmaLoom ▸ „LemmaLoom“ beenden</strong></td></tr>
+<tr><td>⌘R</td><td><strong class="ui">Bearbeiten ▸ Abfrage ausführen</strong></td></tr>
+<tr><td>⌘V</td><td><strong class="ui">Bearbeiten ▸ Einsetzen</strong></td></tr>
+<tr><td>⌘W</td><td><strong class="ui">Ablage ▸ Tab schließen</strong> oder <strong class="ui">Ablage ▸ Schließen</strong></td></tr>
+<tr><td>⌘X</td><td><strong class="ui">Bearbeiten ▸ Ausschneiden</strong></td></tr>
+<tr><td>⌘Z</td><td><strong class="ui">Bearbeiten ▸ Widerrufen</strong></td></tr>
+<tr><td>⌘↩</td><td><strong class="ui">Dokument ▸ Sichern</strong></td></tr>
+<tr><td>⌘⌫</td><td><strong class="ui">Projekt ▸ Projekt löschen</strong>, <strong class="ui">Set löschen</strong>, <strong class="ui">Gruppe löschen</strong>, <strong class="ui">Dokument löschen</strong> oder <strong class="ui">Dokumente löschen</strong>; im Fenster „Analysatoren“ <strong class="ui">Bearbeiten ▸ Analysator löschen</strong></td></tr>
+<tr><td>⇧⌘/</td><td>Das Suchfeld im Menü <strong class="ui">Hilfe</strong></td></tr>
+<tr><td>⇧⌘[</td><td><strong class="ui">Fenster ▸ Vorherigen Tab anzeigen</strong></td></tr>
+<tr><td>⇧⌘\</td><td><strong class="ui">Darstellung ▸ Alle Tabs einblenden</strong></td></tr>
+<tr><td>⇧⌘]</td><td><strong class="ui">Fenster ▸ Nächsten Tab anzeigen</strong></td></tr>
+<tr><td>⇧⌘A</td><td><strong class="ui">Dokument ▸ Automatisch kodieren…</strong></td></tr>
+<tr><td>⇧⌘B</td><td><strong class="ui">Dokument ▸ Lesezeichen</strong> oder <strong class="ui">Lesezeichen entfernen</strong></td></tr>
+<tr><td>⇧⌘C</td><td><strong class="ui">Dokument ▸ Code</strong></td></tr>
+<tr><td>⇧⌘E</td><td><strong class="ui">Dokument ▸ Bearbeiten</strong></td></tr>
+<tr><td>⇧⌘F</td><td><strong class="ui">Bearbeiten ▸ Dokument suchen</strong></td></tr>
+<tr><td>⇧⌘G</td><td><strong class="ui">Bearbeiten ▸ Rückwärts suchen</strong></td></tr>
+<tr><td>⇧⌘I</td><td><strong class="ui">Ablage ▸ Importieren ▸ Dokumente</strong></td></tr>
+<tr><td>⇧⌘L</td><td><strong class="ui">Dokument ▸ Verknüpfung</strong> oder <strong class="ui">Verknüpfung abschließen</strong></td></tr>
+<tr><td>⇧⌘M</td><td><strong class="ui">Dokument ▸ Memo</strong></td></tr>
+<tr><td>⇧⌘N</td><td><strong class="ui">Ablage ▸ Neues Projekt</strong></td></tr>
+<tr><td>⇧⌘P</td><td><strong class="ui">Dokument ▸ Wiedergabe</strong> oder <strong class="ui">Pausieren</strong></td></tr>
+<tr><td>⇧⌘V</td><td><strong class="ui">Dokument ▸ In-vivo-Code</strong></td></tr>
+<tr><td>⇧⌘W</td><td><strong class="ui">Ablage ▸ Fenster schließen</strong></td></tr>
+<tr><td>⇧⌘Z</td><td><strong class="ui">Bearbeiten ▸ Wiederholen</strong></td></tr>
+<tr><td>⌥⌘0</td><td><strong class="ui">Fenster ▸ Aktivität</strong></td></tr>
+<tr><td>⌥⌘1 bis ⌥⌘4</td><td><strong class="ui">Darstellung ▸ Inspektor ▸ Text</strong>, <strong class="ui">Grammatik</strong>, <strong class="ui">Kodierung</strong> und <strong class="ui">Multimodus</strong></td></tr>
+<tr><td>⌥⌘H</td><td><strong class="ui">LemmaLoom ▸ Andere ausblenden</strong></td></tr>
+<tr><td>⌥⌘L</td><td><strong class="ui">Darstellung ▸ Gemeinsam scrollen</strong></td></tr>
+<tr><td>⌥⌘N</td><td><strong class="ui">Ablage ▸ Neue Gruppe</strong></td></tr>
+<tr><td>⌥⇧⌘I</td><td><strong class="ui">Ablage ▸ Importieren ▸ Webseiten</strong></td></tr>
+<tr><td>⌥⇧⌘L</td><td><strong class="ui">Dokument ▸ Verknüpfung abbrechen</strong></td></tr>
+<tr><td>⌃⌘F</td><td><strong class="ui">Darstellung ▸ Vollbildmodus</strong> oder <strong class="ui">Vollbildmodus aus</strong></td></tr>
+<tr><td>⌃⌘I</td><td><strong class="ui">Darstellung ▸ Inspektor ein-/ausblenden</strong></td></tr>
+<tr><td>⌃⌘S</td><td><strong class="ui">Darstellung ▸ Seitenleiste ein-/ausblenden</strong></td></tr>
+<tr><td>⌃Tab</td><td><strong class="ui">Fenster ▸ Nächsten Tab anzeigen</strong> (zusammengeführte Fenster)</td></tr>
+<tr><td>⌃⇧Tab</td><td><strong class="ui">Fenster ▸ Vorherigen Tab anzeigen</strong> (zusammengeführte Fenster)</td></tr>
+<tr><td>fn E</td><td><strong class="ui">Bearbeiten ▸ Emoji &amp; Symbole</strong></td></tr>
+<tr><td>⌃fn C</td><td><strong class="ui">Fenster ▸ Zentriert</strong></td></tr>
+<tr><td>⌃fn F</td><td><strong class="ui">Fenster ▸ Füllen</strong></td></tr>
+</tbody></table></div>
+<h2 id="keyboard-example">Kodieren mit der Tastatur<a class="anchor" href="#keyboard-example" aria-hidden="true">#</a></h2>
+<p>Eine Textstelle wählen Sie mit der Maus oder dem Trackpad aus, doch fast alles Übrige lässt sich mit der Tastatur erledigen. Angenommen, Sie lesen „Klimadebatte“ auf der Suche nach Textstellen über Fristen. „Uns läuft die Zeit davon“ und „Brief vom Klimastreik“ sind in Tabs geöffnet, und „Uns läuft die Zeit davon“ ist aktiv. Um das Beispiel nachzuvollziehen, können Sie das Beispielprojekt mit <strong class="ui">Ablage ▸ Importieren ▸ Beispielprojekt</strong> importieren.</p>
+<ol>
+<li>Drücken Sie ⌥⌘3. Der Inspektor zeigt seinen Tab <strong class="ui">Kodierung</strong>.</li>
+<li>Drücken Sie ⌘F und geben Sie <code>Ruhestand</code> ein. Die Leseansicht springt zum einzigen Treffer, im Absatz über die Jahreszahlen, die die Regierenden versprochen haben.</li>
+<li>Drücken Sie die Esc-Taste, um die Suchleiste zu schließen.</li>
+<li>Wählen Sie den Satz <em>Eine Frist, die erst abläuft, wenn alle heutigen Amtsträger im Ruhestand sind, ist überhaupt keine Frist.</em> aus.</li>
+<li>Drücken Sie ⇧⌘C. Die Code-Palette öffnet sich, und die Einfügemarke steht in <strong class="ui">Codes suchen</strong>.</li>
+<li>Geben Sie <code>frist</code> ein. „Fristen“ ist der einzige Code, der in der Liste übrig bleibt.</li>
+<li>Drücken Sie den Zeilenschalter. „Fristen“ erhält ein Häkchen, und die Palette bleibt geöffnet.</li>
+<li>Drücken Sie die Esc-Taste, um die Palette zu schließen. Die Textstelle ist weiterhin ausgewählt.</li>
+<li>Drücken Sie ⇧⌘M. Der Dialog <strong class="ui">Neues Memo</strong> öffnet sich.</li>
+<li>Klicken Sie in das Feld <strong class="ui">Memo</strong> und geben Sie eine Notiz ein, etwa <code>Die Ziele werden erst fällig, wenn ihre Urheber im Ruhestand sind; mit Brief vom Klimastreik vergleichen.</code></li>
+<li>Klicken Sie auf <strong class="ui">Sichern</strong>.</li>
+<li>Drücken Sie ⇧⌘], um zu „Brief vom Klimastreik“ weiterzugehen.</li>
+</ol>
+<p>Haben Sie einen Code auf die falsche Textstelle angewendet, schließen Sie die Palette und drücken Sie ⌘Z. <strong class="ui">Bearbeiten ▸ Code anwenden widerrufen</strong> nimmt die Kodierung zurück. Solange die Palette noch aktiv ist, entfernt ein weiterer Druck auf den Zeilenschalter „Fristen“ wieder.</p>
+<figure class="shot" id="keyboard-shortcuts-code-palette"><img class="shot-light" src="../figures/de/light/keyboard-shortcuts-code-palette.webp" alt="Die Code-Palette, mit ⇧⌘C in „Uns läuft die Zeit davon“ geöffnet. Im Suchfeld steht frist, und „Fristen“ ist als einziger Code übrig." loading="lazy"><img class="shot-dark" src="../figures/de/dark/keyboard-shortcuts-code-palette.webp" alt="Die Code-Palette, mit ⇧⌘C in „Uns läuft die Zeit davon“ geöffnet. Im Suchfeld steht frist, und „Fristen“ ist als einziger Code übrig." loading="lazy"><figcaption>Die Code-Palette, mit ⇧⌘C in „Uns läuft die Zeit davon“ geöffnet. Im Suchfeld steht frist, und „Fristen“ ist als einziger Code übrig.</figcaption></figure>
+<h2 id="custom-shortcuts">Eigene Tastaturkurzbefehle hinzufügen<a class="anchor" href="#custom-shortcuts" aria-hidden="true">#</a></h2>
+<p>In macOS können Sie jedem Menübefehl in jedem Programm einen Tastaturkurzbefehl zuweisen. So rufen Sie Befehle, die Sie regelmäßig verwenden, schnell auf, etwa <strong class="ui">Bearbeiten ▸ Abfrage aus Auswahl</strong> und <strong class="ui">Projekt ▸ Code hinzufügen</strong>. Ebenso können Sie vorhandene Kurzbefehle nach Ihren Wünschen neu belegen.</p>
+<ol>
+<li>Öffnen Sie die <strong class="ui">Systemeinstellungen</strong> und klicken Sie auf <strong class="ui">Tastatur</strong>.</li>
+<li>Klicken Sie auf <strong class="ui">Tastaturkurzbefehle …</strong>.</li>
+<li>Klicken Sie in der Liste links auf <strong class="ui">App-Kurzbefehle</strong>.</li>
+<li>Klicken Sie auf die Schaltfläche zum Hinzufügen (+).</li>
+<li>Wählen Sie LemmaLoom als Programm.</li>
+<li>Geben Sie als Menütitel den Namen des Befehls genau so ein, wie das Menü ihn zeigt, etwa <code>Abfrage aus Auswahl</code>.</li>
+<li>Klicken Sie in das Feld für den Kurzbefehl und drücken Sie eine Tastenkombination, die noch frei ist (siehe <a href="#shortcuts-by-key">Alle Kurzbefehle nach Tasten</a> weiter oben in diesem Kapitel), etwa ⌃⌥⌘Q.</li>
+<li>Klicken Sie auf <strong class="ui">Fertig</strong>.</li>
+</ol>
+<p>Wenn Sie einem Eintrag mit Auslassungspunkten im Namen Tasten zuweisen, etwa <strong class="ui">Automatisch kodieren…</strong>, geben Sie die Auslassungspunkte als ein einziges Zeichen ein. Auf der US-Tastatur drücken Sie dafür die Wahltaste zusammen mit der Semikolontaste, statt drei Punkte einzugeben. Einige Einträge kommen in den Menüs des Programms zweimal vor (<strong class="ui">REFI-QDA-Projekt</strong> etwa steht sowohl unter <strong class="ui">Importieren</strong> als auch unter <strong class="ui">Exportieren</strong>). In einem solchen Fall geben Sie den ganzen Pfad zum Befehl ein, mit dem Trennzeichen <code>-&gt;</code> zwischen den Menüs, etwa <code>Ablage-&gt;Exportieren-&gt;REFI-QDA-Projekt</code>.</p>
+<p>Nach dem Sichern erscheint der Kurzbefehl im Menü von LemmaLoom neben dem Befehl. Ist das nicht der Fall, beenden Sie LemmaLoom und starten Sie das Programm erneut.</p>
+<p>macOS erkennt Befehle an den Namen ihrer Menüeinträge. Der eingegebene Name muss deshalb mit dem Namen des Menüeintrags in der gerade gewählten Sprache des Programms übereinstimmen. Wechseln Sie die Sprache, legen Sie die Kurzbefehle unter den neuen Befehlsnamen erneut fest, auf Englisch etwa unter <strong class="ui">Query from Selection</strong>. Aus demselben Grund reagiert ein Befehl, der seinen Namen ändert, nur unter dem eingegebenen Namen auf Ihren Kurzbefehl. Tasten, die Sie dem Befehl <strong class="ui">Automatisch kodieren…</strong> zugewiesen haben, funktionieren nicht mehr, sobald mehrere Lenses gleichzeitig aktiviert sind, die automatisch kodieren können, denn das Menü bietet dann stattdessen <strong class="ui">Mit Heckenausdrücke automatisch kodieren…</strong> und ähnliche Befehle an.</p>
+</article>
+<nav class="pager"><a class="previous" href="settings.html"><span>Zurück</span>Einstellungen und Darstellung</a><a class="next" href="help-and-support.html"><span>Weiter</span>Hilfe und Support</a></nav>
+<footer class="site-footer">© 2026 Ryan S. Cooper. Alle Rechte vorbehalten.<br>Diese Ausgabe wurde mithilfe von KI aus der englischen Originalausgabe übersetzt. Die Übersetzung kann Fehler oder Ungenauigkeiten enthalten. Im Zweifel ist die englische Ausgabe maßgeblich.</footer>
+</main>
+<nav class="page-toc" aria-label="Auf dieser Seite"><p>Auf dieser Seite</p><ul>
+<li class="level-2"><a href="#how-shortcuts-work">So funktionieren Kurzbefehle</a></li>
+<li class="level-3"><a href="#shortcuts-by-window">Kurzbefehle in den einzelnen Fenstern</a></li>
+<li class="level-2"><a href="#shortcuts-by-menu">Kurzbefehle nach Menüs</a></li>
+<li class="level-3"><a href="#lemmaloom-menu">LemmaLoom</a></li>
+<li class="level-3"><a href="#file-menu">Ablage</a></li>
+<li class="level-3"><a href="#edit-menu">Bearbeiten</a></li>
+<li class="level-3"><a href="#view-menu">Darstellung</a></li>
+<li class="level-3"><a href="#project-menu">Projekt</a></li>
+<li class="level-3"><a href="#document-menu">Dokument</a></li>
+<li class="level-3"><a href="#window-menu">Fenster</a></li>
+<li class="level-3"><a href="#help-menu">Hilfe</a></li>
+<li class="level-2"><a href="#buttons-and-shortcuts">Schaltflächen mit Kurzbefehl</a></li>
+<li class="level-2"><a href="#esc-and-return">Esc-Taste, Zeilenschalter und Pfeiltasten</a></li>
+<li class="level-2"><a href="#modifier-clicks">Klicks mit Sondertaste</a></li>
+<li class="level-2"><a href="#shortcuts-by-key">Alle Kurzbefehle nach Tasten</a></li>
+<li class="level-2"><a href="#keyboard-example">Kodieren mit der Tastatur</a></li>
+<li class="level-2"><a href="#custom-shortcuts">Eigene Tastaturkurzbefehle hinzufügen</a></li>
+</ul></nav>
+</div>
+<script src="../assets/guide.js" defer></script>
+</body>
+</html>
