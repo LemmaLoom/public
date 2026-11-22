@@ -2,11 +2,222 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="refresh" content="0; url=guide/">
-<link rel="canonical" href="guide/">
-<title>LemmaLoom</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="LemmaLoom is a grammar-aware qualitative data analysis application for macOS, with support for English, German, and Chinese.">
+<meta name="color-scheme" content="light">
+<title>LemmaLoom · Grammar-aware qualitative analysis for Mac</title>
+<link rel="canonical" href="https://lemmaloom.app/">
+<link rel="icon" type="image/png" href="static/logo.png">
+<link rel="apple-touch-icon" href="static/logo.png">
+<style>
+@font-face {
+  font-family: "Ubuntu Brand";
+  src: url("guide/assets/Ubuntu-B.ttf") format("truetype");
+  font-weight: 700;
+  font-display: swap;
+}
+:root {
+  --paper: #fcfcfe;
+  --surface: #f3f2fb;
+  --ink: #1d1d22;
+  --muted: #5b5f6e;
+  --rule: #e3e2ee;
+  --brand: #6157d8;
+  --brand-ink: #4d44c4;
+  --on-brand: #ffffff;
+  --sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", sans-serif;
+  --serif: "Charter", "Iowan Old Style", Georgia, "Songti SC", serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--brand-ink); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 3px; }
+a:focus-visible { outline: 2px solid var(--brand); outline-offset: 3px; border-radius: 6px; }
+img { display: block; max-width: 100%; height: auto; }
+h1, h2, h3 { line-height: 1.2; text-wrap: balance; }
+.wrap { width: 100%; max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+.wordmark { font-family: "Ubuntu Brand", var(--sans); font-weight: 700; letter-spacing: 0.2px; white-space: nowrap; }
+.wordmark .lemma { color: var(--brand-ink); }
+.wordmark .loom { color: var(--ink); }
+
+header { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 20px 0; }
+.brand { display: flex; align-items: center; gap: 10px; font-size: 21px; }
+.brand:hover { text-decoration: none; }
+.brand img { width: 30px; height: 30px; border-radius: 7px; }
+nav { display: flex; align-items: center; gap: 22px; font-size: 15px; }
+nav a { color: var(--muted); white-space: nowrap; }
+nav a:hover { color: var(--ink); text-decoration: none; }
+
+.button {
+  display: inline-block;
+  padding: 12px 22px;
+  border: 1px solid var(--brand);
+  border-radius: 11px;
+  background: var(--brand);
+  color: var(--on-brand);
+  font-weight: 600;
+}
+.button:hover { text-decoration: none; }
+.button.secondary { background: var(--paper); color: var(--brand-ink); }
+.button.small { padding: 7px 13px; border-radius: 9px; font-size: 14px; }
+nav .button.small, nav .button.small:hover { color: var(--on-brand); }
+
+.mosaic {
+  height: 250px;
+  border-radius: 14px;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to bottom, #000 35%, transparent);
+  mask-image: linear-gradient(to bottom, #000 35%, transparent);
+}
+.mosaic img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.hero { padding: 16px 0 56px; text-align: center; }
+.hero h1 { font-size: clamp(48px, 9vw, 80px); line-height: 1; }
+.tagline { margin-top: 18px; font-size: clamp(21px, 3vw, 28px); font-weight: 600; line-height: 1.3; text-wrap: balance; }
+.lede { max-width: 680px; margin: 16px auto 0; font-family: var(--serif); font-size: 19px; text-wrap: pretty; }
+.actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 28px; }
+.availability { margin-top: 14px; font-size: 14px; color: var(--muted); }
+.screenshot { border: 1px solid var(--rule); border-radius: 14px; }
+
+section { margin-top: 80px; }
+section h2 { font-size: clamp(27px, 4vw, 34px); letter-spacing: -0.01em; }
+.intro { max-width: 720px; margin-top: 14px; color: var(--muted); text-wrap: pretty; }
+.columns { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 32px; }
+.columns h3 { font-size: 19px; }
+.columns p { margin-top: 10px; font-size: 16px; }
+.languages { list-style: none; gap: 16px; }
+.languages li { padding: 22px 24px; border: 1px solid var(--rule); border-radius: 14px; background: var(--surface); }
+.languages .links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+.contact a { font-weight: 600; }
+
+footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 12px 24px;
+  margin-top: 80px;
+  padding: 40px 0 48px;
+  border-top: 1px solid var(--rule);
+  font-size: 14px;
+  color: var(--muted);
+}
+footer nav { flex-wrap: wrap; gap: 8px 20px; font-size: 14px; }
+
+@media (max-width: 760px) {
+  body { font-size: 16px; }
+  nav .hide-small { display: none; }
+  .mosaic { height: 150px; }
+  .hero { padding-bottom: 36px; }
+  .lede { font-size: 18px; }
+  section { margin-top: 56px; }
+  .columns { grid-template-columns: 1fr; gap: 24px; }
+  .languages { gap: 12px; }
+  footer { margin-top: 56px; }
+}
+@media (max-width: 380px) {
+  header { gap: 12px; }
+  .brand { gap: 8px; font-size: 18px; }
+  .brand img { width: 26px; height: 26px; }
+  header .button.small { padding: 6px 9px; font-size: 12px; }
+  .hero h1 { font-size: 42px; }
+}
+</style>
 </head>
 <body>
-<a href="guide/">LemmaLoom</a>
+<div class="wrap">
+<header>
+<a class="brand" href="./" aria-label="LemmaLoom home"><img src="static/logo.png" alt="" width="30" height="30"><span class="wordmark"><span class="lemma">Lemma</span><span class="loom">Loom</span></span></a>
+<nav aria-label="Main">
+<a class="hide-small" href="#about">About</a>
+<a class="hide-small" href="#guide">User guide</a>
+<a class="hide-small" href="#contact">Contact</a>
+<a class="button small" href="https://apps.apple.com/us/search?term=LemmaLoom">Mac App Store</a>
+</nav>
+</header>
+
+<main>
+<div class="mosaic" aria-hidden="true"><img src="guide/assets/mosaic.svg" alt=""></div>
+<div class="hero">
+<h1 class="wordmark"><span class="lemma">Lemma</span><span class="loom">Loom</span></h1>
+<p class="tagline">Grammar-aware Qualitative Data Analysis</p>
+<p class="lede">LemmaLoom is a macOS application for qualitative and grammar analysis of text. Code passages just like you would in any other QDA-style application, then interrogate those codings against the grammar used throughout your documents.</p>
+<div class="actions">
+<a class="button" href="https://apps.apple.com/us/search?term=LemmaLoom">Get it on the Mac App Store</a>
+<a class="button secondary" href="#guide">Read the user guide</a>
+</div>
+<p class="availability">Available for macOS 26.6 or later · English, German, and Chinese</p>
+</div>
+
+<img class="screenshot" src="guide/figures/en/light/introduction-main-window.webp" width="1800" height="1125" alt="The LemmaLoom main window, with a coded op-ed open in the reader, the project sidebar to its left, and the list of codes to its right.">
+
+<section id="about">
+<h2>What is LemmaLoom?</h2>
+<p class="intro">LemmaLoom works with essays, opinion pieces, news articles, surveys, interviews, works of literature, and more. Import plain text files, PDFs, web articles, and audio or video recordings. Recordings are transcribed into text, and their speakers are coded for you automatically.</p>
+<div class="columns">
+<div>
+<h3>Qualitative coding</h3>
+<p>Label passages with codes that help answer your questions, and add memos, links, and bookmarks as you read. Auto-code with dictionaries, queries, and analyzers, and exchange projects with other software through REFI-QDA.</p>
+</div>
+<div>
+<h3>Linguistic analysis</h3>
+<p>LemmaLoom identifies the dictionary form, part of speech, and function of every word. Lenses show grammatical patterns in your texts, and word sketches sort the words that neighbor other words by grammatical relation.</p>
+</div>
+<div>
+<h3>Mixed methods</h3>
+<p>Combine qualitative coding with grammar analysis. Query codes, attributes, and grammar together, measure how often patterns occur, compare groups of documents, and test their differences for statistical significance.</p>
+</div>
+</div>
+</section>
+
+<section id="guide">
+<h2>In English, German, and Chinese</h2>
+<p class="intro">LemmaLoom provides grammar analysis for English, German, and Chinese documents. The interface and user guide are available in English, German, and Simplified Chinese. Read the guide on the web or as a PDF.</p>
+<ul class="columns languages">
+<li>
+<h3>English</h3>
+<div class="links">
+<a class="button small" href="guide/en/index.html" aria-label="English user guide on the web">Web guide</a>
+<a class="button small secondary" href="https://github.com/LemmaLoom/public/raw/main/pdf/lemmaloom-guide-en.pdf" aria-label="English user guide as a PDF">PDF</a>
+</div>
+</li>
+<li>
+<h3 lang="de">Deutsch</h3>
+<div class="links">
+<a class="button small" href="guide/de/index.html" aria-label="German user guide on the web">Web guide</a>
+<a class="button small secondary" href="https://github.com/LemmaLoom/public/raw/main/pdf/lemmaloom-guide-de.pdf" aria-label="German user guide as a PDF">PDF</a>
+</div>
+</li>
+<li>
+<h3 lang="zh-Hans">简体中文</h3>
+<div class="links">
+<a class="button small" href="guide/zh-Hans/index.html" aria-label="Simplified Chinese user guide on the web">Web guide</a>
+<a class="button small secondary" href="https://github.com/LemmaLoom/public/raw/main/pdf/lemmaloom-guide-zh-Hans.pdf" aria-label="Simplified Chinese user guide as a PDF">PDF</a>
+</div>
+</li>
+</ul>
+</section>
+
+<section class="contact" id="contact">
+<h2>Contact</h2>
+<p class="intro">For questions, bug reports, and feature requests, email <a href="mailto:support@lemmaloom.app">support@lemmaloom.app</a>.</p>
+</section>
+</main>
+
+<footer>
+<span>&copy; 2026 Ryan S. Cooper</span>
+<nav aria-label="Footer">
+<a href="guide/">User guide</a>
+<a href="privacy/">Privacy Policy</a>
+<a href="mailto:support@lemmaloom.app">support@lemmaloom.app</a>
+</nav>
+</footer>
+</div>
 </body>
 </html>
